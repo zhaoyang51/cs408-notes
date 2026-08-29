@@ -1,0 +1,26 @@
+{
+  "name": "cs408-notes",
+  "version": "1.0.0",
+  "description": "2026 考研 408 计算机学科专业基础综合全科目知识库 (数据结构、机组、操作系统、计网)",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "408",
+    "考研",
+    "计算机",
+    "数据结构",
+    "计算机组成原理",
+    "操作系统",
+    "计算机网络",
+    "vitepress"
+  ],
+  "author": "zhaoyang51",
+  "license": "MIT",
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "vitepress": "^1.5.0"
+  }
+}
