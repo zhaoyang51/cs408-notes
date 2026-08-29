@@ -202,26 +202,55 @@ html.parchment .VPNavBar {
     padding-left: 0 !important;
   }
 
-  /* 正文与大纲弹性布局容器 */
-  .VPDoc.has-sidebar .container {
+  /* ════════ 全屏与宽屏沉浸式正文容器布局 ════════ */
+  .VPDoc .container,
+  .VPDoc.has-sidebar .container,
+  .VPDoc.has-aside .container,
+  .VPDoc:not(.has-sidebar) .container {
     max-width: 100% !important;
-    padding-left: 36px !important;
-    padding-right: 28px !important;
+    width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 18px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
-  }
-
-  /* 中间知识点内容区自适应宽屏 */
-  .VPDoc.has-sidebar > .container > .content {
-    flex: 1 1 auto !important;
-    max-width: calc(100% - 240px) !important;
-    padding-right: 48px !important;
-  }
-
-  .VPDoc.has-sidebar .content-container {
-    max-width: 100% !important;
     margin: 0 !important;
+  }
+
+  /* 中间主体内容区彻底向两侧扩宽 */
+  .VPDoc .content,
+  .VPDoc.has-sidebar .content,
+  .VPDoc.has-aside .content,
+  .VPDoc > .container > .content,
+  .VPDoc.has-sidebar > .container > .content {
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    max-width: calc(100% - 230px) !important;
+    padding-right: 24px !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+  }
+
+  .VPDoc:not(.has-aside) .content,
+  .VPDoc:not(.has-aside) > .container > .content {
+    max-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .VPDoc .content-container,
+  .VPDoc.has-sidebar .content-container,
+  .VPDoc.has-aside .content-container,
+  .VPDoc:not(.has-sidebar) .content-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  main.main,
+  .vp-doc,
+  .vp-doc > div {
+    max-width: 100% !important;
+    width: 100% !important;
   }
 
   /* 右侧「本页大纲 (TOC)」占位与悬浮固定 */
@@ -380,19 +409,27 @@ html.parchment .badge-chen { background: #f3e8ff; color: #7e22ce; border-color: 
 /* ── 表格全屏与移动端局部滚动响应式 ── */
 .vp-doc table {
   width: 100% !important;
+  max-width: 100% !important;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 20px 0;
+  margin: 20px 0 !important;
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
   font-size: 14.5px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  table-layout: auto !important;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 12px 18px !important;
+  line-height: 1.65 !important;
 }
 
 @media (min-width: 960px) {
   .vp-doc table {
     display: table !important;
-    table-layout: auto;
+    width: 100% !important;
   }
 }
 
