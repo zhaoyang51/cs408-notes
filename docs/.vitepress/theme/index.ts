@@ -9,6 +9,7 @@ import ProcessTable from './ProcessTable.vue'
 import InterruptSimulator from './InterruptSimulator.vue'
 import MediaCard from './MediaCard.vue'
 import ProtocolStackMap from './ProtocolStackMap.vue'
+import NetworkMetrics from './NetworkMetrics.vue'
 import { h } from 'vue'
 
 export default {
@@ -35,5 +36,6 @@ export default {
     app.component('InterruptSimulator', InterruptSimulator)
     app.component('MediaCard', MediaCard)
     app.component('ProtocolStackMap', ProtocolStackMap)
+    app.component('NetworkMetrics', NetworkMetrics)
   }
 }
