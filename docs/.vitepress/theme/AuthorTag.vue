@@ -3,7 +3,7 @@
     class="author-badge-tag" 
     :class="[normalizedAuthor ? `author-${normalizedAuthor}` : '', { 'is-clickable': clickable }]"
     @click="handleClick"
-    :title="clickable ? `点击仅查看 ${displayAuthor} 创建的内容` : `创建者: ${displayAuthor}`"
+    :title="displayAuthor"
   >
     <span class="author-avatar" :class="`${normalizedAuthor}-avatar`">
       {{ avatarLetter }}
@@ -60,12 +60,12 @@ function handleClick() {
 .author-badge-tag {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 2px 8px;
+  gap: 4px;
+  padding: 2px 7px;
   border-radius: 9999px;
   font-size: 11px;
   font-weight: 600;
-  line-height: 1.4;
+  line-height: 1.3;
   vertical-align: middle;
   transition: all 0.2s ease;
   user-select: none;
@@ -84,8 +84,8 @@ function handleClick() {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   font-size: 9px;
   font-weight: 800;
@@ -110,18 +110,6 @@ function handleClick() {
 }
 .chen-avatar {
   background: linear-gradient(135deg, #9333ea, #ec4899);
-}
-
-/* 暗黑模式自适应 */
-:global(.dark) .author-zhao {
-  background: rgba(14, 165, 233, 0.2);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.4);
-}
-:global(.dark) .author-chen {
-  background: rgba(168, 85, 247, 0.2);
-  color: #c084fc;
-  border-color: rgba(192, 132, 252, 0.4);
 }
 
 /* 羊皮纸模式自适应 */

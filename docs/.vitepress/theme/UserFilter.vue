@@ -19,7 +19,7 @@
         <div class="stats-popover all-popover" v-if="hovered === 'all'">
           <div class="popover-arrow"></div>
           <div class="popover-header">
-            <span class="popover-title">👥 全体贡献知识点统计</span>
+            <span class="popover-title">👥 全体考点分布</span>
             <span class="popover-badge">共 {{ stats.all.total }} 个考点</span>
           </div>
           <div class="popover-body">
@@ -42,7 +42,7 @@
               <div class="progress-chen" :style="{ width: `${(stats.chen.total / stats.all.total) * 100}%` }"></div>
             </div>
           </div>
-          <div class="popover-tip">💡 点击按钮切换至全景浏览模式</div>
+          <div class="popover-tip">💡 显示全部公共考点与所有用户内容</div>
         </div>
       </transition>
     </div>
@@ -53,8 +53,8 @@
         class="user-filter-btn zhao-btn" 
         :class="{ active: currentFilter === 'zhao' }" 
         @click="setFilter('zhao')" 
-        title="仅查看 Zhao 创建的知识点"
-        aria-label="Zhao 创建的知识点"
+        title="仅查看公共部分与 Zhao 创建的考点"
+        aria-label="仅查看 Zhao"
       >
         <span class="user-avatar zhao-avatar">Z</span>
         <span class="user-text">Zhao</span>
@@ -68,7 +68,7 @@
           <div class="popover-header">
             <div class="header-user">
               <span class="mini-avatar zhao-mini">Z</span>
-              <span class="popover-title">Zhao 贡献考点</span>
+              <span class="popover-title">Zhao 创建考点</span>
             </div>
             <span class="popover-badge zhao-badge">{{ stats.zhao.total }} 个考点</span>
           </div>
@@ -90,7 +90,7 @@
               <span class="sub-num">{{ stats.zhao.bySubject.cn }}</span>
             </div>
           </div>
-          <div class="popover-tip">⚡ 点击仅筛选显示 Zhao 的归纳考点</div>
+          <div class="popover-tip">⚡ 仅显示公共部分与 Zhao 创建内容</div>
         </div>
       </transition>
     </div>
@@ -101,8 +101,8 @@
         class="user-filter-btn chen-btn" 
         :class="{ active: currentFilter === 'chen' }" 
         @click="setFilter('chen')" 
-        title="仅查看 Chen 创建的知识点"
-        aria-label="Chen 创建的知识点"
+        title="仅查看公共部分与 Chen 创建的考点"
+        aria-label="仅查看 Chen"
       >
         <span class="user-avatar chen-avatar">C</span>
         <span class="user-text">Chen</span>
@@ -116,7 +116,7 @@
           <div class="popover-header">
             <div class="header-user">
               <span class="mini-avatar chen-mini">C</span>
-              <span class="popover-title">Chen 贡献考点</span>
+              <span class="popover-title">Chen 创建考点</span>
             </div>
             <span class="popover-badge chen-badge">{{ stats.chen.total }} 个考点</span>
           </div>
@@ -138,7 +138,7 @@
               <span class="sub-num">{{ stats.chen.bySubject.cn }}</span>
             </div>
           </div>
-          <div class="popover-tip">⚡ 点击仅筛选显示 Chen 的归纳考点</div>
+          <div class="popover-tip">⚡ 仅显示公共部分与 Chen 创建内容</div>
         </div>
       </transition>
     </div>

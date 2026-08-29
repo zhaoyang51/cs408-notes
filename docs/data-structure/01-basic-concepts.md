@@ -30,9 +30,15 @@
 
 ## 3. 渐近时间复杂度分析
 
+<KP author="Zhao" title="阶数大小比较（必背口诀）" tag="💡 核心速记">
+
 $$
 O(1) \lt O(\log_2 n) \lt O(n) \lt O(n \log_2 n) \lt O(n^2) \lt O(n^3) \lt O(2^n) \lt O(n!) \lt O(n^n)
 $$
+
+</KP>
+
+<KP author="Chen" title="主定理 (Master Method) 递归分治秒杀公式" tag="⭐️ 技巧">
 
 对于递推形式 $T(n) = a T(n/b) + O(n^d)$，比较 $\log_b a$ 与 $d$：
 1. **若 $\log_b a \gt d$**：$T(n) = O(n^{\log_b a})$
@@ -41,15 +47,20 @@ $$
 
 > 典型例题：归并排序 $T(n) = 2T(n/2) + O(n)$，$\log_2 2 = 1 = d \implies O(n \log n)$。
 
+</KP>
+
 ::: tip ⚠️ 经典命题陷阱
 1. **循环变量倍增**：`for(int i=1; i<n; i*=2)` 执行次数为 $\lfloor \log_2 n \rfloor + 1$，复杂度为 $O(\log_2 n)$。
 2. **递归调用**：必须写出递推关系式（如 $T(n) = 2T(n/2) + O(n) \Rightarrow O(n \log n)$）。
 3. **原地工作 (In-place)**：空间复杂度为 $O(1)$，并非不消耗内存，而是辅助空间不随输入规模 $n$ 增长。
 :::
 
-::: details 🎯 ⭐️ 考点自测 Zhao 已知某算法递推式为 $T(n) = T(n-1) + n$，求时间复杂度？
+<KP author="Zhao" title="真题考点自测：递推时空复杂度展开" tag="🎯 考点自测">
 
-通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。
+**【题目】** 已知某算法递推式为 $T(n) = T(n-1) + n$，求时间复杂度？
 
-:::
+**【解析】** 通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。
+
+</KP>
+
 

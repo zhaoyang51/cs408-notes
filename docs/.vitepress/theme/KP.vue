@@ -1,6 +1,7 @@
 <template>
   <div 
     class="kp-card" 
+    v-show="isMatchedFilter"
     :class="[
       `author-${normalizedAuthor}`,
       { 'is-active-filter': isMatchedFilter }
@@ -13,7 +14,8 @@
         <span v-if="title" class="kp-title">{{ title }}</span>
       </div>
       <div class="kp-header-right">
-        <span class="kp-author-pill" :class="`${normalizedAuthor}-pill`" :title="`知识点贡献者: ${displayAuthor}`">
+        <!-- 仅展示简洁用户标识，无冗余前缀文本 -->
+        <span class="kp-author-pill" :class="`${normalizedAuthor}-pill`" :title="`创建用户: ${displayAuthor}`">
           <span class="kp-pill-avatar">{{ avatarLetter }}</span>
           <span class="kp-pill-name">{{ displayAuthor }}</span>
         </span>
@@ -114,10 +116,10 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
+  padding: 8px 14px;
   background: var(--vp-c-bg-soft);
   border-bottom: 1px solid var(--vp-c-divider);
-  gap: 12px;
+  gap: 10px;
 }
 
 .kp-header-left {
@@ -151,10 +153,11 @@ onUnmounted(() => {
   flex-shrink: 0;
 }
 
+/* 简洁用户标识胶囊 */
 .kp-author-pill {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 11px;
@@ -204,17 +207,5 @@ onUnmounted(() => {
 
 .kp-body :deep(p:last-child) {
   margin-bottom: 0;
-}
-
-/* 深色模式适配 */
-:global(.dark) .zhao-pill {
-  background: rgba(14, 165, 233, 0.2);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.4);
-}
-:global(.dark) .chen-pill {
-  background: rgba(168, 85, 247, 0.2);
-  color: #c084fc;
-  border-color: rgba(192, 132, 252, 0.4);
 }
 </style>
