@@ -22,3 +22,26 @@
 2. **拥塞避免 (Congestion Avoidance)**：$cwnd \ge ssthresh$ 后，每个 RTT 加法线性增加 ($+1$)。
 3. **网络超时 (Timeout)**：$ssthresh$ 骤降为当前 $cwnd / 2$，$cwnd$ 重新重置为 1，重新进入慢开始。
 4. **快重传与快恢复**：发送方连续收到 3 个冗余 ACK 时立即重传丢失报文，$ssthresh = cwnd/2$，$cwnd = ssthresh$ 并进入拥塞避免。
+
+---
+
+## 3. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算） <AuthorTag author="Zhao" />
+
+<KP author="Zhao" title="🌊 TCP 滑动窗口与流量控制全景图解（真题经典模型推导）" tag="⭐️ 考研必背">
+
+<TcpFlowControl />
+
+### 📐 408 流量控制核心计算与左右沿推进法则
+
+#### 1. 发送窗口大小决定公式
+$$\text{实际发送窗口 } W = \min(\text{cwnd}, \text{rwnd})$$
+- **$\text{cwnd}$（拥塞窗口）**：发送方根据网络拥塞程度估计的窗口大小；
+- **$\text{rwnd}$（接收窗口）**：接收方在 TCP 报文段首部通告的接收缓存剩余空间。
+
+#### 2. 滑动窗口左右边界移动原则
+- **左沿推进（收缩/前移）**：当收到确认号 $\text{ACK} = k$ 时，表示序号 $< k$ 的所有字节已全部被接收方累计确认，左沿向前推进到序号 $k$；
+- **右沿位置确定**：$\text{右沿} = \text{左沿} + W = k + \min(\text{cwnd}, \text{rwnd}) - 1$；
+- **还可发送字节数计算**：
+  $$\text{还可发送字节数} = \text{当前发送窗口大小 } W - \text{已发送但未收到确认的字节数}$$
+
+</KP>
