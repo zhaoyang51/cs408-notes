@@ -45,9 +45,9 @@
 
             <!-- 本地域名服务器 201.1.1.1 -->
             <g transform="translate(30, 60)">
-              <rect x="0" y="0" width="130" height="52" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-              <text x="65" y="22" font-size="11" font-weight="bold" text-anchor="middle" fill="#38bdf8">🖥️ 本地域名服务器</text>
-              <text x="65" y="40" font-size="11" font-weight="900" text-anchor="middle" fill="#f8fafc">201.1.1.1</text>
+              <rect x="0" y="0" width="130" height="52" rx="6" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+              <text x="65" y="22" font-size="11" font-weight="bold" text-anchor="middle" fill="#0284c7">🖥️ 本地域名服务器</text>
+              <text x="65" y="40" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">201.1.1.1</text>
             </g>
 
             <!-- 默认网关路由器 R2 -->
@@ -190,7 +190,7 @@
 
         <!-- 深度解析 (默认隐藏) -->
         <div v-show="quizDns.revealed" class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
+          <div class="analysis-title">🔍 核心推导步骤（推导过程）：</div>
           <ol class="analysis-list">
             <li><strong>最少查询次数（0 次）</strong>：若主机 A 自身的 DNS 高速缓存命中，或本地域名服务器自身的高速缓存命中，均<strong>无需向外部发出任何查询</strong>，因此最少为 <strong>0 次</strong>。</li>
             <li><strong>最多查询次数（4 次）</strong>：在全无缓存的最坏情况下，本地域名服务器必须严格执行 4 级逐层迭代解析：

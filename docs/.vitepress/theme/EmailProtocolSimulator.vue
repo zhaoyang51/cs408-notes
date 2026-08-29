@@ -8,7 +8,7 @@
         <h4 class="header-title">SMTP 发送中继 (Push) + POP3 / IMAP 邮件读取 (Pull)</h4>
       </div>
       <div class="rule-tag">
-        ⭐️ 黄金法则：给服务器送信全用 SMTP，从服务器取信才用 POP3/IMAP
+        💡 核心准则：给服务器送信全用 SMTP，从服务器取信才用 POP3/IMAP
       </div>
     </div>
 
@@ -31,10 +31,10 @@
           <svg viewBox="0 0 860 300" class="email-svg" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <marker id="email-arr-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
               </marker>
               <marker id="email-arr-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
               </marker>
             </defs>
 
@@ -44,8 +44,8 @@
               <text x="65" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#2563eb">💻 发送方用户代理</text>
               <text x="65" y="42" font-size="10.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-2)">(用户 1)</text>
               <!-- 内部角色 -->
-              <rect x="15" y="54" width="100" height="24" rx="4" fill="#0284c7"/>
-              <text x="65" y="70" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">SMTP 客户</text>
+              <rect x="15" y="54" width="100" height="24" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+              <text x="65" y="70" font-size="10" font-weight="bold" text-anchor="middle" fill="#2563eb">SMTP 客户</text>
             </g>
 
             <!-- 阶段 ① 箭头 (用户1 -> 邮件服务器1) -->
@@ -56,14 +56,14 @@
 
             <!-- 2. 发送方邮件服务器 (用户1的邮件服务器) -->
             <g transform="translate(265, 30)">
-              <rect x="0" y="0" width="140" height="130" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-              <text x="70" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#38bdf8">🖥️ 发送方邮件服务器</text>
-              <text x="70" y="42" font-size="10" text-anchor="middle" fill="#94a3b8">(用户 1 的服务器)</text>
+              <rect x="0" y="0" width="140" height="130" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+              <text x="70" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#0369a1">🖥️ 发送方邮件服务器</text>
+              <text x="70" y="42" font-size="10" text-anchor="middle" fill="#64748b">(用户 1 的服务器)</text>
               <!-- 两个角色 -->
-              <rect x="15" y="55" width="110" height="26" rx="4" fill="#0284c7"/>
-              <text x="70" y="72" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">SMTP 服务器</text>
-              <rect x="15" y="90" width="110" height="26" rx="4" fill="#0284c7"/>
-              <text x="70" y="107" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">SMTP 客户</text>
+              <rect x="15" y="55" width="110" height="26" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+              <text x="70" y="72" font-size="10" font-weight="bold" text-anchor="middle" fill="#2563eb">SMTP 服务器</text>
+              <rect x="15" y="90" width="110" height="26" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+              <text x="70" y="107" font-size="10" font-weight="bold" text-anchor="middle" fill="#2563eb">SMTP 客户</text>
             </g>
 
             <!-- 阶段 ② 箭头 (邮件服务器1 -> 邮件服务器2) -->
@@ -74,14 +74,14 @@
 
             <!-- 3. 接收方邮件服务器 (用户2的邮件服务器) -->
             <g transform="translate(490, 30)">
-              <rect x="0" y="0" width="140" height="130" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-              <text x="70" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#38bdf8">🖥️ 接收方邮件服务器</text>
-              <text x="70" y="42" font-size="10" text-anchor="middle" fill="#94a3b8">(用户 2 的服务器)</text>
+              <rect x="0" y="0" width="140" height="130" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+              <text x="70" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#0369a1">🖥️ 接收方邮件服务器</text>
+              <text x="70" y="42" font-size="10" text-anchor="middle" fill="#64748b">(用户 2 的服务器)</text>
               <!-- 两个角色 -->
-              <rect x="15" y="55" width="110" height="26" rx="4" fill="#0284c7"/>
-              <text x="70" y="72" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">SMTP 服务器</text>
-              <rect x="15" y="90" width="110" height="26" rx="4" fill="#059669"/>
-              <text x="70" y="107" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">POP3/IMAP 服务端</text>
+              <rect x="15" y="55" width="110" height="26" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
+              <text x="70" y="72" font-size="10" font-weight="bold" text-anchor="middle" fill="#2563eb">SMTP 服务器</text>
+              <rect x="15" y="90" width="110" height="26" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+              <text x="70" y="107" font-size="10" font-weight="bold" text-anchor="middle" fill="#059669">POP3/IMAP 服务端</text>
             </g>
 
             <!-- 阶段 ③ 箭头 (邮件服务器2 -> 用户2) -->
@@ -93,25 +93,25 @@
             <!-- 4. 接收方用户代理 (用户2) -->
             <g transform="translate(710, 50)">
               <rect x="0" y="0" width="130" height="90" rx="8" fill="rgba(16,185,129,0.08)" stroke="#10b981" stroke-width="1.5"/>
-              <text x="65" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#059669">💻 接收方用户代理</text>
+              <text x="65" y="24" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ecfdf5" stroke="#10b981" stroke-width="1">💻 接收方用户代理</text>
               <text x="65" y="42" font-size="10.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-2)">(用户 2)</text>
               <!-- 内部角色 -->
-              <rect x="15" y="54" width="100" height="24" rx="4" fill="#059669"/>
-              <text x="65" y="70" font-size="10" font-weight="bold" text-anchor="middle" fill="#fff">POP3/IMAP 客户</text>
+              <rect x="15" y="54" width="100" height="24" rx="4" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+              <text x="65" y="70" font-size="10" font-weight="bold" text-anchor="middle" fill="#059669">POP3/IMAP 客户</text>
             </g>
 
             <!-- 底部宏观划分横幅 -->
             <!-- 发送段 -->
             <line x1="20" y1="210" x2="625" y2="210" stroke="#0284c7" stroke-width="2"/>
-            <text x="320" y="200" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">📤 使用 SMTP 发送 / 中继邮件 (阶段 ① + 阶段 ②)</text>
+            <text x="320" y="200" font-size="11" font-weight="900" text-anchor="middle" fill="#eff6ff" stroke="#3b82f6" stroke-width="1">📤 使用 SMTP 发送 / 中继邮件 (阶段 ① + 阶段 ②)</text>
             <!-- 接收段 -->
             <line x1="635" y1="210" x2="840" y2="210" stroke="#059669" stroke-width="2"/>
-            <text x="737" y="200" font-size="11" font-weight="900" text-anchor="middle" fill="#059669">📥 使用 POP3/IMAP 读取邮件 (阶段 ③)</text>
+            <text x="737" y="200" font-size="11" font-weight="900" text-anchor="middle" fill="#ecfdf5" stroke="#10b981" stroke-width="1">📥 使用 POP3/IMAP 读取邮件 (阶段 ③)</text>
 
             <!-- 总结框 -->
             <rect x="20" y="240" width="820" height="42" rx="6" fill="var(--vp-c-bg-elv)" stroke="var(--vp-c-border)"/>
             <text x="430" y="265" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">
-              💡 核心结论：<tspan fill="#2563eb">向服务器发送邮件（客户到服务器、服务器到服务器）全用 SMTP</tspan>；<tspan fill="#059669">从服务器读取邮件才用 POP3 或 IMAP</tspan>。
+              💡 核心结论：<tspan fill="#2563eb">向服务器发送邮件（客户到服务器、服务器到服务器）全用 SMTP</tspan>；<tspan fill="#ecfdf5" stroke="#10b981" stroke-width="1">从服务器读取邮件才用 POP3 或 IMAP</tspan>。
             </text>
 
           </svg>
@@ -175,7 +175,7 @@
         </div>
 
         <div v-show="quiz2012.revealed" class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
+          <div class="analysis-title">🔍 核心推导步骤（推导过程）：</div>
           <ol class="analysis-list">
             <li><strong>分析阶段 ①（用户 1 ➔ 邮件服务器 1）</strong>：用户代理向邮件服务器发送/上传邮件，属于“推 (Push)”操作，使用 <strong>SMTP</strong> 协议。</li>
             <li><strong>分析阶段 ②（邮件服务器 1 ➔ 邮件服务器 2）</strong>：邮件服务器之间进行邮件中继转发，属于“推 (Push)”操作，同样使用 <strong>SMTP</strong> 协议。</li>
@@ -257,7 +257,7 @@
       </div>
     </div>
 
-    <!-- 4. 408 核心邮件协议速查对比表 (默认收起) -->
+    <!-- 4. 常见邮件协议速查对比表 (默认收起) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('diff')">
         <div class="header-title-box">

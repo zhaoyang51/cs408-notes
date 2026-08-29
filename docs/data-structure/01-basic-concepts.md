@@ -1,6 +1,5 @@
 # 第1章 基本概念与时空复杂度
 
-<span class="badge badge-star">⭐️ 全科必考第 1 题</span>
 <span class="badge badge-freq">📊 考频 22 次（选 10 / 简 12）</span>
 <span class="badge badge-formula">💡 算法大题必带分析</span>
 
@@ -52,5 +51,4 @@ $$
 通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。
 
 :::
-
 

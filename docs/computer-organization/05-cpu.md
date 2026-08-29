@@ -1,6 +1,5 @@
 # 第5章 CPU、数据通路与控制器
 
-<span class="badge badge-star">⭐️ 综合大题 (15分)</span>
 <span class="badge badge-freq">📊 考频 40 次（指令流水线 16 / 数据通路 13 / 控制器 11）</span>
 
 ---

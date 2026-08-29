@@ -186,7 +186,7 @@
         </div>
 
         <div v-show="quizRel.revealed" class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
+          <div class="analysis-title">🔍 核心推导步骤（推导过程）：</div>
           <ol class="analysis-list">
             <li><strong>确认号确认的是期望收到的下一个字节序号</strong>：第一个报文段序号为 200，包含 300 字节（字节范围 200~499）。乙成功接收后，期望收到的下一个字节序号为 <code>200 + 300 = 500</code>，因此确认号 <code>ack = 500</code>。</li>
             <li><strong>重传报文段的序号</strong>：第二个报文段（序号 500，400 字节，字节范围 500~899）丢失未被乙接收，超时后甲必须从丢失的字节起点开始重传，故重传报文段的序号仍为 <code>seq = 500</code>。</li>
@@ -196,7 +196,7 @@
       </div>
     </div>
 
-    <!-- 3. 408 核心考点延伸：序号与确认号 4 大黄金法则 (支持折叠) -->
+    <!-- 3. 核心知识点延伸：序号与确认号 4 大黄金法则 (支持折叠) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('rules')">
         <div class="header-title-box">

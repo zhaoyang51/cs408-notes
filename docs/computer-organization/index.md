@@ -1,6 +1,5 @@
 # 🔵 计算机组成原理（满分 45分）
 
-<span class="badge badge-star">⭐️ 试卷分值占比 30%</span>
 <span class="badge badge-trap">⚠️ 计算与硬件逻辑重灾区</span>
 <span class="badge badge-freq">📊 软硬结合大题核心</span>
 

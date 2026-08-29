@@ -1,6 +1,5 @@
 # 第4章 文件系统与磁盘调度
 
-<span class="badge badge-star">⭐️ 索引大题常客</span>
 <span class="badge badge-freq">📊 考频 45 次（文件物理结构 14 / 磁盘调度 13 / 目录结构 12）</span>
 
 ---

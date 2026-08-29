@@ -162,7 +162,7 @@
         </div>
 
         <div v-show="quizConn.revealed" class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
+          <div class="analysis-title">🔍 核心推导步骤（推导过程）：</div>
           <ol class="analysis-list">
             <li><strong>确认号计算</strong>：SYN 报文段即使不携带应用层数据，也<strong>强制消耗 1 个序列号</strong>。因此乙回复的确认号为 <code>ack = seq + 1 = 11220 + 1 = 11221</code>。</li>
             <li><strong>控制标志位判定</strong>：乙发送的是第二次握手（SYN+ACK 报文段），既用于同步自己的初始序号（<code>SYN = 1</code>），又用于确认甲的报文（<code>ACK = 1</code>）。</li>

@@ -1,6 +1,5 @@
 # 🟢 数据结构（满分 45分）
 
-<span class="badge badge-star">⭐️ 试卷分值占比 30%</span>
 <span class="badge badge-formula">💡 408 核心抓分与算法科目</span>
 <span class="badge badge-freq">📊 历年考频第一梯队</span>
 

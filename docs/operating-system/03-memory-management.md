@@ -1,6 +1,5 @@
 # 第3章 内存管理与虚拟内存
 
-<span class="badge badge-star">⭐️ OS 全科第一考点 (15分)</span>
 <span class="badge badge-freq">📊 考频 60 次（虚拟内存 33 / 非连续分页分段 22）</span>
 
 ---

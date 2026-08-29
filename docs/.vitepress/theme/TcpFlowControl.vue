@@ -145,15 +145,44 @@
           主机甲和主机乙之间建立了一个 TCP 连接，TCP 最大段长度 MSS 为 1000 字节。若主机甲的当前拥塞窗口为 4000 字节，在主机甲向主机乙连续发送两个最大段后，成功收到主机乙发送的第一个段的确认段，确认段中通告的接收窗口大小为 2000 字节，则此时主机甲还可以向主机乙发送的最大字节数是（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item opt-correct"><strong>A. 1000</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">B. 2000</div>
-          <div class="opt-item">C. 3000</div>
-          <div class="opt-item">D. 4000</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizFlow.userAns === opt,
+                'opt-correct': quizFlow.revealed && opt === 'A',
+                'opt-wrong': quizFlow.revealed && quizFlow.userAns === opt && opt !== 'A'
+              }"
+              @click="handleQuizFlow(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">1000</span>
+                <span v-else-if="opt === 'B'">2000</span>
+                <span v-else-if="opt === 'C'">3000</span>
+                <span v-else-if="opt === 'D'">4000</span>
+              </div>
+              <span v-if="quizFlow.revealed && opt === 'A'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizFlow.revealed && quizFlow.userAns === opt && opt !== 'A'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizFlow.revealed = !quizFlow.revealed">
+              {{ quizFlow.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quizFlow.userAns || quizFlow.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizFlow">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <div class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 答题黄金模板）：</div>
+        <div v-show="quizFlow.revealed" class="exam-analysis">
+          <div class="analysis-title">🔍 核心推导步骤（推导过程）：</div>
           <ol class="analysis-list">
             <li><strong>确定发送窗口上限</strong>：实际发送窗口 <span class="m-formula"><i class="m-var">W</i> = min(<i class="m-var">cwnd</i>, <i class="m-var">rwnd</i>) = min(4000, 2000) = 2000 字节</span>。</li>
             <li><strong>确定窗口滑动位置</strong>：收到对第 1 个段（0~999 字节）的确认后，滑动窗口左沿向前推进至 <strong>1000</strong>，覆盖序号范围为 <strong>1000 ~ 2999</strong>（跨度 2000 字节）。</li>
@@ -164,7 +193,7 @@
       </div>
     </div>
 
-    <!-- 3. 408 核心考点延伸：持续计时器 (支持折叠) -->
+    <!-- 3. 扩展机制：持续计时器 (支持折叠) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('timer')">
         <div class="header-title-box">
@@ -192,6 +221,16 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quizFlow = reactive({ userAns: null, revealed: false })
+const handleQuizFlow = (opt) => {
+  quizFlow.userAns = opt
+  quizFlow.revealed = true
+}
+const resetQuizFlow = () => {
+  quizFlow.userAns = null
+  quizFlow.revealed = false
+}
 
 const openSections = reactive({
   vis: false,    // 默认展开图解

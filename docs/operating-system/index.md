@@ -1,6 +1,5 @@
 # 🟣 操作系统（满分 35分）
 
-<span class="badge badge-star">⭐️ 试卷分值占比 23.3%</span>
 <span class="badge badge-formula">💡 PV 信号量与进程调度大题必考</span>
 <span class="badge badge-freq">📊 综合大题支柱学科</span>
 

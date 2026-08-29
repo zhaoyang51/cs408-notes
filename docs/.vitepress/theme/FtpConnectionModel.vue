@@ -8,7 +8,7 @@
         <h4 class="header-title">控制连接 (TCP 21, 持续开启) + 数据连接 (动态建立/关闭)</h4>
       </div>
       <div class="rule-tag">
-        核心法则：主动模式用 TCP 20；被动模式由服务器临时端口协商
+        连接规则：主动模式用 TCP 20；被动模式由服务器临时端口协商
       </div>
     </div>
 
@@ -90,16 +90,16 @@
                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316"/>
                   </marker>
                   <marker id="ftp-arr-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
                   </marker>
                 </defs>
 
                 <!-- 客户端与服务端实体 -->
-                <rect x="20" y="15" width="80" height="32" rx="4" fill="#0284c7"/>
-                <text x="60" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">FTP 客户</text>
+                <rect x="20" y="15" width="80" height="32" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+                <text x="60" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#2563eb">FTP 客户</text>
 
-                <rect x="280" y="15" width="80" height="32" rx="4" fill="#1e293b"/>
-                <text x="320" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#38bdf8">FTP 服务器</text>
+                <rect x="280" y="15" width="80" height="32" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+                <text x="320" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#0369a1">FTP 服务器</text>
 
                 <!-- 时间垂线 -->
                 <line x1="60" y1="47" x2="60" y2="265" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
@@ -136,11 +136,11 @@
             <div class="svg-wrapper">
               <svg viewBox="0 0 380 280" class="mode-svg" xmlns="http://www.w3.org/2000/svg">
                 <!-- 客户端与服务端实体 -->
-                <rect x="20" y="15" width="80" height="32" rx="4" fill="#0284c7"/>
-                <text x="60" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff">FTP 客户</text>
+                <rect x="20" y="15" width="80" height="32" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+                <text x="60" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#2563eb">FTP 客户</text>
 
-                <rect x="280" y="15" width="80" height="32" rx="4" fill="#1e293b"/>
-                <text x="320" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#38bdf8">FTP 服务器</text>
+                <rect x="280" y="15" width="80" height="32" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+                <text x="320" y="35" font-size="11" font-weight="bold" text-anchor="middle" fill="#0369a1">FTP 服务器</text>
 
                 <!-- 时间垂线 -->
                 <line x1="60" y1="47" x2="60" y2="265" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
@@ -178,7 +178,7 @@
       <div class="card-header" @click="toggle('summary')">
         <div class="header-title-box">
           <span class="card-icon">📝</span>
-          <strong>三、408 考点速记：主动模式 vs 被动模式对比总结</strong>
+          <strong>三、核心考点速记：主动模式 vs 被动模式对比总结</strong>
           <span class="badge-amber">必背速查</span>
         </div>
         <button class="toggle-btn" type="button">

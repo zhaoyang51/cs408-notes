@@ -1,6 +1,5 @@
 # 第2章 进程线程、调度与死锁
 
-<span class="badge badge-star">⭐️ PV 大题必考 (15分)</span>
 <span class="badge badge-freq">📊 考频 69 次（PV 操作 22 / CPU 调度 22 / 进程状态 15 / 死锁 12）</span>
 
 ---

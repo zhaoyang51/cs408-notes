@@ -1,6 +1,5 @@
 # 第3章 存储器层次结构 (Cache / 主存)
 
-<span class="badge badge-star">⭐️ 软硬结合大题核心 (15分)</span>
 <span class="badge badge-freq">📊 考频 58 次（虚存 19 / Cache 映射 16 / Cache 原理 10）</span>
 
 ---
@@ -27,19 +26,15 @@ $$
 
 - **虚地址到物理地址转换流程**：
 
-
 $$
 \text{虚拟地址 (VA)} = [\text{虚页号 VPN} \mid \text{页内偏移量 PO}]
 $$
-
-
 
 $$
 \text{物理地址 (PA)} = [\text{物理页框号 PPN} \mid \text{页内偏移量 PO}]
 $$
 
 - **多级存储访存流水判定**：
-
 
 **多级存储访存流水**：`TLB (快表) 命中` → `页表 (慢表) 命中` → `缺页异常 (访外存硬盘调页)`
 

@@ -1,6 +1,5 @@
 # 第6章 总线与输入输出系统
 
-<span class="badge badge-star">⭐️ 中断与总线大题</span>
 <span class="badge badge-freq">📊 考频 54 次（中断方式 24 / 总线 12 / DMA 9 / I/O 接口 9）</span>
 
 ---
@@ -18,7 +17,7 @@
 
 ## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段）
 
-<KP author="Zhao" title="💡 中断处理 10 步全景执行流程（硬件隐指令 vs 软件内核服务）" tag="⭐️ 大题核心">
+<KP author="Zhao" title="💡 中断处理 10 步全景执行流程（硬件隐指令 vs 软件内核服务）" tag="核心重点">
 
 <ProcessTable 
   title="中断处理全景十步流程（硬件隐指令 vs 软件中断服务程序）"

@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "408 考研简纲速查"
-  text: "新一代 AI 原生极简应试知识库"
-  tagline: "⚡ 历年真题真考频统计 · 最小集应试体系 · 高频考点 / 核心公式 / 避坑陷阱 / 斑马纹对比表"
+  text: "新一代极简应试知识库"
+  tagline: "⚡ 历年真题统计 · 最小集应试体系 · 高频考点 / 核心公式 / 概念对比表"
   actions:
     - theme: brand
       text: 🟢 数据结构 (45分)
@@ -22,19 +22,19 @@ hero:
 features:
   - icon: 🎯
     title: 历年真题考频驱动 (Data-Driven)
-    details: 基于 408 历年统考真题考频与题型统计（选择 vs 简答），直击 150 分得分命脉。
+    details: 基于 408 历年统考真题考频与题型统计，直击 150 分得分命脉。
   - icon: ⚡
     title: 毫秒级即时速查 (Ctrl + K)
-    details: 支持全中文核心术语、算法时空复杂度、网络协议帧格式与硬件公式秒级模糊过滤。
+    details: 支持全中文核心术语、算法时空复杂度、网络协议帧格式与硬件公式秒级检索。
   - icon: 📜
     title: 三态护眼阅读系统
-    details: 独创「浅白 / 羊皮纸护眼 / 极客暗黑」无缝切换，手机平板自适应沉浸式背诵自测。
+    details: 独创「浅白 / 羊皮纸护眼 / 极客暗黑」无缝切换，手机平板自适应沉浸式阅读。
 ---
 
 ## 🧭 四门科目核心模块速查
 
 <div class="home-card-grid">
-  <a href="./data-structure/" class="subject-card ds">
+  <div class="subject-card ds">
     <div>
       <div class="header">
         <div class="subject-title">🟢 数据结构</div>
@@ -43,17 +43,16 @@ features:
         </div>
       </div>
       <div class="desc">
-        全科第一大题方向：时空复杂度(22次)、哈夫曼树(15次)、二叉树遍历(13次)、图概念/存储(25次)、链表算法(12次)。
+        时空复杂度(22次)、哈夫曼树(15次)、二叉树遍历(13次)、图概念/存储(25次)、链表算法(12次)。
       </div>
     </div>
     <div class="footer-tags">
-      <span class="badge badge-star">⭐️ 时空复杂度必考 (22次)</span>
       <span class="badge badge-formula">💡 哈夫曼树 (15次)</span>
       <span class="badge badge-freq">📊 链表算法大题 (12次)</span>
     </div>
-  </a>
+  </div>
 
-  <a href="./computer-organization/" class="subject-card co">
+  <div class="subject-card co">
     <div>
       <div class="header">
         <div class="subject-title">🔵 计算机组成原理</div>
@@ -62,17 +61,16 @@ features:
         </div>
       </div>
       <div class="desc">
-        硬核大题与计算高地：定点数编码运算(26次)、中断方式(24次)、虚存管理(19次)、Cache映射(16次)、指令流水线(16次)。
+        定点数编码运算(26次)、中断方式(24次)、虚存管理(19次)、Cache映射(16次)、指令流水线(16次)。
       </div>
     </div>
     <div class="footer-tags">
-      <span class="badge badge-star">⭐️ 定点数运算第一 (26次)</span>
       <span class="badge badge-trap">⚠️ 中断方式 (24次)</span>
       <span class="badge badge-formula">💡 Cache/虚存映射 (35次)</span>
     </div>
-  </a>
+  </div>
 
-  <a href="./operating-system/" class="subject-card os">
+  <div class="subject-card os">
     <div>
       <div class="header">
         <div class="subject-title">🟣 操作系统</div>
@@ -81,17 +79,16 @@ features:
         </div>
       </div>
       <div class="desc">
-        大题支柱与调度核心：虚拟内存管理(33次·全科之王)、PV信号量同步互斥(22次)、CPU调度(22次)、非连续分配(22次)。
+        虚拟内存管理(33次)、PV信号量同步互斥(22次)、CPU调度(22次)、非连续分配(22次)。
       </div>
     </div>
     <div class="footer-tags">
-      <span class="badge badge-star">⭐️ 虚存管理第一考点 (33次)</span>
-      <span class="badge badge-formula">💡 PV 操作大题必考 (22次)</span>
+      <span class="badge badge-formula">💡 PV 操作大题 (22次)</span>
       <span class="badge badge-freq">📊 进程调度 (22次)</span>
     </div>
-  </a>
+  </div>
 
-  <a href="./computer-network/" class="subject-card cn">
+  <div class="subject-card cn">
     <div>
       <div class="header">
         <div class="subject-title">🟠 计算机网络</div>
@@ -100,32 +97,31 @@ features:
         </div>
       </div>
       <div class="desc">
-        规律性极强抓分科目：CIDR子网划分(20次)、介质访问控制(15次)、TCP拥塞控制(12次)、体系结构(12次)、路由转发(12次)。
+        CIDR子网划分(20次)、介质访问控制(15次)、TCP拥塞控制(12次)、体系结构(12次)、路由转发(12次)。
       </div>
     </div>
     <div class="footer-tags">
-      <span class="badge badge-star">⭐️ CIDR 子网第一 (20次)</span>
       <span class="badge badge-formula">💡 TCP 拥塞控制 (12次)</span>
       <span class="badge badge-trap">⚠️ 介质访问 CSMA (15次)</span>
     </div>
-  </a>
+  </div>
 </div>
 
 ---
 
 ## 🎯 全科命题规律与备考关键线索
 
-### 1. 综合大题三大骨干命题方向（必背主线）
+### 1. 综合大题三大骨干命题方向
 
-::: info 👑 408 综合大题三大骨干命题方向
-1. **算法与数据结构大题**：以「**线性表（单链表 / 顺序表）算法设计**」为绝对主体，兼顾「**二叉树 / 图的遍历与构建**」，且每道算法大题最后一问**必带时空复杂度阶数分析**。
-2. **计组 + 操作系统跨学科综合大题**：几乎每年必考「**虚拟内存管理（TLB + 页表） + Cache 组相联映射与主存访问 + 指令寻址与汇编指令对应**」的全链路软硬件结合题。
-3. **计算机网络全栈大贯通题**：以「**主机开机 (DHCP) → 域名解析 (DNS) → 建立连接 (ARP / TCP 握手) → 路由转发 (CIDR / 路由表) → 数据传输与拥塞控制 (HTTP / TCP)**」为完整通信全景大题。
+::: info 408 综合大题三大骨干命题方向
+1. **算法与数据结构大题**：以「**线性表（单链表 / 顺序表）算法设计**」为主体，兼顾「**二叉树 / 图的遍历与构建**」，每道算法大题均需**时空复杂度分析**。
+2. **计组 + 操作系统跨学科综合大题**：聚焦「**虚拟内存管理（TLB + 页表） + Cache 组相联映射与主存访问 + 指令寻址与汇编指令对应**」的全链路软硬件结合题。
+3. **计算机网络全栈大贯通题**：以「**主机开机 (DHCP) → 域名解析 (DNS) → 建立连接 (ARP / TCP 握手) → 路由转发 (CIDR / 路由表) → 数据传输与拥塞控制 (HTTP / TCP)**」为完整通信全景。
 :::
 
-### 2. 纯选择题得分高地（零大题但每年必选）
+### 2. 纯选择题得分高地
 
-::: tip 💡 纯选择题得分高地（0 简答但高频必考）
+::: tip 💡 纯选择题得分高地
 - **数据结构**：B 树与 B+ 树阶数性质（12 次）、排序算法时空稳定性全景分析（12 次）、平衡二叉树 AVL 旋转（8 次）、树转二叉树“左孩子右兄弟”（8 次）。
 - **计算机组成原理**：IEEE 754 浮点数表示与精度范围（14 次）、总线性能指标与突发传输（12 次）、计算机系统层次结构 ISA（11 次）。
 - **操作系统**：死锁 4 大必要条件与银行家算法（12 次）、经典同步问题模型初值辨析（10 次）。

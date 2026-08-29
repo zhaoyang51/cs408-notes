@@ -1,6 +1,5 @@
 # 第2章 数据的表示和运算
 
-<span class="badge badge-star">⭐️ 计组第一考点</span>
 <span class="badge badge-freq">📊 考频 47 次（定点编码运算 26 / 浮点表示 14）</span>
 <span class="badge badge-trap">⚠️ 标志位与 IEEE 754</span>
 

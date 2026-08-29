@@ -1,6 +1,5 @@
 # 🟠 计算机网络（满分 25分）
 
-<span class="badge badge-star">⭐️ 试卷分值占比 16.7%</span>
 <span class="badge badge-formula">💡 规律性极强、抓分性价比极高</span>
 <span class="badge badge-freq">📊 全栈通信大贯通题核心</span>
 

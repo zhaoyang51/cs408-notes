@@ -31,7 +31,7 @@
           <svg viewBox="0 0 840 380" class="http-svg" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <marker id="http-arr-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7"/>
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
               </marker>
               <marker id="http-arr-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
@@ -39,11 +39,11 @@
             </defs>
 
             <!-- 左右端点 -->
-            <rect x="180" y="15" width="90" height="32" rx="4" fill="#0284c7"/>
-            <text x="225" y="35" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#fff">💻 浏览器 (客户)</text>
+            <rect x="180" y="15" width="90" height="32" rx="4" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2"/>
+            <text x="225" y="35" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#2563eb">💻 浏览器 (客户)</text>
 
-            <rect x="490" y="15" width="90" height="32" rx="4" fill="#1e293b"/>
-            <text x="535" y="35" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#38bdf8">🖥️ Web 服务器</text>
+            <rect x="490" y="15" width="90" height="32" rx="4" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.2"/>
+            <text x="535" y="35" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#0369a1">🖥️ Web 服务器</text>
 
             <!-- 时间垂线 -->
             <line x1="225" y1="47" x2="225" y2="365" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3,3"/>
@@ -52,10 +52,10 @@
             <!-- RTT 1: TCP 三次握手 -->
             <!-- 左侧 RTT 标尺 -->
             <line x1="120" y1="60" x2="120" y2="120" stroke="#0284c7" stroke-width="2"/>
-            <text x="95" y="94" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">RTT 1</text>
+            <text x="95" y="94" font-size="11" font-weight="900" text-anchor="middle" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">RTT 1</text>
 
             <!-- 黄色握手背景 -->
-            <rect x="225" y="60" width="310" height="65" fill="#fef3c7" opacity="0.85"/>
+            <rect x="225" y="60" width="310" height="65" fill="rgba(245, 158, 11, 0.08)" stroke="#f59e0b" stroke-width="1" rx="6"/>
             <text x="380" y="85" font-size="11" font-weight="900" text-anchor="middle" fill="#b45309">TCP 三报文握手建立连接</text>
 
             <!-- 握手 1 (SYN) -->
@@ -64,31 +64,31 @@
             <path d="M 535,80 L 230,105" fill="none" stroke="#d97706" stroke-width="1.5" marker-end="url(#http-arr-blue)"/>
             <!-- 握手 3 携带 GET 请求 -->
             <path d="M 225,105 L 530,125" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#http-arr-blue)"/>
-            <text x="360" y="118" font-size="10" font-weight="bold" fill="#0284c7">请求 rfc.html</text>
+            <text x="360" y="118" font-size="10" font-weight="bold" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">请求 rfc.html</text>
 
             <!-- RTT 2: HTML 响应 + 请求第 1 个 JPEG -->
             <line x1="120" y1="125" x2="120" y2="195" stroke="#0284c7" stroke-width="2"/>
-            <text x="95" y="164" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">RTT 2</text>
+            <text x="95" y="164" font-size="11" font-weight="900" text-anchor="middle" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">RTT 2</text>
 
             <path d="M 535,125 L 230,155" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#http-arr-green)"/>
             <text x="380" y="148" font-size="10" font-weight="bold" fill="#059669">响应 rfc.html 数据</text>
 
             <path d="M 225,155 L 530,185" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#http-arr-blue)"/>
-            <text x="360" y="178" font-size="10" font-weight="bold" fill="#0284c7">请求第 1 个 JPEG 图像</text>
+            <text x="360" y="178" font-size="10" font-weight="bold" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">请求第 1 个 JPEG 图像</text>
 
             <!-- RTT 3: JPEG 1 响应 + 请求第 2 个 JPEG -->
             <line x1="120" y1="195" x2="120" y2="275" stroke="#0284c7" stroke-width="2"/>
-            <text x="95" y="239" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">RTT 3</text>
+            <text x="95" y="239" font-size="11" font-weight="900" text-anchor="middle" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">RTT 3</text>
 
             <path d="M 535,185 L 230,225" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#http-arr-green)"/>
             <text x="380" y="215" font-size="10" font-weight="bold" fill="#059669">响应第 1 个 JPEG 数据</text>
 
             <path d="M 225,225 L 530,265" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#http-arr-blue)"/>
-            <text x="360" y="255" font-size="10" font-weight="bold" fill="#0284c7">请求第 2 个 JPEG 图像</text>
+            <text x="360" y="255" font-size="10" font-weight="bold" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">请求第 2 个 JPEG 图像</text>
 
             <!-- RTT 4: JPEG 2 响应 -->
             <line x1="120" y1="275" x2="120" y2="345" stroke="#0284c7" stroke-width="2"/>
-            <text x="95" y="314" font-size="11" font-weight="900" text-anchor="middle" fill="#0284c7">RTT 4</text>
+            <text x="95" y="314" font-size="11" font-weight="900" text-anchor="middle" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.2">RTT 4</text>
 
             <path d="M 535,265 L 230,335" fill="none" stroke="#059669" stroke-width="1.8" marker-end="url(#http-arr-green)"/>
             <text x="380" y="310" font-size="10" font-weight="bold" fill="#059669">响应第 2 个 JPEG 数据</text>

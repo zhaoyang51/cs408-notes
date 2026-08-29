@@ -1,6 +1,5 @@
 # 第2章 线性表
 
-<span class="badge badge-star">⭐️ 算法大题核心载体</span>
 <span class="badge badge-freq">📊 考频 22 次（链表 12 / 顺序表 10）</span>
 <span class="badge badge-formula">💡 双指针与原地逆置</span>
 
@@ -42,7 +41,6 @@
 ::: details 🎯 ⭐️ 408 经典真题自测 如何用时间 $O(n)$、空间 $O(1)$ 查找单链表中倒数第 $k$ 个结点？
 
 **【算法步骤】**：
-
 
 - 定义两个指针 `p, q`，初始均指向头结点的下一个结点。
 - 指针 `p` 先向前走 $k$ 步。若中途 `p == NULL`，说明链表长度 $< k$，查找失败。
