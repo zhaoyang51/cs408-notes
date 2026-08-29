@@ -19,6 +19,7 @@ import TcpReliableTransfer from './TcpReliableTransfer.vue'
 import TcpConnectionManagement from './TcpConnectionManagement.vue'
 import TcpHeaderFormat from './TcpHeaderFormat.vue'
 import DnsQuerySimulator from './DnsQuerySimulator.vue'
+import FtpConnectionModel from './FtpConnectionModel.vue'
 import { h } from 'vue'
 
 export default {
@@ -55,5 +56,6 @@ export default {
     app.component('TcpConnectionManagement', TcpConnectionManagement)
     app.component('TcpHeaderFormat', TcpHeaderFormat)
     app.component('DnsQuerySimulator', DnsQuerySimulator)
+    app.component('FtpConnectionModel', FtpConnectionModel)
   }
 }
