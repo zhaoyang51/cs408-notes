@@ -18,7 +18,7 @@
 
 ---
 
-## 2. TCP 报文段首部格式与字段全景 <AuthorTag author="Zhao" />
+## 2. TCP 报文段首部格式与字段全景
 
 <KP author="Zhao" title="📦 TCP 报文段首部格式与 6 大控制标志位速查" tag="⭐️ 考研必背">
 <TcpHeaderFormat />
@@ -41,7 +41,7 @@ $$
 
 ---
 
-## 3. TCP 拥塞控制 4 大机制全景 <AuthorTag author="Zhao" />
+## 3. TCP 拥塞控制 4 大机制全景
 
 <KP author="Zhao" title="📈 TCP 拥塞控制 4 大机制全景演化图（2009 题 39 经典模型剖析）" tag="⭐️ 考研必背">
 <TcpCongestionControl />
@@ -59,7 +59,7 @@ $$
 
 ---
 
-## 4. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算） <AuthorTag author="Zhao" />
+## 4. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算）
 
 <KP author="Zhao" title="🌊 TCP 滑动窗口与流量控制全景图解（真题经典模型推导）" tag="⭐️ 考研必背">
 <TcpFlowControl />
@@ -86,7 +86,7 @@ $$
 
 ---
 
-## 5. TCP 可靠传输实现与累计确认（序号与确认号推导） <AuthorTag author="Zhao" />
+## 5. TCP 可靠传输实现与累计确认（序号与确认号推导）
 
 <KP author="Zhao" title="🛡️ TCP 可靠传输与累计确认模型（2011 题 40 经典真题推导）" tag="⭐️ 考研必背">
 <TcpReliableTransfer />
@@ -107,7 +107,7 @@ $$
 
 ---
 
-## 6. TCP 运输连接管理（三次握手与四次挥手全景） <AuthorTag author="Zhao" />
+## 6. TCP 运输连接管理（三次握手与四次挥手全景）
 
 <KP author="Zhao" title="🤝 TCP 三次握手建立连接与四次挥手释放连接全景（2011 题 39 经典真题推导）" tag="⭐️ 考研必背">
 <TcpConnectionManagement />

@@ -29,7 +29,7 @@ $$
 
 ---
 
-## 2. 编码与调制全景（基带编码 vs 载波调制 vs 混合调制） <AuthorTag author="Zhao" />
+## 2. 编码与调制全景（基带编码 vs 载波调制 vs 混合调制）
 
 <KP author="Zhao" title="📡 编码与调制全景拓扑与波形实验室（408 核心考点）" tag="⭐️ 考研必背">
 
@@ -39,7 +39,7 @@ $$
 
 ---
 
-## 3. 信道复用技术全景（TDM vs FDM vs 码分多址 CDMA） <AuthorTag author="Zhao" />
+## 3. 信道复用技术全景（TDM vs FDM vs 码分多址 CDMA）
 
 <KP author="Zhao" title="📡 信道复用技术交互式教学实验室（时分复用 vs 频分复用）" tag="⭐️ 考研必背">
 
@@ -76,7 +76,7 @@ $$\mathbf{P} \cdot \mathbf{A} = (\mathbf{A}_{\text{send}} + \mathbf{B}_{\text{se
 
 ---
 
-## 4. 差错检验与纠错技术全景（奇偶校验 vs CRC vs 海明码） <AuthorTag author="Zhao" />
+## 4. 差错检验与纠错技术全景（奇偶校验 vs CRC vs 海明码）
 
 <KP author="Zhao" title="🛡️ 三大差错控制机制核心特点与计算全解（408 核心考点）" tag="⭐️ 考研必背">
 
