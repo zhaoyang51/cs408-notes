@@ -135,7 +135,13 @@
           假设 HTTP/1.1 协议以<strong>持续的非流水线方式</strong>工作，一次请求-响应的时间为 RTT，<code>rfc.html</code> 页面引用了 2 个 JPEG 小图像，则浏览器从开始建立 TCP 连接到收到全部内容为止，需要多少个 RTT？
         </div>
 
-        <div class="exam-analysis">
+        <div class="quiz-action-bar">
+          <button class="quiz-btn btn-toggle" type="button" @click="quiz2011.revealed = !quiz2011.revealed">
+            {{ quiz2011.revealed ? '🔒 隐藏推导与答案' : '💡 点击查看推导步骤与答案 (4 RTT)' }}
+          </button>
+        </div>
+
+        <div v-show="quiz2011.revealed" class="exam-analysis">
           <div class="analysis-title">🔍 核心推导步骤（一步步拆解）：</div>
           <ol class="analysis-list">
             <li><strong>第 1 个 RTT（TCP 建立连接）</strong>：客户发送 SYN，服务器回复 SYN+ACK，耗时 <strong>1 个 RTT</strong>；第三次握手的 ACK 可以直接搭载 HTTP GET 请求数据。</li>
@@ -197,14 +203,43 @@
           下列叙述中，<strong>错误</strong>的是（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. 该浏览器请求浏览 index.html</div>
-          <div class="opt-item">B. index.html 存放在 www.test.edu.cn 上</div>
-          <div class="opt-item opt-correct"><strong>C. 该浏览器请求使用持续连接</strong> <span class="correct-badge">✔ 错误选项 (本题答案)</span></div>
-          <div class="opt-item">D. 该浏览器曾经浏览过 www.test.edu.cn</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quiz2015.userAns === opt,
+                'opt-correct': quiz2015.revealed && opt === 'C',
+                'opt-wrong': quiz2015.revealed && quiz2015.userAns === opt && opt !== 'C'
+              }"
+              @click="handleQuiz2015(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">该浏览器请求浏览 index.html</span>
+                <span v-else-if="opt === 'B'">index.html 存放在 www.test.edu.cn 上</span>
+                <span v-else-if="opt === 'C'">该浏览器请求使用持续连接</span>
+                <span v-else-if="opt === 'D'">该浏览器曾经浏览过 www.test.edu.cn</span>
+              </div>
+              <span v-if="quiz2015.revealed && opt === 'C'" class="correct-badge">✔ 错误叙述 (本题答案)</span>
+              <span v-else-if="quiz2015.revealed && quiz2015.userAns === opt && opt !== 'C'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quiz2015.revealed = !quiz2015.revealed">
+              {{ quiz2015.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quiz2015.userAns || quiz2015.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuiz2015">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <div class="exam-analysis">
+        <div v-show="quiz2015.revealed" class="exam-analysis">
           <div class="analysis-title">🔍 请求报文逐行深度剖析：</div>
           <ul class="analysis-list">
             <li><code>GET /index.html HTTP/1.1</code>（<strong>请求行</strong>）：指明使用 <code>GET</code> 方法，请求的资源为 <code>/index.html</code>，协议版本为 <code>HTTP/1.1</code> ➔ A 叙述正确。</li>
@@ -306,6 +341,18 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quiz2011 = reactive({ revealed: false })
+
+const quiz2015 = reactive({ userAns: null, revealed: false })
+const handleQuiz2015 = (opt) => {
+  quiz2015.userAns = opt
+  quiz2015.revealed = true
+}
+const resetQuiz2015 = () => {
+  quiz2015.userAns = null
+  quiz2015.revealed = false
+}
 
 const openSections = reactive({
   topo: false,     // 默认收起时序图

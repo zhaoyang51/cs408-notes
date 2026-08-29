@@ -122,25 +122,51 @@
 
       <div v-show="openSections.exam39" class="card-body">
         <div class="exam-question">
-          主机甲向主机乙发送一个（SYN=1, seq=11220）的 TCP 段，期望与主机乙建立 TCP 连接，若主机乙接受该连接请求，则主机乙向主机甲发送的正确的 TCP 段可能是（&nbsp;&nbsp;&nbsp;&nbsp;）。
+          主机甲与主机乙之间已建立一个 TCP 连接，双方持续有数据传输，且 Host 甲已发送了序号为 <code>seq = 11220</code>、长度为 <code>0</code> 的控制报文段（含 SYN 标志）。若 Host 乙对该报文段进行确认，并在该报文段中携带自己的同步序号 <code>seq = 20000</code>，则 Host 乙发送的确认报文段中，<code>SYN</code>、<code>ACK</code> 标志位和确认号 <code>ack</code> 字段的取值应分别为（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. (SYN=0 , ACK=0, seq=11221, ack=11221)</div>
-          <div class="opt-item">B. (SYN=1 , ACK=1, seq=11220, ack=11220)</div>
-          <div class="opt-item opt-correct"><strong>C. (SYN=1 , ACK=1, seq=11221, ack=11221)</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">D. (SYN=0 , ACK=0, seq=11220, ack=11220)</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizConn.userAns === opt,
+                'opt-correct': quizConn.revealed && opt === 'C',
+                'opt-wrong': quizConn.revealed && quizConn.userAns === opt && opt !== 'C'
+              }"
+              @click="handleQuizConn(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">SYN=0, ACK=0, ack=11220</span>
+                <span v-else-if="opt === 'B'">SYN=1, ACK=0, ack=11220</span>
+                <span v-else-if="opt === 'C'">SYN=1, ACK=1, ack=11221</span>
+                <span v-else-if="opt === 'D'">SYN=1, ACK=1, ack=11220</span>
+              </div>
+              <span v-if="quizConn.revealed && opt === 'C'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizConn.revealed && quizConn.userAns === opt && opt !== 'C'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizConn.revealed = !quizConn.revealed">
+              {{ quizConn.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quizConn.userAns || quizConn.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizConn">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <div class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 黄金答题法则）：</div>
+        <div v-show="quizConn.revealed" class="exam-analysis">
+          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
           <ol class="analysis-list">
-            <li><strong>判定控制位 SYN 与 ACK</strong>：第 2 次握手是主机乙对主机甲连接请求的<strong>确认与同步</strong>，因此必须同时置位：<strong>SYN = 1</strong> 和 <strong>ACK = 1</strong>。排除 A、D 选项。</li>
-            <li><strong>计算确认号 ack</strong>：主机甲在第 1 次握手中发送的序号 <i class="m-var">seq</i> = 11220。由于 <strong>SYN 报文段虽然不携带数据，但必须消耗一个序号</strong>，因此主机乙回复的确认序号必须为：
-               <span class="m-formula"><i class="m-var">ack</i> = <i class="m-var">x</i> + 1 = 11220 + 1 = 11221</span>。排除 B 选项。
-            </li>
-            <li><strong>确定自身序号 seq</strong>：主机乙作为被连接方，随机选择初始序号 <i class="m-var">seq</i> = <i class="m-var">y</i>（合法随机值，选项 C 取 11221）。</li>
-            <li><strong>结论</strong>：综合得出主机乙发送的报文段必须满足 <strong>SYN=1, ACK=1, ack=11221</strong>，选 <strong>C</strong>。</li>
+            <li><strong>确认号计算</strong>：SYN 报文段即使不携带应用层数据，也<strong>强制消耗 1 个序列号</strong>。因此乙回复的确认号为 <code>ack = seq + 1 = 11220 + 1 = 11221</code>。</li>
+            <li><strong>控制标志位判定</strong>：乙发送的是第二次握手（SYN+ACK 报文段），既用于同步自己的初始序号（<code>SYN = 1</code>），又用于确认甲的报文（<code>ACK = 1</code>）。</li>
+            <li><strong>结论</strong>：<code>SYN = 1, ACK = 1, ack = 11221</code>，正确答案选 <strong>C</strong>。</li>
           </ol>
         </div>
       </div>
@@ -265,6 +291,16 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quizConn = reactive({ userAns: null, revealed: false })
+const handleQuizConn = (opt) => {
+  quizConn.userAns = opt
+  quizConn.revealed = true
+}
+const resetQuizConn = () => {
+  quizConn.userAns = null
+  quizConn.revealed = false
+}
 
 const openSections = reactive({
   handshake: false, // 默认展开三次握手

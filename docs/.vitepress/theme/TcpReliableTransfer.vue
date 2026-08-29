@@ -146,29 +146,51 @@
 
       <div v-show="openSections.exam" class="card-body">
         <div class="exam-question">
-          主机甲与主机乙之间已建立一个 TCP 连接，主机甲向主机乙发送了 3 个连续的 TCP 段，分别包含 300 字节、400 字节和 500 字节的有效载荷，第 3 个段的序号为 900。若主机乙仅正确接收到第 1 个和第 3 个段，则主机乙发送给主机甲的确认序号是（&nbsp;&nbsp;&nbsp;&nbsp;）。
+          主机甲向主机乙连续发送了两个 TCP 报文段，其序号分别为 <code>200</code> 和 <code>500</code>。第一个报文段携带了 300 字节数据，第二个报文段携带了 400 字节数据。如果主机乙仅收到了第一个报文段，则主机乙发送给主机甲的确认报文段中，确认号字段的值以及主机甲重传报文段的序号分别为（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. 300</div>
-          <div class="opt-item opt-correct"><strong>B. 500</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">C. 1200</div>
-          <div class="opt-item">D. 1400</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizRel.userAns === opt,
+                'opt-correct': quizRel.revealed && opt === 'B',
+                'opt-wrong': quizRel.revealed && quizRel.userAns === opt && opt !== 'B'
+              }"
+              @click="handleQuizRel(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">300, 900</span>
+                <span v-else-if="opt === 'B'">500, 500</span>
+                <span v-else-if="opt === 'C'">500, 1400</span>
+                <span v-else-if="opt === 'D'">1400, 1400</span>
+              </div>
+              <span v-if="quizRel.revealed && opt === 'B'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizRel.revealed && quizRel.userAns === opt && opt !== 'B'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizRel.revealed = !quizRel.revealed">
+              {{ quizRel.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quizRel.userAns || quizRel.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizRel">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <!-- 逐步解析 -->
-        <div class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（408 逆向反推法）：</div>
+        <div v-show="quizRel.revealed" class="exam-analysis">
+          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
           <ol class="analysis-list">
-            <li><strong>反推各报文段字节序号区间</strong>：
-              <ul>
-                <li><strong>第 3 个段</strong>：有效载荷 500 字节，起始序号为 900，涵盖字节区间为 <strong>900 ~ 1399</strong>；</li>
-                <li><strong>第 2 个段</strong>：有效载荷 400 字节，紧接在第 3 个段之前，末尾序号为 899，起始序号 = 900 - 400 = <strong>500</strong>，涵盖字节区间为 <strong>500 ~ 899</strong>；</li>
-                <li><strong>第 1 个段</strong>：有效载荷 300 字节，紧接在第 2 个段之前，末尾序号为 499，起始序号 = 500 - 300 = <strong>200</strong>，涵盖字节区间为 <strong>200 ~ 499</strong>。</li>
-              </ul>
-            </li>
-            <li><strong>分析接收状态与中间缺失情况</strong>：主机乙正确收到了第 1 个段（200~499）和第 3 个段（900~1399），但中间的第 2 个段（500~899）在网络中<strong>发生丢失</strong>。</li>
-            <li><strong>依据 TCP 累计确认原则判定</strong>：TCP 采用<strong>累计确认 (Cumulative ACK)</strong> 机制，确认号的含义是<strong>“期望收到对方下一个报文段的第 1 个数据字节序号”</strong>。虽然第 3 个段已经到达并暂存在接收缓存中，但由于第 2 个段缺失，接收方<strong>连续按序收到的最后一个字节序号仅为 499</strong>，故回复的确认序号为 <strong>499 + 1 = 500</strong>。</li>
+            <li><strong>确认号确认的是期望收到的下一个字节序号</strong>：第一个报文段序号为 200，包含 300 字节（字节范围 200~499）。乙成功接收后，期望收到的下一个字节序号为 <code>200 + 300 = 500</code>，因此确认号 <code>ack = 500</code>。</li>
+            <li><strong>重传报文段的序号</strong>：第二个报文段（序号 500，400 字节，字节范围 500~899）丢失未被乙接收，超时后甲必须从丢失的字节起点开始重传，故重传报文段的序号仍为 <code>seq = 500</code>。</li>
+            <li><strong>结论</strong>：确认号为 500，重传序号为 500，正确答案选 <strong>B</strong>。</li>
           </ol>
         </div>
       </div>
@@ -217,6 +239,16 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quizRel = reactive({ userAns: null, revealed: false })
+const handleQuizRel = (opt) => {
+  quizRel.userAns = opt
+  quizRel.revealed = true
+}
+const resetQuizRel = () => {
+  quizRel.userAns = null
+  quizRel.revealed = false
+}
 
 const openSections = reactive({
   topo: false,   // 默认展开时序图

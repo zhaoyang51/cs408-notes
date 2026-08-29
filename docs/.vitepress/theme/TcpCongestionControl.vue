@@ -256,15 +256,44 @@
           一个 TCP 连接总是以 1KB 的最大段长 MSS 发送 TCP 段，发送方有足够多的数据要发送。当拥塞窗口为 16KB 时发生了超时，如果接下来的 4 个 RTT（往返时间）内的 TCP 段的传输都是成功的，那么当第 4 个 RTT 时间内发送的所有 TCP 段都得到肯定应答时，拥塞窗口大小是（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. 7KB</div>
-          <div class="opt-item">B. 8KB</div>
-          <div class="opt-item opt-correct"><strong>C. 9KB</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">D. 16KB</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizCong.userAns === opt,
+                'opt-correct': quizCong.revealed && opt === 'C',
+                'opt-wrong': quizCong.revealed && quizCong.userAns === opt && opt !== 'C'
+              }"
+              @click="handleQuizCong(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">7KB</span>
+                <span v-else-if="opt === 'B'">8KB</span>
+                <span v-else-if="opt === 'C'">9KB</span>
+                <span v-else-if="opt === 'D'">16KB</span>
+              </div>
+              <span v-if="quizCong.revealed && opt === 'C'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizCong.revealed && quizCong.userAns === opt && opt !== 'C'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizCong.revealed = !quizCong.revealed">
+              {{ quizCong.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quizCong.userAns || quizCong.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizCong">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <!-- 审题要点说明 -->
-        <div class="exam-insight-box">
+        <!-- 审题要点说明与推导 (默认隐藏) -->
+        <div v-show="quizCong.revealed" class="exam-insight-box">
           <div class="insight-title">💡 关键审题与破题点（关于初始 ssthresh 的说明）：</div>
           <div class="insight-content">
             <p>1. <strong>初始门限不影响解题</strong>：题目中<strong>并未给出发生超时前的初始慢开始门限是多少</strong>。实际上，一开始的 <i class="m-var">ssthresh</i> 无论设为 8KB、16KB 还是 32KB，对本题解答<strong>毫无影响</strong>。</p>
@@ -276,8 +305,8 @@
           </div>
         </div>
 
-        <!-- 4 个 RTT 逐步推导表格 -->
-        <div class="rtt-steps-box">
+        <!-- 4 个 RTT 逐步推导表格 (默认隐藏) -->
+        <div v-show="quizCong.revealed" class="rtt-steps-box">
           <div class="rtt-box-title">🔍 超时后 4 个 RTT 演化推导链条：</div>
           <div class="rtt-table-responsive">
             <table class="rtt-table">
@@ -345,6 +374,16 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quizCong = reactive({ userAns: null, revealed: false })
+const handleQuizCong = (opt) => {
+  quizCong.userAns = opt
+  quizCong.revealed = true
+}
+const resetQuizCong = () => {
+  quizCong.userAns = null
+  quizCong.revealed = false
+}
 
 const openSections = reactive({
   chart: false,  // 默认展开图解

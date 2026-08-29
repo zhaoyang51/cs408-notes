@@ -149,79 +149,61 @@
 
       <div v-show="openSections.exam" class="card-body">
         <div class="exam-question">
-          假设所有域名服务器均采用迭代查询方式进行域名解析，当 H4 访问规范域名为 <strong>www.abc.xyz.com</strong> 的网站时，域名服务器 201.1.1.1 在完成该域名解析过程中，可能发出 DNS 查询的最少和最多次数分别是（&nbsp;&nbsp;&nbsp;&nbsp;）。
+          某校园网的主机 A 向本地域名服务器发出 DNS 请求报文，查询 <code>abc.xyz.com</code> 的 IP 地址。假设本地域名服务器采用<strong>迭代查询</strong>，且各服务器均无缓存，则为主机 A 解析该域名<strong>最少</strong>和<strong>最多</strong>需要向根域名服务器或授权域名服务器发出的 DNS 查询报文次数分别是（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. 0, 3</div>
-          <div class="opt-item">B. 1, 3</div>
-          <div class="opt-item opt-correct"><strong>C. 0, 4</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">D. 1, 4</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizDns.userAns === opt,
+                'opt-correct': quizDns.revealed && opt === 'C',
+                'opt-wrong': quizDns.revealed && quizDns.userAns === opt && opt !== 'C'
+              }"
+              @click="handleQuizDns(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">0, 3</span>
+                <span v-else-if="opt === 'B'">1, 3</span>
+                <span v-else-if="opt === 'C'">0, 4</span>
+                <span v-else-if="opt === 'D'">1, 4</span>
+              </div>
+              <span v-if="quizDns.revealed && opt === 'C'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizDns.revealed && quizDns.userAns === opt && opt !== 'C'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizDns.revealed = !quizDns.revealed">
+              {{ quizDns.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quizDns.userAns || quizDns.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizDns">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <!-- 详细解析 -->
-        <div class="exam-analysis">
-          <div class="analysis-title">🔍 核心推导步骤（最少 vs 最多查询深度剖析）：</div>
+        <!-- 深度解析 (默认隐藏) -->
+        <div v-show="quizDns.revealed" class="exam-analysis">
+          <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
           <ol class="analysis-list">
-            <li><strong>最少查询次数推导（考查 DNS 高速缓存机制）</strong>：
+            <li><strong>最少查询次数（0 次）</strong>：若主机 A 自身的 DNS 高速缓存命中，或本地域名服务器自身的高速缓存命中，均<strong>无需向外部发出任何查询</strong>，因此最少为 <strong>0 次</strong>。</li>
+            <li><strong>最多查询次数（4 次）</strong>：在全无缓存的最坏情况下，本地域名服务器必须严格执行 4 级逐层迭代解析：
               <ul>
-                <li><strong>场景 1（H4 本地命中）</strong>：若主机 H4 的本地 DNS 高速缓存中已有该域名的映射记录，H4 直接从本地获取 IP，<strong>根本无需向本地域名服务器 201.1.1.1 发出查询请求</strong>，此时 201.1.1.1 发出的查询次数为 <strong>0</strong>；</li>
-                <li><strong>场景 2（201.1.1.1 本地命中）</strong>：退一步，即使 H4 向 201.1.1.1 发起查询，若 201.1.1.1 自身的高速缓存中已缓存该记录，它直接返回结果，<strong>也无需向外部发出任何查询</strong>，发出次数同样为 <strong>0</strong>。</li>
-                <li>综上，最少发出 DNS 查询次数为 <strong>0 次</strong>。</li>
+                <li>① 向<strong>根域名服务器</strong>查询 ➔ 返回顶级域名服务器 <code>.com</code> 的 IP；</li>
+                <li>② 向<strong>顶级域名服务器 <code>.com</code></strong> 查询 ➔ 返回二级域名服务器 <code>xyz.com</code> 的 IP；</li>
+                <li>③ 向<strong>二级权限域名服务器 <code>xyz.com</code></strong> 查询 ➔ 返回三级域名服务器 <code>abc.xyz.com</code> 的 IP；</li>
+                <li>④ 向<strong>三级权限域名服务器 <code>abc.xyz.com</code></strong> 查询 ➔ 最终返回 <code>abc.xyz.com</code> 的目标主机 IP。</li>
               </ul>
             </li>
-            <li><strong>最多次数推导（考查 迭代查询 4 级逐层解析）</strong>：
-              <ul>
-                <li>在最坏情况下（各级缓存均无记录），本地域名服务器 201.1.1.1 必须<strong>以迭代方式依次发出 4 次查询</strong>：</li>
-                <li><strong>第 1 次</strong>：向 <strong>根域名服务器</strong> 查询，获得顶级域名服务器 <code class="code-tag">.com</code> 的 IP；</li>
-                <li><strong>第 2 次</strong>：向 <strong>顶级域名服务器 (.com)</strong> 查询，获得权限域名服务器 <code class="code-tag">xyz.com</code> 的 IP；</li>
-                <li><strong>第 3 次</strong>：向 <strong>权限域名服务器 (xyz.com)</strong> 查询，获得下一级权限域名服务器 <code class="code-tag">abc.xyz.com</code> 的 IP；</li>
-                <li><strong>第 4 次</strong>：向 <strong>权限域名服务器 (abc.xyz.com)</strong> 查询，最终获得主机 <code class="code-tag">www.abc.xyz.com</code> 的 IP 地址。</li>
-                <li>综上，最多发出 DNS 查询次数为 <strong>4 次</strong>。</li>
-              </ul>
-            </li>
-            <li><strong>结论</strong>：最少和最多次数分别为 <strong>0, 4</strong>，选 <strong>C</strong>。</li>
+            <li><strong>结论</strong>：最少 0 次，最多 4 次，正确答案选 <strong>C</strong>。</li>
           </ol>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. DNS 迭代查询 vs 递归查询核心机制辨析 (默认收起) -->
-    <div class="collapsible-card">
-      <div class="card-header" @click="toggle('diff')">
-        <div class="header-title-box">
-          <span class="card-icon">💡</span>
-          <strong>三、DNS 递归查询 (Recursive) vs 迭代查询 (Iterative) 机制全景辨析</strong>
-          <span class="badge-amber">必考概念</span>
-        </div>
-        <button class="toggle-btn" type="button">
-          {{ openSections.diff ? '收起 ▲' : '展开辨析 ▼' }}
-        </button>
-      </div>
-
-      <div v-show="openSections.diff" class="card-body">
-        <div class="dns-mode-grid">
-          
-          <div class="mode-card">
-            <div class="mc-head color-blue">🔄 递归查询 (Recursive Query)</div>
-            <div class="mc-sub">“一查到底，由被查询者代劳”</div>
-            <div class="mc-desc">
-              - <strong>流程</strong>：本地域名服务器若不知道 IP，就<strong>代替主机向根域名服务器发起请求</strong>，根向顶级请求，顶级向权限请求，结果逐级原路返回。<br>
-              - <strong>特点</strong>：给根/顶级域名服务器带来<strong>极大的负载压力</strong>，现代互联网中根域名服务器通常<strong>拒绝递归查询</strong>。
-            </div>
-          </div>
-
-          <div class="mode-card">
-            <div class="mc-head color-green">🔁 迭代查询 (Iterative Query)</div>
-            <div class="mc-sub">“分步指路，由本地域名服务器亲自跑腿”</div>
-            <div class="mc-desc">
-              - <strong>流程</strong>：根域名服务器收到请求后，不直接代查，而是<strong>告诉本地域名服务器“下一步该去问哪个顶级域名服务器”</strong>，本地域名服务器再自行逐级发起查询。<br>
-              - <strong>特点</strong>：根服务器压力极小，是<strong>当前互联网域名解析的绝对标准方式</strong>。
-            </div>
-          </div>
-
-        </div>
-      </div>
+        </div></div>
     </div>
 
   </div>
@@ -229,6 +211,16 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quizDns = reactive({ userAns: null, revealed: false })
+const handleQuizDns = (opt) => {
+  quizDns.userAns = opt
+  quizDns.revealed = true
+}
+const resetQuizDns = () => {
+  quizDns.userAns = null
+  quizDns.revealed = false
+}
 
 const openSections = reactive({
   topo: false, // 默认收起时序图

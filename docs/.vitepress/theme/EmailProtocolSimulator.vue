@@ -138,14 +138,43 @@
           若用户 1 与用户 2 之间发送和接收电子邮件的过程如拓扑图所示（用户 1 ➔ ① ➔ 邮件服务器 1 ➔ ② ➔ 邮件服务器 2 ➔ ③ ➔ 用户 2），则图中 ①、②、③ 阶段分别使用的应用层协议可以是（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item">A. SMTP、SMTP、SMTP</div>
-          <div class="opt-item">B. POP3、SMTP、POP3</div>
-          <div class="opt-item">C. POP3、SMTP、SMTP</div>
-          <div class="opt-item opt-correct"><strong>D. SMTP、SMTP、POP3</strong> <span class="correct-badge">✔ 正确答案</span></div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quiz2012.userAns === opt,
+                'opt-correct': quiz2012.revealed && opt === 'D',
+                'opt-wrong': quiz2012.revealed && quiz2012.userAns === opt && opt !== 'D'
+              }"
+              @click="handleQuiz2012(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">SMTP、SMTP、SMTP</span>
+                <span v-else-if="opt === 'B'">POP3、SMTP、POP3</span>
+                <span v-else-if="opt === 'C'">POP3、SMTP、SMTP</span>
+                <span v-else-if="opt === 'D'">SMTP、SMTP、POP3</span>
+              </div>
+              <span v-if="quiz2012.revealed && opt === 'D'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quiz2012.revealed && quiz2012.userAns === opt && opt !== 'D'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quiz2012.revealed = !quiz2012.revealed">
+              {{ quiz2012.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quiz2012.userAns || quiz2012.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuiz2012">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <div class="exam-analysis">
+        <div v-show="quiz2012.revealed" class="exam-analysis">
           <div class="analysis-title">🔍 核心推导步骤（408 极速秒杀法）：</div>
           <ol class="analysis-list">
             <li><strong>分析阶段 ①（用户 1 ➔ 邮件服务器 1）</strong>：用户代理向邮件服务器发送/上传邮件，属于“推 (Push)”操作，使用 <strong>SMTP</strong> 协议。</li>
@@ -179,14 +208,43 @@
           Ⅳ. 支持从邮件服务器向用户代理发送邮件
         </div>
 
-        <div class="exam-options">
-          <div class="opt-item opt-correct"><strong>A. 仅 Ⅰ、Ⅱ 和 Ⅲ</strong> <span class="correct-badge">✔ 正确答案</span></div>
-          <div class="opt-item">B. 仅 Ⅰ、Ⅱ 和 Ⅳ</div>
-          <div class="opt-item">C. 仅 Ⅰ、Ⅲ 和 Ⅳ</div>
-          <div class="opt-item">D. 仅 Ⅱ、Ⅲ 和 Ⅳ</div>
+        <!-- 交互式作答选项 (默认不标答案) -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quiz2013.userAns === opt,
+                'opt-correct': quiz2013.revealed && opt === 'A',
+                'opt-wrong': quiz2013.revealed && quiz2013.userAns === opt && opt !== 'A'
+              }"
+              @click="handleQuiz2013(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">仅 Ⅰ、Ⅱ 和 Ⅲ</span>
+                <span v-else-if="opt === 'B'">仅 Ⅰ、Ⅱ 和 Ⅳ</span>
+                <span v-else-if="opt === 'C'">仅 Ⅰ、Ⅲ 和 Ⅳ</span>
+                <span v-else-if="opt === 'D'">仅 Ⅱ、Ⅲ 和 Ⅳ</span>
+              </div>
+              <span v-if="quiz2013.revealed && opt === 'A'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quiz2013.revealed && quiz2013.userAns === opt && opt !== 'A'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quiz2013.revealed = !quiz2013.revealed">
+              {{ quiz2013.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与深度解析' }}
+            </button>
+            <button v-if="quiz2013.userAns || quiz2013.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuiz2013">
+              🔄 重新作答
+            </button>
+          </div>
         </div>
 
-        <div class="exam-analysis">
+        <div v-show="quiz2013.revealed" class="exam-analysis">
           <div class="analysis-title">🔍 逐项深度剖析：</div>
           <ul class="analysis-list">
             <li><strong>Ⅰ. 正确 ✔</strong>：原始 SMTP 只能传输 <strong>7 位 ASCII 码</strong>。传输中文、图片等二进制多媒体内容时必须借助 <strong>MIME</strong> 编码转换为 7 位 ASCII 码后再由 SMTP 传输。</li>
@@ -264,6 +322,26 @@
 
 <script setup>
 import { reactive } from 'vue'
+
+const quiz2012 = reactive({ userAns: null, revealed: false })
+const handleQuiz2012 = (opt) => {
+  quiz2012.userAns = opt
+  quiz2012.revealed = true
+}
+const resetQuiz2012 = () => {
+  quiz2012.userAns = null
+  quiz2012.revealed = false
+}
+
+const quiz2013 = reactive({ userAns: null, revealed: false })
+const handleQuiz2013 = (opt) => {
+  quiz2013.userAns = opt
+  quiz2013.revealed = true
+}
+const resetQuiz2013 = () => {
+  quiz2013.userAns = null
+  quiz2013.revealed = false
+}
 
 const openSections = reactive({
   topo: false,     // 默认收起时序拓扑
