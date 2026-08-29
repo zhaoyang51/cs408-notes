@@ -37,8 +37,10 @@ features:
   <a href="./data-structure/" class="subject-card ds">
     <div>
       <div class="header">
-        <span class="subject-title">🟢 数据结构</span>
-        <span class="score-pill">45 分 (占比 30%)</span>
+        <div class="subject-title">🟢 数据结构</div>
+        <div class="score-row">
+          <span class="score-pill">45 分 · 占比 30%</span>
+        </div>
       </div>
       <div class="desc">
         全科第一大题方向：时空复杂度(22次)、哈夫曼树(15次)、二叉树遍历(13次)、图概念/存储(25次)、链表算法(12次)。
@@ -54,8 +56,10 @@ features:
   <a href="./computer-organization/" class="subject-card co">
     <div>
       <div class="header">
-        <span class="subject-title">🔵 计算机组成原理</span>
-        <span class="score-pill">45 分 (占比 30%)</span>
+        <div class="subject-title">🔵 计算机组成原理</div>
+        <div class="score-row">
+          <span class="score-pill">45 分 · 占比 30%</span>
+        </div>
       </div>
       <div class="desc">
         硬核大题与计算高地：定点数编码运算(26次)、中断方式(24次)、虚存管理(19次)、Cache映射(16次)、指令流水线(16次)。
@@ -71,8 +75,10 @@ features:
   <a href="./operating-system/" class="subject-card os">
     <div>
       <div class="header">
-        <span class="subject-title">🟣 操作系统</span>
-        <span class="score-pill">35 分 (占比 23.3%)</span>
+        <div class="subject-title">🟣 操作系统</div>
+        <div class="score-row">
+          <span class="score-pill">35 分 · 占比 23.3%</span>
+        </div>
       </div>
       <div class="desc">
         大题支柱与调度核心：虚拟内存管理(33次·全科之王)、PV信号量同步互斥(22次)、CPU调度(22次)、非连续分配(22次)。
@@ -88,8 +94,10 @@ features:
   <a href="./computer-network/" class="subject-card cn">
     <div>
       <div class="header">
-        <span class="subject-title">🟠 计算机网络</span>
-        <span class="score-pill">25 分 (占比 16.7%)</span>
+        <div class="subject-title">🟠 计算机网络</div>
+        <div class="score-row">
+          <span class="score-pill">25 分 · 占比 16.7%</span>
+        </div>
       </div>
       <div class="desc">
         规律性极强抓分科目：CIDR子网划分(20次)、介质访问控制(15次)、TCP拥塞控制(12次)、体系结构(12次)、路由转发(12次)。
