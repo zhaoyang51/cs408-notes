@@ -257,11 +257,12 @@ html.parchment .VPNavBar {
     max-width: 100% !important;
   }
 
-    .VPDocAsideOutline .outline-title {
+  .VPDocAsideOutline .outline-title {
     white-space: nowrap !important;
     font-size: 14px !important;
     font-weight: 800 !important;
     letter-spacing: 0.04em !important;
+    text-indent: 0.5em !important;
     color: var(--vp-c-text-1) !important;
     text-transform: uppercase !important;
     margin-bottom: 14px !important;
