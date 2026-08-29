@@ -622,3 +622,29 @@ html[data-user-filter="chen"] [data-author="chen" i] {
   box-shadow: 0 4px 16px -2px rgba(147, 51, 234, 0.15);
 }
 
+/* 顶部导航栏控件组合 (用户筛选 + 主题切换) */
+.nav-controls-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px;
+  margin-left: 10px;
+  flex-shrink: 0;
+  z-index: 50;
+}
+
+.nav-screen-controls-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+@media (max-width: 960px) {
+  .nav-controls-wrapper {
+    margin-left: 4px;
+    gap: 4px;
+  }
+}
+
+

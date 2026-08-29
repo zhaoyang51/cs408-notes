@@ -11,10 +11,14 @@ export default {
   extends: DefaultTheme,
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'nav-bar-content-after': () => [
+      'nav-bar-content-after': () => h('div', { class: 'nav-controls-wrapper' }, [
         h(UserFilter),
         h(ThemeToggle)
-      ],
+      ]),
+      'nav-screen-content-after': () => h('div', { class: 'nav-screen-controls-wrapper' }, [
+        h(UserFilter),
+        h(ThemeToggle)
+      ]),
       'layout-top': () => h(SidebarBorderToggle)
     })
   },

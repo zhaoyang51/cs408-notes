@@ -80,7 +80,7 @@ onMounted(() => {
   border: 1px solid var(--vp-c-divider);
   border-radius: 9999px;
   padding: 2px 3px;
-  margin-left: 8px;
+  margin-left: 0;
   gap: 2px;
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
 }
