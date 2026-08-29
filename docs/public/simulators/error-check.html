@@ -3,24 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>差错检验与纠错技术可视化实验室</title>
+  <title>三大差错检验机制交互式可视化实验室</title>
   <style>
     :root {
-      --bg-primary: #090d16;
-      --bg-card: #131b2e;
-      --bg-panel: #1b2640;
-      --bg-input: #0d1424;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
+      --bg-primary: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-panel: #f1f5f9;
+      --bg-input: #e2e8f0;
+      --text-main: #0f172a;
+      --text-sub: #475569;
       --text-muted: #64748b;
-      --border-color: #243252;
-      --brand-blue: #3b82f6;
-      --brand-cyan: #06b6d4;
-      --brand-green: #10b981;
-      --brand-red: #ef4444;
-      --brand-amber: #f59e0b;
-      --brand-purple: #8b5cf6;
+      --border-color: #cbd5e1;
+      --brand-blue: #2563eb;
+      --brand-cyan: #0891b2;
+      --brand-green: #059669;
+      --brand-red: #dc2626;
+      --brand-amber: #d97706;
       --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #090d16;
+        --bg-card: #131b2e;
+        --bg-panel: #1b2640;
+        --bg-input: #0d1424;
+        --text-main: #f8fafc;
+        --text-sub: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #243252;
+        --brand-blue: #3b82f6;
+        --brand-cyan: #06b6d4;
+        --brand-green: #10b981;
+        --brand-red: #ef4444;
+        --brand-amber: #f59e0b;
+      }
     }
 
     * {
@@ -33,10 +50,10 @@
     body {
       background: var(--bg-primary);
       color: var(--text-main);
-      padding: 16px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
       min-height: 100vh;
     }
 
@@ -46,31 +63,32 @@
       justify-content: space-between;
       align-items: center;
       background: var(--bg-card);
-      padding: 12px 18px;
-      border-radius: 12px;
+      padding: 10px 16px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
 
     .title-box {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .top-badge {
-      background: rgba(59, 130, 246, 0.18);
-      color: #60a5fa;
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      padding: 2px 8px;
-      border-radius: 6px;
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--brand-blue);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      padding: 2px 7px;
+      border-radius: 5px;
       font-size: 11px;
       font-weight: 700;
     }
 
     .title-box h1 {
-      font-size: 17px;
+      font-size: 15.5px;
       font-weight: 800;
       color: var(--text-main);
     }
@@ -82,12 +100,12 @@
     }
 
     .tab-btn {
-      padding: 6px 14px;
-      border-radius: 8px;
+      padding: 5px 12px;
+      border-radius: 6px;
       border: 1px solid var(--border-color);
       background: var(--bg-panel);
       color: var(--text-sub);
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -102,27 +120,28 @@
       background: var(--brand-blue);
       color: #ffffff;
       border-color: var(--brand-blue);
-      box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
     }
 
     /* ════ 主体卡片容器 ════ */
     .main-view {
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
-      padding: 18px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
     }
 
     /* 输入控制栏 */
     .control-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       background: var(--bg-panel);
-      padding: 12px 14px;
+      padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
       flex-wrap: wrap;
@@ -131,8 +150,8 @@
     .ctrl-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12.5px;
+      gap: 6px;
+      font-size: 12px;
       color: var(--text-sub);
     }
 
@@ -143,42 +162,41 @@
     }
 
     .bin-input {
-      background: var(--bg-input);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 6px 10px;
-      color: #38bdf8;
+      border-radius: 5px;
+      padding: 4px 8px;
+      color: var(--brand-blue);
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       outline: none;
-      width: 140px;
-      letter-spacing: 2px;
+      width: 120px;
+      letter-spacing: 1.5px;
     }
 
     .bin-input:focus {
       border-color: var(--brand-blue);
-      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
     }
 
     .select-dropdown {
-      background: var(--bg-input);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 6px 10px;
+      border-radius: 5px;
+      padding: 4px 8px;
       color: var(--text-main);
-      font-size: 12.5px;
+      font-size: 12px;
       outline: none;
       cursor: pointer;
     }
 
     .action-btn {
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 5px;
       border: 1px solid var(--border-color);
-      background: var(--bg-input);
+      background: var(--bg-card);
       color: var(--text-main);
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -191,8 +209,8 @@
     }
 
     .btn-fix {
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--brand-green);
       border-color: rgba(16, 185, 129, 0.4);
     }
     .btn-fix:hover {
@@ -200,22 +218,22 @@
       color: #ffffff;
     }
 
-    /* ════ 交互式比特流序列（支持点击翻转） ════ */
+    /* ════ 交互式比特流序列 ════ */
     .bitstream-box {
       background: var(--bg-panel);
       border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 14px 16px;
+      border-radius: 8px;
+      padding: 10px 12px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .bs-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12.5px;
+      font-size: 12px;
     }
 
     .bs-title {
@@ -227,48 +245,46 @@
     }
 
     .bs-hint {
-      font-size: 11px;
-      color: #f59e0b;
+      font-size: 10.5px;
+      color: var(--brand-amber);
       background: rgba(245, 158, 11, 0.1);
-      padding: 2px 8px;
+      padding: 1px 6px;
       border-radius: 4px;
       border: 1px solid rgba(245, 158, 11, 0.25);
     }
 
     .bit-cells-row {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding: 4px 2px;
+      padding: 2px;
       align-items: center;
     }
 
     .interactive-bit {
-      width: 44px;
-      height: 52px;
-      border-radius: 8px;
-      background: var(--bg-input);
+      width: 40px;
+      height: 48px;
+      border-radius: 6px;
+      background: var(--bg-card);
       border: 2px solid var(--border-color);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s ease;
       user-select: none;
       position: relative;
     }
 
     .interactive-bit:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: var(--brand-blue);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
     .interactive-bit.flipped {
       border-color: var(--brand-red) !important;
-      background: rgba(239, 68, 68, 0.15) !important;
-      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.12) !important;
     }
 
     .interactive-bit.parity-bit {
@@ -276,86 +292,79 @@
       background: rgba(6, 182, 212, 0.08);
     }
 
-    .interactive-bit.error-target {
-      border-color: var(--brand-red);
-      background: rgba(239, 68, 68, 0.25);
-      animation: pulseError 1s infinite alternate;
-    }
-
     .bit-val {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 900;
       font-family: var(--font-mono);
-      color: #38bdf8;
+      color: var(--brand-blue);
     }
 
     .flipped .bit-val {
-      color: #f87171 !important;
+      color: var(--brand-red) !important;
     }
 
     .parity-bit .bit-val {
-      color: #22d3ee;
+      color: var(--brand-cyan);
     }
 
     .bit-idx {
-      font-size: 9.5px;
+      font-size: 9px;
       color: var(--text-muted);
       font-family: var(--font-mono);
     }
 
     .bit-tag {
       position: absolute;
-      top: -7px;
-      font-size: 8.5px;
+      top: -6px;
+      font-size: 8px;
       font-weight: 800;
-      padding: 0 4px;
+      padding: 0 3px;
       border-radius: 3px;
       background: var(--brand-cyan);
-      color: #000;
+      color: #ffffff;
     }
 
     .flipped-tag {
       background: var(--brand-red);
-      color: #fff;
+      color: #ffffff;
     }
 
     /* ════ 结果状态横幅 ════ */
     .status-banner {
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12.5px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .status-ok {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--brand-green);
     }
 
     .status-err {
-      background: rgba(239, 68, 68, 0.12);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #f87171;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: var(--brand-red);
     }
 
     /* ════ 计算过程面板 ════ */
     .calc-board {
-      background: var(--bg-input);
+      background: var(--bg-panel);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 14px;
+      border-radius: 6px;
+      padding: 10px 12px;
       font-family: var(--font-mono);
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 12px;
+      line-height: 1.55;
       overflow-x: auto;
     }
 
-    /* 模 2 除法竖式样式 */
     .crc-division {
       display: inline-block;
       white-space: pre;
@@ -363,7 +372,7 @@
     }
 
     .crc-fcs-highlight {
-      color: #34d399;
+      color: var(--brand-green);
       font-weight: 800;
       background: rgba(16, 185, 129, 0.15);
       padding: 1px 4px;
@@ -376,51 +385,47 @@
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      margin: 8px 0;
+      margin: 6px 0;
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      font-size: 12px;
+      font-size: 11.5px;
       text-align: center;
     }
 
     .hamming-table th, .hamming-table td {
-      padding: 8px 6px;
+      padding: 6px 4px;
       border-bottom: 1px solid var(--border-color);
       border-right: 1px solid var(--border-color);
     }
 
     .hamming-table th {
-      background: var(--bg-panel);
+      background: var(--bg-card);
       color: var(--text-sub);
+      font-weight: 700;
     }
 
     .hamming-table td {
-      background: var(--bg-input);
+      background: var(--bg-primary);
       font-family: var(--font-mono);
     }
 
-    .cell-p { background: rgba(6, 182, 212, 0.12) !important; color: #22d3ee; font-weight: 700; }
-    .cell-d { background: rgba(59, 130, 246, 0.12) !important; color: #60a5fa; font-weight: 700; }
+    .cell-p { background: rgba(6, 182, 212, 0.1) !important; color: var(--brand-cyan); font-weight: 700; }
+    .cell-d { background: rgba(37, 99, 235, 0.1) !important; color: var(--brand-blue); font-weight: 700; }
 
     /* ════ 底部思考卡片 ════ */
     .note-card {
       background: var(--bg-panel);
       border-left: 3px solid var(--brand-amber);
-      border-radius: 0 8px 8px 0;
-      padding: 10px 14px;
-      font-size: 12px;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      font-size: 11.5px;
       color: var(--text-sub);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     .note-card strong {
-      color: #fbbf24;
-    }
-
-    @keyframes pulseError {
-      from { transform: scale(1); }
-      to { transform: scale(1.05); }
+      color: var(--brand-amber);
     }
   </style>
 </head>
@@ -443,14 +448,14 @@
   <div class="main-view" id="viewParity">
     <div class="control-row">
       <div class="ctrl-item">
-        <span class="ctrl-label">原始数据 (4~8位):</span>
+        <span class="ctrl-label">原始数据:</span>
         <input type="text" id="parityInput" class="bin-input" value="1011001" maxlength="8" oninput="sanitizeAndRunParity()">
       </div>
       <div class="ctrl-item">
         <span class="ctrl-label">校验模式:</span>
         <select id="parityMode" class="select-dropdown" onchange="runParity()">
-          <option value="even">偶校验 (Even Parity - 包含校验位使1为偶数个)</option>
-          <option value="odd">奇校验 (Odd Parity - 包含校验位使1为奇数个)</option>
+          <option value="even">偶校验 (Even Parity)</option>
+          <option value="odd">奇校验 (Odd Parity)</option>
         </select>
       </div>
       <button class="action-btn" onclick="randomParityData()">🎲 随机生成</button>
@@ -458,15 +463,13 @@
     </div>
 
     <!-- 编码过程 -->
-    <div class="calc-board" id="parityCalcText">
-      <!-- 动态计算文本 -->
-    </div>
+    <div class="calc-board" id="parityCalcText"></div>
 
     <!-- 信道交互位翻转 -->
     <div class="bitstream-box">
       <div class="bs-header">
         <span class="bs-title">📡 信道传输比特流（点击任意比特模拟噪声翻转 0 ↔ 1）</span>
-        <span class="bs-hint">当前翻转位: <span id="parityFlipCount">0</span> 位</span>
+        <span class="bs-hint">翻转位: <span id="parityFlipCount">0</span> 位</span>
       </div>
       <div class="bit-cells-row" id="parityBitsRow"></div>
     </div>
@@ -475,7 +478,7 @@
     <div class="status-banner" id="parityStatusBanner"></div>
 
     <div class="note-card">
-      <strong>💡 408 核心思考引导：</strong> 奇偶校验码的码距为 <strong>2</strong>（$d=2$）。若信道中同时翻转了 <strong>2 个比特（偶数个错）</strong>，接收端统计出的“1”的奇偶性并不会发生改变，从而导致<strong>完全漏检</strong>！因此奇偶校验只能检测奇数位差错，且<strong>无任何纠错与定位能力</strong>。
+      <strong>💡 408 核心思考引导：</strong> 奇偶校验码的码距为 2 (d=2)。若信道中同时翻转了 <strong>2 个比特（偶数个错）</strong>，接收端统计出的 1 的奇偶性不会改变，导致<strong>完全漏检</strong>！因此奇偶校验仅能检测奇数位差错，且<strong>无任何纠错与定位能力</strong>。
     </div>
   </div>
 
@@ -492,9 +495,9 @@
           <option value="1101">G(X) = 1101 (X³ + X² + 1, r=3)</option>
           <option value="10011">G(X) = 10011 (CRC-4: X⁴ + X + 1, r=4)</option>
           <option value="1011">G(X) = 1011 (X³ + X + 1, r=3)</option>
-          <option value="custom">自定义二进制多项式</option>
+          <option value="custom">自定义多项式</option>
         </select>
-        <input type="text" id="crcCustomPoly" class="bin-input" value="1101" maxlength="6" style="display:none; width:80px;" oninput="sanitizeAndRunCrc()">
+        <input type="text" id="crcCustomPoly" class="bin-input" value="1101" maxlength="6" style="display:none; width:75px;" oninput="sanitizeAndRunCrc()">
       </div>
       <button class="action-btn" onclick="randomCrcData()">🎲 随机生成</button>
       <button class="action-btn" onclick="resetCrcFlips()">🔄 重置翻转</button>
@@ -502,7 +505,7 @@
 
     <!-- 发送端模 2 除法计算过程 -->
     <div class="calc-board">
-      <div style="font-weight: 800; color: #38bdf8; margin-bottom: 6px;">📐 发送端模 2 除法 (XOR 逐位运算) 过程：</div>
+      <div style="font-weight: 800; color: var(--brand-blue); margin-bottom: 4px;">📐 发送端模 2 除法 (XOR 逐位运算) 过程：</div>
       <div class="crc-division" id="crcDivisionText"></div>
     </div>
 
@@ -510,7 +513,7 @@
     <div class="bitstream-box">
       <div class="bs-header">
         <span class="bs-title">📡 发送帧 (数据 + FCS 校验序列) — 点击任意比特注入差错：</span>
-        <span class="bs-hint">当前翻转位: <span id="crcFlipCount">0</span> 位</span>
+        <span class="bs-hint">翻转位: <span id="crcFlipCount">0</span> 位</span>
       </div>
       <div class="bit-cells-row" id="crcBitsRow"></div>
     </div>
@@ -519,7 +522,7 @@
     <div class="status-banner" id="crcStatusBanner"></div>
 
     <div class="note-card">
-      <strong>💡 408 核心命题要点：</strong> 生成多项式阶数为 $r$ 时，数据后需补 $r$ 个 0 再做模 2 除法，所得余数 FCS 长度恰为 <strong>$r$ 位</strong>。CRC 检错能力极强（检出所有奇数个错与长度 $\le r$ 的突发错），但**仅用于检错丢弃**，不提供自动纠错功能（不等于可靠传输）。
+      <strong>💡 408 核心命题要点：</strong> 生成多项式阶数为 r 时，数据后补 r 个 0 再做模 2 除法，所得余数 FCS 长度恰为 <strong>r 位</strong>。CRC 检错能力极强（能检出所有奇数个错与长度 ≤ r 的突发错），但<strong>仅用于检错丢弃</strong>，本身不提供纠错功能。
     </div>
   </div>
 
@@ -531,13 +534,13 @@
         <input type="text" id="hammingInput" class="bin-input" value="1011" maxlength="4" oninput="sanitizeAndRunHamming()">
       </div>
       <button class="action-btn" onclick="randomHammingData()">🎲 随机数据</button>
-      <button class="action-btn btn-fix" onclick="autoFixHamming()">🛠️ 一键自动修复 (Auto-Fix)</button>
+      <button class="action-btn btn-fix" onclick="autoFixHamming()">🛠️ 自动修复 (Auto-Fix)</button>
       <button class="action-btn" onclick="resetHammingFlips()">🔄 重置翻转</button>
     </div>
 
     <!-- 编码与 7 位码字分配表 -->
     <div class="calc-board">
-      <div style="font-weight: 800; color: #38bdf8; margin-bottom: 4px;">📊 7 位海明码位序分布与校验组覆盖表 ($2^r \ge k + r + 1 \implies 2^3 \ge 4+3+1$)：</div>
+      <div style="font-weight: 800; color: var(--brand-blue); margin-bottom: 4px;">📊 7 位海明码位序分布表 (满足 2ʳ ≥ k + r + 1 ➔ 2³ ≥ 4+3+1)：</div>
       <table class="hamming-table">
         <thead>
           <tr>
@@ -554,23 +557,21 @@
         <tbody>
           <tr>
             <th>位定义</th>
-            <td class="cell-p">P₁ (校验位)</td>
-            <td class="cell-p">P₂ (校验位)</td>
-            <td class="cell-d">D₁ (数据位)</td>
-            <td class="cell-p">P₄ (校验位)</td>
-            <td class="cell-d">D₂ (数据位)</td>
-            <td class="cell-d">D₃ (数据位)</td>
-            <td class="cell-d">D₄ (数据位)</td>
+            <td class="cell-p">P₁ (校验)</td>
+            <td class="cell-p">P₂ (校验)</td>
+            <td class="cell-d">D₁ (数据)</td>
+            <td class="cell-p">P₄ (校验)</td>
+            <td class="cell-d">D₂ (数据)</td>
+            <td class="cell-d">D₃ (数据)</td>
+            <td class="cell-d">D₄ (数据)</td>
           </tr>
-          <tr id="hammingEncodeRow">
-            <!-- 填入发送比特 -->
-          </tr>
+          <tr id="hammingEncodeRow"></tr>
         </tbody>
       </table>
-      <div id="hammingEquationText" style="font-size: 11.5px; color: var(--text-sub); margin-top: 6px;"></div>
+      <div id="hammingEquationText" style="font-size: 11px; color: var(--text-sub); margin-top: 4px;"></div>
     </div>
 
-    <!-- 传输中的 7 位码字（支持点击翻转） -->
+    <!-- 传输中的 7 位码字 -->
     <div class="bitstream-box">
       <div class="bs-header">
         <span class="bs-title">📡 接收端 7 位码字（点击任意 1 位制造单比特差错）：</span>
@@ -583,12 +584,11 @@
     <div class="status-banner" id="hammingStatusBanner"></div>
 
     <div class="note-card">
-      <strong>💡 408 核心纠错原理：</strong> 伴随式方程组 $S_3 S_2 S_1$ 采用偶校验异或计算。若 $S_3 S_2 S_1 = 000_2$，说明传输无差错；若 $S = 101_2 = 5$，则伴随式的十进制值直接<strong>精确定位第 5 号位置出错</strong>，将其取反即可实现 100% 自动纠错（码距 $d=3$ 时具备检2错纠1错能力）！
+      <strong>💡 408 核心纠错原理：</strong> 伴随式方程组 S₃S₂S₁ 采用偶校验计算。若 S₃S₂S₁ = 000₂ 说明无错；若 S = 101₂ = 5，则伴随式的十进制值直接<strong>精确定位第 5 号位置出错</strong>，将其取反即可实现 100% 自动纠错（码距 d=3 时具备检2错纠1错能力）！
     </div>
   </div>
 
   <script>
-    // ════════════════ 全局 Tab 切换 ════════════════
     function setTab(tab) {
       document.getElementById('tabParity').classList.toggle('active', tab === 'parity');
       document.getElementById('tabCrc').classList.toggle('active', tab === 'crc');
@@ -603,9 +603,9 @@
       if (tab === 'hamming') runHamming();
     }
 
-    // ════════════════ 1. 奇偶校验模块 ════════════════
+    // 1. 奇偶校验
     let parityRawData = "1011001";
-    let parityFlippedBits = []; // 索引数组
+    let parityFlippedBits = [];
 
     function sanitizeAndRunParity() {
       let val = document.getElementById('parityInput').value.replace(/[^01]/g, '');
@@ -617,7 +617,7 @@
     }
 
     function randomParityData() {
-      const len = Math.floor(Math.random() * 4) + 4; // 4..7
+      const len = Math.floor(Math.random() * 4) + 4;
       let res = "";
       for (let i = 0; i < len; i++) res += Math.random() > 0.5 ? "1" : "0";
       document.getElementById('parityInput').value = res;
@@ -639,20 +639,16 @@
     }
 
     function runParity() {
-      const mode = document.getElementById('parityMode').value; // 'even' or 'odd'
+      const mode = document.getElementById('parityMode').value;
       const onesCount = (parityRawData.match(/1/g) || []).length;
-      
-      // 偶校验：若1为奇数个补1，若为偶数个补0 -> 使总1为偶数
       let parityBit = (mode === 'even') ? (onesCount % 2 === 0 ? "0" : "1") : (onesCount % 2 === 0 ? "1" : "0");
       const fullSent = parityRawData + parityBit;
 
-      // 更新计算过程面板
       document.getElementById('parityCalcText').innerHTML = 
-        `<div>🔢 原始数据位：<strong style="color:#38bdf8;">${parityRawData}</strong>（共含 <strong>${onesCount}</strong> 个 '1'）</div>` +
-        `<div>⚙️ 校验规则：<strong style="color:#22d3ee;">${mode === 'even' ? '偶校验 (Even)' : '奇校验 (Odd)'}</strong> ➔ 计算生成校验位 P = <span class="crc-fcs-highlight">${parityBit}</span></div>` +
-        `<div>📦 发送端最终合成序列：<strong>${parityRawData}</strong><span style="color:#22d3ee; font-weight:800;">[${parityBit}]</span></div>`;
+        `<div>🔢 原始数据：<strong style="color:var(--brand-blue);">${parityRawData}</strong>（含 <strong>${onesCount}</strong> 个 '1'）</div>` +
+        `<div>⚙️ 校验规则：<strong>${mode === 'even' ? '偶校验 (Even)' : '奇校验 (Odd)'}</strong> ➔ 校验位 P = <span class="crc-fcs-highlight">${parityBit}</span></div>` +
+        `<div>📦 发送帧：<strong>${parityRawData}</strong><span style="color:var(--brand-cyan); font-weight:800;">[${parityBit}]</span></div>`;
 
-      // 渲染可翻转比特流
       const bitsRow = document.getElementById('parityBitsRow');
       bitsRow.innerHTML = '';
       document.getElementById('parityFlipCount').innerText = parityFlippedBits.length;
@@ -677,21 +673,20 @@
         bitsRow.appendChild(cell);
       }
 
-      // 接收端检验
       const recvOnes = (recvStream.match(/1/g) || []).length;
       const pass = (mode === 'even') ? (recvOnes % 2 === 0) : (recvOnes % 2 !== 0);
       const banner = document.getElementById('parityStatusBanner');
 
       if (pass) {
         banner.className = "status-banner status-ok";
-        banner.innerHTML = `<span>✅ 接收端检验通过！统计包含 ${recvOnes} 个 '1'，符合${mode === 'even' ? '偶' : '奇'}校验规则。${parityFlippedBits.length > 0 ? '（⚠️ 发生了偶数位翻转，奇偶校验完全漏检！）' : ''}</span>`;
+        banner.innerHTML = `<span>✅ 接收端检验通过！统计包含 ${recvOnes} 个 '1'，符合${mode === 'even' ? '偶' : '奇'}校验。${parityFlippedBits.length > 0 ? '（⚠️ 发生了偶数位翻转，奇偶校验完全漏检！）' : ''}</span>`;
       } else {
         banner.className = "status-banner status-err";
-        banner.innerHTML = `<span>❌ 接收端检测出差错！统计包含 ${recvOnes} 个 '1'，违背${mode === 'even' ? '偶' : '奇'}校验规则，立即丢弃该数据！</span>`;
+        banner.innerHTML = `<span>❌ 接收端检测出差错！统计包含 ${recvOnes} 个 '1'，违背${mode === 'even' ? '偶' : '奇'}校验规则，立即丢弃！</span>`;
       }
     }
 
-    // ════════════════ 2. CRC 循环冗余校验模块 ════════════════
+    // 2. CRC
     let crcRawData = "101001";
     let crcPoly = "1101";
     let crcFlippedBits = [];
@@ -730,7 +725,7 @@
     }
 
     function randomCrcData() {
-      const len = Math.floor(Math.random() * 3) + 4; // 4..6
+      const len = Math.floor(Math.random() * 3) + 4;
       let res = "";
       for (let i = 0; i < len; i++) res += Math.random() > 0.5 ? "1" : "0";
       document.getElementById('crcDataInput').value = res;
@@ -751,39 +746,34 @@
       runCrc();
     }
 
-    // 模 2 除法算法 (返回余数和每一步记录)
     function mod2Divide(dividendStr, divisorStr) {
       const r = divisorStr.length - 1;
       let cur = dividendStr.split('').map(Number);
       const div = divisorStr.split('').map(Number);
-      let steps = [];
 
       for (let i = 0; i <= cur.length - div.length; i++) {
         if (cur[i] === 1) {
-          steps.push({ pos: i, curSnapshot: cur.slice() });
           for (let j = 0; j < div.length; j++) {
             cur[i + j] = cur[i + j] ^ div[j];
           }
         }
       }
       const remainder = cur.slice(-r).join('');
-      return { remainder, steps, finalArr: cur };
+      return { remainder };
     }
 
     function runCrc() {
       const r = crcPoly.length - 1;
       const paddedData = crcRawData + "0".repeat(r);
-      const { remainder, steps } = mod2Divide(paddedData, crcPoly);
+      const { remainder } = mod2Divide(paddedData, crcPoly);
       const fullFrame = crcRawData + remainder;
 
-      // 格式化竖式文本
       let divText = `被除数 (D · 2^${r}): ${paddedData}    除数 G: ${crcPoly}\n`;
-      divText += `─`.repeat(36) + `\n`;
-      divText += `计算得余数 FCS (r=${r}位): <span class="crc-fcs-highlight">${remainder}</span>\n`;
-      divText += `合成发送帧: ${crcRawData} + [${remainder}] = <strong style="color:#60a5fa;">${fullFrame}</strong>`;
+      divText += `────────────────────────────────────\n`;
+      divText += `模 2 除法计算得 FCS (r=${r}位): <span class="crc-fcs-highlight">${remainder}</span>\n`;
+      divText += `合成发送帧: ${crcRawData} + [${remainder}] = <strong style="color:var(--brand-blue);">${fullFrame}</strong>`;
       document.getElementById('crcDivisionText').innerHTML = divText;
 
-      // 渲染比特流
       const bitsRow = document.getElementById('crcBitsRow');
       bitsRow.innerHTML = '';
       document.getElementById('crcFlipCount').innerText = crcFlippedBits.length;
@@ -808,7 +798,6 @@
         bitsRow.appendChild(cell);
       }
 
-      // 接收端模 2 除法验证
       const recvRes = mod2Divide(recvFrame, crcPoly);
       const isZero = parseInt(recvRes.remainder, 2) === 0;
       const banner = document.getElementById('crcStatusBanner');
@@ -818,13 +807,13 @@
         banner.innerHTML = `<span>✅ 接收端模 2 除法余数为 <strong>0</strong> ➔ 校验成功，数据无差错接收！</span>`;
       } else {
         banner.className = "status-banner status-err";
-        banner.innerHTML = `<span>❌ 接收端模 2 除法余数为 <strong>${recvRes.remainder} (非零)</strong> ➔ 检测到传输差错，丢弃该帧！</span>`;
+        banner.innerHTML = `<span>❌ 接收端模 2 除法余数为 <strong>${recvRes.remainder} (非零)</strong> ➔ 检测到差错，丢弃该帧！</span>`;
       }
     }
 
-    // ════════════════ 3. 海明码纠错模块 ════════════════
-    let hammingData = "1011"; // D4, D3, D2, D1
-    let hammingFlippedIdx = null; // 1-based index (1..7)
+    // 3. 海明码
+    let hammingData = "1011";
+    let hammingFlippedIdx = null;
 
     function sanitizeAndRunHamming() {
       let val = document.getElementById('hammingInput').value.replace(/[^01]/g, '');
@@ -864,24 +853,17 @@
     }
 
     function runHamming() {
-      // D4 D3 D2 D1
       const d4 = parseInt(hammingData[0], 10);
       const d3 = parseInt(hammingData[1], 10);
       const d2 = parseInt(hammingData[2], 10);
       const d1 = parseInt(hammingData[3], 10);
 
-      // 计算偶校验位 P1, P2, P4
-      // P1 负责 1, 3(D1), 5(D2), 7(D4) -> P1 = D1 ^ D2 ^ D4
       const p1 = d1 ^ d2 ^ d4;
-      // P2 负责 2, 3(D1), 6(D3), 7(D4) -> P2 = D1 ^ D3 ^ D4
       const p2 = d1 ^ d3 ^ d4;
-      // P4 负责 4, 5(D2), 6(D3), 7(D4) -> P4 = D2 ^ D3 ^ D4
       const p4 = d2 ^ d3 ^ d4;
 
-      // 7位码字：[pos1..pos7] = [P1, P2, D1, P4, D2, D3, D4]
       const correctCode = [p1, p2, d1, p4, d2, d3, d4];
 
-      // 更新表格中的发送比特
       const encRow = document.getElementById('hammingEncodeRow');
       encRow.innerHTML = `
         <th>标准码字</th>
@@ -899,7 +881,6 @@
         `P₂ = D₁⊕D₃⊕D₄ = ${d1}⊕${d3}⊕${d4} = <strong>${p2}</strong> ｜ ` +
         `P₄ = D₂⊕D₃⊕D₄ = ${d2}⊕${d3}⊕${d4} = <strong>${p4}</strong>`;
 
-      // 渲染接收端 7 位码字卡片
       const bitsRow = document.getElementById('hammingBitsRow');
       bitsRow.innerHTML = '';
       const names = ['P₁', 'P₂', 'D₁', 'P₄', 'D₂', 'D₃', 'D₄'];
@@ -908,7 +889,7 @@
       if (hammingFlippedIdx !== null) {
         const fIdx = hammingFlippedIdx - 1;
         recvCode[fIdx] = recvCode[fIdx] ^ 1;
-        document.getElementById('hammingFlipStatus').innerHTML = `<span style="color:#f87171;">已在第 #${hammingFlippedIdx} 位制造翻转</span>`;
+        document.getElementById('hammingFlipStatus').innerHTML = `<span style="color:var(--brand-red);">已在第 #${hammingFlippedIdx} 位制造翻转</span>`;
       } else {
         document.getElementById('hammingFlipStatus').innerText = '无差错';
       }
@@ -917,7 +898,7 @@
         const isFlipped = (hammingFlippedIdx === (i + 1));
         const isP = (i === 0 || i === 1 || i === 3);
         const cell = document.createElement('div');
-        cell.className = `interactive-bit ${isP ? 'parity-bit' : ''} ${isFlipped ? 'flipped error-target' : ''}`;
+        cell.className = `interactive-bit ${isP ? 'parity-bit' : ''} ${isFlipped ? 'flipped' : ''}`;
         cell.onclick = () => toggleHammingBit(i + 1);
         cell.innerHTML = `
           <span class="bit-tag ${isFlipped ? 'flipped-tag' : ''}">${names[i]}</span>
@@ -927,30 +908,25 @@
         bitsRow.appendChild(cell);
       }
 
-      // 计算伴随式 S3 S2 S1
-      // S1 = b1 ^ b3 ^ b5 ^ b7
       const s1 = recvCode[0] ^ recvCode[2] ^ recvCode[4] ^ recvCode[6];
-      // S2 = b2 ^ b3 ^ b6 ^ b7
       const s2 = recvCode[1] ^ recvCode[2] ^ recvCode[5] ^ recvCode[6];
-      // S3 = b4 ^ b5 ^ b6 ^ b7
       const s3 = recvCode[3] ^ recvCode[4] ^ recvCode[5] ^ recvCode[6];
 
-      const syndromeVal = (s3 << 2) | (s2 << 1) | s1; // 十进制
+      const syndromeVal = (s3 << 2) | (s2 << 1) | s1;
       const banner = document.getElementById('hammingStatusBanner');
 
       if (syndromeVal === 0) {
         banner.className = "status-banner status-ok";
-        banner.innerHTML = `<span>✅ 伴随式方程组 S₃S₂S₁ = <strong>000₂ (0)</strong> ➔ 校验全零通过，数据完全正确！</span>`;
+        banner.innerHTML = `<span>✅ 伴随式 S₃S₂S₁ = <strong>000₂ (0)</strong> ➔ 校验全零通过，数据完全正确！</span>`;
       } else {
         banner.className = "status-banner status-err";
         banner.innerHTML = `
-          <span>🚨 伴随式 S₃S₂S₁ = <strong>${s3}${s2}${s1}₂ (${syndromeVal})</strong> ➔ 精准定位：<strong>第 ${syndromeVal} 号位置 (${names[syndromeVal-1]})</strong> 发生比特差错！</span>
+          <span>🚨 伴随式 S₃S₂S₁ = <strong>${s3}${s2}${s1}₂ (${syndromeVal})</strong> ➔ 精准定位：<strong>第 ${syndromeVal} 号位置 (${names[syndromeVal-1]})</strong> 出错！</span>
           <button class="action-btn btn-fix" onclick="autoFixHamming()">🛠️ 点击一键修复</button>
         `;
       }
     }
 
-    // 初始化运行
     runParity();
   </script>
 </body>

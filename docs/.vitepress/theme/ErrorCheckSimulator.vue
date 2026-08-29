@@ -30,14 +30,14 @@ const iframeSrc = computed(() => withBase('/simulators/error-check.html'))
 
 .error-iframe {
   width: 100%;
-  height: 640px;
+  height: 520px;
   display: block;
   border: none;
 }
 
 @media (max-width: 768px) {
   .error-iframe {
-    height: 720px;
+    height: 580px;
   }
 }
 </style>
