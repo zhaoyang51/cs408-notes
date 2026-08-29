@@ -36,3 +36,13 @@ $$
 <EncodingModulation />
 
 </KP>
+
+---
+
+## 3. 信道复用技术全景仿真（TDM vs FDM） <AuthorTag author="Zhao" />
+
+<KP author="Zhao" title="📡 信道复用技术交互式教学实验室（时分复用 vs 频分复用）" tag="⭐️ 考研必背">
+
+<MultiplexingSimulator />
+
+</KP>

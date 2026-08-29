@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信道复用技术交互式学习实验室</title>
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-card: #1e293b;
+      --bg-panel: #0d1527;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --border-color: #334155;
+      --color-a: #ef4444; /* 红色：计算机 A */
+      --color-b: #10b981; /* 绿色：电话 B */
+      --color-c: #3b82f6; /* 蓝色：视频 C */
+      --color-mux: #f59e0b; /* 复用器金色 */
+      --color-channel: #6366f1; /* 共享信道靛蓝 */
+      --color-demux: #8b5cf6; /* 解复用器紫色 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-main);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 100vh;
+    }
+
+    /* ════ 顶部导航与控制栏 ════ */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-card);
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+    }
+
+    .title-group h1 {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .mode-switch-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mode-btn {
+      padding: 7px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-panel);
+      color: var(--text-sub);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mode-btn:hover {
+      color: var(--text-main);
+      border-color: #60a5fa;
+    }
+
+    .mode-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #3b82f6;
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+    }
+
+    /* ════ 核心可视化画布区 ════ */
+    .vis-container {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .vis-topology {
+      display: grid;
+      grid-template-columns: 140px 90px 1fr 90px 140px;
+      gap: 12px;
+      align-items: center;
+      min-height: 280px;
+    }
+
+    @media (max-width: 820px) {
+      .vis-topology {
+        grid-template-columns: 110px 70px 1fr 70px 110px;
+        gap: 6px;
+      }
+    }
+
+    /* 1. 输入源列 */
+    .sources-col, .destinations-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 240px;
+      gap: 10px;
+    }
+
+    .device-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .card-a { border-left: 4px solid var(--color-a); }
+    .card-b { border-left: 4px solid var(--color-b); }
+    .card-c { border-left: 4px solid var(--color-c); }
+
+    .dev-icon { font-size: 20px; }
+    .dev-info { display: flex; flex-direction: column; }
+    .dev-name { font-size: 12px; font-weight: 700; }
+    .dev-type { font-size: 10px; color: var(--text-sub); }
+
+    .fdm-toggle {
+      margin-left: auto;
+      cursor: pointer;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-color);
+      color: var(--text-sub);
+    }
+    .fdm-toggle.active {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--color-b);
+      color: #34d399;
+    }
+
+    /* 2. 复用器 MUX & 解复用器 DEMUX */
+    .mux-box, .demux-box {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      border: 2px solid #6366f1;
+      border-radius: 12px;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      padding: 8px;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+    }
+
+    .mux-icon { font-size: 24px; }
+    .mux-title { font-size: 13px; font-weight: 800; color: #a5b4fc; }
+    .mux-desc { font-size: 9.5px; color: #c7d2fe; }
+
+    /* 3. 共享信道 (中枢) */
+    .channel-conduit {
+      background: #090e1a;
+      border: 2px dashed #4338ca;
+      border-radius: 10px;
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .channel-label {
+      position: absolute;
+      top: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #818cf8;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid #3730a3;
+      z-index: 5;
+    }
+
+    /* TDM 动态方块传输轨道 */
+    .tdm-track {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .tdm-slot-block {
+      position: absolute;
+      width: 46px;
+      height: 38px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 900;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      user-select: none;
+    }
+
+    .block-a { background: var(--color-a); border: 1px solid #fca5a5; }
+    .block-b { background: var(--color-b); border: 1px solid #6ee7b7; }
+    .block-c { background: var(--color-c); border: 1px solid #93c5fd; }
+
+    /* FDM Canvas 画布 */
+    #fdmCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ════ 交互控制条 ════ */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg-panel);
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .ctrl-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .action-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-play {
+      background: #10b981;
+      color: #ffffff;
+    }
+    .btn-play:hover { background: #059669; }
+
+    .btn-pause {
+      background: #f59e0b;
+      color: #ffffff;
+    }
+    .btn-pause:hover { background: #d97706; }
+
+    .btn-reset {
+      background: #475569;
+      color: #ffffff;
+    }
+    .btn-reset:hover { background: #334155; }
+
+    .speed-slider-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .speed-slider-box input[type="range"] {
+      cursor: pointer;
+      accent-color: #3b82f6;
+    }
+
+    .status-text {
+      font-size: 12px;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    /* ════ 底部概念教学卡片 ════ */
+    .edu-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .edu-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .edu-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .edu-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .edu-item-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .edu-item-desc {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部标题与模式切换 -->
+  <header class="header">
+    <div class="title-group">
+      <span class="badge">📡 物理层传输基础</span>
+      <h1>信道复用技术交互式教学实验室</h1>
+    </div>
+    <div class="mode-switch-group">
+      <button class="mode-btn active" id="btnTdm" onclick="switchMode('TDM')">⏱️ 时分复用 (TDM)</button>
+      <button class="mode-btn" id="btnFdm" onclick="switchMode('FDM')">📻 频分复用 (FDM)</button>
+    </div>
+  </header>
+
+  <!-- 核心可视化拓扑 -->
+  <main class="vis-container">
+    <div class="vis-topology">
+      
+      <!-- 1. 左侧：3 大输入源 -->
+      <div class="sources-col">
+        <div class="device-card card-a">
+          <span class="dev-icon">💻</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-a);">计算机 A</span>
+            <span class="dev-type">突发数据流</span>
+          </div>
+          <button class="fdm-toggle active" id="toggleA" onclick="toggleSource('A')" style="display:none;">开</button>
+        </div>
+
+        <div class="device-card card-b">
+          <span class="dev-icon">📞</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-b);">电话 B</span>
+            <span class="dev-type">语音模拟信号</span>
+          </div>
+          <button class="fdm-toggle active" id="toggleB" onclick="toggleSource('B')" style="display:none;">开</button>
+        </div>
+
+        <div class="device-card card-c">
+          <span class="dev-icon">📹</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-c);">视频 C</span>
+            <span class="dev-type">高清视频码流</span>
+          </div>
+          <button class="fdm-toggle active" id="toggleC" onclick="toggleSource('C')" style="display:none;">开</button>
+        </div>
+      </div>
+
+      <!-- 2. 复用器 MUX -->
+      <div class="mux-box">
+        <span class="mux-icon">🔀</span>
+        <span class="mux-title">复用器 (MUX)</span>
+        <span class="mux-desc" id="muxDesc">时隙切片轮询</span>
+      </div>
+
+      <!-- 3. 中间：共享信道 -->
+      <div class="channel-conduit">
+        <span class="channel-label" id="channelLabel">🌐 共享物理介质 (TDM 帧时隙流水线)</span>
+        <!-- TDM 方块层 -->
+        <div class="tdm-track" id="tdmTrack"></div>
+        <!-- FDM 波形 Canvas -->
+        <canvas id="fdmCanvas" style="display: none;"></canvas>
+      </div>
+
+      <!-- 4. 解复用器 DEMUX -->
+      <div class="demux-box">
+        <span class="mux-icon">🔁</span>
+        <span class="mux-title">解复用器 (DEMUX)</span>
+        <span class="mux-desc" id="demuxDesc">时隙分发路由</span>
+      </div>
+
+      <!-- 5. 右侧：3 大输出目的地 -->
+      <div class="destinations-col">
+        <div class="device-card card-a">
+          <span class="dev-icon">💻</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-a);">目标主机 A</span>
+            <span class="dev-type" id="recvCountA">接收: 0 块</span>
+          </div>
+        </div>
+
+        <div class="device-card card-b">
+          <span class="dev-icon">📞</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-b);">目标电话 B</span>
+            <span class="dev-type" id="recvCountB">接收: 0 块</span>
+          </div>
+        </div>
+
+        <div class="device-card card-c">
+          <span class="dev-icon">🖥️</span>
+          <div class="dev-info">
+            <span class="dev-name" style="color: var(--color-c);">显示终端 C</span>
+            <span class="dev-type" id="recvCountC">接收: 0 块</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 交互控制面板 -->
+    <div class="controls-bar">
+      <div class="ctrl-left">
+        <button class="action-btn btn-play" id="btnPlayPause" onclick="togglePlay()">⏸️ 暂停演示</button>
+        <button class="action-btn btn-reset" onclick="resetSim()">🔄 重置仿真</button>
+        
+        <div class="speed-slider-box">
+          <span>传输速率:</span>
+          <input type="range" id="speedSlider" min="0.5" max="2.5" step="0.1" value="1.0" oninput="changeSpeed(this.value)">
+          <span id="speedVal">1.0x</span>
+        </div>
+      </div>
+      <div class="status-text" id="statusText">
+        ● TDM 仿真运行中：A、B、C 依次占用时隙传输
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部教学说明区 (动态响应当前模式) -->
+  <footer class="edu-card">
+    <div class="edu-header">
+      <span class="badge" id="eduBadge">⏱️ TDM 核心原理</span>
+      <h3 class="edu-title" id="eduTitle">时分复用 (Time-Division Multiplexing) 核心概念与 408 考点</h3>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-item">
+        <span class="edu-item-title">📖 概念与机制</span>
+        <p class="edu-item-desc" id="eduDef">
+          将传输时间划分为均匀的 **TDM 帧**，每个 TDM 帧划分为若干固定 **时隙 (Time Slot)**。所有子信道在不同时隙轮流**独占信道全频带**传输。
+        </p>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-item-title">⚖️ 核心优缺点</span>
+        <p class="edu-item-desc" id="eduProsCons">
+          **优点**：全数字化处理，抗干扰强，不同信号无频带串扰。<br>
+          **缺点**：某用户无数据发送时，分配的时隙仍被空置，导致信道利用率下降（改进方案：统计时分复用 STDM）。
+        </p>
+      </div>
+
+      <div class="edu-item">
+        <span class="edu-item-title">🌍 生活实例与 408 考点</span>
+        <p class="edu-item-desc" id="eduCases">
+          **典型应用**：传统数字电话通信（T1 载波 24 路复用、E1 载波 32 路复用）、GSM 蜂窝时隙通信。<br>
+          **408 命题**：TDM 所有信号在不同时间占用全频带；FDM 所有信号在相同时间占用部分频带。
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ════════ 核心状态机 ════════
+    let currentMode = 'TDM'; // 'TDM' 或 'FDM'
+    let isRunning = true;
+    let speed = 1.0;
+
+    // TDM 状态
+    let tdmBlocks = [];
+    let blockIdCounter = 0;
+    let lastSpawnTime = 0;
+    let spawnIndex = 0; // 0->A, 1->B, 2->C
+    let recvCounts = { A: 0, B: 0, C: 0 };
+
+    // FDM 状态
+    let sourceActive = { A: true, B: true, C: true };
+    let fdmPhase = 0;
+
+    const sources = [
+      { id: 'A', name: 'A', class: 'block-a', freq: 1.5, color: '#ef4444' },
+      { id: 'B', name: 'B', class: 'block-b', freq: 3.0, color: '#10b981' },
+      { id: 'C', name: 'C', class: 'block-c', freq: 5.5, color: '#3b82f6' }
+    ];
+
+    // ════════ 模式切换 ════════
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('btnTdm').classList.toggle('active', mode === 'TDM');
+      document.getElementById('btnFdm').classList.toggle('active', mode === 'FDM');
+
+      const tdmTrack = document.getElementById('tdmTrack');
+      const fdmCanvas = document.getElementById('fdmCanvas');
+      const toggleA = document.getElementById('toggleA');
+      const toggleB = document.getElementById('toggleB');
+      const toggleC = document.getElementById('toggleC');
+
+      if (mode === 'TDM') {
+        tdmTrack.style.display = 'flex';
+        fdmCanvas.style.display = 'none';
+        toggleA.style.display = 'none';
+        toggleB.style.display = 'none';
+        toggleC.style.display = 'none';
+        document.getElementById('muxDesc').innerText = '时隙切片轮询';
+        document.getElementById('demuxDesc').innerText = '时隙分发路由';
+        document.getElementById('channelLabel').innerText = '🌐 共享物理介质 (TDM 帧时隙流水线)';
+        document.getElementById('statusText').innerText = '● TDM 仿真运行中：A、B、C 依次占用时隙传输';
+        updateEduInfo('TDM');
+      } else {
+        tdmTrack.style.display = 'none';
+        fdmCanvas.style.display = 'block';
+        toggleA.style.display = 'inline-block';
+        toggleB.style.display = 'inline-block';
+        toggleC.style.display = 'inline-block';
+        document.getElementById('muxDesc').innerText = '频带搬移调制';
+        document.getElementById('demuxDesc').innerText = '带通滤波分离';
+        document.getElementById('channelLabel').innerText = '🌐 共享物理介质 (FDM 复合正弦波频分传输)';
+        document.getElementById('statusText').innerText = '● FDM 仿真运行中：可点击左侧 开/关 观察合成波形动态变化';
+        updateEduInfo('FDM');
+        resizeCanvas();
+      }
+      resetSim();
+    }
+
+    function toggleSource(src) {
+      sourceActive[src] = !sourceActive[src];
+      const btn = document.getElementById('toggle' + src);
+      btn.classList.toggle('active', sourceActive[src]);
+      btn.innerText = sourceActive[src] ? '开' : '关';
+    }
+
+    function updateEduInfo(mode) {
+      if (mode === 'TDM') {
+        document.getElementById('eduBadge').innerText = '⏱️ TDM 核心原理';
+        document.getElementById('eduTitle').innerText = '时分复用 (Time-Division Multiplexing) 核心概念与 408 考点';
+        document.getElementById('eduDef').innerHTML = '将传输时间划分为均匀的 <strong>TDM 帧</strong>，每个 TDM 帧划分为若干固定 <strong>时隙 (Time Slot)</strong>。所有子信道在不同时隙轮流<strong>独占信道全频带</strong>传输。';
+        document.getElementById('eduProsCons').innerHTML = '<strong>优点</strong>：全数字化处理，抗干扰强，不同信号无频带串扰。<br><strong>缺点</strong>：某用户无数据发送时，分配的时隙仍被空置，导致信道利用率下降（改进：统计时分复用 STDM）。';
+        document.getElementById('eduCases').innerHTML = '<strong>典型应用</strong>：传统数字电话通信（T1/E1 载波）、GSM 蜂窝移动通信。<br><strong>408 命题核心</strong>：TDM 所有信号在不同时间占用全频带；FDM 所有信号在相同时间占用不同子频带。';
+      } else {
+        document.getElementById('eduBadge').innerText = '📻 FDM 核心原理';
+        document.getElementById('eduTitle').innerText = '频分复用 (Frequency-Division Multiplexing) 核心概念与 408 考点';
+        document.getElementById('eduDef').innerHTML = '将物理信道的总带宽划分为若干个互不重叠的<strong>子频带</strong>，每个子信道调制在不同的载波频率 $f_1, f_2, f_3$ 上。所有信号在<strong>同一时间并发传输</strong>。';
+        document.getElementById('eduProsCons').innerHTML = '<strong>优点</strong>：多路信号完全并行传输，实时性极高，技术成熟。<br><strong>缺点</strong>：各子频带之间必须留有<strong>保护频带 (Guard Band)</strong> 防止信号重叠串扰，浪费了部分带宽资源。';
+        document.getElementById('eduCases').innerHTML = '<strong>典型应用</strong>：有线电视 (CATV) 宽带网络、广播电台 (FM/AM)、早期 ADSL 宽带拨号上网。<br><strong>拓展衍生</strong>：波分复用 WDM（本质是光纤中的频分复用）、正交频分复用 OFDM (Wi-Fi/4G/5G)。';
+      }
+    }
+
+    // ════════ 播放/暂停/速度控制 ════════
+    function togglePlay() {
+      isRunning = !isRunning;
+      const btn = document.getElementById('btnPlayPause');
+      if (isRunning) {
+        btn.innerText = '⏸️ 暂停演示';
+        btn.className = 'action-btn btn-play';
+        requestAnimationFrame(animLoop);
+      } else {
+        btn.innerText = '▶️ 继续演示';
+        btn.className = 'action-btn btn-pause';
+      }
+    }
+
+    function changeSpeed(val) {
+      speed = parseFloat(val);
+      document.getElementById('speedVal').innerText = val + 'x';
+    }
+
+    function resetSim() {
+      tdmBlocks = [];
+      const track = document.getElementById('tdmTrack');
+      track.innerHTML = '';
+      recvCounts = { A: 0, B: 0, C: 0 };
+      document.getElementById('recvCountA').innerText = '接收: 0 块';
+      document.getElementById('recvCountB').innerText = '接收: 0 块';
+      document.getElementById('recvCountC').innerText = '接收: 0 块';
+    }
+
+    // ════════ TDM 动画逻辑 ════════
+    function updateTDM(timestamp) {
+      const track = document.getElementById('tdmTrack');
+      const trackWidth = track.clientWidth;
+
+      // 生成新块
+      if (timestamp - lastSpawnTime > (700 / speed)) {
+        lastSpawnTime = timestamp;
+        const src = sources[spawnIndex];
+        spawnIndex = (spawnIndex + 1) % sources.length;
+
+        blockIdCounter++;
+        const block = {
+          id: blockIdCounter,
+          src: src.id,
+          name: src.name,
+          class: src.class,
+          x: 0,
+          speed: 140 * speed // px per second
+        };
+
+        // 创建 DOM
+        const el = document.createElement('div');
+        el.id = 'blk-' + block.id;
+        el.className = 'tdm-slot-block ' + block.class;
+        el.innerHTML = `<span>${block.name}</span><span style="font-size:8.5px; opacity:0.8;">时隙</span>`;
+        track.appendChild(el);
+
+        block.el = el;
+        tdmBlocks.push(block);
+      }
+
+      // 移动并回收
+      for (let i = tdmBlocks.length - 1; i >= 0; i--) {
+        const blk = tdmBlocks[i];
+        blk.x += (blk.speed * 0.016);
+        blk.el.style.left = blk.x + 'px';
+
+        // 到达右端 DEMUX
+        if (blk.x >= trackWidth - 50) {
+          recvCounts[blk.src]++;
+          document.getElementById('recvCount' + blk.src).innerText = `接收: ${recvCounts[blk.src]} 块`;
+          track.removeChild(blk.el);
+          tdmBlocks.splice(i, 1);
+        }
+      }
+    }
+
+    // ════════ FDM 动画逻辑 ════════
+    const canvas = document.getElementById('fdmCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      if (canvas.clientWidth) {
+        canvas.width = canvas.clientWidth * window.devicePixelRatio;
+        canvas.height = canvas.clientHeight * window.devicePixelRatio;
+      }
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function updateFDM() {
+      if (!canvas.width || !canvas.height) resizeCanvas();
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // 绘制背景中轴网格
+      ctx.strokeStyle = '#1e293b';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, h / 2);
+      ctx.lineTo(w, h / 2);
+      ctx.stroke();
+
+      fdmPhase += 0.05 * speed;
+
+      // 1. 绘制 3 个分量波形 (淡色)
+      sources.forEach(src => {
+        if (sourceActive[src.id]) {
+          ctx.strokeStyle = src.color + '44'; // 25% opacity
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          for (let x = 0; x < w; x++) {
+            const t = (x / w) * Math.PI * 4 * src.freq + fdmPhase * src.freq;
+            const y = h / 2 + Math.sin(t) * (h * 0.15);
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+      });
+
+      // 2. 绘制合成波形 (高亮)
+      let activeCount = (sourceActive.A ? 1 : 0) + (sourceActive.B ? 1 : 0) + (sourceActive.C ? 1 : 0);
+      if (activeCount > 0) {
+        ctx.strokeStyle = '#818cf8';
+        ctx.lineWidth = 3;
+        ctx.shadowColor = '#6366f1';
+        ctx.shadowBlur = 10;
+        ctx.beginPath();
+
+        for (let x = 0; x < w; x++) {
+          let compositeY = 0;
+          sources.forEach(src => {
+            if (sourceActive[src.id]) {
+              const t = (x / w) * Math.PI * 4 * src.freq + fdmPhase * src.freq;
+              compositeY += Math.sin(t) * (h * 0.12);
+            }
+          });
+          const y = h / 2 + compositeY;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    // ════════ 主循环 ════════
+    let lastTime = 0;
+    function animLoop(timestamp) {
+      if (!isRunning) return;
+
+      if (currentMode === 'TDM') {
+        updateTDM(timestamp);
+      } else {
+        updateFDM();
+      }
+
+      requestAnimationFrame(animLoop);
+    }
+
+    // 启动
+    requestAnimationFrame(animLoop);
+  </script>
+</body>
+</html>
