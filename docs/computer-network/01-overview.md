@@ -44,12 +44,4 @@ $$
 
 <ProtocolStackMap />
 
-::: tip 💡 408 综合应用大题跨层协议关联必背口诀
-- **主机开机上网全过程**：`DHCP` (获取IP与网关) $\rightarrow$ `DNS` (解析目标域名) $\rightarrow$ `ARP` (查询网关MAC) $\rightarrow$ `TCP 握手` $\rightarrow$ `HTTP 请求` $\rightarrow$ `路由器 IP 转发`。
-- **协议层级归属避坑**：
-  - `RIP`、`BGP`、`DHCP`、`DNS` 属于 **应用层**；
-  - `OSPF`、`ICMP`、`IGMP`、`ARP`、`IP` 属于 **网络层**；
-  - 路由协议中：`RIP` 走 `UDP` (520)，`BGP` 走 `TCP` (179)，`OSPF` 走 `IP` (89)。
-:::
-
 </KP>
