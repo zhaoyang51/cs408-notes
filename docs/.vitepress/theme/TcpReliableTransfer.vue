@@ -219,8 +219,8 @@
 import { reactive } from 'vue'
 
 const openSections = reactive({
-  topo: true,   // 默认展开时序图
-  exam: true,   // 默认展开真题
+  topo: false,   // 默认展开时序图
+  exam: false,   // 默认展开真题
   rules: false  // 默认收起法则
 })
 

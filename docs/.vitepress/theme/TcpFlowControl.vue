@@ -194,8 +194,8 @@
 import { reactive } from 'vue'
 
 const openSections = reactive({
-  vis: true,    // 默认展开图解
-  exam: true,   // 默认展开真题
+  vis: false,    // 默认展开图解
+  exam: false,   // 默认展开真题
   timer: false  // 默认收起死锁扩展
 })
 

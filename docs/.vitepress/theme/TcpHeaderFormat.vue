@@ -281,8 +281,8 @@ import { reactive } from 'vue'
 
 const openSections = reactive({
   stream: false, // 默认收起流模型
-  header: true,  // 默认展开首部拓扑
-  flags: true    // 默认展开标志位速查
+  header: false,  // 默认展开首部拓扑
+  flags: false    // 默认展开标志位速查
 })
 
 const toggle = (key) => {

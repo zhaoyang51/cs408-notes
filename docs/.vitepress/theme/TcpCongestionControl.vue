@@ -347,10 +347,10 @@
 import { reactive } from 'vue'
 
 const openSections = reactive({
-  chart: true,  // 默认展开图解
-  frfr: true,   // 默认展开原理
+  chart: false,  // 默认展开图解
+  frfr: false,   // 默认展开原理
   traps: false, // 默认收起辨析
-  exam: true    // 默认展开真题
+  exam: false    // 默认展开真题
 })
 
 const toggle = (key) => {

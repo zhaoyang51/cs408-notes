@@ -306,9 +306,9 @@
 import { reactive } from 'vue'
 
 const openSections = reactive({
-  handshake: true, // 默认展开三次握手
-  exam39: true,    // 默认展开 2011 题 39
-  wave: true,      // 默认展开四次挥手
+  handshake: false, // 默认展开三次握手
+  exam39: false,    // 默认展开 2011 题 39
+  wave: false,      // 默认展开四次挥手
   msl: false       // 默认收起 2MSL 简答
 })
 
