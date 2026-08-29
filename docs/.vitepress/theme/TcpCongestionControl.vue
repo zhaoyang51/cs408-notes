@@ -8,7 +8,7 @@
         <h3 class="header-title">拥塞窗口演变规律：慢开始 (指数) vs 拥塞避免 (加法)</h3>
       </div>
       <div class="rule-tag">
-        超时重置：ssthresh = cwnd / 2，cwnd = 1
+        超时重置：ssthresh = 发生拥塞时的 cwnd / 2，cwnd = 1
       </div>
     </div>
 
@@ -20,41 +20,43 @@
       </div>
 
       <div class="svg-wrapper">
-        <svg viewBox="0 0 820 340" class="cc-svg" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 840 350" class="cc-svg" xmlns="http://www.w3.org/2000/svg">
           <!-- 背景网格线与坐标轴 -->
           <defs>
-            <!-- 慢开始绿色渐变 -->
             <linearGradient id="gradSlow" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"/>
               <stop offset="100%" stop-color="#10b981" stop-opacity="0.03"/>
             </linearGradient>
-            <!-- 拥塞避免橙色渐变 -->
             <linearGradient id="gradAvoid" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25"/>
               <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.03"/>
             </linearGradient>
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#db2777"/>
+            </marker>
           </defs>
 
           <!-- 水平网格线 (每2KB一条) -->
           <g class="grid-lines" stroke="var(--vp-c-border)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6">
-            <line x1="50" y1="280" x2="780" y2="280"/> <!-- 0 -->
-            <line x1="50" y1="250" x2="780" y2="250"/> <!-- 2 -->
-            <line x1="50" y1="220" x2="780" y2="220"/> <!-- 4 -->
-            <line x1="50" y1="190" x2="780" y2="190"/> <!-- 6 -->
-            <line x1="50" y1="160" x2="780" y2="160"/> <!-- 8 ssthresh -->
-            <line x1="50" y1="130" x2="780" y2="130"/> <!-- 10 -->
-            <line x1="50" y1="100" x2="780" y2="100"/> <!-- 12 -->
-            <line x1="50" y1="70" x2="780" y2="70"/>   <!-- 14 -->
-            <line x1="50" y1="40" x2="780" y2="40"/>   <!-- 16 -->
+            <line x1="50" y1="280" x2="790" y2="280"/> <!-- 0 -->
+            <line x1="50" y1="250" x2="790" y2="250"/> <!-- 2 -->
+            <line x1="50" y1="220" x2="790" y2="220"/> <!-- 4 -->
+            <line x1="50" y1="190" x2="790" y2="190"/> <!-- 6 -->
+            <line x1="50" y1="160" x2="790" y2="160"/> <!-- 8 ssthresh -->
+            <line x1="50" y1="130" x2="790" y2="130"/> <!-- 10 -->
+            <line x1="50" y1="100" x2="790" y2="100"/> <!-- 12 -->
+            <line x1="50" y1="70" x2="790" y2="70"/>   <!-- 14 -->
+            <line x1="50" y1="40" x2="790" y2="40"/>   <!-- 16 -->
           </g>
 
-          <!-- 区域填充色块 1: 前期慢开始 -->
+          <!-- 区域填充色块 1: 前期慢开始 (假设初始门限为8KB) -->
           <polygon points="50,280 50,265 85,250 120,220 155,160 155,280" fill="url(#gradSlow)"/>
-          <text x="80" y="220" fill="#10b981" font-size="12" font-weight="bold">慢开始</text>
+          <text x="80" y="235" fill="#10b981" font-size="11" font-weight="bold">慢开始</text>
+          <text x="80" y="248" fill="#10b981" font-size="9">(假设初始门限)</text>
 
           <!-- 区域填充色块 2: 前期拥塞避免 -->
           <polygon points="155,280 155,160 190,145 225,130 260,115 295,100 330,85 365,70 400,55 435,40 435,280" fill="url(#gradAvoid)"/>
-          <text x="270" y="75" fill="#d97706" font-size="13" font-weight="bold">拥塞避免 (线性加 1)</text>
+          <text x="270" y="75" fill="#d97706" font-size="12.5" font-weight="bold">拥塞避免 (每个 RTT 线性加 1)</text>
 
           <!-- 区域填充色块 3: 超时后慢开始 (第 12~15 轮) -->
           <polygon points="470,280 470,265 505,250 540,220 575,160 575,280" fill="url(#gradSlow)"/>
@@ -65,8 +67,9 @@
           <text x="575" y="105" fill="#d97706" font-size="11" font-weight="bold">拥塞避免</text>
 
           <!-- ssthresh 红色基准虚线 (8KB, y=160) -->
-          <line x1="50" y1="160" x2="780" y2="160" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="6,4"/>
-          <text x="55" y="152" fill="#ef4444" font-size="11" font-weight="bold">ssthresh 更新值 = 16 / 2 = 8 KB</text>
+          <line x1="50" y1="160" x2="790" y2="160" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="6,4"/>
+          <rect x="52" y="142" width="220" height="18" rx="3" fill="var(--vp-c-bg)" stroke="#ef4444" stroke-width="0.8"/>
+          <text x="56" y="155" fill="#ef4444" font-size="10.5" font-weight="bold">超时后更新门限 ssthresh = 16 / 2 = 8 KB</text>
 
           <!-- 折线 1: 前期演变 -->
           <polyline points="
@@ -97,7 +100,6 @@
           " fill="none" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 
           <!-- 各数据点圆圈与标签 -->
-          <!-- 前期数据点 -->
           <g fill="#2563eb">
             <circle cx="50" cy="265" r="3.5"/><text x="50" y="260" font-size="9" text-anchor="middle" fill="var(--vp-c-text-2)">1</text>
             <circle cx="85" cy="250" r="3.5"/><text x="85" y="245" font-size="9" text-anchor="middle" fill="var(--vp-c-text-2)">2</text>
@@ -114,7 +116,7 @@
 
           <!-- 超时发生红圈点 (435, 40) -->
           <circle cx="435" cy="40" r="6" fill="#ef4444"/>
-          <text x="435" y="30" font-size="11" font-weight="bold" text-anchor="middle" fill="#ef4444">16 (发生超时)</text>
+          <text x="435" y="28" font-size="11" font-weight="bold" text-anchor="middle" fill="#ef4444">16 (发生超时)</text>
 
           <!-- 超时后 4 个 RTT 的关键点 -->
           <g fill="#2563eb">
@@ -129,17 +131,17 @@
           <text x="610" y="137" font-size="12" font-weight="bold" text-anchor="middle" fill="#db2777">9 KB</text>
 
           <!-- 粉色箭头与提示说明 -->
-          <path d="M 680,185 L 625,155" fill="none" stroke="#db2777" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-          <rect x="630" y="190" width="165" height="42" rx="6" fill="rgba(219,39,119,0.12)" stroke="#db2777" stroke-width="1.2"/>
-          <text x="712" y="207" font-size="11" font-weight="bold" text-anchor="middle" fill="#db2777">超时后的第 4 个 RTT 后</text>
-          <text x="712" y="223" font-size="11" font-weight="bold" text-anchor="middle" fill="#db2777">拥塞窗口增长到 9 KB</text>
+          <path d="M 685,180 L 625,152" fill="none" stroke="#db2777" stroke-width="2" marker-end="url(#arrow)"/>
+          <rect x="635" y="185" width="165" height="42" rx="6" fill="rgba(219,39,119,0.12)" stroke="#db2777" stroke-width="1.2"/>
+          <text x="717" y="202" font-size="11" font-weight="bold" text-anchor="middle" fill="#db2777">超时后的第 4 个 RTT 后</text>
+          <text x="717" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#db2777">拥塞窗口增长到 9 KB</text>
 
           <!-- 坐标轴主体 -->
           <g stroke="var(--vp-c-text-1)" stroke-width="1.5">
             <!-- Y 轴 -->
             <line x1="50" y1="280" x2="50" y2="20"/>
             <!-- X 轴 -->
-            <line x1="50" y1="280" x2="790" y2="280"/>
+            <line x1="50" y1="280" x2="800" y2="280"/>
           </g>
 
           <!-- Y 轴标签 -->
@@ -157,7 +159,7 @@
           </g>
 
           <!-- X 轴刻度 (0..20) -->
-          <text x="785" y="295" font-size="10.5" font-weight="bold" fill="var(--vp-c-text-1)">传输轮次 (RTT)</text>
+          <text x="795" y="295" font-size="10.5" font-weight="bold" fill="var(--vp-c-text-1)">传输轮次</text>
           <g font-size="9" text-anchor="middle" fill="var(--vp-c-text-2)">
             <text x="50" y="295">0</text>
             <text x="85" y="295">1</text>
@@ -201,6 +203,18 @@
         <div class="opt-item">B. 8KB</div>
         <div class="opt-item opt-correct"><strong>C. 9KB</strong> <span class="correct-badge">✔ 正确答案</span></div>
         <div class="opt-item">D. 16KB</div>
+      </div>
+
+      <!-- 核心审题与破题说明 -->
+      <div class="exam-insight-box">
+        <div class="insight-title">💡 关键审题与破题点（关于初始 ssthresh 的说明）：</div>
+        <div class="insight-content">
+          <p>1. <strong>初始门限不影响解题</strong>：题目中<strong>并未给出第 11 轮超时发生前的初始慢开始门限是多少</strong>。图示中假设初始门限为 8KB 仅为绘图演示。实际上，一开始的 $ssthresh$ 无论是 8KB、16KB 还是 32KB，对本题的解答<strong>毫无影响</strong>。</p>
+          <p>2. <strong>超时门限更新法则</strong>：根据 TCP 拥塞控制协议规范，无论超时发生前的状态如何，<strong>一旦在 $cwnd = 16\text{KB}$ 时发生了网络超时</strong>，新的慢开始门限必然被更新为<strong>发生拥塞时拥塞窗口的一半</strong>，即：
+             $$\text{更新后的慢开始门限 } ssthresh = \frac{\text{发生拥塞时的 } cwnd}{2} = \frac{16\text{KB}}{2} = \mathbf{8\text{KB}}$$
+             同时拥塞窗口重置为 $\mathbf{cwnd = 1\text{KB}}$，并重新执行慢开始算法。</p>
+          <p>3. <strong>推导起点</strong>：后续接下来的 4 个 RTT 的计算，全部严格以此<strong>超时重置时刻（$ssthresh = 8\text{KB}, cwnd = 1\text{KB}$）作为独立起点</strong>展开推导！</p>
+        </div>
       </div>
 
       <!-- 4 个 RTT 逐轮演化推导表 -->
@@ -469,6 +483,37 @@
   color: #ffffff;
   padding: 1px 4px;
   border-radius: 3px;
+}
+
+/* 审题与破题点卡片 */
+.exam-insight-box {
+  background: var(--vp-c-bg);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.insight-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+.insight-content {
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+
+.insight-content p {
+  margin: 4px 0;
+}
+
+.insight-content strong {
+  color: var(--vp-c-text-1);
 }
 
 /* 4 个 RTT 演化推导表格 */
