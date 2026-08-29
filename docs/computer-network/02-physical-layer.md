@@ -1,7 +1,7 @@
 # 第2章 物理层与通信基础
 
 <span class="badge badge-trap">🎯 纯选择题得分高地</span>
-<span class="badge badge-freq">📊 考频 17 次（奈氏香农 7 / 编码调制 5 / 传输介质 5）</span>
+<span class="badge badge-freq">📊 考频 17 次（奈氏香农 7 / 编码调制 5 / 差错控制 5）</span>
 
 ---
 
@@ -44,5 +44,15 @@ $$
 <KP author="Zhao" title="📡 信道复用技术交互式教学实验室（时分复用 vs 频分复用）" tag="⭐️ 考研必背">
 
 <MultiplexingSimulator />
+
+</KP>
+
+---
+
+## 4. 差错检验与纠错技术全景仿真（奇偶校验 vs CRC vs 海明码） <AuthorTag author="Zhao" />
+
+<KP author="Zhao" title="🛡️ 三大差错控制机制实验室（奇偶校验 / 模2除法CRC / 海明码精确定位与修复）" tag="⭐️ 考研必背">
+
+<ErrorCheckSimulator />
 
 </KP>

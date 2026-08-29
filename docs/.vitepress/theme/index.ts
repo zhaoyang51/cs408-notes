@@ -12,6 +12,7 @@ import ProtocolStackMap from './ProtocolStackMap.vue'
 import NetworkMetrics from './NetworkMetrics.vue'
 import EncodingModulation from './EncodingModulation.vue'
 import MultiplexingSimulator from './MultiplexingSimulator.vue'
+import ErrorCheckSimulator from './ErrorCheckSimulator.vue'
 import { h } from 'vue'
 
 export default {
@@ -41,5 +42,6 @@ export default {
     app.component('NetworkMetrics', NetworkMetrics)
     app.component('EncodingModulation', EncodingModulation)
     app.component('MultiplexingSimulator', MultiplexingSimulator)
+    app.component('ErrorCheckSimulator', ErrorCheckSimulator)
   }
 }
