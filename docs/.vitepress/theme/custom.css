@@ -55,6 +55,9 @@
 
   --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
   --card-hover-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.12);
+
+  --vp-sidebar-bg-color: #ffffff;
+  --vp-nav-bg-color: #ffffff;
 }
 
 /* 🌙 深色夜间模式 */
@@ -80,6 +83,9 @@
   --vp-code-block-bg: #0d1424;
   --vp-code-bg: #1e293b;
   --vp-code-color: #e2e8f0;
+
+  --vp-sidebar-bg-color: #090d16;
+  --vp-nav-bg-color: #090d16;
 
   --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
   --card-hover-shadow: 0 12px 30px -4px rgba(59, 130, 246, 0.2);
@@ -119,6 +125,37 @@ html.parchment {
 /* 隐藏默认双态切换器 */
 .VPSwitchAppearance {
   display: none !important;
+}
+
+/* ── 顶部导航栏整体不透明与左上角标题背景统一定制 ── */
+.VPNav,
+.VPNavBar,
+.VPNavBar .wrapper,
+.VPNavBar .container,
+.VPNavBar .title,
+.VPNavBar.has-sidebar .title,
+.VPNavBarTitle,
+.VPNavBar .content,
+.VPNavBar .content-body {
+  background-color: var(--vp-nav-bg-color, var(--vp-c-bg)) !important;
+}
+
+.VPNavBar.has-sidebar .title {
+  background-color: var(--vp-nav-bg-color, var(--vp-c-bg)) !important;
+  border-bottom: 1px solid var(--vp-c-gutter) !important;
+}
+
+.VPNavBar {
+  border-bottom: 1px solid var(--vp-c-gutter) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.dark .VPNavBar {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+html.parchment .VPNavBar {
+  box-shadow: 0 1px 6px rgba(92, 71, 49, 0.08);
 }
 
 /* ── 优化侧边栏与正文视区布局 ── */
