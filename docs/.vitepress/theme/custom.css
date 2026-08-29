@@ -5,9 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
 :root {
-  /* 基础布局宽度：让大屏下侧边栏紧贴左侧，告别中间居中两侧留大白边 */
+  /* 基础布局全宽，侧边栏贴靠最左侧 */
   --vp-layout-max-width: 100% !important;
-  --vp-sidebar-width: 280px;
+  --vp-sidebar-width: 270px;
 
   /* 基础字体与排版 (15px 正文，1.75 行高) */
   --vp-font-family-base: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -121,9 +121,9 @@ html.parchment {
   display: none !important;
 }
 
-/* ── 优化侧边栏布局：左靠与可收起体验 ── */
+/* ── 优化侧边栏与正文视区布局 (更宽的正文，靠右的本页大纲) ── */
 @media (min-width: 960px) {
-  /* 侧边栏贴靠左侧 */
+  /* 侧边栏贴靠最左侧 */
   .VPSidebar {
     left: 0 !important;
     width: var(--vp-sidebar-width) !important;
@@ -149,9 +149,47 @@ html.parchment {
     padding-left: 0 !important;
   }
 
-  /* 内容区最大宽度限制，保证舒适阅读视距 */
+  /* 正文容器全宽拉伸，充分利用大屏幕 */
   .VPDoc.has-sidebar .container {
-    max-width: 1040px !important;
+    max-width: 100% !important;
+    padding-left: 36px !important;
+    padding-right: 28px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+
+  /* 中间知识点内容区大幅加宽 */
+  .VPDoc.has-sidebar .content {
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 240px) !important;
+    padding-right: 40px !important;
+  }
+
+  .VPDoc.has-sidebar .content-container {
+    max-width: 1240px !important; /* 知识点大幅变宽 */
+    margin: 0 !important;
+  }
+
+  /* 右侧「本页大纲 (TOC)」靠右侧贴近边缘 */
+  .VPDoc.has-aside .aside {
+    width: 220px !important;
+    flex-shrink: 0 !important;
+    padding-left: 12px !important;
+    padding-right: 8px !important;
+  }
+
+  .VPDocAsideOutline .outline-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--vp-c-text-1);
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPDoc.has-sidebar .content-container {
+    max-width: 1380px !important; /* 超宽屏下知识点内容更舒展 */
   }
 }
 
@@ -222,7 +260,7 @@ html.parchment .badge-formula { background: #e0f2fe; color: #0369a1; border-colo
 .dark .badge-freq { background: rgba(16, 185, 129, 0.25); color: #34d399; border-color: rgba(16, 185, 129, 0.5); }
 html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 
-/* ── 现代高密度斑马纹对比表格（精准宽度与不换行） ── */
+/* ── 现代高密度斑马纹对比表格 ── */
 .vp-doc table {
   width: 100%;
   border-collapse: separate;
@@ -249,7 +287,6 @@ html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: 
   color: var(--vp-c-text-2);
 }
 
-/* 最后一列（速查链接列）宽度加宽且不换行，视觉更舒展 */
 .vp-doc th:last-child,
 .vp-doc td:last-child {
   min-width: 100px !important;
