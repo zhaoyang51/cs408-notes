@@ -1,34 +1,34 @@
 <template>
-  <div class="theme-switcher">
+  <div class="theme-segmented-control" role="radiogroup" aria-label="选择站点阅读主题">
     <button 
-      class="theme-btn" 
+      class="segment-btn" 
       :class="{ active: currentTheme === 'light' }" 
       @click="setTheme('light')" 
-      title="浅白模式"
-      aria-label="浅白模式"
+      title="浅色模式 (Light)"
+      aria-label="浅色模式"
     >
       <span class="icon">☀️</span>
-      <span class="label">浅色</span>
+      <span class="text">浅白</span>
     </button>
     <button 
-      class="theme-btn parchment-btn" 
+      class="segment-btn parchment-btn" 
       :class="{ active: currentTheme === 'parchment' }" 
       @click="setTheme('parchment')" 
-      title="羊皮纸护眼模式"
-      aria-label="羊皮纸护眼模式"
+      title="羊皮纸温润护眼模式 (Parchment)"
+      aria-label="羊皮纸温润护眼模式"
     >
       <span class="icon">📜</span>
-      <span class="label">羊皮纸</span>
+      <span class="text">羊皮纸</span>
     </button>
     <button 
-      class="theme-btn" 
+      class="segment-btn" 
       :class="{ active: currentTheme === 'dark' }" 
       @click="setTheme('dark')" 
-      title="深色夜间模式"
-      aria-label="深色夜间模式"
+      title="深色暗黑夜间模式 (Dark)"
+      aria-label="深色暗黑夜间模式"
     >
       <span class="icon">🌙</span>
-      <span class="label">深色</span>
+      <span class="text">暗黑</span>
     </button>
   </div>
 </template>
@@ -73,56 +73,56 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.theme-switcher {
+.theme-segmented-control {
   display: inline-flex;
   align-items: center;
   background: var(--vp-c-bg-soft);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 20px;
+  border-radius: 9999px;
   padding: 2px 3px;
-  margin-left: 10px;
+  margin-left: 12px;
   gap: 2px;
-  user-select: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
 }
 
-.theme-btn {
+.segment-btn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   border: none;
   background: transparent;
-  padding: 3px 8px;
-  border-radius: 14px;
+  padding: 4px 10px;
+  border-radius: 9999px;
   font-size: 12px;
   font-weight: 500;
   color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1.2;
 }
 
-.theme-btn:hover {
+.segment-btn:hover {
   color: var(--vp-c-text-1);
 }
 
-.theme-btn.active {
+.segment-btn.active {
   background: var(--vp-c-bg);
   color: var(--vp-c-brand-1);
-  font-weight: 600;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.theme-btn.parchment-btn.active {
-  background: #f4ebd6;
+.segment-btn.parchment-btn.active {
+  background: #fdf6e7;
   color: #8c5324;
 }
 
 @media (max-width: 768px) {
-  .theme-btn .label {
+  .segment-btn .text {
     display: none;
   }
-  .theme-btn {
-    padding: 3px 6px;
+  .segment-btn {
+    padding: 4px 6px;
   }
 }
 </style>

@@ -1,105 +1,406 @@
+/* ══════════════════════════════════════════════════════════════════
+   408 考研简纲 · 现代技术文档与沉浸式应试排版系统 (Nextra / Tailwind UI 风格)
+   ══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
 :root {
+  /* 基础字体与排版 (15px 正文，1.75 行高) */
+  --vp-font-family-base: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+
+  /* 408 四门科目专属模块色彩系统 */
+  --subject-ds: #10b981;      /* 🟢 数据结构: Emerald */
+  --subject-ds-soft: rgba(16, 185, 129, 0.12);
+  --subject-ds-border: rgba(16, 185, 129, 0.35);
+
+  --subject-co: #3b82f6;      /* 🔵 计算机组成原理: Blue/Indigo */
+  --subject-co-soft: rgba(59, 130, 246, 0.12);
+  --subject-co-border: rgba(59, 130, 246, 0.35);
+
+  --subject-os: #8b5cf6;      /* 🟣 操作系统: Purple/Violet */
+  --subject-os-soft: rgba(139, 92, 246, 0.12);
+  --subject-os-border: rgba(139, 92, 246, 0.35);
+
+  --subject-cn: #f59e0b;      /* 🟠 计算机网络: Amber/Orange */
+  --subject-cn-soft: rgba(245, 158, 11, 0.12);
+  --subject-cn-border: rgba(245, 158, 11, 0.35);
+
+  /* ☀️ 浅色模式调色板 (Tailwind Slate/Zinc 清爽风) */
   --vp-c-brand-1: #2563eb;
   --vp-c-brand-2: #3b82f6;
   --vp-c-brand-3: #60a5fa;
-  --vp-c-brand-soft: rgba(37, 99, 235, 0.12);
-  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  --vp-font-family-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.08);
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f8fafc;
+  --vp-c-bg-alt: #f1f5f9;
+  --vp-c-bg-elv: #ffffff;
+
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #334155;
+  --vp-c-text-3: #64748b;
+
+  --vp-c-divider: #e2e8f0;
+  --vp-c-gutter: #e2e8f0;
+  --vp-c-border: #cbd5e1;
+
+  --vp-code-block-bg: #f8fafc;
+  --vp-code-bg: #f1f5f9;
+  --vp-code-color: #0f172a;
+
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.12);
 }
 
-/* 🌙 深色夜间模式 */
+/* 🌙 深色夜间模式 (Nextra/Vercel 深邃暗黑) */
 .dark {
   --vp-c-brand-1: #3b82f6;
   --vp-c-brand-2: #60a5fa;
   --vp-c-brand-3: #93c5fd;
-  --vp-c-brand-soft: rgba(59, 130, 246, 0.16);
-  --vp-c-bg: #0f172a;
-  --vp-c-bg-soft: #1e293b;
-  --vp-c-bg-alt: #0b1120;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.15);
+
+  --vp-c-bg: #090d16;
+  --vp-c-bg-soft: #111827;
+  --vp-c-bg-alt: #0d131f;
+  --vp-c-bg-elv: #172033;
+
+  --vp-c-text-1: #f8fafc;
+  --vp-c-text-2: #cbd5e1;
+  --vp-c-text-3: #94a3b8;
+
+  --vp-c-divider: #1e293b;
+  --vp-c-gutter: #1e293b;
+  --vp-c-border: #334155;
+
+  --vp-code-block-bg: #0d1424;
+  --vp-code-bg: #1e293b;
+  --vp-code-color: #e2e8f0;
+
+  --card-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: 0 12px 30px -4px rgba(59, 130, 246, 0.2);
 }
 
-/* 📜 羊皮纸复古护眼模式 */
+/* 📜 羊皮纸复古护眼模式 (Kindle / 书籍阅读温润质感) */
 html.parchment {
-  --vp-c-bg: #f7eed8;
-  --vp-c-bg-soft: #ede0c6;
-  --vp-c-bg-alt: #f0e6cd;
-  --vp-c-bg-elv: #fbf5e7;
-  
-  --vp-c-text-1: #382c1e;
-  --vp-c-text-2: #63523f;
-  --vp-c-text-3: #927e69;
-  
   --vp-c-brand-1: #9a5b28;
   --vp-c-brand-2: #b46b32;
   --vp-c-brand-3: #cf7e3e;
   --vp-c-brand-soft: rgba(154, 91, 40, 0.15);
-  
-  --vp-c-divider: #e0d1b5;
-  --vp-c-gutter: #e0d1b5;
-  --vp-c-border: #ded1b8;
-  
-  --vp-c-default-1: #ede0c6;
-  --vp-c-default-2: #e3d4b6;
-  --vp-c-default-3: #dac9a8;
-  --vp-c-default-soft: rgba(222, 209, 184, 0.5);
 
-  --vp-code-block-bg: #ebe0c8;
-  --vp-code-bg: #ede0c6;
-  --vp-code-color: #6b2e05;
+  --vp-c-bg: #f6eedb;
+  --vp-c-bg-soft: #ebdfc4;
+  --vp-c-bg-alt: #eee3cb;
+  --vp-c-bg-elv: #fbf5e7;
 
-  --vp-custom-block-tip-border: #9a5b28;
-  --vp-custom-block-tip-text: #78350f;
-  --vp-custom-block-tip-bg: rgba(154, 91, 40, 0.12);
-  
-  --vp-sidebar-bg-color: #f3e8d2;
-  --vp-nav-bg-color: #f7eed8;
+  --vp-c-text-1: #342618;
+  --vp-c-text-2: #5c4731;
+  --vp-c-text-3: #8a735a;
+
+  --vp-c-divider: #dfd0b2;
+  --vp-c-gutter: #dfd0b2;
+  --vp-c-border: #d4c3a2;
+
+  --vp-code-block-bg: #e7dac0;
+  --vp-code-bg: #ebdcc3;
+  --vp-code-color: #5c2c06;
+
+  --vp-sidebar-bg-color: #f1e6ce;
+  --vp-nav-bg-color: #f6eedb;
+
+  --card-shadow: 0 4px 16px -2px rgba(92, 71, 49, 0.08);
+  --card-hover-shadow: 0 10px 24px -4px rgba(154, 91, 40, 0.18);
 }
 
-/* 隐藏默认双态切换器，避免冲突 */
+/* 隐藏默认双态切换器 */
 .VPSwitchAppearance {
   display: none !important;
 }
 
-/* Hero Badge */
-.tag-badge {
+/* ── 正文排版与呼吸感 ── */
+.vp-doc {
+  font-size: 15px;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+.vp-doc h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--vp-c-text-1) 30%, var(--vp-c-brand-1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vp-doc h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--vp-c-divider);
+  padding-bottom: 8px;
+  margin-top: 36px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vp-doc h3 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.vp-doc p, .vp-doc li {
+  margin: 8px 0;
+}
+
+/* ── 408 核心考研徽章 (Exam Badges) ── */
+.badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 8px;
+  padding: 3px 10px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 9999px;
-  margin-right: 6px;
-}
-.badge-red { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
-.badge-blue { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
-.badge-green { background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
-.badge-orange { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
-.badge-purple { background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
-
-/* Custom Tip Box */
-.custom-block.tip {
-  border-color: var(--vp-c-brand-1);
-  background-color: var(--vp-c-brand-soft);
-  border-radius: 8px;
+  line-height: 1.2;
+  vertical-align: middle;
+  margin: 2px 4px 2px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-/* Tables */
+/* ⭐️ 必考大题 / 主观题 */
+.badge-star {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.dark .badge-star { background: rgba(239, 68, 68, 0.25); color: #f87171; border-color: rgba(239, 68, 68, 0.5); }
+html.parchment .badge-star { background: #fde8e8; color: #c53030; border-color: #feb2b2; }
+
+/* ⚠️ 经典陷阱 */
+.badge-trap {
+  background: rgba(245, 158, 11, 0.15);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.dark .badge-trap { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border-color: rgba(245, 158, 11, 0.5); }
+html.parchment .badge-trap { background: #fef3c7; color: #b45309; border-color: #fcd34d; }
+
+/* 💡 秒杀公式 / 解题口诀 */
+.badge-formula {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+.dark .badge-formula { background: rgba(59, 130, 246, 0.25); color: #60a5fa; border-color: rgba(59, 130, 246, 0.5); }
+html.parchment .badge-formula { background: #e0f2fe; color: #0369a1; border-color: #7dd3fc; }
+
+/* 📊 考频徽章 */
+.badge-freq {
+  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.dark .badge-freq { background: rgba(16, 185, 129, 0.25); color: #34d399; border-color: rgba(16, 185, 129, 0.5); }
+html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+
+/* ── 现代高密度斑马纹对比表格 ── */
 .vp-doc table {
   width: 100%;
-  display: table;
-  border-collapse: collapse;
-  margin: 16px 0;
-  border-radius: 8px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
   overflow: hidden;
+  font-size: 14px;
 }
+
 .vp-doc th {
-  background-color: var(--vp-c-bg-soft);
-  font-weight: 600;
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+  padding: 12px 16px;
   text-align: left;
-  padding: 10px 14px;
+  border-bottom: 2px solid var(--vp-c-divider);
 }
+
 .vp-doc td {
-  padding: 10px 14px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc tr:last-child td {
+  border-bottom: none;
+}
+
+.vp-doc tr:nth-child(even) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc tr:hover {
+  background-color: var(--vp-c-brand-soft);
+}
+
+/* ── 核心公式高亮卡片 (Formula Box) ── */
+.formula-card {
+  border-left: 4px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-top: 1px solid var(--vp-c-divider);
+  border-right: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.formula-card .title {
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+/* ── 考点自测与自查背诵折叠组件 ── */
+details.self-test {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 16px 0;
+  transition: all 0.25s ease;
+}
+
+details.self-test[open] {
+  background: var(--vp-c-bg-elv);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.06);
+}
+
+details.self-test summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  user-select: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+details.self-test summary:hover {
+  color: var(--vp-c-brand-1);
+}
+
+details.self-test .answer-content {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--vp-c-divider);
+  font-size: 14.5px;
+}
+
+/* ── 首页科目专属卡片网格 (Nextra / Tailwind UI 风格) ── */
+.home-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 18px;
+  margin: 28px 0;
+}
+
+.subject-card {
+  position: relative;
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 14px;
+  padding: 22px;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.subject-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.subject-card.ds::before { background: linear-gradient(90deg, #10b981, #059669); }
+.subject-card.co::before { background: linear-gradient(90deg, #3b82f6, #4f46e5); }
+.subject-card.os::before { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+.subject-card.cn::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+
+.subject-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.subject-card.ds:hover { border-color: var(--subject-ds); }
+.subject-card.co:hover { border-color: var(--subject-co); }
+.subject-card.os:hover { border-color: var(--subject-os); }
+.subject-card.cn:hover { border-color: var(--subject-cn); }
+
+.subject-card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.subject-card .subject-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+}
+
+.subject-card .score-pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.subject-card .desc {
+  font-size: 13.5px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.subject-card .footer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── 移动端底栏沉浸适配 ── */
+@media (max-width: 768px) {
+  .vp-doc {
+    font-size: 14.5px;
+  }
+  .vp-doc table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .home-card-grid {
+    grid-template-columns: 1fr;
+  }
 }

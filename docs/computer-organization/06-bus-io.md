@@ -1,16 +1,21 @@
 # 第6章 总线与输入输出系统
 
-## 1. I/O 控制方式对比表（408 核心重点）
-
-| 方式 | CPU 参与程度 | 数据传送通路 | 适用场景 |
-|:---|:---|:---|:---|
-| **程序查询** | 全程忙等查询状态字 | 内存 $\leftrightarrow$ CPU $\leftrightarrow$ 设备 | 低速设备 |
-| **程序中断** | 设备就绪后发中断响应 | 内存 $\leftrightarrow$ CPU $\leftrightarrow$ 设备 | 中低速、实时响应 |
-| **DMA 方式** | 仅在预置和结束时介入 | **内存 $\leftrightarrow$ 设备** (直接传送) | 高速块设备 (磁盘/网卡) |
-| **通道方式** | 硬件通道自主执行通道程序 | 内存 $\leftrightarrow$ 设备 | 大型机大型系统 |
+<span class="badge badge-star">⭐️ 中断与 DMA 综合必考</span>
+<span class="badge badge-freq">📊 考频 ★★★★☆</span>
 
 ---
 
-## 2. 中断处理流程
+## 1. 4 大 I/O 控制方式全景对比
 
-1. 关中断 $\rightarrow$ 2. 保存断点 (PC/PSW) $\rightarrow$ 3. 引出中断服务程序 $\rightarrow$ 4. 开中断 $\rightarrow$ 5. 执行服务程序 $\rightarrow$ 6. 关中断 $\rightarrow$ 7. 恢复现场 $\rightarrow$ 8. 开中断返回。
+| I/O 方式 | CPU 参与程度 | 数据传输通路 | 核心适用场景 |
+|:---|:---|:---|:---|
+| **程序查询** | 全程忙碌轮询状态字 | 内存 $\leftrightarrow$ CPU $\leftrightarrow$ 设备 | 极低速设备 |
+| **程序中断** | 设备就绪后发起中断请求 | 内存 $\leftrightarrow$ CPU $\leftrightarrow$ 设备 | 键盘、鼠标等字符设备 |
+| **DMA 方式** | **仅在预置和结束时由 CPU 介入** | **内存 $\leftrightarrow$ 设备 (直接传输)** | 磁盘、网卡等高速块设备 |
+| **通道方式** | 硬件通道自主执行通道程序 | 内存 $\leftrightarrow$ 设备 | 大型机大规模 I/O 系统 |
+
+---
+
+## 2. 中断处理流程 8 步曲
+
+$$\text{1. 关中断} \rightarrow \text{2. 保存断点(PC/PSW)} \rightarrow \text{3. 引出中断服务程序} \rightarrow \text{4. 开中断(允许嵌套)} \rightarrow \text{5. 执行中断处理} \rightarrow \text{6. 关中断} \rightarrow \text{7. 恢复现场} \rightarrow \text{8. 开中断并返回}$$
