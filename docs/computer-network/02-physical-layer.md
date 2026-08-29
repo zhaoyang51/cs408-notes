@@ -13,13 +13,13 @@ $$
 \text{奈氏准则 (无噪声极限)} = 2W \log_2(V) \quad (\text{b/s})
 $$
 
-  
+
 
 $$
 \text{香农公式 (有噪声极限)} = W \log_2(1 + S/N) \quad (\text{b/s})
 $$
 
-  
+
 
 $$
 \text{信噪比分贝数转换} : \text{dB} = 10 \log_{10}(S/N) \iff S/N = 10^{\text{dB}/10}
