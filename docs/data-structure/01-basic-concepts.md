@@ -45,7 +45,7 @@ $$
 2. **若 $\log_b a = d$**：$T(n) = O(n^d \log n)$
 3. **若 $\log_b a \lt d$**：$T(n) = O(n^d)$
 
-> 典型例题：归并排序 $T(n) = 2T(n/2) + O(n)$，$\log_2 2 = 1 = d \implies O(n \log n)$。
+> 典型例题：归并排序 $T(n) = 2T(n/2) + O(n)$，$\log_2 2 = 1 = d \Rightarrow O(n \log n)$。
 
 </KP>
 
