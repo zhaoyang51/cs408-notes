@@ -20,6 +20,7 @@ import TcpConnectionManagement from './TcpConnectionManagement.vue'
 import TcpHeaderFormat from './TcpHeaderFormat.vue'
 import DnsQuerySimulator from './DnsQuerySimulator.vue'
 import FtpConnectionModel from './FtpConnectionModel.vue'
+import EmailProtocolSimulator from './EmailProtocolSimulator.vue'
 import { h } from 'vue'
 
 export default {
@@ -57,5 +58,6 @@ export default {
     app.component('TcpHeaderFormat', TcpHeaderFormat)
     app.component('DnsQuerySimulator', DnsQuerySimulator)
     app.component('FtpConnectionModel', FtpConnectionModel)
+    app.component('EmailProtocolSimulator', EmailProtocolSimulator)
   }
 }
