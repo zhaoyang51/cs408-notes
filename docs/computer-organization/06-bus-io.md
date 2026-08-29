@@ -16,29 +16,23 @@
 
 ---
 
-## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段）
+## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段） <AuthorTag author="Zhao" />
 
-<span class="badge badge-zhao">👤 Zhao 创建</span>
-<AuthorTag author="Zhao" />
+<div data-author="zhao" class="author-zhao" style="display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:9999px; font-size:12px; font-weight:700; margin-bottom:14px;">
+  <span>👤 知识点归纳贡献者：Zhao</span>
+</div>
 
-<KP author="Zhao" title="💡 中断处理 10 步全景流程（硬件隐指令 vs 软件内核例程）" tag="大题核心考点">
+<ProcessTable 
+  title="中断处理全景十步流程（硬件隐指令 vs 软件中断服务程序）"
+  stageHeader="阶段划分"
+  stepHeader="具体处理步骤"
+  hardwareTitle="中断隐指令"
+  hardwareSubtitle="硬件自动完成"
+  softwareTitle="中断服务程序"
+  softwareSubtitle="操作系统内核执行"
+/>
 
-```text
-                ┌── ① 关中断 (硬件关闭可屏蔽外中断，保护断点)
-                ├── ② 保存断点与状态 (硬件将 PC、PSW 压入内核栈)
-硬件阶段 ──────┤
-(中断隐指令)    ├── ③ 寻找入口地址 (硬件根据中断向量号查表获取向量地址)
-                └── ④ 状态切换与跳转 (将 CPU 切换为内核态，PC 指向服务程序)
-
-                ┌── ⑤ 保护现场 (软件用指令保存通用寄存器、保存旧中断屏蔽字)
-                ├── ⑥ 设置新中断屏蔽字 (实现多重中断优先级控制与屏蔽低级中断)
-软件阶段 ───────┼── ⑦ 开中断 (允许更高级别中断嵌套抢占)
-(操作系统内核)   ├── ⑧ 执行中断服务例程 (处理具体 I/O、缺页、异常等核心业务)
-                ├── ⑨ 关中断 → 恢复现场 (恢复通用寄存器与旧屏蔽字)
-                └── ⑩ 开中断 → 中断返回 (执行 iret 特权指令恢复现场并返回断点)
-```
-
-</KP>
+<InterruptSimulator />
 
 ### 🎯 硬件阶段 vs 软件阶段核心命题辨析表
 
