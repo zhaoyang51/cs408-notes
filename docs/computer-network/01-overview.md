@@ -5,27 +5,13 @@
 
 ---
 
-## 1. 计算机网络 8 大性能指标与核心计算
+## 1. 计算机网络 8 大性能指标全景 <AuthorTag author="Zhao" />
+
+<KP author="Zhao" title="📊 计算机网络 8 大性能指标全景图解" tag="⭐️ 考研必背">
 
 <NetworkMetrics />
 
-### 📐 4 大时延与时延带宽积核心计算公式
-
-$$
-\text{总时延 } D = \text{发送时延 } D_t + \text{传播时延 } D_p + \text{处理时延 } D_r + \text{排队时延 } D_q
-$$
-
-$$
-\text{发送时延 (传输时延)} = \frac{\text{分组/数据帧长度 (bit)}}{\text{发送速率 (b/s)}}
-$$
-
-$$
-\text{传播时延} = \frac{\text{物理信道长度 (m)}}{\text{电磁波在介质中的传播速率 (m/s)}} \quad (\text{光纤/铜线中 } v \approx 2.0 \times 10^8 \text{ m/s})
-$$
-
-$$
-\text{时延带宽积} = \text{传播时延} \times \text{信道带宽 (单位: bit)}
-$$
+</KP>
 
 ---
 
