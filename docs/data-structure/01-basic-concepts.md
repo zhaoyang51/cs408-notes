@@ -3,6 +3,7 @@
 <span class="badge badge-freq">📊 考频 ★★★★☆</span>
 <span class="badge badge-trap">⚠️ 易错概念辨析</span>
 
+
 ---
 
 ## 1. 数据结构三要素
@@ -29,10 +30,19 @@
 
 ## 3. 渐近时间复杂度分析
 
-<div class="formula-card">
-  <div class="title">💡 阶数大小比较（必背口诀）</div>
-  $$O(1) \lt O(\log_2 n) \lt O(n) \lt O(n \log_2 n) \lt O(n^2) \lt O(n^3) \lt O(2^n) \lt O(n!) \lt O(n^n)$$
-</div>
+
+$$
+O(1) \lt O(\log_2 n) \lt O(n) \lt O(n \log_2 n) \lt O(n^2) \lt O(n^3) \lt O(2^n) \lt O(n!) \lt O(n^n)
+$$
+
+
+对于递推形式 $T(n) = a T(n/b) + O(n^d)$，比较 $\log_b a$ 与 $d$：
+1. **若 $\log_b a \gt d$**：$T(n) = O(n^{\log_b a})$
+2. **若 $\log_b a = d$**：$T(n) = O(n^d \log n)$
+3. **若 $\log_b a \lt d$**：$T(n) = O(n^d)$
+
+> 典型例题：归并排序 $T(n) = 2T(n/2) + O(n)$，$\log_2 2 = 1 = d \implies O(n \log n)$。
+
 
 ::: tip ⚠️ 经典命题陷阱
 1. **循环变量倍增**：`for(int i=1; i<n; i*=2)` 执行次数为 $\lfloor \log_2 n \rfloor + 1$，复杂度为 $O(\log_2 n)$。
@@ -40,12 +50,14 @@
 3. **原地工作 (In-place)**：空间复杂度为 $O(1)$，并非不消耗内存，而是辅助空间不随输入规模 $n$ 增长。
 :::
 
-<details class="self-test">
+<details class="self-test author-zhao" data-author="Zhao">
   <summary>
     <span class="badge badge-star">⭐️ 考点自测</span>
+    <span class="badge badge-zhao">Zhao</span>
     <span>已知某算法递推式为 $T(n) = T(n-1) + n$，求时间复杂度？</span>
   </summary>
   <div class="answer-content">
     <p>通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。</p>
   </div>
 </details>
+

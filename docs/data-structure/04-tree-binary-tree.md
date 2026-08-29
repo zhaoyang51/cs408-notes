@@ -7,16 +7,15 @@
 
 ## 1. 二叉树 5 大核心性质
 
-<div class="formula-card">
-  <div class="title">💡 二叉树核心性质与公式速查</div>
-  <ul>
+::: info 💡 二叉树核心性质与公式速查
+<ul>
     <li><strong>叶子与双分支结点关系</strong>：$n_0 = n_2 + 1$（对任意二叉树恒成立）。</li>
     <li><strong>第 $i$ 层最大结点数</strong>：$2^{i-1}$。</li>
     <li><strong>高度为 $h$ 的最大总结点数</strong>：$2^h - 1$。</li>
     <li><strong>完全二叉树高度</strong>：$h = \lfloor \log_2 n \rfloor + 1 = \lceil \log_2(n+1) \rceil$。</li>
     <li><strong>完全二叉树编号关系</strong>：结点 $i$ 的左孩子为 $2i$，右孩子为 $2i+1$，父结点为 $\lfloor i/2 \rfloor$。</li>
   </ul>
-</div>
+:::
 
 ---
 

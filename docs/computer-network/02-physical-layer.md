@@ -7,12 +7,31 @@
 
 ## 1. 极限数据传输速率推导（必背公式）
 
-<div class="formula-card">
-  <div class="title">💡 极限数据率双公式速查</div>
-  $$\text{奈氏准则 (无噪声极限)} = 2W \log_2(V) \quad (\text{b/s})$$
-  $$\text{香农公式 (有噪声极限)} = W \log_2(1 + S/N) \quad (\text{b/s})$$
-  $$\text{信噪比分贝数转换} : \text{dB} = 10 \log_{10}(S/N) \iff S/N = 10^{\text{dB}/10}$$
-</div>
+::: info 💡 极限数据率双公式速查
+
+
+$$
+\text{奈氏准则 (无噪声极限)} = 2W \log_2(V) \quad (\text{b/s})
+$$
+
+
+  
+
+
+$$
+\text{香农公式 (有噪声极限)} = W \log_2(1 + S/N) \quad (\text{b/s})
+$$
+
+
+  
+
+
+$$
+\text{信噪比分贝数转换} : \text{dB} = 10 \log_{10}(S/N) \iff S/N = 10^{\text{dB}/10}
+$$
+
+
+:::
 
 ::: tip ⚠️ 408 综合题答题策略
 若题目同时给出信道带宽 $W$、电平数 $V$ 以及信噪比 $\text{dB}$，**必须分别计算奈氏准则与香农公式，取两者的最小值作为最终的极限数据传输速率**。

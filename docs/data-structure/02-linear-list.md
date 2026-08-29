@@ -30,14 +30,13 @@
 
 ## 3. 算法大题秒杀技巧
 
-<div class="formula-card">
-  <div class="title">💡 408 链表解题 3 大法宝</div>
-  <ul>
+::: info 💡 408 链表解题 3 大法宝
+<ul>
     <li><strong>快慢指针法</strong>：快指针每次走 2 步，慢指针走 1 步，用于找中点、找倒数第 $k$ 个结点、判环。</li>
     <li><strong>头插法原地逆置</strong>：遍历链表，逐个结点断开并头插至新头部，时间 $O(n)$，空间 $O(1)$。</li>
     <li><strong>归并双指针</strong>：用于合并两个有序单链表或寻找两个集合交集。</li>
   </ul>
-</div>
+:::
 
 <details class="self-test">
   <summary>

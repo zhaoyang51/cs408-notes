@@ -17,8 +17,21 @@
 
 ## 2. CSMA/CD 协议（先听后发，边发边听）
 
-<div class="formula-card">
-  <div class="title">💡 CSMA/CD 最短帧长与争用期公式</div>
-  $$\text{争用期 (冲突窗口)} = 2\tau \quad (\tau \text{ 为单程传播时延})$$
-  $$\text{最短帧长} = 2\tau \times \text{数据传输速率} \quad (\text{传统以太网最短帧长为 } 64 \text{ 字节})$$
-</div>
+::: info 💡 CSMA/CD 最短帧长与争用期公式
+
+
+$$
+\text{争用期 (冲突窗口)} = 2\tau \quad (\tau \text{ 为单程传播时延})
+$$
+
+
+  
+
+
+$$
+\text{最短帧长} = 2\tau \times \text{数据传输速率} \quad (\text{传统以太网最短帧长为 } 64 \text{ 字节})
+$$
+
+
+:::
+

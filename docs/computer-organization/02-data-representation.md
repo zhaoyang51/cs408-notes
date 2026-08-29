@@ -18,10 +18,15 @@
 
 ## 2. IEEE 754 浮点数标准拆解
 
-<div class="formula-card">
-  <div class="title">💡 IEEE 754 规格化浮点真值公式</div>
-  $$\text{真值 } X = (-1)^S \times (1.M) \times 2^{E - \text{Bias}}$$
-</div>
+::: info 💡 IEEE 754 规格化浮点真值公式
+
+
+$$
+\text{真值 } X = (-1)^S \times (1.M) \times 2^{E - \text{Bias}}
+$$
+
+
+:::
 
 | 规格类型 | 总位数 | 符号位 $S$ | 阶码 $E$（移码，Bias 偏移量） | 尾数 $M$（隐藏最高有效位 1） |
 |:---|:---:|:---:|:---:|:---:|

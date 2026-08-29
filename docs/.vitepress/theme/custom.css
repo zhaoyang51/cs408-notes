@@ -254,6 +254,14 @@ html.parchment .badge-formula { background: #e0f2fe; color: #0369a1; border-colo
 .dark .badge-freq { background: rgba(16, 185, 129, 0.25); color: #34d399; border-color: rgba(16, 185, 129, 0.5); }
 html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 
+.badge-zhao { background: rgba(14, 165, 233, 0.15); color: #0284c7; border: 1px solid rgba(14, 165, 233, 0.35); }
+.dark .badge-zhao { background: rgba(14, 165, 233, 0.25); color: #38bdf8; border-color: rgba(56, 189, 248, 0.5); }
+html.parchment .badge-zhao { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+
+.badge-chen { background: rgba(168, 85, 247, 0.15); color: #9333ea; border: 1px solid rgba(168, 85, 247, 0.35); }
+.dark .badge-chen { background: rgba(168, 85, 247, 0.25); color: #c084fc; border-color: rgba(192, 132, 252, 0.5); }
+html.parchment .badge-chen { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
+
 /* ── 现代高密度斑马纹对比表格（自适应 100% 页面宽度） ── */
 .vp-doc table {
   display: table !important;
@@ -558,3 +566,59 @@ html.parchment mjx-container svg text {
   fill: #342618 !important;
   stroke: #342618 !important;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   用户知识点分组筛选系统 (Zhao / Chen / 全部用户)
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 基础知识点区块与高亮容器 */
+.kp-block,
+.knowledge-point {
+  margin: 16px 0;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-border);
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s ease;
+}
+
+.kp-block.author-zhao,
+.knowledge-point.author-zhao,
+[data-author="zhao" i].kp-block,
+[data-author="zhao" i].knowledge-point {
+  border-left: 4px solid #0284c7;
+}
+
+.kp-block.author-chen,
+.knowledge-point.author-chen,
+[data-author="chen" i].kp-block,
+[data-author="chen" i].knowledge-point {
+  border-left: 4px solid #9333ea;
+}
+
+/* 过滤逻辑：当筛选为 Zhao 时，隐藏所有 Chen 标记的元素 */
+html[data-user-filter="zhao"] .author-chen,
+html[data-user-filter="zhao"] [data-author="chen" i],
+html[data-user-filter="zhao"] .badge-chen {
+  display: none !important;
+}
+
+/* 过滤逻辑：当筛选为 Chen 时，隐藏所有 Zhao 标记的元素 */
+html[data-user-filter="chen"] .author-zhao,
+html[data-user-filter="chen"] [data-author="zhao" i],
+html[data-user-filter="chen"] .badge-zhao {
+  display: none !important;
+}
+
+/* 高亮当前筛选用户的内容 */
+html[data-user-filter="zhao"] .author-zhao,
+html[data-user-filter="zhao"] [data-author="zhao" i] {
+  box-shadow: 0 4px 16px -2px rgba(2, 132, 199, 0.15);
+}
+
+html[data-user-filter="chen"] .author-chen,
+html[data-user-filter="chen"] [data-author="chen" i] {
+  box-shadow: 0 4px 16px -2px rgba(147, 51, 234, 0.15);
+}
+

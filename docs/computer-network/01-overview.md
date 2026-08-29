@@ -7,13 +7,39 @@
 
 ## 1. 4 大网络时延核心计算公式
 
-<div class="formula-card">
-  <div class="title">💡 网络总时延公式速查</div>
-  $$\text{总时延 } D = \text{发送时延 } D_t + \text{传播时延 } D_p + \text{处理时延 } D_r + \text{排队时延 } D_q$$
-  $$\text{发送时延 (传输时延)} = \frac{\text{数据帧长度 (bit)}}{\text{数据传输速率 (b/s)}}$$
-  $$\text{传播时延} = \frac{\text{物理信道长度 (m)}}{\text{电磁波传播速率 (m/s)}} \quad (\text{光纤/铜线中速率 } v \approx 2 \times 10^8 \text{ m/s})$$
-  $$\text{时延带宽积} = \text{传播时延} \times \text{信道带宽 (单位: bit)}$$
-</div>
+::: info 💡 网络总时延公式速查
+
+
+$$
+\text{总时延 } D = \text{发送时延 } D_t + \text{传播时延 } D_p + \text{处理时延 } D_r + \text{排队时延 } D_q
+$$
+
+
+  
+
+
+$$
+\text{发送时延 (传输时延)} = \frac{\text{数据帧长度 (bit)}}{\text{数据传输速率 (b/s)}}
+$$
+
+
+  
+
+
+$$
+\text{传播时延} = \frac{\text{物理信道长度 (m)}}{\text{电磁波传播速率 (m/s)}} \quad (\text{光纤/铜线中速率 } v \approx 2 \times 10^8 \text{ m/s})
+$$
+
+
+  
+
+
+$$
+\text{时延带宽积} = \text{传播时延} \times \text{信道带宽 (单位: bit)}
+$$
+
+
+:::
 
 ---
 
