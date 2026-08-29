@@ -272,6 +272,7 @@ html.parchment .VPNavBar {
     line-height: 26px !important;
     padding: 3px 0 !important;
     display: block !important;
+    text-indent: 0.5em !important;
     color: var(--vp-c-text-2) !important;
     transition: color 0.2s ease, transform 0.15s ease !important;
     letter-spacing: 0.01em !important;
