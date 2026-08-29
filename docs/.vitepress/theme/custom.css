@@ -8,6 +8,7 @@
   --vp-font-family-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/* 🌙 深色夜间模式 */
 .dark {
   --vp-c-brand-1: #3b82f6;
   --vp-c-brand-2: #60a5fa;
@@ -16,6 +17,48 @@
   --vp-c-bg: #0f172a;
   --vp-c-bg-soft: #1e293b;
   --vp-c-bg-alt: #0b1120;
+}
+
+/* 📜 羊皮纸复古护眼模式 */
+html.parchment {
+  --vp-c-bg: #f7eed8;
+  --vp-c-bg-soft: #ede0c6;
+  --vp-c-bg-alt: #f0e6cd;
+  --vp-c-bg-elv: #fbf5e7;
+  
+  --vp-c-text-1: #382c1e;
+  --vp-c-text-2: #63523f;
+  --vp-c-text-3: #927e69;
+  
+  --vp-c-brand-1: #9a5b28;
+  --vp-c-brand-2: #b46b32;
+  --vp-c-brand-3: #cf7e3e;
+  --vp-c-brand-soft: rgba(154, 91, 40, 0.15);
+  
+  --vp-c-divider: #e0d1b5;
+  --vp-c-gutter: #e0d1b5;
+  --vp-c-border: #ded1b8;
+  
+  --vp-c-default-1: #ede0c6;
+  --vp-c-default-2: #e3d4b6;
+  --vp-c-default-3: #dac9a8;
+  --vp-c-default-soft: rgba(222, 209, 184, 0.5);
+
+  --vp-code-block-bg: #ebe0c8;
+  --vp-code-bg: #ede0c6;
+  --vp-code-color: #6b2e05;
+
+  --vp-custom-block-tip-border: #9a5b28;
+  --vp-custom-block-tip-text: #78350f;
+  --vp-custom-block-tip-bg: rgba(154, 91, 40, 0.12);
+  
+  --vp-sidebar-bg-color: #f3e8d2;
+  --vp-nav-bg-color: #f7eed8;
+}
+
+/* 隐藏默认双态切换器，避免冲突 */
+.VPSwitchAppearance {
+  display: none !important;
 }
 
 /* Hero Badge */
@@ -37,12 +80,12 @@
 
 /* Custom Tip Box */
 .custom-block.tip {
-  border-color: #3b82f6;
+  border-color: var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-soft);
   border-radius: 8px;
 }
 
-/* Elegant Tables */
+/* Tables */
 .vp-doc table {
   width: 100%;
   display: table;
@@ -59,25 +102,4 @@
 }
 .vp-doc td {
   padding: 10px 14px;
-}
-
-/* Grid Cards */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  margin: 20px 0;
-}
-.card-item {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 16px;
-  background: var(--vp-c-bg-soft);
-  transition: all 0.25s ease;
-  text-decoration: none !important;
-}
-.card-item:hover {
-  border-color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(0,0,0,0.15);
 }
