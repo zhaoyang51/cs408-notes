@@ -95,13 +95,31 @@ export default defineConfig({
     search: {
       provider: 'local',
       options: {
+        miniSearch: {
+          options: {
+            tokenize: (term) => {
+              if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+                const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' })
+                return Array.from(segmenter.segment(term), x => x.segment.trim()).filter(Boolean)
+              }
+              return term.split(/\s+/)
+            }
+          },
+          searchOptions: {
+            fuzzy: 0.2,
+            prefix: true,
+            boost: { title: 4, text: 2, titles: 1 }
+          }
+        },
         locales: {
           root: {
             translations: {
-              button: { buttonText: '搜索 408 考点', buttonAriaLabel: '搜索 408 考点' },
+              button: { buttonText: '搜索 408 考点 (Ctrl+K)', buttonAriaLabel: '搜索 408 考点' },
               modal: {
-                noResultsText: '未找到相关考点',
+                displayDetails: '显示详情',
                 resetButtonTitle: '清除条件',
+                backButtonTitle: '返回',
+                noResultsText: '未找到相关考点',
                 footer: { selectText: '选择', navigateText: '切换', closeText: '关闭' }
               }
             }
