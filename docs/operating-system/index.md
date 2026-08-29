@@ -1,29 +1,13 @@
-# 操作系统（满分 35分）
+# ⚙️ 操作系统（满分 35分）
 
-> 涵盖进程线程管理、处理机调度、内存管理、文件系统与I/O设备管理。
+> 操作系统聚焦于处理机、内存、文件与设备四大资源的虚拟化与调度并发。
 
-## 📑 章节目录导航
+## 📑 极简章节导航
 
-- **[一、操作系统概述](./01-overview.md)**
-  - [（一）操作系统的概念、特征、功能和提供的服务](./01-overview.md#（一）操作系统的概念、特征、功能和提供的服务)
-  - [（二）操作系统的发展与分类](./01-overview.md#（二）操作系统的发展与分类)
-  - [（三）操作系统的运行环境](./01-overview.md#（三）操作系统的运行环境)
-  - [（四）操作系统结构](./01-overview.md#（四）操作系统结构)
-  - [（五）操作系统引导（Booting）](./01-overview.md#（五）操作系统引导（Booting）)
-  - [（六）虚拟机（Virtual Machine）](./01-overview.md#（六）虚拟机（Virtual Machine）)
-- **[二、进程管理](./02-process-management.md)**
-  - [（一）进程与线程](./02-process-management.md#（一）进程与线程)
-  - [（二）处理机调度](./02-process-management.md#（二）处理机调度)
-  - [（三）同步与互斥](./02-process-management.md#（三）同步与互斥)
-  - [（四）死锁](./02-process-management.md#（四）死锁)
-- **[三、内存管理](./03-memory-management.md)**
-  - [（一）内存管理概念](./03-memory-management.md#（一）内存管理概念)
-  - [（二）非连续分配管理方式](./03-memory-management.md#（二）非连续分配管理方式)
-  - [（三）虚拟内存管理](./03-memory-management.md#（三）虚拟内存管理)
-- **[四、文件管理](./04-file-system.md)**
-  - [（一）文件系统基础](./04-file-system.md#（一）文件系统基础)
-  - [（二）文件系统实现](./04-file-system.md#（二）文件系统实现)
-  - [（三）磁盘组织与管理](./04-file-system.md#（三）磁盘组织与管理)
-- **[五、输入/输出（I/O）管理](./05-io-management.md)**
-  - [（一）I/O 管理概述](./05-io-management.md#（一）I/O 管理概述)
-  - [（二）I/O 核心子系统](./05-io-management.md#（二）I/O 核心子系统)
+| 章节 | 核心考点 | 命题形式 |
+|:---|:---|:---:|
+| **[第1章 操作系统概述与体系结构](./01-overview)** | 内核态/用户态、中断与系统调用、大内核/微内核/虚拟机 | 选择题 |
+| **[第2章 进程线程、调度与死锁](./02-process-management)** | 进程状态机、CPU 调度算法、PV 同步互斥大题、银行家算法 | 必考大题 (15分) |
+| **[第3章 内存管理与虚拟内存](./03-memory-management)** | 基本分页分段、TLB/多级页表、OPT/FIFO/LRU/CLOCK 页面置换 | 选择 + 综合题 |
+| **[第4章 文件系统与磁盘调度](./04-file-system)** | 文件 FCB 与索引节点 inode、目录、位示图、FCFS/SSTF/SCAN 磁盘寻道 | 选择 + 大题 |
+| **[第5章 I/O 核心子系统与 SPOOLing](./05-io-management)** | I/O 控制层级、设备独立性、SPOOLing 假脱机技术 | 选择题 |

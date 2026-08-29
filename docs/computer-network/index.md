@@ -1,41 +1,14 @@
-# 计算机网络（满分 25分）
+# 🌐 计算机网络（满分 25分）
 
-> 涵盖计算机网络体系结构、物理层、数据链路层、网络层、传输层与应用层。
+> 计算机网络分值虽为 25 分，但考点精炼且规律性极强（抓主干协议与时延计算）。
 
-## 📑 章节目录导航
+## 📑 极简章节导航
 
-- **[一、计算机网络体系结构](./01-overview.md)**
-  - [（一）计算机网络概述](./01-overview.md#（一）计算机网络概述)
-  - [（二）计算机网络性能指标](./01-overview.md#（二）计算机网络性能指标)
-  - [（三）计算机网络体系结构与参考模型](./01-overview.md#（三）计算机网络体系结构与参考模型)
-- **[二、物理层](./02-physical-layer.md)**
-  - [（一）通信基础](./02-physical-layer.md#（一）通信基础)
-  - [（二）传输介质](./02-physical-layer.md#（二）传输介质)
-  - [（三）物理层设备](./02-physical-layer.md#（三）物理层设备)
-- **[三、数据链路层](./03-data-link-layer.md)**
-  - [（一）数据链路层的功能](./03-data-link-layer.md#（一）数据链路层的功能)
-  - [（二）组帧](./03-data-link-layer.md#（二）组帧)
-  - [（三）差错控制](./03-data-link-layer.md#（三）差错控制)
-  - [（四）流量控制与可靠传输机制](./03-data-link-layer.md#（四）流量控制与可靠传输机制)
-  - [（五）介质访问控制（MAC）](./03-data-link-layer.md#（五）介质访问控制（MAC）)
-  - [（六）局域网（LAN）](./03-data-link-layer.md#（六）局域网（LAN）)
-  - [（七）广域网（WAN）](./03-data-link-layer.md#（七）广域网（WAN）)
-  - [（八）数据链路层设备](./03-data-link-layer.md#（八）数据链路层设备)
-- **[四、网络层](./04-network-layer.md)**
-  - [（一）网络层的功能](./04-network-layer.md#（一）网络层的功能)
-  - [（二）路由算法](./04-network-layer.md#（二）路由算法)
-  - [（三）IPv4](./04-network-layer.md#（三）IPv4)
-  - [（四）IPv6](./04-network-layer.md#（四）IPv6)
-  - [（五）路由协议](./04-network-layer.md#（五）路由协议)
-  - [（六）IP 组播与移动 IP](./04-network-layer.md#（六）IP 组播与移动 IP)
-  - [（七）网络层设备](./04-network-layer.md#（七）网络层设备)
-- **[五、传输层](./05-transport-layer.md)**
-  - [（一）传输层提供的服务](./05-transport-layer.md#（一）传输层提供的服务)
-  - [（二）用户数据报协议（UDP）](./05-transport-layer.md#（二）用户数据报协议（UDP）)
-  - [（三）传输控制协议（TCP）](./05-transport-layer.md#（三）传输控制协议（TCP）)
-- **[六、应用层](./06-application-layer.md)**
-  - [（一）网络应用模型](./06-application-layer.md#（一）网络应用模型)
-  - [（二）域名系统（DNS）](./06-application-layer.md#（二）域名系统（DNS）)
-  - [（三）文件传输协议（FTP）](./06-application-layer.md#（三）文件传输协议（FTP）)
-  - [（四）电子邮件](./06-application-layer.md#（四）电子邮件)
-  - [（五）万维网（WWW）与 HTTP](./06-application-layer.md#（五）万维网（WWW）与 HTTP)
+| 章节 | 核心考点 | 命题形式 |
+|:---|:---|:---:|
+| **[第1章 计算机网络体系结构](./01-overview)** | OSI 7层 vs TCP/IP 4层、时延计算公式 (发送/传播/处理/排队) | 计算小题 |
+| **[第2章 物理层与通信基础](./02-physical-layer)** | 奈奎斯特定理、香农公式、曼彻斯特编码 | 计算选择题 |
+| **[第3章 数据链路层与 MAC](./03-data-link-layer)** | CRC 校验、GBN / SR 滑动窗口、CSMA/CD 协议、以太网帧与交换机自学习 | 选择 + 综合题 |
+| **[第4章 网络层与 IP 协议](./04-network-layer)** | IPv4 首部、CIDR 子网划分、ARP/DHCP/ICMP、RIP/OSPF/BGP 路由 | 必考大题 (10~15分) |
+| **[第5章 传输层 (TCP / UDP)](./05-transport-layer)** | UDP 检验和、TCP 握手挥手、滑动窗口流量控制、拥塞控制 (慢开始/拥塞避免) | 必考大题 |
+| **[第6章 应用层 (HTTP / DNS / 邮件)](./06-application-layer)** | DNS 递归/迭代解析、HTTP 状态码、Cookie 与持久连接、邮件协议 | 选择 + 综合题 |
