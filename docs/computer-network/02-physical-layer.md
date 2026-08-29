@@ -78,13 +78,9 @@ $$\mathbf{P} \cdot \mathbf{A} = (\mathbf{A}_{\text{send}} + \mathbf{B}_{\text{se
 
 ## 4. 差错检验与纠错技术全景（奇偶校验 vs CRC vs 海明码） <AuthorTag author="Zhao" />
 
-<KP author="Zhao" title="🛡️ 三大差错控制机制实验室（奇偶校验 / 模2除法CRC / 海明码精确定位与修复）" tag="⭐️ 考研必背">
+<KP author="Zhao" title="🛡️ 三大差错控制机制核心特点与计算全解（408 核心考点）" tag="⭐️ 考研必背">
 
-<ErrorCheckSimulator />
-
-### 📊 三大差错控制机制核心特点与计算全解
-
-#### 1. 奇偶校验码 (Parity Check)
+### 1. 奇偶校验码 (Parity Check)
 - **核心特点**：码距 $d = 2$。仅能检测出**奇数个比特错误**；当发生偶数个比特差错时发生漏检（漏检率 50%）。**无任何纠错与定位能力**。
 - **计算步骤**：
   1. 统计数据中 $1$ 的个数 $n$；
@@ -93,7 +89,7 @@ $$\mathbf{P} \cdot \mathbf{A} = (\mathbf{A}_{\text{send}} + \mathbf{B}_{\text{se
 
 ---
 
-#### 2. 循环冗余校验码 (CRC - Cyclic Redundancy Check)
+### 2. 循环冗余校验码 (CRC - Cyclic Redundancy Check)
 - **核心特点**：检错能力极强（100% 检出单比特错、双比特错、奇数个错以及所有长度 $\le r$ 的突发错）。由硬件生成，速度极快。**仅用于检错丢弃，本身无纠错能力**（需上层配合 ARQ 协议实现可靠传输）。
 - **计算 5 步法**：
   1. **求阶数 $r$**：由生成多项式 $G(X)$ 得到其二进制序列，阶数 $r = \text{多项式比特长度} - 1$；
@@ -104,7 +100,7 @@ $$\mathbf{P} \cdot \mathbf{A} = (\mathbf{A}_{\text{send}} + \mathbf{B}_{\text{se
 
 ---
 
-#### 3. 海明校验码 (Hamming Code)
+### 3. 海明校验码 (Hamming Code)
 - **核心特点**：具备**检 2 错、纠 1 错**能力（码距 $d=3$）。能通过伴随式直接指出出错比特的具体物理位置。
 - **计算 4 步法**：
   1. **确定校验位位数 $r$**：根据海明不等式：
