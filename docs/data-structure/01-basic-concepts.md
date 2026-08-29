@@ -31,7 +31,7 @@
 
 <div class="formula-card">
   <div class="title">💡 阶数大小比较（必背口诀）</div>
-  $$O(1) < O(\log_2 n) < O(n) < O(n \log_2 n) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)$$
+  $$O(1) \lt O(\log_2 n) \lt O(n) \lt O(n \log_2 n) \lt O(n^2) \lt O(n^3) \lt O(2^n) \lt O(n!) \lt O(n^n)$$
 </div>
 
 ::: tip ⚠️ 经典命题陷阱

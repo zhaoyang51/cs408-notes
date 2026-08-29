@@ -479,3 +479,82 @@ details.self-test .answer-content {
   flex-wrap: wrap;
   gap: 6px;
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   数学公式渲染增强 (MathJax / SVG / KaTeX 全主题与高对比度适配)
+   ══════════════════════════════════════════════════════════════════ */
+mjx-container {
+  display: inline-block !important;
+  color: inherit !important;
+  font-size: 1.05em !important;
+  vertical-align: -0.15em !important;
+  outline: none !important;
+  line-height: 0 !important;
+}
+
+mjx-container svg {
+  display: inline-block !important;
+  color: inherit !important;
+  fill: currentColor !important;
+  vertical-align: middle !important;
+  max-width: 100% !important;
+}
+
+mjx-container svg path,
+mjx-container svg use,
+mjx-container svg text {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  stroke-width: 0 !important;
+}
+
+/* 块级居中公式 (Display Math) */
+mjx-container[jax="SVG"][display="true"],
+mjx-container[jax="CHTML"][display="true"],
+.vp-doc .MathJax_Display,
+.vp-doc .katex-display {
+  display: block !important;
+  text-align: center !important;
+  margin: 1.2em 0 !important;
+  padding: 10px 16px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  color: inherit !important;
+  border-radius: 8px;
+}
+
+/* 在公式卡片内部的公式 */
+.formula-card mjx-container[display="true"] {
+  margin: 0.5em 0 !important;
+  padding: 4px 0 !important;
+  background: transparent !important;
+}
+
+/* 🌙 暗黑模式公式高亮 */
+.dark mjx-container,
+.dark mjx-container svg {
+  color: #f8fafc !important;
+  fill: #f8fafc !important;
+}
+
+.dark mjx-container svg path,
+.dark mjx-container svg use,
+.dark mjx-container svg text {
+  fill: #f8fafc !important;
+  stroke: #f8fafc !important;
+}
+
+/* 📜 羊皮纸模式公式暖色匹配 */
+html.parchment mjx-container,
+html.parchment mjx-container svg {
+  color: #342618 !important;
+  fill: #342618 !important;
+}
+
+html.parchment mjx-container svg path,
+html.parchment mjx-container svg use,
+html.parchment mjx-container svg text {
+  fill: #342618 !important;
+  stroke: #342618 !important;
+}
