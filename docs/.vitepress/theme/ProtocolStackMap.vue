@@ -16,66 +16,78 @@
         
         <!-- ════════ 1. 应用层 (Application Layer) ════════ -->
         <div class="layer-section layer-app">
-          <div class="col-left-label tcp-layer">应用层</div>
+          <div class="col-left-label tcp-layer">
+            <span class="l-name">应用层</span>
+            <span class="l-pdu">PDU: 报文</span>
+          </div>
           
           <div class="col-main-content">
-            <div class="protocol-row app-protocols">
-              <!-- UDP 协议簇 -->
-              <div class="proto-group udp-family">
-                <div class="proto-box app-box" @click="selectProto('DNS')">
-                  <span class="p-name">DNS</span>
-                  <span class="p-sub">53</span>
+            <!-- 左右两大部分排列：左侧对应 UDP，右侧对应 TCP -->
+            <div class="app-split-columns">
+              
+              <!-- 左半部分：UDP 承载簇 -->
+              <div class="app-col-box udp-col">
+                <div class="col-badge-row">
+                  <span class="col-sub-badge udp-badge">UDP 承载协议簇 (无连接)</span>
                 </div>
-                <div class="proto-box app-box" @click="selectProto('DHCP')">
-                  <span class="p-name">DHCP</span>
-                  <span class="p-sub">67/68</span>
+                <div class="col-proto-cards">
+                  <div class="proto-box app-box udp-border" @click="selectProto('DNS')">
+                    <span class="p-name">DNS</span>
+                    <span class="p-port">端口 53</span>
+                  </div>
+                  <div class="proto-box app-box udp-border" @click="selectProto('DHCP')">
+                    <span class="p-name">DHCP</span>
+                    <span class="p-port">端口 67/68</span>
+                  </div>
+                  <div class="proto-box app-box udp-border" @click="selectProto('RIP')">
+                    <span class="p-name">RIP</span>
+                    <span class="p-port">端口 520</span>
+                  </div>
                 </div>
-                <div class="proto-box app-box" @click="selectProto('RIP')">
-                  <span class="p-name">RIP</span>
-                  <span class="p-sub">520</span>
+                <div class="col-down-arrow">
+                  <span>▼ 端口 53 / 67 / 68 / 520 ➔ 封装入 UDP</span>
                 </div>
               </div>
 
-              <!-- TCP 协议簇 -->
-              <div class="proto-group tcp-family">
-                <div class="proto-box app-box" @click="selectProto('BGP')">
-                  <span class="p-name">BGP</span>
-                  <span class="p-sub">179</span>
+              <!-- 右半部分：TCP 承载簇 -->
+              <div class="app-col-box tcp-col">
+                <div class="col-badge-row">
+                  <span class="col-sub-badge tcp-badge">TCP 承载协议簇 (面向连接可靠)</span>
                 </div>
-                <div class="proto-box app-box" @click="selectProto('HTTP')">
-                  <span class="p-name">HTTP</span>
-                  <span class="p-sub">80</span>
+                <div class="col-proto-cards">
+                  <div class="proto-box app-box tcp-border" @click="selectProto('BGP')">
+                    <span class="p-name">BGP</span>
+                    <span class="p-port">端口 179</span>
+                  </div>
+                  <div class="proto-box app-box tcp-border" @click="selectProto('HTTP')">
+                    <span class="p-name">HTTP</span>
+                    <span class="p-port">端口 80</span>
+                  </div>
+                  <div class="proto-box app-box tcp-border" @click="selectProto('FTP')">
+                    <span class="p-name">FTP</span>
+                    <span class="p-port">端口 21/20</span>
+                  </div>
+                  <div class="proto-box app-box tcp-border" @click="selectProto('SMTP')">
+                    <span class="p-name">SMTP</span>
+                    <span class="p-port">端口 25</span>
+                  </div>
+                  <div class="proto-box app-box tcp-border" @click="selectProto('POP3')">
+                    <span class="p-name">POP3</span>
+                    <span class="p-port">端口 110</span>
+                  </div>
                 </div>
-                <div class="proto-box app-box" @click="selectProto('FTP')">
-                  <span class="p-name">FTP</span>
-                  <span class="p-sub">21/20</span>
-                </div>
-                <div class="proto-box app-box" @click="selectProto('SMTP')">
-                  <span class="p-name">SMTP</span>
-                  <span class="p-sub">25</span>
-                </div>
-                <div class="proto-box app-box" @click="selectProto('POP3')">
-                  <span class="p-name">POP3</span>
-                  <span class="p-sub">110</span>
+                <div class="col-down-arrow">
+                  <span>▼ 端口 179 / 80 / 21 / 20 / 25 / 110 ➔ 封装入 TCP</span>
                 </div>
               </div>
-            </div>
 
-            <div class="port-flow-indicators">
-              <div class="flow-left">
-                <span class="flow-tag">端口: 53, 67/68, 520</span>
-                <span class="flow-arrow">▼ 封装到 UDP</span>
-              </div>
-              <div class="flow-right">
-                <span class="flow-tag">端口: 179, 80, 21/20, 25, 110</span>
-                <span class="flow-arrow">▼ 封装到 TCP</span>
-              </div>
             </div>
           </div>
 
           <div class="col-right-label osi-layer">
             <div class="right-badge-box app-osi">
-              <span class="osi-title">应用层</span>
+              <span class="osi-title">应用层 (五层体系)</span>
+              <span class="osi-pdu-pill">PDU: 报文 (Message)</span>
               <span class="osi-note">OSI 还包含表示层与会话层</span>
             </div>
           </div>
@@ -83,24 +95,29 @@
 
         <!-- ════════ 2. 传输层 (Transport Layer) ════════ -->
         <div class="layer-section layer-trans">
-          <div class="col-left-label tcp-layer">传输层</div>
+          <div class="col-left-label tcp-layer">
+            <span class="l-name">传输层</span>
+            <span class="l-pdu">PDU: 报文段/数据报</span>
+          </div>
 
           <div class="col-main-content">
-            <div class="protocol-row trans-protocols">
+            <div class="trans-split-grid">
+              <!-- 左侧对齐 UDP -->
               <div class="proto-box trans-box udp-box" @click="selectProto('UDP')">
                 <div class="t-top">
-                  <span class="p-name">UDP</span>
-                  <span class="proto-id-pill">协议号 17</span>
+                  <span class="p-name">UDP (用户数据报协议)</span>
+                  <span class="proto-id-pill">IP协议号 17</span>
                 </div>
-                <span class="p-desc">无连接 · 不可靠 · 面向报文</span>
+                <span class="p-desc">无连接 · 不可靠交付 · 面向报文 · 首部 8B</span>
               </div>
 
+              <!-- 右侧对齐 TCP -->
               <div class="proto-box trans-box tcp-box" @click="selectProto('TCP')">
                 <div class="t-top">
-                  <span class="p-name">TCP</span>
-                  <span class="proto-id-pill">协议号 6</span>
+                  <span class="p-name">TCP (传输控制协议)</span>
+                  <span class="proto-id-pill">IP协议号 6</span>
                 </div>
-                <span class="p-desc">面向连接 · 可靠交付 · 面向字节流</span>
+                <span class="p-desc">面向连接 · 可靠交付 · 面向字节流 · 全双工</span>
               </div>
             </div>
           </div>
@@ -108,6 +125,7 @@
           <div class="col-right-label osi-layer">
             <div class="right-badge-box">
               <span class="osi-title">传输层</span>
+              <span class="osi-pdu-pill">PDU: 报文段 (Segment)</span>
             </div>
           </div>
         </div>
@@ -115,8 +133,9 @@
         <!-- ════════ 3. 网络层 / 网际层 (Network Layer) ════════ -->
         <div class="layer-section layer-net">
           <div class="col-left-label tcp-layer">
-            <span>网络层</span>
+            <span class="l-name">网络层</span>
             <span class="sub-txt">(网际层)</span>
+            <span class="l-pdu">PDU: IP 数据报</span>
           </div>
 
           <div class="col-main-content">
@@ -156,7 +175,8 @@
           <div class="col-right-label osi-layer">
             <div class="right-badge-box net-device">
               <span class="osi-title">网络层</span>
-              <span class="device-tag">🖧 路由器</span>
+              <span class="osi-pdu-pill">PDU: 分组 / IP数据报</span>
+              <span class="device-tag">🖧 核心设备: 路由器</span>
             </div>
           </div>
         </div>
@@ -164,12 +184,12 @@
         <!-- ════════ 4. 网络接口层 / 数据链路层 + 物理层 ════════ -->
         <div class="layer-section layer-link">
           <div class="col-left-label tcp-layer link-layer-label">
-            <span>网络接口层</span>
+            <span class="l-name">网络接口层</span>
             <span class="sub-txt">(TCP/IP 4层合并)</span>
+            <span class="l-pdu">PDU: 帧 / 比特</span>
           </div>
 
           <div class="col-main-content link-main">
-            <!-- 数据链路层 -->
             <div class="link-sub-section">
               <div class="link-protocols-grid">
                 <div class="proto-box link-box ppp-box" @click="selectProto('PPP')">
@@ -194,10 +214,12 @@
           <div class="col-right-label osi-layer dual-right">
             <div class="right-badge-box link-device">
               <span class="osi-title">数据链路层</span>
+              <span class="osi-pdu-pill">PDU: 帧 (Frame)</span>
               <span class="device-tag">🔄 二层交换机 / 网桥</span>
             </div>
             <div class="right-badge-box phy-device">
               <span class="osi-title">物理层</span>
+              <span class="osi-pdu-pill">PDU: 比特 (Bit)</span>
               <span class="device-tag">🔌 集线器 / 中继器</span>
             </div>
           </div>
@@ -206,7 +228,8 @@
         <!-- ════════ 5. 传输媒体 (物理层之下) ════════ -->
         <div class="layer-section layer-media">
           <div class="col-left-label media-label">
-            <span>传输媒体</span>
+            <span class="l-name">传输媒体</span>
+            <span class="l-pdu">物理介质</span>
           </div>
 
           <div class="col-main-content">
@@ -542,7 +565,7 @@ function selectProto(name) {
 }
 
 .stack-canvas {
-  min-width: 740px;
+  min-width: 820px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -551,8 +574,8 @@ function selectProto(name) {
 /* 分层通栏行 */
 .layer-section {
   display: grid;
-  grid-template-columns: 100px 1fr 180px;
-  gap: 12px;
+  grid-template-columns: 120px 1fr 200px;
+  gap: 14px;
   align-items: center;
   padding: 12px 14px;
   border-radius: 10px;
@@ -589,32 +612,44 @@ function selectProto(name) {
 .layer-media {
   border-left: 4px solid #8b5cf6;
   background: rgba(139, 92, 246, 0.02);
-  grid-template-columns: 100px 1fr 220px;
+  grid-template-columns: 120px 1fr 200px;
 }
 
-/* 左侧层级标题 */
+/* 左侧层级标题 (含名称 + PDU) */
 .col-left-label {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--vp-c-text-1);
   text-align: center;
   border-right: 1px solid var(--vp-c-divider);
   padding-right: 10px;
   height: 100%;
+  gap: 2px;
+}
+
+.l-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--vp-c-text-1);
+}
+
+.l-pdu {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  padding: 1px 5px;
+  background: var(--vp-c-brand-soft);
+  border-radius: 4px;
 }
 
 .sub-txt {
   font-size: 10.5px;
   font-weight: 500;
   color: var(--vp-c-text-3);
-  margin-top: 2px;
 }
 
-/* 右侧 OSI 与网络设备标签 */
+/* 右侧 OSI / 五层 与 网络设备标签 (含 PDU) */
 .col-right-label {
   display: flex;
   flex-direction: column;
@@ -631,12 +666,23 @@ function selectProto(name) {
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
+  width: 100%;
 }
 
 .osi-title {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 800;
   color: var(--vp-c-text-1);
+}
+
+.osi-pdu-pill {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 
 .osi-note {
@@ -647,36 +693,83 @@ function selectProto(name) {
 }
 
 .device-tag {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  padding: 2px 7px;
+  padding: 2px 6px;
   border-radius: 6px;
   background: var(--vp-c-bg-alt);
   color: var(--vp-c-brand-1);
   border: 1px solid var(--vp-c-divider);
+  margin-top: 2px;
 }
 
-/* 中间协议卡片排布 */
-.col-main-content {
+/* ════════ 应用层中间二分列布局 (左 UDP 簇 vs 右 TCP 簇) ════════ */
+.app-split-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.app-col-box {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.protocol-row {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.app-protocols {
-  justify-content: space-between;
-}
-
-.proto-group {
-  display: flex;
   gap: 6px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.udp-col {
+  border-top: 2px solid #0284c7;
+}
+
+.tcp-col {
+  border-top: 2px solid #3b82f6;
+}
+
+.col-badge-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.col-sub-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.udp-badge {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+}
+
+.tcp-badge {
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.col-proto-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.col-down-arrow {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--vp-c-text-3);
+  margin-top: 2px;
+}
+
+.udp-col .col-down-arrow {
+  color: #0284c7;
+}
+
+.tcp-col .col-down-arrow {
+  color: #3b82f6;
 }
 
 /* 单个协议卡片微按钮 */
@@ -687,7 +780,7 @@ function selectProto(name) {
   justify-content: center;
   padding: 5px 9px;
   border-radius: 8px;
-  background: var(--vp-c-bg-soft);
+  background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-border);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -698,7 +791,6 @@ function selectProto(name) {
   transform: translateY(-2px);
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background: var(--vp-c-bg-elv);
 }
 
 .proto-box .p-name {
@@ -708,27 +800,24 @@ function selectProto(name) {
   line-height: 1.2;
 }
 
+.proto-box .p-port,
 .proto-box .p-sub {
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 600;
   color: var(--vp-c-text-3);
   font-family: var(--vp-font-family-mono);
 }
 
 .app-box {
+  flex: 1;
   min-width: 48px;
 }
 
-.udp-family .app-box {
-  border-top: 2px solid #0284c7;
-}
+.udp-border { border-left: 2px solid #0284c7; }
+.tcp-border { border-left: 2px solid #3b82f6; }
 
-.tcp-family .app-box {
-  border-top: 2px solid #3b82f6;
-}
-
-/* 传输层卡片 */
-.trans-protocols {
+/* 传输层二分列 */
+.trans-split-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
@@ -741,10 +830,12 @@ function selectProto(name) {
 
 .udp-box {
   border-left: 3px solid #0284c7;
+  border-top: 2px solid #0284c7;
 }
 
 .tcp-box {
   border-left: 3px solid #3b82f6;
+  border-top: 2px solid #3b82f6;
 }
 
 .t-top {
@@ -765,23 +856,8 @@ function selectProto(name) {
 }
 
 .p-desc {
-  font-size: 11px;
+  font-size: 10.5px;
   color: var(--vp-c-text-2);
-}
-
-/* 端口与流向提示 */
-.port-flow-indicators {
-  display: flex;
-  justify-content: space-between;
-  font-size: 10px;
-  color: var(--vp-c-text-3);
-  padding: 0 4px;
-}
-
-.flow-arrow {
-  font-weight: 700;
-  color: var(--vp-c-brand-1);
-  margin-left: 4px;
 }
 
 /* 网络层 */
@@ -789,6 +865,7 @@ function selectProto(name) {
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-bottom: 6px;
 }
 
 .net-sub-box {
