@@ -15,6 +15,8 @@ import MultiplexingSimulator from './MultiplexingSimulator.vue'
 import ErrorCheckSimulator from './ErrorCheckSimulator.vue'
 import TcpFlowControl from './TcpFlowControl.vue'
 import TcpCongestionControl from './TcpCongestionControl.vue'
+import TcpReliableTransfer from './TcpReliableTransfer.vue'
+import TcpConnectionManagement from './TcpConnectionManagement.vue'
 import { h } from 'vue'
 
 export default {
@@ -47,5 +49,7 @@ export default {
     app.component('ErrorCheckSimulator', ErrorCheckSimulator)
     app.component('TcpFlowControl', TcpFlowControl)
     app.component('TcpCongestionControl', TcpCongestionControl)
+    app.component('TcpReliableTransfer', TcpReliableTransfer)
+    app.component('TcpConnectionManagement', TcpConnectionManagement)
   }
 }
