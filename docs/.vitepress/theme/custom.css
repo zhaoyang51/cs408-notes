@@ -158,7 +158,8 @@ html.parchment .VPNavBar {
   box-shadow: 0 1px 6px rgba(92, 71, 49, 0.08);
 }
 
-/* ── 优化侧边栏与正文视区布局 ── */
+
+/* ── 优化侧边栏、正文与右侧本页大纲 (TOC Sticky 稳固显示) ── */
 @media (min-width: 960px) {
   /* 侧边栏贴靠最左侧 */
   .VPSidebar {
@@ -186,43 +187,76 @@ html.parchment .VPNavBar {
     padding-left: 0 !important;
   }
 
-  /* 正文容器全宽拉伸 */
+  /* 正文与大纲弹性布局容器 */
   .VPDoc.has-sidebar .container {
     max-width: 100% !important;
     padding-left: 36px !important;
     padding-right: 28px !important;
     display: flex !important;
     justify-content: space-between !important;
+    align-items: flex-start !important;
   }
 
-  /* 中间知识点内容区自适应全宽 */
+  /* 中间知识点内容区自适应宽屏 */
   .VPDoc.has-sidebar .content {
     flex: 1 1 auto !important;
     max-width: calc(100% - 240px) !important;
-    padding-right: 40px !important;
+    padding-right: 48px !important;
   }
 
   .VPDoc.has-sidebar .content-container {
-    max-width: 100% !important; /* 充分填满中间可用宽度 */
+    max-width: 100% !important;
     margin: 0 !important;
   }
 
-  /* 右侧「本页大纲 (TOC)」靠右侧贴近边缘 */
+  /* 右侧「本页大纲 (TOC)」Sticky 稳定展示于屏幕右侧 */
   .VPDoc.has-aside .aside {
+    display: block !important;
+    position: relative !important;
     width: 220px !important;
     flex-shrink: 0 !important;
-    padding-left: 12px !important;
-    padding-right: 8px !important;
+    padding: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .VPDoc.has-aside .aside-container {
+    position: sticky !important;
+    top: calc(var(--vp-nav-height) + 24px) !important;
+    width: 220px !important;
+    max-height: calc(100vh - var(--vp-nav-height) - 48px) !important;
+    overflow-y: auto !important;
+    padding-top: 0 !important;
+    scrollbar-width: thin;
+  }
+
+  .VPDoc.has-aside .aside-content {
+    min-height: auto !important;
+    padding-bottom: 24px !important;
   }
 
   .VPDocAsideOutline .outline-title {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--vp-c-text-1);
-    text-transform: uppercase;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    color: var(--vp-c-text-1) !important;
+    text-transform: uppercase !important;
+    margin-bottom: 10px !important;
+  }
+
+  .VPDocAsideOutline .outline-link {
+    font-size: 13px !important;
+    line-height: 20px !important;
+    color: var(--vp-c-text-2) !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .VPDocAsideOutline .outline-link:hover,
+  .VPDocAsideOutline .outline-link.active {
+    color: var(--vp-c-brand-1) !important;
+    font-weight: 600 !important;
   }
 }
+
 
 /* ── 正文排版 ── */
 .vp-doc {
