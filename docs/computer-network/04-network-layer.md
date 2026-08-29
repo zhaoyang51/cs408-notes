@@ -1,7 +1,7 @@
 # 第4章 网络层与 IP 协议
 
-<span class="badge badge-star">⭐️ 408 必考综合大题 (10~15分)</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-star">⭐️ 计网第一大题考点 (10~15分)</span>
+<span class="badge badge-freq">📊 考频 55 次（CIDR 子网 20 / 路由转发 12 / IPv4 NAT 10 / ARP DHCP 10 / 路由协议 9）</span>
 
 ---
 

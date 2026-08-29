@@ -1,9 +1,7 @@
 # 第1章 操作系统概述与体系结构
 
-<span class="badge badge-freq">📊 考频 ★★★☆☆</span>
-<span class="badge badge-trap">⚠️ 核心态与系统调用辨析</span>
-<AuthorTag user="Zhao" />
-<AuthorTag user="Chen" />
+<span class="badge badge-freq">📊 考频 33 次（中断与异常 16 / 双模式 12 / 体系结构 5）</span>
+<span class="badge badge-trap">⚠️ 特权指令与系统调用</span>
 
 ---
 

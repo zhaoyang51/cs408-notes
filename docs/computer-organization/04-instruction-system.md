@@ -1,7 +1,7 @@
 # 第4章 指令系统与寻址方式
 
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
-<span class="badge badge-formula">💡 寻址有效地址速查</span>
+<span class="badge badge-star">⭐️ 大题难点</span>
+<span class="badge badge-freq">📊 考频 35 次（寻址方式 16 / 指令格式与执行 16）</span>
 
 ---
 

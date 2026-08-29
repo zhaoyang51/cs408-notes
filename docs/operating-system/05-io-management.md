@@ -1,6 +1,6 @@
 # 第5章 I/O 核心子系统与 SPOOLing
 
-<span class="badge badge-freq">📊 考频 ★★★☆☆</span>
+<span class="badge badge-freq">📊 考频 17 次（I/O 软件 4 层 12 / 缓冲管理 3 / SPOOLing 1）</span>
 
 ---
 

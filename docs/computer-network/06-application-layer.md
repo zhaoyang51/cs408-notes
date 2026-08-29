@@ -1,6 +1,6 @@
 # 第6章 应用层 (HTTP / DNS / 邮件)
 
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
+<span class="badge badge-freq">📊 考频 19 次（HTTP 协议 9 / DNS 解析 5 / 电子邮件 5）</span>
 
 ---
 

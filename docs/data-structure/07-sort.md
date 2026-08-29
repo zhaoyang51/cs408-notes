@@ -1,7 +1,7 @@
 # 第7章 内部与外部排序
 
-<span class="badge badge-star">⭐️ 408 全卷必考综合表格</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-trap">🎯 纯选择题得分高地</span>
+<span class="badge badge-freq">📊 考频 31 次（全选择 12 次综合对比 / 堆排序 7）</span>
 
 ---
 

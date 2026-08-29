@@ -1,7 +1,7 @@
 # 第4章 树和二叉树
 
 <span class="badge badge-star">⭐️ 408 必考综合大题 (15分)</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-freq">📊 考频 53 次（遍历 13 / 哈夫曼 15 / BST 9 / AVL 8）</span>
 
 ---
 

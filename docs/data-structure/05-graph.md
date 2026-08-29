@@ -1,7 +1,7 @@
 # 第5章 图论
 
-<span class="badge badge-star">⭐️ 408 核心大题与算法设计</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-star">⭐️ 核心大题与算法设计</span>
+<span class="badge badge-freq">📊 考频 42 次（概念 13 / 存储 12 / 拓扑 9 / 最短路 6）</span>
 
 ---
 

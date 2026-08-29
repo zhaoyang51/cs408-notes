@@ -1,8 +1,7 @@
 # 第1章 计算机系统概述与性能指标
 
-<span class="badge badge-freq">📊 考频 ★★★☆☆</span>
-<span class="badge badge-formula">💡 性能公式速查</span>
-
+<span class="badge badge-freq">📊 考频 23 次（性能指标 12 / 系统层次 11）</span>
+<span class="badge badge-formula">💡 CPI / MIPS / CPU时间</span>
 
 ---
 

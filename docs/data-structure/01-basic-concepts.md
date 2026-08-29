@@ -1,8 +1,8 @@
 # 第1章 基本概念与时空复杂度
 
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
-<span class="badge badge-trap">⚠️ 易错概念辨析</span>
-
+<span class="badge badge-star">⭐️ 全科必考第 1 题</span>
+<span class="badge badge-freq">📊 考频 22 次（选 10 / 简 12）</span>
+<span class="badge badge-formula">💡 算法大题必带分析</span>
 
 ---
 

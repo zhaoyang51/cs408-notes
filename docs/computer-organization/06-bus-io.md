@@ -1,7 +1,7 @@
 # 第6章 总线与输入输出系统
 
-<span class="badge badge-star">⭐️ 中断与 DMA 综合必考</span>
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
+<span class="badge badge-star">⭐️ 中断与总线大题</span>
+<span class="badge badge-freq">📊 考频 54 次（中断方式 24 / 总线 12 / DMA 9 / I/O 接口 9）</span>
 
 ---
 

@@ -1,9 +1,7 @@
 # 第1章 计算机网络体系结构
 
-<span class="badge badge-star">⭐️ 时延计算必背公式</span>
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
-<AuthorTag user="Zhao" />
-<AuthorTag user="Chen" />
+<span class="badge badge-freq">📊 考频 18 次（体系结构 12 / 时延计算 6）</span>
+<span class="badge badge-formula">💡 时延 4 大公式</span>
 
 ---
 

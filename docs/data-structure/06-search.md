@@ -1,7 +1,7 @@
 # 第6章 查找与散列
 
-<span class="badge badge-star">⭐️ 高频计算与平衡树旋转</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-trap">🎯 纯选择题得分高地</span>
+<span class="badge badge-freq">📊 考频 34 次（B/B+ 树 12 / Hash 9 / AVL 8 / 折半 5）</span>
 
 ---
 

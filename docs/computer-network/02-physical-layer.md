@@ -1,7 +1,7 @@
 # 第2章 物理层与通信基础
 
-<span class="badge badge-star">⭐️ 奈氏准则 vs 香农定理必考</span>
-<span class="badge badge-freq">📊 考频 ★★★★☆</span>
+<span class="badge badge-trap">🎯 纯选择题得分高地</span>
+<span class="badge badge-freq">📊 考频 17 次（奈氏香农 7 / 传输介质 5 / 编码调制 5）</span>
 
 ---
 

@@ -1,7 +1,7 @@
 # 第3章 数据链路层与 MAC
 
-<span class="badge badge-star">⭐️ 滑动窗口与 CSMA/CD 计算重点</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-trap">🎯 纯选择题常客</span>
+<span class="badge badge-freq">📊 考频 35 次（CSMA 15 / 交换机设备 11 / GBN 6 / 滑动窗口 3）</span>
 
 ---
 

@@ -1,7 +1,7 @@
 # 第3章 存储器层次结构 (Cache / 主存)
 
-<span class="badge badge-star">⭐️ 408 必考综合大题 (15分)</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-star">⭐️ 软硬结合大题核心 (15分)</span>
+<span class="badge badge-freq">📊 考频 58 次（虚存 19 / Cache 映射 16 / Cache 原理 10）</span>
 
 ---
 

@@ -1,7 +1,7 @@
 # 第3章 栈、队列和数组
 
-<span class="badge badge-star">⭐️ 综合大题 & 计算重点</span>
-<span class="badge badge-formula">💡 模运算公式</span>
+<span class="badge badge-freq">📊 考频 21 次（概念 12 / 应用 9）</span>
+<span class="badge badge-formula">💡 卡特兰数 & 循环队列模运算</span>
 
 ---
 

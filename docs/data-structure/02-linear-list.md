@@ -1,7 +1,8 @@
 # 第2章 线性表
 
-<span class="badge badge-star">⭐️ 算法大题命题高发区</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-star">⭐️ 算法大题核心载体</span>
+<span class="badge badge-freq">📊 考频 22 次（链表 12 / 顺序表 10）</span>
+<span class="badge badge-formula">💡 双指针与原地逆置</span>
 
 ---
 

@@ -1,7 +1,7 @@
 # 第5章 传输层 (TCP / UDP)
 
-<span class="badge badge-star">⭐️ TCP 拥塞控制与状态机必考</span>
-<span class="badge badge-freq">📊 考频 ★★★★★</span>
+<span class="badge badge-star">⭐️ 协议综合大题 (10分)</span>
+<span class="badge badge-freq">📊 考频 33 次（TCP 拥塞控制 12 / 握手挥手 9 / 报文段 8 / 流量控制 4）</span>
 
 ---
 
