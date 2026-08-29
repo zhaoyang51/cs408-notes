@@ -16,13 +16,9 @@
 
 ---
 
-## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段） <AuthorTag author="Zhao" />
+## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段）
 
-<div data-author="zhao" class="author-zhao" style="display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:9999px; font-size:12px; font-weight:700; margin-bottom:14px;">
-  <span>👤 知识点归纳贡献者：Zhao</span>
-</div>
-
-::: info 💡 中断处理 10 步架构全景图（硬件阶段 vs 软件阶段）
+<KP author="Zhao" title="中断处理 10 步架构全景图（硬件阶段 vs 软件阶段）" tag="💡 架构全景">
 
 ```text
                 ┌── ① 关中断 (硬件关闭可屏蔽外中断，保护断点)
@@ -39,7 +35,7 @@
                 └── ⑩ 开中断 → 中断返回 (执行 iret 特权指令恢复现场并返回断点)
 ```
 
-:::
+</KP>
 
 ### 🎯 硬件阶段 vs 软件阶段核心命题辨析表
 

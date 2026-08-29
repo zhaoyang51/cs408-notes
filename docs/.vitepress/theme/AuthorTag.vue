@@ -1,7 +1,8 @@
 <template>
   <span 
+    v-if="normalizedAuthor"
     class="author-badge-tag" 
-    :class="[normalizedAuthor ? `author-${normalizedAuthor}` : '', { 'is-clickable': clickable }]"
+    :class="[`author-${normalizedAuthor}`, { 'is-clickable': clickable }]"
     @click="handleClick"
     :title="displayAuthor"
   >
@@ -30,24 +31,26 @@ const props = defineProps({
   }
 })
 
-const displayAuthor = computed(() => {
-  const name = props.user || props.author || 'Zhao'
-  if (name.toLowerCase() === 'zhao') return 'Zhao'
-  if (name.toLowerCase() === 'chen') return 'Chen'
-  return name
+const normalizedAuthor = computed(() => {
+  const name = props.user || props.author || ''
+  if (!name) return ''
+  const lower = name.trim().toLowerCase()
+  return lower === 'chen' ? 'chen' : (lower === 'zhao' ? 'zhao' : lower)
 })
 
-const normalizedAuthor = computed(() => {
-  const name = props.user || props.author || 'zhao'
-  return name.toLowerCase()
+const displayAuthor = computed(() => {
+  if (!normalizedAuthor.value) return ''
+  if (normalizedAuthor.value === 'zhao') return 'Zhao'
+  if (normalizedAuthor.value === 'chen') return 'Chen'
+  return props.user || props.author || ''
 })
 
 const avatarLetter = computed(() => {
-  return displayAuthor.value.charAt(0).toUpperCase()
+  return displayAuthor.value ? displayAuthor.value.charAt(0).toUpperCase() : ''
 })
 
 function handleClick() {
-  if (!props.clickable || typeof window === 'undefined') return
+  if (!props.clickable || typeof window === 'undefined' || !normalizedAuthor.value) return
   const filter = normalizedAuthor.value
   const root = document.documentElement
   root.setAttribute('data-user-filter', filter)

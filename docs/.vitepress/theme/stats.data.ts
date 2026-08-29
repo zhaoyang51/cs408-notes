@@ -70,36 +70,31 @@ export default {
           const subject = getSubjectKey(fullPath)
           const content = fs.readFileSync(fullPath, 'utf-8')
           
-          // 匹配 <KP author="Zhao"...> 或 <KnowledgePoint author="Zhao"...>
-          const zhaoKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*author=["']zhao["'][^>]*>/gi) || []
-          // 匹配 <KP author="Chen"...> 或 <KnowledgePoint author="Chen"...>
-          const chenKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*author=["']chen["'][^>]*>/gi) || []
+          // 仅统计用户自身创建/贡献的专属知识点（排除未署名的公共知识）
+          // 1. 匹配 <KP author="Zhao"...>、<KnowledgePoint author="Zhao"...>、<AuthorTag author="Zhao"...>
+          const zhaoKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*(?:author|user)=["']zhao["'][^>]*>/gi) || []
+          const chenKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*(?:author|user)=["']chen["'][^>]*>/gi) || []
           
-          // 匹配 data-author="zhao" / data-author="chen" (排除已经匹配的 KP)
-          const zhaoDataMatches = (content.match(/data-author=["']zhao["']/gi) || []).filter(
-            () => !content.includes('<KP') && !content.includes('<KnowledgePoint')
-          )
-          const chenDataMatches = (content.match(/data-author=["']chen["']/gi) || []).filter(
-            () => !content.includes('<KP') && !content.includes('<KnowledgePoint')
-          )
+          // 2. 匹配独立的 data-author="zhao" / data-author="chen"（若同一文件已通过组件匹配则去重）
+          const zhaoDataMatches = zhaoKPMatches.length > 0 ? [] : (content.match(/data-author=["']zhao["']/gi) || [])
+          const chenDataMatches = chenKPMatches.length > 0 ? [] : (content.match(/data-author=["']chen["']/gi) || [])
 
-          // 匹配 Frontmatter author: Zhao / Chen
+          // 3. 匹配 Frontmatter author: Zhao / Chen（整篇为个人专栏时计 1）
           const frontmatterZhao = /---\s*[\s\S]*?author:\s*Zhao[\s\S]*?---/i.test(content)
           const frontmatterChen = /---\s*[\s\S]*?author:\s*Chen[\s\S]*?---/i.test(content)
 
           const zhaoCount = zhaoKPMatches.length + zhaoDataMatches.length + (frontmatterZhao ? 1 : 0)
           const chenCount = chenKPMatches.length + chenDataMatches.length + (frontmatterChen ? 1 : 0)
 
-          // 统计考点总数（包括未明确指定作者的考点区块）
-          const generalSections = (content.match(/##\s+[^#\n]+/g) || []).length
-
+          // 纯粹统计各自用户的贡献数量，绝不统计公共知识
           stats.zhao.total += zhaoCount
           stats.chen.total += chenCount
 
           if (subject !== 'other') {
             stats.zhao.bySubject[subject] += zhaoCount
             stats.chen.bySubject[subject] += chenCount
-            stats.all.bySubject[subject] += (zhaoCount + chenCount || generalSections)
+            // 用户贡献总计为各用户贡献之和，不计入公共章节
+            stats.all.bySubject[subject] += (zhaoCount + chenCount)
           }
         }
       }

@@ -19,7 +19,7 @@
         <div class="stats-popover all-popover" v-if="hovered === 'all'">
           <div class="popover-arrow"></div>
           <div class="popover-header">
-            <span class="popover-title">👥 全体考点分布</span>
+            <span class="popover-title">👥 用户贡献考点统计</span>
             <span class="popover-badge">共 {{ stats.all.total }} 个考点</span>
           </div>
           <div class="popover-body">
@@ -42,7 +42,7 @@
               <div class="progress-chen" :style="{ width: `${(stats.chen.total / stats.all.total) * 100}%` }"></div>
             </div>
           </div>
-          <div class="popover-tip">💡 显示全部公共考点与所有用户内容</div>
+          <div class="popover-tip">💡 显示所有公共知识与全部用户贡献内容</div>
         </div>
       </transition>
     </div>

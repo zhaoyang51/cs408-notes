@@ -3,17 +3,17 @@
     class="kp-card" 
     v-show="isMatchedFilter"
     :class="[
-      `author-${normalizedAuthor}`,
+      normalizedAuthor ? `author-${normalizedAuthor}` : 'kp-public',
       { 'is-active-filter': isMatchedFilter }
     ]"
-    :data-author="normalizedAuthor"
+    :data-author="normalizedAuthor || undefined"
   >
-    <div class="kp-header" v-if="title || author || tag">
+    <div class="kp-header" v-if="title || normalizedAuthor || tag">
       <div class="kp-header-left">
         <span v-if="tag" class="kp-tag">{{ tag }}</span>
         <span v-if="title" class="kp-title">{{ title }}</span>
       </div>
-      <div class="kp-header-right">
+      <div class="kp-header-right" v-if="normalizedAuthor">
         <!-- 仅展示简洁用户标识，无冗余前缀文本 -->
         <span class="kp-author-pill" :class="`${normalizedAuthor}-pill`" :title="`创建用户: ${displayAuthor}`">
           <span class="kp-pill-avatar">{{ avatarLetter }}</span>
@@ -33,7 +33,7 @@ import { computed, ref, onMounted, onUnmounted } from 'vue'
 const props = defineProps({
   author: {
     type: String,
-    default: 'Zhao'
+    default: ''
   },
   title: {
     type: String,
@@ -48,22 +48,26 @@ const props = defineProps({
 const currentFilter = ref('all')
 
 const normalizedAuthor = computed(() => {
-  const a = (props.author || 'zhao').toLowerCase()
+  if (!props.author) return ''
+  const a = props.author.trim().toLowerCase()
   return a === 'chen' ? 'chen' : (a === 'zhao' ? 'zhao' : a)
 })
 
 const displayAuthor = computed(() => {
+  if (!props.author) return ''
   if (normalizedAuthor.value === 'zhao') return 'Zhao'
   if (normalizedAuthor.value === 'chen') return 'Chen'
-  return props.author || 'Zhao'
+  return props.author
 })
 
 const avatarLetter = computed(() => {
-  return displayAuthor.value.charAt(0).toUpperCase()
+  return displayAuthor.value ? displayAuthor.value.charAt(0).toUpperCase() : ''
 })
 
 const isMatchedFilter = computed(() => {
   if (currentFilter.value === 'all') return true
+  // 无作者标记的知识点为公共知识，在任何筛选状态下均显示
+  if (!normalizedAuthor.value) return true
   return currentFilter.value === normalizedAuthor.value
 })
 
