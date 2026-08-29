@@ -5,6 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
 
 :root {
+  /* 基础布局宽度：让大屏下侧边栏紧贴左侧，告别中间居中两侧留大白边 */
+  --vp-layout-max-width: 100% !important;
+  --vp-sidebar-width: 280px;
+
   /* 基础字体与排版 (15px 正文，1.75 行高) */
   --vp-font-family-base: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
@@ -26,7 +30,7 @@
   --subject-cn-soft: rgba(245, 158, 11, 0.12);
   --subject-cn-border: rgba(245, 158, 11, 0.35);
 
-  /* ☀️ 浅色模式调色板 (Tailwind Slate/Zinc 清爽风) */
+  /* ☀️ 浅色模式调色板 */
   --vp-c-brand-1: #2563eb;
   --vp-c-brand-2: #3b82f6;
   --vp-c-brand-3: #60a5fa;
@@ -53,7 +57,7 @@
   --card-hover-shadow: 0 12px 30px -4px rgba(37, 99, 235, 0.12);
 }
 
-/* 🌙 深色夜间模式 (Nextra/Vercel 深邃暗黑) */
+/* 🌙 深色夜间模式 */
 .dark {
   --vp-c-brand-1: #3b82f6;
   --vp-c-brand-2: #60a5fa;
@@ -81,7 +85,7 @@
   --card-hover-shadow: 0 12px 30px -4px rgba(59, 130, 246, 0.2);
 }
 
-/* 📜 羊皮纸复古护眼模式 (Kindle / 书籍阅读温润质感) */
+/* 📜 羊皮纸复古护眼模式 */
 html.parchment {
   --vp-c-brand-1: #9a5b28;
   --vp-c-brand-2: #b46b32;
@@ -117,7 +121,41 @@ html.parchment {
   display: none !important;
 }
 
-/* ── 正文排版与呼吸感 ── */
+/* ── 优化侧边栏布局：左靠与可收起体验 ── */
+@media (min-width: 960px) {
+  /* 侧边栏贴靠左侧 */
+  .VPSidebar {
+    left: 0 !important;
+    width: var(--vp-sidebar-width) !important;
+    padding-left: 20px !important;
+    padding-right: 16px !important;
+    border-right: 1px solid var(--vp-c-divider);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  .VPContent.has-sidebar {
+    padding-left: var(--vp-sidebar-width) !important;
+    transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 侧边栏收起状态 */
+  html.sidebar-collapsed .VPSidebar {
+    transform: translateX(-100%) !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  html.sidebar-collapsed .VPContent.has-sidebar {
+    padding-left: 0 !important;
+  }
+
+  /* 内容区最大宽度限制，保证舒适阅读视距 */
+  .VPDoc.has-sidebar .container {
+    max-width: 1040px !important;
+  }
+}
+
+/* ── 正文排版 ── */
 .vp-doc {
   font-size: 15px;
   line-height: 1.75;
@@ -153,11 +191,7 @@ html.parchment {
   margin-bottom: 12px;
 }
 
-.vp-doc p, .vp-doc li {
-  margin: 8px 0;
-}
-
-/* ── 408 核心考研徽章 (Exam Badges) ── */
+/* ── 408 核心考研徽章 ── */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -172,43 +206,23 @@ html.parchment {
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-/* ⭐️ 必考大题 / 主观题 */
-.badge-star {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.35);
-}
+.badge-star { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.35); }
 .dark .badge-star { background: rgba(239, 68, 68, 0.25); color: #f87171; border-color: rgba(239, 68, 68, 0.5); }
 html.parchment .badge-star { background: #fde8e8; color: #c53030; border-color: #feb2b2; }
 
-/* ⚠️ 经典陷阱 */
-.badge-trap {
-  background: rgba(245, 158, 11, 0.15);
-  color: #d97706;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-}
+.badge-trap { background: rgba(245, 158, 11, 0.15); color: #d97706; border: 1px solid rgba(245, 158, 11, 0.35); }
 .dark .badge-trap { background: rgba(245, 158, 11, 0.25); color: #fbbf24; border-color: rgba(245, 158, 11, 0.5); }
 html.parchment .badge-trap { background: #fef3c7; color: #b45309; border-color: #fcd34d; }
 
-/* 💡 秒杀公式 / 解题口诀 */
-.badge-formula {
-  background: rgba(59, 130, 246, 0.15);
-  color: #2563eb;
-  border: 1px solid rgba(59, 130, 246, 0.35);
-}
+.badge-formula { background: rgba(59, 130, 246, 0.15); color: #2563eb; border: 1px solid rgba(59, 130, 246, 0.35); }
 .dark .badge-formula { background: rgba(59, 130, 246, 0.25); color: #60a5fa; border-color: rgba(59, 130, 246, 0.5); }
 html.parchment .badge-formula { background: #e0f2fe; color: #0369a1; border-color: #7dd3fc; }
 
-/* 📊 考频徽章 */
-.badge-freq {
-  background: rgba(16, 185, 129, 0.15);
-  color: #059669;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-}
+.badge-freq { background: rgba(16, 185, 129, 0.15); color: #059669; border: 1px solid rgba(16, 185, 129, 0.35); }
 .dark .badge-freq { background: rgba(16, 185, 129, 0.25); color: #34d399; border-color: rgba(16, 185, 129, 0.5); }
 html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 
-/* ── 现代高密度斑马纹对比表格 ── */
+/* ── 现代高密度斑马纹对比表格（精准宽度与不换行） ── */
 .vp-doc table {
   width: 100%;
   border-collapse: separate;
@@ -233,6 +247,31 @@ html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: 
   padding: 11px 16px;
   border-bottom: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-2);
+}
+
+/* 最后一列（速查链接列）宽度加宽且不换行，视觉更舒展 */
+.vp-doc th:last-child,
+.vp-doc td:last-child {
+  min-width: 100px !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+}
+
+.vp-doc td:last-child a {
+  display: inline-block;
+  padding: 3px 12px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.vp-doc td:last-child a:hover {
+  background: var(--vp-c-brand-1);
+  color: #ffffff !important;
+  transform: translateX(2px);
 }
 
 .vp-doc tr:last-child td {
@@ -269,7 +308,7 @@ html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: 
   font-size: 14px;
 }
 
-/* ── 考点自测与自查背诵折叠组件 ── */
+/* ── 考点自测背诵折叠组件 ── */
 details.self-test {
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
@@ -307,7 +346,7 @@ details.self-test .answer-content {
   font-size: 14.5px;
 }
 
-/* ── 首页科目专属卡片网格 (Nextra / Tailwind UI 风格) ── */
+/* ── 首页卡片网格 ── */
 .home-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -388,19 +427,4 @@ details.self-test .answer-content {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-}
-
-/* ── 移动端底栏沉浸适配 ── */
-@media (max-width: 768px) {
-  .vp-doc {
-    font-size: 14.5px;
-  }
-  .vp-doc table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .home-card-grid {
-    grid-template-columns: 1fr;
-  }
 }
