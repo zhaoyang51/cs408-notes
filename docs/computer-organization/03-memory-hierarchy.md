@@ -42,6 +42,6 @@ $$
   
 
 $$
-\text{TLB (快表) 命中} \rightarrow \text{页表 (慢表) 命中} \rightarrow \text{缺页异常 (访外存硬盘调页)}
+TLB (快表) 命中 → 页表 (慢表) 命中 \rightarrow \text{缺页异常 (访外存硬盘调页)}
 $$
 

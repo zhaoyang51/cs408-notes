@@ -19,6 +19,6 @@
 ## 2. 中断处理流程 8 步曲
 
 $$
-\text{1. 关中断} \rightarrow \text{2. 保存断点(PC/PSW)} \rightarrow \text{3. 引出中断服务程序} \rightarrow \text{4. 开中断(允许嵌套)} \rightarrow \text{5. 执行中断处理} \rightarrow \text{6. 关中断} \rightarrow \text{7. 恢复现场} \rightarrow \text{8. 开中断并返回}
+1. 关中断 → 2. 保存断点(PC/PSW) \rightarrow 3. 引出中断服务程序 → 4. 开中断(允许嵌套) \rightarrow 5. 执行中断处理 → 6. 关中断 \rightarrow 7. 恢复现场 → 8. 开中断并返回
 $$
 
