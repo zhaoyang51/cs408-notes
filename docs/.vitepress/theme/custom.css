@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+/* ── 全局视口防溢出锁定 ── */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+#app {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
 /* ══════════════════════════════════════════════════════════════════
    408 考研简纲 · 现代技术文档与沉浸式应试排版系统 (Nextra / Tailwind UI 风格)
    ══════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
 
 :root {
   /* 基础布局全宽，侧边栏贴靠最左侧 */
@@ -360,85 +375,32 @@ html.parchment .badge-zhao { background: #e0f2fe; color: #0284c7; border-color: 
 .dark .badge-chen { background: rgba(168, 85, 247, 0.25); color: #c084fc; border-color: rgba(192, 132, 252, 0.5); }
 html.parchment .badge-chen { background: #f3e8ff; color: #7e22ce; border-color: #e9d5ff; }
 
-/* ── 现代高密度斑马纹对比表格（自适应 100% 页面宽度） ── */
+/* ── 表格全屏与移动端局部滚动响应式 ── */
 .vp-doc table {
-  display: table !important;
   width: 100% !important;
-  table-layout: auto;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 24px 0;
+  margin: 20px 0;
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
-  overflow: hidden;
   font-size: 14.5px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
-.vp-doc th {
-  background: var(--vp-c-bg-alt);
-  color: var(--vp-c-text-1);
-  font-weight: 700;
-  padding: 13px 18px;
-  text-align: left;
-  border-bottom: 2px solid var(--vp-c-divider);
-  white-space: nowrap;
+@media (min-width: 960px) {
+  .vp-doc table {
+    display: table !important;
+    table-layout: auto;
+  }
 }
 
-.vp-doc td {
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--vp-c-divider);
-  color: var(--vp-c-text-2);
-  vertical-align: middle;
-  line-height: 1.6;
-}
-
-/* 表格最后一列（速查/操作列）居中与按钮美化 */
-.vp-doc th:last-child,
-.vp-doc td:last-child {
-  min-width: 96px !important;
-  white-space: nowrap !important;
-  text-align: center !important;
-}
-
-.vp-doc td:last-child a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 14px;
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none !important;
-  transition: all 0.2s ease;
-  border: 1px solid transparent;
-}
-
-.vp-doc td:last-child a:hover {
-  background: var(--vp-c-brand-1);
-  color: #ffffff !important;
-  border-color: var(--vp-c-brand-1);
-  transform: translateX(2px);
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
-}
-
-.vp-doc tr:last-child td {
-  border-bottom: none;
-}
-
-.vp-doc tr:nth-child(even) {
-  background-color: var(--vp-c-bg-soft);
-}
-
-.vp-doc tr:hover {
-  background-color: var(--vp-c-brand-soft);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 959px) {
   .vp-doc table {
     display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
     overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
     white-space: nowrap;
   }
 }
@@ -790,4 +752,66 @@ html[data-user-filter="chen"] [data-author="chen" i] {
 
 .custom-block.details summary mjx-container {
   vertical-align: middle !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   移动端与平板全量响应式适配 (< 960px)
+   ══════════════════════════════════════════════════════════════════ */
+@media (max-width: 959px) {
+  .VPContent.has-sidebar {
+    padding-left: 0 !important;
+  }
+
+  .VPDoc {
+    padding: 20px 14px 48px 14px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  .VPDoc.has-sidebar .container,
+  .VPDoc .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+  }
+
+  .VPDoc.has-sidebar > .container > .content,
+  .VPDoc .content {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .VPDoc .content-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* 移动端彻底隐藏固定右侧大纲（由顶部本地导航 Menu 代替） */
+  .VPDoc.has-aside .aside,
+  .VPDoc.has-aside .aside-container {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* 移动端顶栏优化：隐藏冗长的用户多选，防止顶栏过宽撑大视口 */
+  .nav-controls-wrapper .user-filter-control {
+    display: none !important;
+  }
+
+  .nav-controls-wrapper {
+    margin-left: 2px !important;
+    gap: 2px !important;
+  }
+
+  /* 移动端卡片网格单列显示 */
+  .home-card-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
