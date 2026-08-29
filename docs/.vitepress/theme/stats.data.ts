@@ -71,9 +71,9 @@ export default {
           const content = fs.readFileSync(fullPath, 'utf-8')
           
           // 匹配 <KP author="Zhao"...> 或 <KnowledgePoint author="Zhao"...>
-          const zhaoKPMatches = content.match(/<(KP|KnowledgePoint)\b[^>]*author=["']zhao["'][^>]*>/gi) || []
+          const zhaoKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*author=["']zhao["'][^>]*>/gi) || []
           // 匹配 <KP author="Chen"...> 或 <KnowledgePoint author="Chen"...>
-          const chenKPMatches = content.match(/<(KP|KnowledgePoint)\b[^>]*author=["']chen["'][^>]*>/gi) || []
+          const chenKPMatches = content.match(/<(KP|KnowledgePoint|AuthorTag)\b[^>]*author=["']chen["'][^>]*>/gi) || []
           
           // 匹配 data-author="zhao" / data-author="chen" (排除已经匹配的 KP)
           const zhaoDataMatches = (content.match(/data-author=["']zhao["']/gi) || []).filter(
