@@ -112,17 +112,3 @@ $$
 <KP author="Zhao" title="🤝 TCP 三次握手建立连接与四次挥手释放连接全景（2011 题 39 经典真题推导）" tag="⭐️ 考研必背">
 <TcpConnectionManagement />
 </KP>
-
-### 6.1 三次握手控制位与序号演进铁律
-
-| 握手轮次 | 方向 | 报文段特征与控制位 | 序号与确认号规则 | 客户端状态 | 服务端状态 |
-|:---|:---|:---|:---|:---|:---|
-| **第 1 次** | 客户 $\rightarrow$ 服务 | **SYN = 1**, ACK = 0 | $\text{seq} = x$（随机初始序号） | CLOSED $\rightarrow$ **SYN-SENT** | LISTEN |
-| **第 2 次** | 服务 $\rightarrow$ 客户 | **SYN = 1**, **ACK = 1** | $\text{seq} = y$（随机初始序号）, **$\text{ack} = x + 1$** | SYN-SENT | LISTEN $\rightarrow$ **SYN-RCVD** |
-| **第 3 次** | 客户 $\rightarrow$ 服务 | SYN = 0, **ACK = 1** | $\text{seq} = x + 1$, **$\text{ack} = y + 1$** | SYN-SENT $\rightarrow$ **ESTABLISHED** | SYN-RCVD $\rightarrow$ **ESTABLISHED** |
-
-### 6.2 四次挥手与 2MSL TIME_WAIT 状态
-- **半关闭状态**：第 2 次挥手后进入 `CLOSE-WAIT` / `FIN-WAIT-2`，客户到服务方向关闭，服务到客户方向仍可传输数据；
-- **为什么 TIME-WAIT 必须等待 2MSL？（408 必背）**：
-  1. **保证最后一个 ACK 能够到达服务端**（支持重传 FIN 重新响应，确保服务端正常关闭）；
-  2. **使本连接持续时间内产生的所有报文段都从网络中彻底消失**（防止旧连接失效报文段干扰后续新连接）。

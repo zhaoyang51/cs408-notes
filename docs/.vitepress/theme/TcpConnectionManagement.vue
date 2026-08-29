@@ -260,45 +260,6 @@
       </div>
     </div>
 
-    <!-- 4. 408 核心大题必背：为什么 TIME-WAIT 必须等待 2MSL？(支持折叠) -->
-    <div class="collapsible-card">
-      <div class="card-header" @click="toggle('msl')">
-        <div class="header-title-box">
-          <span class="card-icon">⏳</span>
-          <strong>408 经典简答：为什么客户端在 TIME-WAIT 状态必须等待 2MSL？</strong>
-          <span class="badge-amber">考研大题</span>
-        </div>
-        <button class="toggle-btn" type="button">
-          {{ openSections.msl ? '收起 ▲' : '展开背诵 ▼' }}
-        </button>
-      </div>
-
-      <div v-show="openSections.msl" class="card-body">
-        <div class="msl-detail-content">
-          <div class="msl-item">
-            <div class="m-head">📌 MSL 概念定义</div>
-            <div class="m-text">
-              <strong>MSL (Maximum Segment Lifetime)</strong> 意为<strong>最长报文段寿命</strong>，RFC 793 建议为 <strong>2 分钟</strong>。2MSL 即两个最长报文段寿命时间（通常设为 4 分钟或 1 分钟）。
-            </div>
-          </div>
-
-          <div class="msl-item">
-            <div class="m-head">🎯 原因 1：保证客户端发送的最后一个 ACK 报文段能够到达服务端</div>
-            <div class="m-text">
-              若甲发送的第 4 次挥手 ACK 报文在网络中丢失，乙在超时后会<strong>重新发送第 3 次挥手的 FIN+ACK 报文</strong>。甲在 2MSL 时间内就能接收到这个重传的 FIN，并重新发送 ACK 报文，<strong>确保乙能够正常进入 CLOSED 状态</strong>；若甲没有 TIME-WAIT 直接关闭，乙重传的 FIN 将收到 RST，无法正常释放连接。
-            </div>
-          </div>
-
-          <div class="msl-item">
-            <div class="m-head">🎯 原因 2：防止“已失效的连接请求/数据报文段”出现在本连接之后的新连接中</div>
-            <div class="m-text">
-              经过 2MSL 时间，可以<strong>使本连接持续时间内所产生的所有报文段都从网络中彻底消失</strong>。这样就可以使下一个新的连接中，绝不会出现旧连接遗留的迟到报文段，避免造成数据混乱。
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
 
