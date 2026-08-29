@@ -38,18 +38,18 @@
   </ul>
 :::
 
-<details class="self-test">
-  <summary>
-    <span class="badge badge-star">⭐️ 408 经典真题自测</span>
-    <span>如何用时间 $O(n)$、空间 $O(1)$ 查找单链表中倒数第 $k$ 个结点？</span>
-  </summary>
-  <div class="answer-content">
-    <p><strong>【算法步骤】</strong>：</p>
-    <ol>
-      <li>定义两个指针 <code>p, q</code>，初始均指向头结点的下一个结点。</li>
-      <li>指针 <code>p</code> 先向前走 $k$ 步。若中途 <code>p == NULL</code>，说明链表长度 $< k$，查找失败。</li>
-      <li>随后 <code>p, q</code> 同时向前同步移动，直到 <code>p == NULL</code>。</li>
-      <li>此时 <code>q</code> 所指结点即为倒数第 $k$ 个结点。</li>
-    </ol>
-  </div>
-</details>
+
+
+::: details 🎯 ⭐️ 408 经典真题自测 如何用时间 $O(n)$、空间 $O(1)$ 查找单链表中倒数第 $k$ 个结点？
+
+**【算法步骤】**：
+
+    
+      - 定义两个指针 `p, q`，初始均指向头结点的下一个结点。
+      - 指针 `p` 先向前走 $k$ 步。若中途 `p == NULL`，说明链表长度 $< k$，查找失败。
+      - 随后 `p, q` 同时向前同步移动，直到 `p == NULL`。
+      - 此时 `q` 所指结点即为倒数第 $k$ 个结点。
+
+:::
+
+

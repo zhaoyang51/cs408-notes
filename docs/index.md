@@ -119,28 +119,31 @@ features:
 
 ## 🎯 408 考点秒杀与自查示例
 
-<details class="self-test">
-  <summary>
-    <span class="badge badge-star">⭐️ 重点自测</span>
-    <span>快速排序在什么情况下性能最差？如何优化？</span>
-  </summary>
-  <div class="answer-content">
-    <p><strong>【最坏情况】</strong>：当初始序列已经<strong>基本有序</strong>或<strong>逆序</strong>时，每次划分只能减少 1 个元素，递归树退化为单支树，时间复杂度升至 $O(n^2)$，递归栈空间复杂度升至 $O(n)$。</p>
-    <p><strong>【优化方案】</strong>：</p>
-    <ul>
-      <li><strong>三数取中法</strong>（取首、尾、中三者的中间值作为基准枢轴）。</li>
-      <li><strong>随机选取枢轴法</strong>。</li>
-      <li>当子序列长度较小时（如 $n \le 10$）直接切换为<strong>直接插入排序</strong>。</li>
-    </ul>
-  </div>
-</details>
 
-<details class="self-test">
-  <summary>
-    <span class="badge badge-trap">⚠️ 经典避坑</span>
-    <span>为什么单精度 IEEE 754 阶码偏移量是 127 而不是 128？</span>
-  </summary>
-  <div class="answer-content">
-    <p>8 位无符号数的范围是 $0 \sim 255$。标准中保留全 0（表示 $\pm 0$ 或非规格化数）和全 1（表示 $\pm \infty$ 或 NaN），有效阶码范围为 $1 \sim 254$。减去 Bias $= 127$ 后，实际真值指数范围为 $-126 \sim +127$，保持对称平衡。</p>
-  </div>
-</details>
+
+::: details 🎯 ⭐️ 重点自测 快速排序在什么情况下性能最差？如何优化？
+
+**【最坏情况】**：当初始序列已经**基本有序**或**逆序**时，每次划分只能减少 1 个元素，递归树退化为单支树，时间复杂度升至 $O(n^2)$，递归栈空间复杂度升至 $O(n)$。
+
+    
+
+**【优化方案】**：
+
+    
+      - **三数取中法**（取首、尾、中三者的中间值作为基准枢轴）。
+      - **随机选取枢轴法**。
+      - 当子序列长度较小时（如 $n \le 10$）直接切换为**直接插入排序**。
+
+:::
+
+
+
+
+
+::: details 🎯 ⚠️ 经典避坑 为什么单精度 IEEE 754 阶码偏移量是 127 而不是 128？
+
+8 位无符号数的范围是 $0 \sim 255$。标准中保留全 0（表示 $\pm 0$ 或非规格化数）和全 1（表示 $\pm \infty$ 或 NaN），有效阶码范围为 $1 \sim 254$。减去 Bias $= 127$ 后，实际真值指数范围为 $-126 \sim +127$，保持对称平衡。
+
+:::
+
+

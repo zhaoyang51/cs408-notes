@@ -50,14 +50,13 @@ $$
 3. **原地工作 (In-place)**：空间复杂度为 $O(1)$，并非不消耗内存，而是辅助空间不随输入规模 $n$ 增长。
 :::
 
-<details class="self-test author-zhao" data-author="Zhao">
-  <summary>
-    <span class="badge badge-star">⭐️ 考点自测</span>
-    <span class="badge badge-zhao">Zhao</span>
-    <span>已知某算法递推式为 $T(n) = T(n-1) + n$，求时间复杂度？</span>
-  </summary>
-  <div class="answer-content">
-    <p>通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。</p>
-  </div>
-</details>
+
+
+::: details 🎯 ⭐️ 考点自测 Zhao 已知某算法递推式为 $T(n) = T(n-1) + n$，求时间复杂度？
+
+通过累加展开：$T(n) = T(n-2) + (n-1) + n = \dots = T(1) + \sum_{i=2}^n i = O(n^2)$。
+
+:::
+
+
 
