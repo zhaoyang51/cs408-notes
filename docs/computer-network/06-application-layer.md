@@ -57,18 +57,27 @@
 
 ---
 
-## 4. HTTP 超文本传输协议与状态码速查
+## 4. HTTP 超文本传输协议（报文格式、Cookie 与 RTT 耗时计算） <AuthorTag author="Zhao" />
 
-### 4.1 常见 HTTP 状态码分类速查
+<KP author="Zhao" title="🌐 HTTP 协议全景图解与 RTT 耗时推导（2011 题 47 / 2015 题 40 经典真题）" tag="⭐️ 考研必背">
+<HttpProtocolSimulator />
+</KP>
 
-| 状态码 | 类别 | 含义 |
-|:---|:---|:---|
-| `200 OK` | 成功 | 请求成功，正常返回资源 |
-| `301 Moved Permanently` | 重定向 | 资源已永久移动到新 URL（浏览器自动更新书签） |
-| `302 Found` | 重定向 | 临时重定向（临时跳转） |
-| `400 Bad Request` | 客户端错误 | 客户端请求报文语法错误，服务器无法理解 |
-| `403 Forbidden` | 客户端错误 | 服务器理解请求但拒绝提供服务（权限不足） |
-| `404 Not Found` | 客户端错误 | 请求的资源在服务器上不存在 |
-| `500 Internal Server Error` | 服务器错误 | 服务器内部错误，无法完成请求 |
-| `502 Bad Gateway` | 服务器错误 | 作为网关或代理的服务器收到了无效响应 |
-| `504 Gateway Timeout` | 服务器错误 | 网关超时 |
+### 4.1 3 种 HTTP 连接工作方式耗时公式（408 必背大题）
+1. **非持续连接 (Non-persistent)**：
+   $$
+   \text{总时间} = 2(1 + n) \text{ RTT}
+   $$
+2. **持续非流水线连接 (Persistent Non-pipelined)**：
+   $$
+   \text{总时间} = (2 + n) \text{ RTT}
+   $$
+3. **持续流水线连接 (Persistent Pipelined)**：
+   $$
+   \text{总时间} = 3 \text{ RTT} \quad (\text{与引用对象数 } n \text{ 无关})
+   $$
+
+### 4.2 HTTP 请求报文核心字段速查
+- **`Connection: Close`**：指示服务端发送完文档后释放 TCP 连接（非持续连接）；
+- **`Connection: keep-alive`**：指示服务端保持 TCP 持续连接；
+- **`Cookie`**：客户端将服务端先前生成的 Cookie 识别码回传，用于无状态 HTTP 协议中的用户会话跟踪。
