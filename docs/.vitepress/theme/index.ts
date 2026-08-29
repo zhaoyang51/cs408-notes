@@ -5,6 +5,9 @@ import UserFilter from './UserFilter.vue'
 import SidebarBorderToggle from './SidebarBorderToggle.vue'
 import AuthorTag from './AuthorTag.vue'
 import KP from './KP.vue'
+import ProcessTable from './ProcessTable.vue'
+import InterruptSimulator from './InterruptSimulator.vue'
+import MediaCard from './MediaCard.vue'
 import { h } from 'vue'
 
 export default {
@@ -27,5 +30,8 @@ export default {
     app.component('AuthorTag', AuthorTag)
     app.component('KP', KP)
     app.component('KnowledgePoint', KP)
+    app.component('ProcessTable', ProcessTable)
+    app.component('InterruptSimulator', InterruptSimulator)
+    app.component('MediaCard', MediaCard)
   }
 }
