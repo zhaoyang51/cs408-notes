@@ -16,12 +16,13 @@
 
 ---
 
-## 2. TCP 拥塞控制 4 大机制
+## 2. TCP 拥塞控制全景图解与动态演化（慢开始 vs 拥塞避免 vs 快重传 vs 快恢复） <AuthorTag author="Zhao" />
 
-1. **慢开始 (Slow Start)**：$cwnd$ 从 1 开始，每经过一个 RTT 指数翻倍 ($1, 2, 4, 8\dots$)，直到达到慢开始门限 $ssthresh$。
-2. **拥塞避免 (Congestion Avoidance)**：$cwnd \ge ssthresh$ 后，每个 RTT 加法线性增加 ($+1$)。
-3. **网络超时 (Timeout)**：$ssthresh$ 骤降为当前 $cwnd / 2$，$cwnd$ 重新重置为 1，重新进入慢开始。
-4. **快重传与快恢复**：发送方连续收到 3 个冗余 ACK 时立即重传丢失报文，$ssthresh = cwnd/2$，$cwnd = ssthresh$ 并进入拥塞避免。
+<KP author="Zhao" title="📈 TCP 拥塞控制 4 大机制全景演化图（2009 题 39 经典模型剖析）" tag="⭐️ 考研必背">
+
+<TcpCongestionControl />
+
+</KP>
 
 ---
 
