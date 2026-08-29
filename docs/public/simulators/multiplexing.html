@@ -6,18 +6,34 @@
   <title>信道复用技术交互式学习实验室</title>
   <style>
     :root {
-      --bg-primary: #0f172a;
-      --bg-card: #1e293b;
-      --bg-panel: #0d1527;
-      --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      --border-color: #334155;
-      --color-a: #ef4444; /* 红色：计算机 A */
-      --color-b: #10b981; /* 绿色：电话 B */
-      --color-c: #3b82f6; /* 蓝色：视频 C */
-      --color-mux: #f59e0b; /* 复用器金色 */
-      --color-channel: #6366f1; /* 共享信道靛蓝 */
-      --color-demux: #8b5cf6; /* 解复用器紫色 */
+      --bg-primary: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-panel: #f1f5f9;
+      --bg-input: #e2e8f0;
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --text-muted: #64748b;
+      --border-color: #cbd5e1;
+      --color-a: #ef4444; /* 红色：A */
+      --color-b: #10b981; /* 绿色：B */
+      --color-c: #3b82f6; /* 蓝色：C */
+      --color-mux: #f59e0b;
+      --color-channel: #6366f1;
+      --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* 适应深色模式 */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-primary: #0b1120;
+        --bg-card: #151e32;
+        --bg-panel: #1e293b;
+        --bg-input: #0f172a;
+        --text-main: #f8fafc;
+        --text-sub: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border-color: #334155;
+      }
     }
 
     * {
@@ -30,10 +46,10 @@
     body {
       background: var(--bg-primary);
       color: var(--text-main);
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       min-height: 100vh;
     }
 
@@ -43,47 +59,49 @@
       justify-content: space-between;
       align-items: center;
       background: var(--bg-card);
-      padding: 14px 20px;
-      border-radius: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .title-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .badge {
-      background: rgba(245, 158, 11, 0.2);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      padding: 3px 8px;
-      border-radius: 6px;
-      font-size: 11.5px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #d97706;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 11px;
       font-weight: 700;
     }
 
     .title-group h1 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--text-main);
     }
 
     .mode-switch-group {
       display: flex;
-      gap: 8px;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .mode-btn {
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
       background: var(--bg-panel);
       color: var(--text-sub);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -91,39 +109,39 @@
 
     .mode-btn:hover {
       color: var(--text-main);
-      border-color: #60a5fa;
+      border-color: #3b82f6;
     }
 
     .mode-btn.active {
       background: #2563eb;
       color: #ffffff;
-      border-color: #3b82f6;
-      box-shadow: 0 0 12px rgba(37, 99, 235, 0.5);
+      border-color: #2563eb;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
     }
 
     /* ════ 核心可视化画布区 ════ */
     .vis-container {
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
-      padding: 20px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      position: relative;
+      gap: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .vis-topology {
       display: grid;
-      grid-template-columns: 140px 90px 1fr 90px 140px;
-      gap: 12px;
+      grid-template-columns: 160px 80px 1fr 80px 160px;
+      gap: 10px;
       align-items: center;
-      min-height: 280px;
+      min-height: 250px;
     }
 
     @media (max-width: 820px) {
       .vis-topology {
-        grid-template-columns: 110px 70px 1fr 70px 110px;
+        grid-template-columns: 120px 65px 1fr 65px 120px;
         gap: 6px;
       }
     }
@@ -133,18 +151,18 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 240px;
-      gap: 10px;
+      height: 230px;
+      gap: 8px;
     }
 
     .device-card {
       background: var(--bg-panel);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 10px;
+      padding: 8px 10px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: all 0.2s ease;
     }
 
@@ -152,10 +170,10 @@
     .card-b { border-left: 4px solid var(--color-b); }
     .card-c { border-left: 4px solid var(--color-c); }
 
-    .dev-icon { font-size: 20px; }
+    .dev-icon { font-size: 18px; }
     .dev-info { display: flex; flex-direction: column; }
     .dev-name { font-size: 12px; font-weight: 700; }
-    .dev-type { font-size: 10px; color: var(--text-sub); }
+    .dev-type { font-size: 10px; color: var(--text-muted); }
 
     .fdm-toggle {
       margin-left: auto;
@@ -163,42 +181,55 @@
       font-size: 11px;
       padding: 2px 6px;
       border-radius: 4px;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--bg-card);
       border: 1px solid var(--border-color);
       color: var(--text-sub);
+      font-weight: 700;
     }
     .fdm-toggle.active {
-      background: rgba(16, 185, 129, 0.2);
+      background: rgba(16, 185, 129, 0.15);
       border-color: var(--color-b);
-      color: #34d399;
+      color: #059669;
+    }
+
+    .cdm-select {
+      margin-left: auto;
+      font-size: 11px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
     }
 
     /* 2. 复用器 MUX & 解复用器 DEMUX */
     .mux-box, .demux-box {
-      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      background: var(--bg-panel);
       border: 2px solid #6366f1;
-      border-radius: 12px;
-      height: 220px;
+      border-radius: 10px;
+      height: 210px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       text-align: center;
-      padding: 8px;
-      box-shadow: 0 0 16px rgba(99, 102, 241, 0.2);
+      padding: 6px;
     }
 
-    .mux-icon { font-size: 24px; }
-    .mux-title { font-size: 13px; font-weight: 800; color: #a5b4fc; }
-    .mux-desc { font-size: 9.5px; color: #c7d2fe; }
+    .mux-icon { font-size: 22px; }
+    .mux-title { font-size: 12.5px; font-weight: 800; color: #4f46e5; }
+    .mux-desc { font-size: 9.5px; color: var(--text-sub); }
 
     /* 3. 共享信道 (中枢) */
     .channel-conduit {
-      background: #090e1a;
-      border: 2px dashed #4338ca;
+      background: var(--bg-panel);
+      border: 2px dashed #6366f1;
       border-radius: 10px;
-      height: 180px;
+      height: 170px;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -209,18 +240,18 @@
 
     .channel-label {
       position: absolute;
-      top: 8px;
-      font-size: 11px;
+      top: 6px;
+      font-size: 10.5px;
       font-weight: 800;
-      color: #818cf8;
-      background: rgba(15, 23, 42, 0.8);
+      color: #4f46e5;
+      background: var(--bg-card);
       padding: 2px 8px;
       border-radius: 4px;
-      border: 1px solid #3730a3;
+      border: 1px solid var(--border-color);
       z-index: 5;
     }
 
-    /* TDM 动态方块传输轨道 */
+    /* TDM 动态方块 */
     .tdm-track {
       width: 100%;
       height: 100%;
@@ -231,8 +262,8 @@
 
     .tdm-slot-block {
       position: absolute;
-      width: 46px;
-      height: 38px;
+      width: 44px;
+      height: 36px;
       border-radius: 6px;
       display: flex;
       flex-direction: column;
@@ -241,19 +272,52 @@
       font-size: 11px;
       font-weight: 900;
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       user-select: none;
     }
 
-    .block-a { background: var(--color-a); border: 1px solid #fca5a5; }
-    .block-b { background: var(--color-b); border: 1px solid #6ee7b7; }
-    .block-c { background: var(--color-c); border: 1px solid #93c5fd; }
+    .block-a { background: var(--color-a); }
+    .block-b { background: var(--color-b); }
+    .block-c { background: var(--color-c); }
 
-    /* FDM Canvas 画布 */
+    /* FDM Canvas */
     #fdmCanvas {
       width: 100%;
       height: 100%;
       display: block;
+    }
+
+    /* CDM 向量展示面板 */
+    .cdm-vector-board {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .cdm-vec-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-sub);
+    }
+
+    .cdm-chips-display {
+      display: flex;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .chip-cell {
+      padding: 3px 6px;
+      border-radius: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: #4f46e5;
     }
 
     /* ════ 交互控制条 ════ */
@@ -262,75 +326,66 @@
       justify-content: space-between;
       align-items: center;
       background: var(--bg-panel);
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 8px;
       border: 1px solid var(--border-color);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .ctrl-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .action-btn {
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 6px;
-      border: none;
-      font-size: 12.5px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
-    .btn-play {
-      background: #10b981;
+    .action-btn:hover {
+      background: #2563eb;
       color: #ffffff;
+      border-color: #2563eb;
     }
-    .btn-play:hover { background: #059669; }
-
-    .btn-pause {
-      background: #f59e0b;
-      color: #ffffff;
-    }
-    .btn-pause:hover { background: #d97706; }
-
-    .btn-reset {
-      background: #475569;
-      color: #ffffff;
-    }
-    .btn-reset:hover { background: #334155; }
 
     .speed-slider-box {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 11.5px;
       color: var(--text-sub);
     }
 
     .speed-slider-box input[type="range"] {
       cursor: pointer;
-      accent-color: #3b82f6;
+      accent-color: #2563eb;
     }
 
     .status-text {
       font-size: 12px;
-      color: #38bdf8;
-      font-weight: 600;
+      color: #2563eb;
+      font-weight: 700;
     }
 
     /* ════ 底部概念教学卡片 ════ */
     .edu-card {
       background: var(--bg-card);
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid var(--border-color);
-      padding: 18px 20px;
+      padding: 14px 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .edu-header {
@@ -338,11 +393,11 @@
       align-items: center;
       gap: 8px;
       border-bottom: 1px solid var(--border-color);
-      padding-bottom: 8px;
+      padding-bottom: 6px;
     }
 
     .edu-title {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 800;
       color: var(--text-main);
     }
@@ -350,7 +405,7 @@
     .edu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
 
     @media (max-width: 768px) {
@@ -362,21 +417,21 @@
     .edu-item {
       background: var(--bg-panel);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 10px 12px;
+      border-radius: 6px;
+      padding: 8px 10px;
       display: flex;
       flex-direction: column;
       gap: 4px;
     }
 
     .edu-item-title {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
-      color: #38bdf8;
+      color: #2563eb;
     }
 
     .edu-item-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-sub);
       line-height: 1.5;
     }
@@ -391,8 +446,9 @@
       <h1>信道复用技术交互式教学实验室</h1>
     </div>
     <div class="mode-switch-group">
-      <button class="mode-btn active" id="btnTdm" onclick="switchMode('TDM')">⏱️ 时分复用 (TDM)</button>
-      <button class="mode-btn" id="btnFdm" onclick="switchMode('FDM')">📻 频分复用 (FDM)</button>
+      <button class="mode-btn active" id="btnTdm" onclick="switchMode('TDM')">⏱️ 1. 时分复用 (TDM)</button>
+      <button class="mode-btn" id="btnFdm" onclick="switchMode('FDM')">📻 2. 频分复用 (FDM)</button>
+      <button class="mode-btn" id="btnCdm" onclick="switchMode('CDM')">🔠 3. 码分复用 (CDMA)</button>
     </div>
   </header>
 
@@ -405,28 +461,43 @@
         <div class="device-card card-a">
           <span class="dev-icon">💻</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-a);">计算机 A</span>
-            <span class="dev-type">突发数据流</span>
+            <span class="dev-name" style="color: var(--color-a);">站 A</span>
+            <span class="dev-type" id="subA">突发数据流</span>
           </div>
           <button class="fdm-toggle active" id="toggleA" onclick="toggleSource('A')" style="display:none;">开</button>
+          <select class="cdm-select" id="cdmSelectA" onchange="updateCDM()" style="display:none;">
+            <option value="1">发 1</option>
+            <option value="0">发 0</option>
+            <option value="none">静默</option>
+          </select>
         </div>
 
         <div class="device-card card-b">
           <span class="dev-icon">📞</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-b);">电话 B</span>
-            <span class="dev-type">语音模拟信号</span>
+            <span class="dev-name" style="color: var(--color-b);">站 B</span>
+            <span class="dev-type" id="subB">语音信号</span>
           </div>
           <button class="fdm-toggle active" id="toggleB" onclick="toggleSource('B')" style="display:none;">开</button>
+          <select class="cdm-select" id="cdmSelectB" onchange="updateCDM()" style="display:none;">
+            <option value="0">发 0</option>
+            <option value="1">发 1</option>
+            <option value="none">静默</option>
+          </select>
         </div>
 
         <div class="device-card card-c">
           <span class="dev-icon">📹</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-c);">视频 C</span>
-            <span class="dev-type">高清视频码流</span>
+            <span class="dev-name" style="color: var(--color-c);">站 C</span>
+            <span class="dev-type" id="subC">视频码流</span>
           </div>
           <button class="fdm-toggle active" id="toggleC" onclick="toggleSource('C')" style="display:none;">开</button>
+          <select class="cdm-select" id="cdmSelectC" onchange="updateCDM()" style="display:none;">
+            <option value="none">静默</option>
+            <option value="1">发 1</option>
+            <option value="0">发 0</option>
+          </select>
         </div>
       </div>
 
@@ -444,6 +515,11 @@
         <div class="tdm-track" id="tdmTrack"></div>
         <!-- FDM 波形 Canvas -->
         <canvas id="fdmCanvas" style="display: none;"></canvas>
+        <!-- CDM 码片叠加向量 -->
+        <div class="cdm-vector-board" id="cdmBoard" style="display: none;">
+          <span class="cdm-vec-title">信道叠加码片向量 P = A + B + C：</span>
+          <div class="cdm-chips-display" id="cdmCombinedVector"></div>
+        </div>
       </div>
 
       <!-- 4. 解复用器 DEMUX -->
@@ -458,7 +534,7 @@
         <div class="device-card card-a">
           <span class="dev-icon">💻</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-a);">目标主机 A</span>
+            <span class="dev-name" style="color: var(--color-a);">目的地 A</span>
             <span class="dev-type" id="recvCountA">接收: 0 块</span>
           </div>
         </div>
@@ -466,7 +542,7 @@
         <div class="device-card card-b">
           <span class="dev-icon">📞</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-b);">目标电话 B</span>
+            <span class="dev-name" style="color: var(--color-b);">目的地 B</span>
             <span class="dev-type" id="recvCountB">接收: 0 块</span>
           </div>
         </div>
@@ -474,7 +550,7 @@
         <div class="device-card card-c">
           <span class="dev-icon">🖥️</span>
           <div class="dev-info">
-            <span class="dev-name" style="color: var(--color-c);">显示终端 C</span>
+            <span class="dev-name" style="color: var(--color-c);">目的地 C</span>
             <span class="dev-type" id="recvCountC">接收: 0 块</span>
           </div>
         </div>
@@ -485,10 +561,10 @@
     <!-- 交互控制面板 -->
     <div class="controls-bar">
       <div class="ctrl-left">
-        <button class="action-btn btn-play" id="btnPlayPause" onclick="togglePlay()">⏸️ 暂停演示</button>
-        <button class="action-btn btn-reset" onclick="resetSim()">🔄 重置仿真</button>
+        <button class="action-btn" id="btnPlayPause" onclick="togglePlay()">⏸️ 暂停演示</button>
+        <button class="action-btn" onclick="resetSim()">🔄 重置仿真</button>
         
-        <div class="speed-slider-box">
+        <div class="speed-slider-box" id="speedBox">
           <span>传输速率:</span>
           <input type="range" id="speedSlider" min="0.5" max="2.5" step="0.1" value="1.0" oninput="changeSpeed(this.value)">
           <span id="speedVal">1.0x</span>
@@ -519,15 +595,15 @@
         <span class="edu-item-title">⚖️ 核心优缺点</span>
         <p class="edu-item-desc" id="eduProsCons">
           **优点**：全数字化处理，抗干扰强，不同信号无频带串扰。<br>
-          **缺点**：某用户无数据发送时，分配的时隙仍被空置，导致信道利用率下降（改进方案：统计时分复用 STDM）。
+          **缺点**：某用户无数据发送时，分配的时隙仍被空置，导致信道利用率下降（改进：统计时分复用 STDM）。
         </p>
       </div>
 
       <div class="edu-item">
         <span class="edu-item-title">🌍 生活实例与 408 考点</span>
         <p class="edu-item-desc" id="eduCases">
-          **典型应用**：传统数字电话通信（T1 载波 24 路复用、E1 载波 32 路复用）、GSM 蜂窝时隙通信。<br>
-          **408 命题**：TDM 所有信号在不同时间占用全频带；FDM 所有信号在相同时间占用部分频带。
+          **典型应用**：传统数字电话通信（T1/E1 载波）、GSM 蜂窝移动通信。<br>
+          **408 命题核心**：TDM 所有信号在不同时间占用全频带；FDM 所有信号在相同时间占用不同子频带；CDM 所有信号在相同时间占用相同频带。
         </p>
       </div>
     </div>
@@ -535,7 +611,7 @@
 
   <script>
     // ════════ 核心状态机 ════════
-    let currentMode = 'TDM'; // 'TDM' 或 'FDM'
+    let currentMode = 'TDM'; // 'TDM', 'FDM', 'CDM'
     let isRunning = true;
     let speed = 1.0;
 
@@ -543,12 +619,17 @@
     let tdmBlocks = [];
     let blockIdCounter = 0;
     let lastSpawnTime = 0;
-    let spawnIndex = 0; // 0->A, 1->B, 2->C
+    let spawnIndex = 0;
     let recvCounts = { A: 0, B: 0, C: 0 };
 
     // FDM 状态
     let sourceActive = { A: true, B: true, C: true };
     let fdmPhase = 0;
+
+    // CDM 8位正交码片序列 (Walsh 码)
+    const CHIP_A = [-1, -1, -1, +1, +1, -1, +1, +1];
+    const CHIP_B = [-1, -1, +1, -1, +1, +1, +1, -1];
+    const CHIP_C = [-1, +1, -1, +1, +1, +1, -1, -1];
 
     const sources = [
       { id: 'A', name: 'A', class: 'block-a', freq: 1.5, color: '#ef4444' },
@@ -561,36 +642,93 @@
       currentMode = mode;
       document.getElementById('btnTdm').classList.toggle('active', mode === 'TDM');
       document.getElementById('btnFdm').classList.toggle('active', mode === 'FDM');
+      document.getElementById('btnCdm').classList.toggle('active', mode === 'CDM');
 
       const tdmTrack = document.getElementById('tdmTrack');
       const fdmCanvas = document.getElementById('fdmCanvas');
+      const cdmBoard = document.getElementById('cdmBoard');
+      const speedBox = document.getElementById('speedBox');
+      const btnPlay = document.getElementById('btnPlayPause');
+
       const toggleA = document.getElementById('toggleA');
       const toggleB = document.getElementById('toggleB');
       const toggleC = document.getElementById('toggleC');
 
+      const cdmSelA = document.getElementById('cdmSelectA');
+      const cdmSelB = document.getElementById('cdmSelectB');
+      const cdmSelC = document.getElementById('cdmSelectC');
+
       if (mode === 'TDM') {
         tdmTrack.style.display = 'flex';
         fdmCanvas.style.display = 'none';
+        cdmBoard.style.display = 'none';
+        speedBox.style.display = 'flex';
+        btnPlay.style.display = 'inline-block';
+
         toggleA.style.display = 'none';
         toggleB.style.display = 'none';
         toggleC.style.display = 'none';
+        cdmSelA.style.display = 'none';
+        cdmSelB.style.display = 'none';
+        cdmSelC.style.display = 'none';
+
+        document.getElementById('subA').innerText = '突发数据流';
+        document.getElementById('subB').innerText = '语音信号';
+        document.getElementById('subC').innerText = '视频码流';
+
         document.getElementById('muxDesc').innerText = '时隙切片轮询';
         document.getElementById('demuxDesc').innerText = '时隙分发路由';
         document.getElementById('channelLabel').innerText = '🌐 共享物理介质 (TDM 帧时隙流水线)';
         document.getElementById('statusText').innerText = '● TDM 仿真运行中：A、B、C 依次占用时隙传输';
         updateEduInfo('TDM');
-      } else {
+      } else if (mode === 'FDM') {
         tdmTrack.style.display = 'none';
         fdmCanvas.style.display = 'block';
+        cdmBoard.style.display = 'none';
+        speedBox.style.display = 'flex';
+        btnPlay.style.display = 'inline-block';
+
         toggleA.style.display = 'inline-block';
         toggleB.style.display = 'inline-block';
         toggleC.style.display = 'inline-block';
+        cdmSelA.style.display = 'none';
+        cdmSelB.style.display = 'none';
+        cdmSelC.style.display = 'none';
+
+        document.getElementById('subA').innerText = '载波 f1 (1.5Hz)';
+        document.getElementById('subB').innerText = '载波 f2 (3.0Hz)';
+        document.getElementById('subC').innerText = '载波 f3 (5.5Hz)';
+
         document.getElementById('muxDesc').innerText = '频带搬移调制';
         document.getElementById('demuxDesc').innerText = '带通滤波分离';
         document.getElementById('channelLabel').innerText = '🌐 共享物理介质 (FDM 复合正弦波频分传输)';
         document.getElementById('statusText').innerText = '● FDM 仿真运行中：可点击左侧 开/关 观察合成波形动态变化';
         updateEduInfo('FDM');
         resizeCanvas();
+      } else if (mode === 'CDM') {
+        tdmTrack.style.display = 'none';
+        fdmCanvas.style.display = 'none';
+        cdmBoard.style.display = 'flex';
+        speedBox.style.display = 'none';
+        btnPlay.style.display = 'none';
+
+        toggleA.style.display = 'none';
+        toggleB.style.display = 'none';
+        toggleC.style.display = 'none';
+        cdmSelA.style.display = 'inline-block';
+        cdmSelB.style.display = 'inline-block';
+        cdmSelC.style.display = 'inline-block';
+
+        document.getElementById('subA').innerText = '码片 A (8bit)';
+        document.getElementById('subB').innerText = '码片 B (8bit)';
+        document.getElementById('subC').innerText = '码片 C (8bit)';
+
+        document.getElementById('muxDesc').innerText = '码片线性叠加';
+        document.getElementById('demuxDesc').innerText = '内积正交解码';
+        document.getElementById('channelLabel').innerText = '🌐 共享物理介质 (CDMA 码片正交叠加向量 P)';
+        document.getElementById('statusText').innerText = '● CDMA 计算完成：更改左侧发射状态，实时观察内积解码';
+        updateEduInfo('CDM');
+        updateCDM();
       }
       resetSim();
     }
@@ -602,19 +740,65 @@
       btn.innerText = sourceActive[src] ? '开' : '关';
     }
 
+    // ════════ CDM 核心内积运算与解码 ════════
+    function updateCDM() {
+      const stateA = document.getElementById('cdmSelectA').value;
+      const stateB = document.getElementById('cdmSelectB').value;
+      const stateC = document.getElementById('cdmSelectC').value;
+
+      // 转换为发射向量: 发1为+Chip, 发0为-Chip, 静默为全0
+      const vecA = CHIP_A.map(v => stateA === '1' ? v : (stateA === '0' ? -v : 0));
+      const vecB = CHIP_B.map(v => stateB === '1' ? v : (stateB === '0' ? -v : 0));
+      const vecC = CHIP_C.map(v => stateC === '1' ? v : (stateC === '0' ? -v : 0));
+
+      // 叠加向量 P = A + B + C
+      const combined = [];
+      for (let i = 0; i < 8; i++) {
+        combined[i] = vecA[i] + vecB[i] + vecC[i];
+      }
+
+      // 渲染信道向量 P
+      const displayEl = document.getElementById('cdmCombinedVector');
+      displayEl.innerHTML = combined.map(v => `<span class="chip-cell">${v > 0 ? '+'+v : v}</span>`).join(' ');
+
+      // 解码计算 (内积 / 8)
+      function decode(chip) {
+        let sum = 0;
+        for (let i = 0; i < 8; i++) sum += combined[i] * chip[i];
+        const res = sum / 8;
+        if (res === 1) return { text: '接收: 1', formula: `P·Chip/8 = +1` };
+        if (res === -1) return { text: '接收: 0', formula: `P·Chip/8 = -1` };
+        return { text: '无信号 (静默)', formula: `P·Chip/8 = 0` };
+      }
+
+      const decA = decode(CHIP_A);
+      const decB = decode(CHIP_B);
+      const decC = decode(CHIP_C);
+
+      document.getElementById('recvCountA').innerHTML = `<strong style="color:var(--color-a);">${decA.text}</strong><br><span style="font-size:9.5px; opacity:0.8;">${decA.formula}</span>`;
+      document.getElementById('recvCountB').innerHTML = `<strong style="color:var(--color-b);">${decB.text}</strong><br><span style="font-size:9.5px; opacity:0.8;">${decB.formula}</span>`;
+      document.getElementById('recvCountC').innerHTML = `<strong style="color:var(--color-c);">${decC.text}</strong><br><span style="font-size:9.5px; opacity:0.8;">${decC.formula}</span>`;
+    }
+
     function updateEduInfo(mode) {
       if (mode === 'TDM') {
         document.getElementById('eduBadge').innerText = '⏱️ TDM 核心原理';
         document.getElementById('eduTitle').innerText = '时分复用 (Time-Division Multiplexing) 核心概念与 408 考点';
         document.getElementById('eduDef').innerHTML = '将传输时间划分为均匀的 <strong>TDM 帧</strong>，每个 TDM 帧划分为若干固定 <strong>时隙 (Time Slot)</strong>。所有子信道在不同时隙轮流<strong>独占信道全频带</strong>传输。';
-        document.getElementById('eduProsCons').innerHTML = '<strong>优点</strong>：全数字化处理，抗干扰强，不同信号无频带串扰。<br><strong>缺点</strong>：某用户无数据发送时，分配的时隙仍被空置，导致信道利用率下降（改进：统计时分复用 STDM）。';
+        document.getElementById('eduProsCons').innerHTML = '<strong>优点</strong>：全数字化处理，抗干扰强，不同信号无频带串扰。<br><strong>缺点</strong>：某用户无数据发送时分配的时隙仍被空置，导致信道利用率下降（改进：统计时分复用 STDM）。';
         document.getElementById('eduCases').innerHTML = '<strong>典型应用</strong>：传统数字电话通信（T1/E1 载波）、GSM 蜂窝移动通信。<br><strong>408 命题核心</strong>：TDM 所有信号在不同时间占用全频带；FDM 所有信号在相同时间占用不同子频带。';
-      } else {
+      } else if (mode === 'FDM') {
         document.getElementById('eduBadge').innerText = '📻 FDM 核心原理';
         document.getElementById('eduTitle').innerText = '频分复用 (Frequency-Division Multiplexing) 核心概念与 408 考点';
         document.getElementById('eduDef').innerHTML = '将物理信道的总带宽划分为若干个互不重叠的<strong>子频带</strong>，每个子信道调制在不同的载波频率 $f_1, f_2, f_3$ 上。所有信号在<strong>同一时间并发传输</strong>。';
         document.getElementById('eduProsCons').innerHTML = '<strong>优点</strong>：多路信号完全并行传输，实时性极高，技术成熟。<br><strong>缺点</strong>：各子频带之间必须留有<strong>保护频带 (Guard Band)</strong> 防止信号重叠串扰，浪费了部分带宽资源。';
-        document.getElementById('eduCases').innerHTML = '<strong>典型应用</strong>：有线电视 (CATV) 宽带网络、广播电台 (FM/AM)、早期 ADSL 宽带拨号上网。<br><strong>拓展衍生</strong>：波分复用 WDM（本质是光纤中的频分复用）、正交频分复用 OFDM (Wi-Fi/4G/5G)。';
+        document.getElementById('eduCases').innerHTML = '<strong>典型应用</strong>：有线电视 (CATV) 宽带网络、广播电台 (FM/AM)、早期 ADSL 宽带拨号上网。<br><strong>拓展衍生</strong>：波分复用 WDM（本质是光纤中的频分复用）、正交频分复用 OFDM (Wi-Fi/5G)。';
+      } else if (mode === 'CDM') {
+        document.getElementById('eduBadge').innerText = '🔠 CDMA 核心原理';
+        document.getElementById('eduTitle').innerText = '码分多址 (Code-Division Multiple Access) 核心概念与 408 考点';
+        document.getElementById('eduDef').innerHTML = '每个站点分配一个<strong>相互正交的码片序列 (Chip Sequence)</strong>。发送 1 发送原码片，发送 0 发送反码，不发为 0。所有信号在<strong>同一时间、占用相同频带</strong>线性叠加传输。';
+        document.getElementById('eduProsCons').innerHTML = '<strong>正交性核心公式</strong>：$A \\cdot B = 0$ 且 $A \\cdot A = 1$、$A \\cdot \\bar{A} = -1$。<br><strong>优点</strong>：抗干扰能力极强、保密性高、频谱利用率高。';
+        document.getElementById('eduCases').innerHTML = '<strong>接收解码</strong>：接收端用站 A 的码片与信道叠加向量 $P$ 做规格化内积：$P \\cdot A = +1 \\implies 1$，$P \\cdot A = -1 \\implies 0$，$P \\cdot A = 0 \\implies$ 静默。<br><strong>典型应用</strong>：3G 通信 (CDMA2000 / WCDMA)、GPS 卫星定位。';
       }
     }
 
@@ -624,11 +808,9 @@
       const btn = document.getElementById('btnPlayPause');
       if (isRunning) {
         btn.innerText = '⏸️ 暂停演示';
-        btn.className = 'action-btn btn-play';
         requestAnimationFrame(animLoop);
       } else {
         btn.innerText = '▶️ 继续演示';
-        btn.className = 'action-btn btn-pause';
       }
     }
 
@@ -642,9 +824,13 @@
       const track = document.getElementById('tdmTrack');
       track.innerHTML = '';
       recvCounts = { A: 0, B: 0, C: 0 };
-      document.getElementById('recvCountA').innerText = '接收: 0 块';
-      document.getElementById('recvCountB').innerText = '接收: 0 块';
-      document.getElementById('recvCountC').innerText = '接收: 0 块';
+      if (currentMode === 'TDM') {
+        document.getElementById('recvCountA').innerText = '接收: 0 块';
+        document.getElementById('recvCountB').innerText = '接收: 0 块';
+        document.getElementById('recvCountC').innerText = '接收: 0 块';
+      } else if (currentMode === 'CDM') {
+        updateCDM();
+      }
     }
 
     // ════════ TDM 动画逻辑 ════════
@@ -652,7 +838,6 @@
       const track = document.getElementById('tdmTrack');
       const trackWidth = track.clientWidth;
 
-      // 生成新块
       if (timestamp - lastSpawnTime > (700 / speed)) {
         lastSpawnTime = timestamp;
         const src = sources[spawnIndex];
@@ -665,10 +850,9 @@
           name: src.name,
           class: src.class,
           x: 0,
-          speed: 140 * speed // px per second
+          speed: 140 * speed
         };
 
-        // 创建 DOM
         const el = document.createElement('div');
         el.id = 'blk-' + block.id;
         el.className = 'tdm-slot-block ' + block.class;
@@ -679,13 +863,11 @@
         tdmBlocks.push(block);
       }
 
-      // 移动并回收
       for (let i = tdmBlocks.length - 1; i >= 0; i--) {
         const blk = tdmBlocks[i];
         blk.x += (blk.speed * 0.016);
         blk.el.style.left = blk.x + 'px';
 
-        // 到达右端 DEMUX
         if (blk.x >= trackWidth - 50) {
           recvCounts[blk.src]++;
           document.getElementById('recvCount' + blk.src).innerText = `接收: ${recvCounts[blk.src]} 块`;
@@ -714,8 +896,7 @@
 
       ctx.clearRect(0, 0, w, h);
 
-      // 绘制背景中轴网格
-      ctx.strokeStyle = '#1e293b';
+      ctx.strokeStyle = '#cbd5e1';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(0, h / 2);
@@ -727,7 +908,7 @@
       // 1. 绘制 3 个分量波形 (淡色)
       sources.forEach(src => {
         if (sourceActive[src.id]) {
-          ctx.strokeStyle = src.color + '44'; // 25% opacity
+          ctx.strokeStyle = src.color + '55';
           ctx.lineWidth = 1.5;
           ctx.beginPath();
           for (let x = 0; x < w; x++) {
@@ -743,10 +924,8 @@
       // 2. 绘制合成波形 (高亮)
       let activeCount = (sourceActive.A ? 1 : 0) + (sourceActive.B ? 1 : 0) + (sourceActive.C ? 1 : 0);
       if (activeCount > 0) {
-        ctx.strokeStyle = '#818cf8';
-        ctx.lineWidth = 3;
-        ctx.shadowColor = '#6366f1';
-        ctx.shadowBlur = 10;
+        ctx.strokeStyle = '#4f46e5';
+        ctx.lineWidth = 2.8;
         ctx.beginPath();
 
         for (let x = 0; x < w; x++) {
@@ -762,25 +941,22 @@
           else ctx.lineTo(x, y);
         }
         ctx.stroke();
-        ctx.shadowBlur = 0;
       }
     }
 
     // ════════ 主循环 ════════
-    let lastTime = 0;
     function animLoop(timestamp) {
       if (!isRunning) return;
 
       if (currentMode === 'TDM') {
         updateTDM(timestamp);
-      } else {
+      } else if (currentMode === 'FDM') {
         updateFDM();
       }
 
       requestAnimationFrame(animLoop);
     }
 
-    // 启动
     requestAnimationFrame(animLoop);
   </script>
 </body>

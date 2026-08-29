@@ -5,7 +5,7 @@
       class="mux-iframe"
       title="信道复用技术交互式教学实验室"
       frameborder="0"
-      scrolling="no"
+      scrolling="auto"
     ></iframe>
   </div>
 </template>
@@ -30,14 +30,14 @@ const iframeSrc = computed(() => withBase('/simulators/multiplexing.html'))
 
 .mux-iframe {
   width: 100%;
-  height: 640px;
+  height: 680px;
   display: block;
   border: none;
 }
 
 @media (max-width: 768px) {
   .mux-iframe {
-    height: 720px;
+    height: 760px;
   }
 }
 </style>
