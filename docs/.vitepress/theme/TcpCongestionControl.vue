@@ -279,6 +279,31 @@
       </div>
     </div>
 
+    <!-- 5. 408 高频概念深度辨析（考前必背易错陷阱） -->
+    <div class="concept-trap-card">
+      <div class="trap-header">
+        <span class="trap-badge-red">🎯 408 高频选择题概念陷阱辨析</span>
+        <strong class="trap-title">“慢开始”与“拥塞避免”的命名本质剖析</strong>
+      </div>
+      <div class="trap-grid">
+        <div class="trap-item">
+          <div class="trap-item-title">■ “慢开始”真的“慢”吗？</div>
+          <div class="trap-item-body">
+            <strong>“慢开始”是指一开始向网络注入的报文段少</strong>（从 $cwnd = 1\text{ MSS}$ 起步试探），<strong>并不是指拥塞窗口 $cwnd$ 的增长速度慢</strong>！<br>
+            相反，慢开始阶段拥塞窗口每经过一个 RTT 就<strong>指数级翻倍（$1 \rightarrow 2 \rightarrow 4 \rightarrow 8 \dots$）</strong>，其增长速率在所有阶段中是<strong>最快、最剧烈</strong>的。
+          </div>
+        </div>
+
+        <div class="trap-item">
+          <div class="trap-item-title">■ “拥塞避免”能够“完全避免拥塞”吗？</div>
+          <div class="trap-item-body">
+            <strong>“拥塞避免”并非指能够完全避免拥塞</strong>，而是指在拥塞避免阶段将拥塞窗口控制为<strong>加法线性增长（$+1\text{ MSS} / \text{RTT}$）</strong>，降低窗口增长速率，<strong>使网络比较不容易出现拥塞</strong>。<br>
+            当网络负载超过信道承载极限时，依然会发生分组丢失或网络超时。
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- 4 大机制切换法则总结卡片 -->
     <div class="summary-rules-card">
       <div class="rules-title">💡 TCP 拥塞控制 4 大机制状态机切换核心准则</div>
@@ -574,6 +599,77 @@
 }
 
 /* 4 大机制卡片网格 */
+.concept-trap-card {
+  background: var(--vp-c-bg-elv);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  border-left: 4px solid #ef4444;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--card-shadow);
+}
+
+.trap-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trap-badge-red {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.trap-title {
+  font-size: 13px;
+  color: var(--vp-c-text-1);
+}
+
+.trap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .trap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trap-item {
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trap-item-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ef4444;
+}
+
+.trap-item-body {
+  font-size: 11.5px;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+
+.trap-item-body strong {
+  color: var(--vp-c-text-1);
+}
+
 .summary-rules-card {
   background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-border);
