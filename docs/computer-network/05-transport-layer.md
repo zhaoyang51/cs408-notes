@@ -5,6 +5,16 @@
 
 ---
 
+<MindMapCard 
+  title="第5章 传输层 (TCP / UDP) 思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch5-transport.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch5-transport.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理 UDP 首部与检验和、TCP 报文段字段、三次握手与四次挥手状态机、滑动窗口流量控制与拥塞控制 4 大算法" 
+  fileName="第5章 传输层.xmind" 
+  fileSize="10.3 MB" 
+/>
+
 ## 1. TCP vs UDP 核心区别
 
 | 特性维度 | TCP | UDP |

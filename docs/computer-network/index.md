@@ -6,6 +6,16 @@
 
 ---
 
+<MindMapCard 
+  title="第1章 计算机网络体系结构思维导图 (全书章节导图已就绪)" 
+  imgSrc="/cs408-notes/mindmaps/network-ch1-overview.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch1-overview.xmind" 
+  tag="🧠 XMind 导图体系" 
+  caption="计网第1~6各章均已在对应章节页面内配备专属 XMind 思维导图与 .xmind 源文件下载！" 
+  fileName="第1章 计算机网络概述.xmind" 
+  fileSize="9.9 MB" 
+/>
+
 ## 📊 历年真题考频与题型全景统计
 
 ### 👑 1. 核心大题与超高频考点（总考频 $\ge 10$ 次）

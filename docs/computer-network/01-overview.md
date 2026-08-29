@@ -5,6 +5,16 @@
 
 ---
 
+<MindMapCard 
+  title="第1章 计算机网络体系结构思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch1-overview.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch1-overview.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理网络体系结构分层模型 (OSI vs TCP/IP)、服务/协议/接口关系与时延带宽计算公式" 
+  fileName="第1章 计算机网络概述.xmind" 
+  fileSize="9.9 MB" 
+/>
+
 ## 1. 4 大网络时延核心计算公式
 
 $$

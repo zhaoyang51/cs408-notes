@@ -4,6 +4,16 @@
 
 ---
 
+<MindMapCard 
+  title="第6章 应用层 (HTTP / DNS / 邮件) 思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch6-application.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch6-application.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理 DNS 递归/迭代解析流程、HTTP 请求/响应报文与状态码、FTP 控制与数据双连接、电子邮件 (SMTP/POP3/IMAP) 协议" 
+  fileName="第6章 应用层.xmind" 
+  fileSize="16.9 MB" 
+/>
+
 ## 1. 域名系统 (DNS) 查询方式
 
 - **递归查询**：本地域名服务器代为向根、顶级、权限域名服务器递归请求（一查到底）。

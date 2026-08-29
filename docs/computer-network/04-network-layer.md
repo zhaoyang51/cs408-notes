@@ -5,6 +5,16 @@
 
 ---
 
+<MindMapCard 
+  title="第4章 网络层与 IP 协议思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch4-network.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch4-network.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理 IPv4/IPv6 首部结构、CIDR 变长子网划分、路由表最长前缀匹配转发、NAT/DHCP/ARP/ICMP 与 RIP/OSPF/BGP 路由算法" 
+  fileName="第4章 网络层.xmind" 
+  fileSize="38.9 MB" 
+/>
+
 ## 1. IPv4 首部 3 大长度字段单位辨析
 
 | 字段名称 | 占用位数 | 计算单位 (乘数) | 极值与说明 |

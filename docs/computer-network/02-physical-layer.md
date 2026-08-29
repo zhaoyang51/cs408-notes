@@ -5,6 +5,16 @@
 
 ---
 
+<MindMapCard 
+  title="第2章 物理层与通信基础思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch2-physical.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch2-physical.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理奈奎斯特准则、香农定理、信噪比换算、基带/带通调制、常见传输介质与信道复用技术" 
+  fileName="第2章 物理层.xmind" 
+  fileSize="3.6 MB" 
+/>
+
 ## 1. 极限数据传输速率推导（必背公式）
 
 ::: info 💡 极限数据率双公式速查

@@ -5,6 +5,16 @@
 
 ---
 
+<MindMapCard 
+  title="第3章 数据链路层与 MAC 子层思维导图" 
+  imgSrc="/cs408-notes/mindmaps/network-ch3-datalink.png" 
+  downloadSrc="/cs408-notes/mindmaps/files/network-ch3-datalink.xmind" 
+  tag="🧠 章节思维导图" 
+  caption="系统梳理组帧、差错检验 (CRC)、流量控制滑动窗口 (停等/GBN/SR)、CSMA/CD 冲突检测与以太网交换机自学习" 
+  fileName="第3章 数据链路层.xmind" 
+  fileSize="22.2 MB" 
+/>
+
 ## 1. 滑动窗口协议全景对比
 
 | 协议名称 | 发送窗口 $W_T$ | 接收窗口 $W_R$ | 确认机制 | $n$ 位帧序号窗口限制 |
