@@ -198,7 +198,7 @@ html.parchment .VPNavBar {
   }
 
   /* 中间知识点内容区自适应宽屏 */
-  .VPDoc.has-sidebar .content {
+  .VPDoc.has-sidebar > .container > .content {
     flex: 1 1 auto !important;
     max-width: calc(100% - 240px) !important;
     padding-right: 48px !important;
@@ -234,7 +234,13 @@ html.parchment .VPNavBar {
     padding-bottom: 24px !important;
   }
 
+  .VPDocAsideOutline .content {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
   .VPDocAsideOutline .outline-title {
+    white-space: nowrap !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     letter-spacing: 0.05em !important;

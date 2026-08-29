@@ -6,8 +6,11 @@ export default defineConfig({
   base: "/cs408-notes/",
   cleanUrls: true,
 
-  markdown: {
-    math: true
+    markdown: {
+    math: true,
+    headers: {
+      level: [2, 3, 4]
+    }
   },
 
   themeConfig: {
