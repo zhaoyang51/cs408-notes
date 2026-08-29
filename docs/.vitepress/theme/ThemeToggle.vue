@@ -27,18 +27,20 @@
         class="segment-btn custom-color-btn" 
         :class="{ active: isColorMatrixOpen }" 
         @click="toggleColorMatrix" 
-        title="自定义全站主题颜色"
-        aria-label="自定义主题颜色"
+        title="自定义全站主题色与羊皮纸浓度"
+        aria-label="自定义主题与浓度"
       >
         <span class="color-preview-dot" :style="{ backgroundColor: activeColor }"></span>
         <span class="text">自定义</span>
       </button>
     </div>
 
-    <!-- 颜色矩阵悬浮弹窗 (Color Matrix Popover) -->
+    <!-- 自定义主题色与羊皮纸浓度悬浮面板 (Popover) -->
     <transition name="matrix-pop">
       <div class="color-matrix-popover" v-if="isColorMatrixOpen">
         <div class="matrix-arrow"></div>
+        
+        <!-- 模块 1: 全站主题主色矩阵 -->
         <div class="matrix-header">
           <div class="header-title">
             <span class="title-icon">🎨</span>
@@ -81,6 +83,69 @@
           </div>
           <span class="picker-tip">即时生效</span>
         </div>
+
+        <!-- 模块 2: 📜 羊皮纸色浓度自主调节 -->
+        <div class="parchment-adjust-section">
+          <div class="parchment-header">
+            <div class="header-title">
+              <span class="title-icon">📜</span>
+              <span>羊皮纸护眼色浓度</span>
+            </div>
+            <span class="intensity-badge">{{ parchmentIntensity }}%</span>
+          </div>
+
+          <div class="slider-wrapper">
+            <span class="slider-label">清浅</span>
+            <input 
+              type="range" 
+              min="10" 
+              max="100" 
+              step="1"
+              v-model.number="parchmentIntensity" 
+              @input="onParchmentSliderChange"
+              class="parchment-range-slider"
+              title="滑动调节羊皮纸背景色彩深度"
+            />
+            <span class="slider-label">浓醇</span>
+          </div>
+
+          <!-- 快捷档位预设 -->
+          <div class="parchment-preset-chips">
+            <button 
+              class="chip-btn" 
+              :class="{ active: Math.abs(parchmentIntensity - 20) <= 5 }"
+              @click="setParchmentIntensity(20)"
+              title="淡雅奶白轻护眼 (20%)"
+            >
+              淡雅 20%
+            </button>
+            <button 
+              class="chip-btn" 
+              :class="{ active: Math.abs(parchmentIntensity - 50) <= 5 }"
+              @click="setParchmentIntensity(50)"
+              title="温润柔和标准羊皮纸 (50%)"
+            >
+              温润 50%
+            </button>
+            <button 
+              class="chip-btn" 
+              :class="{ active: Math.abs(parchmentIntensity - 75) <= 5 }"
+              @click="setParchmentIntensity(75)"
+              title="沉浸复古古籍色 (75%)"
+            >
+              古籍 75%
+            </button>
+            <button 
+              class="chip-btn" 
+              :class="{ active: Math.abs(parchmentIntensity - 100) <= 5 }"
+              @click="setParchmentIntensity(100)"
+              title="浓醇宣纸怀旧色 (100%)"
+            >
+              浓醇 100%
+            </button>
+          </div>
+        </div>
+
       </div>
     </transition>
   </div>
@@ -95,6 +160,9 @@ const wrapperRef = ref(null)
 
 const DEFAULT_BRAND_COLOR = '#2563eb'
 const activeColor = ref(DEFAULT_BRAND_COLOR)
+
+// 羊皮纸色浓度百分比 (10% ~ 100%，默认 50%)
+const parchmentIntensity = ref(50)
 
 // 12 种预设优质主题色矩阵
 const presetColors = [
@@ -123,6 +191,88 @@ function hexToRgb(hex) {
     g: (num >> 8) & 255,
     b: num & 255
   }
+}
+
+// 动态计算羊皮纸背景色彩体系
+function calculateParchmentColors(intensity) {
+  const t = Math.min(100, Math.max(10, intensity))
+  const factor = (t - 10) / 90 // 0 to 1
+
+  let r, g, b
+  if (factor <= 0.44) {
+    const subFactor = factor / 0.44
+    // 从极淡素雅 (253, 250, 244) 插值到 标准温润 (246, 238, 219)
+    r = Math.round(253 + (246 - 253) * subFactor)
+    g = Math.round(250 + (238 - 250) * subFactor)
+    b = Math.round(244 + (219 - 244) * subFactor)
+  } else {
+    const subFactor = (factor - 0.44) / 0.56
+    // 从标准温润 (246, 238, 219) 插值到 浓醇宣纸 (228, 210, 172)
+    r = Math.round(246 + (228 - 246) * subFactor)
+    g = Math.round(238 + (210 - 238) * subFactor)
+    b = Math.round(219 + (172 - 219) * subFactor)
+  }
+
+  const bg = `rgb(${r}, ${g}, ${b})`
+  const bgSoft = `rgb(${r - 11}, ${g - 15}, ${b - 23})`
+  const bgAlt = `rgb(${r - 8}, ${g - 11}, ${b - 16})`
+  const bgElv = `rgb(${Math.min(255, r + 5)}, ${Math.min(255, g + 7)}, ${Math.min(255, b + 10)})`
+  const sidebarBg = `rgb(${r - 5}, ${g - 8}, ${b - 13})`
+  const navBg = `rgb(${r}, ${g}, ${b})`
+  const codeBlockBg = `rgb(${r - 15}, ${g - 20}, ${b - 27})`
+  const codeBg = `rgb(${r - 11}, ${g - 18}, ${b - 24})`
+  const divider = `rgba(180, 150, 100, ${0.18 + factor * 0.15})`
+  const border = `rgba(160, 130, 80, ${0.25 + factor * 0.15})`
+
+  return {
+    bg, bgSoft, bgAlt, bgElv, sidebarBg, navBg, codeBlockBg, codeBg, divider, border
+  }
+}
+
+function applyParchmentStyles(intensity) {
+  if (typeof window === 'undefined') return
+  const root = document.documentElement
+  
+  if (currentTheme.value === 'parchment') {
+    const colors = calculateParchmentColors(intensity)
+    root.style.setProperty('--vp-c-bg', colors.bg)
+    root.style.setProperty('--vp-c-bg-soft', colors.bgSoft)
+    root.style.setProperty('--vp-c-bg-alt', colors.bgAlt)
+    root.style.setProperty('--vp-c-bg-elv', colors.bgElv)
+    root.style.setProperty('--vp-sidebar-bg-color', colors.sidebarBg)
+    root.style.setProperty('--vp-nav-bg-color', colors.navBg)
+    root.style.setProperty('--vp-code-block-bg', colors.codeBlockBg)
+    root.style.setProperty('--vp-code-bg', colors.codeBg)
+    root.style.setProperty('--vp-c-divider', colors.divider)
+    root.style.setProperty('--vp-c-border', colors.border)
+    root.style.setProperty('--vp-c-text-1', '#342618')
+    root.style.setProperty('--vp-c-text-2', '#5c4731')
+  } else {
+    // 浅白模式时清除背景相关的 inline styles，还原纯白
+    const bgProps = [
+      '--vp-c-bg', '--vp-c-bg-soft', '--vp-c-bg-alt', '--vp-c-bg-elv',
+      '--vp-sidebar-bg-color', '--vp-nav-bg-color', '--vp-code-block-bg',
+      '--vp-code-bg', '--vp-c-divider', '--vp-c-border', '--vp-c-text-1', '--vp-c-text-2'
+    ]
+    bgProps.forEach(p => root.style.removeProperty(p))
+  }
+}
+
+function setParchmentIntensity(val) {
+  parchmentIntensity.value = val
+  localStorage.setItem('cs408-parchment-intensity', String(val))
+  
+  // 如果当前不是羊皮纸模式，自动切换到羊皮纸并应用
+  if (currentTheme.value !== 'parchment') {
+    applyTheme('parchment')
+  } else {
+    applyParchmentStyles(val)
+  }
+}
+
+function onParchmentSliderChange(e) {
+  const val = Number(e.target.value)
+  setParchmentIntensity(val)
 }
 
 // 根据主色计算并应用阶梯品牌色系统
@@ -172,12 +322,14 @@ function applyTheme(theme) {
     root.classList.add('parchment')
     localStorage.setItem('vitepress-theme-appearance', 'parchment')
     localStorage.setItem('cs408-theme-mode', 'parchment')
+    currentTheme.value = 'parchment'
+    applyParchmentStyles(parchmentIntensity.value)
   } else {
     localStorage.setItem('vitepress-theme-appearance', 'light')
     localStorage.setItem('cs408-theme-mode', 'light')
+    currentTheme.value = 'light'
+    applyParchmentStyles(parchmentIntensity.value)
   }
-  
-  currentTheme.value = theme
 }
 
 function setTheme(theme) {
@@ -191,6 +343,12 @@ function handleOutsideClick(e) {
 }
 
 onMounted(() => {
+  // 恢复羊皮纸色浓度设定
+  const savedIntensity = localStorage.getItem('cs408-parchment-intensity')
+  if (savedIntensity) {
+    parchmentIntensity.value = Number(savedIntensity)
+  }
+
   // 恢复主题底色（仅浅白 / 羊皮纸）
   const savedTheme = localStorage.getItem('cs408-theme-mode') || localStorage.getItem('vitepress-theme-appearance') || 'light'
   if (savedTheme === 'parchment' || document.documentElement.classList.contains('parchment')) {
@@ -281,18 +439,18 @@ onUnmounted(() => {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   颜色矩阵浮层面板 (Color Matrix Popover)
+   颜色矩阵与浓度浮层面板 (Color Matrix & Intensity Popover)
    ══════════════════════════════════════════════════════════════════ */
 .color-matrix-popover {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  width: 240px;
-  padding: 12px 14px;
+  width: 260px;
+  padding: 14px 16px;
   background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-border);
-  border-radius: 12px;
-  box-shadow: 0 10px 28px -4px rgba(0, 0, 0, 0.18), 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
   z-index: 1000;
   backdrop-filter: blur(12px);
 }
@@ -349,7 +507,7 @@ onUnmounted(() => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .matrix-color-item {
@@ -388,8 +546,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 8px;
-  border-top: 1px solid var(--vp-c-divider);
+  padding: 6px 0 10px 0;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .picker-left {
@@ -405,9 +563,9 @@ onUnmounted(() => {
 
 .color-input-wrap {
   position: relative;
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
   border: 1px solid var(--vp-c-border);
   overflow: hidden;
   cursor: pointer;
@@ -436,6 +594,115 @@ onUnmounted(() => {
   color: var(--vp-c-text-3);
 }
 
+/* ══════════════════════════════════════════════════════════════════
+   📜 羊皮纸色浓度调节模块
+   ══════════════════════════════════════════════════════════════════ */
+.parchment-adjust-section {
+  margin-top: 10px;
+}
+
+.parchment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.intensity-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: #fdf6e7;
+  color: #8c5324;
+  border: 1px solid #ebd4a8;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.slider-label {
+  font-size: 10.5px;
+  color: var(--vp-c-text-3);
+  user-select: none;
+}
+
+.parchment-range-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #faf7f0 0%, #f6eedb 50%, #e6d4af 100%);
+  border: 1px solid var(--vp-c-divider);
+  outline: none;
+  cursor: pointer;
+}
+
+.parchment-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8c5324;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.parchment-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.parchment-range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #8c5324;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* 档位预设小胶囊 */
+.parchment-preset-chips {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.chip-btn {
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border-radius: 6px;
+  padding: 3px 2px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.chip-btn:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-brand-1);
+}
+
+.chip-btn.active {
+  background: #fdf6e7;
+  color: #8c5324;
+  border-color: #d97706;
+  font-weight: 700;
+}
+
 /* 动画效果 */
 .matrix-pop-enter-active,
 .matrix-pop-leave-active {
@@ -457,6 +724,7 @@ onUnmounted(() => {
   }
   .color-matrix-popover {
     right: -20px;
+    width: 250px;
   }
 }
 </style>
