@@ -323,7 +323,7 @@
             </div>
             <div class="q-item">
               <span class="q-bullet">🔹</span>
-              <span><strong>信息承载量</strong>：每个码元携带 <strong>4 个比特</strong>（因为 $16 = 2^4 \implies \log_2 16 = 4\text{ bit}$）。</span>
+              <span><strong>信息承载量</strong>：每个码元携带 <strong>4 个比特</strong>（因为 16 = 2⁴ ⇒ log₂16 = 4 bit）。</span>
             </div>
             <div class="q-item">
               <span class="q-bullet">🔹</span>
