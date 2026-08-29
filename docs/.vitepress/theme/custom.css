@@ -209,7 +209,7 @@ html.parchment .VPNavBar {
     margin: 0 !important;
   }
 
-  /* 右侧「本页大纲 (TOC)」Sticky 稳定展示于屏幕右侧 */
+  /* 右侧「本页大纲 (TOC)」占位与悬浮固定 */
   .VPDoc.has-aside .aside {
     display: block !important;
     position: relative !important;
@@ -219,13 +219,16 @@ html.parchment .VPNavBar {
     margin-left: auto !important;
   }
 
+  /* 随着当前视角始终固定显示在视口右上角 (Fixed Pinning) */
   .VPDoc.has-aside .aside-container {
-    position: sticky !important;
+    position: fixed !important;
     top: calc(var(--vp-nav-height) + 24px) !important;
+    right: 28px !important;
     width: 220px !important;
     max-height: calc(100vh - var(--vp-nav-height) - 48px) !important;
     overflow-y: auto !important;
     padding-top: 0 !important;
+    z-index: 10 !important;
     scrollbar-width: thin;
   }
 
