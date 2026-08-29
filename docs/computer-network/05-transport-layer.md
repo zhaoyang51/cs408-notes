@@ -18,7 +18,24 @@
 
 ---
 
-## 2. TCP 拥塞控制 4 大机制全景 <AuthorTag author="Zhao" />
+## 2. TCP 报文段首部格式与字段全景剖析 <AuthorTag author="Zhao" />
+
+<KP author="Zhao" title="📦 TCP 报文段首部格式与 6 大控制标志位速查" tag="⭐️ 考研必背">
+
+<TcpHeaderFormat />
+
+### 2.1 数据偏移与首部长度计算准则
+$$
+\text{TCP 首部长度} = \text{数据偏移字段值} \times 4 \text{ 字节}
+$$
+- **固定首部**：20 字节（数据偏移二进制为 `0101`，即 $5 \times 4\text{B} = 20\text{B}$）；
+- **首部最大长度**：60 字节（数据偏移二进制为 `1111`，即 $15 \times 4\text{B} = 60\text{B}$，包含最大 40 字节选项）。
+
+</KP>
+
+---
+
+## 3. TCP 拥塞控制 4 大机制全景 <AuthorTag author="Zhao" />
 
 <KP author="Zhao" title="📈 TCP 拥塞控制 4 大机制全景演化图（2009 题 39 经典模型剖析）" tag="⭐️ 考研必背">
 
@@ -28,13 +45,13 @@
 
 ---
 
-## 3. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算） <AuthorTag author="Zhao" />
+## 4. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算） <AuthorTag author="Zhao" />
 
 <KP author="Zhao" title="🌊 TCP 滑动窗口与流量控制全景图解（真题经典模型推导）" tag="⭐️ 考研必背">
 
 <TcpFlowControl />
 
-### 3.1 408 流量控制核心计算法则
+### 4.1 408 流量控制核心计算法则
 
 #### 1. 发送窗口决定公式
 $$
@@ -55,13 +72,13 @@ $$
 
 ---
 
-## 4. TCP 可靠传输实现与累计确认（序号与确认号推导） <AuthorTag author="Zhao" />
+## 5. TCP 可靠传输实现与累计确认（序号与确认号推导） <AuthorTag author="Zhao" />
 
 <KP author="Zhao" title="🛡️ TCP 可靠传输与累计确认模型（2011 题 40 经典真题推导）" tag="⭐️ 考研必背">
 
 <TcpReliableTransfer />
 
-### 4.1 序号 (seq) 与 确认号 (ack) 核心计算准则
+### 5.1 序号 (seq) 与 确认号 (ack) 核心计算准则
 
 #### 1. 报文段包含的字节区间
 对于起始序号为 $\text{seq}$、有效载荷大小为 $L$ 字节的 TCP 报文段，其所携带的数据字节序号范围为：
@@ -80,13 +97,13 @@ $$
 
 ---
 
-## 5. TCP 运输连接管理（三次握手与四次挥手） <AuthorTag author="Zhao" />
+## 6. TCP 运输连接管理（三次握手与四次挥手全景） <AuthorTag author="Zhao" />
 
-<KP author="Zhao" title="🤝 TCP 三次握手建立连接与状态迁移全景（2011 题 39 经典真题推导）" tag="⭐️ 考研必背">
+<KP author="Zhao" title="🤝 TCP 三次握手建立连接与四次挥手释放连接全景（2011 题 39 经典真题推导）" tag="⭐️ 考研必背">
 
 <TcpConnectionManagement />
 
-### 5.1 三次握手控制位与序号演进铁律
+### 6.1 三次握手控制位与序号演进铁律
 
 | 握手轮次 | 方向 | 报文段特征与控制位 | 序号与确认号规则 | 客户端状态 | 服务端状态 |
 |:---|:---|:---|:---|:---|:---|

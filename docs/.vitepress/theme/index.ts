@@ -17,6 +17,7 @@ import TcpFlowControl from './TcpFlowControl.vue'
 import TcpCongestionControl from './TcpCongestionControl.vue'
 import TcpReliableTransfer from './TcpReliableTransfer.vue'
 import TcpConnectionManagement from './TcpConnectionManagement.vue'
+import TcpHeaderFormat from './TcpHeaderFormat.vue'
 import { h } from 'vue'
 
 export default {
@@ -51,5 +52,6 @@ export default {
     app.component('TcpCongestionControl', TcpCongestionControl)
     app.component('TcpReliableTransfer', TcpReliableTransfer)
     app.component('TcpConnectionManagement', TcpConnectionManagement)
+    app.component('TcpHeaderFormat', TcpHeaderFormat)
   }
 }
