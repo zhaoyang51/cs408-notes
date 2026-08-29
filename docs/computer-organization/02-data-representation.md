@@ -21,11 +21,9 @@
 
 ::: info 💡 IEEE 754 规格化浮点真值公式
 
-
 $$
 \text{真值 } X = (-1)^S \times (1.M) \times 2^{E - \text{Bias}}
 $$
-
 
 :::
 

@@ -30,11 +30,9 @@
 
 ::: info 💡 死锁 4 大必要条件
 
-
 $$
 \text{① 互斥使用} \quad \text{② 不可剥夺} \quad \text{③ 请求并保持} \quad \text{④ 循环等待}
 $$
-
 
 :::
 

@@ -7,8 +7,6 @@
 
 ## 1. 4 大网络时延核心计算公式
 
-<KP author="Zhao" title="4 大网络时延与时延带宽积计算公式速查" tag="💡 核心公式">
-
 $$
 \text{总时延 } D = \text{发送时延 } D_t + \text{传播时延 } D_p + \text{处理时延 } D_r + \text{排队时延 } D_q
 $$
@@ -25,13 +23,9 @@ $$
 \text{时延带宽积} = \text{传播时延} \times \text{信道带宽 (单位: bit)}
 $$
 
-</KP>
-
 ---
 
 ## 2. OSI 7 层体系 vs TCP/IP 4 层体系对比
-
-<KP author="Chen" title="OSI 7 层体系 vs TCP/IP 4 层体系及对等层协议" tag="⭐️ 必考对比">
 
 | OSI 7 层体系 | TCP/IP 4 层体系 | 对等层数据单元 (PDU) | 典型网络协议 |
 |:---|:---|:---:|:---|
@@ -40,6 +34,4 @@ $$
 | **网络层** | **网络层 (网际层)** | IP 数据报 / 分组 (Packet) | **IP, ICMP, ARP, OSPF, BGP** |
 | **数据链路层** | **网络接口层** | 帧 (Frame) | 以太网 Ethernet, PPP |
 | **物理层** | **网络接口层** | 比特 (Bit) | RJ45, 光纤 |
-
-</KP>
 

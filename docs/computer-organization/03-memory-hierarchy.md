@@ -15,11 +15,9 @@
 
 ::: info 💡 Cache 总容量与位数计算公式
 
-
 $$
 \text{Cache 总位数} = \text{Cache 行数} \times (\text{数据块位数} + \text{Tag 位数} + \text{有效位 1} + \text{脏位 1(写回法)} + \text{替换位 } \log_2 k)
 $$
-
 
 :::
 
@@ -34,13 +32,11 @@ $$
 \text{虚拟地址 (VA)} = [\text{虚页号 VPN} \mid \text{页内偏移量 PO}]
 $$
 
-
   
 
 $$
 \text{物理地址 (PA)} = [\text{物理页框号 PPN} \mid \text{页内偏移量 PO}]
 $$
-
 
 - **多级存储访存流水判定**：
   
@@ -48,5 +44,4 @@ $$
 $$
 \text{TLB (快表) 命中} \rightarrow \text{页表 (慢表) 命中} \rightarrow \text{缺页异常 (访外存硬盘调页)}
 $$
-
 
