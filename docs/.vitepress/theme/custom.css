@@ -121,7 +121,7 @@ html.parchment {
   display: none !important;
 }
 
-/* ── 优化侧边栏与正文视区布局 (更宽的正文，靠右的本页大纲) ── */
+/* ── 优化侧边栏与正文视区布局 ── */
 @media (min-width: 960px) {
   /* 侧边栏贴靠最左侧 */
   .VPSidebar {
@@ -149,7 +149,7 @@ html.parchment {
     padding-left: 0 !important;
   }
 
-  /* 正文容器全宽拉伸，充分利用大屏幕 */
+  /* 正文容器全宽拉伸 */
   .VPDoc.has-sidebar .container {
     max-width: 100% !important;
     padding-left: 36px !important;
@@ -158,7 +158,7 @@ html.parchment {
     justify-content: space-between !important;
   }
 
-  /* 中间知识点内容区大幅加宽 */
+  /* 中间知识点内容区自适应全宽 */
   .VPDoc.has-sidebar .content {
     flex: 1 1 auto !important;
     max-width: calc(100% - 240px) !important;
@@ -166,7 +166,7 @@ html.parchment {
   }
 
   .VPDoc.has-sidebar .content-container {
-    max-width: 1240px !important; /* 知识点大幅变宽 */
+    max-width: 100% !important; /* 充分填满中间可用宽度 */
     margin: 0 !important;
   }
 
@@ -184,12 +184,6 @@ html.parchment {
     letter-spacing: 0.05em;
     color: var(--vp-c-text-1);
     text-transform: uppercase;
-  }
-}
-
-@media (min-width: 1440px) {
-  .VPDoc.has-sidebar .content-container {
-    max-width: 1380px !important; /* 超宽屏下知识点内容更舒展 */
   }
 }
 
@@ -260,55 +254,67 @@ html.parchment .badge-formula { background: #e0f2fe; color: #0369a1; border-colo
 .dark .badge-freq { background: rgba(16, 185, 129, 0.25); color: #34d399; border-color: rgba(16, 185, 129, 0.5); }
 html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 
-/* ── 现代高密度斑马纹对比表格 ── */
+/* ── 现代高密度斑马纹对比表格（自适应 100% 页面宽度） ── */
 .vp-doc table {
-  width: 100%;
+  display: table !important;
+  width: 100% !important;
+  table-layout: auto;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 20px 0;
+  margin: 24px 0;
   border: 1px solid var(--vp-c-divider);
   border-radius: 10px;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 14.5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
 .vp-doc th {
   background: var(--vp-c-bg-alt);
   color: var(--vp-c-text-1);
   font-weight: 700;
-  padding: 12px 16px;
+  padding: 13px 18px;
   text-align: left;
   border-bottom: 2px solid var(--vp-c-divider);
+  white-space: nowrap;
 }
 
 .vp-doc td {
-  padding: 11px 16px;
+  padding: 12px 18px;
   border-bottom: 1px solid var(--vp-c-divider);
   color: var(--vp-c-text-2);
+  vertical-align: middle;
+  line-height: 1.6;
 }
 
+/* 表格最后一列（速查/操作列）居中与按钮美化 */
 .vp-doc th:last-child,
 .vp-doc td:last-child {
-  min-width: 100px !important;
+  min-width: 96px !important;
   white-space: nowrap !important;
   text-align: center !important;
 }
 
 .vp-doc td:last-child a {
-  display: inline-block;
-  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 14px;
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
   border-radius: 6px;
   font-weight: 600;
   text-decoration: none !important;
   transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .vp-doc td:last-child a:hover {
   background: var(--vp-c-brand-1);
   color: #ffffff !important;
+  border-color: var(--vp-c-brand-1);
   transform: translateX(2px);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
 }
 
 .vp-doc tr:last-child td {
@@ -321,6 +327,14 @@ html.parchment .badge-freq { background: #d1fae5; color: #065f46; border-color: 
 
 .vp-doc tr:hover {
   background-color: var(--vp-c-brand-soft);
+}
+
+@media (max-width: 768px) {
+  .vp-doc table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap;
+  }
 }
 
 /* ── 核心公式高亮卡片 (Formula Box) ── */
