@@ -6,16 +6,6 @@
 
 ---
 
-<MindMapCard 
-  title="计算机组成原理全科目核心考点思维导图" 
-  imgSrc="/cs408-notes/mindmaps/computer-organization-mindmap.png" 
-  downloadSrc="/cs408-notes/mindmaps/files/computer-organization-mindmap.xmind" 
-  tag="🧠 XMind 全景导图" 
-  caption="系统覆盖数据表示与运算、存储器层次结构 (Cache/虚存)、指令系统、CPU 数据通路与控制器、总线与 I/O 中断系统" 
-  fileName="XMIND导图-计组.xmind" 
-  fileSize="89.3 MB" 
-/>
-
 ## 📊 历年真题考频与题型全景统计
 
 ### 👑 1. 核心大题与超高频考点（总考频 $\ge 13$ 次）

@@ -6,16 +6,6 @@
 
 ---
 
-<MindMapCard 
-  title="数据结构全科目核心考点思维导图" 
-  imgSrc="/cs408-notes/mindmaps/data-structure-mindmap.png" 
-  downloadSrc="/cs408-notes/mindmaps/files/data-structure-mindmap.xmind" 
-  tag="🧠 XMind 全景导图" 
-  caption="系统覆盖线性表、栈队列、二叉树与森林、图论算法、查找与内部/外部排序核心考点结构" 
-  fileName="XMIND导图-数据结构.xmind" 
-  fileSize="41.2 MB" 
-/>
-
 ## 📊 历年真题考频与题型全景统计
 
 ### 👑 1. 超高频考点与核心大题（总考频 $\ge 12$ 次）

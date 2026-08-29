@@ -8,7 +8,6 @@ import KP from './KP.vue'
 import ProcessTable from './ProcessTable.vue'
 import InterruptSimulator from './InterruptSimulator.vue'
 import MediaCard from './MediaCard.vue'
-import MindMapCard from './MindMapCard.vue'
 import { h } from 'vue'
 
 export default {
@@ -34,6 +33,5 @@ export default {
     app.component('ProcessTable', ProcessTable)
     app.component('InterruptSimulator', InterruptSimulator)
     app.component('MediaCard', MediaCard)
-    app.component('MindMapCard', MindMapCard)
   }
 }

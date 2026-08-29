@@ -6,16 +6,6 @@
 
 ---
 
-<MindMapCard 
-  title="操作系统全科目核心考点思维导图" 
-  imgSrc="/cs408-notes/mindmaps/operating-system-mindmap.png" 
-  downloadSrc="/cs408-notes/mindmaps/files/operating-system-mindmap.xmind" 
-  tag="🧠 XMind 全景导图" 
-  caption="系统覆盖进程管理 (PV信号量/死锁/调度)、内存管理 (虚拟内存/分页分段)、文件系统与磁盘调度、I/O 子系统与 SPOOLing" 
-  fileName="XMIND导图-操作系统.xmind" 
-  fileSize="36.4 MB" 
-/>
-
 ## 📊 历年真题考频与题型全景统计
 
 ### 👑 1. 绝对核心与大题支柱（总考频 $\ge 14$ 次）

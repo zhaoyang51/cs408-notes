@@ -18,10 +18,6 @@
 
 ## 2. 中断处理完整十步全流程（硬件阶段 vs 软件阶段） <AuthorTag author="Zhao" />
 
-<div data-author="zhao" class="author-zhao" style="display:inline-flex; align-items:center; gap:6px; padding:3px 10px; border-radius:9999px; font-size:12px; font-weight:700; margin-bottom:14px;">
-  <span>👤 知识点归纳贡献者：Zhao</span>
-</div>
-
 <ProcessTable 
   title="中断处理全景十步流程（硬件隐指令 vs 软件中断服务程序）"
   stageHeader="阶段划分"
