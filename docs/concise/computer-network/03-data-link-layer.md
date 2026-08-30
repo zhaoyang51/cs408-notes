@@ -55,3 +55,41 @@
   3. 从 $[0, 1, 2, \dots, 2^k - 1]$ 中随机抽取整数 $r$，退避等待时间 $= r \times 2\tau$；
   4. 重传 16 次仍不成功则报错。
 :::
+---
+
+## 4. CSMA/CA 协议与 IEEE 802.11 无线局域网
+
+### 1. CSMA/CD vs CSMA/CA 核心机制对比
+| 对比维度 | CSMA/CD (有线 802.3) | CSMA/CA (无线 802.11) |
+|:---|:---|:---|
+| **工作原理** | 先听后发，**边发边听，碰撞检测** | 先听后发，**碰撞避免，必须 ACK 确认** |
+| **不能用 CD 的原因** | 信号衰减小，可检测碰撞电压 | 无线发射功率远大于接收功率无法边发边听；存在隐蔽站/暴露站 |
+| **信道预约** | 无预约机制 | 可选 **RTS / CTS (短帧握手预约)** + **NAV (网络分配向量)** 虚拟监听 |
+| **帧间间隔 (IFS)** | 96 bit 帧间最小间隔 | **SIFS (最短) < PIFS < DIFS (最长)** |
+
+---
+
+### 2. 帧间隙 (IFS) 体系与 RTS/CTS 握手时序
+- **SIFS (短帧间隙)**：用于 CTS、DATA (收到 CTS 后)、ACK 等连续高优先级应答；
+- **PIFS (点协调帧间隙)**：用于 AP 集中式轮询控制；
+- **DIFS (分布式协调帧间隙)**：**最长帧间隙**，用于站点发起新的数据传输或 RTS 前争用监听信道；
+- **传输过程**：
+  $$\text{DIFS} \rightarrow \text{RTS} \rightarrow \text{SIFS} \rightarrow \text{CTS} \rightarrow \text{SIFS} \rightarrow \text{DATA} \rightarrow \text{SIFS} \rightarrow \text{ACK}$$
+
+---
+
+### 3. 408 核心真题纯文本精解
+
+#### 📝 【真题 1】CSMA/CA 传输时延计算
+- **题干**：采用 CSMA/CA 的 IEEE 802.11，速率 300 Mbps，DIFS = 128 μs，SIFS = 28 μs。忽略其他帧传输与传播时延，发送 1500 B 数据帧，从**开始发送数据帧**至**确认接收方收到**所需时间至少为？
+- **解析**：
+  1. 数据帧发送时延 $t_{\text{data}} = \frac{1500 \times 8\text{ bit}}{300\text{ b}/\mu\text{s}} = 40\ \mu\text{s}$；
+  2. 接收方等待 $\text{SIFS} = 28\ \mu\text{s}$ 发送 ACK；
+  3. DIFS 发生在发送数据帧之前，不计入发送至确认的时间；
+  4. 最少时间 $= t_{\text{data}} + \text{SIFS} = 40 + 28 = \mathbf{68\ \mu\text{s}}$（选 B）。
+
+#### 📝 【真题 2 (2018 题 37)】IFS 帧间隔长度辨析
+- **题干**：主机 H 发送 RTS 前等 IFS1；AP 收到 RTS 后等 IFS2 发送 CTS；H 收到 CTS 后等 IFS3 发送 DATA；AP 收到 DATA 后等 IFS4 发送 ACK。所等待的 IFS 中最长的是？
+- **解析**：
+  1. IFS1 为发起新对话的 **DIFS**；IFS2、IFS3、IFS4 均为同一对话的连续响应 **SIFS**；
+  2. 根据 IEEE 802.11 优先级规范：$\text{SIFS} < \text{PIFS} < \text{DIFS}$，故 **IFS1 (DIFS) 最长**（选 A）。
