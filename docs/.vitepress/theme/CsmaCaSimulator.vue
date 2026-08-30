@@ -193,9 +193,9 @@
           <div class="backoff-card">
             <h5 class="bc-title">2. 竞争窗口 CW 与退避时序计算</h5>
             <ul class="bc-list">
-              <li><strong>随机时隙选取</strong>：从 $[0, \text{CW}]$ 均匀选取随机整数 $r$；</li>
-              <li><strong>退避等待时间</strong>：$\text{BackoffTime} = r \times \text{SlotTime}$；</li>
-              <li><strong>窗口翻倍规则</strong>：初次 $\text{CW} = \text{CW}_{\min}$（如 15 或 31）；每冲突一次翻倍：$\text{CW}_{\text{new}} = 2 \times (\text{CW} + 1) - 1$，直到达到 $\text{CW}_{\max}$（如 1023）。</li>
+              <li><strong>随机时隙选取</strong>：从 [0, CW] 均匀选取随机整数 <i>r</i>；</li>
+              <li><strong>退避等待时间</strong>：退避时间 = <i>r</i> × SlotTime；</li>
+              <li><strong>窗口翻倍规则</strong>：初次 CW = CW<sub>min</sub>（如 15 或 31）；每冲突一次翻倍：CW<sub>new</sub> = 2 × (CW + 1) - 1，直到达到 CW<sub>max</sub>（如 1023）。</li>
             </ul>
           </div>
         </div>
@@ -362,7 +362,7 @@
         <div class="quiz-block">
           <div class="exam-question">
             <span class="q-badge">【2017 年 题 35】</span>
-            在网络拓扑中，主机 H ($00\text{-}12\text{-}34\text{-}56\text{-}78\text{-}9a$) 发送一个封装访问 Internet 的 IP 分组的 IEEE 802.11 数据帧 F 至 AP ($00\text{-}12\text{-}34\text{-}56\text{-}78\text{-}9b$)，AP 再通过有线链路转发给默认网关路由器 R ($00\text{-}12\text{-}34\text{-}56\text{-}78\text{-}9c$)。则帧 F 的<strong>地址 1、地址 2 和地址 3</strong> 分别是（&nbsp;&nbsp;&nbsp;&nbsp;）。
+            在网络拓扑中，主机 H (00-12-34-56-78-9a) 发送一个封装访问 Internet 的 IP 分组的 IEEE 802.11 数据帧 F 至 AP (00-12-34-56-78-9b)，AP 再通过有线链路转发给默认网关路由器 R (00-12-34-56-78-9c)。则帧 F 的<strong>地址 1、地址 2 和地址 3</strong> 分别是（&nbsp;&nbsp;&nbsp;&nbsp;）。
           </div>
 
           <div class="exam-options">
@@ -506,7 +506,7 @@
             <div class="analysis-title">🔍 核心推导解析：</div>
             <ol class="analysis-list">
               <li><strong>IFS 种类</strong>：IFS1 是主机发起新会话前争用信道等待的 <strong>DIFS</strong>；IFS2、IFS3、IFS4 均为同一会话中连续响应等待的 <strong>SIFS</strong>；</li>
-              <li><strong>大小关系</strong>：$\text{SIFS} < \text{PIFS} < \text{DIFS}$，故 <strong>IFS1 (DIFS) 最长</strong>（<strong>正确答案：A</strong>）。</li>
+              <li><strong>大小关系</strong>：SIFS &lt; PIFS &lt; DIFS，故 <strong>IFS1 (DIFS) 最长</strong>（<strong>正确答案：A</strong>）。</li>
             </ol>
           </div>
         </div>
@@ -562,15 +562,15 @@
               </li>
               <li>
                 <strong>分步计算各阶段耗时</strong>：<br>
-                • CTS 发送完毕后，主机 A 等待短帧间隙：$\text{SIFS} = \mathbf{28\ \mu\text{s}}$；<br>
+                • CTS 发送完毕后，主机 A 等待短帧间隙：SIFS = <b>28 μs</b>；<br>
                 • 主机 A 发送数据帧的发送时延：<br>
-                $$t_{\text{data}} = \frac{1998 \times 8\text{ bit}}{54\text{ Mb/s}} = \frac{15984\text{ bit}}{54\text{ bit}/\mu\text{s}} = \mathbf{296\ \mu\text{s}}$$；<br>
-                • AP 接收完数据帧后，等待短帧间隙准备发 ACK：$\text{SIFS} = \mathbf{28\ \mu\text{s}}$；<br>
-                • AP 发送 ACK 帧的发送时延：$t_{\text{ACK}} = \mathbf{2\ \mu\text{s}}$。
+                <i>t</i><sub>data</sub> = (1998 × 8 bit) / (54 Mb/s) = 15984 / 54 = <b>296 μs</b>；<br>
+                • AP 接收完数据帧后，等待短帧间隙准备发 ACK：SIFS = <b>28 μs</b>；<br>
+                • AP 发送 ACK 帧的发送时延：<i>t</i><sub>ACK</sub> = <b>2 μs</b>。
               </li>
               <li>
                 <strong>求和得出 NAV 设定值</strong>：<br>
-                $$\text{NAV} = \text{SIFS} + t_{\text{data}} + \text{SIFS} + t_{\text{ACK}} = 28 + 296 + 28 + 2 = \mathbf{354\ \mu\text{s}}$$（<strong>正确答案：B</strong>）。
+                <b>NAV = SIFS + <i>t</i><sub>data</sub> + SIFS + <i>t</i><sub>ACK</sub> = 28 + 296 + 28 + 2 = 354 μs</b>（<strong>正确答案：B</strong>）。
               </li>
             </ol>
           </div>
@@ -583,7 +583,7 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 
 const openSections = reactive({
   diagram: true,
@@ -616,6 +616,34 @@ const resetQ4 = () => { q4.userAns = null; q4.revealed = false }
 const q5 = reactive({ userAns: null, revealed: false })
 const handleQ5 = (opt) => { q5.userAns = opt; q5.revealed = true }
 const resetQ5 = () => { q5.userAns = null; q5.revealed = false }
+
+// 全局一键收起/展开监听
+const onGlobalCollapse = (e) => {
+  const expand = e.detail?.expand ?? false
+  Object.keys(openSections).forEach(k => {
+    openSections[k] = expand
+  })
+}
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+    if (typeof localStorage !== 'undefined') {
+      const pref = localStorage.getItem('cs408-collapse-all-pref')
+      if (pref === 'expand') {
+        Object.keys(openSections).forEach(k => { openSections[k] = true })
+      } else if (pref === 'collapse') {
+        Object.keys(openSections).forEach(k => { openSections[k] = false })
+      }
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+  }
+})
 </script>
 
 <style scoped>

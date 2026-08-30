@@ -426,7 +426,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed , onMounted, onUnmounted} from 'vue'
 
 const openSections = reactive({
   diagram: true, // 默认展开时序图
@@ -484,6 +484,33 @@ const resetQuiz = () => {
   quiz.userAns = null
   quiz.revealed = false
 }
+// 全局一键收起/展开监听
+const onGlobalCollapse = (e) => {
+  const expand = e.detail?.expand ?? false
+  Object.keys(openSections).forEach(k => {
+    openSections[k] = expand
+  })
+}
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+    if (typeof localStorage !== 'undefined') {
+      const pref = localStorage.getItem('cs408-collapse-all-pref')
+      if (pref === 'expand') {
+        Object.keys(openSections).forEach(k => { openSections[k] = true })
+      } else if (pref === 'collapse') {
+        Object.keys(openSections).forEach(k => { openSections[k] = false })
+      }
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+  }
+})
 </script>
 
 <style scoped>

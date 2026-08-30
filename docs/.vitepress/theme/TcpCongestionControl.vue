@@ -373,7 +373,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive , onMounted, onUnmounted} from 'vue'
 
 const quizCong = reactive({ userAns: null, revealed: false })
 const handleQuizCong = (opt) => {
@@ -395,6 +395,33 @@ const openSections = reactive({
 const toggle = (key) => {
   openSections[key] = !openSections[key]
 }
+// 全局一键收起/展开监听
+const onGlobalCollapse = (e) => {
+  const expand = e.detail?.expand ?? false
+  Object.keys(openSections).forEach(k => {
+    openSections[k] = expand
+  })
+}
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    window.addEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+    if (typeof localStorage !== 'undefined') {
+      const pref = localStorage.getItem('cs408-collapse-all-pref')
+      if (pref === 'expand') {
+        Object.keys(openSections).forEach(k => { openSections[k] = true })
+      } else if (pref === 'collapse') {
+        Object.keys(openSections).forEach(k => { openSections[k] = false })
+      }
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('cs408-toggle-collapse-all', onGlobalCollapse)
+  }
+})
 </script>
 
 <style scoped>
