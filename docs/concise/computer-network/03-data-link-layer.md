@@ -56,40 +56,67 @@
   4. 重传 16 次仍不成功则报错。
 :::
 ---
+---
 
 ## 4. CSMA/CA 协议与 IEEE 802.11 无线局域网
 
 ### 1. CSMA/CD vs CSMA/CA 核心机制对比
-| 对比维度 | CSMA/CD (有线 802.3) | CSMA/CA (无线 802.11) |
+| 对比维度 | CSMA/CD (有线以太网 802.3) | CSMA/CA (无线局域网 802.11) |
 |:---|:---|:---|
-| **工作原理** | 先听后发，**边发边听，碰撞检测** | 先听后发，**碰撞避免，必须 ACK 确认** |
-| **不能用 CD 的原因** | 信号衰减小，可检测碰撞电压 | 无线发射功率远大于接收功率无法边发边听；存在隐蔽站/暴露站 |
-| **信道预约** | 无预约机制 | 可选 **RTS / CTS (短帧握手预约)** + **NAV (网络分配向量)** 虚拟监听 |
+| **工作原理** | 先听后发，**边发边听，碰撞检测** | 先听后发，**碰撞避免，必须链路层 ACK 确认** |
+| **不能用 CD 的原因** | 信号衰减小，可检测微弱碰撞电压 | 无线发射功率远大于接收功率无法边发边听；存在隐蔽站/暴露站 |
+| **信道预约** | 无预约机制 | 可选 **RTS / CTS (短帧握手预约)** + **NAV (网络分配向量)** 虚拟载波监听 |
 | **帧间间隔 (IFS)** | 96 bit 帧间最小间隔 | **SIFS (最短) < PIFS < DIFS (最长)** |
 
 ---
 
-### 2. 帧间隙 (IFS) 体系与 RTS/CTS 握手时序
-- **SIFS (短帧间隙)**：用于 CTS、DATA (收到 CTS 后)、ACK 等连续高优先级应答；
-- **PIFS (点协调帧间隙)**：用于 AP 集中式轮询控制；
-- **DIFS (分布式协调帧间隙)**：**最长帧间隙**，用于站点发起新的数据传输或 RTS 前争用监听信道；
-- **传输过程**：
-  $$\text{DIFS} \rightarrow \text{RTS} \rightarrow \text{SIFS} \rightarrow \text{CTS} \rightarrow \text{SIFS} \rightarrow \text{DATA} \rightarrow \text{SIFS} \rightarrow \text{ACK}$$
+### 2. IEEE 802.11 数据帧 4 种地址字段速查（408 核心大题）
+
+| 传输场景 | To DS | From DS | 地址 1 (RA 接收端) | 地址 2 (TA 发送端) | 地址 3 (DA 目的 / SA 源) | 考点映射 |
+|:---|:---:|:---:|:---|:---|:---|:---|
+| **工作站 ➔ AP ➔ 路由器 (发往外网)** | **1** | **0** | **AP 的 MAC** (直接接收) | **源工作站 MAC** (直接发送) | **路由器端口 MAC** (最终目的 DA) | **👑 2017 题 35** |
+| **路由器 ➔ AP ➔ 工作站 (来自外网)** | 0 | 1 | **目的工作站 MAC** (直接接收) | **AP 的 MAC** (直接发送) | **路由器端口 MAC** (原始源 SA) | 下行接收模型 |
+| **工作站 ➔ 工作站 (自组织网络)** | 0 | 0 | 目的工作站 MAC (DA) | 源工作站 MAC (SA) | BSSID (网络标识) | IBSS 直连 |
+
+> 💡 **秒杀口诀**：**地址 1 永远是无线直接接收方 RA**，**地址 2 永远是无线直接发送方 TA**！发往外网时，地址 3 是最终目的路由器接口 MAC (DA)！
 
 ---
 
-### 3. 408 核心真题纯文本精解
+### 3. 帧间隙 (IFS) 体系与 RTS/CTS 握手时序
+- **SIFS (短帧间隙)**：用于 CTS、DATA (收到 CTS 后)、ACK 等连续高优先级应答；
+- **PIFS (点协调帧间隙)**：用于 AP 集中式轮询控制；
+- **DIFS (分布式协调帧间隙)**：**最长帧间隙**，用于站点发起新的数据传输或 RTS 前争用监听信道；
+- **传输时序**：
+  $$\text{DIFS (最长)} \rightarrow \text{RTS} \rightarrow \text{SIFS} \rightarrow \text{CTS} \rightarrow \text{SIFS} \rightarrow \text{DATA} \rightarrow \text{SIFS} \rightarrow \text{ACK}$$
+- **NAV (网络分配向量) 计算公式**：
+  $$\text{NAV} = \text{SIFS} + t_{\text{DATA}} + \text{SIFS} + t_{\text{ACK}}$$
 
-#### 📝 【真题 1】CSMA/CA 传输时延计算
-- **题干**：采用 CSMA/CA 的 IEEE 802.11，速率 300 Mbps，DIFS = 128 μs，SIFS = 28 μs。忽略其他帧传输与传播时延，发送 1500 B 数据帧，从**开始发送数据帧**至**确认接收方收到**所需时间至少为？
-- **解析**：
-  1. 数据帧发送时延 $t_{\text{data}} = \frac{1500 \times 8\text{ bit}}{300\text{ b}/\mu\text{s}} = 40\ \mu\text{s}$；
-  2. 接收方等待 $\text{SIFS} = 28\ \mu\text{s}$ 发送 ACK；
-  3. DIFS 发生在发送数据帧之前，不计入发送至确认的时间；
-  4. 最少时间 $= t_{\text{data}} + \text{SIFS} = 40 + 28 = \mathbf{68\ \mu\text{s}}$（选 B）。
+---
 
-#### 📝 【真题 2 (2018 题 37)】IFS 帧间隔长度辨析
-- **题干**：主机 H 发送 RTS 前等 IFS1；AP 收到 RTS 后等 IFS2 发送 CTS；H 收到 CTS 后等 IFS3 发送 DATA；AP 收到 DATA 后等 IFS4 发送 ACK。所等待的 IFS 中最长的是？
+### 4. 408 统考真题纯文本精解 (5 题全解)
+
+#### 📝 【2011 年 题 36】MAC 确认机制
+- **题干**：对正确接收到的数据帧进行**确认**的 MAC 协议是？
+- **解析**：CSMA/CD 无确认机制；CSMA/CA 误码率高且无法检测冲突，**必须由接收方返回 ACK 确认**（**选 D**）。
+
+#### 📝 【2017 年 题 35】802.11 MAC 帧地址 1、2、3 判定
+- **题干**：主机 H ($9a$) 发送访问外网的 802.11 帧 F 给 AP ($9b$)，AP 转给路由器 R ($9c$)。帧 F 的地址 1、2、3 分别是？
 - **解析**：
-  1. IFS1 为发起新对话的 **DIFS**；IFS2、IFS3、IFS4 均为同一对话的连续响应 **SIFS**；
-  2. 根据 IEEE 802.11 优先级规范：$\text{SIFS} < \text{PIFS} < \text{DIFS}$，故 **IFS1 (DIFS) 最长**（选 A）。
+  - 地址 1 (RA 直接接收) = AP 的 MAC ($9b$)；
+  - 地址 2 (TA 直接发送) = H 的 MAC ($9a$)；
+  - 地址 3 (DA 最终目的) = 路由器 R 的 MAC ($9c$)；
+  - 答案：**9b, 9a, 9c**（**选 B**）。
+
+#### 📝 【2018 年 题 35】CSMA/CA 信道预约方法
+- **题干**：IEEE 802.11 无线局域网进行**信道预约**的方法是？
+- **解析**：通过**交换 RTS 和 CTS 短控制帧**进行信道预约（**选 D**）。
+
+#### 📝 【2020 年 题 37】IFS 帧间隔最长判定
+- **题干**：发送 RTS 前等 IFS1，AP 收到 RTS 后等 IFS2 发 CTS，收到 CTS 后等 IFS3 发 DATA，收到 DATA 后等 IFS4 发 ACK。最长的是？
+- **解析**：IFS1 为发起新传输的 **DIFS**，其余均为连续响应的 **SIFS**。根据 $\text{SIFS} < \text{PIFS} < \text{DIFS}$，**IFS1 最长**（**选 A**）。
+
+#### 📝 【经典大题 题 36】隐藏站 NAV 网络分配向量计算
+- **题干**：DIFS=128μs, SIFS=28μs, RTS=3μs, CTS=2μs, ACK=2μs。主机向 AP 发 1998 B 数据帧（带宽 54 Mb/s）。隐藏站 B 收到 CTS 时设置的 NAV 是？
+- **解析**：
+  1. 数据帧发送时延 $t_{\text{data}} = \frac{1998 \times 8\text{ bit}}{54\text{ Mb/s}} = \frac{15984}{54} = 296\ \mu\text{s}$；
+  2. $\text{NAV} = \text{SIFS} + t_{\text{data}} + \text{SIFS} + t_{\text{ACK}} = 28 + 296 + 28 + 2 = \mathbf{354\ \mu\text{s}}$（**选 B**）。
