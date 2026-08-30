@@ -3,20 +3,20 @@
     <!-- 顶部横幅 -->
     <div class="sim-header">
       <div class="header-left">
-        <span class="badge-blue">📡 IEEE 802.11 无线网络</span>
-        <h4 class="header-title">CSMA/CA 碰撞避免机制、帧间间隔 (IFS)、NAV 预约与 802.11 MAC 帧地址全景</h4>
+        <span class="badge-blue">📡 IEEE 802.11 核心考点三大支柱</span>
+        <h4 class="header-title">802.11 地址体系 · 信道预约与 NAV · 竞争窗口退避算法全景</h4>
       </div>
       <div class="formula-tag">
-        核心考点：SIFS &lt; PIFS &lt; DIFS ➔ NAV = SIFS + <i>t</i><sub>DATA</sub> + SIFS + <i>t</i><sub>ACK</sub> ➔ 地址 1=RA, 地址 2=TA
+        三大铁律：地址 1=RA / 地址 2=TA ➔ NAV = SIFS + <i>t</i><sub>DATA</sub> + SIFS + <i>t</i><sub>ACK</sub> ➔ 信道忙时退避冻结，空闲过 DIFS 后恢复倒计时
       </div>
     </div>
 
-    <!-- 1. 核心时序图解 (含 NAV 网络分配向量与 IFS 标注) -->
+    <!-- 支柱 1 & 2：时序图解 (含 NAV 预约与 IFS 体系) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('diagram')">
         <div class="header-title-box">
           <span class="card-icon">📐</span>
-          <strong>CSMA/CA 完整预约与传输时序图 (RTS ➔ CTS ➔ DATA ➔ ACK 与 NAV 机制)</strong>
+          <strong>【支柱一 & 二】CSMA/CA 完整信道预约 (RTS/CTS)、NAV 与帧间隙 (DIFS/SIFS) 时序图</strong>
           <span class="badge-blue">时序模型</span>
         </div>
         <button class="toggle-btn" type="button">
@@ -50,19 +50,16 @@
             </defs>
 
             <!-- 实体头部图标与标签 -->
-            <!-- 发送主机 H (源端) -->
             <g transform="translate(140, 15)">
               <rect x="-40" y="0" width="80" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
               <text x="0" y="18" font-size="12" font-weight="bold" text-anchor="middle" fill="#0284c7">💻 源主机 A/H</text>
             </g>
 
-            <!-- 接收接入点 AP (目的端) -->
             <g transform="translate(480, 15)">
               <rect x="-40" y="0" width="80" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
               <text x="0" y="18" font-size="12" font-weight="bold" text-anchor="middle" fill="#059669">📡 接入点 AP</text>
             </g>
 
-            <!-- 隐藏站 B / 其他站 -->
             <g transform="translate(680, 15)">
               <rect x="-40" y="0" width="80" height="26" rx="4" fill="#fff1f2" stroke="#fecdd3" stroke-width="1.2"/>
               <text x="0" y="18" font-size="12" font-weight="bold" text-anchor="middle" fill="#e11d48">👤 隐藏站 B</text>
@@ -117,7 +114,6 @@
           </svg>
         </div>
 
-        <!-- 4 大核心机制速查卡片 -->
         <div class="info-cards-grid">
           <div class="info-card">
             <div class="ic-header">
@@ -169,12 +165,75 @@
       </div>
     </div>
 
-    <!-- 2. 802.11 MAC 帧地址格式核心速查专题 (2017 题 35 核心模型) -->
+    <!-- 支柱 3：退避算法 (Backoff Algorithm) 核心机制与冻结/恢复原理 -->
+    <div class="collapsible-card">
+      <div class="card-header" @click="toggle('backoff')">
+        <div class="header-title-box">
+          <span class="card-icon">⏱️</span>
+          <strong>【支柱三】802.11 竞争窗口退避算法与退避计时器「冻结/恢复」铁律</strong>
+          <span class="badge-green">退避机制</span>
+        </div>
+        <button class="toggle-btn" type="button">
+          {{ openSections.backoff ? '收起 ▲' : '展开退避解析 ▼' }}
+        </button>
+      </div>
+
+      <div v-show="openSections.backoff" class="card-body">
+        <div class="backoff-grid">
+          <div class="backoff-card">
+            <h5 class="bc-title">1. 何时必须执行退避算法？</h5>
+            <ul class="bc-list">
+              <li><strong>① 初次发送前检测到信道忙</strong>：若站准备发帧时信道忙，必须启动退避计时器；</li>
+              <li><strong>② 每次成功传输之后</strong>：发送完一帧并收到 ACK 后，准备发送下一帧前必须退避，防止单一站点独占信道；</li>
+              <li><strong>③ 每次发生冲突/重传之后</strong>：未收到 ACK 判定冲突，必须加倍退避窗口重新退避。</li>
+              <li><em>例外：仅当源站欲发首帧且信道空闲达 DIFS 时，才可直接发送无需退避。</em></li>
+            </ul>
+          </div>
+
+          <div class="backoff-card">
+            <h5 class="bc-title">2. 竞争窗口 CW 与退避时序计算</h5>
+            <ul class="bc-list">
+              <li><strong>随机时隙选取</strong>：从 $[0, \text{CW}]$ 均匀选取随机整数 $r$；</li>
+              <li><strong>退避等待时间</strong>：$\text{BackoffTime} = r \times \text{SlotTime}$；</li>
+              <li><strong>窗口翻倍规则</strong>：初次 $\text{CW} = \text{CW}_{\min}$（如 15 或 31）；每冲突一次翻倍：$\text{CW}_{\text{new}} = 2 \times (\text{CW} + 1) - 1$，直到达到 $\text{CW}_{\max}$（如 1023）。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="backoff-highlight-box">
+          <div class="bh-title">❄️ 408 核心命题模型：退避计时器的「冻结 (Freeze)」与「恢复 (Resume)」机制</div>
+          <div class="bh-steps">
+            <div class="bh-step">
+              <span class="step-num">步骤 1</span>
+              <strong>信道空闲倒计时</strong>
+              <p>站点在信道空闲持续 DIFS 后，退避计时器按时隙逐一递减倒计时。</p>
+            </div>
+            <div class="bh-step step-freeze">
+              <span class="step-num">步骤 2</span>
+              <strong>信道变忙 ➔ 立即冻结</strong>
+              <p>一旦监听到信道变忙（其他站发送），<strong>立即暂停倒计时，冻结保存剩余时隙值</strong>。</p>
+            </div>
+            <div class="bh-step step-resume">
+              <span class="step-num">步骤 3</span>
+              <strong>信道再次空闲 ➔ 过 DIFS 恢复</strong>
+              <p>当信道重新变为空闲并<strong>持续空闲达 DIFS 之后</strong>，从<strong>原冻结的剩余值继续向下倒计时</strong>！</p>
+            </div>
+            <div class="bh-step step-fire">
+              <span class="step-num">步骤 4</span>
+              <strong>倒计时为 0 ➔ 立即发送</strong>
+              <p>当退避计时器归零时，该站获得信道发送权，立即启动数据帧发送。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 支柱 1：802.11 MAC 帧地址格式核心速查 (2017 题 35 核心模型) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('addr')">
         <div class="header-title-box">
           <span class="card-icon">🏷️</span>
-          <strong>IEEE 802.11 数据帧 4 种地址字段结构与 408 答题铁律</strong>
+          <strong>【支柱一】IEEE 802.11 数据帧 4 种地址字段结构与极简秒杀口诀</strong>
           <span class="badge-blue">地址速查</span>
         </div>
         <button class="toggle-btn" type="button">
@@ -233,7 +292,7 @@
       </div>
     </div>
 
-    <!-- 3. 【408 核心真题精练】交互式自测刷题 (5 道统考真题全收录) -->
+    <!-- 4. 【408 核心真题精练】交互式自测刷题 (5 道统考真题全收录) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('exam')">
         <div class="header-title-box">
@@ -447,7 +506,7 @@
             <div class="analysis-title">🔍 核心推导解析：</div>
             <ol class="analysis-list">
               <li><strong>IFS 种类</strong>：IFS1 是主机发起新会话前争用信道等待的 <strong>DIFS</strong>；IFS2、IFS3、IFS4 均为同一会话中连续响应等待的 <strong>SIFS</strong>；</li>
-              <li><strong>大小关系</strong>：$\\text{SIFS} < \\text{PIFS} < \\text{DIFS}$，故 <strong>IFS1 (DIFS) 最长</strong>（<strong>正确答案：A</strong>）。</li>
+              <li><strong>大小关系</strong>：$\text{SIFS} < \text{PIFS} < \text{DIFS}$，故 <strong>IFS1 (DIFS) 最长</strong>（<strong>正确答案：A</strong>）。</li>
             </ol>
           </div>
         </div>
@@ -503,15 +562,15 @@
               </li>
               <li>
                 <strong>分步计算各阶段耗时</strong>：<br>
-                • CTS 发送完毕后，主机 A 等待短帧间隙：$\\text{SIFS} = \\mathbf{28\\ \\mu\\text{s}}$；<br>
+                • CTS 发送完毕后，主机 A 等待短帧间隙：$\text{SIFS} = \mathbf{28\ \mu\text{s}}$；<br>
                 • 主机 A 发送数据帧的发送时延：<br>
-                $$t_{\\text{data}} = \\frac{1998 \\times 8\\text{ bit}}{54\\text{ Mb/s}} = \\frac{15984\\text{ bit}}{54\\text{ bit}/\\mu\\text{s}} = \\mathbf{296\\ \\mu\\text{s}}$$；<br>
-                • AP 接收完数据帧后，等待短帧间隙准备发 ACK：$\\text{SIFS} = \\mathbf{28\\ \\mu\\text{s}}$；<br>
-                • AP 发送 ACK 帧的发送时延：$t_{\\text{ACK}} = \\mathbf{2\\ \\mu\\text{s}}$。
+                $$t_{\text{data}} = \frac{1998 \times 8\text{ bit}}{54\text{ Mb/s}} = \frac{15984\text{ bit}}{54\text{ bit}/\mu\text{s}} = \mathbf{296\ \mu\text{s}}$$；<br>
+                • AP 接收完数据帧后，等待短帧间隙准备发 ACK：$\text{SIFS} = \mathbf{28\ \mu\text{s}}$；<br>
+                • AP 发送 ACK 帧的发送时延：$t_{\text{ACK}} = \mathbf{2\ \mu\text{s}}$。
               </li>
               <li>
                 <strong>求和得出 NAV 设定值</strong>：<br>
-                $$\\text{NAV} = \\text{SIFS} + t_{\\text{data}} + \\text{SIFS} + t_{\\text{ACK}} = 28 + 296 + 28 + 2 = \\mathbf{354\\ \\mu\\text{s}}$$（<strong>正确答案：B</strong>）。
+                $$\text{NAV} = \text{SIFS} + t_{\text{data}} + \text{SIFS} + t_{\text{ACK}} = 28 + 296 + 28 + 2 = \mathbf{354\ \mu\text{s}}$$（<strong>正确答案：B</strong>）。
               </li>
             </ol>
           </div>
@@ -528,6 +587,7 @@ import { ref, reactive } from 'vue'
 
 const openSections = reactive({
   diagram: true,
+  backoff: true,
   addr: true,
   exam: true
 })
@@ -704,6 +764,103 @@ const resetQ5 = () => { q5.userAns = null; q5.revealed = false }
   border-radius: 4px;
   color: #0284c7;
   border: 1px solid var(--vp-c-border);
+}
+
+/* 退避算法样式 */
+.backoff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.backoff-card {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.bc-title {
+  margin: 0 0 8px 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.bc-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+.backoff-highlight-box {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.bh-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #059669;
+  margin-bottom: 12px;
+}
+
+.bh-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.bh-step {
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-num {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.step-freeze .step-num {
+  color: #e11d48;
+  background: rgba(225, 29, 72, 0.1);
+}
+
+.step-resume .step-num {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+.step-fire .step-num {
+  color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+}
+
+.bh-step strong {
+  font-size: 12.5px;
+  color: var(--vp-c-text-1);
+}
+
+.bh-step p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
 }
 
 /* 地址表格 */
