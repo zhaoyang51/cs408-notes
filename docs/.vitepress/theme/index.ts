@@ -22,6 +22,7 @@ import DnsQuerySimulator from './DnsQuerySimulator.vue'
 import FtpConnectionModel from './FtpConnectionModel.vue'
 import EmailProtocolSimulator from './EmailProtocolSimulator.vue'
 import HttpProtocolSimulator from './HttpProtocolSimulator.vue'
+import GbnUtilizationSimulator from './GbnUtilizationSimulator.vue'
 import { h } from 'vue'
 
 export default {
@@ -61,5 +62,6 @@ export default {
     app.component('FtpConnectionModel', FtpConnectionModel)
     app.component('EmailProtocolSimulator', EmailProtocolSimulator)
     app.component('HttpProtocolSimulator', HttpProtocolSimulator)
+    app.component('GbnUtilizationSimulator', GbnUtilizationSimulator)
   }
 }
