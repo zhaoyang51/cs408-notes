@@ -210,28 +210,25 @@ html.parchment .VPNavBar {
     max-width: 100% !important;
     width: 100% !important;
     padding-left: 24px !important;
-    padding-right: 18px !important;
+    padding-right: 24px !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
     margin: 0 !important;
   }
 
-  /* 中间主体内容区彻底向两侧扩宽 */
-  .VPDoc .content,
-  .VPDoc.has-sidebar .content,
-  .VPDoc.has-aside .content,
+  /* 主体内容列向两侧适度延展 */
   .VPDoc > .container > .content,
-  .VPDoc.has-sidebar > .container > .content {
+  .VPDoc.has-sidebar > .container > .content,
+  .VPDoc.has-aside > .container > .content {
     flex: 1 1 0% !important;
     width: 100% !important;
-    max-width: calc(100% - 230px) !important;
-    padding-right: 24px !important;
+    max-width: calc(100% - 240px) !important;
+    padding-right: 28px !important;
     padding-left: 0 !important;
     margin: 0 !important;
   }
 
-  .VPDoc:not(.has-aside) .content,
   .VPDoc:not(.has-aside) > .container > .content {
     max-width: 100% !important;
     padding-right: 0 !important;
@@ -253,26 +250,23 @@ html.parchment .VPNavBar {
     width: 100% !important;
   }
 
-  /* 右侧「本页大纲 (TOC)」占位与悬浮固定 */
+  /* ════════ 右侧「本页大纲 (TOC)」粘性停靠与视觉规范 ════════ */
   .VPDoc.has-aside .aside {
     display: block !important;
     position: relative !important;
     width: 220px !important;
     flex-shrink: 0 !important;
-    padding: 0 !important;
     margin-left: auto !important;
+    padding: 0 !important;
   }
 
-  /* 随着当前视角始终固定显示在视口右上角 (Fixed Pinning) */
   .VPDoc.has-aside .aside-container {
-    position: fixed !important;
+    position: sticky !important;
     top: calc(var(--vp-nav-height) + 24px) !important;
-    right: 28px !important;
     width: 220px !important;
     max-height: calc(100vh - var(--vp-nav-height) - 48px) !important;
     overflow-y: auto !important;
-    padding-top: 0 !important;
-    z-index: 10 !important;
+    padding: 0 !important;
     scrollbar-width: thin;
   }
 
@@ -281,31 +275,40 @@ html.parchment .VPNavBar {
     padding-bottom: 24px !important;
   }
 
+  .VPDocAsideOutline {
+    display: block !important;
+  }
+
   .VPDocAsideOutline .content {
-    padding: 0 !important;
+    position: relative !important;
+    width: 100% !important;
     max-width: 100% !important;
+    padding: 0 0 0 14px !important;
+    margin: 0 !important;
+    border-left: 1.5px solid var(--vp-c-divider) !important;
   }
 
   .VPDocAsideOutline .outline-title {
-    white-space: nowrap !important;
-    font-size: 14px !important;
-    font-weight: 800 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
     letter-spacing: 0.04em !important;
-    text-indent: 0.5em !important;
     color: var(--vp-c-text-1) !important;
     text-transform: uppercase !important;
-    margin-bottom: 14px !important;
+    line-height: 28px !important;
+    margin-bottom: 8px !important;
   }
 
   .VPDocAsideOutline .outline-link {
-    font-size: 14.5px !important;
-    line-height: 26px !important;
-    padding: 3px 0 !important;
+    font-size: 13px !important;
+    line-height: 24px !important;
+    padding: 2px 0 !important;
     display: block !important;
-    text-indent: 0.5em !important;
     color: var(--vp-c-text-2) !important;
-    transition: color 0.2s ease, transform 0.15s ease !important;
-    letter-spacing: 0.01em !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    transition: color 0.15s ease, transform 0.15s ease !important;
   }
 
   .VPDocAsideOutline .outline-link:hover {
@@ -319,17 +322,16 @@ html.parchment .VPNavBar {
   }
 
   .VPDocAsideOutline .nested {
-    padding-left: 14px !important;
-    margin-top: 4px !important;
+    padding-left: 12px !important;
+    margin-top: 2px !important;
   }
 
   .VPDocAsideOutline .nested .outline-link {
-    font-size: 13.5px !important;
-    line-height: 23px !important;
-    padding: 2px 0 !important;
+    font-size: 12.5px !important;
+    line-height: 22px !important;
+    padding: 1px 0 !important;
   }
 }
-
 
 /* ── 正文排版 ── */
 .vp-doc {
