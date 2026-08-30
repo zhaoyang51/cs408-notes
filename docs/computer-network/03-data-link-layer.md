@@ -87,6 +87,8 @@ $$
 
 <KP author="Zhao" title="📡 CSMA/CA 碰撞避免机制、帧间间隔 (IFS) 与 408 核心真题演练" tag="核心考点">
 
+> 📺 **推荐视频精讲**：[【2024年 题36】802.11 RTS和CTS NAV_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d)（深入剖析 RTS/CTS 信道预约与 NAV 向量计算细节）
+
 <CsmaCaSimulator />
 
 </KP>

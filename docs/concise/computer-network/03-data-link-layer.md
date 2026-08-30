@@ -115,7 +115,8 @@
 - **题干**：发送 RTS 前等 IFS1，AP 收到 RTS 后等 IFS2 发 CTS，收到 CTS 后等 IFS3 发 DATA，收到 DATA 后等 IFS4 发 ACK。最长的是？
 - **解析**：IFS1 为发起新传输的 **DIFS**，其余均为连续响应的 **SIFS**。根据 $\text{SIFS} < \text{PIFS} < \text{DIFS}$，**IFS1 最长**（**选 A**）。
 
-#### 📝 【经典大题 题 36】隐藏站 NAV 网络分配向量计算
+#### 📝 【2024 年 题 36】隐藏站 NAV 网络分配向量计算
+- 📺 **精讲视频**：[【2024年 题36】802.11 RTS和CTS NAV_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d)
 - **题干**：DIFS=128μs, SIFS=28μs, RTS=3μs, CTS=2μs, ACK=2μs。主机向 AP 发 1998 B 数据帧（带宽 54 Mb/s）。隐藏站 B 收到 CTS 时设置的 NAV 是？
 - **解析**：
   1. 数据帧发送时延 $t_{\text{data}} = \frac{1998 \times 8\text{ bit}}{54\text{ Mb/s}} = \frac{15984}{54} = 296\ \mu\text{s}$；

@@ -338,6 +338,19 @@
             </div>
           </div>
 
+          <div class="video-ref-bar">
+            <span class="video-icon">📺</span>
+            <span class="video-label">推荐视频精析：</span>
+            <a 
+              href="https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="video-link"
+            >
+              【2024年 题36】802.11 RTS和CTS NAV（湖科大教书匠） ↗
+            </a>
+          </div>
+
           <div class="quiz-action-bar">
             <button class="quiz-btn btn-toggle" type="button" @click="q1.revealed = !q1.revealed">
               {{ q1.revealed ? '🔒 隐藏解析' : '💡 查看答案与分步解析' }}
@@ -387,6 +400,19 @@
               <span v-if="q2.revealed && opt === 'B'" class="correct-badge">✔ 正确答案</span>
               <span v-else-if="q2.revealed && q2.userAns === opt && opt !== 'B'" class="wrong-badge">✖ 你的选择</span>
             </div>
+          </div>
+
+          <div class="video-ref-bar">
+            <span class="video-icon">📺</span>
+            <span class="video-label">推荐视频精析：</span>
+            <a 
+              href="https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="video-link"
+            >
+              【2024年 题36】802.11 RTS和CTS NAV（湖科大教书匠） ↗
+            </a>
           </div>
 
           <div class="quiz-action-bar">
@@ -442,6 +468,19 @@
             </div>
           </div>
 
+          <div class="video-ref-bar">
+            <span class="video-icon">📺</span>
+            <span class="video-label">推荐视频精析：</span>
+            <a 
+              href="https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="video-link"
+            >
+              【2024年 题36】802.11 RTS和CTS NAV（湖科大教书匠） ↗
+            </a>
+          </div>
+
           <div class="quiz-action-bar">
             <button class="quiz-btn btn-toggle" type="button" @click="q3.revealed = !q3.revealed">
               {{ q3.revealed ? '🔒 隐藏解析' : '💡 查看答案与分步解析' }}
@@ -493,6 +532,19 @@
             </div>
           </div>
 
+          <div class="video-ref-bar">
+            <span class="video-icon">📺</span>
+            <span class="video-label">推荐视频精析：</span>
+            <a 
+              href="https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="video-link"
+            >
+              【2024年 题36】802.11 RTS和CTS NAV（湖科大教书匠） ↗
+            </a>
+          </div>
+
           <div class="quiz-action-bar">
             <button class="quiz-btn btn-toggle" type="button" @click="q4.revealed = !q4.revealed">
               {{ q4.revealed ? '🔒 隐藏解析' : '💡 查看答案与分步解析' }}
@@ -516,7 +568,7 @@
         <!-- ── 题 5：NAV 网络分配向量计算 (题 36) ── -->
         <div class="quiz-block">
           <div class="exam-question">
-            <span class="q-badge">【经典大题 题 36】</span>
+            <span class="q-badge">【2024 年 题 36】</span>
             在采用 CSMA/CA 的 802.11 无线局域网中，DIFS = <strong>128 μs</strong>，SIFS = <strong>28 μs</strong>，RTS、CTS 和 ACK 帧的传输时延分别是 <strong>3 μs、2 μs 和 2 μs</strong>，忽略信号传播时延。若主机 A 欲向 AP 发送一个总长度为 <strong>1998 B</strong> 的数据帧，无线链路带宽为 <strong>54 Mb/s</strong>，则隐藏站 B 收到 AP 发送的 CTS 帧时，设置的网络分配向量 <strong>NAV 的值</strong>是（&nbsp;&nbsp;&nbsp;&nbsp;）。
           </div>
 
@@ -542,6 +594,19 @@
               <span v-if="q5.revealed && opt === 'B'" class="correct-badge">✔ 正确答案</span>
               <span v-else-if="q5.revealed && q5.userAns === opt && opt !== 'B'" class="wrong-badge">✖ 你的选择</span>
             </div>
+          </div>
+
+          <div class="video-ref-bar">
+            <span class="video-icon">📺</span>
+            <span class="video-label">推荐视频精析：</span>
+            <a 
+              href="https://www.bilibili.com/video/BV1mTziYHERi/?p=4&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="video-link"
+            >
+              【2024年 题36】802.11 RTS和CTS NAV（湖科大教书匠） ↗
+            </a>
           </div>
 
           <div class="quiz-action-bar">
@@ -1005,5 +1070,37 @@ onUnmounted(() => {
   padding: 2px 8px;
   border-radius: 4px;
   display: inline-block;
+}
+.video-ref-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(251, 114, 153, 0.08);
+  border: 1px solid rgba(251, 114, 153, 0.25);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.video-icon {
+  font-size: 15px;
+}
+
+.video-label {
+  font-weight: 700;
+  color: #fb7299;
+}
+
+.video-link {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.video-link:hover {
+  text-decoration: underline;
+  color: #fb7299;
 }
 </style>
