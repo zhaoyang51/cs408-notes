@@ -3,21 +3,21 @@
     <!-- 顶部卡片横幅 -->
     <div class="sim-header">
       <div class="header-left">
-        <span class="badge-blue">📡 滑动窗口与信道利用率</span>
-        <h4 class="header-title">后退 N 帧 (GBN) 连续传输时延模型与最高信道利用率推导</h4>
+        <span class="badge-blue">📡 经典时延模型</span>
+        <h4 class="header-title">停止-等待 vs 后退 N 帧 (GBN) 时序全景对比与信道利用率推导</h4>
       </div>
       <div class="formula-tag">
-        最高利用率准则：<i>W</i><sub>T</sub> ≥ ⌈<i>T</i><sub>cycle</sub> / <i>t</i><sub>tx</sub>⌉ 且 GBN 满足 <i>W</i><sub>T</sub> ≤ 2<sup><i>n</i></sup> - 1
+        核心公式：信道利用率 <i>U</i> = <i>a</i> / (<i>a</i> + <i>b</i> + <i>c</i> + <i>d</i>) ➔ GBN 需 <i>W</i><sub>T</sub> ≥ ⌈<i>T</i><sub>总</sub> / <i>t</i><sub>帧</sub>⌉
       </div>
     </div>
 
-    <!-- 1. 停止-等待 vs GBN 时序对比与时延分解 (默认展开) -->
+    <!-- 1. 核心时序图解 (深度复刻 408 经典时延切片对比模型) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('diagram')">
         <div class="header-title-box">
           <span class="card-icon">📐</span>
-          <strong>停止-等待 vs GBN 协议通信时序对比图（往返时延周期模型）</strong>
-          <span class="badge-blue">无遮挡清晰时序</span>
+          <strong>停止-等待 vs 后退 N 帧 (GBN) 通信时序全景对照图</strong>
+          <span class="badge-blue">同周期对比</span>
         </div>
         <button class="toggle-btn" type="button">
           {{ openSections.diagram ? '收起 ▲' : '展开图解 ▼' }}
@@ -25,154 +25,223 @@
       </div>
 
       <div v-show="openSections.diagram" class="card-body">
-        <!-- SVG 时序主图 (彻底移除覆盖在图上的公式文字框，保证图画线条清晰无遮挡) -->
         <div class="diagram-wrapper">
-          <svg viewBox="0 0 780 340" class="sim-svg">
+          <svg viewBox="0 0 920 460" class="sim-svg">
             <defs>
-              <marker id="arrowhead-gbn" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <polygon points="0 0, 6 3, 0 6" fill="#94a3b8" />
+              <!-- 渐变色定义 -->
+              <linearGradient id="dataFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#0284c7" stop-opacity="0.95" />
+              </linearGradient>
+
+              <linearGradient id="ackFrameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#34d399" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#059669" stop-opacity="0.95" />
+              </linearGradient>
+
+              <marker id="arrow-axis" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
               </marker>
-              <marker id="arrowhead-blue" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <polygon points="0 0, 6 3, 0 6" fill="#0284c7" />
+
+              <marker id="arrow-dim" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+                <polygon points="0 0, 5 2.5, 0 5" fill="#0284c7" />
               </marker>
-              <marker id="arrowhead-green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <polygon points="0 0, 6 3, 0 6" fill="#059669" />
+
+              <marker id="arrow-dim-green" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
+                <polygon points="0 0, 5 2.5, 0 5" fill="#059669" />
               </marker>
             </defs>
 
-            <!-- ── A. 停止-等待协议时序 ── -->
-            <g transform="translate(10, 15)">
-              <rect x="0" y="0" width="760" height="145" rx="8" fill="var(--vp-c-bg)" stroke="var(--vp-c-border)" stroke-width="1.2"/>
-              <text x="20" y="24" font-size="12" font-weight="bold" fill="#0284c7">【模型 1】停止-等待协议 (Stop-and-Wait) · 发送 1 帧即停下等待 ACK</text>
+            <!-- ══════════════════════════════════════════════════════════════
+                 上半部分：【模型 1】停止-等待协议 (Stop-and-Wait)
+                 ══════════════════════════════════════════════════════════════ -->
+            <g transform="translate(10, 10)">
+              <!-- 左侧大标签 -->
+              <rect x="0" y="45" width="85" height="70" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="42.5" y="75" font-size="12" font-weight="bold" text-anchor="middle" fill="#334155">停止-等待</text>
+              <text x="42.5" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#334155">协议</text>
 
-              <!-- 实体标签 -->
-              <rect x="20" y="40" width="60" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-              <text x="50" y="56" font-size="11" font-weight="bold" text-anchor="middle" fill="#0284c7">发送方</text>
+              <!-- 发送方/接收方 实体标签 (顶部接收方，底部发送方，严格对应考研标准模型) -->
+              <rect x="95" y="15" width="60" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="125" y="32" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#059669">接收方</text>
 
-              <rect x="20" y="102" width="60" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-              <text x="50" y="118" font-size="11" font-weight="bold" text-anchor="middle" fill="#059669">接收方</text>
+              <rect x="95" y="125" width="60" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="125" y="142" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#0284c7">发送方</text>
 
-              <!-- 时间轴 -->
-              <line x1="90" y1="52" x2="740" y2="52" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead-gbn)"/>
-              <text x="735" y="46" font-size="10.5" fill="#64748b">时间 t</text>
+              <!-- 水平时间轴 -->
+              <line x1="165" y1="28" x2="680" y2="28" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow-axis)"/>
+              <text x="690" y="32" font-size="13" font-weight="bold" fill="#334155">t</text>
 
-              <line x1="90" y1="114" x2="740" y2="114" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead-gbn)"/>
-              <text x="735" y="108" font-size="10.5" fill="#64748b">时间 t</text>
+              <line x1="165" y1="138" x2="680" y2="138" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow-axis)"/>
+              <text x="690" y="142" font-size="13" font-weight="bold" fill="#334155">t</text>
 
-              <!-- 数据帧发送 (时延 a) + 传播 (时延 b) -->
-              <polygon points="105,52 155,52 245,114 195,114" fill="rgba(2, 132, 199, 0.15)" stroke="#0284c7" stroke-width="1.2"/>
-              <text x="175" y="80" font-size="10.5" font-weight="bold" fill="#0284c7" transform="rotate(35, 175, 80)">数据帧 0 (a 发送 + b 传播)</text>
+              <!-- 红色高亮往返周期垂直背景条 (涵盖发送方发出 ➔ 收到确认的整个周期) -->
+              <rect x="180" y="12" width="270" height="142" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="rgba(244, 63, 94, 0.35)" stroke-dasharray="3,3"/>
 
-              <!-- 确认帧发送 (时延 c) + 反向传播 (时延 d) -->
-              <polygon points="245,114 295,114 385,52 335,52" fill="rgba(5, 150, 105, 0.15)" stroke="#059669" stroke-width="1.2"/>
-              <text x="315" y="90" font-size="10.5" font-weight="bold" fill="#059669" transform="rotate(-35, 315, 90)">确认帧 ACK 0 (c 发送 + d 传播)</text>
+              <!-- 数据帧 1：从发送方发出 (向上斜行至接收方) -->
+              <polygon points="180,138 220,138 335,28 295,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="1.2"/>
+              <text x="250" y="85" font-size="11" font-weight="bold" fill="#ffffff" transform="rotate(-44, 250, 85)">数据帧</text>
 
-              <!-- 发送方空闲等待指示 -->
-              <line x1="155" y1="52" x2="335" y2="52" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="3,2"/>
-              <text x="245" y="44" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#ef4444">⏸️ 发送方空闲等待信道</text>
+              <!-- 确认帧 1：从接收方发出 (向下斜行至发送方) -->
+              <polygon points="335,28 375,28 450,138 410,138" fill="url(#ackFrameGrad)" stroke="#059669" stroke-width="1.2"/>
+              <text x="385" y="85" font-size="11" font-weight="bold" fill="#ffffff" transform="rotate(44, 385, 85)">确认帧</text>
 
-              <!-- 下一数据帧 -->
-              <polygon points="385,52 435,52 525,114 475,114" fill="rgba(2, 132, 199, 0.15)" stroke="#0284c7" stroke-width="1.2"/>
-              <text x="455" y="80" font-size="10.5" font-weight="bold" fill="#0284c7" transform="rotate(35, 455, 80)">数据帧 1</text>
+              <!-- 数据帧 2：收到确认后方可发送下一帧 -->
+              <polygon points="450,138 490,138 605,28 565,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="1.2"/>
+              <text x="520" y="85" font-size="11" font-weight="bold" fill="#ffffff" transform="rotate(-44, 520, 85)">数据帧</text>
 
-              <!-- 时延标尺 a: 发送时延 -->
-              <line x1="105" y1="36" x2="155" y2="36" stroke="#0284c7" stroke-width="1.5"/>
-              <line x1="105" y1="32" x2="105" y2="40" stroke="#0284c7" stroke-width="1"/>
-              <line x1="155" y1="32" x2="155" y2="40" stroke="#0284c7" stroke-width="1"/>
-              <text x="130" y="30" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#0284c7">a: 发送</text>
+              <!-- 确认帧 2 -->
+              <polygon points="605,28 645,28 720,138 680,138" fill="url(#ackFrameGrad)" stroke="#059669" stroke-width="1.2"/>
+              <text x="655" y="85" font-size="11" font-weight="bold" fill="#ffffff" transform="rotate(44, 655, 85)">确认帧</text>
 
-              <!-- a+b+c+d 往返总周期标尺 -->
-              <line x1="105" y1="130" x2="385" y2="130" stroke="#d97706" stroke-width="1.5"/>
-              <line x1="105" y1="126" x2="105" y2="134" stroke="#d97706" stroke-width="1.5"/>
-              <line x1="385" y1="126" x2="385" y2="134" stroke="#d97706" stroke-width="1.5"/>
-              <text x="245" y="141" font-size="10" font-weight="bold" text-anchor="middle" fill="#d97706">单帧往返总周期 T_cycle = a + b + c + d （信道利用率 U = a / T_cycle 极低）</text>
+              <!-- 省略符号 -->
+              <text x="655" y="100" font-size="16" font-weight="bold" fill="#94a3b8">......</text>
+
+              <!-- ── 时延维度标注 (a, b, c, d) ── -->
+              <!-- a: 数据帧发送时延 -->
+              <line x1="180" y1="152" x2="220" y2="152" stroke="#0284c7" stroke-width="1.2"/>
+              <line x1="180" y1="148" x2="180" y2="156" stroke="#0284c7" stroke-width="1.2"/>
+              <line x1="220" y1="148" x2="220" y2="156" stroke="#0284c7" stroke-width="1.2"/>
+              <text x="200" y="163" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#0284c7">a</text>
+
+              <!-- b: 信号传播时延 -->
+              <line x1="220" y1="152" x2="335" y2="152" stroke="#64748b" stroke-width="1.2"/>
+              <line x1="335" y1="148" x2="335" y2="156" stroke="#64748b" stroke-width="1.2"/>
+              <text x="277" y="163" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#64748b">b</text>
+
+              <!-- c: 确认帧发送时延 -->
+              <line x1="335" y1="14" x2="375" y2="14" stroke="#059669" stroke-width="1.2"/>
+              <line x1="335" y1="10" x2="335" y2="18" stroke="#059669" stroke-width="1.2"/>
+              <line x1="375" y1="10" x2="375" y2="18" stroke="#059669" stroke-width="1.2"/>
+              <text x="355" y="7" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#059669">c</text>
+
+              <!-- d: 确认信号传播时延 -->
+              <line x1="375" y1="14" x2="450" y2="14" stroke="#64748b" stroke-width="1.2"/>
+              <line x1="450" y1="10" x2="450" y2="18" stroke="#64748b" stroke-width="1.2"/>
+              <text x="412" y="7" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#64748b">d</text>
+
+              <!-- 右侧参数说明区 -->
+              <g transform="translate(710, 15)">
+                <rect x="0" y="0" width="190" height="142" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                <text x="12" y="24" font-size="11.5" font-weight="bold" fill="#0284c7">a: 数据帧发送时延</text>
+                <text x="12" y="44" font-size="11.5" font-weight="bold" fill="#64748b">b: 信号传播时延</text>
+                <text x="12" y="64" font-size="11.5" font-weight="bold" fill="#059669">c: 确认帧发送时延</text>
+                <text x="12" y="84" font-size="11.5" font-weight="bold" fill="#64748b">d: 信号传播时延</text>
+                
+                <line x1="12" y1="96" x2="178" y2="96" stroke="#e2e8f0" stroke-width="1"/>
+                <text x="12" y="116" font-size="11.5" font-weight="bold" fill="#d97706">信道利用率公式：</text>
+                <text x="12" y="134" font-size="12" font-weight="900" fill="#d97706">U = a / (a + b + c + d)</text>
+              </g>
             </g>
 
-            <!-- ── B. 后退 N 帧 (GBN) 连续发送时序 ── -->
-            <g transform="translate(10, 175)">
-              <rect x="0" y="0" width="760" height="150" rx="8" fill="var(--vp-c-bg)" stroke="var(--vp-c-border)" stroke-width="1.2"/>
-              <text x="20" y="24" font-size="12" font-weight="bold" fill="#059669">【模型 2】后退 N 帧 (GBN) 协议 · 流水线连续发送达到 100% 最高信道利用率</text>
+            <!-- ══════════════════════════════════════════════════════════════
+                 下半部分：【模型 2】后退 N 帧协议 (GBN)
+                 ══════════════════════════════════════════════════════════════ -->
+            <g transform="translate(10, 230)">
+              <!-- 左侧大标签 -->
+              <rect x="0" y="45" width="85" height="70" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="42.5" y="75" font-size="12" font-weight="bold" text-anchor="middle" fill="#0284c7">后退N帧</text>
+              <text x="42.5" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#0284c7">协议</text>
 
-              <!-- 实体标签 -->
-              <rect x="20" y="40" width="60" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-              <text x="50" y="56" font-size="11" font-weight="bold" text-anchor="middle" fill="#0284c7">发送方</text>
+              <!-- 发送方/接收方 实体标签 -->
+              <rect x="95" y="15" width="60" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="125" y="32" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#059669">接收方</text>
 
-              <rect x="20" y="102" width="60" height="24" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
-              <text x="50" y="118" font-size="11" font-weight="bold" text-anchor="middle" fill="#059669">接收方</text>
+              <rect x="95" y="125" width="60" height="26" rx="4" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.2"/>
+              <text x="125" y="142" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#0284c7">发送方</text>
 
-              <!-- 时间轴 -->
-              <line x1="90" y1="52" x2="740" y2="52" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead-gbn)"/>
-              <text x="735" y="46" font-size="10.5" fill="#64748b">时间 t</text>
+              <!-- 水平时间轴 -->
+              <line x1="165" y1="28" x2="680" y2="28" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow-axis)"/>
+              <text x="690" y="32" font-size="13" font-weight="bold" fill="#334155">t</text>
 
-              <line x1="90" y1="114" x2="740" y2="114" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrowhead-gbn)"/>
-              <text x="735" y="108" font-size="10.5" fill="#64748b">时间 t</text>
+              <line x1="165" y1="138" x2="680" y2="138" stroke="#334155" stroke-width="1.8" marker-end="url(#arrow-axis)"/>
+              <text x="690" y="142" font-size="13" font-weight="bold" fill="#334155">t</text>
 
-              <!-- 连续发送 11 个帧 (0, 1, 2, ... 10) 连续铺满信道，无任何空闲间隔 -->
-              <polygon points="105,52 130,52 220,114 195,114" fill="rgba(2, 132, 199, 0.25)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="130,52 155,52 245,114 220,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="155,52 180,52 270,114 245,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="180,52 205,52 295,114 270,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="205,52 230,52 320,114 295,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="230,52 255,52 345,114 320,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="255,52 280,52 370,114 345,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="280,52 305,52 395,114 370,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="305,52 330,52 420,114 395,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="330,52 355,52 445,114 420,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="355,52 380,52 470,114 445,114" fill="rgba(2, 132, 199, 0.25)" stroke="#0284c7" stroke-width="0.8"/>
+              <!-- 红色高亮往返周期垂直背景条 (与上方完全对齐！完美展示同周期下帧连续发送) -->
+              <rect x="180" y="12" width="270" height="142" rx="4" fill="rgba(244, 63, 94, 0.12)" stroke="rgba(244, 63, 94, 0.35)" stroke-dasharray="3,3"/>
 
-              <!-- 收到第 1 帧的确认 ACK 0 (在 t = 385ms 处到达发送方) -->
-              <polygon points="220,114 245,114 380,52 355,52" fill="rgba(5, 150, 105, 0.25)" stroke="#059669" stroke-width="1.2"/>
-              <text x="300" y="85" font-size="10.5" font-weight="bold" fill="#059669" transform="rotate(-35, 300, 85)">ACK 0 到达</text>
+              <!-- 连续发送数据帧 0, 1, 2... 密集流水线 -->
+              <polygon points="180,138 210,138 325,28 295,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="245" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(-44, 245, 85)">数据帧</text>
 
-              <!-- 随后第 11 帧、12 帧继续发送，无缝衔接 -->
-              <polygon points="380,52 405,52 495,114 470,114" fill="rgba(2, 132, 199, 0.25)" stroke="#0284c7" stroke-width="0.8"/>
-              <polygon points="405,52 430,52 520,114 495,114" fill="rgba(2, 132, 199, 0.18)" stroke="#0284c7" stroke-width="0.8"/>
+              <polygon points="210,138 240,138 355,28 325,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="275" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(-44, 275, 85)">数据帧</text>
 
-              <!-- 连续发送标尺 -->
-              <line x1="105" y1="36" x2="380" y2="36" stroke="#0284c7" stroke-width="1.5"/>
-              <line x1="105" y1="32" x2="105" y2="40" stroke="#0284c7" stroke-width="1"/>
-              <line x1="380" y1="32" x2="380" y2="40" stroke="#0284c7" stroke-width="1"/>
-              <text x="242" y="30" font-size="10" font-weight="bold" text-anchor="middle" fill="#0284c7">往返周期内连续发送 11 帧 (发送方信道 100% 满负荷，无需等待)</text>
+              <polygon points="240,138 270,138 385,28 355,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="305" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(-44, 305, 85)">数据帧</text>
 
-              <!-- 关键时间点标注 -->
-              <text x="105" y="68" font-size="9.5" text-anchor="middle" fill="var(--vp-c-text-3)">t=0 (发帧0)</text>
-              <text x="380" y="68" font-size="9.5" text-anchor="middle" fill="#059669">t=T_cycle (收ACK 0)</text>
+              <!-- 省略号：连续发送更多帧 -->
+              <text x="300" y="125" font-size="15" font-weight="bold" fill="#0284c7">......</text>
+
+              <!-- 确认帧：在 t=668ms 处返回到达发送方 -->
+              <polygon points="325,28 355,28 450,138 420,138" fill="url(#ackFrameGrad)" stroke="#059669" stroke-width="1.2"/>
+              <text x="380" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(44, 380, 85)">确认帧</text>
+
+              <!-- 收到确认帧后，后续数据帧继续发送，无缝流水线！ -->
+              <polygon points="450,138 480,138 595,28 565,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="515" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(-44, 515, 85)">数据帧</text>
+
+              <polygon points="480,138 510,138 625,28 595,28" fill="url(#dataFrameGrad)" stroke="#0284c7" stroke-width="0.8"/>
+              <text x="545" y="85" font-size="10" font-weight="bold" fill="#ffffff" transform="rotate(-44, 545, 85)">数据帧</text>
+
+              <!-- 右侧计算推导区 (完美对应真题计算步骤) -->
+              <g transform="translate(560, 15)">
+                <rect x="0" y="0" width="340" height="142" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+                
+                <text x="12" y="24" font-size="11.5" font-weight="bold" fill="#334155">
+                  发送一帧的时间 = (128 × 8) / 16000 = <tspan fill="#0284c7" font-weight="bold">64 ms</tspan>
+                </text>
+                
+                <text x="12" y="52" font-size="11.5" font-weight="bold" fill="#334155">
+                  发送一帧到收到确认为止的总时间 =
+                </text>
+                <text x="24" y="72" font-size="11.5" font-weight="bold" fill="#334155">
+                  64 + 270 × 2 + 64 = <tspan fill="#d97706" font-weight="900">668 ms</tspan>
+                </text>
+
+                <text x="12" y="102" font-size="11.5" font-weight="bold" fill="#334155">
+                  这段总时间可以发送的帧数量 =
+                </text>
+                <text x="24" y="124" font-size="12" font-weight="900" fill="#059669">
+                  668 / 64 = 10.4375 帧 ➔ 窗口 W_T = 11
+                </text>
+              </g>
             </g>
           </svg>
         </div>
 
-        <!-- 独立公式卡片三列网格 (位于图解下方，完全避免图文遮挡) -->
+        <!-- 图解下方：核心考点与窗口不等式推导卡片 -->
         <div class="formula-cards-grid">
           <div class="f-card">
             <div class="f-card-header">
-              <span class="f-badge">① 往返周期</span>
-              <strong>单帧往返总耗时</strong>
+              <span class="f-badge">窗口约束</span>
+              <strong>GBN 发送窗口尺寸准则</strong>
             </div>
             <div class="f-card-body">
-              <div class="f-formula-text"><i>T</i><sub>cycle</sub> = <i>t</i><sub>tx</sub> + 2<i>t</i><sub>prop</sub> + <i>t</i><sub>ack</sub></div>
-              <p class="f-desc">包含数据帧发送、去程传播、确认帧发送与回程传播。若确认帧与数据帧等长则 <i>t</i><sub>ack</sub> = <i>t</i><sub>tx</sub>。</p>
+              <div class="f-formula-text">1 &lt; <i>W</i><sub>T</sub> ≤ 2<sup><i>n</i></sup> - 1</div>
+              <p class="f-desc">其中 <i>n</i> 为构成帧序号的比特数；GBN 接收窗口固定为 1。</p>
             </div>
           </div>
 
           <div class="f-card">
             <div class="f-card-header">
-              <span class="f-badge">② 连续帧数</span>
-              <strong>最高利用率窗口大小</strong>
+              <span class="f-badge">向上取整</span>
+              <strong>最高信道利用率条件</strong>
             </div>
             <div class="f-card-body">
-              <div class="f-formula-text"><i>W</i><sub>T</sub> ≥ ⌈ <i>T</i><sub>cycle</sub> / <i>t</i><sub>tx</sub> ⌉</div>
-              <p class="f-desc">为使信道在等待 ACK 期间不停歇，发送窗口 <i>W</i><sub>T</sub> 必须能容纳一个往返周期内连续发出的全部帧数（向上取整）。</p>
+              <div class="f-formula-text">连续帧数 10.4375 ➔ <i>W</i><sub>T</sub> 取值为 11</div>
+              <p class="f-desc">发送窗口必须能够连续覆盖整个往返周期（668ms），才能实现无停顿满载发送。</p>
             </div>
           </div>
 
           <div class="f-card">
             <div class="f-card-header">
-              <span class="f-badge">③ 序号比特</span>
-              <strong>帧序号比特数 <i>n</i> 约束</strong>
+              <span class="f-badge">序号求解</span>
+              <strong>最少帧序号比特数推导</strong>
             </div>
             <div class="f-card-body">
-              <div class="f-formula-text"><i>W</i><sub>T</sub> ≤ 2<sup><i>n</i></sup> - 1 ⟹ <i>n</i> ≥ ⌈log<sub>2</sub>(<i>W</i><sub>T</sub> + 1)⌉</div>
-              <p class="f-desc">GBN 接收窗口为 1，发送窗口最大为 2<sup><i>n</i></sup> - 1；对比选择重传 (SR) 协议 <i>W</i><sub>T</sub> ≤ 2<sup><i>n</i>-1</sup>。</p>
+              <div class="f-formula-text">11 ≤ 2<sup><i>n</i></sup> - 1 ⟹ 2<sup><i>n</i></sup> ≥ 12 ⟹ <i>n</i> ≥ 4</div>
+              <p class="f-desc">2³ = 8 &lt; 12，故 3 位无法满足；2⁴ = 16 ≥ 12，解得 <i>n</i> 至少为 <strong>4</strong>。</p>
             </div>
           </div>
         </div>
@@ -185,7 +254,7 @@
       <div class="card-header" @click="toggle('calc')">
         <div class="header-title-box">
           <span class="card-icon">⚡</span>
-          <strong>动态时延实验台：实时计算发送时延、周期与最小帧序号比特</strong>
+          <strong>动态时延实验台：实时调节速率、时延与帧长，观察窗口与比特数变化</strong>
           <span class="badge-green">参数调节</span>
         </div>
         <button class="toggle-btn" type="button">
@@ -513,7 +582,7 @@ const resetQuiz = () => {
 
 .sim-svg {
   width: 100%;
-  min-width: 680px;
+  min-width: 820px;
   height: auto;
   display: block;
 }
@@ -521,9 +590,9 @@ const resetQuiz = () => {
 /* 独立公式卡片网格 */
 .formula-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .f-card {
