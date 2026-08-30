@@ -6,7 +6,7 @@ export default defineConfig({
   base: "/cs408-notes/",
   cleanUrls: true,
 
-    markdown: {
+  markdown: {
     math: true,
     headers: {
       level: [2, 3, 4]
@@ -25,6 +25,7 @@ export default defineConfig({
     ],
 
     sidebar: {
+      // ════════ 完整模式侧边栏 ════════
       '/data-structure/': [
         {
           text: '📘 数据结构（45分）',
@@ -78,6 +79,76 @@ export default defineConfig({
             { text: '第4章 网络层与 IP 协议', link: '/computer-network/04-network-layer' },
             { text: '第5章 传输层 (TCP / UDP)', link: '/computer-network/05-transport-layer' },
             { text: '第6章 应用层 (HTTP / DNS / 邮件)', link: '/computer-network/06-application-layer' }
+          ]
+        }
+      ],
+
+      // ════════ 📖 简洁速查模式专属侧边栏 ════════
+      '/concise/data-structure/': [
+        {
+          text: '📘 数据结构（简洁速查）',
+          items: [
+            { text: '📌 考纲与题型导览', link: '/concise/data-structure/' },
+            { text: '第1章 基本概念与时空复杂度', link: '/concise/data-structure/01-basic-concepts' },
+            { text: '第2章 线性表', link: '/concise/data-structure/02-linear-list' },
+            { text: '第3章 栈、队列和数组', link: '/concise/data-structure/03-stack-queue-array' },
+            { text: '第4章 树和二叉树', link: '/concise/data-structure/04-tree-binary-tree' },
+            { text: '第5章 图', link: '/concise/data-structure/05-graph' },
+            { text: '第6章 查找与散列', link: '/concise/data-structure/06-search' },
+            { text: '第7章 内部与外部排序', link: '/concise/data-structure/07-sort' }
+          ]
+        }
+      ],
+      '/concise/computer-organization/': [
+        {
+          text: '💻 计算机组成原理（简洁速查）',
+          items: [
+            { text: '📌 考纲与题型导览', link: '/concise/computer-organization/' },
+            { text: '第1章 计算机系统概述与性能指标', link: '/concise/computer-organization/01-overview' },
+            { text: '第2章 数据的表示和运算', link: '/concise/computer-organization/02-data-representation' },
+            { text: '第3章 存储器层次结构 (Cache/主存)', link: '/concise/computer-organization/03-memory-hierarchy' },
+            { text: '第4章 指令系统与寻址方式', link: '/concise/computer-organization/04-instruction-system' },
+            { text: '第5章 CPU、数据通路与控制器', link: '/concise/computer-organization/05-cpu' },
+            { text: '第6章 总线与输入输出系统', link: '/concise/computer-organization/06-bus-io' }
+          ]
+        }
+      ],
+      '/concise/operating-system/': [
+        {
+          text: '⚙️ 操作系统（简洁速查）',
+          items: [
+            { text: '📌 考纲与题型导览', link: '/concise/operating-system/' },
+            { text: '第1章 操作系统概述与体系结构', link: '/concise/operating-system/01-overview' },
+            { text: '第2章 进程线程、调度与死锁', link: '/concise/operating-system/02-process-management' },
+            { text: '第3章 内存管理与虚拟内存', link: '/concise/operating-system/03-memory-management' },
+            { text: '第4章 文件系统与磁盘调度', link: '/concise/operating-system/04-file-system' },
+            { text: '第5章 I/O 核心子系统与 SPOOLing', link: '/concise/operating-system/05-io-management' }
+          ]
+        }
+      ],
+      '/concise/computer-network/': [
+        {
+          text: '🌐 计算机网络（简洁速查）',
+          items: [
+            { text: '📌 考纲与题型导览', link: '/concise/computer-network/' },
+            { text: '第1章 计算机网络体系结构', link: '/concise/computer-network/01-overview' },
+            { text: '第2章 物理层与通信基础', link: '/concise/computer-network/02-physical-layer' },
+            { text: '第3章 数据链路层与 MAC', link: '/concise/computer-network/03-data-link-layer' },
+            { text: '第4章 网络层与 IP 协议', link: '/concise/computer-network/04-network-layer' },
+            { text: '第5章 传输层 (TCP / UDP)', link: '/concise/computer-network/05-transport-layer' },
+            { text: '第6章 应用层 (HTTP / DNS / 邮件)', link: '/concise/computer-network/06-application-layer' }
+          ]
+        }
+      ],
+      '/concise/': [
+        {
+          text: '📖 408 简洁速查简纲',
+          items: [
+            { text: '⚡ 简洁模式首页', link: '/concise/' },
+            { text: '📘 数据结构简纲', link: '/concise/data-structure/' },
+            { text: '💻 计组简纲', link: '/concise/computer-organization/' },
+            { text: '⚙️ 操作系统简纲', link: '/concise/operating-system/' },
+            { text: '🌐 计网简纲', link: '/concise/computer-network/' }
           ]
         }
       ]

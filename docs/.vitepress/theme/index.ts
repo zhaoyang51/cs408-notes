@@ -2,6 +2,7 @@ import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import ThemeToggle from './ThemeToggle.vue'
 import UserFilter from './UserFilter.vue'
+import ModeToggle from './ModeToggle.vue'
 import SidebarBorderToggle from './SidebarBorderToggle.vue'
 import AuthorTag from './AuthorTag.vue'
 import KP from './KP.vue'
@@ -30,10 +31,12 @@ export default {
   Layout() {
     return h(DefaultTheme.Layout, null, {
       'nav-bar-content-after': () => h('div', { class: 'nav-controls-wrapper' }, [
+        h(ModeToggle),
         h(UserFilter),
         h(ThemeToggle)
       ]),
       'nav-screen-content-after': () => h('div', { class: 'nav-screen-controls-wrapper' }, [
+        h(ModeToggle),
         h(UserFilter),
         h(ThemeToggle)
       ]),
@@ -41,6 +44,7 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    app.component('ModeToggle', ModeToggle)
     app.component('UserFilter', UserFilter)
     app.component('AuthorTag', AuthorTag)
     app.component('KP', KP)
