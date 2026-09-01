@@ -72,3 +72,16 @@ $$W = \min(cwnd, \; rwnd)$$
 客户端 (等待 2MSL)   ---- ACK=1, seq=u+1, ack=w+1 ----> 服务端 (CLOSED)
 ```
 - **TIME_WAIT 等待 $2\text{MSL}$ 原因**：保证客户端发送的最后一个 ACK 报文能够到达服务端；使本连接内产生的所有报文段均在网络中消逝。
+---
+
+## 6. 408 核心真题精析
+
+### 📝 【2024 年 题 38】TCP 建连、慢开始传输与断开综合时延计算
+- 📺 **精讲视频**：[计算机网络408考研2024年真题解析（第38题）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1VE411A7Ak/?t=3665.3&p=16&vd_source=82d10a6ac42fc540b554068775f4bb8d)
+- **题干**：发送 $3000\text{ B}$ 数据，$\text{RTT}=10\text{ ms}$，$\text{MSL}=30\text{ s}$，$\text{MSS}=1000\text{ B}$，忽略发送时延。从 H 请求建连到进入 CLOSED 为止至少需要多少时间？
+- **分步推导四步法**：
+  1. **建连 + 捎带第 1 段 (1 RTT)**：第 3 次握手捎带 $1\text{ MSS}$ 数据 ($1000\text{ B}$)；
+  2. **慢开始发剩余 2 段 (1 RTT)**：收到确认后 $cwnd$ 翻倍为 $2\text{ MSS}$，一次发完剩余 $2000\text{ B}$；
+  3. **四报文释放 (2 RTT)**：H 发 FIN ➔ S 回 FIN+ACK ➔ H 回 ACK（进入 TIME-WAIT）；
+  4. **TIME-WAIT 等待 (2 MSL)**：$2\text{MSL} = 2 \times 30\text{ s} = 60\text{ s}$；
+  5. **总耗时**：$\text{Total} = 4\text{ RTT} + 2\text{MSL} = 4 \times 10\text{ ms} + 60\text{ s} = \mathbf{60.04\text{ s}}$（**选 D**）。

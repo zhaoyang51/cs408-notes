@@ -269,6 +269,139 @@
       </div>
     </div>
 
+    <!-- 3. 【2024 年 统考题 38】TCP 建连、慢开始传输与断开时延大综合真题精析 -->
+    <div class="collapsible-card">
+      <div class="card-header" @click="toggle('exam38')">
+        <div class="header-title-box">
+          <span class="card-icon">📝</span>
+          <strong>【2024 年 统考题 38】TCP 建立连接、慢开始数据传输与释放连接综合时延计算</strong>
+          <span class="badge-green">2024 真题大题</span>
+        </div>
+        <button class="toggle-btn" type="button">
+          {{ openSections.exam38 ? '收起 ▲' : '展开真题 ▼' }}
+        </button>
+      </div>
+
+      <div v-show="openSections.exam38" class="card-body">
+        <div class="exam-question">
+          <span class="q-badge">【2024 年 题 38】</span>
+          假设主机 H 通过 TCP 向服务器 S 发送长度为 <strong>3000 B</strong> 的报文，往返时间 <strong>RTT = 10 ms</strong>，最长报文段寿命 <strong>MSL = 30 s</strong>，最大报文段长度 <strong>MSS = 1000 B</strong>，忽略 TCP 段的传输时延（发送时延），报文传输结束后 H 首先请求断开连接，则从 <strong>H 请求建立 TCP 连接时刻起，到 H 进入 CLOSED 状态为止</strong>，所需的时间至少是（&nbsp;&nbsp;&nbsp;&nbsp;）。
+        </div>
+
+        <!-- 推荐 Bilibili 视频链接 -->
+        <div class="video-ref-bar">
+          <span class="video-icon">📺</span>
+          <span class="video-label">推荐视频精析：</span>
+          <a 
+            href="https://www.bilibili.com/video/BV1VE411A7Ak/?t=3665.3&p=16&vd_source=82d10a6ac42fc540b554068775f4bb8d" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="video-link"
+          >
+            【2024年 题38】TCP时延综合计算（建连+慢开始+挥手+2MSL）_哔哩哔哩 ↗
+          </a>
+        </div>
+
+        <!-- 交互式作答 -->
+        <div class="quiz-interactive-box">
+          <div class="exam-options">
+            <div 
+              v-for="opt in ['A', 'B', 'C', 'D']" 
+              :key="opt"
+              class="opt-item"
+              :class="{
+                'opt-selected': quizExam38.userAns === opt,
+                'opt-correct': quizExam38.revealed && opt === 'D',
+                'opt-wrong': quizExam38.revealed && quizExam38.userAns === opt && opt !== 'D'
+              }"
+              @click="handleQuizExam38(opt)"
+            >
+              <div class="opt-label">
+                <span class="opt-letter">{{ opt }}.</span>
+                <span v-if="opt === 'A'">30.03 s</span>
+                <span v-else-if="opt === 'B'">30.04 s</span>
+                <span v-else-if="opt === 'C'">60.03 s</span>
+                <span v-else-if="opt === 'D'">60.04 s</span>
+              </div>
+              <span v-if="quizExam38.revealed && opt === 'D'" class="correct-badge">✔ 正确答案</span>
+              <span v-else-if="quizExam38.revealed && quizExam38.userAns === opt && opt !== 'D'" class="wrong-badge">✖ 你的选择</span>
+            </div>
+          </div>
+
+          <div class="quiz-action-bar">
+            <button class="quiz-btn btn-toggle" type="button" @click="quizExam38.revealed = !quizExam38.revealed">
+              {{ quizExam38.revealed ? '🔒 隐藏答案与解析' : '💡 点击查看答案与全景推导' }}
+            </button>
+            <button v-if="quizExam38.userAns || quizExam38.revealed" class="quiz-btn btn-reset" type="button" @click="resetQuizExam38">
+              🔄 重新作答
+            </button>
+          </div>
+        </div>
+
+        <!-- 分步推导解析与时序图解 -->
+        <div v-show="quizExam38.revealed" class="exam-analysis">
+          <div class="analysis-title">🔍 核心推导四步法（分阶段秒杀）：</div>
+          
+          <!-- 时序推导微型卡片 -->
+          <div class="timeline-summary-box">
+            <div class="ts-item">
+              <span class="ts-badge badge-step1">阶段 1: 建连 + 捎带发第 1 段</span>
+              <strong>1 RTT (10 ms)</strong>
+              <p>第 3 次握手捎带 1 MSS 数据，swnd=cwnd=1</p>
+            </div>
+            <div class="ts-item">
+              <span class="ts-badge badge-step2">阶段 2: 慢开始发剩余 2 段</span>
+              <strong>1 RTT (10 ms)</strong>
+              <p>收到确认后 cwnd 翻倍为 2 MSS，一次发完剩余 2000 B</p>
+            </div>
+            <div class="ts-item">
+              <span class="ts-badge badge-step3">阶段 3: 四报文释放</span>
+              <strong>2 RTT (20 ms)</strong>
+              <p>H 发 FIN ➔ S 回 FIN+ACK ➔ H 回 ACK (进入 TIME-WAIT)</p>
+            </div>
+            <div class="ts-item">
+              <span class="ts-badge badge-step4">阶段 4: TIME-WAIT 等待</span>
+              <strong>2 MSL (60 s)</strong>
+              <p>2 × 30 s = 60 s 计时器超时后真正进入 CLOSED</p>
+            </div>
+          </div>
+
+          <ol class="analysis-list">
+            <li>
+              <strong>阶段一：三报文握手建立连接（耗时 1 RTT）</strong>：<br>
+              • 0 ~ 0.5 RTT：H 发送 <code>SYN=1</code> 到达 S；<br>
+              • 0.5 ~ 1 RTT：S 发送 <code>SYN=1, ACK=1</code> 到达 H；<br>
+              • 1 RTT 时：H 发送第 3 次握手 <code>ACK=1</code>。<strong>关键技巧（时间最短）</strong>：第 3 次握手报文段允许携带数据，H 同时将第 1 个 <strong>1 MSS (1000 B)</strong> 数据捎带发出！
+            </li>
+            <li>
+              <strong>阶段二：慢开始拥塞控制数据传输（耗时 1 RTT）</strong>：<br>
+              • 1.5 RTT 时：S 收到第 1 个 1 MSS 并返回确认 <code>ACK</code>；<br>
+              • 2 RTT 时：H 收到对第 1 个段的确认，<strong>慢开始使拥塞窗口翻倍</strong>：<code>cwnd = 1 + 1 = 2 MSS</code>；<br>
+              • 此时剩余数据为 <code>3000 B - 1000 B = 2000 B = 2 MSS</code>，恰好填满当前发送窗口！H 立即将剩余的 2 个 MSS 连续发出；<br>
+              • 3 RTT 时：S 接收完毕并返回确认到达 H。至此 3000 B 数据全部传输完毕并确认！
+            </li>
+            <li>
+              <strong>阶段三：四报文挥手断开连接（耗时 1 RTT 进入 TIME-WAIT）</strong>：<br>
+              • 3 ~ 3.5 RTT：H 发送连接释放 <code>FIN=1, ACK=1</code> 到达 S；<br>
+              • 因 S 无数据要发给 H，为满足“时间最少”，S 收到后立即发送 <code>FIN=1, ACK=1</code>（3.5 ~ 4 RTT 到达 H）；<br>
+              • 4 RTT 时：H 发送最终确认 <code>ACK=1</code>，<strong>并立即进入 TIME-WAIT 状态</strong>！
+            </li>
+            <li>
+              <strong>阶段四：TIME-WAIT 计时器等待（耗时 2 MSL）</strong>：<br>
+              • H 进入 TIME-WAIT 后必须等待 <code>2 MSL = 2 × 30 s = 60 s</code> 才能最终进入 <code>CLOSED</code> 状态。
+            </li>
+            <li>
+              <strong>全过程总时间汇总计算</strong>：<br>
+              <div class="result-formula-box">
+                <b>总时间 = 4 RTT + 2 MSL = (4 × 10 ms) + (2 × 30 s) = 0.04 s + 60 s = 60.04 s</b>
+              </div>
+              <strong>正确答案：D</strong>（60.04 s）。
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
     <!-- 2. 【2011 年 统考题 39】真题精析卡片 (默认展开) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('exam39')">
@@ -341,6 +474,7 @@ import { reactive, onMounted, onUnmounted } from 'vue'
 
 const openSections = reactive({
   fullFlow: true,
+  exam38: true,
   exam39: true
 })
 
@@ -356,6 +490,16 @@ const handleQuizConn = (opt) => {
 const resetQuizConn = () => {
   quizConn.userAns = null
   quizConn.revealed = false
+}
+
+const quizExam38 = reactive({ userAns: null, revealed: false })
+const handleQuizExam38 = (opt) => {
+  quizExam38.userAns = opt
+  quizExam38.revealed = true
+}
+const resetQuizExam38 = () => {
+  quizExam38.userAns = null
+  quizExam38.revealed = false
 }
 
 // 全局一键收起/展开监听
@@ -655,5 +799,99 @@ onUnmounted(() => {
   font-size: 13px;
   line-height: 1.75;
   color: var(--vp-c-text-2);
+}
+.video-ref-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: rgba(251, 114, 153, 0.08);
+  border: 1px solid rgba(251, 114, 153, 0.25);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.video-icon {
+  font-size: 15px;
+}
+
+.video-label {
+  font-weight: 700;
+  color: #fb7299;
+}
+
+.video-link {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.video-link:hover {
+  text-decoration: underline;
+  color: #fb7299;
+}
+
+.q-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+  display: inline-block;
+}
+
+.timeline-summary-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin: 12px 0 16px 0;
+}
+
+.ts-item {
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ts-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.badge-step1 { color: #0284c7; background: rgba(2, 132, 199, 0.1); }
+.badge-step2 { color: #059669; background: rgba(5, 150, 105, 0.1); }
+.badge-step3 { color: #d97706; background: rgba(217, 119, 6, 0.1); }
+.badge-step4 { color: #dc2626; background: rgba(220, 38, 38, 0.1); }
+
+.ts-item strong {
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+}
+
+.ts-item p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--vp-c-text-2);
+}
+.result-formula-box {
+  margin: 6px 0;
+  padding: 8px 12px;
+  background: var(--vp-c-bg-elv);
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-border);
+  color: #0284c7;
+  font-size: 13.5px;
 }
 </style>
