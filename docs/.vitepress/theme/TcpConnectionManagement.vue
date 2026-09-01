@@ -107,10 +107,10 @@
             <text x="870" y="210" font-size="13" font-weight="bold" fill="#7c3aed">发送针对TCP连接请求</text>
             <text x="870" y="230" font-size="13" font-weight="bold" fill="#7c3aed">的确认</text>
 
-            <!-- 4. ESTABLISHED (服务端握手成功后进入) -->
-            <rect x="730" y="280" width="130" height="125" fill="#0d9488"/>
-            <text x="795" y="325" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
-            <text x="795" y="345" font-size="12" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
+            <!-- 4. ESTABLISHED (服务端握手成功后进入，底边精确对齐 FIN 报文箭头到达位置 y=455) -->
+            <rect x="730" y="280" width="130" height="175" fill="#0d9488"/>
+            <text x="795" y="355" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
+            <text x="795" y="377" font-size="12.5" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
 
             <!-- ══ 三报文握手报文段交互 ══ -->
             <!-- 握手 1: 客户 -> 服务器 -->
@@ -190,19 +190,19 @@
 
             <!-- 右侧：服务器挥手状态柱 (x: 730, 宽: 130) -->
             <!-- 被动关闭 与 通知应用进程 -->
-            <text x="868" y="420" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)">被动关闭</text>
-            <path d="M 870,450 C 920,430 920,80 855,42" fill="none" stroke="#475569" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#curve-arrow)"/>
+            <text x="868" y="455" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)">被动关闭</text>
+            <path d="M 865,465 C 925,430 925,80 855,42" fill="none" stroke="#475569" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#curve-arrow)"/>
             <text x="890" y="380" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">通知</text>
             <text x="890" y="398" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">应用</text>
             <text x="890" y="416" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">进程</text>
 
-            <!-- 1. CLOSE-WAIT -->
-            <rect x="730" y="405" width="130" height="190" fill="#7c3aed"/>
-            <text x="795" y="490" font-size="14.5" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSE-WAIT</text>
-            <text x="795" y="512" font-size="13" fill="#ede9fe" text-anchor="middle">关闭等待</text>
+            <!-- 1. CLOSE-WAIT (从收到 FIN 报文的 y=455 开始) -->
+            <rect x="730" y="455" width="130" height="140" fill="#7c3aed"/>
+            <text x="795" y="515" font-size="14.5" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSE-WAIT</text>
+            <text x="795" y="537" font-size="13" fill="#ede9fe" text-anchor="middle">关闭等待</text>
 
-            <text x="870" y="480" font-size="13.5" font-weight="bold" fill="#7c3aed">发送TCP</text>
-            <text x="870" y="500" font-size="13.5" font-weight="bold" fill="#7c3aed">普通确认</text>
+            <text x="870" y="515" font-size="13.5" font-weight="bold" fill="#7c3aed">发送TCP</text>
+            <text x="870" y="535" font-size="13.5" font-weight="bold" fill="#7c3aed">普通确认</text>
 
             <!-- 2. LAST-ACK -->
             <rect x="730" y="595" width="130" height="135" fill="#b91c1c"/>
