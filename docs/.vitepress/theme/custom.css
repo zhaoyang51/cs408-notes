@@ -250,11 +250,10 @@ html.parchment .VPNavBar {
     width: 100% !important;
   }
 
-  /* ════════ 右侧「本页大纲 (TOC)」彻底解除 VitePress scoped position:fixed 冻结 ════════
-     VitePress 内置 scoped 样式对 .aside-container 设置了 position:fixed + [data-v-*]，
-     带属性选择器的优先级高于普通 class 选择器，即使双方都有 !important 也无法覆盖。
-     因此必须使用双重 class 选择器（.aside-container.aside-container）提升特异性来强制覆盖。
-     ════════════════════════════════════════════════════════════════════════════════════ */
+  /* ════════ 右侧「本页大纲 (TOC)」始终悬浮在阅读区右上角 ════════
+     VitePress scoped 样式用 [data-v-*] 设置 position:fixed（脱离文档流、冻结在视口），
+     用双重 class 选择器提升特异性，改为 position:sticky（保留在文档流中、随滚动吸附）。
+     ════════════════════════════════════════════════════════════════ */
   .aside.aside,
   .VPDoc .aside.aside,
   .VPDoc.has-aside .aside.aside {
@@ -264,12 +263,9 @@ html.parchment .VPNavBar {
     width: 220px !important;
     min-width: 220px !important;
     max-width: 220px !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
+    align-self: stretch !important;  /* 关键：拉伸到与正文等高，sticky 才有空间滚动 */
     padding: 0 !important;
     padding-left: 16px !important;
-    margin-left: auto !important;
     flex-shrink: 0 !important;
     flex-grow: 0 !important;
   }
@@ -277,8 +273,8 @@ html.parchment .VPNavBar {
   .aside-container.aside-container,
   .VPDoc .aside-container.aside-container,
   .VPDoc.has-aside .aside-container.aside-container {
-    position: relative !important;
-    top: 0 !important;
+    position: sticky !important;
+    top: calc(var(--vp-nav-height, 64px) + 16px) !important;
     bottom: auto !important;
     left: auto !important;
     right: auto !important;
@@ -286,11 +282,13 @@ html.parchment .VPNavBar {
     max-width: 100% !important;
     height: auto !important;
     min-height: auto !important;
-    max-height: none !important;
+    max-height: calc(100vh - var(--vp-nav-height, 64px) - 32px) !important;
     padding: 0 !important;
-    padding-top: 32px !important;
+    padding-top: 0 !important;
     margin: 0 !important;
-    overflow: visible !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: thin;
   }
 
   .aside-curtain.aside-curtain,
