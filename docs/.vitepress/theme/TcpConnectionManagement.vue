@@ -5,20 +5,20 @@
     <div class="cm-header">
       <div class="header-left">
         <span class="badge-emerald">🤝 TCP 运输连接管理</span>
-        <h4 class="header-title">三次握手建立连接 ➔ 全双工数据传输 ➔ 四次挥手释放连接</h4>
+        <h4 class="header-title">TCP 使用“三报文握手”建立连接 ➔ 全双工数据传输 ➔ “四报文挥手”释放连接</h4>
       </div>
       <div class="rule-tag">
-        SYN / FIN 报文不带数据但必消耗 1 个序号：ack = seq + 1
+        核心规律：SYN / FIN 报文段不带数据但必消耗 1 个序号（ack = seq + 1）
       </div>
     </div>
 
-    <!-- 1. 三次握手建立连接全景图 (默认展开) -->
+    <!-- 1. 三报文握手建立连接全景图 (SVG 矢量高保真重绘) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('handshake')">
         <div class="header-title-box">
           <span class="card-icon">🤝</span>
-          <strong>一、TCP 客户甲 ➔ 服务器乙 三次握手建立连接时空时序与状态变迁图</strong>
-          <span class="badge-blue">三次握手</span>
+          <strong>一、TCP 使用“三报文握手”建立连接（状态变迁与时序全景图）</strong>
+          <span class="badge-blue">三报文握手</span>
         </div>
         <button class="toggle-btn" type="button">
           {{ openSections.handshake ? '收起 ▲' : '展开图解 ▼' }}
@@ -26,84 +26,131 @@
       </div>
 
       <div v-show="openSections.handshake" class="card-body">
-        
-        <div class="handshake-flow-grid">
-          <!-- 左侧：客户端状态柱 -->
-          <div class="state-column">
-            <div class="role-title-box">
-              <span class="role-icon">💻</span>
-              <strong>主机甲 (TCP 客户)</strong>
-            </div>
-            <div class="state-block state-closed">CLOSED<br><span class="st-sub">关闭</span></div>
-            <div class="state-arrow-down">⬇ 主动打开，发连接请求</div>
-            <div class="state-block state-syn-sent">SYN-SENT<br><span class="st-sub">同步已发送</span></div>
-            <div class="state-arrow-down">⬇ 收到针对请求的确认</div>
-            <div class="state-block state-estab">ESTABLISHED<br><span class="st-sub">连接已建立</span></div>
-          </div>
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 960 480" class="tcp-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- 箭头标记 -->
+              <marker id="tcp-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <polygon points="0 1, 8 4, 0 7" fill="#334155" />
+              </marker>
+              <marker id="curve-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <polygon points="0 1, 7 3.5, 0 6" fill="#475569" />
+              </marker>
+            </defs>
 
-          <!-- 中间：三次报文交互 -->
-          <div class="messages-column">
-            
-            <!-- 握手 1 -->
-            <div class="msg-step-box step-1">
-              <div class="msg-meta">
-                <span class="step-badge">第 1 次握手</span>
-                <span class="step-action">发送 TCP 连接请求</span>
-              </div>
-              <div class="packet-pill pill-blue">
-                <strong>SYN = 1</strong>，ACK = 0，<i class="m-var">seq</i> = <i class="m-var">x</i> = 11220
-              </div>
-              <div class="msg-arrow-line to-right"><span>➔</span></div>
-            </div>
+            <!-- 顶部标题 -->
+            <rect x="30" y="16" width="16" height="16" fill="#475569" />
+            <text x="56" y="30" font-size="16" font-weight="bold" fill="var(--vp-c-text-1)">TCP使用 “三报文握手” 建立连接</text>
 
-            <!-- 握手 2 -->
-            <div class="msg-step-box step-2">
-              <div class="msg-meta text-right">
-                <span class="step-badge badge-amber">第 2 次握手</span>
-                <span class="step-action">发送针对 TCP 连接请求的确认 (SYN+ACK)</span>
-              </div>
-              <div class="packet-pill pill-amber">
-                <strong>SYN = 1</strong>，<strong>ACK = 1</strong>，<i class="m-var">seq</i> = <i class="m-var">y</i> (乙随机)，<strong><i class="m-var">ack</i> = <i class="m-var">x</i> + 1 = 11221</strong>
-              </div>
-              <div class="msg-arrow-line to-left"><span>⬅</span></div>
-            </div>
+            <!-- ══ 左侧：TCP 客户主机 ══ -->
+            <g transform="translate(200, 38)">
+              <!-- 电脑外框 -->
+              <rect x="-50" y="0" width="100" height="34" rx="4" fill="#ffffff" stroke="#059669" stroke-width="2.5"/>
+              <text x="0" y="15" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f766e">TCP</text>
+              <text x="0" y="29" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f766e">客户</text>
+              <!-- 屏幕支架与底座 -->
+              <rect x="-8" y="34" width="16" height="6" fill="#059669"/>
+              <rect x="-24" y="40" width="48" height="4" rx="2" fill="#059669"/>
+            </g>
 
-            <!-- 握手 3 -->
-            <div class="msg-step-box step-3">
-              <div class="msg-meta">
-                <span class="step-badge badge-green">第 3 次握手</span>
-                <span class="step-action">发送针对确认的确认 (ACK)</span>
-              </div>
-              <div class="packet-pill pill-green">
-                SYN = 0，<strong>ACK = 1</strong>，<i class="m-var">seq</i> = <i class="m-var">x</i> + 1 = 11221，<strong><i class="m-var">ack</i> = <i class="m-var">y</i> + 1</strong>
-              </div>
-              <div class="msg-arrow-line to-right"><span>➔</span></div>
-            </div>
+            <!-- 客户「主动打开」曲线箭头 -->
+            <path d="M 150,56 L 65,56 L 65,115 L 138,115" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#curve-arrow)"/>
+            <text x="85" y="98" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)">主动打开</text>
+            <text x="5" y="160" font-size="13.5" font-weight="bold" fill="#dc2626">发送TCP连接请求</text>
+            <text x="5" y="380" font-size="13" font-weight="bold" fill="#059669">发送针对TCP连接请</text>
+            <text x="5" y="400" font-size="13" font-weight="bold" fill="#059669">求的确认的确认</text>
 
-            <!-- 数据传输通道 -->
-            <div class="data-transfer-bridge">
-              <span class="dt-icon">🔄</span>
-              <strong>双方进入 ESTABLISHED，开启双向数据传输</strong>
-            </div>
+            <!-- 客户垂直状态柱 (x: 140, 宽: 120) -->
+            <!-- 1. CLOSED -->
+            <rect x="140" y="85" width="120" height="55" fill="#000000"/>
+            <text x="200" y="108" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSED</text>
+            <text x="200" y="127" font-size="12" fill="#e2e8f0" text-anchor="middle">关闭</text>
 
-          </div>
+            <!-- 2. SYN-SENT -->
+            <rect x="140" y="140" width="120" height="150" fill="#b91c1c"/>
+            <text x="200" y="210" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">SYN-SENT</text>
+            <text x="200" y="232" font-size="12.5" fill="#fecaca" text-anchor="middle">同步已发送</text>
 
-          <!-- 右侧：服务端状态柱 -->
-          <div class="state-column">
-            <div class="role-title-box">
-              <span class="role-icon">🖥️</span>
-              <strong>主机乙 (TCP 服务器)</strong>
-            </div>
-            <div class="state-block state-closed">CLOSED<br><span class="st-sub">关闭</span></div>
-            <div class="state-arrow-down">⬇ 被动打开</div>
-            <div class="state-block state-listen">LISTEN<br><span class="st-sub">监听</span></div>
-            <div class="state-arrow-down">⬇ 收到连接请求</div>
-            <div class="state-block state-syn-rcvd">SYN-RCVD<br><span class="st-sub">同步已接收</span></div>
-            <div class="state-arrow-down">⬇ 收到确认</div>
-            <div class="state-block state-estab">ESTABLISHED<br><span class="st-sub">连接已建立</span></div>
-          </div>
+            <!-- 3. ESTABLISHED -->
+            <rect x="140" y="290" width="120" height="150" fill="#0d9488"/>
+            <text x="200" y="360" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
+            <text x="200" y="382" font-size="12.5" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
+
+            <!-- ══ 右侧：TCP 服务器主机 ══ -->
+            <g transform="translate(760, 38)">
+              <!-- 电脑外框 -->
+              <rect x="-50" y="0" width="100" height="34" rx="4" fill="#ffffff" stroke="#059669" stroke-width="2.5"/>
+              <text x="0" y="15" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f766e">TCP</text>
+              <text x="0" y="29" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f766e">服务器</text>
+              <!-- 屏幕支架与底座 -->
+              <rect x="-8" y="34" width="16" height="6" fill="#059669"/>
+              <rect x="-24" y="40" width="48" height="4" rx="2" fill="#059669"/>
+            </g>
+
+            <!-- 服务器「被动打开」曲线箭头 -->
+            <path d="M 810,56 L 895,56 L 895,115 L 822,115" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#curve-arrow)"/>
+            <text x="828" y="98" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)">被动打开</text>
+            <text x="822" y="260" font-size="13" font-weight="bold" fill="#7c3aed">发送针对TCP连接请求</text>
+            <text x="822" y="280" font-size="13" font-weight="bold" fill="#7c3aed">的确认</text>
+
+            <!-- 服务器垂直状态柱 (x: 700, 宽: 120) -->
+            <!-- 1. CLOSED -->
+            <rect x="700" y="85" width="120" height="55" fill="#000000"/>
+            <text x="760" y="108" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSED</text>
+            <text x="760" y="127" font-size="12" fill="#e2e8f0" text-anchor="middle">关闭</text>
+
+            <!-- 2. LISTEN -->
+            <rect x="700" y="140" width="120" height="75" fill="#0284c7"/>
+            <text x="760" y="172" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">LISTEN</text>
+            <text x="760" y="193" font-size="12.5" fill="#e0f2fe" text-anchor="middle">监听</text>
+
+            <!-- 3. SYN-RCVD -->
+            <rect x="700" y="215" width="120" height="135" fill="#7c3aed"/>
+            <text x="760" y="275" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">SYN-RCVD</text>
+            <text x="760" y="297" font-size="12.5" fill="#ede9fe" text-anchor="middle">同步已接收</text>
+
+            <!-- 4. ESTABLISHED -->
+            <rect x="700" y="350" width="120" height="90" fill="#0d9488"/>
+            <text x="760" y="392" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
+            <text x="760" y="414" font-size="12.5" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
+
+            <!-- ══ 报文段交互斜向箭头与参数 ══ -->
+            <!-- 第 1 次握手: 客户 -> 服务器 -->
+            <line x1="260" y1="140" x2="695" y2="215" stroke="#334155" stroke-width="2" marker-end="url(#tcp-arrow)"/>
+            <g transform="translate(480, 160) rotate(10)">
+              <text x="0" y="-8" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                SYN=1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; seq=x
+              </text>
+            </g>
+
+            <!-- 第 2 次握手: 服务器 -> 客户 -->
+            <line x1="700" y1="215" x2="265" y2="290" stroke="#334155" stroke-width="2" marker-end="url(#tcp-arrow)"/>
+            <g transform="translate(480, 240) rotate(-10)">
+              <text x="0" y="-8" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                SYN=1 &nbsp;&nbsp; ACK=1 &nbsp;&nbsp; seq=y &nbsp;&nbsp; ack=x+1
+              </text>
+            </g>
+
+            <!-- 第 3 次握手: 客户 -> 服务器 -->
+            <line x1="260" y1="290" x2="695" y2="350" stroke="#334155" stroke-width="2" marker-end="url(#tcp-arrow)"/>
+            <g transform="translate(480, 310) rotate(8)">
+              <text x="0" y="-8" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                ACK=1 &nbsp;&nbsp;&nbsp;&nbsp; seq=x+1 &nbsp;&nbsp;&nbsp;&nbsp; ack=y+1
+              </text>
+            </g>
+
+            <!-- ══ 底部数据传输通道 ══ -->
+            <g transform="translate(260, 375)">
+              <polygon points="
+                0,22  30,0  30,12  
+                410,12  410,0  440,22  
+                410,44  410,32  30,32  30,44" 
+                fill="#ffffff" stroke="#475569" stroke-width="2"/>
+              <text x="220" y="28" font-size="15" font-weight="bold" fill="#0d9488" text-anchor="middle">数据传输</text>
+            </g>
+
+          </svg>
         </div>
-
       </div>
     </div>
 
@@ -125,7 +172,6 @@
           主机甲与主机乙之间已建立一个 TCP 连接，双方持续有数据传输，且 Host 甲已发送了序号为 <code>seq = 11220</code>、长度为 <code>0</code> 的控制报文段（含 SYN 标志）。若 Host 乙对该报文段进行确认，并在该报文段中携带自己的同步序号 <code>seq = 20000</code>，则 Host 乙发送的确认报文段中，<code>SYN</code>、<code>ACK</code> 标志位和确认号 <code>ack</code> 字段的取值应分别为（&nbsp;&nbsp;&nbsp;&nbsp;）。
         </div>
 
-        <!-- 交互式作答选项 (默认不标答案) -->
         <div class="quiz-interactive-box">
           <div class="exam-options">
             <div 
@@ -172,13 +218,13 @@
       </div>
     </div>
 
-    <!-- 3. 四次挥手释放连接全景图 (默认展开) -->
+    <!-- 3. 四报文挥手释放连接全景图 (SVG 矢量高保真重绘) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('wave')">
         <div class="header-title-box">
           <span class="card-icon">🚪</span>
-          <strong>二、TCP 客户甲 ➔ 服务器乙 四次挥手释放连接与状态变迁图</strong>
-          <span class="badge-red">四次挥手</span>
+          <strong>二、TCP 通过“四报文挥手”来释放连接（状态变迁与时序全景图）</strong>
+          <span class="badge-red">四报文挥手</span>
         </div>
         <button class="toggle-btn" type="button">
           {{ openSections.wave ? '收起 ▲' : '展开图解 ▼' }}
@@ -186,103 +232,178 @@
       </div>
 
       <div v-show="openSections.wave" class="card-body">
-        
-        <div class="handshake-flow-grid">
-          <!-- 左侧：客户端状态柱 -->
-          <div class="state-column">
-            <div class="role-title-box">
-              <span class="role-icon">💻</span>
-              <strong>主机甲 (主动关闭)</strong>
-            </div>
-            <div class="state-block state-estab">ESTABLISHED<br><span class="st-sub">连接已建立</span></div>
-            <div class="state-arrow-down">⬇ 主动关闭，发 FIN</div>
-            <div class="state-block state-fin1">FIN-WAIT-1<br><span class="st-sub">终止等待1</span></div>
-            <div class="state-arrow-down">⬇ 收到普通确认 ACK</div>
-            <div class="state-block state-fin2">FIN-WAIT-2<br><span class="st-sub">终止等待2 (半关闭)</span></div>
-            <div class="state-arrow-down">⬇ 收到释放 FIN</div>
-            <div class="state-block state-timewait">TIME-WAIT<br><span class="st-sub">时间等待 (等待 2MSL)</span></div>
-            <div class="state-arrow-down">⬇ 2MSL 计时器超时</div>
-            <div class="state-block state-closed">CLOSED<br><span class="st-sub">关闭状态</span></div>
-          </div>
+        <div class="diagram-wrapper">
+          <svg viewBox="0 0 960 580" class="tcp-svg" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="wave-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <polygon points="0 1, 8 4, 0 7" fill="#334155" />
+              </marker>
+              <marker id="wave-curve-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                <polygon points="0 1, 7 3.5, 0 6" fill="#475569" />
+              </marker>
+            </defs>
 
-          <!-- 中间：四次报文交互 -->
-          <div class="messages-column">
+            <!-- 顶部标题 -->
+            <rect x="30" y="14" width="16" height="16" fill="#475569" />
+            <text x="56" y="28" font-size="16" font-weight="bold" fill="var(--vp-c-text-1)">TCP通过 “四报文挥手” 来释放连接</text>
+
+            <!-- ══ 顶部全双工数据传输通道 ══ -->
+            <g transform="translate(260, 60)">
+              <polygon points="
+                0,16  24,0  24,9  
+                416,9  416,0  440,16  
+                416,32  416,23  24,23  24,32" 
+                fill="#ffffff" stroke="#475569" stroke-width="1.8"/>
+              <text x="220" y="21" font-size="13" font-weight="bold" fill="#0d9488" text-anchor="middle">数据传输</text>
+            </g>
+
+            <!-- ══ 左侧：TCP 客户主机 ══ -->
+            <g transform="translate(200, 30)">
+              <!-- 电脑外框 -->
+              <rect x="-50" y="0" width="100" height="32" rx="4" fill="#ffffff" stroke="#059669" stroke-width="2.5"/>
+              <text x="0" y="14" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f766e">TCP</text>
+              <text x="0" y="27" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f766e">客户</text>
+              <rect x="-8" y="32" width="16" height="5" fill="#059669"/>
+              <rect x="-24" y="37" width="48" height="4" rx="2" fill="#059669"/>
+            </g>
+
+            <!-- 客户「主动关闭」曲线箭头 -->
+            <path d="M 150,46 L 65,46 L 65,95 L 138,95" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#wave-curve-arrow)"/>
+            <text x="85" y="80" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)">主动关闭</text>
+            <text x="5" y="130" font-size="13.5" font-weight="bold" fill="#0284c7">发送TCP</text>
+            <text x="5" y="150" font-size="13.5" font-weight="bold" fill="#0284c7">连接释放</text>
+
+            <text x="5" y="420" font-size="13.5" font-weight="bold" fill="#db2777">发送TCP</text>
+            <text x="5" y="440" font-size="13.5" font-weight="bold" fill="#db2777">普通确认</text>
             
-            <!-- 挥手 1 -->
-            <div class="msg-step-box step-1">
-              <div class="msg-meta">
-                <span class="step-badge badge-red">第 1 次挥手</span>
-                <span class="step-action">发送 TCP 连接释放报文 (FIN)</span>
-              </div>
-              <div class="packet-pill pill-red">
-                <strong>FIN = 1</strong>，ACK = 1，<i class="m-var">seq</i> = <i class="m-var">u</i>，<i class="m-var">ack</i> = <i class="m-var">v</i>
-              </div>
-              <div class="msg-arrow-line to-right"><span>➔</span></div>
-            </div>
+            <!-- 等待 2MSL 虚线圆标 -->
+            <g transform="translate(105, 428)">
+              <ellipse cx="0" cy="0" rx="28" ry="16" fill="#fdf2f8" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <text x="0" y="-2" font-size="10.5" fill="#e11d48" font-weight="bold" text-anchor="middle">等待</text>
+              <text x="0" y="11" font-size="11" fill="#e11d48" font-weight="bold" text-anchor="middle">2MSL</text>
+            </g>
 
-            <!-- 挥手 2 -->
-            <div class="msg-step-box step-2">
-              <div class="msg-meta text-right">
-                <span class="step-badge badge-amber">第 2 次挥手</span>
-                <span class="step-action">发送针对释放的普通确认 (ACK)</span>
-              </div>
-              <div class="packet-pill pill-amber">
-                ACK = 1，<i class="m-var">seq</i> = <i class="m-var">v</i>，<strong><i class="m-var">ack</i> = <i class="m-var">u</i> + 1</strong>
-              </div>
-              <div class="msg-arrow-line to-left"><span>⬅</span></div>
-            </div>
+            <!-- 客户垂直状态柱 (x: 140, 宽: 120) -->
+            <!-- 1. ESTABLISHED -->
+            <rect x="140" y="65" width="120" height="45" fill="#0d9488"/>
+            <text x="200" y="84" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
+            <text x="200" y="99" font-size="11" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
 
-            <!-- 半关闭单向传输 -->
-            <div class="half-close-bridge">
-              <span>⬅ <strong>乙向甲单向数据传输（甲到乙已关闭）</strong></span>
-            </div>
+            <!-- 2. FIN-WAIT-1 -->
+            <rect x="140" y="110" width="120" height="85" fill="#0284c7"/>
+            <text x="200" y="148" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">FIN-WAIT-1</text>
+            <text x="200" y="168" font-size="12" fill="#e0f2fe" text-anchor="middle">终止等待1</text>
 
-            <!-- 挥手 3 -->
-            <div class="msg-step-box step-3">
-              <div class="msg-meta text-right">
-                <span class="step-badge badge-red">第 3 次挥手</span>
-                <span class="step-action">乙数据发完，发送连接释放 (FIN)</span>
-              </div>
-              <div class="packet-pill pill-red">
-                <strong>FIN = 1</strong>，ACK = 1，<i class="m-var">seq</i> = <i class="m-var">w</i>，<strong><i class="m-var">ack</i> = <i class="m-var">u</i> + 1</strong>
-              </div>
-              <div class="msg-arrow-line to-left"><span>⬅</span></div>
-            </div>
+            <!-- 3. FIN-WAIT-2 -->
+            <rect x="140" y="195" width="120" height="100" fill="#1d4ed8"/>
+            <text x="200" y="240" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">FIN-WAIT-2</text>
+            <text x="200" y="260" font-size="12" fill="#dbeafe" text-anchor="middle">终止等待2</text>
 
-            <!-- 挥手 4 -->
-            <div class="msg-step-box step-4">
-              <div class="msg-meta">
-                <span class="step-badge badge-green">第 4 次挥手</span>
-                <span class="step-action">甲发送最终确认 (ACK)</span>
-              </div>
-              <div class="packet-pill pill-green">
-                ACK = 1，<i class="m-var">seq</i> = <i class="m-var">u</i> + 1，<strong><i class="m-var">ack</i> = <i class="m-var">w</i> + 1</strong>
-              </div>
-              <div class="msg-arrow-line to-right"><span>➔</span></div>
-            </div>
+            <!-- 4. TIME-WAIT -->
+            <rect x="140" y="295" width="120" height="110" fill="#db2777"/>
+            <text x="200" y="345" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">TIME-WAIT</text>
+            <text x="200" y="367" font-size="12.5" fill="#fce7f3" text-anchor="middle">时间等待</text>
 
-            <div class="msl-tip-box">
-              <span>⏳ <strong>甲进入 TIME-WAIT 状态，必须等待 2MSL 才能彻底 CLOSED</strong></span>
-            </div>
+            <!-- 5. CLOSED -->
+            <rect x="140" y="405" width="120" height="50" fill="#000000"/>
+            <text x="200" y="428" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSED</text>
+            <text x="200" y="445" font-size="11.5" fill="#e2e8f0" text-anchor="middle">关闭</text>
 
-          </div>
+            <!-- ══ 右侧：TCP 服务器主机 ══ -->
+            <g transform="translate(760, 30)">
+              <rect x="-50" y="0" width="100" height="32" rx="4" fill="#ffffff" stroke="#059669" stroke-width="2.5"/>
+              <text x="0" y="14" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f766e">TCP</text>
+              <text x="0" y="27" font-size="13" font-weight="bold" text-anchor="middle" fill="#0f766e">服务器</text>
+              <rect x="-8" y="32" width="16" height="5" fill="#059669"/>
+              <rect x="-24" y="37" width="48" height="4" rx="2" fill="#059669"/>
+            </g>
 
-          <!-- 右侧：服务端状态柱 -->
-          <div class="state-column">
-            <div class="role-title-box">
-              <span class="role-icon">🖥️</span>
-              <strong>主机乙 (被动关闭)</strong>
-            </div>
-            <div class="state-block state-estab">ESTABLISHED<br><span class="st-sub">连接已建立</span></div>
-            <div class="state-arrow-down">⬇ 收到释放 FIN，通知应用</div>
-            <div class="state-block state-closewait">CLOSE-WAIT<br><span class="st-sub">关闭等待 (半关闭)</span></div>
-            <div class="state-arrow-down">⬇ 数据发完，发 FIN</div>
-            <div class="state-block state-lastack">LAST-ACK<br><span class="st-sub">最后确认</span></div>
-            <div class="state-arrow-down">⬇ 收到最终确认 ACK</div>
-            <div class="state-block state-closed">CLOSED<br><span class="st-sub">关闭状态</span></div>
-          </div>
+            <!-- 服务器「被动关闭」与「通知应用进程」 -->
+            <path d="M 810,46 L 895,46 L 895,95 L 822,95" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#wave-curve-arrow)"/>
+            <text x="835" y="80" font-size="14" font-weight="bold" fill="var(--vp-c-text-1)">被动关闭</text>
+            
+            <!-- 虚线向上箭头通知应用进程 -->
+            <path d="M 830,130 C 850,110 850,75 805,52" fill="none" stroke="#475569" stroke-width="1.8" stroke-dasharray="4,4" marker-end="url(#wave-curve-arrow)"/>
+            <text x="850" y="95" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">通知</text>
+            <text x="850" y="112" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">应用</text>
+            <text x="850" y="130" font-size="12.5" font-weight="bold" fill="var(--vp-c-text-1)">进程</text>
+
+            <text x="825" y="195" font-size="13.5" font-weight="bold" fill="#7c3aed">发送TCP</text>
+            <text x="825" y="215" font-size="13.5" font-weight="bold" fill="#7c3aed">普通确认</text>
+
+            <text x="825" y="335" font-size="13.5" font-weight="bold" fill="#dc2626">发送TCP</text>
+            <text x="825" y="355" font-size="13.5" font-weight="bold" fill="#dc2626">连接释放</text>
+
+            <!-- 服务器垂直状态柱 (x: 700, 宽: 120) -->
+            <!-- 1. ESTABLISHED -->
+            <rect x="700" y="65" width="120" height="45" fill="#0d9488"/>
+            <text x="760" y="84" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">ESTABLISHED</text>
+            <text x="760" y="99" font-size="11" fill="#ccfbf1" text-anchor="middle">连接已建立</text>
+
+            <!-- 2. CLOSE-WAIT -->
+            <rect x="700" y="110" width="120" height="150" fill="#7c3aed"/>
+            <text x="760" y="180" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSE-WAIT</text>
+            <text x="760" y="202" font-size="12.5" fill="#ede9fe" text-anchor="middle">关闭等待</text>
+
+            <!-- 3. LAST-ACK -->
+            <rect x="700" y="260" width="120" height="105" fill="#b91c1c"/>
+            <text x="760" y="308" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">LAST-ACK</text>
+            <text x="760" y="328" font-size="12.5" fill="#fecaca" text-anchor="middle">最后确认</text>
+
+            <!-- 4. CLOSED -->
+            <rect x="700" y="365" width="120" height="90" fill="#000000"/>
+            <text x="760" y="405" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">CLOSED</text>
+            <text x="760" y="425" font-size="12" fill="#e2e8f0" text-anchor="middle">关闭</text>
+
+            <!-- ══ 报文段交互斜向箭头与参数 ══ -->
+            <!-- 挥手 1: 客户 -> 服务器 -->
+            <line x1="260" y1="110" x2="695" y2="155" stroke="#334155" stroke-width="2" marker-end="url(#wave-arrow)"/>
+            <g transform="translate(480, 125) rotate(6)">
+              <text x="0" y="-8" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                FIN=1 &nbsp;&nbsp; ACK=1 &nbsp;&nbsp; seq=u &nbsp;&nbsp; ack=v
+              </text>
+            </g>
+
+            <!-- 挥手 2: 服务器 -> 客户 -->
+            <line x1="700" y1="155" x2="265" y2="200" stroke="#334155" stroke-width="2" marker-end="url(#wave-arrow)"/>
+            <g transform="translate(480, 170) rotate(-6)">
+              <text x="0" y="-8" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                ACK=1 &nbsp;&nbsp;&nbsp;&nbsp; seq=v &nbsp;&nbsp;&nbsp;&nbsp; ack=u+1
+              </text>
+            </g>
+
+            <!-- 中间单向数据传输通道 (服务器 -> 客户) -->
+            <g transform="translate(520, 218)">
+              <polygon points="
+                0,16  20,0  20,8  
+                140,8  140,24  20,24  20,32" 
+                fill="#ffffff" stroke="#7c3aed" stroke-width="2"/>
+              <text x="80" y="21" font-size="13" font-weight="bold" fill="#7c3aed" text-anchor="middle">数据传输</text>
+            </g>
+
+            <!-- 挥手 3: 服务器 -> 客户 -->
+            <line x1="700" y1="260" x2="265" y2="305" stroke="#334155" stroke-width="2" marker-end="url(#wave-arrow)"/>
+            <g transform="translate(480, 275) rotate(-6)">
+              <text x="0" y="-8" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                FIN=1 &nbsp;&nbsp; ACK=1 &nbsp;&nbsp; seq=w &nbsp;&nbsp; ack=u+1
+              </text>
+            </g>
+
+            <!-- 挥手 4: 客户 -> 服务器 -->
+            <line x1="260" y1="305" x2="695" y2="365" stroke="#334155" stroke-width="2" marker-end="url(#wave-arrow)"/>
+            <g transform="translate(480, 328) rotate(8)">
+              <text x="0" y="-8" font-size="13.5" font-weight="bold" fill="var(--vp-c-text-1)" text-anchor="middle">
+                ACK=1 &nbsp;&nbsp;&nbsp;&nbsp; seq=u+1 &nbsp;&nbsp;&nbsp;&nbsp; ack=w+1
+              </text>
+            </g>
+
+            <!-- ══ 底部 MSL 说明注脚 ══ -->
+            <text x="480" y="535" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">
+              MSL(Maximum Segment Lifetime)意思是最长报文段寿命，RFC793建议为2分钟。
+            </text>
+
+          </svg>
         </div>
-
       </div>
     </div>
 
@@ -290,7 +411,17 @@
 </template>
 
 <script setup>
-import { reactive , onMounted, onUnmounted} from 'vue'
+import { reactive, onMounted, onUnmounted } from 'vue'
+
+const openSections = reactive({
+  handshake: true,
+  exam39: true,
+  wave: true
+})
+
+const toggle = (sec) => {
+  openSections[sec] = !openSections[sec]
+}
 
 const quizConn = reactive({ userAns: null, revealed: false })
 const handleQuizConn = (opt) => {
@@ -302,16 +433,6 @@ const resetQuizConn = () => {
   quizConn.revealed = false
 }
 
-const openSections = reactive({
-  handshake: false, // 默认展开三次握手
-  exam39: false,    // 默认展开 2011 题 39
-  wave: false,      // 默认展开四次挥手
-  msl: false       // 默认收起 2MSL 简答
-})
-
-const toggle = (key) => {
-  openSections[key] = !openSections[key]
-}
 // 全局一键收起/展开监听
 const onGlobalCollapse = (e) => {
   const expand = e.detail?.expand ?? false
@@ -343,384 +464,280 @@ onUnmounted(() => {
 
 <style scoped>
 .tcp-cm-container {
-  margin: 16px 0;
+  margin: 20px 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-/* 顶部栏 */
 .cm-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 18px;
   background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-border);
   border-radius: 10px;
-  padding: 10px 14px;
-  flex-wrap: wrap;
-  gap: 8px;
   box-shadow: var(--card-shadow);
 }
 
 .header-left {
   display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.badge-emerald {
-  background: rgba(16, 185, 129, 0.12);
-  color: #059669;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .header-title {
-  font-size: 13.5px;
-  font-weight: 800;
   margin: 0;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--vp-c-text-1);
 }
 
-.rule-tag {
-  background: var(--vp-c-bg);
-  border: 1px dashed var(--vp-c-border);
-  padding: 3px 10px;
-  border-radius: 6px;
-  font-size: 11.5px;
+.badge-emerald {
+  font-size: 11px;
+  font-weight: 800;
   color: #059669;
-  font-weight: 700;
+  background: rgba(5, 150, 105, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
 }
 
-/* 可折叠卡片 */
+.rule-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
 .collapsible-card {
-  background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-elv);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
+  transition: border-color 0.2s ease;
+}
+
+.collapsible-card:hover {
+  border-color: var(--vp-c-brand-1);
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  background: var(--vp-c-bg-elv);
+  padding: 12px 18px;
+  background: var(--vp-c-bg-soft);
   cursor: pointer;
   user-select: none;
-  transition: background 0.15s;
-}
-
-.card-header:hover {
-  background: var(--vp-c-bg);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .header-title-box {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 14px;
   color: var(--vp-c-text-1);
 }
 
-.badge-blue, .badge-green, .badge-red, .badge-amber {
-  font-size: 10px;
-  padding: 1px 6px;
-  border-radius: 4px;
-  font-weight: 700;
-}
-
-.badge-blue { background: rgba(37, 99, 235, 0.12); color: #2563eb; }
-.badge-green { background: rgba(16, 185, 129, 0.12); color: #059669; }
-.badge-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
-.badge-amber { background: rgba(245, 158, 11, 0.15); color: #d97706; }
-
-.toggle-btn {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  color: var(--vp-c-text-2);
+.badge-blue {
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-red {
+  font-size: 11px;
+  font-weight: 700;
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-green {
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+  background: rgba(5, 150, 105, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.toggle-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  background: transparent;
+  border: none;
   cursor: pointer;
 }
 
 .card-body {
-  padding: 12px 14px;
-  border-top: 1px solid var(--vp-c-border);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  padding: 18px;
 }
 
-/* 握手/挥手布局网格 */
-.handshake-flow-grid {
-  display: grid;
-  grid-template-columns: 140px 1fr 140px;
-  gap: 12px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  padding: 14px 10px;
-}
-
-@media (max-width: 768px) {
-  .handshake-flow-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.state-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.role-title-box {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11.5px;
-  color: var(--vp-c-text-1);
-  margin-bottom: 4px;
-}
-
-.state-block {
+.diagram-wrapper {
   width: 100%;
-  border-radius: 6px;
-  padding: 6px 4px;
-  font-size: 10.5px;
-  font-weight: 800;
-  text-align: center;
-  border: 1px solid transparent;
+  overflow-x: auto;
 }
 
-.st-sub {
-  font-size: 9px;
-  font-weight: normal;
-  opacity: 0.85;
+.tcp-svg {
+  width: 100%;
+  min-width: 860px;
+  height: auto;
+  display: block;
 }
 
-.state-closed { background: #1e293b; color: #fff; }
-.state-syn-sent { background: #dc2626; color: #fff; }
-.state-listen { background: #0284c7; color: #fff; }
-.state-syn-rcvd { background: #7c3aed; color: #fff; }
-.state-estab { background: #059669; color: #fff; }
-.state-fin1 { background: #0284c7; color: #fff; }
-.state-fin2 { background: #2563eb; color: #fff; }
-.state-closewait { background: #7c3aed; color: #fff; }
-.state-lastack { background: #dc2626; color: #fff; }
-.state-timewait { background: #db2777; color: #fff; }
-
-.state-arrow-down {
-  font-size: 9.5px;
-  color: var(--vp-c-text-3);
-  text-align: center;
-}
-
-/* 中间报文流 */
-.messages-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: space-around;
-}
-
-.msg-step-box {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.msg-meta {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 10px;
-}
-
-.text-right {
-  justify-content: flex-end;
-}
-
-.step-badge {
-  background: #2563eb;
-  color: #fff;
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 9.5px;
-  font-weight: 800;
-}
-
-.step-action {
-  color: var(--vp-c-text-2);
-  font-weight: 700;
-}
-
-.packet-pill {
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  border: 1px solid transparent;
-}
-
-.pill-blue { background: rgba(37, 99, 235, 0.1); border-color: rgba(37, 99, 235, 0.3); color: #2563eb; }
-.pill-amber { background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.35); color: #d97706; text-align: right; }
-.pill-green { background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.3); color: #059669; }
-.pill-red { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #ef4444; }
-
-.msg-arrow-line {
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.msg-arrow-line.to-right { color: #2563eb; }
-.msg-arrow-line.to-left { color: #d97706; text-align: right; }
-
-.data-transfer-bridge, .half-close-bridge, .msl-tip-box {
-  background: var(--vp-c-bg-elv);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 11px;
-  color: var(--vp-c-text-1);
-  text-align: center;
-}
-
-.data-transfer-bridge { border-color: rgba(16, 185, 129, 0.4); color: #059669; }
-.half-close-bridge { border-color: rgba(139, 92, 246, 0.4); color: #8b5cf6; }
-.msl-tip-box { border-color: rgba(219, 39, 119, 0.4); color: #db2777; }
-
-/* 数学变量 */
-.m-var {
-  font-family: 'Times New Roman', 'Cambria Math', 'KaTeX_Math', serif;
-  font-style: italic;
-  font-weight: 700;
-  padding: 0 1px;
-}
-
-.m-formula {
-  font-family: 'Times New Roman', 'Cambria Math', 'KaTeX_Math', serif;
-  font-weight: 700;
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.08);
-  padding: 1px 6px;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-/* 真题 */
+/* 考试刷题框样式 */
 .exam-question {
-  font-size: 12.5px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--vp-c-text-1);
-  background: var(--vp-c-bg);
-  padding: 10px 12px;
-  border-radius: 6px;
-  border-left: 3px solid #2563eb;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  border-left: 3px solid #059669;
+}
+
+.quiz-interactive-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .exam-options {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-}
-
-@media (max-width: 640px) {
-  .exam-options {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
 }
 
 .opt-item {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--vp-c-text-2);
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13.5px;
+}
+
+.opt-item:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-elv);
+}
+
+.opt-selected {
+  border-color: var(--vp-c-brand-1);
+  background: rgba(37, 99, 235, 0.08);
 }
 
 .opt-correct {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  color: #059669;
+  border-color: #059669 !important;
+  background: rgba(5, 150, 105, 0.12) !important;
+}
+
+.opt-wrong {
+  border-color: #dc2626 !important;
+  background: rgba(220, 38, 38, 0.12) !important;
+}
+
+.opt-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.opt-letter {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
 }
 
 .correct-badge {
-  font-size: 10px;
-  background: #10b981;
+  font-size: 11px;
+  font-weight: 700;
+  color: #059669;
+}
+
+.wrong-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.quiz-action-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.quiz-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-toggle {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--vp-c-brand-1);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.btn-toggle:hover {
+  background: var(--vp-c-brand-1);
   color: #ffffff;
-  padding: 1px 4px;
-  border-radius: 3px;
+}
+
+.btn-reset {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-border);
+}
+
+.btn-reset:hover {
+  color: var(--vp-c-text-1);
+  border-color: var(--vp-c-text-2);
 }
 
 .exam-analysis {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
+  margin-top: 14px;
+  padding: 14px 16px;
+  background: var(--vp-c-bg-soft);
+  border: 1px dashed var(--vp-c-border);
   border-radius: 8px;
-  padding: 10px 12px;
 }
 
 .analysis-title {
-  font-size: 12px;
-  font-weight: 800;
-  color: #2563eb;
-  margin-bottom: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 8px;
 }
 
 .analysis-list {
-  font-size: 11.5px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-  padding-left: 18px;
   margin: 0;
-}
-
-.analysis-list li { margin-bottom: 4px; }
-.analysis-list strong { color: var(--vp-c-text-1); }
-
-/* MSL 详情 */
-.msl-detail-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.msl-item {
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 6px;
-  padding: 8px 12px;
-}
-
-.m-head {
-  font-size: 12px;
-  font-weight: 800;
-  color: #d97706;
-  margin-bottom: 3px;
-}
-
-.m-text {
-  font-size: 11.5px;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.75;
   color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-.m-text strong {
-  color: var(--vp-c-text-1);
 }
 </style>
