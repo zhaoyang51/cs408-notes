@@ -207,24 +207,24 @@ html.parchment .VPNavBar {
   .VPDoc.has-sidebar .container,
   .VPDoc.has-aside .container,
   .VPDoc:not(.has-sidebar) .container {
-    max-width: 1560px !important;
+    max-width: 100% !important;
     width: 100% !important;
     padding-left: 28px !important;
-    padding-right: 28px !important;
+    padding-right: 24px !important;
     display: flex !important;
-    justify-content: flex-start !important;
+    justify-content: space-between !important;
     align-items: flex-start !important;
     margin: 0 !important;
   }
 
-  /* 主体内容列紧凑贴合，与右侧大纲形成自然联动 */
+  /* 主体内容列向两侧自适应扩宽 */
   .VPDoc > .container > .content,
   .VPDoc.has-sidebar > .container > .content,
   .VPDoc.has-aside > .container > .content {
     flex: 1 1 0% !important;
     width: 100% !important;
-    max-width: calc(100% - 260px) !important;
-    padding-right: 24px !important;
+    max-width: calc(100% - 240px) !important;
+    padding-right: 28px !important;
     padding-left: 0 !important;
     margin: 0 !important;
   }
@@ -250,44 +250,26 @@ html.parchment .VPNavBar {
     width: 100% !important;
   }
 
-  /* ════════ 右侧「本页大纲 (TOC)」所处界面右上角悬浮卡片 ════════ */
+  /* ════════ 右侧「本页大纲 (TOC)」原生极简样式（随内容自然流动） ════════ */
   .VPDoc.has-aside .aside {
     display: block !important;
     position: relative !important;
-    width: 240px !important;
+    width: 220px !important;
     flex-shrink: 0 !important;
-    margin-left: 16px !important; /* 紧随正文右侧，不再强制弹至屏幕最右边缘 */
+    margin-left: auto !important;
     padding: 0 !important;
   }
 
   .VPDoc.has-aside .aside-container {
-    position: sticky !important;
-    top: calc(var(--vp-nav-height) + 16px) !important;
-    width: 240px !important;
-    max-height: calc(100vh - var(--vp-nav-height) - 36px) !important;
-    overflow-y: auto !important;
-    padding: 12px 14px !important;
-    border-radius: 12px !important;
-    background: var(--vp-c-bg-elv) !important;
-    border: 1px solid var(--vp-c-border) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
-    backdrop-filter: blur(12px) !important;
-    scrollbar-width: thin;
-    transition: all 0.2s ease !important;
-  }
-
-  .dark .VPDoc.has-aside .aside-container {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
-  }
-
-  .VPDoc.has-aside .aside-container:hover {
-    border-color: var(--vp-c-brand-1) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12) !important;
+    position: relative !important;
+    top: 0 !important;
+    width: 220px !important;
+    padding: 0 !important;
   }
 
   .VPDoc.has-aside .aside-content {
     min-height: auto !important;
-    padding-bottom: 8px !important;
+    padding-bottom: 24px !important;
   }
 
   .VPDocAsideOutline {
@@ -298,67 +280,53 @@ html.parchment .VPNavBar {
     position: relative !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding: 0 !important;
+    padding: 0 0 0 14px !important;
     margin: 0 !important;
-    border-left: none !important;
+    border-left: 1.5px solid var(--vp-c-divider) !important;
   }
 
   .VPDocAsideOutline .outline-title {
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
     font-size: 13px !important;
-    font-weight: 800 !important;
-    letter-spacing: 0.02em !important;
-    color: var(--vp-c-brand-1) !important;
-    margin-bottom: 10px !important;
-    padding-bottom: 6px !important;
-    border-bottom: 1px dashed var(--vp-c-divider) !important;
-  }
-
-  .VPDocAsideOutline .outline-title::before {
-    content: "📑" !important;
-    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    color: var(--vp-c-text-1) !important;
+    text-transform: uppercase !important;
+    line-height: 28px !important;
+    margin-bottom: 8px !important;
   }
 
   .VPDocAsideOutline .outline-link {
-    font-size: 12.5px !important;
-    line-height: 22px !important;
-    padding: 3px 8px !important;
-    border-radius: 6px !important;
+    font-size: 13px !important;
+    line-height: 24px !important;
+    padding: 2px 0 !important;
     display: block !important;
     color: var(--vp-c-text-2) !important;
     text-decoration: none !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    transition: all 0.15s ease !important;
+    transition: color 0.15s ease, transform 0.15s ease !important;
   }
 
   .VPDocAsideOutline .outline-link:hover {
     color: var(--vp-c-brand-1) !important;
-    background: var(--vp-c-bg-soft) !important;
     transform: translateX(2px) !important;
   }
 
   .VPDocAsideOutline .outline-link.active {
     color: var(--vp-c-brand-1) !important;
-    background: rgba(37, 99, 235, 0.08) !important;
     font-weight: 700 !important;
-    border-left: 2.5px solid var(--vp-c-brand-1) !important;
   }
 
   .VPDocAsideOutline .nested {
-    padding-left: 10px !important;
+    padding-left: 12px !important;
     margin-top: 2px !important;
-    border-left: 1px solid var(--vp-c-divider) !important;
-    margin-left: 6px !important;
   }
 
   .VPDocAsideOutline .nested .outline-link {
-    font-size: 12px !important;
-    line-height: 20px !important;
-    padding: 2px 6px !important;
+    font-size: 12.5px !important;
+    line-height: 22px !important;
+    padding: 1px 0 !important;
   }
 }
 
