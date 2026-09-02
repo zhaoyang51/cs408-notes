@@ -275,10 +275,23 @@ html.parchment .VPNavBar {
     display: none !important;
   }
 
-  /* ── 大纲收起/展开动画 ── */
-  .aside.aside {
-    transition: width 0.25s ease, min-width 0.25s ease, max-width 0.25s ease,
-                padding 0.25s ease, opacity 0.2s ease;
+  /* ── 大纲收起/展开平滑抽屉式动画 ── */
+  .aside.aside,
+  .VPDoc .aside.aside,
+  .VPDoc.has-aside .aside.aside {
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                min-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .aside-container,
+  .VPDoc .aside-container,
+  .VPDoc.has-aside .aside-container {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease !important;
+    transform: translateX(0) !important;
+    opacity: 1 !important;
   }
 
   html.aside-collapsed .aside.aside,
@@ -289,7 +302,21 @@ html.parchment .VPNavBar {
     max-width: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
+  }
+
+  html.aside-collapsed .aside-container,
+  html.aside-collapsed .VPDoc .aside-container,
+  html.aside-collapsed .VPDoc.has-aside .aside-container {
+    transform: translateX(100%) !important;
     opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .VPDoc .content,
+  .VPDoc > .container > .content,
+  .VPDoc.has-aside > .container > .content {
+    transition: max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
   html.aside-collapsed .VPDoc .content,

@@ -24,23 +24,19 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 
 const STORAGE_KEY = 'cs408-aside-collapsed'
 const isCollapsed = ref(false)
-const pos = ref<{ left: number | null; top: number }>({ left: null, top: 96 })
+const rightPos = ref(228)
+const topPos = ref(128)
 
 const wrapStyle = computed(() => {
-  if (isCollapsed.value || pos.value.left === null) {
-    return {}
-  }
   return {
-    left: `${pos.value.left}px`,
-    top: `${pos.value.top}px`,
-    right: 'auto',
-    transform: 'translate(-50%, -50%)'
+    top: `${topPos.value}px`,
+    right: isCollapsed.value ? '0px' : `${rightPos.value}px`,
+    transform: isCollapsed.value ? 'translate(0, -50%)' : 'translate(50%, -50%)'
   }
 })
 
 function updatePosition() {
   if (typeof window === 'undefined') return
-  if (isCollapsed.value) return
 
   const outlineContent = document.querySelector('.VPDocAsideOutline .content') as HTMLElement | null
   const outlineTitle = document.querySelector('.VPDocAsideOutline .outline-title') as HTMLElement | null
@@ -49,11 +45,10 @@ function updatePosition() {
     const contentRect = outlineContent.getBoundingClientRect()
     const titleRect = outlineTitle ? outlineTitle.getBoundingClientRect() : contentRect
     
-    // contentRect.left 为大纲左侧 border-left 分割线的精确 X 坐标
-    // titleRect.top + titleRect.height / 2 为“本页大纲”标题垂直中心位置
-    pos.value = {
-      left: Math.round(contentRect.left),
-      top: Math.round(titleRect.top + titleRect.height / 2)
+    // 当且仅当大纲处于展开且有实际宽度时记录坐标
+    if (contentRect.width > 0 && contentRect.left > 0) {
+      rightPos.value = Math.round(window.innerWidth - contentRect.left)
+      topPos.value = Math.round(titleRect.top + titleRect.height / 2)
     }
   }
 }
@@ -65,14 +60,22 @@ function applyState(collapsed: boolean) {
 }
 
 function toggle() {
+  // 如果当前是展开状态，在收起前确保记录最新的精确位置
+  if (!isCollapsed.value) {
+    updatePosition()
+  }
+  
   isCollapsed.value = !isCollapsed.value
   applyState(isCollapsed.value)
+  
   try {
     localStorage.setItem(STORAGE_KEY, String(isCollapsed.value))
   } catch {}
+
+  // 展开后平滑动画结束时再次校验位置
   if (!isCollapsed.value) {
     nextTick(() => {
-      setTimeout(updatePosition, 300)
+      setTimeout(updatePosition, 320)
     })
   }
 }
@@ -96,10 +99,11 @@ onMounted(() => {
 
   window.addEventListener('resize', updatePosition, { passive: true })
 
-  // 监听 DOM 树变化（例如路由切换或大纲异步加载）
   if (typeof MutationObserver !== 'undefined') {
     observer = new MutationObserver(() => {
-      updatePosition()
+      if (!isCollapsed.value) {
+        updatePosition()
+      }
     })
     const aside = document.querySelector('.VPDoc .aside') || document.body
     if (aside) {
@@ -123,19 +127,10 @@ watch(isCollapsed, (v) => applyState(v))
 <style scoped>
 .aside-border-toggle-wrap {
   position: fixed;
-  top: 96px;
-  right: 236px;
-  transform: translate(50%, -50%);
   z-index: 99;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: auto;
-}
-
-.aside-border-toggle-wrap.is-collapsed {
-  left: auto !important;
-  right: 0px !important;
-  top: 96px !important;
-  transform: translateY(-50%) !important;
 }
 
 .aside-border-toggle-btn {
@@ -150,7 +145,12 @@ watch(isCollapsed, (v) => applyState(v))
   color: var(--vp-c-text-2);
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.2s ease;
   padding: 0;
 }
 
@@ -158,7 +158,6 @@ watch(isCollapsed, (v) => applyState(v))
   background: var(--vp-c-brand-1);
   color: #ffffff;
   border-color: var(--vp-c-brand-1);
-  transform: scale(1.15);
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
