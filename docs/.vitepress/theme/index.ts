@@ -27,6 +27,7 @@ import HttpProtocolSimulator from './HttpProtocolSimulator.vue'
 import GbnUtilizationSimulator from './GbnUtilizationSimulator.vue'
 import CsmaCaSimulator from './CsmaCaSimulator.vue'
 import UdpChecksumCalculator from './UdpChecksumCalculator.vue'
+import AsideToggle from './AsideToggle.vue'
 import { h } from 'vue'
 
 export default {
@@ -45,7 +46,10 @@ export default {
         h(UserFilter),
         h(ThemeToggle)
       ]),
-      'layout-top': () => h(SidebarBorderToggle)
+      'layout-top': () => h('div', null, [
+        h(SidebarBorderToggle),
+        h(AsideToggle)
+      ])
     })
   },
   enhanceApp({ app }) {

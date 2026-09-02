@@ -275,6 +275,30 @@ html.parchment .VPNavBar {
     display: none !important;
   }
 
+  /* ── 大纲收起/展开动画 ── */
+  .aside.aside {
+    transition: width 0.25s ease, min-width 0.25s ease, max-width 0.25s ease,
+                padding 0.25s ease, opacity 0.2s ease;
+  }
+
+  html.aside-collapsed .aside.aside,
+  html.aside-collapsed .VPDoc .aside.aside,
+  html.aside-collapsed .VPDoc.has-aside .aside.aside {
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+  }
+
+  html.aside-collapsed .VPDoc .content,
+  html.aside-collapsed .VPDoc > .container > .content,
+  html.aside-collapsed .VPDoc.has-aside > .container > .content {
+    max-width: 100% !important;
+    padding-right: 24px !important;
+  }
+
   .VPDocAsideOutline {
     display: block !important;
     position: static !important;
