@@ -1,20 +1,24 @@
 <template>
-  <button
-    class="aside-toggle-btn"
-    :class="{ collapsed: isCollapsed }"
-    :title="isCollapsed ? '展开本页大纲' : '收起本页大纲'"
-    @click="toggle"
-  >
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline :points="isCollapsed ? '15 18 9 12 15 6' : '9 18 15 12 9 6'" />
-    </svg>
-  </button>
+  <div class="aside-border-toggle-wrap">
+    <button
+      class="aside-border-toggle-btn"
+      :class="{ 'is-collapsed': isCollapsed }"
+      :title="isCollapsed ? '展开本页大纲' : '收起本页大纲'"
+      :aria-label="isCollapsed ? '展开本页大纲' : '收起本页大纲'"
+      @click="toggle"
+    >
+      <svg class="toggle-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <polyline v-if="!isCollapsed" points="9 18 15 12 9 6"></polyline>
+        <polyline v-else points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 
-const STORAGE_KEY = 'aside-collapsed'
+const STORAGE_KEY = 'cs408-aside-collapsed'
 const isCollapsed = ref(false)
 
 function applyState(collapsed: boolean) {
@@ -26,13 +30,15 @@ function applyState(collapsed: boolean) {
 function toggle() {
   isCollapsed.value = !isCollapsed.value
   applyState(isCollapsed.value)
-  try { localStorage.setItem(STORAGE_KEY, String(isCollapsed.value)) } catch {}
+  try {
+    localStorage.setItem(STORAGE_KEY, String(isCollapsed.value))
+  } catch {}
 }
 
 onMounted(() => {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'true') {
+    const saved = localStorage.getItem(STORAGE_KEY) === 'true'
+    if (saved) {
       isCollapsed.value = true
       applyState(true)
     }
@@ -43,43 +49,57 @@ watch(isCollapsed, (v) => applyState(v))
 </script>
 
 <style scoped>
-.aside-toggle-btn {
+.aside-border-toggle-wrap {
   position: fixed;
-  z-index: 30;
-  /* 定位在大纲区域左边缘 */
-  right: 220px;
-  top: calc(var(--vp-nav-height, 64px) + 54px);
-  width: 22px;
-  height: 40px;
+  top: 96px;
+  right: 204px;
+  transform: translateX(50%);
+  z-index: 99;
+  transition: right 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+html.aside-collapsed .aside-border-toggle-wrap {
+  right: 0px;
+  transform: translateX(0);
+}
+
+.aside-border-toggle-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-divider);
-  border-right: none;
-  border-radius: 6px 0 0 6px;
-  color: var(--vp-c-text-3);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-border);
+  color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
 }
 
-.aside-toggle-btn:hover {
-  color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg-soft);
+.aside-border-toggle-btn:hover {
+  background: var(--vp-c-brand-1);
+  color: #ffffff;
+  border-color: var(--vp-c-brand-1);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
-/* 收起状态：按钮贴到视口右边缘 */
-.aside-toggle-btn.collapsed {
-  right: 0;
-  border-right: 1px solid var(--vp-c-divider);
-  border-radius: 6px 0 0 6px;
+html.aside-collapsed .aside-border-toggle-btn {
+  border-radius: 12px 0 0 12px;
+  width: 20px;
+  height: 36px;
+  box-shadow: -2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ≤1279px 宽度下 VitePress 默认隐藏 aside，按钮也隐藏 */
+/* ≤1279px 宽度下 VitePress 默认隐藏 aside，按钮也自动隐藏 */
 @media (max-width: 1279px) {
-  .aside-toggle-btn {
+  .aside-border-toggle-wrap {
     display: none !important;
   }
 }
 </style>
+
