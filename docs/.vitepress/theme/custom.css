@@ -250,69 +250,29 @@ html.parchment .VPNavBar {
     width: 100% !important;
   }
 
-  /* ════════ 右侧「本页大纲 (TOC)」始终悬浮在阅读区右上角 ════════
-     VitePress scoped 样式用 [data-v-*] 设置 position:fixed（脱离文档流、冻结在视口），
-     用双重 class 选择器提升特异性，改为 position:sticky（保留在文档流中、随滚动吸附）。
-     ════════════════════════════════════════════════════════════════ */
+  /* ════════ 右侧「本页大纲 (TOC)」—— 与左侧章节目录同款 position:fixed 效果 ════════
+     VitePress 默认已对 .aside-container 设置 position:fixed，效果与左侧 VPSidebar 一致。
+     此处只覆盖宽度/显示相关属性，不覆盖定位属性，让默认 fixed 行为原样保留。
+     ════════════════════════════════════════════════════════════════════════════════ */
   .aside.aside,
   .VPDoc .aside.aside,
   .VPDoc.has-aside .aside.aside {
     display: block !important;
-    position: relative !important;
     order: 2 !important;
     width: 220px !important;
     min-width: 220px !important;
     max-width: 220px !important;
-    align-self: stretch !important;  /* 关键：拉伸到与正文等高，sticky 才有空间滚动 */
     padding: 0 !important;
     padding-left: 16px !important;
     flex-shrink: 0 !important;
     flex-grow: 0 !important;
   }
 
-  .aside-container.aside-container,
-  .VPDoc .aside-container.aside-container,
-  .VPDoc.has-aside .aside-container.aside-container {
-    position: sticky !important;
-    top: calc(var(--vp-nav-height, 64px) + 16px) !important;
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: auto !important;
-    max-height: calc(100vh - var(--vp-nav-height, 64px) - 32px) !important;
-    padding: 0 !important;
-    padding-top: 0 !important;
-    margin: 0 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    scrollbar-width: thin;
-  }
-
+  /* 不覆盖 position / top / height —— 让 VitePress 默认的 position:fixed 生效 */
   .aside-curtain.aside-curtain,
   .VPDoc .aside-curtain.aside-curtain,
   .VPDoc.has-aside .aside-curtain.aside-curtain {
     display: none !important;
-    position: static !important;
-    height: 0 !important;
-    width: 0 !important;
-  }
-
-  .aside-content.aside-content,
-  .VPDoc .aside-content.aside-content,
-  .VPDoc.has-aside .aside-content.aside-content {
-    position: relative !important;
-    top: auto !important;
-    height: auto !important;
-    min-height: auto !important;
-    padding: 0 !important;
-  }
-
-  .VPDocAside.VPDocAside {
-    position: relative !important;
-    height: auto !important;
   }
 
   .VPDocAsideOutline {
