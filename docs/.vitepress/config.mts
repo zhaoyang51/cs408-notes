@@ -18,11 +18,12 @@ export default defineConfig({
 
     nav: [
       { text: '⚡ 首页', link: '/' },
-      { text: '📘 数据结构 (45分)', link: '/data-structure/' },
-      { text: '💻 计组 (45分)', link: '/computer-organization/' },
-      { text: '⚙️ 操作系统 (35分)', link: '/operating-system/' },
-      { text: '🌐 计网 (25分)', link: '/computer-network/' }
+      { text: '📘 数据结构', link: '/data-structure/' },
+      { text: '💻 计组', link: '/computer-organization/' },
+      { text: '⚙️ 操作系统', link: '/operating-system/' },
+      { text: '🌐 计网', link: '/computer-network/' }
     ],
+
 
     sidebar: {
       // ════════ 完整模式侧边栏 ════════

@@ -1090,3 +1090,78 @@ html[data-user-filter="chen"] [data-author="chen" i] {
   color: var(--vp-c-text-1);
   border-color: var(--vp-c-text-2);
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   顶部导航栏自适应与防溢出架构 (Navbar Adaptive Layout)
+   ══════════════════════════════════════════════════════════════════ */
+.VPNavBar .container {
+  max-width: 100% !important;
+  padding: 0 16px !important;
+}
+
+.VPNavBar .content {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.VPNavBar .content-body {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  min-width: 0;
+  justify-content: flex-end !important;
+}
+
+/* 中间菜单项紧凑化与防溢出 */
+.VPNavBarMenu {
+  flex-shrink: 1;
+  min-width: 0;
+  margin-right: 0 !important;
+}
+
+.VPNavBarMenuLink {
+  padding: 0 8px !important;
+  font-size: 13.5px !important;
+  white-space: nowrap !important;
+}
+
+/* 搜索栏弹性宽度 */
+.VPNavBarSearch {
+  flex-shrink: 1;
+}
+
+.VPNavBarSearch .DocSearch-Button {
+  padding: 0 10px !important;
+}
+
+/* 右侧功能控制栏容器 */
+.nav-controls-wrapper {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* 页面放大或中等宽度下的细化适配 */
+@media (max-width: 1350px) {
+  .VPNavBarMenuLink {
+    padding: 0 6px !important;
+    font-size: 13px !important;
+  }
+  .nav-controls-wrapper {
+    gap: 4px !important;
+  }
+}
+
+@media (max-width: 1150px) {
+  .VPNavBar .container {
+    padding: 0 10px !important;
+  }
+  .VPNavBarMenuLink {
+    padding: 0 4px !important;
+    font-size: 12.5px !important;
+  }
+}
+

@@ -8,10 +8,14 @@
       :title="isAllExpanded ? '当前为全部展开，点击一键收起所有折叠内容' : '当前为默认收起，点击一键展开所有折叠内容与解析'"
     >
       <span class="btn-icon">{{ isAllExpanded ? '📁' : '📂' }}</span>
-      <span class="btn-text">{{ isAllExpanded ? '全部收起' : '全部展开' }}</span>
+      <span class="btn-text">
+        <span class="full-label">{{ isAllExpanded ? '全部收起' : '全部展开' }}</span>
+        <span class="short-label">{{ isAllExpanded ? '收起' : '展开' }}</span>
+      </span>
     </button>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from 'vue'
@@ -106,4 +110,28 @@ onMounted(() => {
 .btn-text {
   font-weight: 700;
 }
+
+.short-label {
+  display: none;
+}
+
+@media (max-width: 1300px) {
+  .full-label {
+    display: none;
+  }
+  .short-label {
+    display: inline;
+  }
+  .collapse-toggle-btn {
+    padding: 3px 7px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .collapse-toggle-btn {
+    padding: 3px 5px;
+    gap: 2px;
+  }
+}
 </style>
+

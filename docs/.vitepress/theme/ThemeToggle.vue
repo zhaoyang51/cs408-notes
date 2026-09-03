@@ -1,6 +1,7 @@
 <template>
   <div class="theme-control-wrapper" ref="wrapperRef">
-    <div class="theme-segmented-control" role="radiogroup" aria-label="选择站点阅读主题与颜色">
+    <!-- 桌面宽屏模式：3 个分段按钮 -->
+    <div class="theme-segmented-control full-theme-control" role="radiogroup" aria-label="选择站点阅读主题与颜色">
       <button 
         class="segment-btn" 
         :class="{ active: currentTheme === 'light' }" 
@@ -35,13 +36,51 @@
       </button>
     </div>
 
+    <!-- 紧凑/缩放屏幕模式：单药丸复合按钮 (自适应窄屏) -->
+    <div class="compact-theme-control">
+      <button 
+        class="compact-theme-btn" 
+        :class="{ 'is-parchment': currentTheme === 'parchment', active: isColorMatrixOpen }"
+        @click="toggleColorMatrix" 
+        title="切换阅读主题与配色"
+        type="button"
+      >
+        <span class="icon">{{ currentTheme === 'parchment' ? '📜' : '☀️' }}</span>
+        <span class="text">{{ currentTheme === 'parchment' ? '羊皮纸' : '浅白' }}</span>
+        <span class="color-preview-dot" :style="{ backgroundColor: activeColor }"></span>
+        <span class="dropdown-arrow" :class="{ 'is-open': isColorMatrixOpen }">▾</span>
+      </button>
+    </div>
+
     <!-- 自定义主题色与羊皮纸浓度悬浮面板 (Popover) -->
     <transition name="matrix-pop">
       <div class="color-matrix-popover" v-if="isColorMatrixOpen">
         <div class="matrix-arrow"></div>
         
+        <!-- 紧凑模式下的快捷主题切换栏 -->
+        <div class="popover-theme-switch">
+          <div class="switch-title">📖 阅读底色模式</div>
+          <div class="switch-btn-group">
+            <button 
+              class="quick-theme-btn" 
+              :class="{ active: currentTheme === 'light' }"
+              @click="setTheme('light')"
+            >
+              <span>☀️ 浅白模式</span>
+            </button>
+            <button 
+              class="quick-theme-btn parchment" 
+              :class="{ active: currentTheme === 'parchment' }"
+              @click="setTheme('parchment')"
+            >
+              <span>📜 羊皮纸护眼</span>
+            </button>
+          </div>
+        </div>
+
         <!-- 模块 1: 全站主题主色矩阵 -->
         <div class="matrix-header">
+
           <div class="header-title">
             <span class="title-icon">🎨</span>
             <span>自选主题颜色矩阵</span>
@@ -703,6 +742,116 @@ onUnmounted(() => {
   font-weight: 700;
 }
 
+/* 紧凑单按钮模式与响应式适配 */
+.full-theme-control {
+  display: inline-flex;
+}
+
+.compact-theme-control {
+  display: none;
+}
+
+.compact-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.4;
+  user-select: none;
+}
+
+.compact-theme-btn:hover,
+.compact-theme-btn.active {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-elv);
+  box-shadow: 0 2px 8px -2px rgba(37, 99, 235, 0.15);
+}
+
+.compact-theme-btn.is-parchment {
+  background: #fdf6e7;
+  color: #8c5324;
+  border-color: rgba(140, 83, 36, 0.25);
+}
+
+.compact-theme-btn.is-parchment:hover {
+  background: #faebd7;
+  border-color: #8c5324;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  color: var(--vp-c-text-3);
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+.dropdown-arrow.is-open {
+  transform: rotate(180deg);
+}
+
+/* 悬浮面板顶部的模式快速切换 */
+.popover-theme-switch {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.switch-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--vp-c-text-3);
+  margin-bottom: 7px;
+}
+
+.switch-btn-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.quick-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  transition: all 0.2s ease;
+}
+
+.quick-theme-btn:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.quick-theme-btn.active {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  box-shadow: 0 2px 6px -1px rgba(37, 99, 235, 0.15);
+}
+
+.quick-theme-btn.parchment.active {
+  background: #fdf6e7;
+  border-color: #8c5324;
+  color: #8c5324;
+}
+
 /* 动画效果 */
 .matrix-pop-enter-active,
 .matrix-pop-leave-active {
@@ -715,16 +864,21 @@ onUnmounted(() => {
   transform: translateY(-6px) scale(0.96);
 }
 
+/* 屏幕尺寸自适应断点：<= 1400px 或放大时自动切换为紧凑单按钮 */
+@media (max-width: 1400px) {
+  .full-theme-control {
+    display: none !important;
+  }
+  .compact-theme-control {
+    display: inline-flex !important;
+  }
+}
+
 @media (max-width: 768px) {
-  .segment-btn .text {
-    display: none;
-  }
-  .segment-btn {
-    padding: 4px 6px;
-  }
   .color-matrix-popover {
     right: -20px;
     width: 250px;
   }
 }
 </style>
+

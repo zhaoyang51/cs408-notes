@@ -135,9 +135,20 @@ function toggleMode() {
   color: #059669;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1440px) {
   .mode-switch-hint {
     display: none;
   }
+  .mode-toggle-btn {
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .mode-toggle-btn {
+    padding: 3px 6px;
+    gap: 3px;
+  }
 }
 </style>
+
