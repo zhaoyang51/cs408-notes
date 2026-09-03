@@ -67,14 +67,85 @@ $$\text{dB} = 10 \log_{10} \left(\frac{S}{N}\right)$$
 
 ### ❓ 五大基带编码波形规则速记
 
-```
-数据比特:     1       0       0       1
-NRZ (非归零): ▔▔▔▔|____|____|▔▔▔▔   (高电平为1，低电平为0)
-RZ (归零):    ▔|_|____|____|▔|_|   (高1低0，脉冲前沿翻转后半段必归零)
-NRZI (反向):  翻转 |翻转|翻转|不变   (跳0不跳1：遇到0发生跳变，遇到1保持电平)
-曼彻斯特:     下跳 |上跳|上跳|下跳   (正跳0反跳1：中间必跳，周期中心下跳表示1，上跳表示0)
-差分曼彻斯特: 边界跳|跳|不变|不变   (跳0不跳1：中心必跳变，边界跳变表示0，边界不跳表示1)
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 基带编码波形时序对比（曼彻斯特 vs 差分曼彻斯特）</span>
+    <span class="diagram-badge">P50 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 250" width="100%" height="250">
+    <g transform="translate(15, 12)">
+      <!-- 顶层：数据比特位 1 0 0 1 -->
+      <g transform="translate(140, 0)">
+        <text x="45" y="16" text-anchor="middle" fill="#2563eb" font-size="14" font-weight="900">1</text>
+        <text x="135" y="16" text-anchor="middle" fill="#2563eb" font-size="14" font-weight="900">0</text>
+        <text x="225" y="16" text-anchor="middle" fill="#2563eb" font-size="14" font-weight="900">0</text>
+        <text x="315" y="16" text-anchor="middle" fill="#2563eb" font-size="14" font-weight="900">1</text>
+        <!-- 垂直比特边界分界虚线 -->
+        <line x1="0" y1="22" x2="0" y2="225" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+        <line x1="90" y1="22" x2="90" y2="225" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+        <line x1="180" y1="22" x2="180" y2="225" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+        <line x1="270" y1="22" x2="270" y2="225" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+        <line x1="360" y1="22" x2="360" y2="225" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+      </g>
+      <!-- 波形 1: NRZ 非归零 -->
+      <g transform="translate(0, 30)">
+        <text x="130" y="22" text-anchor="end" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">NRZ (非归零)</text>
+        <g transform="translate(140, 0)">
+          <!-- 1:高(y=5), 0:低(y=30), 0:低(y=30), 1:高(y=5) -->
+          <polyline points="0,8 90,8 90,32 180,32 180,32 270,32 270,8 360,8" fill="none" stroke="#2563eb" stroke-width="2.2"/>
+        </g>
+      </g>
+      <!-- 波形 2: 曼彻斯特编码 (中间必跳变: 1 下跳, 0 上跳) -->
+      <g transform="translate(0, 80)">
+        <text x="130" y="22" text-anchor="end" fill="#10b981" font-size="11" font-weight="800">曼彻斯特编码</text>
+        <g transform="translate(140, 0)">
+          <!-- 1: 前高后低 (0,8 -> 45,8 -> 45,32 -> 90,32) -->
+          <!-- 0: 前低后高 (90,32 -> 135,32 -> 135,8 -> 180,8) -->
+          <!-- 0: 前低后高 (180,32 -> 225,32 -> 225,8 -> 270,8) (先边界下跳到32) -->
+          <!-- 1: 前高后低 (270,8 -> 315,8 -> 315,32 -> 360,32) -->
+          <polyline points="0,8 45,8 45,32 90,32 90,32 135,32 135,8 180,8 180,32 225,32 225,8 270,8 270,8 315,8 315,32 360,32" fill="none" stroke="#10b981" stroke-width="2.2"/>
+          <text x="45" y="44" text-anchor="middle" fill="#10b981" font-size="9">↓下跳(1)</text>
+          <text x="135" y="44" text-anchor="middle" fill="#10b981" font-size="9">↑上跳(0)</text>
+          <text x="225" y="44" text-anchor="middle" fill="#10b981" font-size="9">↑上跳(0)</text>
+          <text x="315" y="44" text-anchor="middle" fill="#10b981" font-size="9">↓下跳(1)</text>
+        </g>
+      </g>
+      <!-- 波形 3: 差分曼彻斯特编码 (遇0边界跳变，遇1边界不跳) -->
+      <g transform="translate(0, 145)">
+        <text x="130" y="22" text-anchor="end" fill="#f59e0b" font-size="11" font-weight="800">差分曼彻斯特</text>
+        <g transform="translate(140, 0)">
+          <!-- 假定初始前沿在低位: -->
+          <!-- 1: 边界不跳, 保持低位起跳 -> (0,32 -> 45,32 -> 45,8 -> 90,8) -->
+          <!-- 0: 边界跳变! 从高翻到低 -> (90,32 -> 135,32 -> 135,8 -> 180,8) -->
+          <!-- 0: 边界跳变! 从高翻到低 -> (180,32 -> 225,32 -> 225,8 -> 270,8) -->
+          <!-- 1: 边界不跳! 保持高位 -> (270,8 -> 315,8 -> 315,32 -> 360,32) -->
+          <polyline points="0,32 45,32 45,8 90,8 90,32 135,32 135,8 180,8 180,32 225,32 225,8 270,8 270,8 315,8 315,32 360,32" fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+          <text x="90" y="44" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700">★边界跳(0)</text>
+          <text x="180" y="44" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700">★边界跳(0)</text>
+          <text x="270" y="44" text-anchor="middle" fill="#10b981" font-size="9" font-weight="700">不跳(1)</text>
+        </g>
+      </g>
+      <!-- 右侧：408 核心口诀速查卡 -->
+      <g transform="translate(525, 10)">
+        <rect x="0" y="0" width="165" height="215" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="82" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 核心真题口诀</text>
+        <line x1="8" y1="30" x2="157" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="50" fill="#10b981" font-size="10.5" font-weight="700">曼彻斯特看中心：</text>
+        <text x="10" y="67" fill="var(--vp-c-text-2)" font-size="10">周期中间必然跳变！</text>
+        <text x="10" y="82" fill="var(--vp-c-text-2)" font-size="10">前高后低(下跳)为 1，</text>
+        <text x="10" y="97" fill="var(--vp-c-text-2)" font-size="10">前低后高(上跳)为 0。</text>
+        <line x1="8" y1="108" x2="157" y2="108" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="126" fill="#f59e0b" font-size="10.5" font-weight="700">差分曼彻看边界：</text>
+        <text x="10" y="143" fill="var(--vp-c-text-2)" font-size="10">中心恒跳（自同步）！</text>
+        <text x="10" y="158" fill="#ef4444" font-size="10" font-weight="700">遇 0 边界跳，</text>
+        <text x="10" y="173" fill="#10b981" font-size="10" font-weight="700">遇 1 边界不跳！</text>
+        <line x1="8" y1="184" x2="157" y2="184" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="202" fill="var(--vp-c-text-3)" font-size="9.5">波特率 = 2 × 比特率</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ::: tip 💡 核心判别秘诀
 * **曼彻斯特编码 (Manchester)**：**看比特周期的“正中间”**。下跳表示 1，上跳表示 0（自带自同步时钟信号，频带利用率仅 50%）。

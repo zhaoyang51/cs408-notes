@@ -22,15 +22,75 @@
 
 ### ❓ 递归查询 (Recursive) vs 迭代查询 (Iterative)
 
-```
-递归查询（一路代查）：
-  主机 ──> 本地DNS ──> 根DNS ──> 顶级DNS ──> 权限DNS (原路顺次返回)
-
-迭代查询（本地域名服务器四处问询）：
-  主机 ──> 本地DNS ──> 根DNS (返回顶级DNS地址)
-            │  └──> 顶级DNS (返回权限DNS地址)
-            └───> 权限DNS (返回最终IP)
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · DNS 递归查询 (主机-本地) 与 迭代查询 (本地-根/顶级/权限) 拓扑</span>
+    <span class="diagram-badge">P61 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 210" width="100%" height="210">
+    <g transform="translate(15, 12)">
+      <!-- 客户端主机 (最左侧) -->
+      <g transform="translate(10, 60)">
+        <rect x="0" y="0" width="75" height="50" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="6"/>
+        <text x="37" y="24" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">客户端主机</text>
+        <text x="37" y="40" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">(Client)</text>
+      </g>
+      <!-- 主机 -> 本地 DNS: 递归查询 (双向带箭头线) -->
+      <path d="M 85 75 L 155 75" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <path d="M 155 95 L 85 95" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+      <text x="120" y="65" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">递归代查 ➔</text>
+      <text x="120" y="112" text-anchor="middle" fill="#10b981" font-size="9.5">原路返回 IP</text>
+      <!-- 本地域名服务器 Local DNS (中枢) -->
+      <g transform="translate(160, 45)">
+        <rect x="0" y="0" width="115" height="80" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2.2" rx="8"/>
+        <text x="57" y="28" text-anchor="middle" fill="#10b981" font-size="12" font-weight="900">本地域名服务器</text>
+        <text x="57" y="48" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">(Local DNS)</text>
+        <text x="57" y="68" text-anchor="middle" fill="#10b981" font-size="9.5" font-weight="700">【四处问询跑腿】</text>
+      </g>
+      <!-- 迭代查询三级服务器 (右侧阶梯分布) -->
+      <!-- 1. 根域名服务器 Root DNS -->
+      <g transform="translate(390, 10)">
+        <rect x="0" y="0" width="130" height="36" fill="rgba(239,68,68,0.12)" stroke="#ef4444" rx="4"/>
+        <text x="65" y="22" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800">1. 根域名服务器 (.)</text>
+      </g>
+      <!-- 本地 -> 根 -->
+      <path d="M 275 60 L 385 28" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+      <path d="M 385 36 L 275 68" stroke="var(--vp-c-text-3)" stroke-width="1.5" stroke-dasharray="2,2"/>
+      <text x="335" y="42" fill="#ef4444" font-size="9">查根 ➔ 返.com</text>
+      <!-- 2. 顶级域名服务器 TLD DNS -->
+      <g transform="translate(390, 70)">
+        <rect x="0" y="0" width="130" height="36" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" rx="4"/>
+        <text x="65" y="22" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="800">2. 顶级服务器 (.com)</text>
+      </g>
+      <!-- 本地 -> 顶级 -->
+      <path d="M 275 85 L 385 85" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)"/>
+      <text x="330" y="80" text-anchor="middle" fill="#f59e0b" font-size="9">查顶级 ➔ 返权限</text>
+      <!-- 3. 权限域名服务器 Authoritative DNS -->
+      <g transform="translate(390, 130)">
+        <rect x="0" y="0" width="130" height="36" fill="rgba(37,99,235,0.12)" stroke="#2563eb" rx="4"/>
+        <text x="65" y="22" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">3. 权限服务器 (cs.com)</text>
+      </g>
+      <!-- 本地 -> 权限 -->
+      <path d="M 275 110 L 385 142" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+      <text x="335" y="132" fill="#2563eb" font-size="9">查权限 ➔ 返IP!</text>
+      <!-- 右侧：考点秒杀卡 -->
+      <g transform="translate(540, 10)">
+        <rect x="0" y="0" width="150" height="165" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="75" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">DNS 解析真题考点</text>
+        <line x1="8" y1="30" x2="142" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="52" fill="#2563eb" font-size="10.5" font-weight="700">主机 ➔ 本地：</text>
+        <text x="10" y="68" fill="var(--vp-c-text-2)" font-size="10">默认采用【递归查询】</text>
+        <text x="10" y="82" fill="var(--vp-c-text-3)" font-size="9.5">委托本地 DNS 全权代办</text>
+        <line x1="8" y1="92" x2="142" y2="92" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="112" fill="#10b981" font-size="10.5" font-weight="700">本地 ➔ 外部：</text>
+        <text x="10" y="128" fill="var(--vp-c-text-2)" font-size="10">默认采用【迭代查询】</text>
+        <text x="10" y="142" fill="var(--vp-c-text-3)" font-size="9.5">减轻根服务器负担！</text>
+        <line x1="8" y1="150" x2="142" y2="150" stroke="var(--vp-c-divider)"/>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ::: tip 💡 核心考点辨析
 * **主机向本地域名服务器**的查询通常采用**递归查询**（由本地 DNS 代劳跑腿）；
@@ -94,13 +154,58 @@
 
 ### ❓ 非持续连接 (HTTP/1.0) vs 持续连接 (HTTP/1.1)
 
-```
-非持续连接 (HTTP/1.0)：每个对象都需要独立建立 TCP
-  [三次握手 1 RTT] + [请求数据 1 RTT] = 2 RTT / 每个文件
-
-持续连接 (HTTP/1.1)：同一个 TCP 连接复用
-  [建立 TCP 1 RTT] + [请求并回传文件 1 1 RTT] + [请求文件 2 1 RTT] ...
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · Web 访问端到端时延推演（TCP握手 + HTTP请求 RTT 往返时序）</span>
+    <span class="diagram-badge">P61 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 230" width="100%" height="230">
+    <g transform="translate(15, 12)">
+      <!-- 时序推演时间轴 (左侧) -->
+      <g transform="translate(0, 0)">
+        <!-- 客户端轴 & 服务端轴 -->
+        <text x="60" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">客户端 (Browser)</text>
+        <text x="360" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">Web 服务器</text>
+        <line x1="60" y1="28" x2="60" y2="195" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <line x1="360" y1="28" x2="360" y2="195" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <!-- 第 1 个 RTT: TCP 握手 -->
+        <line x1="60" y1="40" x2="360" y2="65" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <line x1="360" y1="65" x2="60" y2="90" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="210" y="50" text-anchor="middle" fill="#2563eb" font-size="10">SYN ➔</text>
+        <text x="210" y="85" text-anchor="middle" fill="#10b981" font-size="10">SYN + ACK ➔</text>
+        <!-- RTT 1 标尺 -->
+        <line x1="375" y1="40" x2="375" y2="90" stroke="#2563eb" stroke-width="1.8"/>
+        <text x="385" y="70" fill="#2563eb" font-size="11" font-weight="800">1 RTT (TCP 连接)</text>
+        <!-- 第 2 个 RTT: HTTP 请求与数据返回 -->
+        <line x1="60" y1="95" x2="360" y2="120" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)"/>
+        <line x1="360" y1="120" x2="60" y2="155" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+        <text x="210" y="105" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700">HTTP 请求 (GET /index.html) ➔</text>
+        <text x="210" y="145" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700">服务器回传 HTML 数据文件 ➔</text>
+        <!-- RTT 2 标尺 -->
+        <line x1="375" y1="95" x2="375" y2="155" stroke="#ef4444" stroke-width="1.8"/>
+        <text x="385" y="130" fill="#ef4444" font-size="11" font-weight="800">1 RTT (文档传输)</text>
+        <!-- 传输耗时说明 -->
+        <text x="210" y="180" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">基础 HTML 页面总时延 = 2 RTT + 传输时延</text>
+      </g>
+      <!-- 右侧：408 核心算例总结卡 -->
+      <g transform="translate(500, 10)">
+        <rect x="0" y="0" width="190" height="185" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="95" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 时延真题大题定律</text>
+        <line x1="8" y1="30" x2="182" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="50" fill="#ef4444" font-size="10.5" font-weight="700">非持续连接 (HTTP/1.0)：</text>
+        <text x="10" y="66" fill="var(--vp-c-text-2)" font-size="10">每个对象独立握手：</text>
+        <text x="10" y="80" fill="#ef4444" font-size="10.5" font-weight="700">总时延 = 2(n + 1) RTT</text>
+        <line x1="8" y1="92" x2="182" y2="92" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="112" fill="#10b981" font-size="10.5" font-weight="700">持续流水线 (HTTP/1.1)：</text>
+        <text x="10" y="128" fill="var(--vp-c-text-2)" font-size="10">复用连接，所有对象打包：</text>
+        <text x="10" y="144" fill="#10b981" font-size="12" font-weight="900">总时延仅需 3 RTT！</text>
+        <line x1="8" y1="156" x2="182" y2="156" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="172" fill="#2563eb" font-size="9.5" font-weight="700">节省 2n - 1 个往返往来！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 * **非持续连接 (HTTP/1.0)**：
   * 每次请求一个网页内的元素（HTML、图片、JS、CSS），都必须重新建立一次完整的 TCP 三次握手；

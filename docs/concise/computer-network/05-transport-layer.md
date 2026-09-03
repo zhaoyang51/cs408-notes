@@ -73,22 +73,75 @@ $$\text{Socket} = (\text{IP 地址} : \text{端口号})$$
 
 ### ❓ TCP 首部核心字段与 6 大标志位
 
-```
- 0                   15 16                  31
-+----------------------+----------------------+
-|    16 位源端口号     |    16 位目的端口号   |
-+----------------------+----------------------+
-|                  32 位序号 (Sequence Number)                |
-+-------------------------------------------------------------+
-|               32 位确认序号 (Acknowledgment Number)          |
-+-------+--------+----+-----------------------+
-| 4位首部| 保留   |FLAG|      16 位接收窗口 (rwnd)            |
-+-------+--------+----+-----------------------+
-|    16 位校验和       |      16 位紧急指针 (Urgent Pointer)  |
-+----------------------+----------------------+
-|            选项 (Options, 0~40 字节) + 填充                 |
-+-------------------------------------------------------------+
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · TCP 报文段 20 字节标准首部结构与六大控制标志位</span>
+    <span class="diagram-badge">P58 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 230" width="100%" height="230">
+    <g transform="translate(15, 12)">
+      <!-- TCP 报头 32 位网格 (左侧) -->
+      <g transform="translate(0, 0)">
+        <text x="0" y="12" fill="var(--vp-c-text-3)" font-size="9.5">0 bit</text>
+        <text x="240" y="12" fill="var(--vp-c-text-3)" font-size="9.5">16</text>
+        <text x="480" y="12" text-anchor="end" fill="var(--vp-c-text-3)" font-size="9.5">31 bit</text>
+        <!-- 行 1: 源端口(16) | 目的端口(16) -->
+        <g transform="translate(0, 18)">
+          <rect x="0" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="120" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">16 位源端口号 (Source Port)</text>
+          <rect x="240" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="360" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">16 位目的端口号 (Dest Port)</text>
+        </g>
+        <!-- 行 2: 序号 (32) -->
+        <g transform="translate(0, 48)">
+          <rect x="0" y="0" width="480" height="28" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+          <text x="240" y="18" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="800">32 位序号 (Sequence Number · 发送数据首字节编号)</text>
+        </g>
+        <!-- 行 3: 确认号 (32) -->
+        <g transform="translate(0, 78)">
+          <rect x="0" y="0" width="480" height="28" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+          <text x="240" y="18" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="800">32 位确认号 (Acknowledgment Number · 期望收到下个字节)</text>
+        </g>
+        <!-- 行 4: 首长(4) | 保留(6) | 六大标志位(6) | 窗口(16) -->
+        <g transform="translate(0, 108)">
+          <rect x="0" y="0" width="60" height="28" fill="rgba(245,158,11,0.18)" stroke="#f59e0b" stroke-width="1.8"/>
+          <text x="30" y="18" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="800">首长(4B)</text>
+          <rect x="60" y="0" width="50" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="85" y="18" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">保留</text>
+          <!-- 6 大标志 -->
+          <rect x="110" y="0" width="130" height="28" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.8"/>
+          <text x="175" y="18" text-anchor="middle" fill="#ef4444" font-size="9.5" font-weight="800">U A P R S F</text>
+          <!-- 接收窗口 rwnd -->
+          <rect x="240" y="0" width="240" height="28" fill="rgba(37,99,235,0.12)" stroke="#2563eb"/>
+          <text x="360" y="18" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">16 位接收窗口 rwnd (流量控制)</text>
+        </g>
+        <!-- 行 5: 校验和(16) | 紧急指针(16) -->
+        <g transform="translate(0, 138)">
+          <rect x="0" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="120" y="18" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">16 位校验和 (首部 + 数据)</text>
+          <rect x="240" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="360" y="18" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">16 位紧急指针 (配合 URG 标志)</text>
+        </g>
+        <text x="240" y="186" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">固定 20 字节基本首部（可含 0~40 字节选项扩展）</text>
+      </g>
+      <!-- 右侧：六大标志位速记卡 -->
+      <g transform="translate(500, 10)">
+        <rect x="0" y="0" width="190" height="195" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="95" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">TCP 六大控制标志位</text>
+        <line x1="8" y1="30" x2="182" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="50" fill="#ef4444" font-size="10.5" font-weight="700">URG：紧急数据优先插队</text>
+        <text x="10" y="72" fill="#10b981" font-size="10.5" font-weight="700">ACK：确认号有效(握手后恒1)</text>
+        <text x="10" y="94" fill="#2563eb" font-size="10.5" font-weight="700">PSH：尽快上送不滞留缓存</text>
+        <text x="10" y="116" fill="#ef4444" font-size="10.5" font-weight="700">RST：连接故障强制复位</text>
+        <text x="10" y="138" fill="#2563eb" font-size="10.5" font-weight="700">SYN：同步建立连接(消耗1序)</text>
+        <text x="10" y="160" fill="#f59e0b" font-size="10.5" font-weight="700">FIN：单向释放连接(消耗1序)</text>
+        <line x1="8" y1="172" x2="182" y2="172" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="186" fill="var(--vp-c-text-3)" font-size="9.5">首部长度单位：4 字节</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 * **4 位首部长度**：以 **4 字节** 为单位（最小值 5 即 $20\text{ B}$，最大值 15 即 $60\text{ B}$）。
 * **32 位序号 (seq)**：本报文段所发送数据的**第一个字节的序号**。
@@ -110,46 +163,76 @@ $$\text{Socket} = (\text{IP 地址} : \text{端口号})$$
 
 ### ❓ TCP 建立连接（三次握手）
 
-```
-客户端 (Client)                               服务端 (Server)
-  CLOSED                                         LISTEN
-    │                                              │
-    ├─── 1. SYN = 1, seq = x ─────────────────────>│ (进入 SYN-RCVD)
-    │    (进入 SYN-SENT)                           │
-    │                                              │
-    │<── 2. SYN = 1, ACK = 1, seq = y, ack = x+1 ──┤
-    │                                              │
-    ├─── 3. ACK = 1, seq = x+1, ack = y+1 ────────>│ (进入 ESTABLISHED)
-    │    (进入 ESTABLISHED)                        │
-```
-
-::: tip 💡 握手消耗序号规则
-* **前两次握手（SYN 报文段）不携带数据，但必须严格消耗 1 个序号**（故后续 ack 需加 1）；
-* **第 3 次握手（ACK 报文段）可以携带数据**，若不携带数据则不消耗序号。
-:::
-
----
-
-### ❓ TCP 释放连接（四次挥手）
-
-```
-客户端 (Client)                               服务端 (Server)
-ESTABLISHED                                    ESTABLISHED
-    │                                              │
-    ├─── 1. FIN = 1, seq = u ─────────────────────>│ (进入 CLOSE-WAIT)
-    │    (进入 FIN-WAIT-1)                         │
-    │                                              │
-    │<── 2. ACK = 1, seq = v, ack = u+1 ──────────┤ (半关闭：Server仍可发数据)
-    │    (进入 FIN-WAIT-2)                         │
-    │                   ... 发送未完数据 ...       │
-    │<── 3. FIN = 1, ACK = 1, seq = w, ack = u+1 ──┤ (进入 LAST-ACK)
-    │                                              │
-    ├─── 4. ACK = 1, seq = u+1, ack = w+1 ────────>│ (进入 CLOSED)
-    │    (进入 TIME-WAIT)                          │
-    │    等待 2MSL                                 │
-    ▼                                              │
-  CLOSED                                           │
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · TCP 三次握手与四次挥手状态跃迁时序全景图</span>
+    <span class="diagram-badge">P59 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 290" width="100%" height="290">
+    <g transform="translate(15, 12)">
+      <!-- 左半区：三次握手 (Three-Way Handshake) -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="340" height="265" fill="rgba(37,99,235,0.04)" stroke="#2563eb" stroke-width="1.8" rx="8"/>
+        <text x="170" y="20" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">🤝 TCP 三次握手 (连接建立)</text>
+        <!-- Client 轴 & Server 轴 -->
+        <text x="50" y="42" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">客户端</text>
+        <text x="290" y="42" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">服务端</text>
+        <line x1="50" y1="48" x2="50" y2="245" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <line x1="290" y1="48" x2="290" y2="245" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <!-- 初始状态 -->
+        <text x="45" y="65" text-anchor="end" fill="var(--vp-c-text-3)" font-size="9.5">CLOSED</text>
+        <text x="295" y="65" fill="#10b981" font-size="9.5" font-weight="700">LISTEN</text>
+        <!-- 握手 1: SYN=1, seq=x -->
+        <line x1="50" y1="80" x2="290" y2="110" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="170" y="90" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">① SYN=1, seq=x</text>
+        <text x="45" y="95" text-anchor="end" fill="#2563eb" font-size="9.5">SYN-SENT</text>
+        <text x="295" y="115" fill="#f59e0b" font-size="9.5">SYN-RCVD</text>
+        <!-- 握手 2: SYN=1, ACK=1, seq=y, ack=x+1 -->
+        <line x1="290" y1="130" x2="50" y2="160" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="170" y="140" text-anchor="middle" fill="#10b981" font-size="10" font-weight="700">② SYN=1, ACK=1, seq=y, ack=x+1</text>
+        <text x="45" y="175" text-anchor="end" fill="#10b981" font-size="9.5" font-weight="800">ESTABLISHED</text>
+        <!-- 握手 3: ACK=1, seq=x+1, ack=y+1 -->
+        <line x1="50" y1="180" x2="290" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="170" y="192" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">③ ACK=1, seq=x+1, ack=y+1</text>
+        <text x="295" y="215" fill="#10b981" font-size="9.5" font-weight="800">ESTABLISHED</text>
+        <text x="170" y="248" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9.5">★ 前两次握手 SYN 消耗 1 序号，第3次可载数</text>
+      </g>
+      <!-- 右半区：四次挥手 (Four-Way Wavehand) -->
+      <g transform="translate(360, 0)">
+        <rect x="0" y="0" width="340" height="265" fill="rgba(239,68,68,0.04)" stroke="#ef4444" stroke-width="1.8" rx="8"/>
+        <text x="170" y="20" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="800">👋 TCP 四次挥手 (连接释放)</text>
+        <!-- Client 轴 & Server 轴 -->
+        <text x="50" y="42" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">客户端</text>
+        <text x="290" y="42" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">服务端</text>
+        <line x1="50" y1="48" x2="50" y2="245" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <line x1="290" y1="48" x2="290" y2="245" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <!-- 挥手 1: FIN=1, seq=u -->
+        <line x1="50" y1="65" x2="290" y2="90" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+        <text x="170" y="74" text-anchor="middle" fill="#ef4444" font-size="9.5" font-weight="700">① FIN=1, seq=u</text>
+        <text x="45" y="80" text-anchor="end" fill="#ef4444" font-size="9">FIN-WAIT-1</text>
+        <text x="295" y="95" fill="#f59e0b" font-size="9">CLOSE-WAIT</text>
+        <!-- 挥手 2: ACK=1, seq=v, ack=u+1 -->
+        <line x1="290" y1="105" x2="50" y2="130" stroke="var(--vp-c-text-2)" stroke-width="1.8" marker-end="url(#arrow-gray)"/>
+        <text x="170" y="114" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9.5">② ACK=1, seq=v, ack=u+1</text>
+        <text x="45" y="135" text-anchor="end" fill="#f59e0b" font-size="9">FIN-WAIT-2</text>
+        <text x="170" y="145" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9">(半关闭: Server可继续发数据)</text>
+        <!-- 挥手 3: FIN=1, ACK=1, seq=w, ack=u+1 -->
+        <line x1="290" y1="155" x2="50" y2="180" stroke="#ef4444" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+        <text x="170" y="164" text-anchor="middle" fill="#ef4444" font-size="9.5" font-weight="700">③ FIN=1, ACK=1, seq=w</text>
+        <text x="295" y="165" fill="#ef4444" font-size="9">LAST-ACK</text>
+        <text x="45" y="185" text-anchor="end" fill="#2563eb" font-size="9" font-weight="800">TIME-WAIT</text>
+        <!-- 挥手 4: ACK=1, seq=u+1, ack=w+1 -->
+        <line x1="50" y1="195" x2="290" y2="220" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-green)"/>
+        <text x="170" y="204" text-anchor="middle" fill="#10b981" font-size="9.5" font-weight="700">④ ACK=1, seq=u+1, ack=w+1</text>
+        <text x="295" y="225" fill="var(--vp-c-text-3)" font-size="9">CLOSED</text>
+        <!-- 2MSL 倒计时 -->
+        <rect x="15" y="222" width="70" height="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="2"/>
+        <text x="50" y="236" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="800">等 2MSL ➔ CLOSED</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ### ❓ 为什么客户端在 TIME-WAIT 必须等待 2MSL？
 1. **确保最后一个确认报文能到达服务端**：若客户端发的第 4 次 ACK 丢失，服务端会重传第 3 次 FIN，客户端在 $2\text{MSL}$ 内能再次收到该 FIN 并重发 ACK，避免服务端无法正常关闭；

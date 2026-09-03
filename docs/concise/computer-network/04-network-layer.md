@@ -40,12 +40,80 @@
 
 ### ❓ IPv4 首部关键字段速记口诀
 
-::: tip 💡 408 核心考点口诀
-**首 4、总 1、片 8！**
-* **首部长度**：占 4 位，以 **4 字节** 为计量单位（取值 $5 \sim 15$，即首部固定 $20\text{ B}$，最大可达 $60\text{ B}$）。
-* **总长度**：占 16 位，以 **1 字节** 为计量单位（最大数据报为 $65535\text{ B}$）。
-* **片偏移**：占 13 位，以 **8 字节** 为计量单位（除最后一个分片外，每个分片的数据载荷长度**必须是 8 字节的整数倍**）。
-:::
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · IPv4 报头 32 位标准字段布局与“首4总1片8”法则</span>
+    <span class="diagram-badge">P55 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 12)">
+      <!-- 报头 32-bit 表格结构 (左侧) -->
+      <g transform="translate(0, 0)">
+        <!-- 表头标尺 0 ~ 31 位 -->
+        <text x="0" y="12" fill="var(--vp-c-text-3)" font-size="9.5">0 bit</text>
+        <text x="60" y="12" fill="var(--vp-c-text-3)" font-size="9.5">4</text>
+        <text x="120" y="12" fill="var(--vp-c-text-3)" font-size="9.5">8</text>
+        <text x="240" y="12" fill="var(--vp-c-text-3)" font-size="9.5">16</text>
+        <text x="480" y="12" text-anchor="end" fill="var(--vp-c-text-3)" font-size="9.5">31 bit</text>
+        <!-- 行 1: 版本(4) | 首部长度(4) | 区分服务(8) | 总长度(16) -->
+        <g transform="translate(0, 18)">
+          <rect x="0" y="0" width="60" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="30" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">版本(4)</text>
+          <rect x="60" y="0" width="70" height="28" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2"/>
+          <text x="95" y="18" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="800">首部长(4B)</text>
+          <rect x="130" y="0" width="110" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="185" y="18" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">区分服务(8)</text>
+          <rect x="240" y="0" width="240" height="28" fill="rgba(37,99,235,0.18)" stroke="#2563eb" stroke-width="2"/>
+          <text x="360" y="18" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">总长度 (16位 · 单位 1B)</text>
+        </g>
+        <!-- 行 2: 标识(16) | 标志(3) | 片偏移(13) -->
+        <g transform="translate(0, 48)">
+          <rect x="0" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="120" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">标识 (Identification · 16位)</text>
+          <rect x="240" y="0" width="60" height="28" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.8"/>
+          <text x="270" y="18" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700">标志(3)</text>
+          <rect x="300" y="0" width="180" height="28" fill="rgba(245,158,11,0.18)" stroke="#f59e0b" stroke-width="2"/>
+          <text x="390" y="18" text-anchor="middle" fill="#f59e0b" font-size="10.5" font-weight="800">片偏移 (13位 · 单位 8B)</text>
+        </g>
+        <!-- 行 3: TTL(8) | 协议(8) | 首部校验和(16) -->
+        <g transform="translate(0, 78)">
+          <rect x="0" y="0" width="120" height="28" fill="rgba(239,68,68,0.12)" stroke="#ef4444"/>
+          <text x="60" y="18" text-anchor="middle" fill="#ef4444" font-size="10.5" font-weight="700">TTL 生存时间(8)</text>
+          <rect x="120" y="0" width="120" height="28" fill="rgba(37,99,235,0.12)" stroke="#2563eb"/>
+          <text x="180" y="18" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="700">协议 (TCP:6/UDP:17)</text>
+          <rect x="240" y="0" width="240" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+          <text x="360" y="18" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">首部校验和 (仅检首部)</text>
+        </g>
+        <!-- 行 4: 源 IP 地址 (32) -->
+        <g transform="translate(0, 108)">
+          <rect x="0" y="0" width="480" height="28" fill="rgba(37,99,235,0.08)" stroke="#2563eb"/>
+          <text x="240" y="18" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">源 IP 地址 (Source IP Address · 32位)</text>
+        </g>
+        <!-- 行 5: 目的 IP 地址 (32) -->
+        <g transform="translate(0, 138)">
+          <rect x="0" y="0" width="480" height="28" fill="rgba(16,185,129,0.08)" stroke="#10b981"/>
+          <text x="240" y="18" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">目的 IP 地址 (Destination IP Address · 32位)</text>
+        </g>
+        <text x="240" y="182" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10.5">固定 20 字节基本首部（无选项字段时）</text>
+      </g>
+      <!-- 右侧：考点秒杀卡 -->
+      <g transform="translate(500, 10)">
+        <rect x="0" y="0" width="190" height="180" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="95" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 分片命题三剑客</text>
+        <line x1="8" y1="30" x2="182" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="52" fill="#10b981" font-size="11" font-weight="800">1. 首 4：单位 4 字节</text>
+        <text x="10" y="68" fill="var(--vp-c-text-2)" font-size="10">取值 5~15 ➔ 20B ~ 60B</text>
+        <text x="10" y="92" fill="#2563eb" font-size="11" font-weight="800">2. 总 1：单位 1 字节</text>
+        <text x="10" y="108" fill="var(--vp-c-text-2)" font-size="10">数据报最大 65535 B</text>
+        <text x="10" y="132" fill="#f59e0b" font-size="11" font-weight="800">3. 片 8：单位 8 字节</text>
+        <text x="10" y="148" fill="var(--vp-c-text-2)" font-size="10">除末片外载荷必是 8 的倍数</text>
+        <line x1="8" y1="158" x2="182" y2="158" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="172" fill="#ef4444" font-size="9.5" font-weight="700">DF=0 允许分片 | MF=1 还有分片</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 * **标志字段 (Flag, 3 bit)**：
   * 保留位（第 1 位恒为 0）；
@@ -116,6 +184,85 @@
 > * 网络 5：路由器间点对点链路 $\to$ 需 2 接口+2 = 4，块大小取 **4**（掩码 `/30`）。
 >
 > **二叉树分配原则**：按块大小**从大到小依次在二叉树叶子节点截取分配**，分配过的节点其祖先与子孙均不能再用，彻底避免前缀地址重叠。
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · CIDR 变长子网划分二叉前缀树分配与路由聚合模型</span>
+    <span class="diagram-badge">P56 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 12)">
+      <!-- 根节点 /24 (顶层) -->
+      <g transform="translate(170, 0)">
+        <rect x="0" y="0" width="160" height="26" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="4"/>
+        <text x="80" y="17" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="800">根网段: .0/24 (256点)</text>
+      </g>
+      <!-- 第一层分裂 (/25) -->
+      <path d="M 210 26 L 120 50" stroke="#2563eb" stroke-width="1.8"/>
+      <path d="M 290 26 L 380 50" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+      <!-- 左 /25 -->
+      <g transform="translate(50, 50)">
+        <rect x="0" y="0" width="140" height="25" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+        <text x="70" y="17" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">.0/25 (128点, 0~127)</text>
+      </g>
+      <!-- 右 /25 (预留) -->
+      <g transform="translate(310, 50)">
+        <rect x="0" y="0" width="140" height="25" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" stroke-dasharray="3,3" rx="3"/>
+        <text x="70" y="17" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10.5">.128/25 (预留空闲)</text>
+      </g>
+      <!-- 第二层分裂 (/26) -->
+      <path d="M 90 75 L 50 100" stroke="#2563eb" stroke-width="1.8"/>
+      <path d="M 150 75 L 190 100" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+      <!-- 左 /26 -->
+      <g transform="translate(0, 100)">
+        <rect x="0" y="0" width="115" height="25" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+        <text x="57" y="17" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10">.0/26 (64点, 0~63)</text>
+      </g>
+      <!-- 第三层分裂 (/27) -> 产生网络 2 (32点) -->
+      <path d="M 35 125 L 20 150" stroke="#10b981" stroke-width="2"/>
+      <path d="M 80 125 L 110 150" stroke="#2563eb" stroke-width="1.8"/>
+      <!-- 命中分配：网络 2 (/27) -->
+      <g transform="translate(0, 150)">
+        <rect x="0" y="0" width="105" height="36" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="52" y="16" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">网络2: .0/27</text>
+        <text x="52" y="30" text-anchor="middle" fill="#10b981" font-size="9.5">32点 (需25主机)</text>
+      </g>
+      <!-- 第四层分裂 (/28) -> 产生网络 1 & 网络 3 -->
+      <g transform="translate(110, 140)">
+        <path d="M 15 15 L 0 35" stroke="#2563eb" stroke-width="1.8"/>
+        <path d="M 35 15 L 60 35" stroke="#f59e0b" stroke-width="1.8"/>
+        <!-- 网络 1 (/28) -->
+        <g transform="translate(-25, 35)">
+          <rect x="0" y="0" width="80" height="32" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+          <text x="40" y="15" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">网络1: .32/28</text>
+          <text x="40" y="27" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9">16点(需6)</text>
+        </g>
+        <!-- 网络 3 (/28) -->
+        <g transform="translate(60, 35)">
+          <rect x="0" y="0" width="80" height="32" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="3"/>
+          <text x="40" y="15" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700">网络3: .48/28</text>
+          <text x="40" y="27" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9">16点(需10)</text>
+        </g>
+      </g>
+      <!-- 右侧：408 核心法则与路由聚合卡片 -->
+      <g transform="translate(480, 10)">
+        <rect x="0" y="0" width="210" height="185" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="105" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">408 二叉树分配黄金准则</text>
+        <line x1="10" y1="30" x2="200" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="52" fill="#10b981" font-size="11" font-weight="700">① 先大后小原则：</text>
+        <text x="12" y="70" fill="var(--vp-c-text-2)" font-size="10">优先分配大块网络（如 /27），</text>
+        <text x="12" y="85" fill="var(--vp-c-text-2)" font-size="10">再在剩余分支细分小块（/28,/30）。</text>
+        <line x1="10" y1="96" x2="200" y2="96" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="116" fill="#ef4444" font-size="11" font-weight="700">② 互斥锁定原则：</text>
+        <text x="12" y="134" fill="var(--vp-c-text-2)" font-size="10">一旦某节点被分配，其所有祖先与</text>
+        <text x="12" y="149" fill="var(--vp-c-text-2)" font-size="10">子孙节点全部锁定作废，彻底防重叠！</text>
+        <line x1="10" y1="160" x2="200" y2="160" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="176" fill="#2563eb" font-size="10" font-weight="700">最长前缀匹配 (LPM)：掩码越长越精准</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 

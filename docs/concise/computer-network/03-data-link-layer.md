@@ -129,13 +129,146 @@ $$U = \frac{n \times T_{\text{发送}}}{T_{\text{发送}} + \text{RTT} + T_{\tex
   3. **帧间间隔 (IFS)**：SIFS（最短，用于ACK/CTS）、PIFS、DIFS（最长，用于异步数据帧竞争）；
   4. **NAV (网络分配向量)**：指明信道将被占用的持续时间，其他站点依据接收到的 NAV 倒计时，推迟信道接入。
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · CSMA/CA 预约信道 RTS/CTS 与 NAV 网络分配向量时序图</span>
+    <span class="diagram-badge">P52 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 12)">
+      <!-- 发送站 A 时间轴 -->
+      <g transform="translate(0, 15)">
+        <text x="75" y="16" text-anchor="end" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">发送站 A</text>
+        <line x1="85" y1="12" x2="520" y2="12" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <!-- DIFS 等待 -->
+        <rect x="85" y="0" width="35" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" rx="2"/>
+        <text x="102" y="16" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9">DIFS</text>
+        <!-- RTS 发送 -->
+        <rect x="125" y="0" width="45" height="24" fill="rgba(37,99,235,0.18)" stroke="#2563eb" rx="3"/>
+        <text x="147" y="16" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="800">RTS</text>
+        <!-- DATA 数据帧发送 -->
+        <rect x="250" y="-4" width="160" height="32" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="330" y="17" text-anchor="middle" fill="#10b981" font-size="12" font-weight="800">DATA 数据帧传输</text>
+      </g>
+      <!-- 接收站 B (AP) 时间轴 -->
+      <g transform="translate(0, 65)">
+        <text x="75" y="16" text-anchor="end" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">接收站 B</text>
+        <line x1="85" y1="12" x2="520" y2="12" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <!-- SIFS 间隔 -->
+        <rect x="175" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" rx="2"/>
+        <text x="186" y="16" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="8">SIFS</text>
+        <!-- CTS 广播 -->
+        <rect x="200" y="0" width="45" height="24" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" rx="3"/>
+        <text x="222" y="16" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="800">CTS</text>
+        <!-- SIFS -->
+        <rect x="415" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" rx="2"/>
+        <text x="426" y="16" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="8">SIFS</text>
+        <!-- ACK 确认 -->
+        <rect x="440" y="0" width="45" height="24" fill="rgba(37,99,235,0.18)" stroke="#2563eb" rx="3"/>
+        <text x="462" y="16" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="800">ACK</text>
+      </g>
+      <!-- 其他隐蔽站 C (NAV 虚拟载波监听静默) -->
+      <g transform="translate(0, 120)">
+        <text x="75" y="16" text-anchor="end" fill="#ef4444" font-size="11.5" font-weight="800">隐蔽站 C</text>
+        <line x1="85" y1="12" x2="520" y2="12" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <!-- NAV 静默条 (收到 CTS 后从 200 持续到 ACK 结束) -->
+        <rect x="200" y="0" width="290" height="24" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="3,3" rx="4"/>
+        <text x="345" y="16" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">NAV 网络分配向量 (信道预约静默，严禁发送！)</text>
+      </g>
+      <!-- 右侧：考点辨析卡 -->
+      <g transform="translate(540, 10)">
+        <rect x="0" y="0" width="150" height="175" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="75" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">CSMA/CA 核心机制</text>
+        <line x1="8" y1="30" x2="142" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="50" fill="#2563eb" font-size="10.5" font-weight="700">帧间隙 IFS 优先级：</text>
+        <text x="10" y="67" fill="var(--vp-c-text-2)" font-size="10">SIFS &lt; PIFS &lt; DIFS</text>
+        <text x="10" y="82" fill="var(--vp-c-text-3)" font-size="9.5">(间隙越短，优先级越高)</text>
+        <line x1="8" y1="92" x2="142" y2="92" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="112" fill="#ef4444" font-size="10.5" font-weight="700">解决隐蔽站利器：</text>
+        <text x="10" y="130" fill="var(--vp-c-text-2)" font-size="10">CTS 广播携带持续期，</text>
+        <text x="10" y="145" fill="var(--vp-c-text-2)" font-size="10">使隐蔽站自动设置 NAV</text>
+        <text x="10" y="160" fill="var(--vp-c-text-2)" font-size="10">实现无碰撞完美避让！</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ### ❓ 802.11 MAC 帧地址字段含义（必考记忆技巧）
 
-```
-     主机 A ────(1)────> AP ────(2)────> 主机 B
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 802.11 无线局域网 MAC 帧四地址全场景数据流向模型</span>
+    <span class="diagram-badge">P53 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 200" width="100%" height="200">
+    <g transform="translate(15, 12)">
+      <!-- 拓扑节点：源主机 A -> AP -> 目的主机 B -->
+      <!-- 主机 A -->
+      <g transform="translate(30, 45)">
+        <rect x="0" y="0" width="85" height="42" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="6"/>
+        <text x="42" y="21" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">源主机 A</text>
+        <text x="42" y="34" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">(STA A)</text>
+      </g>
+      <!-- 无线链路段 1: A -> AP -->
+      <g transform="translate(115, 45)">
+        <line x1="10" y1="21" x2="95" y2="21" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+        <text x="52" y="14" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">阶段 ① 入网 (To DS=1)</text>
+      </g>
+      <!-- 无线接入点 AP -->
+      <g transform="translate(225, 35)">
+        <rect x="0" y="0" width="110" height="62" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" rx="6"/>
+        <text x="55" y="26" text-anchor="middle" fill="#10b981" font-size="12" font-weight="800">无线接入点 AP</text>
+        <text x="55" y="44" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">(基站 / 路由器)</text>
+      </g>
+      <!-- 无线链路段 2: AP -> B -->
+      <g transform="translate(335, 45)">
+        <line x1="10" y1="21" x2="95" y2="21" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+        <text x="52" y="14" text-anchor="middle" fill="#10b981" font-size="10" font-weight="700">阶段 ② 出网 (From DS=1)</text>
+      </g>
+      <!-- 目的主机 B -->
+      <g transform="translate(445, 45)">
+        <rect x="0" y="0" width="85" height="42" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="6"/>
+        <text x="42" y="21" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">目的主机 B</text>
+        <text x="42" y="34" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">(STA B)</text>
+      </g>
+      <!-- 下方地址解析映射条 -->
+      <g transform="translate(30, 115)">
+        <!-- 阶段 1 地址拆解 -->
+        <rect x="0" y="0" width="240" height="55" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="4"/>
+        <text x="12" y="18" fill="#2563eb" font-size="10.5" font-weight="700">① A ➔ AP 帧地址分配：</text>
+        <text x="12" y="34" fill="var(--vp-c-text-2)" font-size="10">地址 1 (RA 接收端): </text>
+        <text x="125" y="34" fill="#10b981" font-size="10" font-weight="700">AP MAC</text>
+        <text x="12" y="48" fill="var(--vp-c-text-2)" font-size="10">地址 2 (TA 发送端): </text>
+        <text x="125" y="48" fill="#2563eb" font-size="10" font-weight="700">A MAC</text>
+        <text x="160" y="48" fill="#ef4444" font-size="10" font-weight="700">| 地址3: B</text>
+        <!-- 阶段 2 地址拆解 -->
+        <rect x="260" y="0" width="240" height="55" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="4"/>
+        <text x="272" y="18" fill="#10b981" font-size="10.5" font-weight="700">② AP ➔ B 帧地址分配：</text>
+        <text x="272" y="34" fill="var(--vp-c-text-2)" font-size="10">地址 1 (RA 接收端): </text>
+        <text x="385" y="34" fill="#2563eb" font-size="10" font-weight="700">B MAC</text>
+        <text x="272" y="48" fill="var(--vp-c-text-2)" font-size="10">地址 2 (TA 发送端): </text>
+        <text x="385" y="48" fill="#10b981" font-size="10" font-weight="700">AP MAC</text>
+        <text x="420" y="48" fill="#ef4444" font-size="10" font-weight="700">| 地址3: A</text>
+      </g>
+      <!-- 右侧：考点秒杀卡 -->
+      <g transform="translate(545, 10)">
+        <rect x="0" y="0" width="145" height="165" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="72" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 黄金法则</text>
+        <line x1="8" y1="30" x2="137" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="8" y="52" fill="#10b981" font-size="10.5" font-weight="700">地址 1：永远接收！</text>
+        <text x="8" y="70" fill="var(--vp-c-text-2)" font-size="10">直接接收本跳的 MAC</text>
+        <text x="8" y="94" fill="#2563eb" font-size="10.5" font-weight="700">地址 2：永远发送！</text>
+        <text x="8" y="112" fill="var(--vp-c-text-2)" font-size="10">直接发送本跳的 MAC</text>
+        <text x="8" y="136" fill="#ef4444" font-size="10.5" font-weight="700">地址 3：过滤后留存</text>
+        <text x="8" y="152" fill="var(--vp-c-text-2)" font-size="10">远端源或目的节点！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ::: tip 💡 408 核心口诀
 **地址 1 永远是接收地址，地址 2 永远是发送地址，地址 3 存远端源或目的地！**
