@@ -243,9 +243,10 @@ html.parchment .VPNavBar {
     margin: 0 !important;
   }
 
-  main.main,
-  .vp-doc,
-  .vp-doc > div {
+  /* 仅对文档页生效，不污染首页 */
+  .VPDoc main.main,
+  .VPDoc .vp-doc,
+  .VPDoc .vp-doc > div {
     max-width: 100% !important;
     width: 100% !important;
   }
@@ -558,12 +559,74 @@ details.self-test .answer-content {
   font-size: 14.5px;
 }
 
+/* ════════ 首页 (Home Layout) 宽度与左右边距完全对齐 ════════
+   确保首页主体内容（四科卡片、备考线索、时间分配表格）与
+   顶部 Hero 及 Features 具有完全相同的 max-width (1152px) 和水平居中对齐。
+   ════════════════════════════════════════════════════════════ */
+.VPHome .VPHomeContent,
+.VPHome .VPHomeContent .container,
+.VPHome .vp-doc.container {
+  max-width: 1152px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 640px) {
+  .VPHome .VPHomeContent,
+  .VPHome .VPHomeContent .container,
+  .VPHome .vp-doc.container {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPHome .VPHomeContent,
+  .VPHome .VPHomeContent .container,
+  .VPHome .vp-doc.container {
+    padding-left: 64px !important;
+    padding-right: 64px !important;
+  }
+}
+
+.VPHome .vp-doc {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
 /* ── 首页卡片网格 ── */
 .home-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
   margin: 28px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .home-card-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 959px) and (min-width: 640px) {
+  .home-card-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .home-card-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .subject-card {
@@ -571,7 +634,7 @@ details.self-test .answer-content {
   background: var(--vp-c-bg-elv);
   border: 1px solid var(--vp-c-divider);
   border-radius: 14px;
-  padding: 22px;
+  padding: 20px 18px;
   text-decoration: none !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;

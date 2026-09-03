@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="shouldShow"
     class="aside-border-toggle-wrap"
     :class="{ 'is-collapsed': isCollapsed }"
     :style="wrapStyle"
@@ -21,7 +22,10 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { useData } from 'vitepress'
 
+const { frontmatter } = useData()
+const shouldShow = computed(() => frontmatter.value?.layout !== 'home')
 const STORAGE_KEY = 'cs408-aside-collapsed'
 const isCollapsed = ref(false)
 const rightPos = ref(228)

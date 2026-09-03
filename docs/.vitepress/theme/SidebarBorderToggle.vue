@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-border-toggle-wrap">
+  <div v-if="shouldShow" class="sidebar-border-toggle-wrap">
     <button 
       class="sidebar-border-toggle-btn"
       :class="{ 'is-collapsed': isSidebarCollapsed }"
@@ -16,8 +16,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import { useData } from 'vitepress'
 
+const { frontmatter } = useData()
+const shouldShow = computed(() => frontmatter.value?.layout !== 'home')
 const isSidebarCollapsed = ref(false)
 
 function toggleSidebar() {
