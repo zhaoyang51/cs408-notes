@@ -22,5 +22,8 @@
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.5.0"
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
   }
 }

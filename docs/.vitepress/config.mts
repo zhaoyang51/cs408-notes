@@ -83,10 +83,10 @@ export default defineConfig({
         }
       ],
 
-      // ════════ 📖 简洁速查模式专属侧边栏 ════════
+      // ════════ 📖 笔记模式专属侧边栏 ════════
       '/concise/data-structure/': [
         {
-          text: '📘 数据结构（简洁速查）',
+          text: '📘 数据结构（笔记模式）',
           items: [
             { text: '📌 考纲与题型导览', link: '/concise/data-structure/' },
             { text: '第1章 基本概念与时空复杂度', link: '/concise/data-structure/01-basic-concepts' },
@@ -101,7 +101,7 @@ export default defineConfig({
       ],
       '/concise/computer-organization/': [
         {
-          text: '💻 计算机组成原理（简洁速查）',
+          text: '💻 计算机组成原理（笔记模式）',
           items: [
             { text: '📌 考纲与题型导览', link: '/concise/computer-organization/' },
             { text: '第1章 计算机系统概述与性能指标', link: '/concise/computer-organization/01-overview' },
@@ -115,7 +115,7 @@ export default defineConfig({
       ],
       '/concise/operating-system/': [
         {
-          text: '⚙️ 操作系统（简洁速查）',
+          text: '⚙️ 操作系统（笔记模式）',
           items: [
             { text: '📌 考纲与题型导览', link: '/concise/operating-system/' },
             { text: '第1章 操作系统概述与体系结构', link: '/concise/operating-system/01-overview' },
@@ -128,7 +128,7 @@ export default defineConfig({
       ],
       '/concise/computer-network/': [
         {
-          text: '🌐 计算机网络（简洁速查）',
+          text: '🌐 计算机网络（笔记模式）',
           items: [
             { text: '📌 考纲与题型导览', link: '/concise/computer-network/' },
             { text: '第1章 计算机网络体系结构', link: '/concise/computer-network/01-overview' },
@@ -142,13 +142,13 @@ export default defineConfig({
       ],
       '/concise/': [
         {
-          text: '📖 408 简洁速查简纲',
+          text: '📖 408 核心手记（笔记模式）',
           items: [
-            { text: '⚡ 简洁模式首页', link: '/concise/' },
-            { text: '📘 数据结构简纲', link: '/concise/data-structure/' },
-            { text: '💻 计组简纲', link: '/concise/computer-organization/' },
-            { text: '⚙️ 操作系统简纲', link: '/concise/operating-system/' },
-            { text: '🌐 计网简纲', link: '/concise/computer-network/' }
+            { text: '📖 笔记模式首页', link: '/concise/' },
+            { text: '📘 数据结构笔记', link: '/concise/data-structure/' },
+            { text: '💻 计组笔记', link: '/concise/computer-organization/' },
+            { text: '⚙️ 操作系统笔记', link: '/concise/operating-system/' },
+            { text: '🌐 计网笔记', link: '/concise/computer-network/' }
           ]
         }
       ]

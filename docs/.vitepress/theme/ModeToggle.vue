@@ -5,11 +5,11 @@
       :class="{ 'is-concise': isConcise }"
       type="button" 
       @click="toggleMode"
-      :title="isConcise ? '当前为简洁模式，点击切换至完整交互模式' : '当前为完整模式，点击切换至纯文本简洁速查模式'"
+      :title="isConcise ? '当前为笔记模式（手写提炼考点），点击切换至完整模式' : '当前为完整模式，点击切换至笔记模式'"
     >
-      <span class="mode-icon">{{ isConcise ? '📖' : '⚡' }}</span>
-      <span class="mode-text">{{ isConcise ? '简洁模式' : '完整模式' }}</span>
-      <span class="mode-switch-hint">{{ isConcise ? '切至完整' : '切至简洁' }}</span>
+      <span class="mode-icon">{{ isConcise ? '📖' : '📚' }}</span>
+      <span class="mode-text">{{ isConcise ? '笔记模式' : '完整模式' }}</span>
+      <span class="mode-switch-hint">{{ isConcise ? '切至完整' : '切至笔记' }}</span>
     </button>
   </div>
 </template>
