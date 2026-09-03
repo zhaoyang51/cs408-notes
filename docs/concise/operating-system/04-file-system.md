@@ -41,6 +41,82 @@
 * **索引分配**：
   * 系统为每个文件分配一个专用的**索引块**，存放该文件所有数据块的物理块号指针。
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 显式链接 FAT (文件分配表) 目录与内存指针链检索全景</span>
+    <span class="diagram-badge">P46 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 200" width="100%" height="200">
+    <g transform="translate(15, 12)">
+      <!-- 1. 目录项 FCB (左侧) -->
+      <g transform="translate(10, 30)">
+        <rect x="0" y="0" width="140" height="90" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="6"/>
+        <text x="70" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">文件目录项 (FCB)</text>
+        <line x1="8" y1="30" x2="132" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="14" y="52" fill="var(--vp-c-text-2)" font-size="11">文件名: </text>
+        <text x="62" y="52" fill="#2563eb" font-size="11" font-weight="700">file.txt</text>
+        <text x="14" y="75" fill="var(--vp-c-text-2)" font-size="11">起始块号: </text>
+        <text x="70" y="75" fill="#10b981" font-size="12" font-weight="800">2</text>
+      </g>
+      <!-- 指针从目录项指向 FAT 表块 2 -->
+      <path d="M 150 105 C 190 105, 190 65, 230 65" fill="none" stroke="#10b981" stroke-width="2.2" marker-end="url(#arrow-green)"/>
+      <!-- 2. 内存 FAT 表 (中间) -->
+      <g transform="translate(230, 10)">
+        <rect x="0" y="0" width="180" height="165" fill="rgba(37,99,235,0.06)" stroke="#2563eb" stroke-width="2" rx="6"/>
+        <text x="90" y="20" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="800">常驻内存 FAT 表</text>
+        <!-- 表头 -->
+        <rect x="10" y="28" width="80" height="22" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="50" y="43" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10" font-weight="700">物理盘块号</text>
+        <rect x="90" y="28" width="80" height="22" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="130" y="43" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10" font-weight="700">下一块指针</text>
+        <!-- 行 0 -->
+        <rect x="10" y="50" width="80" height="22" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="50" y="65" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">0</text>
+        <rect x="90" y="50" width="80" height="22" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="130" y="65" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">-</text>
+        <!-- 行 2 (起始) -->
+        <rect x="10" y="72" width="80" height="22" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+        <text x="50" y="87" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">2 (首块)</text>
+        <rect x="90" y="72" width="80" height="22" fill="rgba(16,185,129,0.15)" stroke="#10b981"/>
+        <text x="130" y="87" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">5 ➔</text>
+        <!-- 行 5 (次块) -->
+        <rect x="10" y="94" width="80" height="22" fill="rgba(37,99,235,0.15)" stroke="#2563eb"/>
+        <text x="50" y="109" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">5</text>
+        <rect x="90" y="94" width="80" height="22" fill="rgba(37,99,235,0.15)" stroke="#2563eb"/>
+        <text x="130" y="109" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">9 ➔</text>
+        <!-- 行 9 (尾块) -->
+        <rect x="10" y="116" width="80" height="22" fill="rgba(239,68,68,0.15)" stroke="#ef4444"/>
+        <text x="50" y="131" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">9</text>
+        <rect x="90" y="116" width="80" height="22" fill="rgba(239,68,68,0.15)" stroke="#ef4444"/>
+        <text x="130" y="131" text-anchor="middle" fill="#ef4444" font-size="10.5" font-weight="800">-1 (EOF)</text>
+      </g>
+      <!-- 3. 外存实际物理盘块 (右侧) -->
+      <g transform="translate(450, 20)">
+        <text x="80" y="15" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11" font-weight="700">外存对应物理盘块</text>
+        <rect x="10" y="30" width="140" height="26" fill="rgba(16,185,129,0.15)" stroke="#10b981" rx="4"/>
+        <text x="80" y="47" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">磁盘块 2 [数据 1]</text>
+        <rect x="10" y="65" width="140" height="26" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="4"/>
+        <text x="80" y="82" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">磁盘块 5 [数据 2]</text>
+        <rect x="10" y="100" width="140" height="26" fill="rgba(239,68,68,0.15)" stroke="#ef4444" rx="4"/>
+        <text x="80" y="117" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">磁盘块 9 [数据 3·完]</text>
+      </g>
+      <!-- 408 核心速记总结卡 -->
+      <g transform="translate(615, 15)">
+        <rect x="0" y="0" width="90" height="155" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="6"/>
+        <text x="45" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="700">FAT 考点</text>
+        <line x1="5" y1="26" x2="85" y2="26" stroke="var(--vp-c-divider)"/>
+        <text x="5" y="44" fill="#10b981" font-size="9.5" font-weight="700">常驻内存</text>
+        <text x="5" y="60" fill="var(--vp-c-text-2)" font-size="9">极速查表</text>
+        <text x="5" y="82" fill="#2563eb" font-size="9.5" font-weight="700">随机存取</text>
+        <text x="5" y="98" fill="var(--vp-c-text-2)" font-size="9">无需读盘</text>
+        <text x="5" y="120" fill="#ef4444" font-size="9.5" font-weight="700">无外部碎片</text>
+        <text x="5" y="136" fill="var(--vp-c-text-2)" font-size="9">离散成链</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ## 🧮 经典综合大题：多级混合索引容量推导
@@ -68,6 +144,75 @@
 4. **计算最大文件长度**：
    $$\text{Max Size} = (4 + 128 + 2^{12}) \times 256\text{ B} = (4 + 128 + 2^{12}) \times 2^8\text{ B}$$
    $$= (1 + 32 + 2^{10}) \times 2^{10}\text{ B} = (1024 + 33)\text{ KB} = \mathbf{1057\text{ KB}}$$
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · Unix 经典多级混合索引结构与 1057KB 容量展开树</span>
+    <span class="diagram-badge">P47 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 12)">
+      <!-- 1. i-node 索引节点 (左侧) -->
+      <g transform="translate(10, 0)">
+        <rect x="0" y="0" width="130" height="195" fill="rgba(37,99,235,0.06)" stroke="#2563eb" stroke-width="2" rx="6"/>
+        <text x="65" y="20" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="800">i-node (7个地址项)</text>
+        <!-- 直接索引项 0~3 -->
+        <rect x="10" y="30" width="110" height="42" fill="rgba(16,185,129,0.15)" stroke="#10b981" rx="4"/>
+        <text x="65" y="47" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="700">4项 直接索引</text>
+        <text x="65" y="62" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9.5">[0] ~ [3]</text>
+        <!-- 一级间接项 4, 5 -->
+        <rect x="10" y="80" width="110" height="42" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="4"/>
+        <text x="65" y="97" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="700">2项 一级间接</text>
+        <text x="65" y="112" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9.5">[4], [5]</text>
+        <!-- 二级间接项 6 -->
+        <rect x="10" y="130" width="110" height="42" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="4"/>
+        <text x="65" y="147" text-anchor="middle" fill="#f59e0b" font-size="10.5" font-weight="700">1项 二级间接</text>
+        <text x="65" y="162" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="9.5">[6]</text>
+      </g>
+      <!-- 2. 中间树形展开与间接块 -->
+      <g transform="translate(150, 0)">
+        <!-- 直接索引直连数据块 (绿色) -->
+        <path d="M 0 50 L 150 50" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <!-- 一级间址指向 2 个一级索引块 -->
+        <path d="M 0 100 L 40 100" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <rect x="45" y="85" width="80" height="30" fill="var(--vp-c-bg-alt)" stroke="#2563eb" rx="4"/>
+        <text x="85" y="104" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">2个一级块</text>
+        <path d="M 125 100 L 150 100" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+        <!-- 二级间址指向 1 个二级块 -> 64个一级块 -->
+        <path d="M 0 150 L 25 150" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)"/>
+        <rect x="30" y="135" width="45" height="30" fill="var(--vp-c-bg-alt)" stroke="#f59e0b" rx="3"/>
+        <text x="52" y="154" text-anchor="middle" fill="#f59e0b" font-size="9.5" font-weight="700">二级块</text>
+        <path d="M 75 150 L 95 150" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+        <rect x="100" y="135" width="60" height="30" fill="var(--vp-c-bg-alt)" stroke="#f59e0b" rx="3"/>
+        <text x="130" y="154" text-anchor="middle" fill="#f59e0b" font-size="9.5">64一级块</text>
+        <path d="M 160 150 L 180 150" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+      </g>
+      <!-- 3. 数据块分布汇总 (右中) -->
+      <g transform="translate(340, 10)">
+        <rect x="0" y="25" width="160" height="30" fill="rgba(16,185,129,0.15)" stroke="#10b981" rx="4"/>
+        <text x="80" y="44" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">4 块 = 1 KB (1次访盘)</text>
+        <rect x="0" y="75" width="160" height="30" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="4"/>
+        <text x="80" y="94" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">128 块 = 32 KB (2次访盘)</text>
+        <rect x="0" y="125" width="160" height="30" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="4"/>
+        <text x="80" y="144" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">4096 块 = 1024 KB (3次访盘)</text>
+      </g>
+      <!-- 4. 汇总大题推论卡 (极右侧) -->
+      <g transform="translate(520, 10)">
+        <rect x="0" y="0" width="170" height="175" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="85" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 容量推导极值</text>
+        <line x1="8" y1="30" x2="162" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="52" fill="var(--vp-c-text-2)" font-size="10.5">总数据块数：</text>
+        <text x="10" y="70" fill="#2563eb" font-size="11" font-weight="700">4 + 128 + 4096 = 4228 块</text>
+        <line x1="8" y1="85" x2="162" y2="85" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="105" fill="var(--vp-c-text-2)" font-size="10.5">最大文件总容量：</text>
+        <text x="10" y="126" fill="#10b981" font-size="13" font-weight="900">1057 KB</text>
+        <text x="10" y="144" fill="var(--vp-c-text-3)" font-size="10">(1 + 32 + 1024 KB)</text>
+        <text x="10" y="162" fill="#ef4444" font-size="10" font-weight="700">小文件快 / 大文件巨！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 
@@ -131,5 +276,101 @@ $$\text{低级格式化（物理格式化）} \longrightarrow \text{磁盘物理
 * 💡 **磁盘物理地址设计**：
   $$\mathbf{[ \text{柱面号 (Cylinder)} \mid \text{盘面号 / 磁头号 (Head)} \mid \text{扇区号 (Sector)} ]}$$
   * 为什么柱面号在最高位？为了让磁头在读写大量连续数据时**无需频繁径向移动机械臂进行机械寻道**，充分利用各盘面同心柱面的磁头并行切换！
+
+---
+
+## 🎯 磁盘调度算法与磁头移动轨迹
+
+### ❓ 四大磁头寻道调度轨迹对比 (SCAN / C-SCAN / LOOK / C-LOOK)
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 四大磁头寻道算法移动轨迹与边界折返辨析</span>
+    <span class="diagram-badge">P48 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 250" width="100%" height="250">
+    <g transform="translate(15, 12)">
+      <!-- 磁道刻度横轴 (0 ~ 200) -->
+      <g transform="translate(80, 0)">
+        <line x1="0" y1="20" x2="420" y2="20" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <!-- 刻度点 -->
+        <text x="0" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">0(最内)</text>
+        <line x1="0" y1="18" x2="0" y2="24" stroke="var(--vp-c-divider)"/>
+        <text x="75" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">36</text>
+        <line x1="75" y1="18" x2="75" y2="24" stroke="var(--vp-c-divider)"/>
+        <text x="210" y="14" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="700">100(当前)</text>
+        <line x1="210" y1="18" x2="210" y2="24" stroke="#2563eb" stroke-width="2"/>
+        <text x="360" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">170</text>
+        <line x1="360" y1="18" x2="360" y2="24" stroke="var(--vp-c-divider)"/>
+        <text x="420" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">200(最外)</text>
+        <line x1="420" y1="18" x2="420" y2="24" stroke="var(--vp-c-divider)"/>
+      </g>
+      <!-- 轨迹 1: SCAN (电梯算法: 扫到最外边界 200 才折返) -->
+      <g transform="translate(0, 35)">
+        <text x="70" y="20" text-anchor="end" fill="#2563eb" font-size="11" font-weight="800">SCAN (电梯)</text>
+        <g transform="translate(80, 0)">
+          <!-- 100 -> 200 -> 36 -->
+          <polyline points="210,12 420,12 75,26" fill="none" stroke="#2563eb" stroke-width="2.2"/>
+          <circle cx="210" cy="12" r="3.5" fill="#2563eb"/>
+          <circle cx="420" cy="12" r="4" fill="#ef4444"/>
+          <circle cx="75" cy="26" r="3.5" fill="#2563eb"/>
+          <text x="425" y="15" fill="#ef4444" font-size="9.5" font-weight="700">触及物理端点 200</text>
+        </g>
+      </g>
+      <!-- 轨迹 2: LOOK (只扫到最大请求 170 即刻掉头) -->
+      <g transform="translate(0, 80)">
+        <text x="70" y="20" text-anchor="end" fill="#10b981" font-size="11" font-weight="800">LOOK (看路)</text>
+        <g transform="translate(80, 0)">
+          <!-- 100 -> 170 -> 36 -->
+          <polyline points="210,12 360,12 75,26" fill="none" stroke="#10b981" stroke-width="2.2"/>
+          <circle cx="210" cy="12" r="3.5" fill="#10b981"/>
+          <circle cx="360" cy="12" r="4" fill="#10b981"/>
+          <circle cx="75" cy="26" r="3.5" fill="#10b981"/>
+          <text x="368" y="15" fill="#10b981" font-size="9.5" font-weight="700">最大请求 170 即掉头(不碰边界)</text>
+        </g>
+      </g>
+      <!-- 轨迹 3: C-SCAN (单向循环: 到 200 极速返回 0，返回不服务) -->
+      <g transform="translate(0, 125)">
+        <text x="70" y="20" text-anchor="end" fill="#f59e0b" font-size="11" font-weight="800">C-SCAN (单向)</text>
+        <g transform="translate(80, 0)">
+          <!-- 100 -> 200 ... 0 -> 75 -->
+          <polyline points="210,12 420,12" fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+          <line x1="420" y1="12" x2="0" y2="24" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="3,3"/>
+          <polyline points="0,24 75,24" fill="none" stroke="#f59e0b" stroke-width="2.2"/>
+          <circle cx="420" cy="12" r="4" fill="#ef4444"/>
+          <circle cx="0" cy="24" r="4" fill="#ef4444"/>
+          <text x="210" y="32" text-anchor="middle" fill="#f59e0b" font-size="9.5">虚线极速返回(途中不服务)</text>
+        </g>
+      </g>
+      <!-- 轨迹 4: C-LOOK (单向循环看路: 170 直接跳回 36) -->
+      <g transform="translate(0, 170)">
+        <text x="70" y="20" text-anchor="end" fill="#7c3aed" font-size="11" font-weight="800">C-LOOK (优选)</text>
+        <g transform="translate(80, 0)">
+          <!-- 100 -> 170 ... 36 -->
+          <polyline points="210,12 360,12" fill="none" stroke="#7c3aed" stroke-width="2.2"/>
+          <line x1="360" y1="12" x2="75" y2="24" stroke="#7c3aed" stroke-width="1.8" stroke-dasharray="3,3"/>
+          <circle cx="360" cy="12" r="3.5" fill="#7c3aed"/>
+          <circle cx="75" cy="24" r="3.5" fill="#7c3aed"/>
+          <text x="210" y="32" text-anchor="middle" fill="#7c3aed" font-size="9.5">从最大请求直接回跳最小请求</text>
+        </g>
+      </g>
+      <!-- 右侧对比总结卡 -->
+      <g transform="translate(540, 20)">
+        <rect x="0" y="0" width="150" height="195" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="75" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">408 核心命题辨析</text>
+        <line x1="8" y1="30" x2="142" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="50" fill="#2563eb" font-size="10.5" font-weight="700">SCAN vs LOOK：</text>
+        <text x="10" y="67" fill="var(--vp-c-text-2)" font-size="10">SCAN 必达终点端点；</text>
+        <text x="10" y="82" fill="var(--vp-c-text-2)" font-size="10">LOOK 只到最远请求。</text>
+        <line x1="8" y1="95" x2="142" y2="95" stroke="var(--vp-c-divider)"/>
+        <text x="10" y="115" fill="#f59e0b" font-size="10.5" font-weight="700">C- 前缀含义：</text>
+        <text x="10" y="132" fill="var(--vp-c-text-2)" font-size="10">单向扫（Circular），</text>
+        <text x="10" y="147" fill="var(--vp-c-text-2)" font-size="10">返回途上一律不服务，</text>
+        <text x="10" y="162" fill="var(--vp-c-text-2)" font-size="10">各磁道响应极度均匀！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 

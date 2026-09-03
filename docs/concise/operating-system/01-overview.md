@@ -77,22 +77,66 @@ $$\text{传递参数} \longrightarrow \text{执行陷入指令 (Trap)} \longrigh
 
 ### ❓ 32 位系统进程虚拟内存布局图
 
-```
- 0xFFFFFFFF +---------------------------+ 高地址
-            |         内核空间          | (1 GB, 0xC0000000 ~ 0xFFFFFFFF)
-            |      (所有进程共享)       |  用户代码无法直接访问
- 0xC0000000 +---------------------------+
-            |      用户栈 (Stack)       | ◀── 由高向低 向下动态增长 (局部变量、函数调用栈)
-            |             ↓             |
-            |     动态链接共享库映射    | (mmap 区域)
-            |             ↑             |
-            |      用户堆 (Heap)        | ◀── 由低向高 向上动态增长 (malloc / new)
-            +---------------------------+
-            |  未初始化数据段 (.bss)    |
-            |   初始化数据段 (.data)    |
-            |     代码段 (.text)        | (只读代码机器指令)
- 0x00000000 +---------------------------+ 低地址
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 32 位 Linux 进程虚拟地址空间映像结构</span>
+    <span class="diagram-badge">P39 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 280" width="100%" height="280">
+    <g transform="translate(15, 12)">
+      <!-- 虚拟内存主地址塔柱 -->
+      <g transform="translate(120, 0)">
+        <!-- 1. 内核空间 (1GB: 0xC0000000 ~ 0xFFFFFFFF) -->
+        <rect x="0" y="0" width="280" height="50" fill="rgba(239,68,68,0.18)" stroke="#ef4444" stroke-width="2" rx="4"/>
+        <text x="140" y="22" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="800">内核虚拟内存空间 (1 GB)</text>
+        <text x="140" y="38" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">0xC0000000 ~ 0xFFFFFFFF (所有进程共享，内核态专享)</text>
+        <text x="-10" y="10" text-anchor="end" fill="var(--vp-c-text-3)" font-size="10.5">0xFFFFFFFF (高位)</text>
+        <text x="-10" y="52" text-anchor="end" fill="#ef4444" font-size="10.5" font-weight="700">0xC0000000</text>
+        <!-- 2. 用户栈 (Stack) 向下增长 -->
+        <rect x="0" y="55" width="280" height="36" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="1.8" rx="3"/>
+        <text x="140" y="73" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="700">用户栈 (Stack) 局部变量、函数调用</text>
+        <path d="M 140 78 L 140 88" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="290" y="73" fill="#2563eb" font-size="10" font-weight="600">由高到低 ↓ 动态增长</text>
+        <!-- 3. 动态库共享映射区 (mmap) -->
+        <rect x="0" y="94" width="280" height="28" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" stroke-dasharray="3,3"/>
+        <text x="140" y="112" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10.5">共享库映射区 (mmap / 动态链接库)</text>
+        <!-- 4. 用户堆 (Heap) 向上增长 -->
+        <rect x="0" y="125" width="280" height="36" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="1.8" rx="3"/>
+        <path d="M 140 148 L 140 138" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="140" y="152" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="700">用户堆 (Heap) malloc / new</text>
+        <text x="290" y="146" fill="#10b981" font-size="10" font-weight="600">由低到高 ↑ 动态增长</text>
+        <!-- 5. 未初始化数据段 .bss -->
+        <rect x="0" y="164" width="280" height="25" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="140" y="181" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">未初始化数据段 (.bss) 运行时清零</text>
+        <!-- 6. 已初始化数据段 .data -->
+        <rect x="0" y="189" width="280" height="25" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="140" y="206" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">已初始化全局数据段 (.data)</text>
+        <!-- 7. 代码段 .text -->
+        <rect x="0" y="214" width="280" height="36" fill="rgba(37,99,235,0.08)" stroke="#2563eb" stroke-width="1.8" rx="3"/>
+        <text x="140" y="234" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="700">只读代码段 (.text) 机器指令</text>
+        <text x="-10" y="246" text-anchor="end" fill="var(--vp-c-text-3)" font-size="10.5">0x00000000 (低位)</text>
+      </g>
+      <!-- 右侧：考点辨析卡片 -->
+      <g transform="translate(480, 10)">
+        <rect x="0" y="0" width="210" height="240" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="105" y="24" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">408 核心考点辨析</text>
+        <line x1="10" y1="34" x2="200" y2="34" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="55" fill="#ef4444" font-size="11" font-weight="700">3:1 空间切分准则：</text>
+        <text x="12" y="73" fill="var(--vp-c-text-2)" font-size="10.5">32 位系统共 4GB 空间：</text>
+        <text x="12" y="90" fill="var(--vp-c-text-2)" font-size="10.5">低位 3GB 归用户独享；</text>
+        <text x="12" y="107" fill="var(--vp-c-text-2)" font-size="10.5">高位 1GB 归内核统一映射。</text>
+        <line x1="10" y1="120" x2="200" y2="120" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="140" fill="#2563eb" font-size="11" font-weight="700">栈与堆增长方向相对：</text>
+        <text x="12" y="158" fill="var(--vp-c-text-2)" font-size="10">栈由高地址向低地址扩展；</text>
+        <text x="12" y="174" fill="var(--vp-c-text-2)" font-size="10">堆由低地址向高地址扩展；</text>
+        <text x="12" y="190" fill="var(--vp-c-text-2)" font-size="10">相向而生，中间空隙给共享库。</text>
+        <line x1="10" y1="202" x2="200" y2="202" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="222" fill="#10b981" font-size="10" font-weight="700">段保护：只读代码段防篡改</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 
