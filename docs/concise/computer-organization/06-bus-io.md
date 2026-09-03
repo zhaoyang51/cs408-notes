@@ -62,32 +62,73 @@ CPU 向外设发出的**控制字（命令字）**，在物理硬件上同样是
 
 ### ❓ 中断处理全过程（硬件隐指令 vs 软件中断服务程序）
 
-```
-[设备发出中断请求 INTR]
-         │
-         ▼
-[CPU 在每条指令执行周期的末尾检测中断]
-         │
-         ▼ (若允许中断且满足条件)
-┌──────────────────────────────────────────────┐
-│ 硬件执行阶段 (中断隐指令，非软件指令)         │
-│  1. 关中断 (IF = 0，禁止新的更高/同级中断)     │
-│  2. 保存断点 (将 PC 和 PSW 压入系统堆栈)       │
-│  3. 引出中断服务程序 (硬件向量寻址送入口至 PC)  │
-└──────────────────────────────────────────────┘
-         │
-         ▼
-┌──────────────────────────────────────────────┐
-│ 软件执行阶段 (中断服务程序具体代码)           │
-│  4. 保存现场 (通用寄存器内容压栈) & 修改屏蔽字 │
-│  5. 开中断 (允许更高优先级中断打断，支持嵌套)  │
-│  6. 执行中断服务程序主体 (处理外设事件)       │
-│  7. 关中断                                   │
-│  8. 恢复现场 (通用寄存器出栈) & 还原屏蔽字     │
-│  9. 开中断                                   │
-│ 10. 中断返回指令 (IRET，弹出原 PC 和 PSW)     │
-└──────────────────────────────────────────────┘
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 中断响应与处理 7 步全流程（硬件隐指令 vs 软件服务）</span>
+    <span class="diagram-badge">P35 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 230" width="100%" height="230">
+    <g transform="translate(15, 12)">
+      <!-- 硬件隐指令区域 (黄色卡片) -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="320" height="205" fill="rgba(245,158,11,0.06)" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="4,4" rx="8"/>
+        <text x="160" y="22" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="800">⚡ 硬件阶段 (中断隐指令 · 纯硬件动作)</text>
+        <!-- 硬件步骤 1 -->
+        <g transform="translate(20, 38)">
+          <rect x="0" y="0" width="280" height="36" fill="rgba(239,68,68,0.12)" stroke="#ef4444" rx="4"/>
+          <text x="14" y="22" fill="#ef4444" font-size="11" font-weight="800">1. 关中断 (IF = 0)</text>
+          <text x="150" y="22" fill="var(--vp-c-text-2)" font-size="10">禁止新的中断进入</text>
+        </g>
+        <path d="M 160 74 L 160 90" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)"/>
+        <!-- 硬件步骤 2 -->
+        <g transform="translate(20, 90)">
+          <rect x="0" y="0" width="280" height="36" fill="rgba(37,99,235,0.12)" stroke="#2563eb" rx="4"/>
+          <text x="14" y="22" fill="#2563eb" font-size="11" font-weight="800">2. 保存断点 (PC/PSW 压栈)</text>
+          <text x="180" y="22" fill="var(--vp-c-text-2)" font-size="10">压入系统内核栈</text>
+        </g>
+        <path d="M 160 126 L 160 142" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)"/>
+        <!-- 硬件步骤 3 -->
+        <g transform="translate(20, 142)">
+          <rect x="0" y="0" width="280" height="36" fill="rgba(16,185,129,0.12)" stroke="#10b981" rx="4"/>
+          <text x="14" y="22" fill="#10b981" font-size="11" font-weight="800">3. 引出中断服务程序</text>
+          <text x="155" y="22" fill="var(--vp-c-text-2)" font-size="10">向量寻址送入口PC</text>
+        </g>
+      </g>
+      <!-- 硬件到软件交接箭头 -->
+      <path d="M 320 160 L 365 160 L 365 56 L 380 56" fill="none" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-blue)"/>
+      <text x="350" y="105" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="700" transform="rotate(-90 350 105)">转软件服务</text>
+      <!-- 软件中断服务程序 (蓝色卡片) -->
+      <g transform="translate(370, 0)">
+        <rect x="0" y="0" width="320" height="205" fill="rgba(37,99,235,0.06)" stroke="#2563eb" stroke-width="1.8" rx="8"/>
+        <text x="160" y="22" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">💻 软件阶段 (中断服务程序 · 指令序列)</text>
+        <!-- 软件步骤 4 & 5 -->
+        <g transform="translate(20, 36)">
+          <rect x="0" y="0" width="280" height="32" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="4"/>
+          <text x="12" y="20" fill="var(--vp-c-text-1)" font-size="10.5" font-weight="700">4. 保存现场(寄存器压栈) &amp; 5. 开中断</text>
+        </g>
+        <path d="M 160 68 L 160 82" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+        <!-- 软件步骤 6 主体 -->
+        <g transform="translate(20, 82)">
+          <rect x="0" y="0" width="280" height="36" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" rx="4"/>
+          <text x="140" y="22" text-anchor="middle" fill="#10b981" font-size="11.5" font-weight="800">6. 执行中断服务程序主体 (数据传输)</text>
+        </g>
+        <path d="M 160 118 L 160 132" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+        <!-- 软件步骤 7, 8, 9, 10 恢复与返回 -->
+        <g transform="translate(20, 132)">
+          <rect x="0" y="0" width="280" height="50" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="4"/>
+          <text x="12" y="20" fill="var(--vp-c-text-1)" font-size="10.5">7. 关中断 ➔ 8. 恢复现场并还原屏蔽字</text>
+          <text x="12" y="38" fill="#2563eb" font-size="10.5" font-weight="700">9. 开中断 ➔ 10. 中断返回指令 (IRET)</text>
+        </g>
+      </g>
+    </g>
+    <defs>
+      <marker id="arrow-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
 
 ---
 
@@ -112,15 +153,79 @@ CPU 向外设发出的**控制字（命令字）**，在物理硬件上同样是
 * **C（处理优先级第3）**：屏蔽自己及 B，允许 A, D 打断 $\to$ `0 1 1 0`
 * **B（处理优先级最低）**：仅屏蔽自己，允许 A, D, C 打断 $\to$ `0 1 0 0`
 
-#### 2. 中断嵌套执行时间轴推演
-```
-处理层级
-  D                ┌───────┐
-  C                │       │   ┌───────┐
-  B        ┌───────┘       └───┘       └───────┐
-  A ┌──────┘                                   │
-────┴──────────────────────────────────────────┴────> 时间轴
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 多重中断嵌套阶梯时序图与屏蔽字映射推演</span>
+    <span class="diagram-badge">P36 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 12)">
+      <!-- 左侧：中断嵌套时序执行轨迹 (阶梯图) -->
+      <g transform="translate(0, 0)">
+        <!-- Y 轴层级标线 -->
+        <text x="35" y="45" text-anchor="end" fill="#ef4444" font-size="11.5" font-weight="800">D 层</text>
+        <line x1="45" y1="40" x2="430" y2="40" stroke="var(--vp-c-divider)" stroke-dasharray="2,2"/>
+        <text x="35" y="80" text-anchor="end" fill="#f59e0b" font-size="11.5" font-weight="800">C 层</text>
+        <line x1="45" y1="75" x2="430" y2="75" stroke="var(--vp-c-divider)" stroke-dasharray="2,2"/>
+        <text x="35" y="115" text-anchor="end" fill="#2563eb" font-size="11.5" font-weight="800">B 层</text>
+        <line x1="45" y1="110" x2="430" y2="110" stroke="var(--vp-c-divider)" stroke-dasharray="2,2"/>
+        <text x="35" y="150" text-anchor="end" fill="#10b981" font-size="11.5" font-weight="800">A 层</text>
+        <line x1="45" y1="145" x2="430" y2="145" stroke="var(--vp-c-divider)" stroke-dasharray="2,2"/>
+        <text x="35" y="185" text-anchor="end" fill="var(--vp-c-text-3)" font-size="11">主程序</text>
+        <line x1="45" y1="180" x2="430" y2="180" stroke="var(--vp-c-text-2)" stroke-width="1.8"/>
+        <!-- 时间轴轨迹 Path -->
+        <!-- 主程序 -> A -->
+        <line x1="45" y1="180" x2="65" y2="180" stroke="var(--vp-c-text-1)" stroke-width="2.5"/>
+        <line x1="65" y1="180" x2="65" y2="145" stroke="#10b981" stroke-width="2.5"/>
+        <!-- A 执行 -->
+        <rect x="65" y="132" width="60" height="24" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" rx="3"/>
+        <text x="95" y="148" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">A 执行</text>
+        <!-- A 结束 -> 返回主程序 -> B 响应 -->
+        <line x1="125" y1="145" x2="125" y2="180" stroke="#10b981" stroke-width="2"/>
+        <line x1="125" y1="180" x2="145" y2="180" stroke="var(--vp-c-text-1)" stroke-width="2"/>
+        <line x1="145" y1="180" x2="145" y2="110" stroke="#2563eb" stroke-width="2.5"/>
+        <!-- B 执行前半段 -->
+        <rect x="145" y="98" width="50" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="3"/>
+        <text x="170" y="114" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">B 响应</text>
+        <!-- D 打断 B (阶梯上升到 D) -->
+        <line x1="195" y1="110" x2="195" y2="40" stroke="#ef4444" stroke-width="2.5"/>
+        <rect x="195" y="28" width="65" height="24" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2" rx="3"/>
+        <text x="227" y="44" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="800">D 抢占(高)</text>
+        <!-- D 结束 -> 恢复 B -->
+        <line x1="260" y1="40" x2="260" y2="110" stroke="#ef4444" stroke-width="2"/>
+        <rect x="260" y="98" width="30" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+        <text x="275" y="114" text-anchor="middle" fill="#2563eb" font-size="10">B</text>
+        <!-- C 再次打断 B (阶梯上升到 C) -->
+        <line x1="290" y1="110" x2="290" y2="75" stroke="#f59e0b" stroke-width="2.5"/>
+        <rect x="290" y="63" width="65" height="24" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" stroke-width="2" rx="3"/>
+        <text x="322" y="79" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="800">C 抢占(中)</text>
+        <!-- C 结束 -> 恢复 B -->
+        <line x1="355" y1="75" x2="355" y2="110" stroke="#f59e0b" stroke-width="2"/>
+        <rect x="355" y="98" width="45" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="3"/>
+        <text x="377" y="114" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="700">B 收尾</text>
+        <!-- B 结束 -> 返回主程序 -->
+        <line x1="400" y1="110" x2="400" y2="180" stroke="#2563eb" stroke-width="2"/>
+        <line x1="400" y1="180" x2="435" y2="180" stroke="var(--vp-c-text-1)" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+        <text x="435" y="195" fill="var(--vp-c-text-3)" font-size="10.5">时间 t ➔</text>
+      </g>
+      <!-- 右侧：屏蔽字映射与命题精要 -->
+      <g transform="translate(460, 15)">
+        <rect x="0" y="0" width="230" height="175" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="115" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">屏蔽字与优先级映射表</text>
+        <line x1="10" y1="28" x2="220" y2="28" stroke="var(--vp-c-divider)"/>
+        <text x="15" y="48" fill="#10b981" font-size="11" font-weight="700">A (最高处理): 1 1 1 1</text>
+        <text x="15" y="68" fill="#ef4444" font-size="11" font-weight="700">D (次高处理): 0 1 1 1</text>
+        <text x="15" y="88" fill="#f59e0b" font-size="11" font-weight="700">C (第3处理):  0 1 1 0</text>
+        <text x="15" y="108" fill="#2563eb" font-size="11" font-weight="700">B (最低处理): 0 1 0 0</text>
+        <line x1="10" y1="120" x2="220" y2="120" stroke="var(--vp-c-divider)"/>
+        <text x="15" y="140" fill="var(--vp-c-text-1)" font-size="10.5" font-weight="700">💡 408 秒杀口诀：</text>
+        <text x="15" y="156" fill="var(--vp-c-text-2)" font-size="10">处理优先级越高，屏蔽字中“1”越多！</text>
+        <text x="15" y="168" fill="var(--vp-c-text-2)" font-size="10">响应排队看硬件，嵌套打断看屏蔽！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 1. 硬件首先响应优先级最高的 **A**，A 屏蔽所有，顺利执行完毕返回；
 2. 硬件接着响应就绪队列中硬件优先级最高的 **B**；
 3. B 保存现场开中断后，就绪的 **D** 因处理优先级高于 B，**立即打断 B 发生嵌套**；

@@ -84,55 +84,98 @@ $$\text{平均存取时间} = \text{寻道时间 (磁头移到指定磁道)} + \
 
 ### ❓ 核心必背大题：TLB、页表与 Cache 协同访存全流程
 
-```
-                     虚拟地址 (VA)
-                          │
-                          ▼
-                   [查询快表 TLB]
-                    /          \
-            (命中) /            \ (未命中)
-                  /              ▼
-                 │        [查询内存慢表 (页表)]
-                 │         /                \
-                 │ (命中) /                  \ (缺页未命中)
-                 │       │                    ▼
-                 │       │              [触发缺页异常中断]
-                 │       │                    │
-                 │       │             [检查主存有无空闲页框]
-                 │       │              /                \
-                 │       │       (无)  /                  \ (有)
-                 │       │            ▼                    │
-                 │       │     [页面置换算法淘汰]          │
-                 │       │            │                    │
-                 │       │            └─────────┬──────────┘
-                 │       │                      ▼
-                 │       │                 [从磁盘调入页面]
-                 │       │                      │
-                 │       ▼                      ▼
-                 │    [更新快表 TLB] <────── [更新页表与 TLB]
-                 │       │
-                 ▼       ▼
-               转换得到物理地址 (PA)
-                     │
-                     ▼
-              [查询高速缓存 Cache]
-               /                \
-       (命中) /                  \ (未命中)
-             ▼                    ▼
-        [从 Cache 取数]     [检查 Cache 行是否已满]
-             │               /                \
-             │        (已满)/                  \(未满)
-             │             ▼                    │
-             │     [执行 Cache 替换策略]        │
-             │             │                    │
-             │             └─────────┬──────────┘
-             │                       ▼
-             │                [从主存块调入 Cache]
-             │                       │
-             └───────────────┬───────┘
-                             ▼
-                    将数据交付 CPU 寄存器
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · TLB + 页表 + Cache 三级联动协同访存全流程状态机</span>
+    <span class="diagram-badge">P27 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 320" width="100%" height="320">
+    <g transform="translate(15, 12)">
+      <!-- 1. 虚地址 VA 输入 -->
+      <g transform="translate(140, 0)">
+        <rect x="0" y="0" width="190" height="30" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="50" y="19" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="700">虚拟页号 VPN</text>
+        <line x1="100" y1="0" x2="100" y2="30" stroke="var(--vp-c-divider)"/>
+        <text x="145" y="19" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11.5">页内偏移</text>
+        <text x="95" y="-6" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="800">CPU 虚拟地址 (VA)</text>
+      </g>
+      <line x1="190" y1="30" x2="190" y2="55" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <!-- 2. 查询快表 TLB -->
+      <g transform="translate(110, 55)">
+        <polygon points="80,0 160,20 80,40 0,20" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="2"/>
+        <text x="80" y="24" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">查询 TLB 快表</text>
+      </g>
+      <!-- TLB 命中分支 (左直通) -->
+      <path d="M 110 75 L 45 75 L 45 200 L 125 200" fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+      <text x="35" y="135" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800" transform="rotate(-90 35 135)">TLB 命中 (极速)</text>
+      <!-- TLB 未命中 -> 查页表 (向下) -->
+      <line x1="190" y1="95" x2="190" y2="120" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <text x="210" y="112" fill="#ef4444" font-size="10.5" font-weight="700">TLB 缺失</text>
+      <!-- 3. 查慢表 (页表) -->
+      <g transform="translate(110, 120)">
+        <polygon points="80,0 160,20 80,40 0,20" fill="rgba(245,158,11,0.12)" stroke="#f59e0b" stroke-width="2"/>
+        <text x="80" y="24" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="800">查询主存页表</text>
+      </g>
+      <!-- 页表命中 -> 更新 TLB 并到 PA -->
+      <line x1="190" y1="160" x2="190" y2="185" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+      <text x="200" y="176" fill="#10b981" font-size="10.5" font-weight="700">在主存中(命中)</text>
+      <!-- 页表缺页 -> 中断处理 -->
+      <line x1="270" y1="140" x2="330" y2="140" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <text x="300" y="132" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700">缺页!</text>
+      <g transform="translate(335, 125)">
+        <rect x="0" y="0" width="130" height="32" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.8" rx="4"/>
+        <text x="65" y="20" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">🚨 触发缺页异常中断</text>
+      </g>
+      <!-- 缺页处理流程 -->
+      <path d="M 400 157 L 400 178 L 310 178" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow-red)"/>
+      <text x="405" y="172" fill="var(--vp-c-text-3)" font-size="9.5">调页换入并更新页表与TLB</text>
+      <!-- 4. 转换出的物理地址 PA -->
+      <g transform="translate(130, 185)">
+        <rect x="0" y="0" width="180" height="28" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="45" y="18" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">物理块号 PFN</text>
+        <line x1="90" y1="0" x2="90" y2="28" stroke="#10b981"/>
+        <text x="135" y="18" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11">块内偏移</text>
+        <text x="90" y="-5" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="700">拼接得到物理地址 (PA)</text>
+      </g>
+      <line x1="220" y1="213" x2="220" y2="238" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <!-- 5. 查 Cache -->
+      <g transform="translate(140, 238)">
+        <polygon points="80,0 160,20 80,40 0,20" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="2"/>
+        <text x="80" y="24" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">查询 Cache</text>
+      </g>
+      <!-- Cache 命中 -->
+      <path d="M 140 258 L 80 258 L 80 290 L 140 290" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+      <text x="90" y="252" fill="#10b981" font-size="10.5" font-weight="700">命中</text>
+      <!-- Cache 缺失 -->
+      <path d="M 300 258 L 360 258 L 360 290 L 300 290" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <text x="310" y="252" fill="#ef4444" font-size="10.5" font-weight="700">缺失(调主存块)</text>
+      <!-- 6. 最终交付 CPU -->
+      <g transform="translate(145, 278)">
+        <rect x="0" y="0" width="150" height="26" fill="rgba(37,99,235,0.2)" stroke="#2563eb" stroke-width="2" rx="4"/>
+        <text x="75" y="17" text-anchor="middle" fill="#2563eb" font-size="11.5" font-weight="800">🎉 将数据交付 CPU 寄存器</text>
+      </g>
+      <!-- 右侧 408 核心命题必背定律 -->
+      <g transform="translate(485, 10)">
+        <rect x="0" y="0" width="205" height="280" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="102" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">408 核心真题推论定律</text>
+        <line x1="10" y1="32" x2="195" y2="32" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="52" fill="#10b981" font-size="11" font-weight="700">① TLB 命中 ➔ 页表必命中</text>
+        <text x="12" y="70" fill="var(--vp-c-text-2)" font-size="10">快表是慢表的子集缓存</text>
+        <text x="12" y="96" fill="#10b981" font-size="11" font-weight="700">② Cache 命中 ➔ 页面必在主存</text>
+        <text x="12" y="114" fill="var(--vp-c-text-2)" font-size="10">数据已在Cache中，绝不缺页</text>
+        <text x="12" y="140" fill="#ef4444" font-size="11" font-weight="700">③ 页表缺页 ➔ TLB/Cache必脱靶</text>
+        <text x="12" y="158" fill="var(--vp-c-text-2)" font-size="10">页面尚未调入内存，无从缓存</text>
+        <text x="12" y="184" fill="#2563eb" font-size="11" font-weight="700">④ TLB 未命中 ➔ Cache仍可命中</text>
+        <text x="12" y="202" fill="var(--vp-c-text-2)" font-size="10">二者各司其职，无包含关系</text>
+        <line x1="10" y1="218" x2="195" y2="218" stroke="var(--vp-c-divider)"/>
+        <text x="12" y="238" fill="#f59e0b" font-size="10.5" font-weight="700">硬件 vs 软件分工：</text>
+        <text x="12" y="254" fill="var(--vp-c-text-2)" font-size="10">TLB/Cache查找：纯硬件极速</text>
+        <text x="12" y="268" fill="var(--vp-c-text-2)" font-size="10">缺页异常中断：OS 软件内核接管</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ### ❓ TLB、Cache、页表的表项字段对比
 

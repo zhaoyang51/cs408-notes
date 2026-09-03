@@ -20,11 +20,71 @@ $$\text{取指周期} \longrightarrow \text{间址周期 (可选)} \longrightarr
 
 ### ❓ 指令周期、机器周期、CPU 周期与时钟周期的关系
 
-```
-[───────────────────────── 指令周期 ─────────────────────────]
-[── 取指周期 (机器周期) ──][── 间址周期 ──][── 执行周期 ──]
-[T1][T2][T3][T4] ... (时钟周期 / 节拍脉冲)
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 指令周期、机器周期与时钟周期时序划分全景</span>
+    <span class="diagram-badge">P30 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 180" width="100%" height="180">
+    <g transform="translate(15, 15)">
+      <!-- 顶层：指令周期 (Instruction Cycle) -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="680" height="28" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="2" rx="4"/>
+        <text x="340" y="19" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="800">指令周期 (Instruction Cycle：取出并完全执行一条指令的全部时间)</text>
+      </g>
+      <!-- 中层：机器周期 (CPU 周期 / 访存周期) -->
+      <g transform="translate(0, 38)">
+        <!-- 取指周期 (必经) -->
+        <rect x="0" y="0" width="170" height="42" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="85" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">取指周期 (FE)</text>
+        <text x="85" y="35" text-anchor="middle" fill="#10b981" font-size="10" font-weight="600">从内存取指令到IR</text>
+        <!-- 间址周期 (可选) -->
+        <rect x="175" y="0" width="150" height="42" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" stroke-dasharray="4,4" rx="4"/>
+        <text x="250" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">间址周期 (IND)</text>
+        <text x="250" y="35" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">取有效地址(可选)</text>
+        <!-- 执行周期 (必经) -->
+        <rect x="330" y="0" width="200" height="42" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="430" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">执行周期 (EX)</text>
+        <text x="430" y="35" text-anchor="middle" fill="#2563eb" font-size="10" font-weight="600">ALU 运算或访存取数</text>
+        <!-- 中断周期 (可选) -->
+        <rect x="535" y="0" width="145" height="42" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="4,4" rx="4"/>
+        <text x="607" y="20" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="700">中断周期 (INT)</text>
+        <text x="607" y="35" text-anchor="middle" fill="#ef4444" font-size="10">硬件保存断点PC(可选)</text>
+      </g>
+      <!-- 底层：时钟周期 (节拍脉冲 T) -->
+      <g transform="translate(0, 90)">
+        <text x="0" y="16" fill="var(--vp-c-text-2)" font-size="11" font-weight="700">节拍脉冲 T：</text>
+        <!-- 取指节拍 -->
+        <g transform="translate(70, 0)">
+          <rect x="0" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="11" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T1</text>
+          <rect x="24" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="35" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T2</text>
+          <rect x="48" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="59" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T3</text>
+          <rect x="72" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="83" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T4</text>
+        </g>
+        <!-- 执行节拍 -->
+        <g transform="translate(380, 0)">
+          <rect x="0" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="11" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T1</text>
+          <rect x="24" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="35" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T2</text>
+          <rect x="48" y="0" width="22" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+          <text x="59" y="16" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">T3</text>
+          <text x="80" y="16" fill="var(--vp-c-text-3)" font-size="11">···</text>
+        </g>
+      </g>
+      <!-- 触发触发器状态图例 -->
+      <g transform="translate(0, 130)">
+        <rect x="0" y="0" width="680" height="26" fill="rgba(16,185,129,0.08)" stroke="#10b981" rx="4"/>
+        <text x="340" y="17" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">CPU 内部状态标志触发器：FE (取指) ➔ IND (间址) ➔ EX (执行) ➔ INT (中断)，四标志互斥生效！</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 1. **指令周期**：CPU 从主存取出并执行一条机器指令所需的全部时间；
 2. **机器周期（等于 CPU 周期）**：通常以完成一次主存操作（访存）所需的最短时间来定义基准；
@@ -72,15 +132,73 @@ $$\text{取指周期} \longrightarrow \text{间址周期 (可选)} \longrightarr
 
 ### ❓ 核心概念层级图谱（必考辨析）
 
-```
-机器指令 ──(1对1映射)──> 微程序 (Microprogram)
-                              │ 由多条微指令组成
-                              ▼
-                         微指令 (Microinstruction)
-                              │ 包含多个微命令，执行耗时为一个微周期
-                              ▼
-        控制信号: 微命令 (Microcommand) ──(驱动产生)──> 微操作 (Micro-operation) :实际硬件动作
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 微程序控制器微架构层级与数据通路映射图谱</span>
+    <span class="diagram-badge">P31 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 15)">
+      <!-- 左侧：层级概念自顶向下推导 -->
+      <g transform="translate(10, 0)">
+        <!-- 机器指令 -->
+        <rect x="0" y="0" width="150" height="30" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="4"/>
+        <text x="75" y="19" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">机器指令 (1条)</text>
+        <line x1="75" y1="30" x2="75" y2="52" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="85" y="44" fill="var(--vp-c-text-3)" font-size="10">1对1对应</text>
+        <!-- 微程序 -->
+        <rect x="0" y="52" width="150" height="30" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="75" y="71" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">微程序 (Microprogram)</text>
+        <line x1="75" y1="82" x2="75" y2="104" stroke="var(--vp-c-divider)" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="85" y="96" fill="var(--vp-c-text-3)" font-size="10">由若干微指令组成</text>
+        <!-- 微指令 -->
+        <rect x="0" y="104" width="150" height="30" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="75" y="123" text-anchor="middle" fill="#10b981" font-size="12" font-weight="800">微指令 (Microinstruction)</text>
+        <line x1="75" y1="134" x2="75" y2="156" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="85" y="148" fill="var(--vp-c-text-3)" font-size="10">发出微命令</text>
+        <!-- 微命令与微操作 -->
+        <rect x="0" y="156" width="150" height="30" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2" rx="4"/>
+        <text x="75" y="175" text-anchor="middle" fill="#f59e0b" font-size="11.5" font-weight="800">微命令 ➔ 微操作(硬件)</text>
+      </g>
+      <!-- 右侧：硬件数据通路 (CMAR -> CM -> CMDR) -->
+      <g transform="translate(210, 10)">
+        <rect x="0" y="0" width="480" height="180" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="240" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12.5" font-weight="800">微程序控制器硬件闭环通路</text>
+        <!-- CMAR -->
+        <g transform="translate(30, 45)">
+          <rect x="0" y="0" width="80" height="32" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)" stroke-width="1.5" rx="4"/>
+          <text x="40" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="700">CMAR</text>
+          <text x="40" y="-6" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="10">微地址寄存器</text>
+        </g>
+        <line x1="110" y1="61" x2="160" y2="61" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <!-- CM (控制存储器) -->
+        <g transform="translate(160, 35)">
+          <rect x="0" y="0" width="100" height="52" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="2" rx="6"/>
+          <text x="50" y="24" text-anchor="middle" fill="#2563eb" font-size="12.5" font-weight="800">控存 CM</text>
+          <text x="50" y="42" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="10">(只读 ROM)</text>
+        </g>
+        <line x1="260" y1="61" x2="310" y2="61" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <!-- CMDR (微指令寄存器) -->
+        <g transform="translate(310, 35)">
+          <rect x="0" y="0" width="145" height="52" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="2" rx="6"/>
+          <text x="72" y="22" text-anchor="middle" fill="#10b981" font-size="12" font-weight="800">CMDR (微指令寄存器)</text>
+          <!-- 字段细分 -->
+          <rect x="6" y="28" width="65" height="18" fill="rgba(245,158,11,0.2)" stroke="#f59e0b" rx="2"/>
+          <text x="38" y="41" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="700">操作控制</text>
+          <rect x="74" y="28" width="65" height="18" fill="rgba(37,99,235,0.2)" stroke="#2563eb" rx="2"/>
+          <text x="106" y="41" text-anchor="middle" fill="#2563eb" font-size="9" font-weight="700">顺序控制(下址)</text>
+        </g>
+        <!-- 操作控制向下输出微命令 -->
+        <path d="M 345 87 L 345 130" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow-amber)"/>
+        <text x="345" y="145" text-anchor="middle" fill="#f59e0b" font-size="10.5" font-weight="700">发出微命令控制信号 ➔</text>
+        <!-- 下地址回送到 CMAR -->
+        <path d="M 415 87 L 415 160 L 70 160 L 70 77" fill="none" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-blue)"/>
+        <text x="240" y="154" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">下指令地址回送更新 CMAR</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 
@@ -95,6 +213,108 @@ $$\text{取指周期} \longrightarrow \text{间址周期 (可选)} \longrightarr
 | **STORE 指令** (如 `SW R1, 4(R2)`) | 取指令，PC+4 | 译码，读基址与待存数据送锁存器 | ALU 计算有效访存地址 $EA$ | **将数据写入 Cache/主存** | **空段 (NOP)** |
 | **条件跳转** (如 `BEQ R1, R2, L`) | 取指令，PC+4 | 译码，读比较数，偏移量送 Imm | 比较操作数，计算目标转移 PC | **若条件成立修改 PC** | **空段 (NOP)** |
 | **无条件跳转** (如 `JMP target`) | 取指令，PC+4 | 译码，提取目标偏移量送 Imm | **直接计算并修改 PC** | **空段 (NOP)** | **空段 (NOP)** |
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 五段式指令流水线时钟时序重叠执行阶梯图</span>
+    <span class="diagram-badge">P32 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 220" width="100%" height="220">
+    <g transform="translate(15, 15)">
+      <!-- 时钟轴表头 C1 ~ C9 -->
+      <g transform="translate(60, 0)">
+        <text x="30" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C1</text>
+        <text x="90" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C2</text>
+        <text x="150" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C3</text>
+        <text x="210" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C4</text>
+        <text x="270" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C5</text>
+        <text x="330" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C6</text>
+        <text x="390" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C7</text>
+        <text x="450" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C8</text>
+        <text x="510" y="14" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11" font-weight="700">C9</text>
+      </g>
+      <!-- 指令 1 (I1) -->
+      <g transform="translate(0, 24)">
+        <text x="0" y="18" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">I1</text>
+        <g transform="translate(60, 0)">
+          <rect x="5" y="0" width="50" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+          <text x="30" y="16" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">IF</text>
+          <rect x="65" y="0" width="50" height="24" fill="rgba(124,58,237,0.15)" stroke="#7c3aed" rx="3"/>
+          <text x="90" y="16" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="700">ID</text>
+          <rect x="125" y="0" width="50" height="24" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2" rx="3"/>
+          <text x="150" y="16" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">EX</text>
+          <rect x="185" y="0" width="50" height="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="3"/>
+          <text x="210" y="16" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">MEM</text>
+          <rect x="245" y="0" width="50" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="270" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">WB</text>
+        </g>
+      </g>
+      <!-- 指令 2 (I2) -->
+      <g transform="translate(0, 54)">
+        <text x="0" y="18" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">I2</text>
+        <g transform="translate(120, 0)">
+          <rect x="5" y="0" width="50" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+          <text x="30" y="16" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">IF</text>
+          <rect x="65" y="0" width="50" height="24" fill="rgba(124,58,237,0.15)" stroke="#7c3aed" rx="3"/>
+          <text x="90" y="16" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="700">ID</text>
+          <rect x="125" y="0" width="50" height="24" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2" rx="3"/>
+          <text x="150" y="16" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">EX</text>
+          <rect x="185" y="0" width="50" height="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="3"/>
+          <text x="210" y="16" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">MEM</text>
+          <rect x="245" y="0" width="50" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="270" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">WB</text>
+        </g>
+      </g>
+      <!-- 数据旁路 Forwarding 箭头 (I1 EX -> I2 EX) -->
+      <path d="M 235 48 C 245 60, 245 60, 245 66" fill="none" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <text x="285" y="60" fill="#ef4444" font-size="10" font-weight="700">Forwarding 旁路</text>
+      <!-- 指令 3 (I3) -->
+      <g transform="translate(0, 84)">
+        <text x="0" y="18" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">I3</text>
+        <g transform="translate(180, 0)">
+          <rect x="5" y="0" width="50" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+          <text x="30" y="16" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">IF</text>
+          <rect x="65" y="0" width="50" height="24" fill="rgba(124,58,237,0.15)" stroke="#7c3aed" rx="3"/>
+          <text x="90" y="16" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="700">ID</text>
+          <rect x="125" y="0" width="50" height="24" fill="rgba(16,185,129,0.15)" stroke="#10b981" rx="3"/>
+          <text x="150" y="16" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">EX</text>
+          <rect x="185" y="0" width="50" height="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="3"/>
+          <text x="210" y="16" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">MEM</text>
+          <rect x="245" y="0" width="50" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="270" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">WB</text>
+        </g>
+      </g>
+      <!-- 指令 4 (I4) -->
+      <g transform="translate(0, 114)">
+        <text x="0" y="18" fill="var(--vp-c-text-1)" font-size="12" font-weight="800">I4</text>
+        <g transform="translate(240, 0)">
+          <rect x="5" y="0" width="50" height="24" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+          <text x="30" y="16" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">IF</text>
+          <rect x="65" y="0" width="50" height="24" fill="rgba(124,58,237,0.15)" stroke="#7c3aed" rx="3"/>
+          <text x="90" y="16" text-anchor="middle" fill="#7c3aed" font-size="11" font-weight="700">ID</text>
+          <rect x="125" y="0" width="50" height="24" fill="rgba(16,185,129,0.15)" stroke="#10b981" rx="3"/>
+          <text x="150" y="16" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">EX</text>
+          <rect x="185" y="0" width="50" height="24" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" rx="3"/>
+          <text x="210" y="16" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">MEM</text>
+          <rect x="245" y="0" width="50" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="270" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">WB</text>
+        </g>
+      </g>
+      <!-- 右侧指标测算卡片 -->
+      <g transform="translate(580, 20)">
+        <rect x="0" y="0" width="115" height="150" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="6"/>
+        <text x="57" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="700">流水线指标</text>
+        <line x1="8" y1="28" x2="107" y2="28" stroke="var(--vp-c-divider)"/>
+        <text x="8" y="48" fill="#2563eb" font-size="10.5" font-weight="700">时钟周期数：</text>
+        <text x="8" y="66" fill="var(--vp-c-text-2)" font-size="10">Tk = k + n - 1</text>
+        <text x="8" y="90" fill="#10b981" font-size="10.5" font-weight="700">理想加速比：</text>
+        <text x="8" y="108" fill="var(--vp-c-text-2)" font-size="10">S = k (段数)</text>
+        <text x="8" y="132" fill="#ef4444" font-size="10.5" font-weight="700">理想 CPI = 1</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 

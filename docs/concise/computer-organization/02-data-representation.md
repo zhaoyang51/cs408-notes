@@ -27,18 +27,89 @@
 
 ### ❓ 加、减、乘、除运算器结构与溢出硬件判定
 
-```
-加减法 ALU:                     乘法双字长寄存器:
-   加数1      加数2                高位寄存器      低位寄存器
-     │          │                    │             │
-     ▼          ▼                    ▼             ▼
-  ┌──────────────────┐            ┌──────────────────┐
-  │  ALU (加法器)    │<── sub     │  乘积高位 (或余数)│乘数 (或商)       │
-  └──────────────────┘            └──────────────────┘
-           │
-           ▼
-        结果 (Res)
-```
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 定点数加减法运算器 ALU 硬件通路与四大标志位生成</span>
+    <span class="diagram-badge">P23 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 230" width="100%" height="230">
+    <g transform="translate(15, 15)">
+      <!-- 操作数 A -->
+      <g transform="translate(50, 20)">
+        <rect x="0" y="0" width="80" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="40" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">操作数 A</text>
+        <line x1="80" y1="14" x2="200" y2="45" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      </g>
+      <!-- 操作数 B 与 MUX -->
+      <g transform="translate(50, 75)">
+        <rect x="0" y="0" width="80" height="28" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+        <text x="40" y="18" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">操作数 B</text>
+        <line x1="80" y1="14" x2="135" y2="14" stroke="var(--vp-c-text-2)" stroke-width="1.8"/>
+      </g>
+      <!-- 多路选择器 MUX 与取反门 -->
+      <g transform="translate(135, 65)">
+        <polygon points="0,0 35,5 35,45 0,50" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="1.8"/>
+        <text x="16" y="28" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="800">MUX</text>
+        <text x="16" y="10" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="8">0: B</text>
+        <text x="16" y="44" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="8">1: ~B</text>
+        <!-- 控制信号 Sub -->
+        <line x1="17" y1="-25" x2="17" y2="0" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+        <text x="17" y="-30" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">Sub 控制信号</text>
+      </g>
+      <line x1="170" y1="90" x2="200" y2="90" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <!-- Sub 同时连入 Cin -->
+      <path d="M 152 40 C 152 140, 180 145, 200 135" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="3,3" marker-end="url(#arrow-red)"/>
+      <text x="155" y="160" fill="#ef4444" font-size="10">Sub 为 1 时 Cin=1</text>
+      <!-- 核心 ALU 加法器 -->
+      <g transform="translate(200, 25)">
+        <polygon points="0,0 120,25 120,105 0,130 0,80 30,65 0,50" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="2.2"/>
+        <text x="65" y="72" text-anchor="middle" fill="#2563eb" font-size="16" font-weight="900">ALU</text>
+        <text x="25" y="25" fill="var(--vp-c-text-2)" font-size="10">输入 A</text>
+        <text x="25" y="115" fill="var(--vp-c-text-2)" font-size="10">输入 B'</text>
+        <text x="5" y="145" fill="#ef4444" font-size="10">Cin (低位进位)</text>
+      </g>
+      <!-- ALU 结果主输出 -->
+      <line x1="320" y1="90" x2="430" y2="90" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+      <g transform="translate(435, 75)">
+        <rect x="0" y="0" width="100" height="30" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="50" y="19" text-anchor="middle" fill="#10b981" font-size="12" font-weight="800">运算结果 Res</text>
+      </g>
+      <!-- 四大标志位生成逻辑卡片 -->
+      <g transform="translate(550, 10)">
+        <rect x="0" y="0" width="150" height="185" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="8"/>
+        <text x="75" y="20" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="800">四大标志生成硬件</text>
+        <line x1="10" y1="28" x2="140" y2="28" stroke="var(--vp-c-divider)"/>
+        <!-- ZF -->
+        <text x="12" y="48" fill="#2563eb" font-size="11" font-weight="700">ZF (零标志):</text>
+        <text x="12" y="64" fill="var(--vp-c-text-2)" font-size="10">多输入或非门(全0为1)</text>
+        <!-- SF -->
+        <text x="12" y="88" fill="#2563eb" font-size="11" font-weight="700">SF (符号标志):</text>
+        <text x="12" y="104" fill="var(--vp-c-text-2)" font-size="10">直接取最高位 Res[n-1]</text>
+        <!-- OF -->
+        <text x="12" y="128" fill="#ef4444" font-size="11" font-weight="700">OF (有符号溢出):</text>
+        <text x="12" y="144" fill="var(--vp-c-text-2)" font-size="10">最高进位 ⊕ 次高进位</text>
+        <!-- CF -->
+        <text x="12" y="165" fill="#f59e0b" font-size="11" font-weight="700">CF (无符号借进位):</text>
+        <text x="12" y="180" fill="var(--vp-c-text-2)" font-size="10">Sub ⊕ Cout (借位取反)</text>
+      </g>
+      <!-- 连线引导至标志位 -->
+      <path d="M 485 75 C 485 50, 520 50, 545 50" fill="none" stroke="#2563eb" stroke-dasharray="2,2"/>
+      <path d="M 320 60 C 360 40, 500 40, 545 135" fill="none" stroke="#ef4444" stroke-dasharray="2,2"/>
+    </g>
+    <defs>
+      <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+      </marker>
+      <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444"/>
+      </marker>
+      <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
 
 #### 1. 加减法溢出判断三大方法
 * **方法 ①：符号判别法**
