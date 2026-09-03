@@ -176,6 +176,57 @@ bool deQueue(Queue &Q, int &x) {
   * 从右向左扫描，遇到数字压栈；遇到运算符弹出两个操作数（先出左，后出右），计算后再压栈：
     $$1 + 2 = 3 \implies 3 \times 4 = 12 \implies 5 + 12 = 17 \implies 17 - 3 = \mathbf{14}$$
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 后缀表达式与前缀表达式栈演化流</span>
+    <span class="diagram-badge">P6 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 130" width="100%" height="130">
+    <!-- 后缀运算栈 -->
+    <g transform="translate(10, 15)">
+      <text x="0" y="16" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">后缀运算（从左至右）：弹出 3 与 17</text>
+      <!-- 栈简图 -->
+      <g transform="translate(30, 28)">
+        <path d="M 0 0 L 0 55 L 45 55 L 45 0" fill="none" stroke="var(--vp-c-text-2)" stroke-width="2"/>
+        <rect x="5" y="32" width="35" height="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+        <text x="22" y="46" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">17</text>
+        <rect x="5" y="8" width="35" height="20" fill="rgba(239,68,68,0.15)" stroke="#ef4444" rx="3"/>
+        <text x="22" y="22" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">3</text>
+      </g>
+      <!-- 箭头与计算结果 -->
+      <path d="M 85 55 L 125 55" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <g transform="translate(135, 38)">
+        <rect x="0" y="0" width="140" height="34" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="6"/>
+        <text x="70" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="13" font-weight="700">17 - 3 = 14</text>
+      </g>
+    </g>
+    <!-- 前缀运算栈 -->
+    <g transform="translate(350, 15)">
+      <text x="0" y="16" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">前缀运算（从右至左）：逆向扫描入栈</text>
+      <!-- 栈简图 -->
+      <g transform="translate(30, 28)">
+        <path d="M 0 0 L 0 55 L 45 55 L 45 0" fill="none" stroke="var(--vp-c-text-2)" stroke-width="2"/>
+        <rect x="5" y="32" width="35" height="20" fill="rgba(239,68,68,0.15)" stroke="#ef4444" rx="3"/>
+        <text x="22" y="46" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">3</text>
+        <rect x="5" y="8" width="35" height="20" fill="rgba(37,99,235,0.15)" stroke="#2563eb" rx="3"/>
+        <text x="22" y="22" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">17</text>
+      </g>
+      <!-- 箭头与计算结果 -->
+      <path d="M 85 55 L 125 55" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+      <g transform="translate(135, 38)">
+        <rect x="0" y="0" width="140" height="34" fill="rgba(16,185,129,0.1)" stroke="#10b981" rx="6"/>
+        <text x="70" y="22" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700">17 - 3 = 14</text>
+      </g>
+    </g>
+    <defs>
+      <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
+
 ---
 
 ## 🔍 KMP 模式匹配与 nextval 数组优化
@@ -184,7 +235,44 @@ bool deQueue(Queue &Q, int &x) {
 
 > **设主串 $T =$ `'abaabaabcabaabc'`，模式串 $S =$ `'abaabc'`，使用 KMP 算法求字符比较次数。
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · KMP 模式串对齐与字符比较次数（6 + 4 = 10 次）</span>
+    <span class="diagram-badge">P6 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 135" width="100%" height="135">
+    <g transform="translate(15, 15)">
+      <!-- 主串 T -->
+      <text x="0" y="16" fill="var(--vp-c-text-3)" font-size="12" font-weight="600">主串 T：</text>
+      <text x="65" y="16" fill="var(--vp-c-text-1)" font-family="monospace" font-size="14" font-weight="700" letter-spacing="4">a b a a b a a b c a b a a b c</text>
+      <!-- 第一次匹配 -->
+      <g transform="translate(0, 32)">
+        <text x="0" y="16" fill="#2563eb" font-size="11.5" font-weight="700">第 1 趟：</text>
+        <text x="65" y="16" fill="#2563eb" font-family="monospace" font-size="14" font-weight="700" letter-spacing="4">a b a a b</text>
+        <text x="145" y="16" fill="#ef4444" font-family="monospace" font-size="14" font-weight="700" letter-spacing="4">c</text>
+        <text x="175" y="16" fill="#ef4444" font-size="11" font-weight="700">❌ 失配 (比对 6 次)</text>
+      </g>
+      <!-- 第二次滑动匹配 -->
+      <g transform="translate(0, 68)">
+        <text x="0" y="16" fill="#10b981" font-size="11.5" font-weight="700">第 2 趟：</text>
+        <!-- 滑动对齐位置 -->
+        <text x="113" y="16" fill="var(--vp-c-text-3)" font-family="monospace" font-size="14" letter-spacing="4">(a b)</text>
+        <text x="145" y="16" fill="#10b981" font-family="monospace" font-size="14" font-weight="700" letter-spacing="4">a a b c</text>
+        <text x="215" y="16" fill="#10b981" font-size="11" font-weight="700">✅ 成功 (再比对 4 次)</text>
+      </g>
+      <!-- 结果徽章 -->
+      <g transform="translate(430, 28)">
+        <rect x="0" y="0" width="220" height="52" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="8"/>
+        <text x="110" y="24" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">总字符比较次数判定</text>
+        <text x="110" y="42" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="13" font-weight="800">6次 + 4次 = 10 次！</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 * **手写分析过程**：
+
   * 模式串 `abaabc` 的 `next` 数组为：`0, 1, 1, 2, 2, 3`（或 `-1, 0, 0, 1, 1, 2`）；
   * 第 1 次匹配：比较到 $S$ 的第 6 个字符 `'c'` 失配（已比较 **6 次**）；
   * 模式串滑动，下次从 $S$ 的对应 `next` 位置继续比对，比对 **4 次** 匹配成功；

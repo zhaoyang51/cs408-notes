@@ -29,6 +29,86 @@ int binarySearch(int a[], int n, int key) {
   $$\text{ASL}_{\text{失败}} = \frac{1}{n+1} \sum (\text{虚叶子节点的父节点比较次数})$$
 :::
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 折半查找 11 节点判定树与 ASL 层级分析</span>
+    <span class="diagram-badge">P13 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 210" width="100%" height="210">
+    <g transform="translate(20, 15)">
+      <!-- 第1层: 根 6 -->
+      <g transform="translate(330, 15)">
+        <circle cx="0" cy="0" r="15" fill="rgba(37,99,235,0.18)" stroke="#2563eb" stroke-width="2"/>
+        <text x="0" y="4" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">6</text>
+        <text x="35" y="4" fill="var(--vp-c-text-3)" font-size="10.5">第1层 (1次)</text>
+      </g>
+      <!-- 第2层: 3 和 9 -->
+      <g transform="translate(180, 60)">
+        <circle cx="0" cy="0" r="14" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">3</text>
+      </g>
+      <g transform="translate(480, 60)">
+        <circle cx="0" cy="0" r="14" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">9</text>
+      </g>
+      <line x1="320" y1="24" x2="192" y2="52" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      <line x1="340" y1="24" x2="468" y2="52" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      <!-- 第3层: 1, 4, 7, 10 -->
+      <g transform="translate(100, 110)">
+        <circle cx="0" cy="0" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">1</text>
+      </g>
+      <g transform="translate(240, 110)">
+        <circle cx="0" cy="0" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">4</text>
+      </g>
+      <g transform="translate(420, 110)">
+        <circle cx="0" cy="0" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">7</text>
+      </g>
+      <g transform="translate(540, 110)">
+        <circle cx="0" cy="0" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">10</text>
+      </g>
+      <line x1="170" y1="69" x2="110" y2="100" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="190" y1="69" x2="230" y2="100" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="470" y1="69" x2="430" y2="100" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="490" y1="69" x2="530" y2="100" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <!-- 第4层: 2, 5, 8, 11 -->
+      <g transform="translate(130, 160)">
+        <circle cx="0" cy="0" r="12" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">2</text>
+      </g>
+      <g transform="translate(260, 160)">
+        <circle cx="0" cy="0" r="12" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">5</text>
+      </g>
+      <g transform="translate(440, 160)">
+        <circle cx="0" cy="0" r="12" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">8</text>
+      </g>
+      <g transform="translate(560, 160)">
+        <circle cx="0" cy="0" r="12" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">11</text>
+      </g>
+      <line x1="108" y1="120" x2="124" y2="150" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="245" y1="120" x2="255" y2="150" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="425" y1="120" x2="435" y2="150" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <line x1="545" y1="120" x2="555" y2="150" stroke="var(--vp-c-divider)" stroke-width="1.2"/>
+      <!-- ASL 结论框 -->
+      <g transform="translate(590, 40)">
+        <rect x="0" y="0" width="100" height="90" fill="rgba(16,185,129,0.08)" stroke="#10b981" rx="6"/>
+        <text x="50" y="20" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">ASL 测算</text>
+        <text x="10" y="42" fill="var(--vp-c-text-1)" font-size="10.5">1×1 = 1</text>
+        <text x="10" y="58" fill="var(--vp-c-text-1)" font-size="10.5">2×2 = 4</text>
+        <text x="10" y="74" fill="var(--vp-c-text-1)" font-size="10.5">3×4 = 12</text>
+        <text x="10" y="90" fill="var(--vp-c-text-1)" font-size="10.5">4×4 = 16</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ## ⚖️ 平衡二叉树 (AVL)
@@ -55,6 +135,74 @@ int binarySearch(int a[], int n, int key) {
 * **LR 型（先左后右双旋）**：左孩子的右孩子先左旋后右旋升为新根；
 * **RL 型（先右后左双旋）**：右孩子的左孩子先右旋后左旋升为新根。
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · AVL 树单旋转 (RR) 与双旋转 (RL) 调整对比</span>
+    <span class="diagram-badge">P15 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 170" width="100%" height="170">
+    <!-- RR 型左单旋 -->
+    <g transform="translate(10, 15)">
+      <text x="0" y="16" fill="#2563eb" font-size="12" font-weight="700">① RR 型（右右失衡 ➔ 逆时针左单旋）</text>
+      <g transform="translate(30, 25)">
+        <!-- 旋转前 -->
+        <circle cx="20" cy="20" r="14" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+        <text x="20" y="24" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">A</text>
+        <circle cx="50" cy="55" r="14" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+        <text x="50" y="59" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">B</text>
+        <circle cx="80" cy="90" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="80" y="94" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">C</text>
+        <line x1="30" y1="30" x2="40" y2="45" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <line x1="60" y1="65" x2="70" y2="80" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <!-- 转换箭头 -->
+        <path d="M 110 55 L 145 55" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="128" y="45" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">左单旋</text>
+        <!-- 旋转后 -->
+        <g transform="translate(170, 15)">
+          <circle cx="40" cy="20" r="14" fill="rgba(37,99,235,0.18)" stroke="#2563eb" stroke-width="2"/>
+          <text x="40" y="24" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="800">B (新根)</text>
+          <circle cx="15" cy="60" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+          <text x="15" y="64" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">A</text>
+          <circle cx="65" cy="60" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+          <text x="65" y="64" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">C</text>
+          <line x1="32" y1="30" x2="22" y2="48" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+          <line x1="48" y1="30" x2="58" y2="48" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        </g>
+      </g>
+    </g>
+    <!-- RL 型双旋 -->
+    <g transform="translate(370, 15)">
+      <text x="0" y="16" fill="#10b981" font-size="12" font-weight="700">② RL 型（右左失衡 ➔ 先右后左双旋）</text>
+      <g transform="translate(20, 25)">
+        <!-- 旋转前折线形 -->
+        <circle cx="20" cy="20" r="14" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2"/>
+        <text x="20" y="24" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">A</text>
+        <circle cx="70" cy="45" r="14" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+        <text x="70" y="49" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">B</text>
+        <circle cx="45" cy="85" r="14" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2"/>
+        <text x="45" y="89" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">C</text>
+        <line x1="32" y1="26" x2="58" y2="39" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <line x1="64" y1="55" x2="52" y2="75" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <!-- 转换箭头 -->
+        <path d="M 100 55 L 135 55" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="118" y="45" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="600">先右后左</text>
+        <!-- 旋转后平衡 -->
+        <g transform="translate(160, 15)">
+          <circle cx="40" cy="20" r="14" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2.2"/>
+          <text x="40" y="24" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">C (新根)</text>
+          <circle cx="15" cy="60" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+          <text x="15" y="64" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">A</text>
+          <circle cx="65" cy="60" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+          <text x="65" y="64" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11">B</text>
+          <line x1="32" y1="30" x2="22" y2="48" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+          <line x1="48" y1="30" x2="58" y2="48" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        </g>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ## 🔴⚫ 红黑树 (Red-Black Tree)
@@ -78,6 +226,46 @@ int binarySearch(int a[], int n, int key) {
 ---
 
 ### ❓ 红黑树插入新节点调整规则
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 红黑树插入红红冲突判断决策流图</span>
+    <span class="diagram-badge">P16 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 130" width="100%" height="130">
+    <g transform="translate(10, 15)">
+      <!-- 插入红色 -->
+      <rect x="0" y="25" width="90" height="34" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="2" rx="6"/>
+      <text x="45" y="46" text-anchor="middle" fill="#ef4444" font-size="11.5" font-weight="700">插新节点 (红)</text>
+      <path d="M 90 42 L 130 42" stroke="var(--vp-c-divider)" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <!-- 父节点判定 -->
+      <rect x="135" y="25" width="100" height="34" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="6"/>
+      <text x="185" y="46" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11.5" font-weight="700">父节点颜色?</text>
+      <!-- 父黑分支 -->
+      <path d="M 185 25 L 185 5 L 280 5" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-green)"/>
+      <text x="210" y="0" fill="#10b981" font-size="10.5" font-weight="700">父为黑 ➔ 结束(合法)</text>
+      <!-- 父红分支 -->
+      <path d="M 235 42 L 280 42" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <text x="255" y="36" text-anchor="middle" fill="#ef4444" font-size="10.5" font-weight="700">父为红</text>
+      <!-- 叔叔颜色判定 -->
+      <rect x="285" y="25" width="110" height="34" fill="rgba(239,68,68,0.1)" stroke="#ef4444" rx="6"/>
+      <text x="340" y="46" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">看叔叔节点颜色</text>
+      <!-- 叔红分支 -->
+      <path d="M 395 32 L 440 18" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+      <g transform="translate(445, 0)">
+        <rect x="0" y="0" width="230" height="32" fill="rgba(239,68,68,0.08)" stroke="#ef4444" rx="6"/>
+        <text x="115" y="20" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">叔红: 叔父变黑，爷变红 (向上递归)</text>
+      </g>
+      <!-- 叔黑分支 -->
+      <path d="M 395 50 L 440 68" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <g transform="translate(445, 52)">
+        <rect x="0" y="0" width="230" height="32" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="6"/>
+        <text x="115" y="20" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">叔黑: 旋转(LL/RR/LR/RL) + 染色</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ```
 插入新节点 ──> 默认染成【红色】
@@ -124,6 +312,62 @@ int binarySearch(int a[], int n, int key) {
   * 左边 2 个关键字留在原节点，右边 2 个关键字移入新建的右兄弟节点；
   * 若父节点也溢出，级联向上分裂直至根节点。
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 5 阶 B 树插入分裂与中间关键字（第 3 位）上提</span>
+    <span class="diagram-badge">P14 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 160" width="100%" height="160">
+    <g transform="translate(15, 15)">
+      <!-- 插入前溢出态 -->
+      <g transform="translate(10, 45)">
+        <rect x="0" y="0" width="200" height="36" fill="rgba(239,68,68,0.1)" stroke="#ef4444" stroke-width="2" rx="4"/>
+        <text x="20" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">5</text>
+        <line x1="40" y1="0" x2="40" y2="36" stroke="#ef4444"/>
+        <text x="60" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">10</text>
+        <line x1="80" y1="0" x2="80" y2="36" stroke="#ef4444"/>
+        <!-- 重点上提关键字 15 -->
+        <rect x="80" y="0" width="40" height="36" fill="#ef4444"/>
+        <text x="100" y="23" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="800">15</text>
+        <line x1="120" y1="0" x2="120" y2="36" stroke="#ef4444"/>
+        <text x="140" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">20</text>
+        <line x1="160" y1="0" x2="160" y2="36" stroke="#ef4444"/>
+        <text x="180" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">25</text>
+        <text x="100" y="-8" text-anchor="middle" fill="#ef4444" font-size="11" font-weight="700">满 5 个溢出 (⌈5/2⌉=3)</text>
+      </g>
+      <!-- 分裂箭头 -->
+      <path d="M 230 63 L 285 63" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+      <text x="257" y="52" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">分裂上提</text>
+      <!-- 分裂后结构 -->
+      <g transform="translate(320, 10)">
+        <!-- 上提父节点 15 -->
+        <g transform="translate(110, 0)">
+          <rect x="0" y="0" width="50" height="32" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2" rx="4"/>
+          <text x="25" y="21" text-anchor="middle" fill="#2563eb" font-size="13" font-weight="800">15</text>
+          <text x="25" y="-6" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="700">上提新父</text>
+        </g>
+        <!-- 左子树 [5, 10] -->
+        <g transform="translate(20, 65)">
+          <rect x="0" y="0" width="90" height="32" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+          <text x="22" y="21" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">5</text>
+          <line x1="45" y1="0" x2="45" y2="32" stroke="var(--vp-c-divider)"/>
+          <text x="68" y="21" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">10</text>
+        </g>
+        <!-- 右子树 [20, 25] -->
+        <g transform="translate(160, 65)">
+          <rect x="0" y="0" width="90" height="32" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8" rx="4"/>
+          <text x="22" y="21" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">20</text>
+          <line x1="45" y1="0" x2="45" y2="32" stroke="var(--vp-c-divider)"/>
+          <text x="68" y="21" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">25</text>
+        </g>
+        <line x1="120" y1="32" x2="70" y2="65" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+        <line x1="150" y1="32" x2="200" y2="65" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ### ❓ 5 阶 B 树删除与合并
@@ -132,6 +376,7 @@ int binarySearch(int a[], int n, int key) {
 * **终端节点不足借位与合并**：若删除后关键字少于 $\lceil 5/2 \rceil - 1 = 2$ 个：
   * **兄弟够借（父子兄弟旋转）**：向左或右邻近兄弟借一个关键字（通过父节点中转顶替）；
   * **兄弟不够借（合并）**：将该节点、相关父节点关键字、以及左/右兄弟节点**三者合并为一个新节点**。
+
 
 ---
 

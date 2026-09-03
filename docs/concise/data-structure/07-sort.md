@@ -26,6 +26,60 @@
 * **每趟排序至少确定一个元素最终绝对位置的算法**：**简单选择排序、堆排序、冒泡排序、快速排序**。
 :::
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 基数排序 (LSD) 链式桶分配与收集流水线</span>
+    <span class="diagram-badge">P18 手记草图</span>
+  </div>
+  <svg viewBox="0 0 720 140" width="100%" height="140">
+    <g transform="translate(15, 15)">
+      <!-- 原始序列 -->
+      <text x="0" y="16" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">待排序列 (3位数)：</text>
+      <text x="120" y="16" fill="var(--vp-c-brand-1)" font-family="monospace" font-size="12.5" font-weight="700">278, 109, 063, 930, 589, 184, 505, 269, 008, 083</text>
+      <!-- 分配到桶 -->
+      <g transform="translate(0, 32)">
+        <path d="M 60 15 L 105 15" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+        <text x="82" y="8" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">按个位分配</text>
+        <!-- 10个桶的示意 -->
+        <g transform="translate(120, 0)">
+          <!-- 桶 0 -->
+          <rect x="0" y="0" width="45" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="22" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶0</text>
+          <text x="22" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">930</text>
+          <!-- 桶 3 -->
+          <rect x="55" y="0" width="65" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="87" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶3</text>
+          <text x="87" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">063➔083</text>
+          <!-- 桶 4 -->
+          <rect x="130" y="0" width="45" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="152" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶4</text>
+          <text x="152" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">184</text>
+          <!-- 桶 5 -->
+          <rect x="185" y="0" width="45" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="207" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶5</text>
+          <text x="207" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">505</text>
+          <!-- 桶 8 -->
+          <rect x="240" y="0" width="65" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="272" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶8</text>
+          <text x="272" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">278➔008</text>
+          <!-- 桶 9 -->
+          <rect x="315" y="0" width="85" height="26" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" rx="3"/>
+          <text x="357" y="13" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="9.5">桶9</text>
+          <text x="357" y="23" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10" font-weight="600">109➔589➔269</text>
+        </g>
+      </g>
+      <!-- 收集成链 -->
+      <g transform="translate(0, 75)">
+        <path d="M 60 15 L 105 15" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-green)"/>
+        <text x="82" y="8" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="600">首尾收集</text>
+        <rect x="120" y="0" width="460" height="28" fill="rgba(16,185,129,0.08)" stroke="#10b981" rx="4"/>
+        <text x="350" y="18" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="11.5" font-weight="700">930 ➔ 063 ➔ 083 ➔ 184 ➔ 505 ➔ 278 ➔ 008 ➔ 109 ➔ 589 ➔ 269</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 ---
 
 ## 💻 经典排序算法规范手写实现
@@ -117,6 +171,65 @@ void bubbleSort(int a[], int n) {
   * 非叶子节点存放**失败者（较大者）的段号**；
   * 树顶上方设立一个单独的节点记录**最终胜者（全局最小）**；
   * 胜者输出后，将对应段的下一个记录填入叶子，沿父节点向上与非叶节点的失败者比对，胜者继续向上挑战，败者留在该节点。
+
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 5 路平衡归并败者树拓扑结构</span>
+    <span class="diagram-badge">P19 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 200" width="100%" height="200">
+    <g transform="translate(15, 15)">
+      <!-- 根上方冠军 ls[0] -->
+      <g transform="translate(320, 10)">
+        <rect x="0" y="0" width="70" height="26" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" rx="4"/>
+        <text x="35" y="17" text-anchor="middle" fill="#10b981" font-size="11" font-weight="800">ls[0]=3 (胜)</text>
+        <text x="120" y="17" fill="#10b981" font-size="11" font-weight="700">🏆 最终全局胜者 (段3: 值为6)</text>
+      </g>
+      <line x1="355" y1="36" x2="355" y2="55" stroke="#10b981" stroke-width="2"/>
+      <!-- 内部败者节点第 1 层 ls[1] -->
+      <g transform="translate(330, 55)">
+        <circle cx="25" cy="12" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="25" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">ls[1]: 1</text>
+      </g>
+      <!-- 内部败者节点第 2 层 ls[2], ls[3] -->
+      <g transform="translate(200, 95)">
+        <circle cx="25" cy="12" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="25" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">ls[2]: 0</text>
+      </g>
+      <g transform="translate(460, 95)">
+        <circle cx="25" cy="12" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="25" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">ls[3]: 4</text>
+      </g>
+      <line x1="345" y1="72" x2="235" y2="95" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      <line x1="365" y1="72" x2="475" y2="95" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      <!-- 内部败者节点第 3 层 ls[4] -->
+      <g transform="translate(390, 130)">
+        <circle cx="25" cy="12" r="13" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="25" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="10.5">ls[4]: 2</text>
+      </g>
+      <line x1="475" y1="112" x2="425" y2="130" stroke="var(--vp-c-divider)" stroke-width="1.5"/>
+      <!-- 叶子节点：5 个归并段首元素 -->
+      <g transform="translate(100, 155)">
+        <!-- b[0] -->
+        <rect x="30" y="0" width="60" height="24" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="3"/>
+        <text x="60" y="16" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">b[0]=10</text>
+        <!-- b[1] -->
+        <rect x="110" y="0" width="60" height="24" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="3"/>
+        <text x="140" y="16" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">b[1]=9</text>
+        <!-- b[2] -->
+        <rect x="220" y="0" width="60" height="24" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="3"/>
+        <text x="250" y="16" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">b[2]=20</text>
+        <!-- b[3] -->
+        <rect x="300" y="0" width="60" height="24" fill="rgba(16,185,129,0.18)" stroke="#10b981" stroke-width="2" rx="3"/>
+        <text x="330" y="16" text-anchor="middle" fill="#10b981" font-size="10.5" font-weight="800">b[3]=6 ★</text>
+        <!-- b[4] -->
+        <rect x="380" y="0" width="60" height="24" fill="rgba(37,99,235,0.08)" stroke="#2563eb" rx="3"/>
+        <text x="410" y="16" text-anchor="middle" fill="#2563eb" font-size="10.5" font-weight="600">b[4]=12</text>
+      </g>
+    </g>
+  </svg>
+</div>
 
 ---
 

@@ -104,6 +104,61 @@ void levelOrder(BiTree T) {
   * 遍历序列的**最后一个节点**的 `rchild`（后继线索）同样指向该头结点；
   * 由此构成了一个完整的闭环双向线索结构！
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 带头结点的中序线索二叉树闭环回指架构</span>
+    <span class="diagram-badge">P8 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 170" width="100%" height="170">
+    <g transform="translate(20, 20)">
+      <!-- 头结点 -->
+      <g transform="translate(190, 0)">
+        <rect x="0" y="0" width="180" height="34" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="1.8" rx="6"/>
+        <text x="30" y="21" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">ltag=0</text>
+        <line x1="60" y1="0" x2="60" y2="34" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="90" y="21" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="800">头结点</text>
+        <line x1="120" y1="0" x2="120" y2="34" stroke="#2563eb" stroke-width="1.5"/>
+        <text x="150" y="21" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="700">rtag=1</text>
+      </g>
+      <!-- 根节点 Root -->
+      <g transform="translate(250, 60)">
+        <circle cx="30" cy="18" r="16" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="2"/>
+        <text x="30" y="22" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12" font-weight="700">Root</text>
+      </g>
+      <!-- 头结点 lchild 指向根 -->
+      <path d="M 220 34 L 270 60" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <!-- 第一个节点 First (叶子) -->
+      <g transform="translate(110, 100)">
+        <circle cx="20" cy="18" r="16" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2"/>
+        <text x="20" y="22" text-anchor="middle" fill="#10b981" font-size="11" font-weight="700">首节点</text>
+      </g>
+      <!-- 最后一个节点 Last (叶子) -->
+      <g transform="translate(390, 100)">
+        <circle cx="20" cy="18" r="16" fill="rgba(245,158,11,0.15)" stroke="#f59e0b" stroke-width="2"/>
+        <text x="20" y="22" text-anchor="middle" fill="#f59e0b" font-size="11" font-weight="700">末节点</text>
+      </g>
+      <!-- 树枝连线 -->
+      <line x1="265" y1="74" x2="135" y2="105" stroke="var(--vp-c-text-3)" stroke-width="1.5"/>
+      <line x1="295" y1="74" x2="395" y2="105" stroke="var(--vp-c-text-3)" stroke-width="1.5"/>
+      <!-- 首节点 lchild 线索回指头结点 -->
+      <path d="M 115 105 C 70 80, 80 20, 185 15" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-green)"/>
+      <text x="75" y="45" fill="#10b981" font-size="10.5" font-weight="700">前驱线索回指</text>
+      <!-- 头结点 rtag 指向末节点 -->
+      <path d="M 340 34 C 365 45, 390 70, 405 95" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <text x="375" y="55" fill="#2563eb" font-size="10.5" font-weight="700">指向最后节点</text>
+      <!-- 末节点 rchild 线索回指头结点 -->
+      <path d="M 425 105 C 475 80, 465 20, 375 15" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-amber)"/>
+      <text x="445" y="45" fill="#f59e0b" font-size="10.5" font-weight="700">后继线索回指</text>
+    </g>
+    <defs>
+      <marker id="arrow-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+      </marker>
+    </defs>
+  </svg>
+</div>
+
 ---
 
 ### ❓ 前、中、后序线索树找前驱与后继的能力全景
@@ -132,12 +187,71 @@ typedef struct {
 } PTree;
 ```
 
+<div class="handdrawn-diagram-card">
+  <div class="diagram-header">
+    <span class="diagram-icon">🎨</span>
+    <span class="diagram-title">原稿手绘图解 · 树的双亲表示法顺序存储结构</span>
+    <span class="diagram-badge">P9 手记草图</span>
+  </div>
+  <svg viewBox="0 0 700 130" width="100%" height="130">
+    <g transform="translate(15, 15)">
+      <!-- 树形逻辑结构 -->
+      <g transform="translate(30, 10)">
+        <circle cx="40" cy="18" r="16" fill="rgba(37,99,235,0.15)" stroke="#2563eb" stroke-width="2"/>
+        <text x="40" y="22" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">R</text>
+        <circle cx="15" cy="65" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="15" y="69" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">A</text>
+        <circle cx="65" cy="65" r="14" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)" stroke-width="1.8"/>
+        <text x="65" y="69" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">B</text>
+        <line x1="33" y1="32" x2="20" y2="52" stroke="var(--vp-c-text-3)" stroke-width="1.5"/>
+        <line x1="47" y1="32" x2="60" y2="52" stroke="var(--vp-c-text-3)" stroke-width="1.5"/>
+        <text x="40" y="96" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11">逻辑树形</text>
+      </g>
+      <!-- 映射箭头 -->
+      <path d="M 140 50 L 190 50" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+      <text x="165" y="40" text-anchor="middle" fill="#2563eb" font-size="11" font-weight="600">顺序表映射</text>
+      <!-- 顺序存储表 -->
+      <g transform="translate(220, 5)">
+        <!-- 表头 -->
+        <rect x="0" y="0" width="40" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="20" y="16" text-anchor="middle" fill="var(--vp-c-text-3)" font-size="11">下标</text>
+        <rect x="40" y="0" width="70" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="75" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">data</text>
+        <rect x="110" y="0" width="80" height="24" fill="var(--vp-c-bg-alt)" stroke="var(--vp-c-divider)"/>
+        <text x="150" y="16" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="11" font-weight="600">parent</text>
+        <!-- 行 0: R, -1 -->
+        <rect x="0" y="24" width="40" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="20" y="40" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11">0</text>
+        <rect x="40" y="24" width="70" height="24" fill="rgba(37,99,235,0.08)" stroke="var(--vp-c-divider)"/>
+        <text x="75" y="40" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="700">R</text>
+        <rect x="110" y="24" width="80" height="24" fill="rgba(239,68,68,0.08)" stroke="var(--vp-c-divider)"/>
+        <text x="150" y="40" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="700">-1 (根)</text>
+        <!-- 行 1: A, 0 -->
+        <rect x="0" y="48" width="40" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="20" y="64" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11">1</text>
+        <rect x="40" y="48" width="70" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="75" y="64" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">A</text>
+        <rect x="110" y="48" width="80" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="150" y="64" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="600">0</text>
+        <!-- 行 2: B, 0 -->
+        <rect x="0" y="72" width="40" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="20" y="88" text-anchor="middle" fill="var(--vp-c-text-2)" font-size="11">2</text>
+        <rect x="40" y="72" width="70" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="75" y="88" text-anchor="middle" fill="var(--vp-c-text-1)" font-size="12">B</text>
+        <rect x="110" y="72" width="80" height="24" fill="var(--vp-c-bg-soft)" stroke="var(--vp-c-divider)"/>
+        <text x="150" y="88" text-anchor="middle" fill="#2563eb" font-size="12" font-weight="600">0</text>
+      </g>
+    </g>
+  </svg>
+</div>
+
 * **特性与考点**：
   * **找双亲极快**：时间复杂度为 $O(1)$；
   * **找孩子极其不便**：需要遍历整个数组，时间复杂度为 $O(n)$；
   * **节点删除操作耗时对比**：
     * **假删除（惰性标记）**：若将待删除节点的 `parent` 域直接置为 `-2` 标记为已删除，耗时仅需 $\mathbf{O(1)}$；
     * **真删除（物理紧凑）**：若将数组后续元素向前移位填补空缺，则必须同步修改所有节点的 `parent` 下标，时间复杂度为 $\mathbf{O(n)}$。
+
 
 ---
 
