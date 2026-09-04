@@ -30,6 +30,8 @@ import UdpChecksumCalculator from './UdpChecksumCalculator.vue'
 import AsideToggle from './AsideToggle.vue'
 import InternalSortPlayer from './InternalSortPlayer.vue'
 import ExternalSortPlayer from './ExternalSortPlayer.vue'
+import TreePlayer from './TreePlayer.vue'
+import SearchPlayer from './SearchPlayer.vue'
 import { h } from 'vue'
 
 export default {
@@ -83,6 +85,8 @@ export default {
     app.component('UdpChecksumCalculator', UdpChecksumCalculator)
     app.component('InternalSortPlayer', InternalSortPlayer)
     app.component('ExternalSortPlayer', ExternalSortPlayer)
+    app.component('TreePlayer', TreePlayer)
+    app.component('SearchPlayer', SearchPlayer)
   }
 }
 
