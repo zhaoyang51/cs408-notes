@@ -12,40 +12,23 @@
     </div>
 
     <!-- 1. 板书原版全景图 (默认展开，支持矢量重绘 vs 原画截图切换) -->
+    <!-- 1. 板书 1:1 矢量精绘全景时序图 (纯矢量高保真) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('topo')">
         <div class="header-title-box">
           <span class="card-icon">🗺️</span>
-          <strong>一、【B站微课堂板书 1:1 精准重绘】DHCP 交互时序全景时序图</strong>
-          <span class="badge-blue">核心图解</span>
+          <strong>一、DHCP 交互时序全景时序图（4步广播握手 · 两次ARP探活 · 续约生命周期）</strong>
+          <span class="badge-blue">矢量重绘</span>
         </div>
-        <div class="header-actions" @click.stop>
-          <div class="view-switch">
-            <button 
-              class="switch-btn" 
-              :class="{ active: currentView === 'svg' }"
-              @click="currentView = 'svg'"
-            >
-              🎨 矢量重绘版 (超清矢量)
-            </button>
-            <button 
-              class="switch-btn" 
-              :class="{ active: currentView === 'img' }"
-              @click="currentView = 'img'"
-            >
-              📷 板书原图 (原画截图)
-            </button>
-          </div>
-          <button class="toggle-btn" type="button" @click="toggle('topo')">
-            {{ openSections.topo ? '收起 ▲' : '展开图解 ▼' }}
-          </button>
-        </div>
+        <button class="toggle-btn" type="button">
+          {{ openSections.topo ? '收起 ▲' : '展开图解 ▼' }}
+        </button>
       </div>
 
       <div v-show="openSections.topo" class="card-body">
         
-        <!-- 视图 A：1:1 矢量精绘重构版 -->
-        <div v-if="currentView === 'svg'" class="svg-board-wrapper">
+        <!-- 1:1 矢量精绘版 -->
+        <div class="svg-board-wrapper">
           <svg viewBox="0 0 1080 620" class="board-svg" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <!-- 箭头标头 -->
@@ -316,20 +299,6 @@
             <text x="865" y="554" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
 
           </svg>
-        </div>
-
-        <!-- 视图 B：板书原画截图展示 (带大图查看) -->
-        <div v-else class="img-board-wrapper">
-          <div class="original-img-box">
-            <img 
-              :src="withBase('/images/dhcp-protocol-sequence.png')" 
-              alt="DHCP 协议交互时序全景板书原图" 
-              class="board-original-img"
-            />
-          </div>
-          <div class="img-caption">
-            <span>📷 B站 408 计算机网络微课堂 · 经典教学板书高清原画存档</span>
-          </div>
         </div>
 
       </div>
@@ -739,10 +708,6 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
-import { withBase } from 'vitepress'
-
-// 视图切换：'svg' (矢量精绘重构版) | 'img' (原画截图版)
-const currentView = ref('svg')
 
 // 折叠状态控制
 const openSections = reactive({
@@ -1361,42 +1326,6 @@ onUnmounted(() => {
   color: var(--vp-c-text-1);
 }
 
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.view-switch {
-  display: flex;
-  background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 6px;
-  padding: 2px;
-  gap: 2px;
-}
-
-.switch-btn {
-  background: transparent;
-  border: none;
-  border-radius: 4px;
-  padding: 3px 8px;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--vp-c-text-2);
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.switch-btn:hover {
-  color: var(--vp-c-text-1);
-}
-
-.switch-btn.active {
-  background: #2563eb;
-  color: #ffffff;
-}
-
 .card-icon {
   font-size: 16px;
 }
@@ -1431,40 +1360,6 @@ onUnmounted(() => {
   height: auto;
   font-family: inherit;
   display: block;
-}
-
-/* 原画截图包装器 */
-.img-board-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
-  padding: 10px;
-}
-
-.original-img-box {
-  width: 100%;
-  max-width: 1040px;
-  overflow: hidden;
-  border-radius: 6px;
-}
-
-.board-original-img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  display: block;
-}
-
-.img-caption {
-  font-size: 11.5px;
-  color: var(--vp-c-text-2);
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }
 
 /* 模拟器 Tabs */

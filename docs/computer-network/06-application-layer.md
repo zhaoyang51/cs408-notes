@@ -74,8 +74,6 @@
 
 ## 5. DHCP 动态主机配置协议 (UDP 67/68 封装、4 步广播握手与生命周期)
 
-<MediaCard title="DHCP 交互时序全景图（B站 408 计算机网络微课堂官方板书）" tag="原版板书" src="/images/dhcp-protocol-sequence.png" caption="核心考点：服务器在发 OFFER 前用 ARP 探活确保 IP 未被占用；客户机在收 ACK 后用免费 ARP 测冲突；0.5倍租期单播续约，0.875倍租期广播求援；租期到期强制停用。" />
-
 <KP title="📡 DHCP 动态主机配置协议时序全景 · 两次 ARP 探活校验 · 租期续约生命周期" tag="核心考点">
 <DhcpProtocolSimulator />
 </KP>
