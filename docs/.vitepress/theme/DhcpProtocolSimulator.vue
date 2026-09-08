@@ -11,169 +11,327 @@
       </div>
     </div>
 
-    <!-- 1. 全景矢量时序拓扑图 (SVG) -->
+    <!-- 1. 板书原版全景图 (默认展开，支持矢量重绘 vs 原画截图切换) -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('topo')">
         <div class="header-title-box">
           <span class="card-icon">🗺️</span>
-          <strong>一、DHCP 交互时序全景拓扑图（三实体 · 4步交互 · 两次ARP探活 · 续约时序）</strong>
-          <span class="badge-blue">全景时序图</span>
+          <strong>一、【B站微课堂板书 1:1 精准重绘】DHCP 交互时序全景时序图</strong>
+          <span class="badge-blue">核心图解</span>
         </div>
-        <button class="toggle-btn" type="button">
-          {{ openSections.topo ? '收起 ▲' : '展开图解 ▼' }}
-        </button>
+        <div class="header-actions" @click.stop>
+          <div class="view-switch">
+            <button 
+              class="switch-btn" 
+              :class="{ active: currentView === 'svg' }"
+              @click="currentView = 'svg'"
+            >
+              🎨 矢量重绘版 (超清矢量)
+            </button>
+            <button 
+              class="switch-btn" 
+              :class="{ active: currentView === 'img' }"
+              @click="currentView = 'img'"
+            >
+              📷 板书原图 (原画截图)
+            </button>
+          </div>
+          <button class="toggle-btn" type="button" @click="toggle('topo')">
+            {{ openSections.topo ? '收起 ▲' : '展开图解 ▼' }}
+          </button>
+        </div>
       </div>
 
       <div v-show="openSections.topo" class="card-body">
-        <div class="svg-wrapper">
-          <svg viewBox="0 0 980 820" class="dhcp-svg" xmlns="http://www.w3.org/2000/svg">
+        
+        <!-- 视图 A：1:1 矢量精绘重构版 -->
+        <div v-if="currentView === 'svg'" class="svg-board-wrapper">
+          <svg viewBox="0 0 1080 620" class="board-svg" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <!-- 箭头定义 -->
-              <marker id="arr-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0284c7" />
+              <!-- 箭头标头 -->
+              <marker id="arrow-black" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M 0 1 L 8 5 L 0 9 z" fill="#111827" />
               </marker>
-              <marker id="arr-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669" />
+              <marker id="dim-arrow-up" viewBox="0 0 10 10" refX="5" refY="2" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M 1 8 L 5 2 L 9 8 z" fill="#b91c1c" />
               </marker>
-              <marker id="arr-purple" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c3aed" />
-              </marker>
-              <marker id="arr-amber" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706" />
-              </marker>
-              <marker id="arr-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626" />
+              <marker id="dim-arrow-down" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="5" markerHeight="5" orient="auto">
+                <path d="M 1 2 L 5 8 L 9 2 z" fill="#b91c1c" />
               </marker>
             </defs>
 
-            <!-- ══ 顶部三大实体设备栏 ══ -->
-            <!-- 实体 1：DHCP 服务器 1 (左) -->
-            <g transform="translate(140, 20)">
-              <rect x="-90" y="0" width="180" height="54" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
-              <text x="0" y="22" font-size="13" font-weight="900" text-anchor="middle" fill="#0369a1">🖥️ DHCP 服务器 1</text>
-              <text x="0" y="42" font-size="11" font-weight="bold" text-anchor="middle" fill="#2563eb">UDP 67 | 192.168.1.1</text>
+            <!-- 顶部背景板 -->
+            <rect x="0" y="0" width="1080" height="620" fill="var(--vp-c-bg)" rx="8" />
+
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 1. 顶部三大实体设备图标与标注 -->
+            <!-- ═════════════════════════════════════════════════ -->
+
+            <!-- 实体 1：DHCP 服务器 1 (左: x=160) -->
+            <g transform="translate(160, 45)">
+              <!-- 服务器主机图标 -->
+              <rect x="-24" y="0" width="48" height="52" rx="4" fill="#334155" stroke="#1e293b" stroke-width="1.5" />
+              <line x1="-16" y1="12" x2="16" y2="12" stroke="#64748b" stroke-width="2" />
+              <line x1="-16" y1="24" x2="16" y2="24" stroke="#64748b" stroke-width="2" />
+              <line x1="-16" y1="36" x2="16" y2="36" stroke="#64748b" stroke-width="2" />
+              <circle cx="14" cy="44" r="2.5" fill="#22c55e" />
+              <!-- 文字 -->
+              <text x="0" y="72" font-size="14" font-weight="900" text-anchor="middle" fill="var(--vp-c-text-1)">DHCP服务器1</text>
+              <text x="0" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">(UDP 67)</text>
             </g>
 
-            <!-- 实体 2：DHCP 客户机 (中) -->
-            <g transform="translate(490, 20)">
-              <rect x="-95" y="0" width="190" height="54" rx="8" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
-              <text x="0" y="22" font-size="13" font-weight="900" text-anchor="middle" fill="#047857">💻 DHCP 客户机</text>
-              <text x="0" y="42" font-size="11" font-weight="bold" text-anchor="middle" fill="#10b981">UDP 68 | 初始 0.0.0.0</text>
+            <!-- 实体 2：DHCP 客户 (中: x=570) -->
+            <g transform="translate(570, 45)">
+              <!-- 笔记本电脑图标 -->
+              <polygon points="-24,30 24,30 18,10 -18,10" fill="#3b82f6" stroke="#1d4ed8" stroke-width="1.5" />
+              <rect x="-14" y="14" width="28" height="13" rx="1" fill="#93c5fd" />
+              <polygon points="-30,42 30,42 24,30 -24,30" fill="#64748b" stroke="#334155" stroke-width="1.2" />
+              <!-- 文字 -->
+              <text x="0" y="72" font-size="14" font-weight="900" text-anchor="middle" fill="var(--vp-c-text-1)">DHCP客户</text>
+              <text x="0" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">(UDP 68)</text>
             </g>
 
-            <!-- 实体 3：DHCP 服务器 2 (右) -->
-            <g transform="translate(840, 20)">
-              <rect x="-90" y="0" width="180" height="54" rx="8" fill="#eff6ff" stroke="#0284c7" stroke-width="2"/>
-              <text x="0" y="22" font-size="13" font-weight="900" text-anchor="middle" fill="#0369a1">🖥️ DHCP 服务器 2</text>
-              <text x="0" y="42" font-size="11" font-weight="bold" text-anchor="middle" fill="#2563eb">UDP 67 | 192.168.1.2</text>
+            <!-- 实体 3：DHCP 服务器 2 (右: x=980) -->
+            <g transform="translate(980, 45)">
+              <!-- 服务器主机图标 -->
+              <rect x="-24" y="0" width="48" height="52" rx="4" fill="#334155" stroke="#1e293b" stroke-width="1.5" />
+              <line x1="-16" y1="12" x2="16" y2="12" stroke="#64748b" stroke-width="2" />
+              <line x1="-16" y1="24" x2="16" y2="24" stroke="#64748b" stroke-width="2" />
+              <line x1="-16" y1="36" x2="16" y2="36" stroke="#64748b" stroke-width="2" />
+              <circle cx="14" cy="44" r="2.5" fill="#22c55e" />
+              <!-- 文字 -->
+              <text x="0" y="72" font-size="14" font-weight="900" text-anchor="middle" fill="var(--vp-c-text-1)">DHCP服务器2</text>
+              <text x="0" y="90" font-size="13" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">(UDP 67)</text>
             </g>
 
-            <!-- 三条垂直生命时间轴 -->
-            <line x1="140" y1="80" x2="140" y2="800" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
-            <line x1="490" y1="80" x2="490" y2="800" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
-            <line x1="840" y1="80" x2="840" y2="800" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4"/>
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 2. 气泡提示框 (两次 ARP 探测机制) -->
+            <!-- ═════════════════════════════════════════════════ -->
 
-            <!-- ══ 阶段一：获取租约 4 步曲 (y: 90 ~ 400) ══ -->
-            <rect x="20" y="88" width="940" height="320" rx="8" fill="rgba(2,132,199,0.03)" stroke="#bae6fd" stroke-dasharray="4,4"/>
-            <text x="35" y="108" font-size="12" font-weight="900" fill="#0284c7">【阶段一】4 步租约获取（四报文广播握手）与两次 ARP 探活检测</text>
-
-            <!-- 步骤 1：DHCP DISCOVER 广播 -->
-            <path d="M 490,125 L 148,145" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arr-blue)"/>
-            <path d="M 490,125 L 832,145" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arr-blue)"/>
-            <rect x="420" y="115" width="140" height="22" rx="4" fill="#0284c7"/>
-            <text x="490" y="130" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#fff">① DHCP DISCOVER 广播</text>
-            <text x="490" y="150" font-size="10" text-anchor="middle" fill="var(--vp-c-text-2)">源: 0.0.0.0:68 ➔ 目的: 255.255.255.255:67 (寻找局域网所有 DHCP 服务器)</text>
-
-            <!-- 考点 1：服务器发送 OFFER 前使用 ARP 确保 IP 未被占用 -->
-            <g transform="translate(60, 168)">
-              <rect x="0" y="0" width="160" height="34" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-              <text x="80" y="15" font-size="10.5" font-weight="900" text-anchor="middle" fill="#b45309">⚠️ 考点：发送 OFFER 前</text>
-              <text x="80" y="28" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#92400e">服务器用 ARP 探活确保未被占用</text>
+            <!-- 左侧气泡：服务器在发 OFFER 前用 ARP 探活 -->
+            <g transform="translate(230, 85)">
+              <rect x="0" y="0" width="220" height="50" rx="14" fill="var(--vp-c-bg-elv)" stroke="#111827" stroke-width="1.5" />
+              <text x="110" y="21" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">使用ARP确保所选IP地址未</text>
+              <text x="110" y="39" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">被网络中其他主机占用</text>
+              <!-- 虚线指向服务器 1 的发 OFFER 之前位置 -->
+              <path d="M 180,50 L 180,128 L 163,128" fill="none" stroke="#111827" stroke-width="1.2" stroke-dasharray="4,3" />
             </g>
 
-            <!-- 步骤 2：DHCP OFFER 广播 -->
-            <path d="M 140,215 L 482,235" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arr-green)"/>
-            <path d="M 840,215 L 498,235" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arr-green)" stroke-dasharray="4,2"/>
-            <rect x="230" y="210" width="180" height="22" rx="4" fill="#059669"/>
-            <text x="320" y="225" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#fff">② DHCP OFFER 提供租约</text>
-            <text x="320" y="246" font-size="10" text-anchor="middle" fill="var(--vp-c-text-2)">服务器1 提供 IP: 192.168.1.100 (掩码/网关/DNS/租用期) 广播发送</text>
-            <text x="680" y="226" font-size="10" text-anchor="middle" fill="#059669">服务器2 亦提供 IP: 192.168.1.200</text>
-
-            <!-- 步骤 3：DHCP REQUEST 广播 -->
-            <path d="M 490,265 L 148,285" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arr-purple)"/>
-            <path d="M 490,265 L 832,285" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arr-purple)"/>
-            <rect x="420" y="255" width="140" height="22" rx="4" fill="#7c3aed"/>
-            <text x="490" y="270" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#fff">③ DHCP REQUEST 广播</text>
-            <text x="490" y="290" font-size="10" text-anchor="middle" fill="var(--vp-c-text-2)">源: 0.0.0.0 ➔ 目的: 255.255.255.255 (接受服务器1的提议；同时通知服务器2回收其预留IP)</text>
-
-            <!-- 步骤 4：DHCP ACK 广播确认 -->
-            <path d="M 140,315 L 482,335" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arr-green)"/>
-            <rect x="230" y="310" width="180" height="22" rx="4" fill="#059669"/>
-            <text x="320" y="325" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#fff">④ DHCP ACK 确认租约</text>
-            <text x="320" y="346" font-size="10" text-anchor="middle" fill="var(--vp-c-text-2)">服务器1 正式确认分配该 IP，进入租用期倒计时 (广播发送)</text>
-
-            <!-- 考点 2：客户机收到 ACK 后免费 ARP 冲突检测 -->
-            <g transform="translate(400, 355)">
-              <rect x="0" y="0" width="220" height="42" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5"/>
-              <text x="110" y="16" font-size="10.5" font-weight="900" text-anchor="middle" fill="#065f46">⭐ 考点：客户机收到 ACK 后</text>
-              <text x="110" y="30" font-size="9.5" font-weight="bold" text-anchor="middle" fill="#047857">发免费 ARP 检测 IP 冲突</text>
-              <text x="110" y="40" font-size="8.5" text-anchor="middle" fill="#047857">若冲突发 DHCPDECLINE 谢绝；否则正式启用</text>
+            <!-- 右侧气泡：客户机在收 ACK 后用免费 ARP 测冲突 -->
+            <g transform="translate(635, 10)">
+              <rect x="0" y="0" width="270" height="142" rx="18" fill="var(--vp-c-bg-elv)" stroke="#111827" stroke-width="1.5" />
+              <text x="135" y="24" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">使用ARP检测所分配到的IP地址</text>
+              <text x="135" y="44" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">是否已被网络中其他主机占用：</text>
+              <text x="135" y="64" font-size="12" font-weight="bold" text-anchor="middle" fill="#dc2626">若是，则发送DHCP谢绝报文，</text>
+              <text x="135" y="84" font-size="12" font-weight="bold" text-anchor="middle" fill="#dc2626">并重新发送DHCP发现报文；</text>
+              <text x="135" y="104" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">否则可以使用租约中的IP地址</text>
+              <text x="135" y="124" font-size="12" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">与网络中其他主机通信了。</text>
+              <!-- 弯折引线指向客户端 ACK 后位置 -->
+              <path d="M 60,142 C 30,170 -40,200 -62,280" fill="none" stroke="#111827" stroke-width="1.2" stroke-dasharray="4,3" />
             </g>
 
-            <!-- ══ 阶段二：租约生命周期与续约 (y: 420 ~ 720) ══ -->
-            <rect x="20" y="420" width="940" height="300" rx="8" fill="rgba(245,158,11,0.03)" stroke="#fed7aa" stroke-dasharray="4,4"/>
-            <text x="35" y="440" font-size="12" font-weight="900" fill="#d97706">【阶段二】租期续约生命周期（0.5倍 T1 单播 · 0.875倍 T2 广播 · 到期强制停用）</text>
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 3. 三条主垂直时间轴 -->
+            <!-- ═════════════════════════════════════════════════ -->
+            <line x1="160" y1="150" x2="160" y2="595" stroke="#111827" stroke-width="2" marker-end="url(#arrow-black)" />
+            <line x1="570" y1="150" x2="570" y2="595" stroke="#111827" stroke-width="2" marker-end="url(#arrow-black)" />
+            <line x1="980" y1="150" x2="980" y2="595" stroke="#111827" stroke-width="2" marker-end="url(#arrow-black)" />
 
-            <!-- 0.5 倍租用期 (T1) -->
-            <line x1="30" y1="465" x2="950" y2="465" stroke="#f59e0b" stroke-width="1" stroke-dasharray="2,2"/>
-            <rect x="30" y="455" width="130" height="20" rx="3" fill="#fef3c7" stroke="#d97706"/>
-            <text x="95" y="469" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#b45309">⏱️ 到达 0.5 倍租期 (T1)</text>
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 4. 最左侧红色考点阶段标题 -->
+            <!-- ═════════════════════════════════════════════════ -->
+            <text x="145" y="185" font-size="13.5" font-weight="900" text-anchor="end" fill="#dc2626">寻址DHCP服务器</text>
+            <text x="145" y="217" font-size="13.5" font-weight="900" text-anchor="end" fill="#dc2626">提供IP地址租用</text>
+            <text x="145" y="249" font-size="13.5" font-weight="900" text-anchor="end" fill="#dc2626">接收IP地址租约</text>
+            <text x="145" y="281" font-size="13.5" font-weight="900" text-anchor="end" fill="#dc2626">确认IP地址租约</text>
 
-            <!-- T1: 客户机单播 REQUEST -->
-            <path d="M 490,480 L 148,495" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-blue)"/>
-            <rect x="240" y="475" width="190" height="20" rx="3" fill="#eff6ff" stroke="#2563eb"/>
-            <text x="335" y="489" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#1d4ed8">单播 DHCPREQUEST 申请续约</text>
-            <text x="335" y="508" font-size="9" text-anchor="middle" fill="var(--vp-c-text-3)">源: 192.168.1.100 ➔ 目的: 192.168.1.1 (直接单播给服务器1)</text>
+            <!-- 分割横线 -->
+            <line x1="20" y1="325" x2="160" y2="325" stroke="#111827" stroke-width="1.5" />
 
-            <!-- 3 种情况分支标注 -->
-            <!-- 情况 1：ACK 续约成功 -->
-            <path d="M 140,520 L 482,535" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arr-green)"/>
-            <text x="240" y="528" font-size="10" font-weight="bold" fill="#059669">分支 ① 正常响应 ACK ➔ 租约计时器重置，获得完整新租期</text>
+            <!-- 垂直排列：IP 地址 续约 -->
+            <g transform="translate(45, 345)">
+              <text x="0" y="15" font-size="13.5" font-weight="900" text-anchor="middle" fill="#dc2626">IP</text>
+              <text x="0" y="35" font-size="13.5" font-weight="900" text-anchor="middle" fill="#dc2626">地</text>
+              <text x="0" y="55" font-size="13.5" font-weight="900" text-anchor="middle" fill="#dc2626">址</text>
+              <text x="0" y="75" font-size="13.5" font-weight="900" text-anchor="middle" fill="#dc2626">续</text>
+              <text x="0" y="95" font-size="13.5" font-weight="900" text-anchor="middle" fill="#dc2626">约</text>
+            </g>
 
-            <!-- 情况 2：NACK 拒绝 -->
-            <path d="M 140,545 L 482,560" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#arr-red)"/>
-            <text x="240" y="555" font-size="10" font-weight="bold" fill="#dc2626">分支 ② 响应 NACK ➔ 立即停止使用该 IP，重发 DISCOVER</text>
+            <!-- 底部：随时解除地址租约 -->
+            <text x="145" y="565" font-size="13.5" font-weight="900" text-anchor="end" fill="#dc2626">随时解除地址租约</text>
 
-            <!-- 情况 3：无响应 -->
-            <text x="500" y="575" font-size="10" font-weight="bold" fill="#b45309">分支 ③ 服务器1 无响应（宕机/断网）➔ 客户机继续使用，等待 T2</text>
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 5. 四步租约获取（四报文广播握手） -->
+            <!-- ═════════════════════════════════════════════════ -->
 
-            <!-- 0.875 倍租用期 (T2, 7/8) -->
-            <line x1="30" y1="595" x2="950" y2="595" stroke="#ea580c" stroke-width="1" stroke-dasharray="2,2"/>
-            <rect x="30" y="585" width="140" height="20" rx="3" fill="#ffedd5" stroke="#ea580c"/>
-            <text x="100" y="599" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#c2410c">⏱️ 到达 0.875 倍租期 (T2)</text>
+            <!-- ① DISCOVER 广播 (y=180) -->
+            <!-- 向左：客户机 -> 服务器1 -->
+            <line x1="570" y1="180" x2="166" y2="180" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="169" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="371" y="185" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">DISCOVER</text>
+            <text x="245" y="174" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+            <text x="455" y="174" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
 
-            <!-- T2: 广播 REQUEST -->
-            <path d="M 490,610 L 148,625" fill="none" stroke="#ea580c" stroke-width="2.5" marker-end="url(#arr-amber)"/>
-            <path d="M 490,610 L 832,625" fill="none" stroke="#ea580c" stroke-width="2.5" marker-end="url(#arr-amber)"/>
-            <rect x="390" y="605" width="200" height="20" rx="3" fill="#fff7ed" stroke="#ea580c"/>
-            <text x="490" y="619" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#c2410c">⚠️ 广播 DHCPREQUEST 求援续约</text>
-            <text x="490" y="640" font-size="9" text-anchor="middle" fill="var(--vp-c-text-3)">源: 192.168.1.100 ➔ 目的: 255.255.255.255 (向网络内任意 DHCP 服务器广播求援)</text>
+            <!-- 向右：客户机 -> 服务器2 -->
+            <line x1="570" y1="180" x2="974" y2="180" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="735" y="169" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="781" y="185" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">DISCOVER</text>
+            <text x="655" y="174" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
+            <text x="865" y="174" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
 
-            <!-- 租期到期 1.0 -->
-            <line x1="30" y1="660" x2="950" y2="660" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="2,2"/>
-            <rect x="30" y="650" width="130" height="20" rx="3" fill="#fee2e2" stroke="#dc2626"/>
-            <text x="95" y="664" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#991b1b">🛑 租用期到期 (1.0)</text>
-            <text x="210" y="666" font-size="10.5" font-weight="bold" fill="#dc2626">若仍无服务器响应 ACK ➔ 租用期结束，客户机必须立即强制停止使用该 IP，重发 DISCOVER！</text>
+            <!-- ② OFFER 广播 (y=212) -->
+            <!-- 从左：服务器1 -> 客户机 -->
+            <line x1="160" y1="212" x2="564" y2="212" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="201" width="92" height="22" rx="2" fill="#ffc90e" stroke="#111827" stroke-width="1" />
+            <text x="371" y="217" font-size="11.5" font-weight="900" text-anchor="middle" fill="#111827">OFFER</text>
+            <text x="245" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:DHCP服务器1</text>
+            <text x="475" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
 
-            <!-- ══ 阶段三：主动释放 (y: 735 ~ 795) ══ -->
-            <rect x="20" y="730" width="940" height="65" rx="8" fill="rgba(100,116,139,0.04)" stroke="#cbd5e1"/>
-            <text x="35" y="750" font-size="12" font-weight="900" fill="#475569">【随时提前解约】DHCP RELEASE</text>
-            <path d="M 490,765 L 148,775" fill="none" stroke="#475569" stroke-width="2.5" marker-end="url(#arr-blue)"/>
-            <rect x="250" y="760" width="180" height="20" rx="3" fill="#f1f5f9" stroke="#64748b"/>
-            <text x="340" y="774" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#334155">单播 DHCPRELEASE 释放报文</text>
-            <text x="500" y="774" font-size="10" fill="var(--vp-c-text-2)">客户机主动退还 IP，服务器1 将 192.168.1.100 回收至可用地址池</text>
+            <!-- 从右：服务器2 -> 客户机 -->
+            <line x1="980" y1="212" x2="576" y2="212" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="735" y="201" width="92" height="22" rx="2" fill="#ffc90e" stroke="#111827" stroke-width="1" />
+            <text x="781" y="217" font-size="11.5" font-weight="900" text-anchor="middle" fill="#111827">OFFER</text>
+            <text x="655" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+            <text x="865" y="206" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:DHCP服务器2</text>
+
+            <!-- ③ REQUEST 广播确认 (y=244) -->
+            <!-- 向左：客户机 -> 服务器1 -->
+            <line x1="570" y1="244" x2="166" y2="244" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="233" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="371" y="249" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">REQUEST</text>
+            <text x="245" y="238" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+            <text x="455" y="238" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
+
+            <!-- 向右：客户机 -> 服务器2 -->
+            <line x1="570" y1="244" x2="974" y2="244" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="735" y="233" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="781" y="249" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">REQUEST</text>
+            <text x="655" y="238" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
+            <text x="865" y="238" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+
+            <!-- ④ ACK 确认 (y=276) -->
+            <!-- 仅服务器1 发送 -->
+            <line x1="160" y1="276" x2="564" y2="276" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="265" width="92" height="22" rx="2" fill="#00a651" stroke="#111827" stroke-width="1" />
+            <text x="371" y="281" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">ACK</text>
+            <text x="245" y="270" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:DHCP服务器1</text>
+            <text x="475" y="270" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 6. 租期续约时序段落 -->
+            <!-- ═════════════════════════════════════════════════ -->
+
+            <!-- 到达 0.5 倍租用期 (T1): 客户机单播 REQUEST -->
+            <line x1="570" y1="325" x2="166" y2="325" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="314" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="371" y="330" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">REQUEST</text>
+            <text x="245" y="319" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:DHCP服务器1</text>
+            <text x="455" y="319" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:租用的地址</text>
+
+            <!-- 0.5 续约的三种情况 -->
+            <text x="155" y="356" font-size="12" font-weight="bold" text-anchor="end" fill="var(--vp-c-text-1)">情况1</text>
+            <text x="155" y="388" font-size="12" font-weight="bold" text-anchor="end" fill="var(--vp-c-text-1)">情况2</text>
+            <text x="155" y="416" font-size="12" font-weight="bold" text-anchor="end" fill="var(--vp-c-text-1)">情况3</text>
+            <text x="155" y="432" font-size="11.5" font-weight="bold" text-anchor="end" fill="var(--vp-c-text-1)">不响应</text>
+
+            <!-- 情况 1：服务器响应 ACK -->
+            <line x1="160" y1="352" x2="564" y2="352" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="341" width="92" height="22" rx="2" fill="#00a651" stroke="#111827" stroke-width="1" />
+            <text x="371" y="357" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">ACK</text>
+            <text x="245" y="346" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:DHCP服务器1</text>
+            <text x="460" y="346" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:租用的地址</text>
+            <!-- 客户机右侧说明 -->
+            <line x1="570" y1="352" x2="578" y2="352" stroke="#111827" stroke-width="1.5" />
+            <text x="585" y="356" font-size="12.5" font-weight="bold" fill="#dc2626">得到新的租用期</text>
+
+            <!-- 情况 2：服务器响应 NACK -->
+            <line x1="160" y1="384" x2="564" y2="384" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="373" width="92" height="22" rx="2" fill="var(--vp-c-bg-elv)" stroke="#111827" stroke-width="1.2" />
+            <text x="371" y="389" font-size="11.5" font-weight="900" text-anchor="middle" fill="var(--vp-c-text-1)">NACK</text>
+            <text x="245" y="378" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:DHCP服务器1</text>
+            <text x="460" y="378" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:租用的地址</text>
+            <!-- 客户机右侧说明 -->
+            <line x1="570" y1="384" x2="578" y2="384" stroke="#111827" stroke-width="1.5" />
+            <text x="585" y="388" font-size="12" font-weight="bold" fill="#dc2626">立即停止使用租用的IP地址</text>
+            <text x="585" y="404" font-size="12" font-weight="bold" fill="#dc2626">重新发送DHCP发现报文</text>
+
+            <!-- 情况 3：到达 0.875 倍租期 (T2)，广播 REQUEST 求援 -->
+            <line x1="570" y1="440" x2="166" y2="440" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="429" width="92" height="22" rx="2" fill="#00a2e8" stroke="#111827" stroke-width="1" />
+            <text x="371" y="445" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">REQUEST</text>
+            <text x="245" y="434" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+            <text x="455" y="434" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:租用的地址</text>
+
+            <!-- 中间垂直省略号 -->
+            <text x="371" y="475" font-size="18" font-weight="900" text-anchor="middle" fill="var(--vp-c-text-1)">⋮</text>
+
+            <!-- 到期仍无响应：强制停用 -->
+            <g transform="translate(430, 498)">
+              <text x="0" y="0" font-size="12" font-weight="bold" text-anchor="middle" fill="#dc2626">立即停止使用租用的IP地址</text>
+              <text x="0" y="18" font-size="12" font-weight="bold" text-anchor="middle" fill="#dc2626">重新发送DHCP发现报文</text>
+            </g>
+
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 7. 右侧时间段维度标尺 (0.5倍、0.875倍、租用期) -->
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 0.5 倍水平标线 -->
+            <line x1="570" y1="325" x2="710" y2="325" stroke="#111827" stroke-width="1.2" />
+
+            <!-- 0.5 倍租用期垂直双向箭头 -->
+            <g transform="translate(635, 0)">
+              <line x1="0" y1="280" x2="0" y2="321" stroke="#b91c1c" stroke-width="1.5" marker-start="url(#dim-arrow-up)" marker-end="url(#dim-arrow-down)" />
+              <text x="0" y="303" font-size="11.5" font-weight="900" text-anchor="middle" fill="#b91c1c">0.5倍租用期</text>
+            </g>
+
+            <!-- 0.875 倍水平标线与双向箭头 -->
+            <line x1="570" y1="440" x2="860" y2="440" stroke="#111827" stroke-width="1.2" />
+            <g transform="translate(835, 0)">
+              <line x1="0" y1="280" x2="0" y2="436" stroke="#b91c1c" stroke-width="1.5" marker-start="url(#dim-arrow-up)" marker-end="url(#dim-arrow-down)" />
+              <text x="0" y="355" font-size="11.5" font-weight="900" text-anchor="middle" fill="#b91c1c">0.875倍</text>
+              <text x="0" y="372" font-size="11.5" font-weight="900" text-anchor="middle" fill="#b91c1c">租用期</text>
+            </g>
+
+            <!-- 完整租用期水平标线与双向箭头 -->
+            <line x1="570" y1="520" x2="980" y2="520" stroke="#111827" stroke-width="1.2" />
+            <g transform="translate(910, 0)">
+              <line x1="0" y1="280" x2="0" y2="516" stroke="#b91c1c" stroke-width="1.5" marker-start="url(#dim-arrow-up)" marker-end="url(#dim-arrow-down)" />
+              <text x="0" y="395" font-size="12" font-weight="900" text-anchor="middle" fill="#b91c1c">租用期</text>
+            </g>
+
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 8. 底部：随时解除地址租约 (DHCP RELEASE) -->
+            <!-- ═════════════════════════════════════════════════ -->
+            <!-- 向左：客户机 -> 服务器1 -->
+            <line x1="570" y1="560" x2="166" y2="560" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="325" y="549" width="92" height="22" rx="2" fill="#334155" stroke="#111827" stroke-width="1" />
+            <text x="371" y="565" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">RELEASE</text>
+            <text x="245" y="554" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+            <text x="455" y="554" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
+
+            <!-- 向右：客户机 -> 服务器2 -->
+            <line x1="570" y1="560" x2="974" y2="560" stroke="#111827" stroke-width="1.8" marker-end="url(#arrow-black)" />
+            <rect x="735" y="549" width="92" height="22" rx="2" fill="#334155" stroke="#111827" stroke-width="1" />
+            <text x="781" y="565" font-size="11.5" font-weight="900" text-anchor="middle" fill="#ffffff">RELEASE</text>
+            <text x="655" y="554" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">源:0.0.0.0</text>
+            <text x="865" y="554" font-size="11.5" font-weight="bold" text-anchor="middle" fill="var(--vp-c-text-1)">目的:255.255.255.255</text>
+
           </svg>
         </div>
+
+        <!-- 视图 B：板书原画截图展示 (带大图查看) -->
+        <div v-else class="img-board-wrapper">
+          <div class="original-img-box">
+            <img 
+              :src="withBase('/images/dhcp-protocol-sequence.png')" 
+              alt="DHCP 协议交互时序全景板书原图" 
+              class="board-original-img"
+            />
+          </div>
+          <div class="img-caption">
+            <span>📷 B站 408 计算机网络微课堂 · 经典教学板书高清原画存档</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -323,7 +481,7 @@
       </div>
     </div>
 
-    <!-- 3. 核心考点速查与避坑对比表 (三张硬核对比表) -->
+    <!-- 3. 核心考点速查与避坑对比表 -->
     <div class="collapsible-card">
       <div class="card-header" @click="toggle('tables')">
         <div class="header-title-box">
@@ -338,7 +496,7 @@
 
       <div v-show="openSections.tables" class="card-body">
         
-        <!-- 表 1：两次 ARP 探测机制全对比 (最常考大题与陷阱) -->
+        <!-- 表 1：两次 ARP 探测机制全对比 -->
         <h5 class="table-caption">⭐ 两次 ARP 探测机制对比（必背高频陷阱）</h5>
         <div class="table-wrapper">
           <table class="dhcp-table">
@@ -379,7 +537,7 @@
           </table>
         </div>
 
-        <!-- 表 2：DHCP 报文传输特征与单播/广播汇总表 -->
+        <!-- 表 2：DHCP 各类报文单播/广播全景表 -->
         <h5 class="table-caption" style="margin-top: 20px;">📦 DHCP 各类核心报文单播/广播与端口全景表</h5>
         <div class="table-wrapper">
           <table class="dhcp-table">
@@ -453,7 +611,7 @@
           </table>
         </div>
 
-        <!-- 表 3：租约续约三大时间节点速记表 -->
+        <!-- 表 3：租约生命周期三大时间节点速记表 -->
         <h5 class="table-caption" style="margin-top: 20px;">⏱️ 租约生命周期三大时间节点</h5>
         <div class="table-wrapper">
           <table class="dhcp-table">
@@ -581,6 +739,10 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
+import { withBase } from 'vitepress'
+
+// 视图切换：'svg' (矢量精绘重构版) | 'img' (原画截图版)
+const currentView = ref('svg')
 
 // 折叠状态控制
 const openSections = reactive({
@@ -1183,6 +1345,8 @@ onUnmounted(() => {
   cursor: pointer;
   user-select: none;
   border-bottom: 1px solid var(--vp-c-border);
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .card-header:hover {
@@ -1195,6 +1359,42 @@ onUnmounted(() => {
   gap: 8px;
   font-size: 13px;
   color: var(--vp-c-text-1);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.view-switch {
+  display: flex;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.switch-btn {
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.switch-btn:hover {
+  color: var(--vp-c-text-1);
+}
+
+.switch-btn.active {
+  background: #2563eb;
+  color: #ffffff;
 }
 
 .card-icon {
@@ -1214,18 +1414,57 @@ onUnmounted(() => {
   padding: 14px;
 }
 
-/* SVG 样式 */
-.svg-wrapper {
+/* 1:1 矢量板书 SVG 样式 */
+.svg-board-wrapper {
   overflow-x: auto;
   display: flex;
   justify-content: center;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  padding: 8px;
 }
 
-.dhcp-svg {
+.board-svg {
   width: 100%;
-  max-width: 980px;
+  max-width: 1080px;
   height: auto;
   font-family: inherit;
+  display: block;
+}
+
+/* 原画截图包装器 */
+.img-board-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.original-img-box {
+  width: 100%;
+  max-width: 1040px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.board-original-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.img-caption {
+  font-size: 11.5px;
+  color: var(--vp-c-text-2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 /* 模拟器 Tabs */
@@ -1692,6 +1931,10 @@ onUnmounted(() => {
   }
   .traffic-channel {
     min-height: 40px;
+  }
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 </style>
