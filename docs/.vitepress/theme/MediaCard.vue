@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <div class="media-card" :class="[`media-${type}`, { 'has-shadow': shadow }]">
     <!-- 头部标头（可选） -->
     <div class="media-header" v-if="title || tag">
@@ -10,7 +10,7 @@
     <div class="media-body">
       <!-- 1. 图片 / GIF 动图展示 -->
       <div class="image-wrapper" v-if="src">
-        <img :src="src" :alt="alt || title || '示意图'" class="media-img" loading="lazy" />
+        <img :src="resolvedSrc" :alt="alt || title || '示意图'" class="media-img" loading="lazy" />
       </div>
 
       <!-- 2. 插槽：自定义 HTML5 / SVG / 交互式组件内容 -->
@@ -26,7 +26,10 @@
 </template>
 
 <script setup>
-defineProps({
+import { computed } from 'vue'
+import { withBase } from 'vitepress'
+
+const props = defineProps({
   src: {
     type: String,
     default: ''
@@ -55,6 +58,18 @@ defineProps({
     type: Boolean,
     default: true
   }
+})
+
+const resolvedSrc = computed(() => {
+  if (!props.src) return ''
+  // 外部绝对路径或 data URI 直接返回
+  if (props.src.startsWith('http://') || props.src.startsWith('https://') || props.src.startsWith('data:')) {
+    return props.src
+  }
+  if (props.src.startsWith('/cs408-notes')) {
+    return props.src
+  }
+  return withBase(props.src)
 })
 </script>
 
