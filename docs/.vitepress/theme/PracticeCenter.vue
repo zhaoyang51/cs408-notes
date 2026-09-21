@@ -193,7 +193,7 @@
         <button
           class="page-btn"
           :disabled="currentPage === 1"
-          @click="currentPage--"
+          @click="prevPage"
         >
           上一页
         </button>
@@ -205,7 +205,7 @@
         <button
           class="page-btn"
           :disabled="currentPage >= totalPages"
-          @click="currentPage++"
+          @click="nextPage"
         >
           下一页
         </button>
@@ -215,7 +215,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { withBase } from 'vitepress'
 import PracticeQuestionCard from './PracticeQuestionCard.vue'
 
@@ -491,6 +491,48 @@ function scrollToQuestion(qId) {
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }, 100)
     }
+  }
+}
+
+// 自动平滑滚动到当前页第一题顶部，并预留导航栏间距
+function scrollToTopQuestion() {
+  if (typeof window === 'undefined') return
+  nextTick(() => {
+    const firstCard = document.querySelector('.questions-stream .question-card')
+    if (firstCard) {
+      const navOffset = 76 // 顶部导航栏高度 (~64px) + 舒适视觉安全余量
+      const rect = firstCard.getBoundingClientRect()
+      const targetY = rect.top + window.pageYOffset - navOffset
+      window.scrollTo({
+        top: Math.max(0, targetY),
+        behavior: 'smooth'
+      })
+    } else {
+      const stream = document.querySelector('.questions-stream')
+      if (stream) {
+        const navOffset = 76
+        const rect = stream.getBoundingClientRect()
+        const targetY = rect.top + window.pageYOffset - navOffset
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        })
+      }
+    }
+  })
+}
+
+function nextPage() {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+    scrollToTopQuestion()
+  }
+}
+
+function prevPage() {
+  if (currentPage.value > 1) {
+    currentPage.value--
+    scrollToTopQuestion()
   }
 }
 

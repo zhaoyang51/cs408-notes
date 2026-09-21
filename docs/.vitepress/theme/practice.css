@@ -270,6 +270,7 @@
 
 /* 题目卡片 */
 .question-card {
+  scroll-margin-top: 80px;
   background: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 14px;
