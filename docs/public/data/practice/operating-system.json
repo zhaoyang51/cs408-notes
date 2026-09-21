@@ -2223,7 +2223,7 @@
     "sectionCode": "3.2.3",
     "sectionTitle": "同步与互斥",
     "type": "choice",
-    "stem": "进程 P0 和 P1 的共享变量定义及其初值为\nboolean flag [2];\nint turn = 0;\nflag [0] = FALSE ;\nflag [1] = FALSE ;\n若进程 P0 和 P1 访问临界资源的类 C 伪代码实现如下：\n进程 P0\nvoid P0 () {\nwhile ( TRUE ) {\nflag [0] = TRUE ;\nturn = 1;\nwhile ( flag [1] && ( turn == 1));\n临 界 区 ；\nflag [0] = FALSE ;\n}\n}\n进程 P1\nvoid P1 () {\nwhile ( TRUE ) {\nflag [1] = TRUE ;\nturn = 0;\nwhile ( flag [0] && ( turn == 0));\n临 界 区 ；\nflag [1] = FALSE ;\n}\n}\n则并发执行进程 P0 和 P1 时产生的情形是\t（ ）。",
+    "stem": "进程 P0 和 P1 的共享变量定义及其初值为：\n\n`c\nboolean flag[2];\nint turn = 0;\nflag[0] = FALSE;\nflag[1] = FALSE;\n`\n\n若进程 P0 和 P1 访问临界资源的类 C 伪代码实现如下：\n\n`c\n// 进程 P0\nvoid P0() {\n    while (TRUE) {\n        flag[0] = TRUE;\n        turn = 1;\n        while (flag[1] && (turn == 1));\n        临界区;\n        flag[0] = FALSE;\n    }\n}\n\n// 进程 P1\nvoid P1() {\n    while (TRUE) {\n        flag[1] = TRUE;\n        turn = 0;\n        while (flag[0] && (turn == 0));\n        临界区;\n        flag[1] = FALSE;\n    }\n}\n`\n\n则并发执行进程 P0 和 P1 时产生的情形是（ ）。",
     "options": [
       {
         "label": "A",
@@ -2289,7 +2289,7 @@
     "sectionCode": "3.2.3",
     "sectionTitle": "同步与互斥",
     "type": "choice",
-    "stem": "使用 TSL (Test and Set Lock) 指令实现进程互斥的伪代码如下所示。\ndo {\n...\nwhile ( TSL (& lock ));\ncritical section ;\nlock = FALSE ;\n...\n} while ( TRUE );\n下列与该实现机制相关的叙述中，正确的是\t（ ）。",
+    "stem": "使用 TSL (Test and Set Lock) 指令实现进程互斥的伪代码如下所示：\n\n`c\ndo {\n    ...\n    while (TSL(&lock));\n    critical section;\n    lock = FALSE;\n    ...\n} while (TRUE);\n`\n\n下列与该实现机制相关的叙述中，正确的是（ ）。",
     "options": [
       {
         "label": "A",
@@ -2648,7 +2648,7 @@
     "sectionCode": "3.2.3",
     "sectionTitle": "同步与互斥",
     "type": "comprehensive",
-    "stem": ".semaphore-grid { display: grid; grid-template-columns: repeat(3, minmax(240px,\n1fr)); gap: 24px; margin: 18px 0 22px; } .semaphore-card { border: 1px solid currentColor;\nbackground: transparent; } .semaphore-card-title { padding: 10px 16px; font-weight: 700;\nborder-bottom: 1px solid currentColor; background: rgba(127, 127, 127, 0.08); color: in-\nherit; } .semaphore-card-body { padding: 18px 18px 20px; background: transparent; color:\ninherit; } .semaphore-card-code { margin: 0; white-space: pre-wrap; font-family: Consolas,\n”Courier New”, monospace; font-size: 16px; line-height: 1.55; color: inherit; } .semaphore-card-\ncode + .semaphore-card-code { margin-top: 18px; } .semaphore-card-spacer { height: 96px; }\n.semaphore-card-body pre { margin: 0; padding: 0; border: none; background: transparent; color:\ninherit; white-space: inherit; font: inherit; } @media (max-width: 900px) { .semaphore-grid {\ngrid-template-columns: 1fr; } .semaphore-card-body { padding: 14px 14px 16px; } .semaphore-\ncard-code { font-size: 15px; line-height: 1.45; } .semaphore-card-code + .semaphore-card-code {\nmargin-top: 14px; } .semaphore-card-spacer { height: 24px; } }\n下表给出了整型信号量 S 的 wait\t（ ）和 signal\t（ ）操作的功能描述，以及采用开/关中\n断指令实现信号量操作互斥的两种方法。\n功能描述\nSemaphore S;\nwait (S) {\nwhile (S <= 0);\nS = S -1;\n}\nsignal (S) {\nS = S +1;\n}\n方法 1\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0);\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\n\nS = S +1;\n开 中 断 ；\n}\n方法 2\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0) {\n开 中 断 ；\n关 中 断 ；\n}\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\nS = S +1;\n开 中 断 ；\n}\n请回答下列问题。\n(1) 为什么在 wait\t（ ）和 signal\t（ ）操作中对信号量 S 的访问必须互斥执行？\n(2) 分别说明方法 1 和方法 2 是否正确。若不正确，请说明理由。\n(3) 用户程序能否使用开/关中断指令实现临界区互斥？为什么？",
+    "stem": "下表给出了整型信号量 S 的 wait\t（ ）和 signal\t（ ）操作的功能描述，以及采用开/关中\n断指令实现信号量操作互斥的两种方法。\n功能描述\nSemaphore S;\nwait (S) {\nwhile (S <= 0);\nS = S -1;\n}\nsignal (S) {\nS = S +1;\n}\n方法 1\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0);\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\n\nS = S +1;\n开 中 断 ；\n}\n方法 2\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0) {\n开 中 断 ；\n关 中 断 ；\n}\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\nS = S +1;\n开 中 断 ；\n}\n请回答下列问题。\n(1) 为什么在 wait\t（ ）和 signal\t（ ）操作中对信号量 S 的访问必须互斥执行？\n(2) 分别说明方法 1 和方法 2 是否正确。若不正确，请说明理由。\n(3) 用户程序能否使用开/关中断指令实现临界区互斥？为什么？",
     "options": [],
     "answer": "",
     "explanation": "",

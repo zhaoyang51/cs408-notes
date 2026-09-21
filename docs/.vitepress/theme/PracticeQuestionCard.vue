@@ -35,7 +35,22 @@
     </div>
 
     <!-- 题干正文 -->
-    <div class="question-stem">{{ question.stem }}</div>
+    <div class="question-stem">
+      <template v-for="(block, bIdx) in parsedStemBlocks" :key="bIdx">
+        <div v-if="block.type === 'text'" class="stem-text">{{ block.content }}</div>
+        <div v-else-if="block.type === 'code'" class="stem-code-wrap">
+          <div class="stem-code-header">
+            <span class="code-lang-tag">{{ (block.lang || 'c').toUpperCase() }}</span>
+            <span class="code-dot-group">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </span>
+          </div>
+          <pre class="stem-code"><code>{{ block.content }}</code></pre>
+        </div>
+      </template>
+    </div>
 
     <!-- 选择题选项区 -->
     <div v-if="question.type === 'choice' && question.options && question.options.length" class="options-list">
@@ -100,7 +115,13 @@
 
       <div class="explanation-text">
         <div v-if="question.explanation">
-          <strong>【考点精析】</strong> {{ question.explanation }}
+          <strong>【考点精析】</strong>
+          <template v-for="(block, bIdx) in parsedExplanationBlocks" :key="bIdx">
+            <span v-if="block.type === 'text'" class="stem-text">{{ block.content }}</span>
+            <div v-else-if="block.type === 'code'" class="stem-code-wrap">
+              <pre class="stem-code"><code>{{ block.content }}</code></pre>
+            </div>
+          </template>
         </div>
         <div v-else style="color: var(--vp-c-text-2); font-size: 0.88rem;">
           根据 408 统考大纲：本题考查 <strong>{{ question.sectionTitle }}</strong> 核心概念与常规题型设问。请点击上方按钮跳转到讲义对应章节深入复盘。
@@ -111,8 +132,44 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { withBase } from 'vitepress'
+
+function parseContentBlocks(rawText) {
+  if (!rawText) return []
+  const blocks = []
+  const regex = /```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g
+  let lastIndex = 0
+  let match
+
+  while ((match = regex.exec(rawText)) !== null) {
+    if (match.index > lastIndex) {
+      const seg = rawText.slice(lastIndex, match.index).trim()
+      if (seg) {
+        blocks.push({ type: 'text', content: seg })
+      }
+    }
+    blocks.push({
+      type: 'code',
+      lang: match[1] || 'c',
+      content: match[2].trimEnd()
+    })
+    lastIndex = regex.lastIndex
+  }
+
+  if (lastIndex < rawText.length) {
+    const remaining = rawText.slice(lastIndex).trim()
+    if (remaining) {
+      blocks.push({ type: 'text', content: remaining })
+    }
+  }
+
+  if (blocks.length === 0) {
+    blocks.push({ type: 'text', content: rawText })
+  }
+
+  return blocks
+}
 
 const props = defineProps({
   question: {
@@ -138,6 +195,9 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['selectOption', 'toggleFavorite', 'toggleWrong', 'saveNote', 'resetAnswer'])
+
+const parsedStemBlocks = computed(() => parseContentBlocks(props.question?.stem))
+const parsedExplanationBlocks = computed(() => parseContentBlocks(props.question?.explanation))
 
 const showAnswer = ref(false)
 const draftNote = ref(props.userNote || '')

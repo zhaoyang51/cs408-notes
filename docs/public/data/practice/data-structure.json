@@ -9,7 +9,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "设 n 是描述问题规模的非负整数，下面程序片段的时间复杂度是\t（ ）。\nx = 2;\nwhile (x < n / 2)\nx = 2 * x;",
+    "stem": "设 n 是描述问题规模的非负整数，下面程序片段的时间复杂度是（ ）。\n\n```c\nx = 2;\nwhile (x < n / 2)\n    x = 2 * x;\n```",
     "options": [
       {
         "label": "A",
@@ -42,7 +42,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "求整数 n(n ≥ 0) 阶乘的算法如下，其时间复杂度是\t（ ）。\nint fact (int n) {\nif (n <= 1) return 1;\nreturn n * fact (n - 1);\n}",
+    "stem": "求整数 n(n ≥ 0) 阶乘的算法如下，其时间复杂度是（ ）。\n\n```c\nint fact(int n) {\n    if (n <= 1) return 1;\n    return n * fact(n - 1);\n}\n```",
     "options": [
       {
         "label": "A",
@@ -108,7 +108,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "下列程序段的时间复杂度是\t（ ）。\ncount = 0;\nfor (k = 1; k <= n; k *= 2)\nfor (j = 1; j <= n; j ++)\ncount ++;",
+    "stem": "下列程序段的时间复杂度是（ ）。\n\n```c\ncount = 0;\nfor (k = 1; k <= n; k *= 2)\n    for (j = 1; j <= n; j++)\n        count++;\n```",
     "options": [
       {
         "label": "A",
@@ -141,7 +141,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "已知程序如下：\nint S(int n) {\nreturn (n <= 0) ? 0 : S(n - 1) + n;\n}\nvoid main () {\ncout << S (1) ;\n}\n程序运行时使用栈来保存调用过程的信息，自栈底到栈顶保存的信息依次对应的是\t（ ）。",
+    "stem": "已知程序如下：\n\n```c\nint S(int n) {\n    return (n <= 0) ? 0 : S(n - 1) + n;\n}\n\nvoid main() {\n    cout << S(1);\n}\n```\n\n程序运行时使用栈来保存调用过程的信息，自栈底到栈顶保存的信息依次对应的是（ ）。",
     "options": [
       {
         "label": "A",
@@ -174,7 +174,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "下列函数的时间复杂度是\t（ ）。\nint func (int n) {\nint i = 0, sum = 0;\nwhile ( sum < n)\nsum += ++i;\nreturn i;\n}",
+    "stem": "下列函数的时间复杂度是（ ）。\n\n```c\nint func(int n) {\n    int i = 0, sum = 0;\n    while (sum < n)\n        sum += ++i;\n    return i;\n}\n```",
     "options": [
       {
         "label": "A",
@@ -207,7 +207,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "设 n 是描述问题规模的非负整数，下列程序段的时间复杂度是\t（ ）。\nx = 0;\nwhile (n >= (x + 1) * (x + 1))\nx = x + 1;",
+    "stem": "设 n 是描述问题规模的非负整数，下列程序段的时间复杂度是（ ）。\n\n```c\nx = 0;\nwhile (n >= (x + 1) * (x + 1))\n    x = x + 1;\n```",
     "options": [
       {
         "label": "A",
@@ -240,7 +240,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "choice",
-    "stem": "下列程序段的时间复杂度是\t（ ）。\nint sum = 0;\nfor (int i = 1; i < n; i *= 2)\nfor (int j = 0; j < i; j ++)\nsum ++;",
+    "stem": "下列程序段的时间复杂度是（ ）。\n\n```c\nint sum = 0;\nfor (int i = 1; i < n; i *= 2)\n    for (j = 0; j < i; j++)\n        sum++;\n```",
     "options": [
       {
         "label": "A",
@@ -272,11 +272,28 @@
     "subjectName": "数据结构",
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
-    "type": "comprehensive",
-    "stem": "以下 C 代码的时间复杂度是\t（ ）。\nint count = 0;\nfor (int i =0; i*i<n; i ++)\nfor (int j =0; j<i; j ++)\ncount ++;\n(A) O(log2 n) (B) O(n) (C) O(nl og2n) (D) O(n2)",
-    "options": [],
-    "answer": "",
-    "explanation": "",
+    "type": "choice",
+    "stem": "以下 C 代码的时间复杂度是（ ）。\n\n```c\nint count = 0;\nfor (int i = 0; i * i < n; i++)\n    for (j = 0; j < i; j++)\n        count++;\n```",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n)"
+      },
+      {
+        "label": "C",
+        "text": "O(n log2 n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n²)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "外层循环条件为 i*i < n，即 i 从 0 到 √n；内层循环执行 i 次。因此总执行次数为 ∑(i=0 到 √n) i ≈ (√n)² / 2 = n/2，时间复杂度为 O(n)。",
     "relatedPath": "/data-structure/01-basic-concepts"
   },
   {
@@ -385,7 +402,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "comprehensive",
-    "stem": "已知某排序算法如下：\nvoid cmpCountSort (int a[], int b[], int n)\n{\nint i, j, * count ;\ncount = (int *) malloc ( sizeof (int) * n) //C++ 语 言 ： count =\nnew int[n];\nfor (i = 0; i < n; i ++) count [i] = 0;\nfor (i = 0; i < n - 1; i ++)\nfor (j = i + 1; j < n; j ++)\nif (a[i] < a[j]) count [j ]++;\nelse count [i ]++;\nfor (i = 0; i < n; i ++) b[ count [i ]]= a[i];\nfree ( count ); // C++ 语 言 ： delete count;\n}\n请回答下列问题。\n(1) 若有 int a[] = {25, -10, 25, 10, 11, 19}, b[6]; ，则调用 cmpCountSort(a, b, 6) 后数组 b 中的\n内容是什么？\n(2) 若 a 中含有 n 个元素，则算法执行过程中，元素之间的比较次数是多少？\n(3) 该算法是稳定的吗？若是，则阐述理由；否则，修改为稳定排序算法。",
+    "stem": "已知某排序算法如下：\n\n```c\nvoid cmpCountSort(int a[], int b[], int n) {\n    int i, j, *count;\n    count = (int *)malloc(sizeof(int) * n); // C++ 语言：count = new int[n];\n    for (i = 0; i < n; i++)\n        count[i] = 0;\n    for (i = 0; i < n - 1; i++)\n        for (j = i + 1; j < n; j++)\n            if (a[i] < a[j]) count[j]++;\n            else count[i]++;\n    for (i = 0; i < n; i++)\n        b[count[i]] = a[i];\n    free(count); // C++ 语言：delete count;\n}\n```\n\n请回答下列问题：\n(1) 若有 int a[] = {25, -10, 25, 10, 11, 19}, b[6]; ，则调用 cmpCountSort(a, b, 6) 后数组 b 中的内容是什么？\n(2) 若 a 中含有 n 个元素，则算法执行过程中，元素之间的比较次数是多少？\n(3) 该算法是稳定的吗？若是，则阐述理由；否则，修改为稳定排序算法。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -417,7 +434,7 @@
     "sectionCode": "1.1.1",
     "sectionTitle": "算法时空复杂度",
     "type": "comprehensive",
-    "stem": "（本题满分 13 分）\n假定二叉搜索树使用二叉链表存储，存储结构如下：\ntypedef struct BSTNode {\nint data ;\nstruct BSTNode *left ,* right ;\n} BSTNode ;\ntypedef BSTNode BTNode ;\n给一棵二叉搜索树 T 和整数 K，查找树中关键字与 K 之差的绝对值最小的所有结点，并\n输出该绝对值与结点中的关键字。\n（1）给出算法的基本思想。（4 分）\n（2）使用 C/C++ 描述算法思想。（8 分）",
+    "stem": "（本题满分 13 分）\n假定二叉搜索树使用二叉链表存储，存储结构如下：\n\n```c\ntypedef struct BSTNode {\n    int data;\n    struct BSTNode *left, *right;\n} BSTNode;\ntypedef BSTNode BTNode;\n```\n\n给一棵二叉搜索树 T 和整数 K，查找树中关键字与 K 之差的绝对值最小的所有结点，并输出该绝对值与结点中的关键字。\n(1) 给出算法的基本思想。（4 分）\n(2) 使用 C/C++ 描述算法思想。（8 分）",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -663,9 +680,26 @@
     "subjectName": "数据结构",
     "sectionCode": "1.2.2",
     "sectionTitle": "线性表的链式存储",
-    "type": "comprehensive",
-    "stem": "设有一个双向链表 L，结构为 [p2, p1]，头结点为 head。初始时 head = cu。\n现要将每个结点的 p2 指向 p1 指向结点的直接后继，应该进行的操作是\t（ ）。\n(A) while(cu!=NULL) { cu->p2=cu->p1->p1; cu=cu->p1; }\n(B) while(cu!=NULL && cu->p2!=NULL) { cu->p2 = cu->p1->p1; cu = cu->p1; }\n(C) while(cu!=NULL) { if(cu->p1!=NULL) { cu->p2=cu->p1->p1; cu=cu->p1; } }\n(D) while(cu!=NULL) { if(cu->p1!=NULL) { cu->p2=cu->p1->p1; } else {\ncu->p2=NULL; } cu=cu->p1; }",
-    "options": [],
+    "type": "choice",
+    "stem": "设有一个双向链表 L，结构为 [p2, p1]，头结点为 head。初始时 head = cu。\n现要将每个结点的 p2 指向 p1 指向结点的直接后继，应该进行的操作是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "while (cu != NULL) { cu->p2 = cu->p1->p1; cu = cu->p1; }"
+      },
+      {
+        "label": "B",
+        "text": "while (cu != NULL && cu->p2 != NULL) { cu->p2 = cu->p1->p1; cu = cu->p1; }"
+      },
+      {
+        "label": "C",
+        "text": "while (cu != NULL) { if (cu->p1 != NULL) { cu->p2 = cu->p1->p1; cu = cu->p1; } }"
+      },
+      {
+        "label": "D",
+        "text": "while (cu != NULL) { if (cu->p1 != NULL) { cu->p2 = cu->p1->p1; } else { cu->p2 = NULL; } cu = cu->p1; }"
+      }
+    ],
     "answer": "",
     "explanation": "",
     "relatedPath": "/data-structure/02-linear-list"
@@ -728,7 +762,7 @@
     "sectionCode": "1.2.2",
     "sectionTitle": "线性表的链式存储",
     "type": "comprehensive",
-    "stem": "设线性表 L = (a1, a2, a3, · · · , an−1, an ) 采用带头结点的单链表保存，链表中的结\n点定义如下：\ntypedef struct node {\nint data ;\nstruct node * next ;\n} NODE ;\n请设计一个空间复杂度为 O(1) 且时间上尽可能高效的算法，重新排列 L 中的各结点，得\n到线性表 L = (a1, an , a2, an−1, a3, an−2, · · · ) 。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度。",
+    "stem": "设线性表 L = (a1, a2, a3, · · · , an−1, an ) 采用带头结点的单链表保存，链表中的结点定义如下：\n\n```c\ntypedef struct node {\n    int data;\n    struct node *next;\n} NODE;\n```\n\n请设计一个空间复杂度为 O(1) 且时间上尽可能高效的算法，重新排列 L 中的各结点，得到线性表 L = (a1, an , a2, an−1, a3, an−2, · · · ) 。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -1895,7 +1929,7 @@
     "sectionCode": "1.6.1",
     "sectionTitle": "二叉树的概念与存储",
     "type": "comprehensive",
-    "stem": "已知非空二叉树 T 的结点值均为正整数，采用顺序存储方式保存，数据结构\n定义如下：\ntypedef struct { // MAX_SIZE 为 已 定 义 常 量\nElemtype SqBiTNode [ MAX_SIZE ]; // 保 存 二 叉 树 结 点 值 的 数 组\nint ElemNum ; // 实 际 占 用 的 数 组 元 素 个 数\n} SqBiTree ;\nT 中不存在的结点在数组 SqBiTNode 中用 -1 表示。例如，对于下图所示的两棵非空二叉\n树 T1 和 T2：\nT1 的存储结果如下：\nT2 的存储结果如下：\n请设计一个尽可能高效的算法，判定一棵采用这种方式存储的二叉树是否为二叉搜索树，\n若是，则返回 true，否则，返回 false，要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
+    "stem": "已知非空二叉树 T 的结点值均为正整数，采用顺序存储方式保存，数据结构定义如下：\n\n```c\ntypedef struct {                      // MAX_SIZE 为已定义常量\n    Elemtype SqBiTNode[MAX_SIZE];     // 保存二叉树结点值的数组\n    int ElemNum;                      // 实际占用的数组元素个数\n} SqBiTree;\n```\n\nT 中不存在的结点在数组 SqBiTNode 中用 -1 表示。例如，对于下图所示的两棵非空二叉树 T1 和 T2：\nT1 的存储结果如下：\nT2 的存储结果如下：\n请设计一个尽可能高效的算法，判定一棵采用这种方式存储的二叉树是否为二叉搜索树，若是，则返回 true，否则，返回 false，要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -2339,7 +2373,7 @@
     "sectionCode": "1.6.2",
     "sectionTitle": "二叉树的遍历与线索化",
     "type": "comprehensive",
-    "stem": "请设计一个算法，将给定的表达式树（二叉树）转换为等价的中缀表达式（通\n过括号反映操作符的计算次序）并输出。例如，当下列两棵表达式树作为算法输入时：\n输出的中缀表达式分别为 (a+b)*(c*(−d)) 和 (a*b)+(−(c−d)) 。\n二叉树结点的定义如下：\ntypedef struct node {\nchar data [10]; // 存 储 操 作 数 或 操 作 符\nstruct node *left , * right ;\n} BTree ;\n要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
+    "stem": "请设计一个算法，将给定的表达式树（二叉树）转换为等价的中缀表达式（通过括号反映操作符的计算次序）并输出。例如，当下列两棵表达式树作为算法输入时：\n输出的中缀表达式分别为 (a+b)*(c*(−d)) 和 (a*b)+(−(c−d)) 。\n二叉树结点的定义如下：\n\n```c\ntypedef struct node {\n    char data[10];                    // 存储操作数或操作符\n    struct node *left, *right;\n} BTree;\n```\n\n要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -2355,7 +2389,7 @@
     "sectionCode": "1.6.3",
     "sectionTitle": "树/森林与二叉树的转换",
     "type": "choice",
-    "stem": "已知有向图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct { // 图 的 类 型 定 义\nint numVertices , numEdges ; // 图 中 顶 点 数 和 有 向 边 数\nchar VerticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph ;\n将图中出度大于入度的顶点称为 K 顶点。例如在题 41 图中，顶点 a 和 b 都是 K 顶点。\n设计算法 int printVertices(MGraph G) 对给定任意非空有向图 G，输出 G 中所有 K 顶\n点的算法，并返回 K 顶点的个数。\n(1) 给出算法的设计思想。\n(2) 根据算法思想，写出 C/C++ 描述，并注释。",
+    "stem": "已知有向图 G 采用邻接矩阵存储，类型定义如下：\n\n```c\ntypedef struct {                      // 图的类型定义\n    int numVertices, numEdges;        // 图中顶点数和有向边数\n    char VerticesList[MAXV];          // 顶点表，MAXV 为已定义常量\n    int Edge[MAXV][MAXV];             // 邻接矩阵\n} MGraph;\n```\n\n将图中出度大于入度的顶点称为 K 顶点。例如在题 41 图中，顶点 a 和 b 都是 K 顶点。\n设计算法 int printVertices(MGraph G) 对给定任意非空有向图 G，输出 G 中所有 K 顶点的算法，并返回 K 顶点的个数。\n(1) 给出算法的设计思想。\n(2) 根据算法思想，写出 C/C++ 描述，并注释。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -3440,7 +3474,7 @@
     "sectionCode": "1.7.2",
     "sectionTitle": "图的遍历",
     "type": "choice",
-    "stem": "已知无向连通图 G 由顶点集 V 和边集 E 组成，|E| > 0，当 G 中度为奇数的顶\n点个数为不大于 2 的偶数时，G 存在包含所有边且长度为 |E| 的路径（称为 EL 路径）。设\n图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct { // 图 的 定 义\nint numVertices , numEdges ; // 图 中 实 际 的 顶 点 数 和 边 数\nchar VerticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph ;\n请设计算法 int IsExistEL(MGraph G)，判断 G 是否存在 EL 路径，若存在，则返回 1，否则\n返回 0。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "stem": "已知无向连通图 G 由顶点集 V 和边集 E 组成，|E| > 0，当 G 中度为奇数的顶点个数为不大于 2 的偶数时，G 存在包含所有边且长度为 |E| 的路径（称为 EL 路径）。设图 G 采用邻接矩阵存储，类型定义如下：\n\n```c\ntypedef struct {                      // 图的定义\n    int numVertices, numEdges;        // 图中实际的顶点数和边数\n    char VerticesList[MAXV];          // 顶点表，MAXV 为已定义常量\n    int Edge[MAXV][MAXV];             // 邻接矩阵\n} MGraph;\n```\n\n请设计算法 int IsExistEL(MGraph G)，判断 G 是否存在 EL 路径，若存在，则返回 1，否则返回 0。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -4179,7 +4213,7 @@
     "sectionCode": "1.7.5",
     "sectionTitle": "拓扑排序与关键路径",
     "type": "comprehensive",
-    "stem": "2023 年 10 月 26 日，神州十七号载人飞船发射取得圆满成功，再次彰显了\n中国航天事业的辉煌成就。载人航天工程是包含众多子工程的复杂系统工程，为了保证工\n程的有序开展，需要明确各子工程的前导工程。以协调各子工程的实施。该问题可以简化、\n抽象为有向图的拓扑序列问题。已知有向图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct // 图 的 类 型 定 义\n{\nint numVertices , numEdges ; // 图 的 顶 点 数 和 有 向 边 数\nchar verticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph\n请设计算法：int uniquely(MGraph G)。判定 G 是否存在唯一的拓扑序列，若是则返回 1，\n否则返回 0。要求：\n(1) 给出算法的基本设计思想（4 分）\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释（9 分）",
+    "stem": "2023 年 10 月 26 日，神州十七号载人飞船发射取得圆满成功，再次彰显了中国航天事业的辉煌成就。载人航天工程是包含众多子工程的复杂系统工程，为了保证工程的有序开展，需要明确各子工程的前导工程。以协调各子工程的实施。该问题可以简化、抽象为有向图的拓扑序列问题。已知有向图 G 采用邻接矩阵存储，类型定义如下：\n\n```c\ntypedef struct {                      // 图的类型定义\n    int numVertices, numEdges;        // 图的顶点数和有向边数\n    char verticesList[MAXV];          // 顶点表，MAXV 为已定义常量\n    int Edge[MAXV][MAXV];             // 邻接矩阵\n} MGraph;\n```\n\n请设计算法：int uniquely(MGraph G)。判定 G 是否存在唯一的拓扑序列，若是则返回 1，否则返回 0。要求：\n(1) 给出算法的基本设计思想（4 分）\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释（9 分）",
     "options": [],
     "answer": "",
     "explanation": "",
@@ -4258,11 +4292,28 @@
     "subjectName": "数据结构",
     "sectionCode": "1.8.2",
     "sectionTitle": "折半查找",
-    "type": "comprehensive",
-    "stem": "在有 n(n>1000) 个元素的升序数组 A 中查找关键字 x。查找算法的伪代码如\n下所示。\nk = 0;\nwhile (k < n 且 A[k] < x) k = k + 3;\nif (k < n 且 A[k] == x) 查 找 成 功 ；\nelse if (k - 1 < n 且 A[k - 1] == x) 查 找 成 功 ；\nelse if (k - 2 < n 且 A[k - 2] == x) 查 找 成 功 ；\nelse 查 找 失 败 ；\n本算法与折半查找算法相比，有可能具有更少比较次数的情形是\t（ ）\n(A) 当 x 不在数组中 (B) 当 x 接近数组开头处\n(C) 当 x 接近数组结尾处 (D) 当 x 位于数组中间位置",
-    "options": [],
+    "type": "choice",
+    "stem": "在有 n(n > 1000) 个元素的升序数组 A 中查找关键字 x。查找算法的伪代码如下所示：\n\n```c\nk = 0;\nwhile (k < n && A[k] < x)\n    k = k + 3;\nif (k < n && A[k] == x)\n    查找成功;\nelse if (k - 1 < n && A[k - 1] == x)\n    查找成功;\nelse if (k - 2 < n && A[k - 2] == x)\n    查找成功;\nelse\n    查找失败;\n```\n\n本算法与折半查找算法相比，有可能具有更少比较次数的情形是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "当 x 不在数组中"
+      },
+      {
+        "label": "B",
+        "text": "当 x 接近数组开头处"
+      },
+      {
+        "label": "C",
+        "text": "当 x 接近数组结尾处"
+      },
+      {
+        "label": "D",
+        "text": "当 x 位于数组中间位置"
+      }
+    ],
     "answer": "B",
-    "explanation": "此题为送分题。该程序采用跳跃式的顺利查找法查找升序数组中的 x，显然是 x 越靠 前，比较次数才会越少。",
+    "explanation": "该程序采用步长为 3 的跳跃式查找法查找升序数组中的 x，当 x 位于数组非常靠近开头处时，仅需 1~2 次比较即可找到，比较次数少于折半查找的 log2(n) 次。",
     "relatedPath": "/data-structure/06-search"
   },
   {

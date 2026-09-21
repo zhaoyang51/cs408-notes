@@ -363,14 +363,111 @@
   background: rgba(245, 158, 11, 0.1);
 }
 
-/* 题干排版 */
+/* 题干排版与代码块展示 */
 .question-stem {
   font-size: 1rem;
   line-height: 1.75;
   color: var(--vp-c-text-1);
   margin-bottom: 1.25rem;
+}
+
+.stem-text {
   white-space: pre-wrap;
   word-break: break-word;
+  line-height: 1.75;
+  margin-bottom: 0.75rem;
+}
+
+.stem-text:last-child {
+  margin-bottom: 0;
+}
+
+.stem-code-wrap {
+  margin: 0.85rem 0 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-alt);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.stem-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.85rem;
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--vp-c-divider);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--vp-c-text-2);
+  user-select: none;
+}
+
+.dark .stem-code-header {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.code-lang-tag {
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+}
+
+.code-dot-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.code-dot-group .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #27c93f; }
+
+.stem-code {
+  margin: 0;
+  padding: 0.9rem 1.2rem;
+  font-family: var(--vp-font-family-mono, "Fira Code", Monaco, Menlo, Consolas, "Courier New", monospace);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  white-space: pre;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  overflow-x: auto;
+  color: var(--vp-c-text-1);
+  background: transparent;
+  border: none;
+}
+
+.stem-code code {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  border: none;
+  white-space: inherit;
+}
+
+/* 羊皮纸护眼模式下代码块适配 */
+.parchment .stem-code-wrap {
+  border-color: rgba(180, 140, 80, 0.25);
+  background: rgba(245, 235, 215, 0.4);
+}
+
+.parchment .stem-code-header {
+  background: rgba(180, 140, 80, 0.12);
+  border-bottom-color: rgba(180, 140, 80, 0.2);
 }
 
 /* 选项列表 */
