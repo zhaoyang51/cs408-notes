@@ -161,6 +161,99 @@ function spawnPacket() {
   })
 }
 
+// ── 408 赛博量子点击烟花系统 (Cyber Quantum Fireworks) ──
+const fireworks = []
+const shockwaves = []
+const MAX_FIREWORK_PARTICLES = 360
+
+const FIREWORK_PALETTES = [
+  // 0: 408 四科全能光谱（绿·蓝·紫·橙·金白）
+  [
+    'rgba(16, 185, 129, ALPHA)',
+    'rgba(52, 211, 153, ALPHA)',
+    'rgba(59, 130, 246, ALPHA)',
+    'rgba(96, 165, 250, ALPHA)',
+    'rgba(139, 92, 246, ALPHA)',
+    'rgba(167, 139, 250, ALPHA)',
+    'rgba(245, 158, 11, ALPHA)',
+    'rgba(251, 191, 36, ALPHA)',
+    'rgba(255, 255, 255, ALPHA)'
+  ],
+  // 1: 赛博翠绿极光 (数据结构)
+  [
+    'rgba(16, 185, 129, ALPHA)',
+    'rgba(52, 211, 153, ALPHA)',
+    'rgba(110, 231, 183, ALPHA)',
+    'rgba(6, 182, 212, ALPHA)',
+    'rgba(255, 255, 255, ALPHA)'
+  ],
+  // 2: 霓虹星空紫蓝 (操作系统 & 计组)
+  [
+    'rgba(59, 130, 246, ALPHA)',
+    'rgba(96, 165, 250, ALPHA)',
+    'rgba(139, 92, 246, ALPHA)',
+    'rgba(192, 132, 252, ALPHA)',
+    'rgba(236, 72, 153, ALPHA)',
+    'rgba(255, 255, 255, ALPHA)'
+  ],
+  // 3: 黄金璀璨金乌 (计算机网络 & 胜利之光)
+  [
+    'rgba(245, 158, 11, ALPHA)',
+    'rgba(251, 191, 36, ALPHA)',
+    'rgba(249, 115, 22, ALPHA)',
+    'rgba(254, 240, 138, ALPHA)',
+    'rgba(255, 255, 255, ALPHA)'
+  ]
+]
+
+let paletteIndex = 0
+
+function spawnFirework(x, y) {
+  const palette = FIREWORK_PALETTES[paletteIndex % FIREWORK_PALETTES.length]
+  paletteIndex++
+
+  // 1. 生成量子冲击波扩散光环
+  shockwaves.push({
+    x,
+    y,
+    radius: 4,
+    maxRadius: Math.floor(Math.random() * 25) + 65,
+    speed: 3.8,
+    color: palette[0],
+    alpha: 0.95
+  })
+
+  // 2. 生成绽开火花粒子 (38 ~ 52 颗)
+  const count = Math.floor(Math.random() * 15) + 38
+  if (fireworks.length > MAX_FIREWORK_PARTICLES) {
+    fireworks.splice(0, count)
+  }
+
+  for (let i = 0; i < count; i++) {
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4
+    const speed = Math.random() * 5.2 + 2.0
+    const color = palette[Math.floor(Math.random() * palette.length)]
+    
+    // 具有 408 赛博特色的方块像素与星芒圆点相间
+    const isSquare = Math.random() > 0.45
+    const size = isSquare ? (Math.random() * 2.8 + 2.2) : (Math.random() * 3.2 + 1.8)
+
+    fireworks.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      friction: Math.random() * 0.03 + 0.94,
+      gravity: Math.random() * 0.05 + 0.04,
+      color,
+      alpha: 1.0,
+      decay: Math.random() * 0.015 + 0.014,
+      size,
+      isSquare
+    })
+  }
+}
+
 function safeCoord(val) {
   if (typeof val !== 'number' || isNaN(val) || !isFinite(val)) return -1000
   return val
@@ -291,6 +384,19 @@ function drawGrid(ctx) {
         value += ripple * force * 0.55
       }
 
+      // 408 烟花冲击波物理共振（网格涟漪扩散）
+      for (let s = 0; s < shockwaves.length; s++) {
+        const sw = shockwaves[s]
+        const sdx = x - sw.x
+        const sdy = y - sw.y
+        const sdist = Math.sqrt(sdx * sdx + sdy * sdy)
+        const waveDist = Math.abs(sdist - sw.radius)
+        if (waveDist < 26) {
+          const waveIntensity = (1 - waveDist / 26) * sw.alpha
+          value += waveIntensity * 0.68
+        }
+      }
+
       value = (value + 1.2) / 2.4
 
       if (value > 0.52) {
@@ -366,6 +472,63 @@ function drawGrid(ctx) {
     ctx.fillStyle = glowGrad
     ctx.fillRect(mx - config.mouseRadius, my - config.mouseRadius, config.mouseRadius * 2, config.mouseRadius * 2)
   }
+
+  // 4. 渲染点击量子烟花 (Cyber Quantum Fireworks)
+  drawFireworks(ctx)
+}
+
+function drawFireworks(ctx) {
+  if (shockwaves.length === 0 && fireworks.length === 0) return
+
+  // 1. 渲染扩散冲击波光环
+  for (let s = shockwaves.length - 1; s >= 0; s--) {
+    const sw = shockwaves[s]
+    sw.radius += sw.speed
+    sw.alpha *= 0.91
+
+    ctx.save()
+    ctx.beginPath()
+    ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2)
+    ctx.strokeStyle = sw.color.replace('ALPHA', Math.max(0, sw.alpha).toFixed(2))
+    ctx.lineWidth = Math.max(1, 2.5 * (1 - sw.radius / sw.maxRadius))
+    ctx.stroke()
+    ctx.restore()
+
+    if (sw.alpha < 0.02 || sw.radius >= sw.maxRadius) {
+      shockwaves.splice(s, 1)
+    }
+  }
+
+  // 2. 渲染火花粒子
+  for (let f = fireworks.length - 1; f >= 0; f--) {
+    const p = fireworks[f]
+    p.x += p.vx
+    p.y += p.vy
+    p.vx *= p.friction
+    p.vy *= p.friction
+    p.vy += p.gravity
+    p.alpha -= p.decay
+
+    if (p.alpha <= 0.02) {
+      fireworks.splice(f, 1)
+      continue
+    }
+
+    const currentAlpha = Math.max(0, p.alpha).toFixed(2)
+    ctx.save()
+    ctx.fillStyle = p.color.replace('ALPHA', currentAlpha)
+
+    if (p.isSquare) {
+      // 408 赛博方块微光像素粒
+      ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size)
+    } else {
+      // 星芒微光圆点
+      ctx.beginPath()
+      ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2)
+      ctx.fill()
+    }
+    ctx.restore()
+  }
 }
 
 function animate() {
@@ -390,6 +553,19 @@ function onMouseLeave() {
   mouse.y = -1000
 }
 
+function onPointerDown(e) {
+  if (!isHome.value) return
+  // 如果点击的是悬浮调控胶囊内部，不触发烟花，保证菜单操作纯净
+  if (e.target && e.target.closest && e.target.closest('.bg-mode-floating-control')) {
+    return
+  }
+  const clientX = e.clientX
+  const clientY = e.clientY
+  if (typeof clientX === 'number' && typeof clientY === 'number') {
+    spawnFirework(clientX, clientY)
+  }
+}
+
 function startAnimation() {
   if (typeof window === 'undefined') return
   stopAnimation()
@@ -398,6 +574,7 @@ function startAnimation() {
   window.addEventListener('resize', resize)
   window.addEventListener('mousemove', onMouseMove)
   window.addEventListener('mouseleave', onMouseLeave)
+  window.addEventListener('pointerdown', onPointerDown)
   animate()
 }
 
@@ -406,10 +583,13 @@ function stopAnimation() {
     cancelAnimationFrame(animId)
     animId = null
   }
+  fireworks.length = 0
+  shockwaves.length = 0
   if (typeof window !== 'undefined') {
     window.removeEventListener('resize', resize)
     window.removeEventListener('mousemove', onMouseMove)
     window.removeEventListener('mouseleave', onMouseLeave)
+    window.removeEventListener('pointerdown', onPointerDown)
   }
 }
 
