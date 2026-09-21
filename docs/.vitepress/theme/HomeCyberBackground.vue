@@ -1,75 +1,82 @@
 <template>
-  <div v-if="isHome" class="cyber-bg-container" aria-hidden="true">
-    <canvas ref="canvasRef" id="bg-canvas"></canvas>
-    <div class="vignette-overlay"></div>
-
-    <!-- 右下角极简赛博视觉调控胶囊 -->
-    <div class="bg-mode-floating-control">
-      <div class="floating-pill" :class="{ 'is-active': isMenuOpen }">
-        <button 
-          class="pill-btn" 
-          type="button" 
-          @click="toggleModeMenu"
-          :title="`当前背景模式：${currentThemeName}，点击切换`"
-        >
-          <span class="pill-dot" :style="{ background: currentThemeColor }"></span>
-          <span class="pill-label">{{ currentThemeName }}</span>
-          <span class="pill-arrow" :class="{ 'is-open': isMenuOpen }">▾</span>
-        </button>
-
-        <transition name="pill-fade">
-          <div v-if="isMenuOpen" class="pill-dropdown-menu">
-            <div class="dropdown-title">⚡ 408 赛博量子画布</div>
-            
-            <button 
-              class="menu-item" 
-              :class="{ active: currentMode === 'quad' }"
-              @click="setBgMode('quad')"
-            >
-              <span class="item-icon">🌈</span>
-              <div class="item-text">
-                <span class="item-name">四科光谱矩阵</span>
-                <span class="item-sub">绿蓝紫橙 · 四门科目融合极光</span>
-              </div>
-            </button>
-
-            <button 
-              class="menu-item" 
-              :class="{ active: currentMode === 'green' }"
-              @click="setBgMode('green')"
-            >
-              <span class="item-icon">🟩</span>
-              <div class="item-text">
-                <span class="item-name">经典赛博绿茵</span>
-                <span class="item-sub">GitHub 贡献图流体波浪</span>
-              </div>
-            </button>
-
-            <button 
-              class="menu-item" 
-              :class="{ active: currentMode === 'aurora' }"
-              @click="setBgMode('aurora')"
-            >
-              <span class="item-icon">🌌</span>
-              <div class="item-text">
-                <span class="item-name">深空青紫极光</span>
-                <span class="item-sub">科技电青与赛博霓虹</span>
-              </div>
-            </button>
-
-            <div class="menu-divider"></div>
-
-            <button class="menu-item toggle-item" @click="toggleAnimation">
-              <span class="item-icon">{{ isPaused ? '▶️' : '⏸️' }}</span>
-              <div class="item-text">
-                <span class="item-name">{{ isPaused ? '恢复流体动态' : '静止省电模式' }}</span>
-                <span class="item-sub">{{ isPaused ? '已暂停帧渲染' : '正以 60FPS 平滑流转' }}</span>
-              </div>
-            </button>
-          </div>
-        </transition>
-      </div>
+  <div class="cyber-bg-wrapper">
+    <!-- 赛博背景画布：置于底层，穿透，仅在首页生效 -->
+    <div v-if="isHome" class="cyber-bg-container" aria-hidden="true">
+      <canvas ref="canvasRef" id="bg-canvas"></canvas>
+      <div class="vignette-overlay"></div>
     </div>
+
+    <!-- 右下角极简赛博视觉调控胶囊：Teleport 至 body 根节点，彻底摆脱一切父级层叠上下文遮挡 -->
+    <ClientOnly>
+      <Teleport to="body">
+        <div v-if="isMounted && isHome" class="bg-mode-floating-control" @click.stop>
+          <div class="floating-pill" :class="{ 'is-active': isMenuOpen }">
+            <button 
+              class="pill-btn" 
+              type="button" 
+              @click.stop="toggleModeMenu"
+              :title="`当前背景模式：${currentThemeName}，点击切换`"
+            >
+              <span class="pill-dot" :style="{ background: currentThemeColor }"></span>
+              <span class="pill-label">{{ currentThemeName }}</span>
+              <span class="pill-arrow" :class="{ 'is-open': isMenuOpen }">▾</span>
+            </button>
+
+            <transition name="pill-fade">
+              <div v-if="isMenuOpen" class="pill-dropdown-menu" @click.stop>
+                <div class="dropdown-title">⚡ 408 赛博量子画布</div>
+                
+                <button 
+                  class="menu-item" 
+                  :class="{ active: currentMode === 'quad' }"
+                  @click.stop="setBgMode('quad')"
+                >
+                  <span class="item-icon">🌈</span>
+                  <div class="item-text">
+                    <span class="item-name">四科光谱矩阵</span>
+                    <span class="item-sub">绿蓝紫橙 · 四门科目融合极光</span>
+                  </div>
+                </button>
+
+                <button 
+                  class="menu-item" 
+                  :class="{ active: currentMode === 'green' }"
+                  @click.stop="setBgMode('green')"
+                >
+                  <span class="item-icon">🟩</span>
+                  <div class="item-text">
+                    <span class="item-name">经典赛博绿茵</span>
+                    <span class="item-sub">GitHub 贡献图流体波浪</span>
+                  </div>
+                </button>
+
+                <button 
+                  class="menu-item" 
+                  :class="{ active: currentMode === 'aurora' }"
+                  @click.stop="setBgMode('aurora')"
+                >
+                  <span class="item-icon">🌌</span>
+                  <div class="item-text">
+                    <span class="item-name">深空青紫极光</span>
+                    <span class="item-sub">科技电青与赛博霓虹</span>
+                  </div>
+                </button>
+
+                <div class="menu-divider"></div>
+
+                <button class="menu-item toggle-item" @click.stop="toggleAnimation">
+                  <span class="item-icon">{{ isPaused ? '▶️' : '⏸️' }}</span>
+                  <div class="item-text">
+                    <span class="item-name">{{ isPaused ? '恢复流体动态' : '静止省电模式' }}</span>
+                    <span class="item-sub">{{ isPaused ? '已暂停帧渲染' : '正以 60FPS 平滑流转' }}</span>
+                  </div>
+                </button>
+              </div>
+            </transition>
+          </div>
+        </div>
+      </Teleport>
+    </ClientOnly>
   </div>
 </template>
 
@@ -82,6 +89,7 @@ const { frontmatter } = useData()
 const canvasRef = ref(null)
 const isMenuOpen = ref(false)
 const isPaused = ref(false)
+const isMounted = ref(false)
 
 // 背景预设模式：quad (四科光谱) | green (经典绿茵) | aurora (青紫极光)
 const currentMode = ref('quad')
@@ -426,8 +434,11 @@ function toggleAnimation() {
 }
 
 function handleOutsideClick(e) {
-  if (isMenuOpen.value && !e.target.closest('.bg-mode-floating-control')) {
-    isMenuOpen.value = false
+  if (isMenuOpen.value) {
+    const el = document.querySelector('.bg-mode-floating-control')
+    if (el && !el.contains(e.target)) {
+      isMenuOpen.value = false
+    }
   }
 }
 
@@ -440,12 +451,14 @@ watch(isHome, (val) => {
 })
 
 onMounted(() => {
+  isMounted.value = true
   if (typeof localStorage !== 'undefined') {
     const savedMode = localStorage.getItem('cs408-bg-mode')
     if (savedMode) currentMode.value = savedMode
     const savedPause = localStorage.getItem('cs408-bg-paused')
     if (savedPause === 'true') isPaused.value = true
     window.addEventListener('click', handleOutsideClick)
+    window.addEventListener('touchstart', handleOutsideClick, { passive: true })
   }
 
   if (isHome.value) {
@@ -457,6 +470,7 @@ onUnmounted(() => {
   stopAnimation()
   if (typeof window !== 'undefined') {
     window.removeEventListener('click', handleOutsideClick)
+    window.removeEventListener('touchstart', handleOutsideClick)
   }
 })
 </script>
@@ -502,44 +516,49 @@ onUnmounted(() => {
 
 /* ── 右下角悬浮控制胶囊 ── */
 .bg-mode-floating-control {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 99;
-  pointer-events: auto;
+  position: fixed !important;
+  bottom: 28px !important;
+  right: 28px !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
 }
 
 .floating-pill {
   position: relative;
+  pointer-events: auto !important;
 }
 
 .pill-btn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 5px 12px;
+  gap: 8px;
+  padding: 6px 14px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(229, 231, 235, 0.8);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  font-size: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(229, 231, 235, 0.85);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  font-size: 12.5px;
   font-weight: 600;
-  color: var(--vp-c-text-2);
+  color: var(--vp-c-text-1);
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
+  pointer-events: auto !important;
 }
 
 :global(.dark) .pill-btn {
-  background: rgba(30, 30, 36, 0.85);
-  border-color: rgba(63, 63, 70, 0.6);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(30, 30, 36, 0.92);
+  border-color: rgba(63, 63, 70, 0.7);
+  color: var(--vp-c-text-1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 :global(html.parchment) .pill-btn {
-  background: rgba(254, 250, 240, 0.88);
-  border-color: rgba(217, 119, 6, 0.25);
+  background: rgba(254, 250, 240, 0.94);
+  border-color: rgba(217, 119, 6, 0.3);
+  color: var(--vp-c-text-1);
 }
 
 .pill-btn:hover,
@@ -547,21 +566,27 @@ onUnmounted(() => {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.25);
 }
 
 .pill-dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  pointer-events: none;
+}
+
+.pill-label {
+  pointer-events: none;
 }
 
 .pill-arrow {
   font-size: 10px;
   transition: transform 0.2s ease;
   line-height: 1;
+  pointer-events: none;
 }
 
 .pill-arrow.is-open {
@@ -571,16 +596,18 @@ onUnmounted(() => {
 /* 展开菜单 */
 .pill-dropdown-menu {
   position: absolute;
-  bottom: calc(100% + 10px);
+  bottom: calc(100% + 12px);
   right: 0;
-  width: 230px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(229, 231, 235, 0.8);
+  width: 236px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(229, 231, 235, 0.85);
   border-radius: 16px;
   padding: 8px;
-  box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.15);
-  z-index: 100;
+  box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.22);
+  z-index: 1000000 !important;
+  pointer-events: auto !important;
 }
 
 :global(.dark) .pill-dropdown-menu {
