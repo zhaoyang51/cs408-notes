@@ -115,7 +115,7 @@ onMounted(() => {
   display: none;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1550px) {
   .full-label {
     display: none;
   }
@@ -127,7 +127,7 @@ onMounted(() => {
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1100px) {
   .collapse-toggle-btn {
     padding: 3px 5px;
     gap: 2px;

@@ -8,7 +8,10 @@
       :title="isConcise ? '当前为笔记模式（手写提炼考点），点击切换至完整模式' : '当前为完整模式，点击切换至笔记模式'"
     >
       <span class="mode-icon">{{ isConcise ? '📖' : '📚' }}</span>
-      <span class="mode-text">{{ isConcise ? '笔记模式' : '完整模式' }}</span>
+      <span class="mode-text">
+        <span class="mode-full-text">{{ isConcise ? '笔记模式' : '完整模式' }}</span>
+        <span class="mode-short-text">{{ isConcise ? '笔记' : '完整' }}</span>
+      </span>
       <span class="mode-switch-hint">{{ isConcise ? '切至完整' : '切至笔记' }}</span>
     </button>
   </div>
@@ -115,6 +118,10 @@ function toggleMode() {
   font-weight: 700;
 }
 
+.mode-short-text {
+  display: none;
+}
+
 .mode-switch-hint {
   font-size: 10.5px;
   padding: 1px 5px;
@@ -123,6 +130,13 @@ function toggleMode() {
   color: var(--vp-c-text-3);
   font-weight: 500;
   transition: all 0.2s ease;
+  display: none;
+}
+
+@media (min-width: 1720px) {
+  .mode-switch-hint {
+    display: inline-block;
+  }
 }
 
 .mode-toggle-btn:hover .mode-switch-hint {
@@ -135,18 +149,21 @@ function toggleMode() {
   color: #059669;
 }
 
-@media (max-width: 1440px) {
-  .mode-switch-hint {
+@media (max-width: 1250px) {
+  .mode-full-text {
     display: none;
   }
+  .mode-short-text {
+    display: inline;
+  }
   .mode-toggle-btn {
-    padding: 3px 8px;
+    padding: 3px 7px;
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1100px) {
   .mode-toggle-btn {
-    padding: 3px 6px;
+    padding: 3px 5px;
     gap: 3px;
   }
 }

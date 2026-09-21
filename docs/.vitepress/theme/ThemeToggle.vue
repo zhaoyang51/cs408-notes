@@ -864,8 +864,8 @@ onUnmounted(() => {
   transform: translateY(-6px) scale(0.96);
 }
 
-/* 屏幕尺寸自适应断点：<= 1400px 或放大时自动切换为紧凑单按钮 */
-@media (max-width: 1400px) {
+/* 屏幕尺寸自适应断点：<= 1680px 或放大时自动切换为紧凑单按钮 */
+@media (max-width: 1680px) {
   .full-theme-control {
     display: none !important;
   }

@@ -566,15 +566,15 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  border: none;
-  background: transparent;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
   padding: 3px 8px;
   border-radius: 9999px;
   font-size: 12px;
   font-weight: 600;
   color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   line-height: 1.4;
   user-select: none;
 }
@@ -582,6 +582,7 @@ onUnmounted(() => {
 .compact-trigger-btn:hover,
 .compact-trigger-btn.is-open {
   background: var(--vp-c-bg-elv);
+  border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
   box-shadow: 0 2px 8px -2px rgba(37, 99, 235, 0.15);
 }
@@ -685,8 +686,8 @@ onUnmounted(() => {
   background: var(--vp-c-bg-alt);
 }
 
-/* 响应式断点：<= 1400px 或缩放时自动切换为紧凑单药丸下拉 */
-@media (max-width: 1400px) {
+/* 响应式断点：<= 1680px 或缩放时自动切换为紧凑单药丸下拉 */
+@media (max-width: 1680px) {
   .full-filter-group {
     display: none !important;
   }

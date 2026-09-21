@@ -1108,60 +1108,99 @@ html[data-user-filter="chen"] [data-author="chen" i] {
   display: flex !important;
   align-items: center !important;
   flex-wrap: nowrap !important;
-  gap: 8px !important;
+  gap: 6px !important;
   min-width: 0;
   justify-content: flex-end !important;
 }
 
-/* 中间菜单项紧凑化与防溢出 */
-.VPNavBarMenu {
-  flex-shrink: 1;
-  min-width: 0;
-  margin-right: 0 !important;
-}
-
-.VPNavBarMenuLink {
-  padding: 0 8px !important;
-  font-size: 13.5px !important;
-  white-space: nowrap !important;
-}
-
-/* 搜索栏弹性宽度 */
+/* 搜索栏弹性宽度与居左 */
 .VPNavBarSearch {
-  flex-shrink: 1;
+  flex-grow: 0 !important;
+  flex-shrink: 1 !important;
+  margin-right: auto !important;
 }
 
 .VPNavBarSearch .DocSearch-Button {
+  width: 190px !important;
+  max-width: 190px !important;
   padding: 0 10px !important;
+  transition: width 0.2s ease;
 }
 
-/* 右侧功能控制栏容器 */
+/* 中间菜单项：固定不被挤压，文字不折行 */
+.VPNavBarMenu {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  margin-right: 0 !important;
+  white-space: nowrap !important;
+}
+
+.VPNavBarMenuLink {
+  padding: 0 7px !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+}
+
+/* 右侧功能控制栏容器：独立隔离，带优雅分割线 */
 .nav-controls-wrapper {
   display: inline-flex !important;
   align-items: center !important;
   gap: 6px !important;
   flex-shrink: 0 !important;
   white-space: nowrap !important;
+  margin-left: 6px !important;
+  padding-left: 8px !important;
+  border-left: 1px solid var(--vp-c-divider);
 }
 
-/* 页面放大或中等宽度下的细化适配 */
-@media (max-width: 1350px) {
+/* 当存在侧边栏时，顶栏可用宽度减小，确保始终使用紧凑工具条 */
+.VPNavBar.has-sidebar .full-filter-group,
+.VPNavBar.has-sidebar .full-theme-control {
+  display: none !important;
+}
+
+.VPNavBar.has-sidebar .compact-filter-dropdown,
+.VPNavBar.has-sidebar .compact-theme-control {
+  display: inline-flex !important;
+}
+
+/* 页面放大或中等宽度下的阶梯细化适配 */
+@media (max-width: 1400px) {
   .VPNavBarMenuLink {
-    padding: 0 6px !important;
-    font-size: 13px !important;
+    padding: 0 5px !important;
+    font-size: 12.5px !important;
   }
   .nav-controls-wrapper {
     gap: 4px !important;
+    margin-left: 4px !important;
+    padding-left: 6px !important;
   }
 }
 
-@media (max-width: 1150px) {
-  .VPNavBar .container {
-    padding: 0 10px !important;
+@media (max-width: 1200px) {
+  .VPNavBarSearch .DocSearch-Button {
+    width: 150px !important;
+    max-width: 150px !important;
   }
   .VPNavBarMenuLink {
     padding: 0 4px !important;
-    font-size: 12.5px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 1050px) {
+  .VPNavBar .container {
+    padding: 0 8px !important;
+  }
+  .VPNavBarSearch .DocSearch-Button {
+    width: 40px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+  .VPNavBarSearch .DocSearch-Button-Placeholder,
+  .VPNavBarSearch .DocSearch-Button-Keys {
+    display: none !important;
   }
 }
 
