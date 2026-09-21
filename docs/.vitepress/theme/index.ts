@@ -36,6 +36,8 @@ import ExternalSortPlayer from './ExternalSortPlayer.vue'
 import TreePlayer from './TreePlayer.vue'
 import SearchPlayer from './SearchPlayer.vue'
 import DhcpProtocolSimulator from './DhcpProtocolSimulator.vue'
+import HomeCyberBackground from './HomeCyberBackground.vue'
+import HomeTypewriter from './HomeTypewriter.vue'
 import { h } from 'vue'
 
 export default {
@@ -55,12 +57,16 @@ export default {
         h(ThemeToggle)
       ]),
       'layout-top': () => h('div', null, [
+        h(HomeCyberBackground),
         h(SidebarBorderToggle),
         h(AsideToggle)
-      ])
+      ]),
+      'home-hero-info-after': () => h(HomeTypewriter)
     })
   },
   enhanceApp({ app }) {
+    app.component('HomeCyberBackground', HomeCyberBackground)
+    app.component('HomeTypewriter', HomeTypewriter)
     app.component('PracticeCenter', PracticeCenter)
     app.component('PracticeQuestionCard', PracticeQuestionCard)
     app.component('ModeToggle', ModeToggle)
