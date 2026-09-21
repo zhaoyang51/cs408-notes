@@ -759,8 +759,10 @@ html.parchment .VPHero .name {
   color: var(--vp-c-text-1) !important;
 }
 
-/* 主操作按钮：翠绿赛博渐变 + 柔光阴影 (参考 408os.cn .btn-primary) */
+/* 主操作按钮：翠绿赛博渐变 + 柔光阴影 + 光泽流动 (超越原版) */
 .VPHero .action .VPButton.brand {
+  position: relative !important;
+  overflow: hidden !important;
   background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
   border: none !important;
   color: #ffffff !important;
@@ -770,9 +772,34 @@ html.parchment .VPHero .name {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
+.VPHero .action .VPButton.brand::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  animation: hero-shimmer-sweep 4.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+@keyframes hero-shimmer-sweep {
+  0% { left: -80%; opacity: 0; }
+  15% { opacity: 1; }
+  35% { left: 150%; opacity: 0; }
+  100% { left: 150%; opacity: 0; }
+}
+
 .VPHero .action .VPButton.brand:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 10px 28px rgba(5, 150, 105, 0.45) !important;
+  box-shadow: 0 10px 30px rgba(5, 150, 105, 0.5) !important;
 }
 
 /* 次要操作按钮：磨砂玻璃药丸 */
@@ -798,16 +825,36 @@ html.parchment .VPHero .action .VPButton.alt {
   border-color: rgba(217, 119, 6, 0.25) !important;
 }
 
-.VPHero .action .VPButton.alt:hover {
+/* 四科各色药丸独立极客光晕响应 */
+.VPHero .action a[href*="data-structure"]:hover {
   border-color: #10b981 !important;
   color: #059669 !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 18px rgba(5, 150, 105, 0.15) !important;
+}
+.VPHero .action a[href*="computer-organization"]:hover {
+  border-color: #3b82f6 !important;
+  color: #2563eb !important;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25) !important;
+  transform: translateY(-2px) !important;
+}
+.VPHero .action a[href*="operating-system"]:hover {
+  border-color: #8b5cf6 !important;
+  color: #7c3aed !important;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25) !important;
+  transform: translateY(-2px) !important;
+}
+.VPHero .action a[href*="computer-network"]:hover {
+  border-color: #f59e0b !important;
+  color: #d97706 !important;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25) !important;
+  transform: translateY(-2px) !important;
 }
 
-.dark .VPHero .action .VPButton.alt:hover {
-  color: #34d399 !important;
-}
+.dark .VPHero .action a[href*="data-structure"]:hover { color: #34d399 !important; }
+.dark .VPHero .action a[href*="computer-organization"]:hover { color: #60a5fa !important; }
+.dark .VPHero .action a[href*="operating-system"]:hover { color: #a78bfa !important; }
+.dark .VPHero .action a[href*="computer-network"]:hover { color: #fbbf24 !important; }
 
 /* Features 卡片：磨砂玻璃化 (参考 408os.cn .feature-card-split) */
 .VPHomeFeatures {
