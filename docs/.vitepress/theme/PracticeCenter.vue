@@ -87,41 +87,62 @@
 
       <!-- 答题模式切换栏 -->
       <div class="mode-switch-bar">
-        <button
-          class="mode-btn"
-          :class="{ active: currentMode === 'all' }"
-          @click="setMode('all')"
-        >
-          📑 顺序刷题
-        </button>
+        <div class="mode-btn-group">
+          <button
+            class="mode-btn"
+            :class="{ active: currentMode === 'all' }"
+            @click="setMode('all')"
+          >
+            📑 顺序刷题
+          </button>
+
+          <button
+            class="mode-btn"
+            :class="{ active: currentMode === 'random' }"
+            @click="setMode('random')"
+          >
+            🎲 随机抽题 (20题)
+          </button>
+
+          <button
+            class="mode-btn"
+            :class="{ active: currentMode === 'wrong' }"
+            @click="setMode('wrong')"
+          >
+            📕 错题专攻 ({{ wrongList.length }})
+          </button>
+
+          <button
+            class="mode-btn"
+            :class="{ active: currentMode === 'favorite' }"
+            @click="setMode('favorite')"
+          >
+            ⭐ 我的收藏 ({{ favoriteList.length }})
+          </button>
+        </div>
+
+        <!-- 模式视窗切换：列表模式 vs 单题模式 -->
+        <div class="view-mode-pill-toggle">
+          <button
+            class="view-pill-btn"
+            :class="{ active: viewMode === 'list' }"
+            @click="setViewMode('list')"
+            title="列表模式：多题连续通览（每页 15 题）"
+          >
+            📋 列表模式
+          </button>
+          <button
+            class="view-pill-btn"
+            :class="{ active: viewMode === 'single' }"
+            @click="setViewMode('single')"
+            title="单题模式：一题一页，沉浸专注逐题突破"
+          >
+            🎯 单题模式
+          </button>
+        </div>
 
         <button
-          class="mode-btn"
-          :class="{ active: currentMode === 'random' }"
-          @click="setMode('random')"
-        >
-          🎲 随机抽题 (20题)
-        </button>
-
-        <button
-          class="mode-btn"
-          :class="{ active: currentMode === 'wrong' }"
-          @click="setMode('wrong')"
-        >
-          📕 错题专攻 ({{ wrongList.length }})
-        </button>
-
-        <button
-          class="mode-btn"
-          :class="{ active: currentMode === 'favorite' }"
-          @click="setMode('favorite')"
-        >
-          ⭐ 我的收藏 ({{ favoriteList.length }})
-        </button>
-
-        <button
-          class="mode-btn"
-          style="margin-left: auto; color: #ef4444;"
+          class="mode-btn danger-reset-btn"
           @click="resetAllProgress"
           title="清空答题记录与错题本"
         >
@@ -171,8 +192,33 @@
       </button>
     </div>
 
-    <!-- 题目列表 -->
-    <div v-else class="questions-stream">
+    <!-- 题目列表 / 单题容器 -->
+    <div v-else class="questions-stream" :class="{ 'single-stream': viewMode === 'single' }">
+      <!-- 单题专注模式顶部专属进度指示条 -->
+      <div v-if="viewMode === 'single'" class="single-mode-header">
+        <div class="single-mode-progress-info">
+          <div class="single-mode-title-tag">
+            <span class="single-mode-badge">🎯 单题模式</span>
+            <span v-if="selectedSectionInfo" class="single-section-tag">
+              {{ selectedSectionInfo.code }} {{ selectedSectionInfo.title }}
+            </span>
+          </div>
+          <div class="single-mode-stats">
+            <span class="curr-question-indicator">
+              第 <strong>{{ currentPage }}</strong> / {{ filteredQuestions.length }} 题
+            </span>
+            <span class="sub-stat">已答 {{ currentFilteredAnsweredCount }}/{{ filteredQuestions.length }} 题</span>
+            <span class="keyboard-hint" title="支持键盘 ← → 方向键快速切题">⌨️ 按 ← / → 切题</span>
+          </div>
+        </div>
+        <div class="single-progress-track">
+          <div
+            class="single-progress-fill"
+            :style="{ width: ((currentPage / Math.max(1, filteredQuestions.length)) * 100) + '%' }"
+          ></div>
+        </div>
+      </div>
+
       <PracticeQuestionCard
         v-for="q in paginatedQuestions"
         :key="q.id"
@@ -188,26 +234,61 @@
         @reset-answer="handleResetAnswer"
       />
 
-      <!-- 分页栏 -->
-      <div class="practice-pagination">
+      <!-- 分页与切题控制栏 -->
+      <div class="practice-pagination" :class="{ 'single-nav': viewMode === 'single' }">
+        <!-- 上一页 / 上一题 / 上一章节考点 -->
         <button
+          v-if="currentPage === 1 && selectedSection && prevSection"
+          class="page-btn nav-section-btn prev-sec"
+          @click="goToPrevSection"
+          :title="`返回上一章节考点：${prevSection.code} ${prevSection.title}`"
+        >
+          ⏮ 上一章节考点
+        </button>
+        <button
+          v-else
           class="page-btn"
           :disabled="currentPage === 1"
           @click="prevPage"
         >
-          上一页
+          {{ viewMode === 'single' ? '← 上一题' : '上一页' }}
         </button>
 
-        <span class="page-info">
-          第 {{ currentPage }} / {{ totalPages }} 页 (每页 15 题)
-        </span>
+        <!-- 中间信息指示 -->
+        <div class="page-info-wrap">
+          <span v-if="viewMode === 'single'" class="page-info">
+            第 <strong class="highlight-num">{{ currentPage }}</strong> / {{ totalPages }} 题
+            <span class="page-subinfo">({{ filteredQuestions[currentPage - 1]?.source || '' }})</span>
+          </span>
+          <span v-else class="page-info">
+            第 {{ currentPage }} / {{ totalPages }} 页
+            <span class="page-subinfo">(共 {{ filteredQuestions.length }} 题 · 每页 15 题)</span>
+          </span>
+        </div>
 
+        <!-- 下一页 / 下一题 / 下一章节考点 -->
         <button
+          v-if="currentPage >= totalPages && selectedSection && nextSection"
+          class="page-btn next-section-btn"
+          @click="goToNextSection"
+          :title="`进入下一章节考点：${nextSection.code} ${nextSection.title} (共 ${nextSection.count} 题)`"
+        >
+          下一章节考点 ⏭
+        </button>
+        <button
+          v-else-if="currentPage >= totalPages && selectedSection && !nextSection"
+          class="page-btn"
+          disabled
+        >
+          已是最后一章 🏁
+        </button>
+        <button
+          v-else
           class="page-btn"
           :disabled="currentPage >= totalPages"
           @click="nextPage"
         >
-          下一页
+          {{ viewMode === 'single' ? '下一题 →' : '下一页' }}
         </button>
       </div>
     </div>
@@ -215,7 +296,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, watch, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { withBase } from 'vitepress'
 import PracticeQuestionCard from './PracticeQuestionCard.vue'
 
@@ -235,10 +316,10 @@ const selectedType = ref('')
 const selectedYear = ref('')
 const searchQuery = ref('')
 const currentMode = ref('all') // 'all', 'random', 'wrong', 'favorite'
+const viewMode = ref('list') // 'list', 'single'
 const sheetCollapsed = ref(true)
 
 const currentPage = ref(1)
-const pageSize = 15
 const loading = ref(true)
 
 const sections = ref([])
@@ -260,6 +341,15 @@ onMounted(async () => {
   loadLocalState()
   await loadSections()
   await loadAllQuestions()
+  if (typeof window !== 'undefined') {
+    window.addEventListener('keydown', onKeyDown)
+  }
+})
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('keydown', onKeyDown)
+  }
 })
 
 function loadLocalState() {
@@ -269,6 +359,10 @@ function loadLocalState() {
     wrongList.value = JSON.parse(localStorage.getItem('cs408_wrong') || '[]')
     favoriteList.value = JSON.parse(localStorage.getItem('cs408_favorites') || '[]')
     userNotes.value = JSON.parse(localStorage.getItem('cs408_notes') || '{}')
+    const savedViewMode = localStorage.getItem('cs408_view_mode')
+    if (savedViewMode === 'single' || savedViewMode === 'list') {
+      viewMode.value = savedViewMode
+    }
   } catch (e) {
     console.error('Failed to load localStorage state', e)
   }
@@ -322,6 +416,40 @@ const filteredSections = computed(() => {
   return sections.value.filter(s => s.subjectKey === selectedSubject.value)
 })
 
+const selectedSectionInfo = computed(() => {
+  if (!selectedSection.value) return null
+  return filteredSections.value.find(s => s.code === selectedSection.value)
+})
+
+const currentSectionIndex = computed(() => {
+  if (!selectedSection.value) return -1
+  return filteredSections.value.findIndex(s => s.code === selectedSection.value)
+})
+
+const prevSection = computed(() => {
+  if (currentSectionIndex.value <= 0) return null
+  return filteredSections.value[currentSectionIndex.value - 1]
+})
+
+const nextSection = computed(() => {
+  if (currentSectionIndex.value === -1 || currentSectionIndex.value >= filteredSections.value.length - 1) return null
+  return filteredSections.value[currentSectionIndex.value + 1]
+})
+
+function goToNextSection() {
+  if (!nextSection.value) return
+  selectedSection.value = nextSection.value.code
+  currentPage.value = 1
+  scrollToTopQuestion()
+}
+
+function goToPrevSection() {
+  if (!prevSection.value) return
+  selectedSection.value = prevSection.value.code
+  currentPage.value = 1
+  scrollToTopQuestion()
+}
+
 // Filter questions
 const filteredQuestions = computed(() => {
   let list = allQuestionsList.value
@@ -371,14 +499,38 @@ const filteredQuestions = computed(() => {
   return list
 })
 
+const effectivePageSize = computed(() => {
+  return viewMode.value === 'single' ? 1 : 15
+})
+
 const totalPages = computed(() => {
-  return Math.max(1, Math.ceil(filteredQuestions.value.length / pageSize))
+  return Math.max(1, Math.ceil(filteredQuestions.value.length / effectivePageSize.value))
 })
 
 const paginatedQuestions = computed(() => {
-  const start = (currentPage.value - 1) * pageSize
-  return filteredQuestions.value.slice(start, start + pageSize)
+  const size = effectivePageSize.value
+  const start = (currentPage.value - 1) * size
+  return filteredQuestions.value.slice(start, start + size)
 })
+
+const currentFilteredAnsweredCount = computed(() => {
+  return filteredQuestions.value.filter(q => userAnswers.value[q.id]).length
+})
+
+function setViewMode(mode) {
+  if (viewMode.value === mode) return
+  if (mode === 'single') {
+    const currentFirstIdx = (currentPage.value - 1) * 15
+    currentPage.value = currentFirstIdx + 1
+  } else {
+    currentPage.value = Math.max(1, Math.ceil(currentPage.value / 15))
+  }
+  viewMode.value = mode
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('cs408_view_mode', mode)
+  }
+  scrollToTopQuestion()
+}
 
 // Reset page on filter change
 watch([selectedSubject, selectedSection, selectedType, selectedYear, searchQuery, currentMode], () => {
@@ -478,18 +630,26 @@ function resetAllProgress() {
 }
 
 function scrollToQuestion(qId) {
-  const el = document.getElementById('q-' + qId)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  const idx = filteredQuestions.value.findIndex(q => q.id === qId)
+  if (idx === -1) return
+
+  if (viewMode.value === 'single') {
+    currentPage.value = idx + 1
+    scrollToTopQuestion()
   } else {
     // Find what page it's on
-    const idx = filteredQuestions.value.findIndex(q => q.id === qId)
-    if (idx !== -1) {
-      currentPage.value = Math.floor(idx / pageSize) + 1
-      setTimeout(() => {
-        const target = document.getElementById('q-' + qId)
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-      }, 100)
+    const targetPage = Math.floor(idx / 15) + 1
+    if (currentPage.value !== targetPage) {
+      currentPage.value = targetPage
+      nextTick(() => {
+        setTimeout(() => {
+          const target = document.getElementById('q-' + qId)
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 100)
+      })
+    } else {
+      const el = document.getElementById('q-' + qId)
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
     }
   }
 }
@@ -526,6 +686,8 @@ function nextPage() {
   if (currentPage.value < totalPages.value) {
     currentPage.value++
     scrollToTopQuestion()
+  } else if (selectedSection.value && nextSection.value) {
+    goToNextSection()
   }
 }
 
@@ -533,18 +695,35 @@ function prevPage() {
   if (currentPage.value > 1) {
     currentPage.value--
     scrollToTopQuestion()
+  } else if (selectedSection.value && prevSection.value) {
+    goToPrevSection()
+  }
+}
+
+function onKeyDown(e) {
+  if (viewMode.value !== 'single') return
+  const tag = e.target?.tagName?.toLowerCase()
+  if (tag === 'input' || tag === 'textarea' || e.target?.isContentEditable) return
+
+  if (e.key === 'ArrowLeft') {
+    prevPage()
+  } else if (e.key === 'ArrowRight') {
+    nextPage()
   }
 }
 
 function getSheetItemClass(q) {
+  const classes = []
+  if (viewMode.value === 'single' && paginatedQuestions.value[0]?.id === q.id) {
+    classes.push('current-active')
+  }
   const ans = userAnswers.value[q.id]
   if (ans) {
-    return ans.isCorrect ? 'correct' : 'wrong'
+    classes.push(ans.isCorrect ? 'correct' : 'wrong')
+  } else if (userNotes.value[q.id]) {
+    classes.push('noted')
   }
-  if (userNotes.value[q.id]) {
-    return 'noted'
-  }
-  return ''
+  return classes.join(' ')
 }
 
 // Stats metrics
