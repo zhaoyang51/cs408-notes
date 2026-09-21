@@ -21,7 +21,8 @@ export default defineConfig({
       { text: '📘 数据结构', link: '/data-structure/' },
       { text: '💻 计组', link: '/computer-organization/' },
       { text: '⚙️ 操作系统', link: '/operating-system/' },
-      { text: '🌐 计网', link: '/computer-network/' }
+      { text: '🌐 计网', link: '/computer-network/' },
+      { text: '✍️ 真题刷题', link: '/practice/' }
     ],
 
 
@@ -150,6 +151,14 @@ export default defineConfig({
             { text: '💻 计组笔记', link: '/concise/computer-organization/' },
             { text: '⚙️ 操作系统笔记', link: '/concise/operating-system/' },
             { text: '🌐 计网笔记', link: '/concise/computer-network/' }
+          ]
+        }
+      ],
+      '/practice/': [
+        {
+          text: '✍️ 408 真题分类刷题中心',
+          items: [
+            { text: '🎯 刷题与做题本工作台', link: '/practice/' }
           ]
         }
       ]

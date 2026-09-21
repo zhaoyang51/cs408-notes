@@ -1,0 +1,6722 @@
+[
+  {
+    "id": 1,
+    "source": "2011-1",
+    "year": 2011,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "设 n 是描述问题规模的非负整数，下面程序片段的时间复杂度是\t（ ）。\nx = 2;\nwhile (x < n / 2)\nx = 2 * x;",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n)"
+      },
+      {
+        "label": "C",
+        "text": "O(nl og2n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n2)"
+      }
+    ],
+    "answer": "A",
+    "explanation": "程序中，执行频率最高的语句为“x=2*x”。设该语句执行了t次，则2t+1=n/2， 故t=log2(n/2)-1=log2n-2= O(log2n)。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 2,
+    "source": "2012-1",
+    "year": 2012,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "求整数 n(n ≥ 0) 阶乘的算法如下，其时间复杂度是\t（ ）。\nint fact (int n) {\nif (n <= 1) return 1;\nreturn n * fact (n - 1);\n}",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n)"
+      },
+      {
+        "label": "C",
+        "text": "O(nl og2n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n2)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查时间复杂度的计算。该程序中使用了递归运算。本题中递归的边界条件是 n<=1， 每调用一次 fact()，传入该层 fact()的参数值减 1（注意不是 n 减 1），因此执行频率最高的语 句是 return n*fact(n-1)，一共执行了 n-1 次，而每一层 fact(i)运算只包含一次乘法。如果采用 递归式来表示时间复杂度，则： (1) \t1 ( ) (n \t1) \t1 \t1 O \tn T n T \tn ≤\t =  − \t+ \t>\t 时间复杂度为 O(n)。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 3,
+    "source": "2013-1",
+    "year": 2013,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "已知两个长度分别为 m 和 n 的升序链表，若将它们合并为一个长度为 m+n 的\n降序链表，则最坏情况下的时间复杂度是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(n)"
+      },
+      {
+        "label": "B",
+        "text": "O(m × n)"
+      },
+      {
+        "label": "C",
+        "text": "O(min(m, n))"
+      },
+      {
+        "label": "D",
+        "text": "O(max(m, n))"
+      }
+    ],
+    "answer": "C",
+    "explanation": "PU \t1/800 MHz = 1.25 ns 1 1/200 MHz = 5 ns 1",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 4,
+    "source": "2014-1",
+    "year": 2014,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "下列程序段的时间复杂度是\t（ ）。\ncount = 0;\nfor (k = 1; k <= n; k *= 2)\nfor (j = 1; j <= n; j ++)\ncount ++;",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n)"
+      },
+      {
+        "label": "C",
+        "text": "O(nl og2n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n2)"
+      }
+    ],
+    "answer": "C",
+    "explanation": "2． B 3． A 4． D 5． C 6． D 7． D 8． D",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 5,
+    "source": "2015-1",
+    "year": 2015,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "已知程序如下：\nint S(int n) {\nreturn (n <= 0) ? 0 : S(n - 1) + n;\n}\nvoid main () {\ncout << S (1) ;\n}\n程序运行时使用栈来保存调用过程的信息，自栈底到栈顶保存的信息依次对应的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "main() → S(1) → S(0)"
+      },
+      {
+        "label": "B",
+        "text": "S(0) → S(1) → main()"
+      },
+      {
+        "label": "C",
+        "text": "main() → S(0) → S(1)"
+      },
+      {
+        "label": "D",
+        "text": "S(1) → S(0) → main()"
+      }
+    ],
+    "answer": "A",
+    "explanation": "程序都是从 main 函数开始的，进入 main 函数后执行 S(1)，之后递归执行 S(0)，故 栈底到栈顶的信息依次是 main( )，S(1)，S(0)。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 6,
+    "source": "2017-1",
+    "year": 2017,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "下列函数的时间复杂度是\t（ ）。\nint func (int n) {\nint i = 0, sum = 0;\nwhile ( sum < n)\nsum += ++i;\nreturn i;\n}",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n1/2)"
+      },
+      {
+        "label": "C",
+        "text": "O(n)"
+      },
+      {
+        "label": "D",
+        "text": "O(nl og2n)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "“sum+=++i;\"相当于“++i; sum= sum+i;\"。进行到第 k 趟循环，sum=(1+k)*k/2。显 然需要进行 O(n1/2 )趟循环，因此这也是该函数的时间复杂度。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 7,
+    "source": "2019-1",
+    "year": 2019,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "设 n 是描述问题规模的非负整数，下列程序段的时间复杂度是\t（ ）。\nx = 0;\nwhile (n >= (x + 1) * (x + 1))\nx = x + 1;",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(l og n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n1/2)"
+      },
+      {
+        "label": "C",
+        "text": "O(n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n2)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "假设第 k 次循环终止，则第 k 次执行时，(x+1) 2 > n，x 的初始值为 0，第 k 次判 断时，x=k-1，即 k 2 > n，k > n1/2,，因此该程序段的时间复杂度为 O(n1/2 )。选 B。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 8,
+    "source": "2022-1",
+    "year": 2022,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "choice",
+    "stem": "下列程序段的时间复杂度是\t（ ）。\nint sum = 0;\nfor (int i = 1; i < n; i *= 2)\nfor (int j = 0; j < i; j ++)\nsum ++;",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(log2 n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n)"
+      },
+      {
+        "label": "C",
+        "text": "O(nl og2n)"
+      },
+      {
+        "label": "D",
+        "text": "O(n2)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "当外层循环的变量i取不同值时， 内层循环就执行多少次， 因此总循环次数为i 的所有取值之和。 假设外层循环共执行k次， 当 i = 1,2,4,8,…，2/c-l (2k-l <ll � 2/c )时， 内层循 环执行 i 次，因此总循环次数 T=1+2+4+8+…+2k-l = 2k -1, 即 n <T <2n ，时间复杂度为 O(n)。",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 9,
+    "source": "2025-1",
+    "year": 2025,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "以下 C 代码的时间复杂度是\t（ ）。\nint count = 0;\nfor (int i =0; i*i<n; i ++)\nfor (int j =0; j<i; j ++)\ncount ++;\n(A) O(log2 n) (B) O(n) (C) O(nl og2n) (D) O(n2)",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 10,
+    "source": "2010-42",
+    "year": 2010,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "设将 n ( n > 1 ) 个整数存放到一维数组 R 中。试设计一个在时间和空间两方\n面都尽可能高效的算法。将 R 中保存的序列循环左移 p(0 < p < N ) 个位置，即将 R 中的\n数据由 < x0, x1, · · · , xn−1 > 变换为 < xp , xp+1, · · · , xn−1, x0, x1, · · · , xp−1 > 。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 或 Java 语言描述，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 11,
+    "source": "2011-42",
+    "year": 2011,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "一个长度为 L（L ≥ 1）的升序序列 S ，处在第 ⌈L/2⌉ 个位置的数称为 S 的中\n位数。例如，若序列 S1 = (11,13,15,17,19)，则 S1 的中位数是 15 。两个序列的中位数是含\n它们所有元素的升序序列的中位数。例如，若序列 S2 = (2,4,6,8,20)，则 S1 和 S2 的中位数\n是 11 。现有两个等长的升序序列 A 和 B ，试设计一个在时间和空间两方面都尽可能高效\n的算法，找出两个序列 A 和 B 的中位数。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 或 Java 语言描述，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 12,
+    "source": "2013-41",
+    "year": 2013,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "已知一个整数序列 A = (a0, a1, · · · , an−1) ，其中 0 ≤ ai < n (0 ≤ i < n) 。\n若存在 ap1 = ap2 = · · · = apm = x 且 m > n/2 (0 ≤ pk < n, 1 ≤ k ≤ m) ，则称 x 为 A 的主元素。\n例如 A = (0, 5, 5, 3, 5, 7, 5, 5) ，则 5 为主元素；又如 A = (0, 5, 5, 3, 5, 1, 5, 7) ，则 A 中没有主元素。\n假设 A 中的 n 个元素保存在一个一维数组中，请设计一个尽可能高效的算法，找出 A 的\n主元素。若存在主元素，则输出该元素；否则输出 −1 。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C、C++ 或 Java 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 13,
+    "source": "2016-43",
+    "year": 2016,
+    "qIndex": 43,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "已知由 n(n ≥ 2) 个正整数构成的集合 A = ak | 0 ≤ k < n ，将其划分为两个不相\n交的子集 A1 和 A2 ，元素个数分别是 n1 和 n2 ，A1 和 A2 中元素之和分别为 S1 和 S2 。设\n计一个尽可能高效的划分算法，满足 | n1 − n2 | 最小且 | S1 − S2 | 最大。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 14,
+    "source": "2018-41",
+    "year": 2018,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "给定一个含 n(n≥1) 个整数的数组，请设计一个在时间上尽可能高效的算法，\n找出数组中未出现的最小正整数。例如，数组 {-5, 3, 2, 3} 中未出现的最小正整数是 1；数\n组 {1, 2, 3} 中未出现的最小正整数是 4。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 15,
+    "source": "2020-41",
+    "year": 2020,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "定义三元组 (a, b, c) （a, b, c 均为正数）的距离 D =| a − b | + | b − c | + | c − a | 。\n给定 3 个非空整数集合 S1, S2, S3 ，按升序分别存储在 3 个数组中。请设计一个尽可能高效\n的算法，计算并输出所有可能的三元组 (a, b, c) （a ∈ S1, b ∈ S2, c ∈ S3 ）中的最小距离。例\n如 S1 = −1, 0, 9, S2 = −25, −10, 10, 11, S3 = 2, 9, 17, 30, 41 。则最小距离为 2 ，相应的三元组为\n(9, 10, 9) 。\n要求：\n（1）给出算法的基本设计思想；\n（2）根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释；\n（3）说明你所设计算法的时间复杂度和空间复杂度",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 16,
+    "source": "2021-42",
+    "year": 2021,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "已知某排序算法如下：\nvoid cmpCountSort (int a[], int b[], int n)\n{\nint i, j, * count ;\ncount = (int *) malloc ( sizeof (int) * n) //C++ 语 言 ： count =\nnew int[n];\nfor (i = 0; i < n; i ++) count [i] = 0;\nfor (i = 0; i < n - 1; i ++)\nfor (j = i + 1; j < n; j ++)\nif (a[i] < a[j]) count [j ]++;\nelse count [i ]++;\nfor (i = 0; i < n; i ++) b[ count [i ]]= a[i];\nfree ( count ); // C++ 语 言 ： delete count;\n}\n请回答下列问题。\n(1) 若有 int a[] = {25, -10, 25, 10, 11, 19}, b[6]; ，则调用 cmpCountSort(a, b, 6) 后数组 b 中的\n内容是什么？\n(2) 若 a 中含有 n 个元素，则算法执行过程中，元素之间的比较次数是多少？\n(3) 该算法是稳定的吗？若是，则阐述理由；否则，修改为稳定排序算法。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 17,
+    "source": "2025-41",
+    "year": 2025,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "设有两个长度均为 n 的一维整型数组 A 和 res，对数组 A 中的每个元素 A[i]，\n计算 A[i] 与 A[j](0 ≤ i ≤ j ≤ n-1) 乘积的最大值，并将其保存到 res[i] 中。例如，若\nA[i] = {1, 4, -9, 6}，则得到 res[i] = {6, 24, 81, 36}。现给定数组 A，请设计一\n个时间和空间上尽可能高效的算法 calMulMax，求 res 中各元素的值。函数原型为：void\ncalMulMax(int A[], int res[], int n)，要求：\n(1) 给出算法的基本设计思想：（4 分）\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释：（7 分）\n(3) 说明你所设计算法的时间复杂度和空间复杂度。（2 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 18,
+    "source": "2026-41",
+    "year": 2026,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.1.1",
+    "sectionTitle": "算法时空复杂度",
+    "type": "comprehensive",
+    "stem": "（本题满分 13 分）\n假定二叉搜索树使用二叉链表存储，存储结构如下：\ntypedef struct BSTNode {\nint data ;\nstruct BSTNode *left ,* right ;\n} BSTNode ;\ntypedef BSTNode BTNode ;\n给一棵二叉搜索树 T 和整数 K，查找树中关键字与 K 之差的绝对值最小的所有结点，并\n输出该绝对值与结点中的关键字。\n（1）给出算法的基本思想。（4 分）\n（2）使用 C/C++ 描述算法思想。（8 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/01-basic-concepts"
+  },
+  {
+    "id": 19,
+    "source": "2023-1",
+    "year": 2023,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.1",
+    "sectionTitle": "线性表的顺序存储",
+    "type": "choice",
+    "stem": "下列对顺序存储的有序表（长度为 n）实现给定操作的算法中平均时间复杂度\n为 O(1) 的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "查找包含指定值元素的算法"
+      },
+      {
+        "label": "B",
+        "text": "插入包含指定值元素的算法"
+      },
+      {
+        "label": "C",
+        "text": "删除第 i 个元素的算法"
+      },
+      {
+        "label": "D",
+        "text": "获取第 i 个值的算法"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 20,
+    "source": "2026-1",
+    "year": 2026,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "当存储空间有足够的空闲空间时，在保持表内元素顺序相对不变的情况下，下\n列哪些操作会必然导致产生移动次数\t（ ）。\nI. 表头插入一个元素\nII. 表头删除一个元素\nIII. 表尾插入一个元素\nIV. 表尾删除一个元素",
+    "options": [
+      {
+        "label": "A",
+        "text": "I、II"
+      },
+      {
+        "label": "B",
+        "text": "I、III"
+      },
+      {
+        "label": "C",
+        "text": "II、IV"
+      },
+      {
+        "label": "D",
+        "text": "III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 21,
+    "source": "2016-1",
+    "year": 2016,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "已知表头元素为 c 的单链表在内存中的存储状态如下表所示。现将 f 存放于\n1014H 处并插入单链表，若 f 在逻辑上位于 a 和 e 之间，则 a,e,f 的“链接地址”依次是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1010H，1014H，1004H"
+      },
+      {
+        "label": "B",
+        "text": "1010H，1004H，1014H"
+      },
+      {
+        "label": "C",
+        "text": "1014H，1010H，1004H"
+      },
+      {
+        "label": "D",
+        "text": "1014H，1004H，1010H"
+      }
+    ],
+    "answer": "D",
+    "explanation": "根据存储状态，单链表的结构如下图所示。 c \ta \te \tb \td f 1008H \t1000H \t1010H \t1004H \t100CH 1014H 其中“链接地址”是指结点 next 所指的内存地址。当结点 f 插入后，a 指向 f，f 指向 e，e 指 向 b，显然 a、e 和 f 的“链接地址”分别是 f、b 和 e 的内存地址，即 1014H、1004H 和 1010H。",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 22,
+    "source": "2016-2",
+    "year": 2016,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "已知一个带有表头结点的双向循环链表 L，结点结构为 prev|data|next，prev\n和 next 分别是指向其直接前驱和直接后继结点的指针。现要删除指针 p 所指的结点，正\n确的语句序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "p->next->prev = p->prev; p->prev->next = p->prev; free(p);"
+      },
+      {
+        "label": "B",
+        "text": "p->next->prev = p->next; p->prev->next = p->next; free(p);"
+      },
+      {
+        "label": "C",
+        "text": "p->next->prev = p->next; p-> prev->next = p->prev; free(p);"
+      },
+      {
+        "label": "D",
+        "text": "p->next->prev = p->prev; p->prev->next = p->next; free(p);"
+      }
+    ],
+    "answer": "D",
+    "explanation": "此类题的解题思路万变不离其宗，无论是链表的插入还是删除都必须保证不断链。",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 23,
+    "source": "2021-1",
+    "year": 2021,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "已知头指针 h 指向一个带头结点的非空单循环链表，结点结构为\n其中 next 是指向直接后继结点的指针，p 是尾指针，q 是临时指针。现要删除该链表的第\n一个元素，正确的语句序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "h->next = h->next->next; q = h->next; free(q);"
+      },
+      {
+        "label": "B",
+        "text": "q = h->next; h->next = h->next->next; free(q);"
+      },
+      {
+        "label": "C",
+        "text": "q = h->next; h->next = q->next; if (p != q) p = h; free(q);"
+      },
+      {
+        "label": "D",
+        "text": "q = h->next; h->next = q->next; if (p == q) p = h; free(q);"
+      }
+    ],
+    "answer": "D",
+    "explanation": "如图1 所示， 要删除带头结点的非空单循环链表中的第一 个元素， 就要先用临时 指针q指向待删结点， q = h-> next;然后将q从链表中断开，h-> next = q-> next（这一步也 可写成h-> next=h -> next -> next)；此时要考虑一种特殊情况，若待删结点是链表的尾结点， 即循环单链表中只有一 个元素(p和q指向同一 个结点）， 如图2所示， 则在删除后要将尾指 针指向头结点， 即if(p＝q)p=h;最后释放q结点即可， 答案选D。 h\t r - － - － － － － － － － － － － －勹 �: 卢三图l h 图2",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 24,
+    "source": "2023-2",
+    "year": 2023,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "现有非空双向链表 L，其结点结构为：\nprev 是指向前直接前驱结点的指针，next 是指向直接后继结点的指针。若要在 L 中指\n针 p 所指向的结点（非尾结点）之后插入指针 s 指向的新结点，则在执行了语句序列：\ns->next=p->next; p->next=s，后，还要执行\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "s->next->prev=p; s->prev=p;"
+      },
+      {
+        "label": "B",
+        "text": "p->next->prev=s; s->prev=p;"
+      },
+      {
+        "label": "C",
+        "text": "s->prev=s->next->prev; s->next->prev=s;"
+      },
+      {
+        "label": "D",
+        "text": "p->next->prev=s->prev; s->next->prev=p;"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 25,
+    "source": "2024-1",
+    "year": 2024,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "choice",
+    "stem": "已知带头结点的非空单链表 L 的头指针为 h，指针 p 指向 L 中间的一个链表\n结点（不是第一个和最后一个结点）。q=p->next，p->next=q->next，q->next=h->next，\nh->next=q。这段代码的功能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "把 q 指向的结点插入到 p 的后面"
+      },
+      {
+        "label": "B",
+        "text": "把 p 指向的结点插入到 q 的后面"
+      },
+      {
+        "label": "C",
+        "text": "把 p 指向的结点插入到 h 的后面"
+      },
+      {
+        "label": "D",
+        "text": "把 q 指向的结点插入到 h 的后面"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 26,
+    "source": "2026-2",
+    "year": 2026,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "comprehensive",
+    "stem": "设有一个双向链表 L，结构为 [p2, p1]，头结点为 head。初始时 head = cu。\n现要将每个结点的 p2 指向 p1 指向结点的直接后继，应该进行的操作是\t（ ）。\n(A) while(cu!=NULL) { cu->p2=cu->p1->p1; cu=cu->p1; }\n(B) while(cu!=NULL && cu->p2!=NULL) { cu->p2 = cu->p1->p1; cu = cu->p1; }\n(C) while(cu!=NULL) { if(cu->p1!=NULL) { cu->p2=cu->p1->p1; cu=cu->p1; } }\n(D) while(cu!=NULL) { if(cu->p1!=NULL) { cu->p2=cu->p1->p1; } else {\ncu->p2=NULL; } cu=cu->p1; }",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 27,
+    "source": "2009-42",
+    "year": 2009,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "comprehensive",
+    "stem": "已知一个带有表头结点的单链表，结点结构为：| data | link |\n假设该链表只给出了头指针 list。在不改变链表的前提下，请设计一个尽可能高效的算法，\n查找链表中倒数第 k 个位置上的结点（k 为正整数）。若查找成功，算法输出该结点\n的 data 域的值，并返回 1；否则，只返回 0。要求：\n(1) 描述算法的基本设计思想；\n(2) 描述算法的详细实现步骤；\n(3) 根据设计思想和实现步骤，采用程序设计语言描述算法（使用 C、C++ 或 Java 语言实\n现），关键之处请给出简要注释。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 28,
+    "source": "2012-42",
+    "year": 2012,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "comprehensive",
+    "stem": "假定采用带头结点的单链表保存单词，当两个单词有相同的后缀时，则可共\n享相同的后缀存储空间，例如，“loading” 和“being”的存储映像如下图所示。\n设 str1 和 str2 分别指向两个单词所在单链表的头结点，链表结点结构为 | data | next |，\n请设计一个时间上尽可能高效的算法，找出由 str1 和 str2 所指向两个链表共同后缀的起始\n位置（如图中字符 i 所在的结点位置 p）。要求：\n1）给出算法的基本设计思想。\n2）根据设计思想，采用 C 或 C++ 或 Java 语言描述算法，关键之处给出注释。\n3）说明你所设计算法的时间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 29,
+    "source": "2015-41",
+    "year": 2015,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "comprehensive",
+    "stem": "用单链表保存 m 个整数，结点的结构为，且 | d at a |≤ n （n 为正整数）。现要\n求设计一个时间复杂度尽可能高效的算法，对于链表中 data 的绝对值相等的结点，仅保留\n第一次出现的结点而删除其余绝对值相等的结点。例如，若给定的单链表 head 如下：\n则删除结点后的 head 为：\n要求：\n(1) 给出算法的基本设计思想。\n(2) 使用 C 或 C++ 语言，给出单链表结点的数据类型定义。\n(3) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(4) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 30,
+    "source": "2019-41",
+    "year": 2019,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.2.2",
+    "sectionTitle": "线性表的链式存储",
+    "type": "comprehensive",
+    "stem": "设线性表 L = (a1, a2, a3, · · · , an−1, an ) 采用带头结点的单链表保存，链表中的结\n点定义如下：\ntypedef struct node {\nint data ;\nstruct node * next ;\n} NODE ;\n请设计一个空间复杂度为 O(1) 且时间上尽可能高效的算法，重新排列 L 中的各结点，得\n到线性表 L = (a1, an , a2, an−1, a3, an−2, · · · ) 。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 31,
+    "source": "2009-2",
+    "year": 2009,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "设栈 S 和队列 Q 的初始状态均为空，元素 a, b, c, d, e, f, g 依次进入栈 S 。若每\n个元素出栈后立即进入队列 Q，且 7 个元素出队的顺序是 b, d, c, f, e, a, g，则栈 S 的容量\n至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 32,
+    "source": "2010-1",
+    "year": 2010,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "若元素 a, b, c, d, e, f 依次进栈，允许进栈、退栈操作交替进行，但不允许连续\n三次进行退栈操作，则不可能得到的出栈序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "d, c, e, b, f, a"
+      },
+      {
+        "label": "B",
+        "text": "c, b, d, a, e, f"
+      },
+      {
+        "label": "C",
+        "text": "b, c, a, e, f, d"
+      },
+      {
+        "label": "D",
+        "text": "a, f, e, d, c, b"
+      }
+    ],
+    "answer": "D",
+    "explanation": "2. C 3. D 4. C 5. B 6. A 7. C 8. B",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 33,
+    "source": "2011-2",
+    "year": 2011,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "元素 a，b，c，d，e 依次进入初始为空的栈中，若元素进栈后可停留、可出栈，\n直到所有元素都出栈，则在所有可能的出栈序列中，以元素 d 开头的序列个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "B",
+    "explanation": "出栈顺序必为d_c_b_a_，e的顺序不定，在任意一个“_”上都有可能。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 34,
+    "source": "2012-2",
+    "year": 2012,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "已知操作符包括 +、−、∗、/、( 和 )。将中缀表达式 a+b−a∗((c+d)/e−f)+g 转\n换为等价的后缀表达式 ab+acd+e/f−∗−g+ 时，用栈来存放暂时还不能确定运算次序的操\n作符，若栈初始为空，则转换过程中同时保存在栈中的操作符的最大个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "11"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查栈的应用、表达式求值。表达式求值是栈的典型应用。通常涉及中缀表达式和 后缀表达式。中缀表达式不仅依赖运算符的优先级，还要处理括号。后缀表达式的运算符在 表达式的后面且没有括号，其形式已经包含了运算符的优先级。所以从中缀表达式转换到后 缀表达式需要用运算符栈对中缀表达式进行处理，使其包含运算法优先级的信息，从而转换 为后缀表达式的形式。转换过程如下表： 运算符栈 \t中缀未处理部分 \t后缀生成部分 # \ta+b-a*((c+d)/e-f)+g # \t+b-a*((c+d)/e-f)+g \ta + \tb-a*((c+d)/e-f)+g \ta + \t-a*((c+d)/e-f)+g \tab - \ta*((c+d)/e-f)+g \tab+ - \t*((c+d)/e-f)+g \tab+a -* \t((c+d)/e-f)+g \tab+a -*(( \tc+d)/e-f)+g \tab+a -*(( \t+d)/e-f)+g \tab+ac -*((+ \td)/e-f)+g \tab+ac -*((+ \t)/e-f)+g \tab+acd -*( \t/e-f)+g \tab+acd+ -- 1 of 12 -- -*(/ \te-f)+g \tab+acd+ -*(/ \t-f)+g \tab+acd+e -*(- \tf)+g \tab+acd+e/ -*(- \t)+g \tab+acd+e/f -* \t+g \tab+acd+e/f- - \t+g \tab+acd+e/f-* # \t+g \tab+acd+e/f-*- + \tg \tab+acd+e/f-*- # \tab+acd+e/f-*-g 可知，栈中的操作符的最大个数为 5。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 35,
+    "source": "2013-2",
+    "year": 2013,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "一个栈的入栈序列为 1, 2, 3, · · · , n ，其出栈序列是 p1, p2, p3, · · · , pn ，若 p2 = 3 ，\n则 p3 可能取值的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "n − 3"
+      },
+      {
+        "label": "B",
+        "text": "n − 2"
+      },
+      {
+        "label": "C",
+        "text": "n − 1"
+      },
+      {
+        "label": "D",
+        "text": "无法确定"
+      }
+    ],
+    "answer": "C",
+    "explanation": "= 0 Z = 1 N = 1 \tZF NF \tCF=0 ZF=0 NF=1 \t1 \t1110 0011B=E3H FFE3 H \t2 \tFFC6 H \tPC 200CH+2+FFC6H=1FD4H 2 \tCF = 1 ZF = 0 NF = 0 \t1 \tPC 200CH+2=200EH 1",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 36,
+    "source": "2014-2",
+    "year": 2014,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "假设栈初始为空，将中缀表达式 a/b+(c*d-e*f)/g 转换为等价的后缀表达式\n的过程中，当扫描到 f 时，栈中的元素依次是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "+(*-"
+      },
+      {
+        "label": "B",
+        "text": "+(-*"
+      },
+      {
+        "label": "C",
+        "text": "/+(*−*"
+      },
+      {
+        "label": "D",
+        "text": "/+-*"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 37,
+    "source": "2017-2",
+    "year": 2017,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "下列关于栈的叙述中，错误的是\t（ ）。\nI. 采用非递归方式重写递归程序时必须使用栈\nII. 函数调用时，系统要用栈保存必要信息\nIII. 只要确定了入栈次序，即可确定出栈次序\nIV. 栈是一种受限的线性表，允许在其两端进行操作",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III、IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Ⅰ的反例：计算斐波拉契数列迭代实现只需要一个循环即可实现。Ⅲ的反例：入栈 序列为 1、2，进行如下操作 PUSH、PUSH、POP、POP，出栈次序为 2、1；进行如下操作 PUSH、POP、PUSH、POP，出栈次序为 1、2。Ⅳ，栈是一种受限的线性表，只允许在一 端进行操作。因此Ⅱ正确。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 38,
+    "source": "2018-1",
+    "year": 2018,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "若栈 S1 中保存整数，栈 S2 中保存运算符，函数 F\t（ ）依次执行下述各步操\n作：\n(1) 从 S1 中依次弹出两个操作数 a 和 b;\n(2) 从 S2 中弹出一个运算符 op;\n(3) 执行相应的运算 b op a;\n(4) 将运算结果压入 S1 。\n假定 S1 中的操作数依次是 5,8,3,2（2 在栈顶），S2 中的运算符依次是 ×,−,+ （+ 在栈顶）。\n调用 3 次 F\t（ ）后，S1 栈顶保存的值是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "-15"
+      },
+      {
+        "label": "B",
+        "text": "15"
+      },
+      {
+        "label": "C",
+        "text": "-20"
+      },
+      {
+        "label": "D",
+        "text": "20"
+      }
+    ],
+    "answer": "B",
+    "explanation": "第一次调用：①从 S1 中弹出 2 和 3；②从 S2 中弹出+；③执行 3+2=5;④将 5 压入 S1 中。第一次调用结束后 S1 中剩余 5，8，5 (5 在栈项)，S2 中剩余*，- (-在栈项)。第二次 调用：①从 S1 中弹出 5 和 8；②从 S2 中弹出 -；③执行 8-5=3;④将 3 压入 S1 中，第二次 调用结束后 S1 中剩余 5，3(3 在栈顶)，S2 中剩余*。第三次调用：①从 S1 中弹出 3 和 5； ②从 S2 中弹出*: ③执行 5×3= 15；④将 15 压入 S1 中，第三次调用结束后 S1 中仅剩余 15 (栈项)。S2 为空。故选 B。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 39,
+    "source": "2018-2",
+    "year": 2018,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "现有队列 Q 与栈 S，初始时 Q 中的元素依次是 1,2,3,4,5,6（1 在队头），S 为空。\n若仅允许下列 3 种操作：\n¨ 出队并输出出队元素\n≠ 出队并将出队元素入栈\nÆ 出栈并输出出栈元素\n则不可能得到的输出序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1，2，5，6，4，3"
+      },
+      {
+        "label": "B",
+        "text": "2，3，4，5，6，1"
+      },
+      {
+        "label": "C",
+        "text": "3，4，5，6，1，2"
+      },
+      {
+        "label": "D",
+        "text": "6，5，4，3，2，1"
+      }
+    ],
+    "answer": "C",
+    "explanation": "A 的操作顺序：①①②②①①③③。B 的操作顺序：②①①①①①③。D 的操作顺 序：②②②②②①③③③③③。对于 C：首先输出 3，说明 1 和 2 必须先依次入栈，而此后 2 肯定比 1 先输出，因此无法得到 1，2 的输出顺序。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 40,
+    "source": "2020-2",
+    "year": 2020,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "对空栈 S 进行 Push 和 Pop 操作入栈序列 a,b,c,d,e 经过 Push,Push,Pop,Push,Pop,\nPush,Push,Pop 操作后得到的出栈序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "b,a,c"
+      },
+      {
+        "label": "B",
+        "text": "b,a,e"
+      },
+      {
+        "label": "C",
+        "text": "b,c,a"
+      },
+      {
+        "label": "D",
+        "text": "b,c,e"
+      }
+    ],
+    "answer": "D",
+    "explanation": "第一个 Pop 栈中状态为 a,b，Pop 出栈元素为 b，第二个 Pop 栈中状态为 a,c，Pop 出栈元素为 c，第三个 Pop 栈中状态为 a,d,e，Pop 出栈元素为 e，把序列连起来就是 b,c,e。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 41,
+    "source": "2022-2",
+    "year": 2022,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "给定有限符号集 S, in 和 out 均为 S 中所有元素的任意排列。对于初始为空的\n栈 ST, 下列叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "若 in 是 ST 的入栈序列，则不能判断 out 是否为其可能的出栈序列"
+      },
+      {
+        "label": "B",
+        "text": "若 out 是 ST 的出栈序列，则不能判断 in 是否为其可能的入栈序列"
+      },
+      {
+        "label": "C",
+        "text": "若 in 是 ST 的入栈序列，out 是对应 in 的出栈序列，则 in 与 out 一定不同"
+      },
+      {
+        "label": "D",
+        "text": "若 in 是 ST 的入栈序列，out 是对应 in 的出栈序列，则 in 与 out 可能互为倒序"
+      }
+    ],
+    "answer": "D",
+    "explanation": "通过模拟出入栈操作， 可以判断入栈序列in和出栈序列 out 是否合法。因此， 已 知 in 序列可以判断 out 序列是否为可能的出栈序列； 已知 out 序列也可以判断in序列是否为 可能的入栈序列，A和B错误。如果每个元素入栈后立即出栈， 则 in 序列和 out 序列相同， C错误。 如果所有元素都入栈后才依次出栈， 则 in 序列和 out 序列互为倒序， D 正确。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 42,
+    "source": "2024-2",
+    "year": 2024,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "choice",
+    "stem": "表达式 x+y*(z-u)/v 的等价后缀是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "xyzu-*v/+"
+      },
+      {
+        "label": "B",
+        "text": "xyzu-v/*+"
+      },
+      {
+        "label": "C",
+        "text": "+x/*y-zuv"
+      },
+      {
+        "label": "D",
+        "text": "+x*y/-zuv"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 43,
+    "source": "2025-2",
+    "year": 2025,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.1",
+    "sectionTitle": "栈",
+    "type": "comprehensive",
+    "stem": "对于括号匹配问题，符号栈初始为空，容量为 3，下列表达式不能实现的\n是\t（ ）。\n(A) (a+[b+(c+d)e]+f)+g-h (B) [a*((b+c)/(d-e)+f/g)]-h\n(C) [a*(b-(c-d)*e/(f+g))-h] (D) [a-(b+[c*(d+e)-f]+g+h)]",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 44,
+    "source": "2026-42",
+    "year": 2026,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "（本题满分 10 分）\n栈的基本操作有出栈和入栈。将序列 1, 2, 3, · · · , n 依次入栈，回答下列问题：\n(1) 当 n = 9 时， 可 以 得 到 出 栈 序 列 {2,3,1,6,4,7,5,9,8} 吗？ 可 以 得 到 出 栈 序 列\n{2,3,1,5,6,7,4,9,8} 吗？（2 分）\n(2) 假设 1, 2, · · · , n 组成任意序列的出栈序列 P1, P2, · · · , Pn ，在序列中有 Pi 、P j 、Pk（i < j < k\n），若该出栈序列不能由栈得到，则 Pi 、P j 、Pk 的大小关系是？（2 分）\n(3) 若 n = 4 ，则以 2 开头的序列个数有多少个？（2 分）\n(4) 若 n = k − 1 时，出栈序列总共共有 M 个，如果 n = k ，那么以 1 开头的出栈序列个数\n有多少个？以 2 开头的出栈序列有多少个？总共的出栈序列有多少个？（4 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 45,
+    "source": "2009-1",
+    "year": 2009,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "为解决计算机与打印机之间速度不匹配的问题，通常设置一个打印数据缓冲\n区，主机将要输出的数据依次写入该缓冲区，而打印机则依次从该缓冲区中取出数据。该\n缓冲区的逻辑结构应该是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "栈"
+      },
+      {
+        "label": "B",
+        "text": "队列"
+      },
+      {
+        "label": "C",
+        "text": "树"
+      },
+      {
+        "label": "D",
+        "text": "图"
+      }
+    ],
+    "answer": "C",
+    "explanation": "D",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 46,
+    "source": "2010-2",
+    "year": 2010,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "某队列允许在其两端进行入队操作，但仅允许在一端进行出队操作，若元素 a,\nb, c, d, e 依次入此队列后再进行出队操作，则不可能得到的出队序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "b, a, c, d, e"
+      },
+      {
+        "label": "B",
+        "text": "d, b, a, c, e"
+      },
+      {
+        "label": "C",
+        "text": "d, b, c, a, e"
+      },
+      {
+        "label": "D",
+        "text": "e, c, b, a, d"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 47,
+    "source": "2011-3",
+    "year": 2011,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "已知循环队列存储在一维数组 A[0..n-1] 中，且队列非空时 front 和 rear 分\n别指向队头元素和队尾元素。若初始时队列空，且要求第一个进入队列的元素存储在 A[0]\n处，则初始时 front 和 rear 的值分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0，0"
+      },
+      {
+        "label": "B",
+        "text": "0，n-1"
+      },
+      {
+        "label": "C",
+        "text": "n-1，0"
+      },
+      {
+        "label": "D",
+        "text": "n-1，n-1"
+      }
+    ],
+    "answer": "B",
+    "explanation": "插入元素时，front不变，rear+1.而插入第一个元素之后，队尾要指向尾元 素，显然，rear初始应该为n-1,front为0。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 48,
+    "source": "2014-3",
+    "year": 2014,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "循环队列放在一维数组 A[0..M-1] 中，end1 指向队头元素，end2 指向队尾元\n素的后一个位置。假设队列两端均可进行入队和出队操作，队列中最多能容纳 M-1 个元\n素。初始时为空。下列判断队空和队满的条件中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "队空：end1 == end2；队满：end1 == (end2 + 1) mod M"
+      },
+      {
+        "label": "B",
+        "text": "队空：end1 == end2；队满：end2 == (end1 + 1) mod (M - 1)"
+      },
+      {
+        "label": "C",
+        "text": "队空：end1 == (end1 + 1) mod M；队满：end1 == (end2 + 1) mod M"
+      },
+      {
+        "label": "D",
+        "text": "队空：end1 == (end2 + 1) mod M；队满：end2 == (end1 + 1) mod (M - 1)"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 49,
+    "source": "2016-3",
+    "year": 2016,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "choice",
+    "stem": "设有下图所示的火车车轨，入口到出口之间有 n 条轨道，列车的行进方向均为\n从左至右，列车可驶入任意一条轨道。现有编号为 1-9 的 9 列列车，驶入的次序依次是 8,\n4, 2, 5, 3, 9, 1, 6, 7。若期望驶出的次序依次为 1~9，则 n 至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "C",
+    "explanation": "在确保队列先进先出原则的前提下。根据题意具体分析：入队顺序为 8，4，2，5， 3，9，1，6，7，出队顺序为 1-9。入口和出口之间有多个队列(n 条轨道)，且每个队列(轨道) 可容纳多个元素(多列列车)。如此分析：显然先入队的元素必须小于后入队的元素(如果 8 和",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 50,
+    "source": "2021-2",
+    "year": 2021,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "comprehensive",
+    "stem": "已知初始为空的队列 Q 的一端仅能进行入队操作，另外一端既能进行入队操\n作又能进行出队操作。若 Q 的入队序列是 1, 2, 3, 4, 5 , 则不能得到的出队序列是\t（ ）。\n(A) 5,4,3,1,2 (B) 5,3,1,2,4 (C) 4,2,1,3,5 (D) 4,1,3,2,5",
+    "options": [],
+    "answer": "D",
+    "explanation": "假设队列左端允许入队和出队， 右端只能入队。 对千A, 依次从右端入队1, 2 , 再从左端入队 3, 4, 5 。 对千 B, 从右端入队 1, 2, 然后从左端入队 3, 再从右端入队 4, 最后 从左端入队 5 。 对于 c, 从左端入队 1, 2, 然后从右端入队 3, 再从左端入队 4, 最后从右端 入队5 。 无法验证D 的出队序列， 故选D。 :,, :,, 54312 - 53124 - 呱 呱 42135 - 喊 【另解】队列两端都可以入队， 入队结束后， 队列中的序列（或逆序） 可视为出队序列。 由千 入队序列是从小到大的顺序， 因此左端入队的子序列满足从大到小的顺序， 右端入队的子序 列满足从小到大的顺序。 A、 B和C 都满足这样特点， 只有D不满足， 故选D。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 51,
+    "source": "2019-42",
+    "year": 2019,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.3.2",
+    "sectionTitle": "队列",
+    "type": "comprehensive",
+    "stem": "请设计一个队列，要求满足：\n¨ 初始时队列为空；\n≠ 入队时，允许增加队列占用空间；\nÆ 出队后，出队元素所占用的空间可重复使用，即整个队列所占用的空间只增不减；\nØ 入队操作和出队操作的时间复杂度始终保持为 O(1) 。\n请回答下列问题：\n(1) 该队列是应选择链式存储结构，还是应选择顺序存储结构？\n(2) 画出队列的初始状态，并给出判断队空和队满的条件。\n(3) 画出第一个元素入队后的队列状态。\n(4) 给出入队操作和出队操作的基本过程。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 52,
+    "source": "2021-3",
+    "year": 2021,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.1",
+    "sectionTitle": "数组的存储与基本操作",
+    "type": "comprehensive",
+    "stem": "已知二维数组 A 按行优先方式存储，每个元素占用 1 个存储单元。若元\n素 A[0][0] 的存储地址是 100, A[3][3] 的存储地址是 220 , 则元素 A[5][5] 的存储地址\n是\t（ ）。\n(A) 295 (B) 300 (C) 301 (D) 306",
+    "options": [],
+    "answer": "B",
+    "explanation": "二维数组A按行优先存储， 每个元素占用1个存储单元， 由A[O][O]和A[3][3]的 存储地址可知A[3][3]是二维数组A 中的第1 21个元素， 假设二维数组A 的每行有n个元素， 则nx3 +4=121,求得n=39,故元素A[5][5]的存储地址为100 +39x5 +6-1 =300 ,故选 B 。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 53,
+    "source": "2011-41",
+    "year": 2011,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.2",
+    "sectionTitle": "特殊矩阵的压缩存储",
+    "type": "choice",
+    "stem": "已知有 6 个顶点（顶点编号为 0～5）的有向带权图 G ，其邻接矩阵 A 为上三\n角矩阵，按行为主序（行优先）保存在如下的一维数组中。\n要求：\n(1) 写出图 G 的邻接矩阵 A 。\n(2) 画出有向带权图 G 。\n(3) 求图 G 的关键路径，并计算该关键路径的长度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 54,
+    "source": "2016-4",
+    "year": 2016,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.2",
+    "sectionTitle": "特殊矩阵的压缩存储",
+    "type": "choice",
+    "stem": "有一个 100 阶的三对角矩阵 M ，其元素 mi , j (1 ≤ i ≤ 100, 1 ≤ j ≤ 100) 按行优先\n依次压缩存入下标从 0 开始的一维数组 N 中。元素 m30,30 在数组 N 中的下标是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "86"
+      },
+      {
+        "label": "B",
+        "text": "87"
+      },
+      {
+        "label": "C",
+        "text": "88"
+      },
+      {
+        "label": "D",
+        "text": "89"
+      }
+    ],
+    "answer": "B",
+    "explanation": "三对角矩阵如下图所示。 -- 1 of 12 --                     …\t…\t… − −\t−\t−\t−\t− n\tn\tn\tn n\tn\tn\tn\tn\tn a\ta a\ta\ta a\ta\ta a\ta\ta a\ta ,\t1\t, ,1\t1\t,1\t2\t,1 4,3\t3,3\t2,3 3,2\t2,2\t1,2 2,1\t1,1",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 55,
+    "source": "2018-3",
+    "year": 2018,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.2",
+    "sectionTitle": "特殊矩阵的压缩存储",
+    "type": "choice",
+    "stem": "设有一个 12 × 12 的对称矩阵 M ，将其上三角部分的元素 mi , j (1 ≤ i ≤ j ≤ 12) 按\n行优先存入 C 语言的一维数组 N 中，元素 m6,6 在 N 中的下标是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "50"
+      },
+      {
+        "label": "B",
+        "text": "51"
+      },
+      {
+        "label": "C",
+        "text": "55"
+      },
+      {
+        "label": "D",
+        "text": "66"
+      }
+    ],
+    "answer": "A",
+    "explanation": "数组 N 的下标从 0 开始，第一个元素 m1,1 对应存入 n0，矩阵 M 的第一行有 12 个元 素，第二行有 11 个，第三行有 10 个，第四行有 9 个，第五行有 8 个，所以 m6,6 是第 12+11+ 10+9+8+1=51 个元素，下标应为 50，故选 A。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 56,
+    "source": "2020-1",
+    "year": 2020,
+    "qIndex": 1,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.3",
+    "sectionTitle": "稀疏矩阵的压缩存储",
+    "type": "choice",
+    "stem": "将一个 10*10 对称矩阵 M 的上三角部分的元素 mi , j (1 ≤ i ≤ j ≤ 10) ，按列优先\n存入 C 语言的一维数组 N 中，元素 m7,2 在 N 中的下标是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "15"
+      },
+      {
+        "label": "B",
+        "text": "16"
+      },
+      {
+        "label": "C",
+        "text": "22"
+      },
+      {
+        "label": "D",
+        "text": "23"
+      }
+    ],
+    "answer": "C",
+    "explanation": "按上三角存储，m7,2 对应的是 m2,7，在它之前有： 第 1 列：1 第 2 列：2 …… 第 6 列：6 第 7 列：1 前面一共 1+2+3+4+5+6+1 个元素，共 22 个元素，数组下标从 0 开始，故下标为 m 2,7 的数组 下标为 22。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 57,
+    "source": "2017-3",
+    "year": 2017,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.3",
+    "sectionTitle": "稀疏矩阵的压缩存储",
+    "type": "choice",
+    "stem": "适用于压缩存储稀疏矩阵的两种存储结构是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "三元组表和十字链表"
+      },
+      {
+        "label": "B",
+        "text": "三元组表和邻接矩阵"
+      },
+      {
+        "label": "C",
+        "text": "十字链表和二叉链表"
+      },
+      {
+        "label": "D",
+        "text": "邻接矩阵和十字链表"
+      }
+    ],
+    "answer": "A",
+    "explanation": "三元组表的结点存储了行 row、列 col、值 value 三种信息，是主要用来存储稀疏矩 阵的一种数据结构。十字链表将行单链表和列单链表结合起来存储稀疏矩阵。邻接矩阵空间 复杂度达 O(n2 )，不适于存储稀疏矩阵。二叉链表又名左孩子右兄弟表示法，可用于表示树或 森林。因此选项 A 正确。",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 58,
+    "source": "2023-3",
+    "year": 2023,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.4.3",
+    "sectionTitle": "稀疏矩阵的压缩存储",
+    "type": "choice",
+    "stem": "若采用三元组表存储结构存储稀疏矩阵 M。则除三元组外，下列数据中还需\n要保存的是\t（ ）。\nI. M 的行数\nII. M 中包含非零元素的行数\nIII. M 的列数\nIV. M 中包含非零元素的列数",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I 和 III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I 和 IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 II 和 IV"
+      },
+      {
+        "label": "D",
+        "text": "I, II, III, IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/03-stack-queue-array"
+  },
+  {
+    "id": 59,
+    "source": "2015-8",
+    "year": 2015,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.5.1",
+    "sectionTitle": "KMP 匹配算法",
+    "type": "choice",
+    "stem": "已知字符串 s 为“abaabaabacacaabaabcc”，模式串 t 为“abaabc”。采用 KMP\n算法进行匹配，第一次出现“失配”（s[i]̸ = t[j]）时，i = j = 5，则下次开始匹配时，i\n和 j 的值分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "i = 1, j = 0"
+      },
+      {
+        "label": "B",
+        "text": "i = 5, j = 0"
+      },
+      {
+        "label": "C",
+        "text": "i = 5, j = 2"
+      },
+      {
+        "label": "D",
+        "text": "i = 6, j = 2"
+      }
+    ],
+    "answer": "C",
+    "explanation": "KMP 算法主要是求 next 数组的过程，首先要理解 next 数组是啥，next[i]代表什么： next[i]代表在模式串 t 中，长度为 i 的前缀后缀匹配长度。根据 next 数组生成算法可得： 编号 \t0 \t1 \t2 \t3 \t4 \t5 字符串 t \ta \tb \ta \ta \tb \tc next \t-1 \t0 \t0 \t1 \t1 \t2 明显有 next[j]（j=5）=2，所以下一次的 j=2。而 i 每次是不减的，所以 i=5。",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 60,
+    "source": "2019-9",
+    "year": 2019,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.5.1",
+    "sectionTitle": "KMP 匹配算法",
+    "type": "choice",
+    "stem": "设主串 T=“abaabaabcabaabc”，模式串 S=“abaabc”，采用 KMP 算法进行模式匹\n配，到匹配成功时为止，在匹配过程中进行的单个字符间的比较次数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "9"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "12"
+      },
+      {
+        "label": "D",
+        "text": "15"
+      }
+    ],
+    "answer": "B",
+    "explanation": "假设位序都是从 0 开始的，按照 next 数组生成算法，对于 S 有 编号 \t0 \t1 \t2 \t3 \t4 \t5 S \ta \tb \ta \ta \tb \tc next \t-1 \t0 \t0 \t1 \t1 \t2 根据 KMP 算法，第一趟连续对比 6 次，在模式串的 5 号位和主串的 5 号位匹配失败，模式 串的下一个比较位置为 next[5]，即下一次比较从模式串的 2 号位和主串 5 号位开始，然后直 到模式串 5 号位和主串 8 号位匹配，第二趟比较 4 次，模式串匹配成功。单个字符的比较次 数为 10 次，所以选 B。",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 61,
+    "source": "2024-6",
+    "year": 2024,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.5.1",
+    "sectionTitle": "KMP 匹配算法",
+    "type": "choice",
+    "stem": "KMP 算法使用修正后的 next 数组进行模式匹配，模式串 S = “aabaab”，当主\n串中某字符与 S 中某字符失去配对时，S 将向右滑动的最长距离是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/02-linear-list"
+  },
+  {
+    "id": 62,
+    "source": "2009-5",
+    "year": 2009,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "已知一棵完全二叉树的第 6 层（设根为第 1 层）有 8 个叶结点，则该完全二叉\n树的结点个数最多是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "39"
+      },
+      {
+        "label": "B",
+        "text": "52"
+      },
+      {
+        "label": "C",
+        "text": "111"
+      },
+      {
+        "label": "D",
+        "text": "119"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Cout PCout R0out R1out MDRout",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 63,
+    "source": "2010-5",
+    "year": 2010,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "在一棵度数为 4 的树 T 中，若有 20 个度为 4 的结点，10 个度为 3 的结点，1\n个度为 2 的结点，10 个度为 1 的结点，则树 T 的叶结点个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "41"
+      },
+      {
+        "label": "B",
+        "text": "82"
+      },
+      {
+        "label": "C",
+        "text": "113"
+      },
+      {
+        "label": "D",
+        "text": "122"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 64,
+    "source": "2011-4",
+    "year": 2011,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "若一棵完全二叉树有 768 个结点，则该二叉树中叶结点的个数是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "257"
+      },
+      {
+        "label": "B",
+        "text": "258"
+      },
+      {
+        "label": "C",
+        "text": "384"
+      },
+      {
+        "label": "D",
+        "text": "385"
+      }
+    ],
+    "answer": "C",
+    "explanation": "叶结点数为n，则度为2的结点数为n-1,度为1的结点数为0或1，本题中为1（总 结点数为偶数），故而即2n=768。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 65,
+    "source": "2018-4",
+    "year": 2018,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "设一棵非空完全二叉树 T 的所有叶结点均位于同一层，且每个非叶结点都有 2\n个子结点。若 T 有 k 个叶结点，则 T 的结点总数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2k − 1"
+      },
+      {
+        "label": "B",
+        "text": "2k"
+      },
+      {
+        "label": "C",
+        "text": "k2"
+      },
+      {
+        "label": "D",
+        "text": "2k − 1"
+      }
+    ],
+    "answer": "A",
+    "explanation": "非叶结点的度均为 2，且所有叶结点都位于同一层的完全二叉树就是满二叉树。对于 一棵高度为 h 的满二叉树(空树 h=0)，其最后一层全部是叶结点，数量为 2h-1，总结点数为 2h - 1。因此当 2h-1 =k 时，可以得到 2h -1=2k-1。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 66,
+    "source": "2020-3",
+    "year": 2020,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "对于任意一棵高度为 5 且有 10 个节点的二叉树，若采用顺序存储结构保存，\n每个结点占 1 个存储单元（仅存放结点的数据信息），则存放该二叉树需要的存储单元数\n量至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "31"
+      },
+      {
+        "label": "B",
+        "text": "16"
+      },
+      {
+        "label": "C",
+        "text": "15"
+      },
+      {
+        "label": "D",
+        "text": "10"
+      }
+    ],
+    "answer": "A",
+    "explanation": "由于题目明确说明只存储结点数据信息，所以采用顺序存储时要用数组的下标保存 结点的父子关系，所以对于这棵二叉树存储的结果就是存储了一棵五层的满二叉树，五层的 满二叉树结点个数为 1+2+4+8+16=31，所以至少需要 31 个存储单元。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 67,
+    "source": "2022-4",
+    "year": 2022,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "choice",
+    "stem": "若三叉树 T 中有 244 个结点（叶结点的高度为 1），则 T 的高度至少是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "C",
+    "explanation": "高度一定的三叉树中结点数最多的情况是满三叉树。 高度为 5 的满三叉树的结点 数＝ 3° +31 +32 +33 +34 = 121，高度为 6 的满三叉树的结点数＝ 3°+ 31 + 32 +33 +34 +35 = 364。 由千三叉树 T 的结点数为 244, 121 <244 <364, 因此 T 的高度至少为 6。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 68,
+    "source": "2025-3",
+    "year": 2025,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "comprehensive",
+    "stem": "若二叉树的节点值均为正整数，采用顺序存储方式保存在数组 R 中，用 -1 表\n示节点不存在，则下列数组中，不能表示一棵二叉树的是\t（ ）。\n(A) R[] = {20, 15, 40, -1, -1, 35}\n(B) R[] = {15, 40, 10, 18, 35, -1, -1}\n(C) R[] = {15, 40, 10, -1, -1, -1, 12}\n(D) R[] = {17, 20, 35, -1, 18, 45, -1, -1, 19, 27}",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 69,
+    "source": "2020-42",
+    "year": 2020,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "comprehensive",
+    "stem": "任一个字符的编码都不是其它字符编码的前缀，则称这种编码具有前缀特性。\n现有某字符集（字符个数 ≥2）的不等长编码，每个字符的编码均为二进制的 0、1 序列，\n最长为 L 位，且具有前缀特性。请回答下列问题：\n(1) 哪种数据结构适宜保存上述具有前缀特性的不等长编码？\n(2) 基于你所设计的数据结构，简述从 0/1 串到字符串的译码过程。\n(3) 简述判定某字符集的不等长编码是否具有前缀特性的过程。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 70,
+    "source": "2022-41",
+    "year": 2022,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.1",
+    "sectionTitle": "二叉树的概念与存储",
+    "type": "comprehensive",
+    "stem": "已知非空二叉树 T 的结点值均为正整数，采用顺序存储方式保存，数据结构\n定义如下：\ntypedef struct { // MAX_SIZE 为 已 定 义 常 量\nElemtype SqBiTNode [ MAX_SIZE ]; // 保 存 二 叉 树 结 点 值 的 数 组\nint ElemNum ; // 实 际 占 用 的 数 组 元 素 个 数\n} SqBiTree ;\nT 中不存在的结点在数组 SqBiTNode 中用 -1 表示。例如，对于下图所示的两棵非空二叉\n树 T1 和 T2：\nT1 的存储结果如下：\nT2 的存储结果如下：\n请设计一个尽可能高效的算法，判定一棵采用这种方式存储的二叉树是否为二叉搜索树，\n若是，则返回 true，否则，返回 false，要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 71,
+    "source": "2009-3",
+    "year": 2009,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "给定二叉树如右图所示。设 N 代表二叉树的根，L 代表根结点的左子树，R 代\n表根结点的右子树。若遍历后的结点序列是 3，1，7，5，6，2，4，则其遍历方式是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "LRN"
+      },
+      {
+        "label": "B",
+        "text": "NRL"
+      },
+      {
+        "label": "C",
+        "text": "RLN"
+      },
+      {
+        "label": "D",
+        "text": "RNL"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 72,
+    "source": "2010-3",
+    "year": 2010,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "下列线索二叉树中（用虚线表示线索），符合后序线索树定义的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": ""
+      },
+      {
+        "label": "B",
+        "text": ""
+      },
+      {
+        "label": "C",
+        "text": ""
+      },
+      {
+        "label": "D",
+        "text": "（本题选项为图形，请对照上图作答。）"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 73,
+    "source": "2011-5",
+    "year": 2011,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "若一棵二叉树的前序遍历序列和后序遍历序列分别为 1,2,3,4 和 4,3,2,1，则该\n二叉树的中序遍历序列不会是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1,2,3,4"
+      },
+      {
+        "label": "B",
+        "text": "2,3,4,1"
+      },
+      {
+        "label": "C",
+        "text": "3,2,4,1"
+      },
+      {
+        "label": "D",
+        "text": "4,3,2,1"
+      }
+    ],
+    "answer": "C",
+    "explanation": "由前序和后序遍历序列可知3为根结点，故（1,2）为左子树，（4）为右子树， C不可能。或画图即可得出结果。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 74,
+    "source": "2012-3",
+    "year": 2012,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "若一棵二叉树的前序遍历序列为 a, e, b, d, c，后序遍历序列为 b, c, d, e, a，则\n根结点的孩子结点\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "只有 e"
+      },
+      {
+        "label": "B",
+        "text": "有 e、b"
+      },
+      {
+        "label": "C",
+        "text": "有 e、c"
+      },
+      {
+        "label": "D",
+        "text": "无法确定"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查树的遍历、及由遍历序列确定二叉树的树形。前序序列和后序序列不能唯一确 定一棵二叉树，但可以确定二叉树中结点的祖先关系：当两个结点的前序序列为 XY 与后序 序列为 YX 时，则 X 为 Y 的祖先。考虑前序序列 a,e,b,d,c、后序序列 b,c,d,e,a，可知 a 为根 结点，e 为 a 的孩子结点；此外，a 的孩子结点的前序序列 e,b,d,c、后序序列 b,c,d,e，可知 e 是 bcd 的祖先，故根结点的孩子结点只有 e。本题答案为 A。 【特殊法】前序序列和后序序列对应着多棵不同的二叉树树形，我们只需画出满足该条件的 任一棵二叉树即可，任意一棵二叉树必定满足正确选项的要求。 显然选 A，最终得到的二叉树满足题设中前序序列和后序序列的要求。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 75,
+    "source": "2013-5",
+    "year": 2013,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "若 X 是后序线索二叉树中的叶结点，且 X 存在左兄弟结点 Y 。则 X 的右线索\n指的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "X 的父结点"
+      },
+      {
+        "label": "B",
+        "text": "以 Y 为根的子树的最左下结点"
+      },
+      {
+        "label": "C",
+        "text": "X 的左兄弟结点 Y"
+      },
+      {
+        "label": "D",
+        "text": "以 Y 为根的子树的最右下结点"
+      }
+    ],
+    "answer": "A",
+    "explanation": "X X",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 76,
+    "source": "2014-4",
+    "year": 2014,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "若对如下的二叉树进行中序线索化，则结点 x 的左、右线索指向的结点分别\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "e、c"
+      },
+      {
+        "label": "B",
+        "text": "e、a"
+      },
+      {
+        "label": "C",
+        "text": "d、c"
+      },
+      {
+        "label": "D",
+        "text": "b、a"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 77,
+    "source": "2015-2",
+    "year": 2015,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "先序序列为 a,b,c,d 的不同二叉树的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "13"
+      },
+      {
+        "label": "B",
+        "text": "14"
+      },
+      {
+        "label": "C",
+        "text": "15"
+      },
+      {
+        "label": "D",
+        "text": "16"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根据二叉树前序遍历和中序遍历的递归算法中递归工作栈的状态变化得出：前序序 列和中序序列的关系相当于以前序序列为入栈次序，以中序序列为出栈次序。因为前序序列 和中序序列可以唯一地确定一棵二叉树，所以题意相当于“以序列 a,b,c,d 为入栈次序，则出 栈序列的个数为多少”，对于 n 个不同元素进栈，出栈序列的个数为 \t14",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 78,
+    "source": "2017-4",
+    "year": 2017,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "要使一棵非空二叉树的先序序列与中序序列相同，其所有非叶节点须满足的\n条件是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "只有左子树"
+      },
+      {
+        "label": "B",
+        "text": "只有右子树"
+      },
+      {
+        "label": "C",
+        "text": "结点的度均为 1"
+      },
+      {
+        "label": "D",
+        "text": "结点的度均为 2"
+      }
+    ],
+    "answer": "B",
+    "explanation": "先序序列是先父结点，接着左子树，然后右子树。中序序列是先左子树，接着父结 点，然后右子树，递归进行。如果所有非叶结点只有右子树，先序序列和中序序列都是先父 结点，然后右子树，递归进行，因此选项 B 正确。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 79,
+    "source": "2017-5",
+    "year": 2017,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "已知一颗二叉树的树形如下图所示，其后序序列为 e，a，c，b，d，g，f，树中\n与结点 a 同层的结点是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "c"
+      },
+      {
+        "label": "B",
+        "text": "d"
+      },
+      {
+        "label": "C",
+        "text": "f"
+      },
+      {
+        "label": "D",
+        "text": "g"
+      }
+    ],
+    "answer": "B",
+    "explanation": "后序序列是先左子树，接着右子树，最后父结点，递归进行。根结点左子树的叶结点 首先被访问，它是 e。接下来是它的父结点 a，然后是 a 的父结点 c。接着访问根结点的右子 树。它的叶结点 b 首先被访问，然后是 b 的父结点 d，再者是 d 的父结点 g。最后是根结点 f。因此 d 与 a 同层，B 正确。 -- 1 of 9 --",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 80,
+    "source": "2022-3",
+    "year": 2022,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "若结点 p 与 q 在二叉树 T 的中序遍历序列中相邻，且 p 在 q 之前，则下列 p 与\nq 的关系中，不可能的是\t（ ）。\nI. q 是 p 的双亲\nII. q 是 p 的右孩子\nIII. q 是 p 的右兄弟\nIV. q 是 p 的双亲的双亲",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "对千此类题， 每种情况只需举出一个反例即可。如图 1 所示， q是p的双亲， 中 序遍历序列为 {p, q}, \tI 可能。如图 2 所示， q 是 p 的右孩子， 中序遍历序列为{p, q}, II 可能。 如图 4 所示， q 是 p 的双亲的双亲， 中序遍历序列为 {x, p, q}, IV 可能。 如图 3 所示， q 是 p 的右兄弟， F 是q和p的父结点， 中序遍历要求先遍历左子树， 再访问根结点， 最后遍历右 子树， 因此一定先访问 p, 再访问 F, 最后访问 q, p 和 q 不可能相邻出现， III 不可能。 产3 图1 气3 图2 r_� -\tr_L \tr_� q r_L F  F1J pr _L \tr-, － －\t L1L 卢 图3 图4",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 81,
+    "source": "2023-5",
+    "year": 2023,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "已 知 一 棵 二 叉 树 的 树 形 如 图， 若 其 后 序 遍 历 为 f,d,b,e,c,a， 则 其 先 序 序 列\n为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "aedfbc"
+      },
+      {
+        "label": "B",
+        "text": "acebdf"
+      },
+      {
+        "label": "C",
+        "text": "cabefd"
+      },
+      {
+        "label": "D",
+        "text": "dfebac"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 82,
+    "source": "2024-3",
+    "year": 2024,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "choice",
+    "stem": "p、q、v 都是二叉树 T 中的结点，二叉树 T 的中序遍历为∙∙∙, p，v，q，∙∙∙，其中 v\n有两个孩子结点，则下列说法正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "p 没右孩子，q 没左孩子"
+      },
+      {
+        "label": "B",
+        "text": "p 没右孩子，q 有左孩子"
+      },
+      {
+        "label": "C",
+        "text": "p 有右孩子，q 没左孩子"
+      },
+      {
+        "label": "D",
+        "text": "p 有右孩子，q 有左孩子"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 83,
+    "source": "2026-3",
+    "year": 2026,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "comprehensive",
+    "stem": "已知二叉树 T 的中序遍历为 b, e, d, f, c, a, g。层序遍历为 a, b, g, c, d, e, f。则其\n后序遍历序列为多少？\n(A) c, e, d, f, b, g, a (B) c, e, f, d, b, g, a\n(C) e, f, d, c, b, g, a (D) e, g, f, d, b, c, a",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 84,
+    "source": "2014-41",
+    "year": 2014,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "comprehensive",
+    "stem": "二叉树的带权路径长度（WPL）是二叉树中所有叶结点的带权路径长度之和。\n给定一棵二叉树 T，采用二叉链表存储，结点结构为：\nleft weight right\n其中叶结点的 weight 域保存该结点的非负权值。设 root 为指向 T 的根结点的指针，请设\n计求 T 的 WPL 的算法，要求：\n(1) 给出算法的基本设计思想；\n(2) 使用 C 或 C++ 语言，给出二叉树结点的数据类型定义；\n(3) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 85,
+    "source": "2017-41",
+    "year": 2017,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.2",
+    "sectionTitle": "二叉树的遍历与线索化",
+    "type": "comprehensive",
+    "stem": "请设计一个算法，将给定的表达式树（二叉树）转换为等价的中缀表达式（通\n过括号反映操作符的计算次序）并输出。例如，当下列两棵表达式树作为算法输入时：\n输出的中缀表达式分别为 (a+b)*(c*(−d)) 和 (a*b)+(−(c−d)) 。\n二叉树结点的定义如下：\ntypedef struct node {\nchar data [10]; // 存 储 操 作 数 或 操 作 符\nstruct node *left , * right ;\n} BTree ;\n要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 86,
+    "source": "2023-41",
+    "year": 2023,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "已知有向图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct { // 图 的 类 型 定 义\nint numVertices , numEdges ; // 图 中 顶 点 数 和 有 向 边 数\nchar VerticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph ;\n将图中出度大于入度的顶点称为 K 顶点。例如在题 41 图中，顶点 a 和 b 都是 K 顶点。\n设计算法 int printVertices(MGraph G) 对给定任意非空有向图 G，输出 G 中所有 K 顶\n点的算法，并返回 K 顶点的个数。\n(1) 给出算法的设计思想。\n(2) 根据算法思想，写出 C/C++ 描述，并注释。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 87,
+    "source": "2009-6",
+    "year": 2009,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "将森林转换为对应的二叉树，若在二叉树中，结点 u 是结点 v 的父结点的父结\n点，则在原来的森林中，u 和 v 可能具有的关系是\t（ ）。\nI. 父子关系\nII. 兄弟关系\nIII. u 的父结点与 v 的父结点是兄弟关系",
+    "options": [
+      {
+        "label": "A",
+        "text": "只有 II"
+      },
+      {
+        "label": "B",
+        "text": "I 和 II"
+      },
+      {
+        "label": "C",
+        "text": "I 和 III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 88,
+    "source": "2011-6",
+    "year": 2011,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "已知一棵有 2011 个结点的树，其叶结点个数为 116，该树对应的二叉树中无\n右孩子的结点个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "115"
+      },
+      {
+        "label": "B",
+        "text": "116"
+      },
+      {
+        "label": "C",
+        "text": "1895"
+      },
+      {
+        "label": "D",
+        "text": "1896"
+      }
+    ],
+    "answer": "D",
+    "explanation": "本题可采用特殊情况法解。设题意中的树是如下图所示的结构，则对应的二 叉树中仅有前115个叶结点有右孩子。 „„ \t共116个叶结点 共1895 个中间结点",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 89,
+    "source": "2014-5",
+    "year": 2014,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "将森林 F 转换为对应的二叉树 T，F 中叶子的个数等于\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "T 中叶结点的个数"
+      },
+      {
+        "label": "B",
+        "text": "T 中度为 1 的结点个数"
+      },
+      {
+        "label": "C",
+        "text": "T 中左孩子指针为空的结点个数"
+      },
+      {
+        "label": "D",
+        "text": "T 中右孩子指针为空的结点个数"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 90,
+    "source": "2016-5",
+    "year": 2016,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "若森林 F 有 15 条边、25 个结点，则 F 包含树的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "9"
+      },
+      {
+        "label": "C",
+        "text": "10"
+      },
+      {
+        "label": "D",
+        "text": "11"
+      }
+    ],
+    "answer": "C",
+    "explanation": "解法一：树有一个很重要的性质：在 n 个结点的树中有 n-1 条边，\t“那么对于每棵树， 其结点数比边数多 1”。题中的森林中的结点数比边数多 10 (即 25-15 = 10)。显然共有 10 棵 树。解法二：若考生再仔细分析可发现，此题也是考察图的某些方面的性质：生成树和生成 森林。此时对于图的生成树有一个重要的性质：若图中项点数为 n，则它的生成树含有 n-1 条 边。对比解法中树的性质，不难发现两种解法都利用到了“树中结点数比边数多 1”的性质， 接下来的分析如解法一。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 91,
+    "source": "2019-2",
+    "year": 2019,
+    "qIndex": 2,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "若将一棵树 T 转化为对应的二叉树 BT，则下列对 BT 的遍历中，其遍历序列\n与 T 的后根遍历序列相同的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "先序遍历"
+      },
+      {
+        "label": "B",
+        "text": "中序遍历"
+      },
+      {
+        "label": "C",
+        "text": "后序遍历"
+      },
+      {
+        "label": "D",
+        "text": "按层遍历"
+      }
+    ],
+    "answer": "B",
+    "explanation": "第一步，需要知道如何将一棵树转化为二叉树：对于每一个结点，第一个孩子结点 放左子树，其余孩子结点（即第一个孩子结点的兄弟结点）放在第一个孩子结点的右子树， 其余的孩子结点再依次放在右子树的右子树，依次类推。 第二步，需要知道选项中的四种遍历方式先序遍历：该结点，左子树，右子树中序遍历：左子 树，该结点，右子树后序遍历：左子树，右子树，该节点层次遍历：队列实现前 3 种遍历方 式，左子树都是先于右子树，“先”、“中”、“后”指的是访问该结点的次序，对于上图，我们 发现，对树的后序遍历与对二叉树的中序遍历相同，选 B。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 92,
+    "source": "2020-4",
+    "year": 2020,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "已知森林 F 及与之对应的二叉树 T，若 F 的先根遍历序列是 a,b,c,d,e,f，中\n根遍历序列是 b,a,d,f,e,c，则 T 的后根遍历序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "b,a,d,f,e,c"
+      },
+      {
+        "label": "B",
+        "text": "b,d,f,e,c,a"
+      },
+      {
+        "label": "C",
+        "text": "b,f,e,d,c,a"
+      },
+      {
+        "label": "D",
+        "text": "f,e,d,c,b,a"
+      }
+    ],
+    "answer": "C",
+    "explanation": "森林的先根遍历对应它自己转化后二叉树的先序遍历，森林的后根遍历对应它自己 转化后二叉树的中序遍历，所以先根和后根可以唯一确定森林转化后的二叉树，如下： 后序遍历为：b,f,e,d,c,a。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 93,
+    "source": "2021-4",
+    "year": 2021,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "某森林 F 对应的二叉树为 T , 若 T 的先序遍历序列是 a, b, d, c, e, g, f , 中序遍历\n序列是 b, d, a, e, g, c, f , 则 F 中树的棵数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "由二叉树T的先序序列和中序序列可以构造出T, 如下图所示。 由森林转化成 二 叉树的规则可知， 森林中每棵树的根结点以右子树的方式相连，所以 T 中的结点 a、 c、f为 F 中树的根结点， 森林 F 中有 3棵树， 故选 C 。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 94,
+    "source": "2025-4",
+    "year": 2025,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "choice",
+    "stem": "下列关于二叉树及森林的叙述中，正确的是？\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "完全二叉树不存在度为 1 的结点"
+      },
+      {
+        "label": "B",
+        "text": "任意一个森林可以转换为一棵二叉树。"
+      },
+      {
+        "label": "C",
+        "text": "二叉树的分支结点个数比叶结点个数少"
+      },
+      {
+        "label": "D",
+        "text": "链式树的根中保存的是最先计算的运算符"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 95,
+    "source": "2026-4",
+    "year": 2026,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.3",
+    "sectionTitle": "树/森林与二叉树的转换",
+    "type": "comprehensive",
+    "stem": "森林 F 中有 5 颗树，其节点个数分别为 2、3、4、5、7，森林中树的次序可以\n任意，问 F 对应的二叉树最小高度为多少？\n(A) 5 (B) 6 (C) 8 (D) 10",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 96,
+    "source": "2016-42",
+    "year": 2016,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "如果一棵非空 k （k ≥ 2 ）叉树 T 中每个非叶结点都有 k 个孩子，则称 T 为\n正则 k 叉树。请回答下列问题并给出推导过程。\n(1) 若 T 有 m 个非叶结点，则 T 中的叶结点有多少个？\n(2) 若 T 的高度为 h （单结点的树 h = 1 ），则 T 的结点数最多为多少个？最少为多少个？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 97,
+    "source": "2010-6",
+    "year": 2010,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "对 n (n≥2) 个权值均不相同的字符构成哈夫曼树。下列关于该哈夫曼树的叙述\n中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "该树一定是一棵完全二叉树"
+      },
+      {
+        "label": "B",
+        "text": "树中一定没有度为 1 的结点"
+      },
+      {
+        "label": "C",
+        "text": "树中两个权值最小的结点一定是兄弟结点"
+      },
+      {
+        "label": "D",
+        "text": "树中任一非叶结点的权值一定不小于下一层任一结点的权值"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 98,
+    "source": "2013-4",
+    "year": 2013,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "已知三叉树 T 中 6 个叶结点的权分别是 2，3，4，5，6，7，T 的带权（外部）\n路径长度最小是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "27"
+      },
+      {
+        "label": "B",
+        "text": "46"
+      },
+      {
+        "label": "C",
+        "text": "54"
+      },
+      {
+        "label": "D",
+        "text": "56"
+      }
+    ],
+    "answer": "B",
+    "explanation": "P CPU \tCache \tCache 100 4 1.25 ns = 500 ns 1 Cache \t1.2 100 5% 85 ns = 510 ns BP \tCPU 500 ns+510 ns=1 010 ns 2 = \tCPI \t+",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 99,
+    "source": "2014-6",
+    "year": 2014,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "5 个字符有如下 4 种编码方案，不是前缀编码的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "01, 0000, 0001, 001, 1"
+      },
+      {
+        "label": "B",
+        "text": "011, 000, 001, 010, 1"
+      },
+      {
+        "label": "C",
+        "text": "000, 001, 010, 011, 100"
+      },
+      {
+        "label": "D",
+        "text": "0, 100, 110, 1110, 1100"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 100,
+    "source": "2015-3",
+    "year": 2015,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "下列选项给出的是从根分别到达两个叶结点路径上的权值序列，能属于同一\n棵哈夫曼树的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "24, 10, 5 和 24, 10, 7"
+      },
+      {
+        "label": "B",
+        "text": "24, 10, 5 和 24, 12, 7"
+      },
+      {
+        "label": "C",
+        "text": "24, 10, 10 和 24, 14, 11"
+      },
+      {
+        "label": "D",
+        "text": "24, 10, 5 和 24, 14, 6"
+      }
+    ],
+    "answer": "D",
+    "explanation": "本题考查哈夫曼树的构造。A 选项中，前两个值 24 和 10 是一样的，直接向下推， 到了 10，从 10 结点向下，5 应该和 5 一起，7 应该和 3 一起，很明显 5 和 7 就不能组成一 对，而且如果分开生成，出现了 3，那么最开始从下向上生成的时候应该是 5 和 3 组成，并 生成 8，这就更近一步说明这俩不是一颗树的。同理分析 B 中，10 和 12 没法成对。C 中分 析到最后一层，出现了 0 和 3，那么应该在构成树的时候，0 和 3 先组成一对。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 101,
+    "source": "2017-6",
+    "year": 2017,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "已知字符集 {a, b, c, d, e, f, g, h}，若各字符的哈夫曼编码依次是 0100, 10, 0000,\n0101, 001, 011, 11, 0001，则编码序列 0100011001001011110101 的译码结果是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "a c g a b f h"
+      },
+      {
+        "label": "B",
+        "text": "a d b a g b b"
+      },
+      {
+        "label": "C",
+        "text": "a f b e a g d"
+      },
+      {
+        "label": "D",
+        "text": "a f e e f g d"
+      }
+    ],
+    "answer": "D",
+    "explanation": "哈夫曼编码是前用编码，各个编码的前缀各不相同，因此直接拿编码序列与哈夫曼 编码一一对比即可。序列可分割为 0100 011 001 001 011 11 0101.译码结果是 a f e e f g d， 选项 D 正确。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 102,
+    "source": "2018-5",
+    "year": 2018,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "已知字符集 {a, b, c, d, e, f}，若各字符出现的次数分别为 6, 3, 8, 2, 10, 4，则对\n应字符集中各字符的哈夫曼编码可能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "00, 1011, 01, 1010, 11, 100"
+      },
+      {
+        "label": "B",
+        "text": "00, 100, 110, 000, 0010, 01"
+      },
+      {
+        "label": "C",
+        "text": "10, 1011, 11, 0011, 00, 010"
+      },
+      {
+        "label": "D",
+        "text": "0011, 10, 11, 0010, 01, 000"
+      }
+    ],
+    "answer": "A",
+    "explanation": "构造一棵符合题意的哈弗曼树，如下图所示： 由此可知，左子树为 0，右子树为 1，故答案为 A。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 103,
+    "source": "2019-3",
+    "year": 2019,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "对 n 个互不相同的符号进行哈夫曼编码。若生成的哈夫曼树共有 115 个结点，\n则 n 的值是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "56"
+      },
+      {
+        "label": "B",
+        "text": "57"
+      },
+      {
+        "label": "C",
+        "text": "58"
+      },
+      {
+        "label": "D",
+        "text": "60"
+      }
+    ],
+    "answer": "C",
+    "explanation": "哈夫曼树是一颗带权路径长度最短二叉树，有性质：n 个叶子结点的哈夫曼树，共 2n-1 个结点 2n-1 = 115 解得 n = 58，选 C。",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 104,
+    "source": "2021-5",
+    "year": 2021,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "若某二叉树有 5 个叶结点，其权值分别为 10、12、16、21、30，则其最小的\n带权路径长度（WPL）是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "89"
+      },
+      {
+        "label": "B",
+        "text": "200"
+      },
+      {
+        "label": "C",
+        "text": "208"
+      },
+      {
+        "label": "D",
+        "text": "289"
+      }
+    ],
+    "answer": "B",
+    "explanation": "对千带权值的结点， 构造出哈夫曼树的带权路径长度 (WPL) 最小， 哈夫曼树的 构造过程如下图所示。 求得其 WPL = (10 + 12)x3 + (30 + 16 + 2I)x2 = 200, 故选 B 。 /// 3 : 第一步 第二步 第三步 第四步",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 105,
+    "source": "2022-5",
+    "year": 2022,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "对任意给定的含 n (n > 2) 个字符的有限集 S, 用二叉树表示 S 的哈夫曼编码集\n和定长编码集，分别得到二叉树 T1 和 T2。下列叙述中，正确的是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "T1 与 T2 的结点数相同"
+      },
+      {
+        "label": "B",
+        "text": "T1 的高度大于 T2 的高度"
+      },
+      {
+        "label": "C",
+        "text": "出现频次不同的字符在 T1 中处于不同的层"
+      },
+      {
+        "label": "D",
+        "text": "出现频次不同的字符在 T2 中处于相同的层"
+      }
+    ],
+    "answer": "D",
+    "explanation": "可以画一个简单的特例来证明。 图 1 是满足条件的二叉树 Tl, 图 2 是满足条件的 二叉树 T2， 结点中有值表示这个结点是编码字符。 Tl 和 T2 的结点数不同， A错误。 Tl 的高 度等于 T2 的高度， B错误。 出现频次不同的字符在 Tl 中也可能处千相同的层， C错误。 对 千定长编码集， 所有字符 一定都在 T2 中处于相同的层， 而且都是叶子结点。 . ' � -- 1 of 10 --",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 106,
+    "source": "2023-4",
+    "year": 2023,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "在有 6 个字符组成的字符集 S 中，各个字符出现的频次分别为 3, 4, 5, 6, 8, 10，\n为 S 构造的哈夫曼树的加权平均长度为\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "2.4"
+      },
+      {
+        "label": "B",
+        "text": "2.5"
+      },
+      {
+        "label": "C",
+        "text": "2.67"
+      },
+      {
+        "label": "D",
+        "text": "2.75"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 107,
+    "source": "2025-5",
+    "year": 2025,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "choice",
+    "stem": "设字符集 S 包含 7 个字符，各字符出现的频次分别是 2, 3, 4, 6, 8, 10, 11。为 S\n中的各字符构造哈夫曼编码，编码长度不小于 3 的字符个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 108,
+    "source": "2026-5",
+    "year": 2026,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "comprehensive",
+    "stem": "假设二叉树中节点权值为 a = 1 , b = 2 , c = 4 , d = 5 , e = 8 , f = 10 , g = 12 。当\n带权路径长度（WPL）最小时，与节点 e （权值 8）处于相同深度的节点是哪些？\n(A) d (B) g (C) d,f (D) f,g",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 109,
+    "source": "2012-41",
+    "year": 2012,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.6.4",
+    "sectionTitle": "哈夫曼树及其编码",
+    "type": "comprehensive",
+    "stem": "设有 6 个有序表 A、B、C、D、E、F，分别含有 10、35、40、50、60 和 200\n个数据元素，各表中元素按升序排列。要求通过 5 次两两合并，将 6 个表最终合并成 1 个\n升序表，并在最坏情况下比较的总次数达到最小。请回答下列问题。\n(1) 给出完整的合并过程，并求出最坏情况下比较的总次数。\n(2) 根据你的合并过程，描述 N (N ≥ 2) 个不等长升序表的合并策略，并说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/04-tree-binary-tree"
+  },
+  {
+    "id": 110,
+    "source": "2009-7",
+    "year": 2009,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "下列关于无向连通图特性的叙述中，正确的是\t（ ）。\nI. 所有顶点的度之和为偶数\nII. 边数大于顶点个数减 1\nIII. 至少有一个顶点的度为 1",
+    "options": [
+      {
+        "label": "A",
+        "text": "只有 I"
+      },
+      {
+        "label": "B",
+        "text": "只有 II"
+      },
+      {
+        "label": "C",
+        "text": "I 和 II"
+      },
+      {
+        "label": "D",
+        "text": "I 和 III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 111,
+    "source": "2010-7",
+    "year": 2010,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "若无向图 G=(V,E) 中含有 7 个顶点，要保证图 G 在任何情况下都是连通的，\n则需要的边数最少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "6"
+      },
+      {
+        "label": "B",
+        "text": "15"
+      },
+      {
+        "label": "C",
+        "text": "16"
+      },
+      {
+        "label": "D",
+        "text": "21"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 112,
+    "source": "2011-8",
+    "year": 2011,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "下列关于图的叙述中，正确的是\t（ ）。\nI. 回路是简单路径\nII. 存储稀疏图，用邻接矩阵比邻接表更省空间\nIII. 若有向图中存在拓扑序列，则该图不存在回路",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Ⅰ.回路对应于路径，简单回路对应于简单路径；Ⅱ．刚好相反；Ⅲ．拓扑有 序的必要条件。故选C。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 113,
+    "source": "2013-7",
+    "year": 2013,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "设图的邻接矩阵 A 如下所示。各顶点的度依次是\t（ ）\nA =",
+    "options": [
+      {
+        "label": "A",
+        "text": "1，2，1，2"
+      },
+      {
+        "label": "B",
+        "text": "2，2，1，1"
+      },
+      {
+        "label": "C",
+        "text": "3，4，2，3"
+      },
+      {
+        "label": "D",
+        "text": "4，4，2，2"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 114,
+    "source": "2017-7",
+    "year": 2017,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "已知无向图 G 含有 16 条边，其中度为 4 的顶点个数为 3，度为 3 的顶点个数\n为 4，其他顶点的度均小于 3。图 G 所含的顶点个数至少是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "10"
+      },
+      {
+        "label": "B",
+        "text": "11"
+      },
+      {
+        "label": "C",
+        "text": "13"
+      },
+      {
+        "label": "D",
+        "text": "15"
+      }
+    ],
+    "answer": "B",
+    "explanation": "无向图边数的两倍等于各顶点度数的总和。由其他顶点的度均小于 3，可以设它们的 度都为 2。设它们的数量是 x，可列出方程 4×3 + 3×4 + 2x = 16×2，解得 x = 3。4+3+3 = 11， 选项 B 正确。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 115,
+    "source": "2019-6",
+    "year": 2019,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "用有向无环图描述表达式 (x+y)*((x+y)/x)，需要的顶点个数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "9"
+      }
+    ],
+    "answer": "A",
+    "explanation": "先将该表达式转换成有向二叉树，注意到该二叉树中有些顶点时重复的，为了节省 存储空间，可以去除重复的顶点（使顶点个数达到最少），将有向二叉树去重转换成有向无环 图，结果如图所示： -- 1 of 11 --",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 116,
+    "source": "2022-6",
+    "year": 2022,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "对于无向图 G=(V,E)，下列选项中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "当 |V| ＞ |E| 时，G 一定是连通的"
+      },
+      {
+        "label": "B",
+        "text": "当 |V| < |E| 时，G 一定是连通的"
+      },
+      {
+        "label": "C",
+        "text": "当 |V| = |E|-1 时，G 一定是不连通的"
+      },
+      {
+        "label": "D",
+        "text": "当 |V| > |E|+1 时，G 一定是不连通的"
+      }
+    ],
+    "answer": "D",
+    "explanation": "注意， V 是图的边数，E 是图的顶点数。 A 和 B 明显错误， 如图 1 所示， IVl<IEI, 但图G不连通；如图 2 所示，IVl >IE|，但图G不连通。如图 3 所示，在无向图中至少要有冈－ l 个顶点才可能连通， 顶点数小于|Vl-1 一定不可能连通， C 错误， D 正确。 。 。 ／图 1 图 2 图 3",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 117,
+    "source": "2024-4",
+    "year": 2024,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "给定无向图的邻接多重表，求顶点 b、d 的度\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "0, 2"
+      },
+      {
+        "label": "B",
+        "text": "2, 4"
+      },
+      {
+        "label": "C",
+        "text": "3, 2"
+      },
+      {
+        "label": "D",
+        "text": "2, 3"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 118,
+    "source": "2025-6",
+    "year": 2025,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "下列关于图的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "有向图必定存在入度为 0 的顶点"
+      },
+      {
+        "label": "B",
+        "text": "有向无环图的拓扑排序有序序列存在且唯一"
+      },
+      {
+        "label": "C",
+        "text": "各顶点的度均大于等于 2 的无向图必有回路"
+      },
+      {
+        "label": "D",
+        "text": "可用 BFS 算法求出带权图中的每一对顶点的最短路径"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 119,
+    "source": "2026-6",
+    "year": 2026,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "choice",
+    "stem": "有向图 G = (V, E ) 采用邻接表存储，求某点入度的时间复杂度为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(| V |)"
+      },
+      {
+        "label": "B",
+        "text": "O(min(| V |, | E |))"
+      },
+      {
+        "label": "C",
+        "text": "O(| E |)"
+      },
+      {
+        "label": "D",
+        "text": "O(max(| V |, | E |))"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 120,
+    "source": "2026-7",
+    "year": 2026,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "comprehensive",
+    "stem": "设有向图 G = (V, E ) ，其中顶点集 V 的大小为 n =| V | ，每条边 e ∈ E 都标记\n有一个唯一的字符（不同边可标记相同字符）。定义字符串集 S 为：所有由 G 中任意一条\n路径（路径可包含单个顶点，对应空字符串）上的边标记按顺序拼接而成的字符串的集合。\n以下说法错误的是\t（ ）\n(A) 若 G 无环，则 S 是有限集\n(B) 若 G 无环，则 S 中存在长度为 n 的字符串\n(C) 若 G 有环，则 S 中存在长度大于 n 的字符串\n(D) 若 G 有环，则 S 中存在长度小于 2n 的字符串",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 121,
+    "source": "2014-42",
+    "year": 2014,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "comprehensive",
+    "stem": "某网络中的路由器运行 OSPF 路由协议，题 42 表是路由器 R1 维护的主要链\n路状态信息（LSI），题 42 图是根据题 42 表的接口名构造出来的网络拓扑。\n请回答下列问题。\n(1) 本题中的网络可抽象为数据结构中的哪种结构？\n(2) 针对题 42 表中的内容，设计合理的链式存储结构，以保存题 42 表中的链路状态信息\n（LSI）。要求给出链式存储结构的数据定义，并画出对应题 42 表的链式存储结构示意图\n（示意图中仅以 ID 标识结点）。\n(3) 按照迪杰斯特拉（Dijkstra）算法的策略，依次给出 R1 到达题 42 图中子网 192.1.x.x 的\n最短路径及费用。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 122,
+    "source": "2015-42",
+    "year": 2015,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.1",
+    "sectionTitle": "图的基本概念与存储",
+    "type": "comprehensive",
+    "stem": "已知含有 5 个顶点的图 G 如下图所示。\n请回答下列问题：\n(1) 写出图 G 的邻接矩阵 A （行、列下标均从 0 开始）。\n(2) 求 A2 ，矩阵 A2 中位于 0 行 3 列元素值的含义是什么？\n(3) 若已知具有 n (n ≥ 2) 个顶点的图的邻接矩阵为 B ，则 Bm (2 ≤ m ≤ n) 中非零元素的含\n义是什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 123,
+    "source": "2021-41",
+    "year": 2021,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.2",
+    "sectionTitle": "图的遍历",
+    "type": "choice",
+    "stem": "已知无向连通图 G 由顶点集 V 和边集 E 组成，|E| > 0，当 G 中度为奇数的顶\n点个数为不大于 2 的偶数时，G 存在包含所有边且长度为 |E| 的路径（称为 EL 路径）。设\n图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct { // 图 的 定 义\nint numVertices , numEdges ; // 图 中 实 际 的 顶 点 数 和 边 数\nchar VerticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph ;\n请设计算法 int IsExistEL(MGraph G)，判断 G 是否存在 EL 路径，若存在，则返回 1，否则\n返回 0。要求：\n(1) 给出算法的基本设计思想。\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释。\n(3) 说明你所设计算法的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 124,
+    "source": "2012-5",
+    "year": 2012,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.2",
+    "sectionTitle": "图的遍历",
+    "type": "choice",
+    "stem": "对有 n 个结点、e 条边且使用邻接表存储的有向图进行广度优先遍历，其算\n法时间复杂度是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(n)"
+      },
+      {
+        "label": "B",
+        "text": "O(e)"
+      },
+      {
+        "label": "C",
+        "text": "O(n + e)"
+      },
+      {
+        "label": "D",
+        "text": "O(n × e)"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查不同存储结构的图遍历算法的时间复杂度。广度优先遍历需要借助队列实现。 邻接表的结构包括：顶点表；边表（有向图为出边表）。当采用邻接表存储方式时，在对图进 行广度优先遍历时每个顶点均需入队一次（顶点表遍历），故时间复杂度为 O(n)，在搜索所有 顶点的邻接点的过程中，每条边至少访问一次（出边表遍历），故时间复杂度为 O(e)，算法总 的时间复杂度为 O(n+e)。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 125,
+    "source": "2013-8",
+    "year": 2013,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.2",
+    "sectionTitle": "图的遍历",
+    "type": "choice",
+    "stem": "若对如下无向图进行遍历，则下列选项中，不是广度优先遍历序列的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "h，c，a，b，d，e，g，f"
+      },
+      {
+        "label": "B",
+        "text": "e，a，f，g，b，h，c，d"
+      },
+      {
+        "label": "C",
+        "text": "d，b，c，a，h，e，f，g"
+      },
+      {
+        "label": "D",
+        "text": "a，b，c，d，h，e，f，g"
+      }
+    ],
+    "answer": "D",
+    "explanation": "D",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 126,
+    "source": "2015-5",
+    "year": 2015,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.2",
+    "sectionTitle": "图的遍历",
+    "type": "choice",
+    "stem": "设有向图 G=(V,E)，顶点集 V={ v0 , v1 , v2 , v3 }，边集 E={< v0 , v1 >，< v0 ,\nv2 >，< v0 , v3 >，< v1 , v3 >}。若从顶点 v0 开始对图进行深度优先遍历，则可能得到的不\n同遍历序列个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "D",
+    "explanation": "画出该有向图图形如下： 采用图的深度优先遍历，共 5 种可能：采用图的深度优先遍历，共 5 种可能：<v 0, v 1, v 3, v 2>， <v 0, v 2, v 3,v 1>， <v 0, v 2, v 1, v 3>， <v 0, v 3, v2, v 1>， <v 0, v 3, v 1, v 2>，选 D。 -- 1 of 11 --",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 127,
+    "source": "2016-6",
+    "year": 2016,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.2",
+    "sectionTitle": "图的遍历",
+    "type": "choice",
+    "stem": "下列选项中，不是下图深度优先搜索序列的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "V1,V5,V4,V3,V2"
+      },
+      {
+        "label": "B",
+        "text": "V1,V3,V2,V5,V4"
+      },
+      {
+        "label": "C",
+        "text": "V1,V2,V5,V4,V3"
+      },
+      {
+        "label": "D",
+        "text": "V1,V2,V3,V4,V5"
+      }
+    ],
+    "answer": "D",
+    "explanation": "对于本题，只需按深度优先遍历的策略进行遍历即可。对于选项 A：先访间 V1，然 后访问与 V1 邻接且未被访问的任一顶点(满足的有 V2、V3 和 V5)，此时访问 V5，然后从 V5 出 发，访间与 V5 邻接且未被访问的任一顶点(满足的只有 V4)，然后从 V4 出发，访问与 V4 邻接 且未被访间的任顶点(满足的只有 V3)，然后从 V3 出发，访问与 V3 邻接且未被访问的任一顶 点(满足的只有 V2)，结束遍历。选项 B 和 C 的分析方法与选项 A 相同，不再赘述。对于选项 D，首先访问 V1，然后从 V1 出发，访问与 V1 邻接且未被访问的任一顶点(满足的有 V2、V3 和 V5)，然后从 V2 出发，访问与 V2 邻接且未被访问的任一顶点(满足的只有 V5)，按规则本应该 访问 V5，但选项 D 却访问 V3，因此 D 错误。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 128,
+    "source": "2020-6",
+    "year": 2020,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.3",
+    "sectionTitle": "最短路径",
+    "type": "choice",
+    "stem": "修改递归方式实现的图的深度优先搜索（DFS）算法，将输出（访问）顶点\n信息的语句移到退出递归前（即执行输出语句后立刻退出递归）。采用修改后的算法遍历\n有向无环图 G，若输出结果中包含 G 中的全部顶点，则输出的顶点序列是 G 的\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "拓扑有序序列"
+      },
+      {
+        "label": "B",
+        "text": "逆拓扑有序序列"
+      },
+      {
+        "label": "C",
+        "text": "广度优先搜索序列"
+      },
+      {
+        "label": "D",
+        "text": "深度优先搜索序列"
+      }
+    ],
+    "answer": "B",
+    "explanation": "题目已经限定有向无环图图，假设从 a 结点出发开始深度遍历，那么这一次递归到 最大深度，必然终止于某结点(记为 h 结点)，h 结点必然没有出度。此时 h 输出，程序栈退 栈，回到 h 的前一个结点(记为 f)，如果 f 还有其他出度，那么此时要访问其他出度，直到每 一个出度的分支都访问结束才能访问 f，这样来看，一个结点要被访问的前提必须是他的所有 出度分支都要被访问，换句话说也就是等一个结点没有出度时才可以访问，这就是逆拓扑排 序(每次删除的都是出度为零的结点)。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 129,
+    "source": "2012-7",
+    "year": 2012,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.3",
+    "sectionTitle": "最短路径",
+    "type": "choice",
+    "stem": "对如下有向图带权图，若采用迪杰斯特拉（Dijkstra）算法求从源点 a 到其他\n各顶点的最短路径，则得到的第一条最短路径的目标顶点是 b，第二条最短路径的目标顶\n点是 c，后续得到的其余最短路径的目标顶点依次是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "d, e, f"
+      },
+      {
+        "label": "B",
+        "text": "e, d, f"
+      },
+      {
+        "label": "C",
+        "text": "f, d, e"
+      },
+      {
+        "label": "D",
+        "text": "f, e, d"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查 Dijkstra 算法求最短路径。 从 a 到各顶点的最短路径的求解过程： 顶点 \t第 1 趟 \t第 2 趟 \t第 3 趟 \t第 4 趟 \t对 5 趟 b \t(a,b) 2 c \t(a,c) 5 \t(a,b,c) 3 d \t∞ \t(a,b,d) 5 \t(a,b,d) 5 \t(a,b,d) 5 f \t∞ \t∞ \t(a,b,c,f) 4 e \t∞ \t∞ \t(a,b,c,e) 7 \t(a,b,c,e) 7 \t(a,b,d,e) 6 集合 S \t{a,b} \t{a,b,c} \t{a,b,c,f} \t{a,b,c,f,d} \t{a,b,c,f,d,e} 后续目标顶点依次为 f,d,e。 【排除法】对于 A，若下一个顶点为 d，路径 a,b,d 的长度 5，而 a,b,c,f 的长度仅为 4，显然 -- 3 of 12 -- 错误。同理可以排除 B。将 f 加入集合 S 后，采用上述的方法也可以排除 D。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 130,
+    "source": "2016-8",
+    "year": 2016,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.3",
+    "sectionTitle": "最短路径",
+    "type": "choice",
+    "stem": "使用迪杰斯特拉（Dijkstra）算法求下图中从顶点 1 到其他各顶点的最短路径，\n依次得到的各最短路径的目标顶点是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5, 2, 3, 4, 6"
+      },
+      {
+        "label": "B",
+        "text": "5, 2, 3, 6, 4"
+      },
+      {
+        "label": "C",
+        "text": "5, 2, 4, 3, 6"
+      },
+      {
+        "label": "D",
+        "text": "5, 2, 6, 3, 4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根据 Dijkstra 算法，从项点 1 到其余各顶点的最短路径如下表所示。 顶 点 \t第 1 趟 \t第 2 趟 \t第 3 趟 \t第 4 趟 \t第 5 趟 -- 2 of 12 --",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 131,
+    "source": "2021-8",
+    "year": 2021,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.3",
+    "sectionTitle": "最短路径",
+    "type": "choice",
+    "stem": "使用 Dijkstra 算法求下图中从顶点 1 到其余各顶点的最短路径，将当前找到\n的从顶点 1 到顶点 2, 3, 4, 5 的最短路径长保存在数组 dist 中，求出第二条最短路径后，dist\n中的内容更新为\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "26, 3, 14, 6"
+      },
+      {
+        "label": "B",
+        "text": "25, 3, 14, 6"
+      },
+      {
+        "label": "C",
+        "text": "21, 3, 14, 6"
+      },
+      {
+        "label": "D",
+        "text": "15, 3, 14, 6"
+      }
+    ],
+    "answer": "C",
+    "explanation": "在执行 Dijkstra 算法时，首先初始化 dist[］，若顶点 1 到顶点 i Ci= 2, 3, 4, 5) 有边， 就初始化为边的权值；若无边， 就初始化为oo; 初始化顶点集 S 只含顶点 1。 Dijkstra 算法每 次 选择一个到顶点1距离最近的顶点j加入顶点集 s, 并判断由顶点1绕行顶点j后到任一顶 点 k 是否距离更短， 若距离更短（即 dist[i] + arcs[i][k] < dist[k]）， 则将 dist[x]更新为 dist[i] + arcs[i］［k]；重复该过程， 直至所有顶点都加入顶点集 S。 数组 dist 的变化过程如下图所示， 可 知将第二个顶点 5 加入顶点集 S 后， 数组 dist 更新为 21, 3, 14, 6, 故选 C。 顶点3入S 顶点5入S dist{26, 3, co, 6} ► {25, 3, co, 6} ► {21, 3, 14, 6}",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 132,
+    "source": "2023-6",
+    "year": 2023,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.3",
+    "sectionTitle": "最短路径",
+    "type": "comprehensive",
+    "stem": "已知无向连通图 G 中各边的权值均为 1，下列算法中，一定能够求出图 G 中\n从某顶点到其余各个顶点最短路径的是\t（ ）。\nI. 普利姆算法\nII. 克鲁斯卡尔算法\nIII. 图的广度优先搜索\n(A) 仅 I (B) 仅 III (C) 仅 II 和 I (D) I,II,III",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 133,
+    "source": "2009-41",
+    "year": 2009,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "choice",
+    "stem": "带权图（权值非负，表示边连接的两顶点间的距离）的最短路径问题是找出\n从初始顶点到目标顶点之间的一条最短路径。假设从初始顶点到目标顶点之间存在路径，\n现有一种解决该问题的方法：\n¨ 设最短路径初始时仅包含初始顶点，令当前顶点 u 为初始顶点；\n≠ 选择离 u 最近且尚未在最短路径中的一个顶点 v，加入到最短路径中，修改当前顶点\nu=v；\nÆ 重复步骤≠，直到 u 是目标顶点时为止。\n请问上述方法能否求得最短路径？若该方法可行，请证明之；否则，请举例说明。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 134,
+    "source": "2012-8",
+    "year": 2012,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "choice",
+    "stem": "下列关于最小生成树的叙述中，正确的是\t（ ）。\nI．最小生成树的代价唯一\nII．所有权值最小的边一定会出现在所有的最小生成树中\nIII．使用普里姆（Prim）算法从不同顶点开始得到的最小生成树一定相同\nIV．使用普里姆算法和克鲁斯卡尔（Kruskal）算法得到的最小生成树总不相同",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、IV"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查最小生成树、及最小生成树算法的性质。对于Ⅰ，最小生成树的树形可能不唯 一（这是因为可能存在权值相同的边），但是代价一定是唯一的，Ⅰ正确。对于Ⅱ，如果权值 最小的边有多条并且构成环状，则总有权值最小的边将不出现在某棵最小生成树中，Ⅱ错误。 对于Ⅲ，设 N 个结点构成环，N-1 条边权值相等，则从不同的顶点开始普里姆算法会得到 N-",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 135,
+    "source": "2015-6",
+    "year": 2015,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "choice",
+    "stem": "求下面带权图的最小（代价）生成树时，可能是克鲁斯卡（Kruskal）算法第\n2 次选中但不是普里姆（Prim）算法（从 V4 开始）第 2 次选中的边是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "( V1 , V3 )"
+      },
+      {
+        "label": "B",
+        "text": "( V1 , V4 )"
+      },
+      {
+        "label": "C",
+        "text": "( V2 , V3 )"
+      },
+      {
+        "label": "D",
+        "text": "( V3 , V4 )"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Kruskal 算法是按权值选边，若选边后不形成回路,则保留作为一条边,若形成回路则 除去。Prim 算法是每次从当前的二叉树节点向外延伸的，选择权值最小的边。克鲁斯卡 （Kruskal）算法和普里姆（Prim）算法（从 v4 开始）第 1 次选中的边都是(v4,v1)。Kruskal 算法第二次可以选择(v1,v3), (v2,v3), (v3,v4); Prim 算法第二次可以选择(v1,v3), (v3,v4)。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 136,
+    "source": "2020-7",
+    "year": 2020,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "comprehensive",
+    "stem": "已知无向图 G 如下所示，使用克鲁斯卡尔（Kruskal）算法求图 G 的最小生成\n树，加入到最小生成树中的边依次是\t（ ）。\n(A) (b,f)(b,d)(a,e)(c,e)(b,e) (B) (b,f)(b,d)(b,e)(a,e)(e,c)\n(C) (a,e)(b,e)(c,e)(b,d)(b,f) (D) (a,e)(c,e)(b,e)(b,f)(b,d)",
+    "options": [],
+    "answer": "A",
+    "explanation": "先将所有边按权值排序，然后依次取权值最小的边但不能在图中形成环，此时取得 权值序列为 5，6，此时 7 不能取因为形成了环，接下来取 9，10，11，按权值对应的边分别 为(b,f), (b,d), (a,e), (c,e), (b,e)。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 137,
+    "source": "2017-42",
+    "year": 2017,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "comprehensive",
+    "stem": "使用 Prim（普里姆）算法求带权连通图的最小（代价）生成树（MST）。请\n回答下列问题。\n(1) 对下列图 G，从顶点 A 开始求 G 的 MST，依次给出按算法选出的边。\n(2) 图 G 的 MST 是唯一的吗？\n(3) 对任意的带权连通图，满足什么条件时，其 MST 是唯一的？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 138,
+    "source": "2018-42",
+    "year": 2018,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.4",
+    "sectionTitle": "最小生成树",
+    "type": "comprehensive",
+    "stem": "拟建设一个光通信骨干网络连通 BJ、CS、XA、QD、JN、NJ、TL 和 WH 等\n8 个城市，题 42 图中无向边上的权值表示两个城市间备选光缆的铺设费用。\n请回答下列问题。\n(1) 仅从铺设费用角度出发，给出所有可能的最经济的光缆铺设方案（用带权图表示），并\n计算相应方案的总费用。\n(2) 题 42 图可采用图的哪一种存储结构？给出求解问题 (1) 所使用的算法名称。\n(3) 假设每个城市采用一个路由器按 (1) 中得到的最经济方案组网，主机 H1 直接连接在\nTL 的路由器上，主机 H2 直接连接在 BJ 的路由器上。若 H1 向 H2 发送一个 TTL=5 的 IP\n分组，则 H2 是否可以收到该 IP 分组？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 139,
+    "source": "2010-8",
+    "year": 2010,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "对下图进行拓扑排序，可以得到不同拓扑序列的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "1"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 140,
+    "source": "2012-6",
+    "year": 2012,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "若用邻接矩阵存储有向图，矩阵中主对角线以下的元素均为零，则关于该图\n拓扑序列的结论是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "存在，且唯一"
+      },
+      {
+        "label": "B",
+        "text": "存在，且不唯一"
+      },
+      {
+        "label": "C",
+        "text": "存在，可能不唯一"
+      },
+      {
+        "label": "D",
+        "text": "无法确定是否存在"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查拓扑排序、与存储结构和图性质的关系。对角线以下元素均为零，表明该有向 图是一个无环图，因此一定存在拓扑序列。对于拓扑序列是否唯一，我们试举一例：设有向 图的邻接矩阵          ",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 141,
+    "source": "2013-9",
+    "year": 2013,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "下列 AOE 网表示一项包含 8 个活动的工程。通过同时加快若干活动的进度\n可以缩短整个工程的工期。下列选项中，加快其进度就可以缩短工程工期的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "c 和 e"
+      },
+      {
+        "label": "B",
+        "text": "d 和 e"
+      },
+      {
+        "label": "C",
+        "text": "f 和 d"
+      },
+      {
+        "label": "D",
+        "text": "f 和 h"
+      }
+    ],
+    "answer": "C",
+    "explanation": "5",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 142,
+    "source": "2014-7",
+    "year": 2014,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "对如下所示的有向图进行拓扑排序，得到的拓扑序列可能是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "3,1,2,4,5,6"
+      },
+      {
+        "label": "B",
+        "text": "3,1,2,4,6,5"
+      },
+      {
+        "label": "C",
+        "text": "3,1,4,2,5,6"
+      },
+      {
+        "label": "D",
+        "text": "3,1,4,2,6,5"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 143,
+    "source": "2016-7",
+    "year": 2016,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "若将 n 个顶点 e 条弧的有向图采用邻接表存储，则拓扑排序算法的时间复杂\n度是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "O(n)"
+      },
+      {
+        "label": "B",
+        "text": "O(n + e)"
+      },
+      {
+        "label": "C",
+        "text": "O(n2)"
+      },
+      {
+        "label": "D",
+        "text": "O(n ∗ e)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根据拓扑排序的规则，输出每个顶点的同时还要删除以它为起点的边，这样对各顶 点和边都要进行遍历，故拓扑排序的时间复杂度为 O(n+e)。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 144,
+    "source": "2018-7",
+    "year": 2018,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "下列选项中，不是如下有向图的拓扑序列的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1, 5, 2, 3, 6, 4"
+      },
+      {
+        "label": "B",
+        "text": "5, 1, 2, 6, 3, 4"
+      },
+      {
+        "label": "C",
+        "text": "5, 1, 2, 3, 6, 4"
+      },
+      {
+        "label": "D",
+        "text": "5, 2, 1, 6, 3, 4"
+      }
+    ],
+    "answer": "D",
+    "explanation": "拓扑排序每次选取入度为 0 的结点输出，经观察不难发现拓扑序列前两位一定是 1,5 或 5,1（因为只有 1 和 5 的入度均为 0，且其他结点都不满足仅有 1 或仅有 5 作为前驱）。因 此 D 显然错误。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 145,
+    "source": "2019-5",
+    "year": 2019,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "下图所示的 AOE 网表示一项包含 8 个活动的工程。活动 d 的最早开始时间和\n最迟开始时间分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3 和 7"
+      },
+      {
+        "label": "B",
+        "text": "12 和 12"
+      },
+      {
+        "label": "C",
+        "text": "12 和 14"
+      },
+      {
+        "label": "D",
+        "text": "15 和 15"
+      }
+    ],
+    "answer": "C",
+    "explanation": "AOE 网是以边表示活动的有向无环网。活动 d 开始必须满足活动 a 和活动 b 结束， 所以最早开始时间是 12。最晚开始时间是指不会延长整个网的结束时间的前提下，d 的开始 时间。结点 1 到结点 6 的最长路径（关键路径）是 27，结点 4 的最晚开始时间是 27-6=21， 结点 d 的最晚开始时间是 21-7=14。答案选 C。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 146,
+    "source": "2020-8",
+    "year": 2020,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "若使 AOE 网估算工程进度则下列叙述中正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "关键路径是从原点到汇点边数最多的一条路径"
+      },
+      {
+        "label": "B",
+        "text": "关键路径是从原点到汇点路径长度最长的路径"
+      },
+      {
+        "label": "C",
+        "text": "增加任一关键活动的时间不会延长工程的工期"
+      },
+      {
+        "label": "D",
+        "text": "缩短任一关键活动的时间将会缩短工程的工期"
+      }
+    ],
+    "answer": "B",
+    "explanation": "A 应改为权值之和最大的路径，B 的最长就是指权值之和最大，C 增加关键活动一定 会增加工期，D 减小任一关键活动不一定会缩短工期。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 147,
+    "source": "2021-7",
+    "year": 2021,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "choice",
+    "stem": "给定如下有向图，该图的拓扑有序序列的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "A",
+    "explanation": "）求拓扑序列的过程如下：从图中选择无入边的结点，输出该结点并删除该结点的所 有出边，重复上述过程， 直至全部结点都已输出， 求得拓扑序列ABCDEF。每次输出一个结点 并删除该结点的所有出边后， 都发现仅有一个结点无入边， 因此 该拓扑序列唯一， 故选A。",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 148,
+    "source": "2022-7",
+    "year": 2022,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "comprehensive",
+    "stem": "下图是一个有 10 个活动的 AOE 网，时间余量最大的活动是（ ）。\n(A) c (B) g (C) h (D) j",
+    "options": [],
+    "answer": "B",
+    "explanation": "在 AOE 网中， 活动的时间余量＝结束顶点的最迟开始时间－开始顶点的最早开 始时间－该活动的待续时间。 根据关键路径算法得到下表。 结点编号 最早开始时间ve(i) 最迟开始时间vl(i) 0-o 2-2-4 \t3-5-5",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 149,
+    "source": "2024-41",
+    "year": 2024,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "comprehensive",
+    "stem": "2023 年 10 月 26 日，神州十七号载人飞船发射取得圆满成功，再次彰显了\n中国航天事业的辉煌成就。载人航天工程是包含众多子工程的复杂系统工程，为了保证工\n程的有序开展，需要明确各子工程的前导工程。以协调各子工程的实施。该问题可以简化、\n抽象为有向图的拓扑序列问题。已知有向图 G 采用邻接矩阵存储，类型定义如下：\ntypedef struct // 图 的 类 型 定 义\n{\nint numVertices , numEdges ; // 图 的 顶 点 数 和 有 向 边 数\nchar verticesList [ MAXV ]; // 顶 点 表 ， MAXV 为 已 定 义 常 量\nint Edge [ MAXV ][ MAXV ]; // 邻 接 矩 阵\n} MGraph\n请设计算法：int uniquely(MGraph G)。判定 G 是否存在唯一的拓扑序列，若是则返回 1，\n否则返回 0。要求：\n(1) 给出算法的基本设计思想（4 分）\n(2) 根据设计思想，采用 C 或 C++ 语言描述算法，关键之处给出注释（9 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 150,
+    "source": "2025-42",
+    "year": 2025,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.7.5",
+    "sectionTitle": "拓扑排序与关键路径",
+    "type": "comprehensive",
+    "stem": "AOE 网，描述 12 个工程活动及持续时间\n(1) 完成该工程的最短时间是多少？哪些是关键活动？\n(2) 若以最短时间完成工程，则与活动 e 同时进行的活动可能有哪些？\n(3) 时间余量最大的活动是哪个？其时间余量是多少？\n(4) 假设工程从时刻 0 启动，因某种原因，活动 b 在时刻 6 开始，为保证工程不延期，在\n其它活动持续时间保持不变的情况下，b 的持续时间最多是多少？若不改变 b 的持续时间，\n则压缩哪个活动的持续时间也能保证工程不延期？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/05-graph"
+  },
+  {
+    "id": 151,
+    "source": "2013-42",
+    "year": 2013,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.1",
+    "sectionTitle": "顺序查找",
+    "type": "comprehensive",
+    "stem": "设包含 4 个数据元素的集合 S = { “do”, “for”, “repeat”, “while”}，各元素的\n查找概率依次为：p1 = 0.35 ，p2 = 0.15 ，p3 = 0.15 ，p4 = 0.35 。将 S 保存在一个长度为 4\n的顺序表中，采用折半查找法，查找成功时的平均查找长度为 2.2 。请回答：\n(1) 若采用顺序存储结构保存 S ，且要求平均查找长度更短，则元素应如何排列？应使用\n何种查找方法？查找成功时的平均查找长度是多少？\n(2) 若采用链式存储结构保存 S ，且要求平均查找长度更短，则元素应如何排列？应使用\n何种查找方法？查找成功时的平均查找长度是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 152,
+    "source": "2010-9",
+    "year": 2010,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.1",
+    "sectionTitle": "顺序查找",
+    "type": "comprehensive",
+    "stem": "已知一个长度为 16 的顺序表 L，其元素按关键字有序排列。若采用折半查找\n法查找一个 L 中不存在的元素，则关键字的比较次数最多是\t（ ）。\n(A) 4 (B) 5 (C) 6 (D) 7",
+    "options": [],
+    "answer": "B",
+    "explanation": "10. D 11. A 12. D 13. B 14. B 15. D 16. A",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 153,
+    "source": "2015-7",
+    "year": 2015,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.1",
+    "sectionTitle": "顺序查找",
+    "type": "comprehensive",
+    "stem": "下列选项中，不能构成折半查找中关键字比较序列的是\t（ ）。\n(A) 500,200,450,180 (B) 500,450,200,180\n(C) 180,500,200,450 (D) 180,200,500,450",
+    "options": [],
+    "answer": "A",
+    "explanation": "画出查找路径图，因为折半查找的判定树是一棵二叉排序树，看其是否满足二叉排 序树的要求。 很显然，选项 A 的查找路径不满足二叉排序树或者是一棵空树，或者是具有下列性质的二叉 树： （1）若左子树不空，则左子树上所有结点的值均小于或等于它的根结点的值； （2）若右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值； （3）左、右子树也分别为二叉排序树。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 154,
+    "source": "2016-9",
+    "year": 2016,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.2",
+    "sectionTitle": "折半查找",
+    "type": "comprehensive",
+    "stem": "在有 n(n>1000) 个元素的升序数组 A 中查找关键字 x。查找算法的伪代码如\n下所示。\nk = 0;\nwhile (k < n 且 A[k] < x) k = k + 3;\nif (k < n 且 A[k] == x) 查 找 成 功 ；\nelse if (k - 1 < n 且 A[k - 1] == x) 查 找 成 功 ；\nelse if (k - 2 < n 且 A[k - 2] == x) 查 找 成 功 ；\nelse 查 找 失 败 ；\n本算法与折半查找算法相比，有可能具有更少比较次数的情形是\t（ ）\n(A) 当 x 不在数组中 (B) 当 x 接近数组开头处\n(C) 当 x 接近数组结尾处 (D) 当 x 位于数组中间位置",
+    "options": [],
+    "answer": "B",
+    "explanation": "此题为送分题。该程序采用跳跃式的顺利查找法查找升序数组中的 x，显然是 x 越靠 前，比较次数才会越少。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 155,
+    "source": "2017-8",
+    "year": 2017,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.2",
+    "sectionTitle": "折半查找",
+    "type": "comprehensive",
+    "stem": "下列二叉树中，可能成为折半查找判定树（不含外部结点）的是\t（ ）\n(A) (B) (C) (D)\n（本题选项为图形，请对照上图作答。）",
+    "options": [],
+    "answer": "A",
+    "explanation": "折半查找判定树实际上是一棵二又排序树，它的中序序列是一个有序序列。可以在 树结点上依次填上相应的元素，符合折半查找规则的树即是所求。 B 选项，4、5 相加除 2 向上取整，7、8 相加除 2 向下取整，矛盾。C 选项，3、4 相加除 2 向上取整，6、7 相加除 2 向下取整，矛盾。D 选项。1、10 相加除 2 向下取整，6、7 相加除",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 156,
+    "source": "2023-8",
+    "year": 2023,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.2",
+    "sectionTitle": "折半查找",
+    "type": "comprehensive",
+    "stem": "对含有 600 个元素的有序顺序表进行折半查找，关键字之间的比较次数最多\n是\t（ ）。\n(A) 9 (B) 10 (C) 30 (D) 300",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 157,
+    "source": "2024-5",
+    "year": 2024,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.3",
+    "sectionTitle": "分块查找",
+    "type": "choice",
+    "stem": "下列数据结构中，不适合直接使用折半查找的是\t（ ）\nI 有序链表 II 无序数组 III 有序静态链表 IV 无序静态链表",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 1、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅、II、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 158,
+    "source": "2025-7",
+    "year": 2025,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.3",
+    "sectionTitle": "分块查找",
+    "type": "choice",
+    "stem": "已知查找表中有 400 个元素，查找元素概率相同。采用分块查找法且均匀分\n块。若采用顺序查找法确定元素所在块，且块内也采用顺序查找法，为效率最高，每块包\n含元素应为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "20"
+      },
+      {
+        "label": "D",
+        "text": "25"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 159,
+    "source": "2011-7",
+    "year": 2011,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.3",
+    "sectionTitle": "分块查找",
+    "type": "choice",
+    "stem": "对于下列关键字序列，不可能构成某二叉排序树中一条查找路径的序列\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "95，22，91，24，94，71"
+      },
+      {
+        "label": "B",
+        "text": "92，20，91，34，88，35"
+      },
+      {
+        "label": "C",
+        "text": "21，89，77，29，36，38"
+      },
+      {
+        "label": "D",
+        "text": "12，25，71，68，33，34"
+      }
+    ],
+    "answer": "A",
+    "explanation": "选项A中，当查到91后再向24查找，说明这一条路径之后查找的数都要比91小， 后面的94就错了。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 160,
+    "source": "2013-6",
+    "year": 2013,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.4",
+    "sectionTitle": "二叉排序树",
+    "type": "choice",
+    "stem": "在任意一棵非空二叉排序树 T1 中，删除某结点 v 之后形成二叉排序树 T2 ，\n再将 v 插入 T2 形成二叉排序树 T3 。下列关于 T1 与 T3 的叙述中，正确的是\t（ ）。\nI. 若 v 是 T1 的叶结点，则 T1 与 T3 不同\nII. 若 v 是 T1 的叶结点，则 T1 与 T3 相同\nIII. 若 v 不是 T1 的叶结点，则 T1 与 T3 不同\nIV. 若 v 不是 T1 的叶结点，则 T1 与 T3 相同",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "0.48 s",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 161,
+    "source": "2018-6",
+    "year": 2018,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.4",
+    "sectionTitle": "二叉排序树",
+    "type": "choice",
+    "stem": "已知二叉排序树如下图所示，元素之间应满足的大小关系是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "x1 < x2 < x3"
+      },
+      {
+        "label": "B",
+        "text": "x1 < x4 < x5"
+      },
+      {
+        "label": "C",
+        "text": "x3 < x5 < x4"
+      },
+      {
+        "label": "D",
+        "text": "x4 < x3 < x5"
+      }
+    ],
+    "answer": "C",
+    "explanation": "根据二叉排序树的性质：中序遍历(LNR)得到的是一个递增序列。图中二叉排序树中 序遍历为 x 1, x 3, x 5, x 4, x 2，可知 x 3<x 5<x 4。 -- 1 of 8 --",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 162,
+    "source": "2020-5",
+    "year": 2020,
+    "qIndex": 5,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.4",
+    "sectionTitle": "二叉排序树",
+    "type": "choice",
+    "stem": "下列给定的关键字输入序列中，不能生成如下二叉排序树的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4，5，2，1，3"
+      },
+      {
+        "label": "B",
+        "text": "4，5，1，2，3"
+      },
+      {
+        "label": "C",
+        "text": "4，2，5，3，1"
+      },
+      {
+        "label": "D",
+        "text": "4，2，1，3，5"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在 4，5，1，2，3 中由于 1 先插入，所以 1 会成为 4 的左孩子，2 会成为 1 的右孩 子，不能生成图中二叉树，故选 B。 -- 1 of 8 --",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 163,
+    "source": "2024-7",
+    "year": 2024,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "一棵二叉搜索树如下图所示，K1、K2、K3 分别是对应结点中保存的关键字、\n三角形表示子树。则子树 T 中任一结点中保存的关键字 X 满足的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "X < K1"
+      },
+      {
+        "label": "B",
+        "text": "X > K2"
+      },
+      {
+        "label": "C",
+        "text": "K1 < X < K3"
+      },
+      {
+        "label": "D",
+        "text": "K3 < X < K2"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 164,
+    "source": "2009-4",
+    "year": 2009,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "下列二叉排序树中，满足平衡二叉树定义的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": ""
+      },
+      {
+        "label": "B",
+        "text": ""
+      },
+      {
+        "label": "C",
+        "text": ""
+      },
+      {
+        "label": "D",
+        "text": "（本题选项为图形，请对照上图作答。）"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 165,
+    "source": "2010-4",
+    "year": 2010,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "在下图所示的平衡二叉树中，插入关键字 48 后得到一棵新平衡二叉树。在新\n平衡二叉树中，关键字 37 所在结点的左、右子结点中保存的关键字分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "13, 48"
+      },
+      {
+        "label": "B",
+        "text": "24, 48"
+      },
+      {
+        "label": "C",
+        "text": "24, 53"
+      },
+      {
+        "label": "D",
+        "text": "24, 90"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 166,
+    "source": "2012-4",
+    "year": 2012,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "若平衡二叉树的高度为 6 ，且所有非叶结点的平衡因子均为 1 ，则该平衡二\n叉树的结点总数为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "10"
+      },
+      {
+        "label": "B",
+        "text": "20"
+      },
+      {
+        "label": "C",
+        "text": "32"
+      },
+      {
+        "label": "D",
+        "text": "33"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查平衡二叉树的最少结点情况。所有非叶结点的平衡因子均为 1，即平衡二叉树满 足平衡的最少结点情况，如图所示。画图时，先画出 T1 和 T2；然后新建一个根结点，连接 T2、 T1 构成 T3；新建一个根结点，连接 T3、T2 构成 T4；…… 依此类推，直到画出 T6，可知 T6 的结点数为 20。对于高度为 N 的题述的平衡二叉树，它的左、右子树分别为高度为 N-1 和 N-",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 167,
+    "source": "2013-3",
+    "year": 2013,
+    "qIndex": 3,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "若将关键字 1,2,3,4,5,6,7 依次插入到初始为空的平衡二叉树 T 中，则 T 中平\n衡因子为 0 的分支结点的个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Z N \tC=Z=1 N=0 3",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 168,
+    "source": "2015-4",
+    "year": 2015,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "现有一棵无重复关键字的平衡二叉树（AVL 树），对其进行中序遍历可得到\n一个降序序列。下列关于该平衡二叉树的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "根结点的度一定为 2"
+      },
+      {
+        "label": "B",
+        "text": "树中最小元素一定是叶结点"
+      },
+      {
+        "label": "C",
+        "text": "最后插入的元素一定是叶结点"
+      },
+      {
+        "label": "D",
+        "text": "树中最大元素一定是无左子树"
+      }
+    ],
+    "answer": "D",
+    "explanation": "只有两个结点的平衡二叉树的根结点的度为 1，A 错误。中序遍历后可以得到一个降 序序列，树中最大元素一定无左子树（可能有右子树），因此不一定是叶结点，B 错误。最后 插入的结点可能会导致平衡调整，而不一定是叶结点，C 错误。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 169,
+    "source": "2019-4",
+    "year": 2019,
+    "qIndex": 4,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "在任意一棵非空平衡二叉树（AVL 树）T1 中，删除某结点 v 之后形成平衡\n二叉树 T2 ，再将 v 插入 T2 形成平衡二叉树 T3 。下列关于 T1 与 T3 的叙述中，正确的\n是\t（ ）。\nI. 若 v 是 T1 的叶结点，则 T1 与 T3 可能不相同\nII. 若 v 不是 T1 的叶结点，则 T1 与 T3 一定不相同\nIII. 若 v 不是 T1 的叶结点，则 T1 与 T3 一定相同",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "平衡二叉树的插入、删除操作可能会引起树的旋转（为了保持树的平衡性），所以 T1 与 T3 可能不相同，选 A。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 170,
+    "source": "2021-6",
+    "year": 2021,
+    "qIndex": 6,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.5",
+    "sectionTitle": "平衡二叉树",
+    "type": "choice",
+    "stem": "给定平衡二叉树如下图所示，插入关键字 23 后，根中的关键字是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "16"
+      },
+      {
+        "label": "B",
+        "text": "20"
+      },
+      {
+        "label": "C",
+        "text": "23"
+      },
+      {
+        "label": "D",
+        "text": "25"
+      }
+    ],
+    "answer": "D",
+    "explanation": "关键字 23 的插入位置为 25 的左孩子， 此时破坏了平衡的性质， 需要对平衡二叉 树进行调整。 最小不平衡子树就是该树本身， 插入位置在根结点的右子树的左子树上， 因此 需要进行RL旋转，RL旋转过程如下图所示， 旋转完成后根结点的关键字为 25, 故选 D。 RL旋转 ，",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 171,
+    "source": "2026-8",
+    "year": 2026,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "已知平衡二叉树（AVL 树）的定义为：树中任意一个节点的左右子树的高度\n差的绝对值不超过 1，且左右子树均为平衡二叉树。若某平衡二叉树的高度为 4（根节点\n的高度记为 1），则其根节点的左右子树的节点数之差最多为\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 172,
+    "source": "2011-9",
+    "year": 2011,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "为提高哈希（Hash）表的查找效率，可以采取的正确措施是\t（ ）。\nI. 增大装填因子\nII. 设计冲突少的哈希函数\nIII. 处理冲突时避免产生堆积现象",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "III错在“避免”二字。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 173,
+    "source": "2014-8",
+    "year": 2014,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "用哈希（散列）方法处理冲突（碰撞）时可能出现堆积（聚集）现象，下列\n选项中，会受堆积现象直接影响的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "存储效率"
+      },
+      {
+        "label": "B",
+        "text": "散列函数"
+      },
+      {
+        "label": "C",
+        "text": "装填（装载）因子"
+      },
+      {
+        "label": "D",
+        "text": "平均查找长度"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 174,
+    "source": "2018-9",
+    "year": 2018,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "现有长度为 7、初始为空的散列表 HT，散列函数 H(k) = k % 7，用线性探测\n再散列法解决冲突。将关键字 22, 43, 15 依次插人到 HT 后，查找成功的平均查找长度\n是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1.5"
+      },
+      {
+        "label": "B",
+        "text": "1.6"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "3"
+      }
+    ],
+    "answer": "C",
+    "explanation": "根据题意，得到的 HT 如下：",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 175,
+    "source": "2019-8",
+    "year": 2019,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "现有长度为 11 且初始为空的散列表 HT，散列函数是 H(key)=key%7，采用线\n性探查（线性探测再散列）法解决冲突将关键字序列 87，40，30，6，11，22，98，20 依次\n插入到 HT 后，HT 查找失败的平均查找长度是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5.25"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "6.29"
+      }
+    ],
+    "answer": "C",
+    "explanation": "构造散列表只有当遇到关键字为空的地址时才会查找失败，key%7 之后，初始地址 只可能在 0~6，所以即 0~6 到空地址的距离求平均，即为查找失败的平均查找长度初始地址 是 0 的失败查找长度为 9，同理得初始地址为 1，2，3，4，5，6 的失败查找长度为 8，7， 6，5，4，3，(9+8+7+6+5+4+3)/7 = 6 答案是 C。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 176,
+    "source": "2022-9",
+    "year": 2022,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "下列因素中，影响散列（哈希）方法平均查找长度的是\t（ ）。\nI. 装填因子\nII. 散列函数\nIII. 冲突解决策略",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "D",
+    "explanation": "填装因子越大， 说明哈希表中存储的元素越满， 发生冲突的可能性就越高， 导致 平均查找长度越大。散列函数、冲突解决策略也会影响发生冲突的可能性。 I、II、 III 都正确。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 177,
+    "source": "2023-9",
+    "year": 2023,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "choice",
+    "stem": "现有长度为 5，初始为空的散列表 HT，散列表函数 H(k) = (k+4) % 5 用线性\n探查再散列法解决冲突。若将关键字序列 2022,12,25 依次插入 HT 中，然后删除关键字 25，\n则 HT 中查找失败的平均查找长度\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "1.6"
+      },
+      {
+        "label": "C",
+        "text": "1.8"
+      },
+      {
+        "label": "D",
+        "text": "2.2"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 178,
+    "source": "2025-9",
+    "year": 2025,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "comprehensive",
+    "stem": "下列关于散列法处理冲突的叙述中，正确的是\t（ ）。\n(A) 只要散列表不满，线性探查再散列一定能找到一个空闲位置\n(B) 只要散列表不满，二次探查再散列一定能找到一个空闲位置\n(C) 线性探查再散列处理的冲突，一定是发生在同义词之间\n(D) 二次探查再散列处理的冲突，一定是发生在非同义词之间",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 179,
+    "source": "2010-41",
+    "year": 2010,
+    "qIndex": 41,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.6",
+    "sectionTitle": "散列查找",
+    "type": "comprehensive",
+    "stem": "将关键字序列 〈7,8,30,11,18,9,14〉 散列存储到散列表中。散列表的存储空间\n是一个下标从 0 开始的一维数组，散列函数为 H(key)=(key×3)mod7 ，处理冲突采用线性\n探测再散列法，要求装填（载）因子为 0.7 。\n(1) 请画出所构造的散列表。\n(2) 分别计算等概率情况下查找成功和查找不成功的平均查找长度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 180,
+    "source": "2024-42",
+    "year": 2024,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "将关键字 20, 3, 11, 18, 9, 14, 7 依次存储到长度为 11 的散列表 H T 中，散列函\n数为 H (ke y) = (ke y × 3)%11 ，H 0 为初始散列地址，H1 、H2 、H3 、· · · 、Hk 分别为第 1 次\n冲突、第 2 次冲突、第 3 次冲突、· · · 、第 k 次冲突时探测的地址。Hk = (H0 + k2)%11 。请\n回答下列问题：\n(1) 画出所构造的 H T 。并计算 H T 的装填因子（6 分）\n(2) 给出在 H T 中查找关键字 14 的关键字比较序列（2 分）\n(3) 在 H T 中查找关键字 8，确认查找失败时的散列地址是多少？（2 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 181,
+    "source": "2009-8",
+    "year": 2009,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "下列叙述中，不符合 m 阶 B 树定义要求的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "根节点最多有 m 棵子树"
+      },
+      {
+        "label": "B",
+        "text": "所有叶结点都在同一层上"
+      },
+      {
+        "label": "C",
+        "text": "各结点内关键字均升序或降序排列"
+      },
+      {
+        "label": "D",
+        "text": "叶结点之间通过指针链接"
+      }
+    ],
+    "answer": "C",
+    "explanation": "ache \t0 8 16... \tCache 0 2 129 \t4 \tCache 4 2",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 182,
+    "source": "2012-9",
+    "year": 2012,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "已知一棵 3 阶 B 树，如下图所示。删除关键字 78 得到一棵新 B 树，其最右\n叶结点中的关键字是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "60"
+      },
+      {
+        "label": "B",
+        "text": "60, 62"
+      },
+      {
+        "label": "C",
+        "text": "62, 65"
+      },
+      {
+        "label": "D",
+        "text": "65"
+      }
+    ],
+    "answer": "D",
+    "explanation": "考查 B-树的删除操作。 对于上图所示的 3 阶 B-树，被删关键字 78 所在结点在删除前的关键字个数=1= 3/2 -1\t \t\t \t \t，且 其左兄弟结点的关键字个数=2≥ 3/2\t \t\t \t ，属于“兄弟够借”的情况，则需把该结点的左兄弟结点 中最大的关键字上移到双亲结点中，同时把双亲结点中大于上移关键字的关键字下移到要删 除关键字的结点中，这样就达到了新的平衡，如下图所示。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 183,
+    "source": "2013-10",
+    "year": 2013,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "在一株高度为 2 的 5 阶 B 树中，所含关键字的个数最少是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "7"
+      },
+      {
+        "label": "C",
+        "text": "8"
+      },
+      {
+        "label": "D",
+        "text": "14"
+      }
+    ],
+    "answer": "A",
+    "explanation": "2 5 B \t5",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 184,
+    "source": "2014-9",
+    "year": 2014,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "在一棵具有 15 个关键字的 4 阶 B 树中，含关键字的结点个数最多是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "10"
+      },
+      {
+        "label": "D",
+        "text": "15"
+      }
+    ],
+    "answer": "D",
+    "explanation": "10． B 11． C 12． D 13． C 14． A 15． A 16． D",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 185,
+    "source": "2016-10",
+    "year": 2016,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "B+ 树不同于 B 树的特点之一是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "能支持顺序查找"
+      },
+      {
+        "label": "B",
+        "text": "结点中含有关键字"
+      },
+      {
+        "label": "C",
+        "text": "根结点至少有两个分支"
+      },
+      {
+        "label": "D",
+        "text": "所有叶结点都在同一层上"
+      }
+    ],
+    "answer": "A",
+    "explanation": "由于 B+树的所有叶结点中包含了全部的关键字信息，且叶结点本身依关键字从小到 大顺序链接，可以进行顺序查找，而 B 树不支持顺序查找(只支持多路查找)。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 186,
+    "source": "2017-9",
+    "year": 2017,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "下列应用中，适合使用 B+ 树的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "编译器中的词法分析"
+      },
+      {
+        "label": "B",
+        "text": "关系数据库系统中的索引"
+      },
+      {
+        "label": "C",
+        "text": "网络中的路由表快速查找"
+      },
+      {
+        "label": "D",
+        "text": "操作系统的磁盘空闲块管理"
+      }
+    ],
+    "answer": "B",
+    "explanation": "B+树是应文件系统所需而产生的 B-树的变形，前者比后者更加适用于实际应用中的 操作系统的文件索和数据库索引，因为前者磁盘读写代价更低，查询效率更加稳定。编译器 中的词法分析使用有穷自动机和语法树。网络中的路由表快速查找主要靠高速缓存、路由表 压缩技术和快速查找算法。系统一般使用空闲空间链表管理磁盘空闲块。所以选项 B 正确。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 187,
+    "source": "2018-8",
+    "year": 2018,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "高度为 5 的 3 阶 B 树含有的关键字个数至少是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "15"
+      },
+      {
+        "label": "B",
+        "text": "31"
+      },
+      {
+        "label": "C",
+        "text": "62"
+      },
+      {
+        "label": "D",
+        "text": "242"
+      }
+    ],
+    "answer": "B",
+    "explanation": "m 阶 B 树的基本性质：根节点以外的非叶结点最少含有⌈m/2⌉-1 个关键字，代入 m=3 得，到每个非叶结点中最少包含 1 个关键字，而根节点含有 1 个关键字，因此所有非叶结点 都有 2 个孩子，此时其树形与 h=5 的满二叉树相同，可求得关键字最少为 31 个。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 188,
+    "source": "2020-10",
+    "year": 2020,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "依次将关键字 5, 6, 9, 13, 8, 2, 12, 15 插入初始为空的 4 阶 B 树后, 根节点中\n包含的关键字是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "8"
+      },
+      {
+        "label": "B",
+        "text": "6, 9"
+      },
+      {
+        "label": "C",
+        "text": "8, 13"
+      },
+      {
+        "label": "D",
+        "text": "9, 12"
+      }
+    ],
+    "answer": "B",
+    "explanation": "11.【参考答案】A 【解析】直接插入排序在有序数组上的比较次数为 n-1，简单选择排序的比较次数为 1+2+...+n-1 = n(n-1)/2。Ⅱ，辅助空间都是 O(1),没差别。Ⅲ，因为本身已经有序，移动次数 均为 0。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 189,
+    "source": "2021-9",
+    "year": 2021,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "在一棵高度为 3 的 3 阶 B 树中，根为第 1 层，若第 2 层中有 4 个关键字，则\n该树的结点个数最多是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "11"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "9"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "A",
+    "explanation": "在阶为 3 的 B 树中，每个结点至多含有 2 个关键字（至少 1 个）， 至多有 3 棵子树。 本题规定第二层有 4 个关键字，欲使 B 树的结点个数达到最多， 则这 4 个关键字包含在 3 个结 点中， B树树形如下图所示， 其中A,B,C,…,M表示关键字， 最多有11 个结点， 故选A。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 190,
+    "source": "2022-8",
+    "year": 2022,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "在下图所示的 5 阶 B 树 T 中，删除关键字 260 之后需要进行必要的调整，得\n到新的 B 树 T1。下列选项中，不可能是 T1 根结点中关键字序列的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "60，90，280"
+      },
+      {
+        "label": "B",
+        "text": "60，90，350"
+      },
+      {
+        "label": "C",
+        "text": "60，85，110，350"
+      },
+      {
+        "label": "D",
+        "text": "60，90，110，350"
+      }
+    ],
+    "answer": "D",
+    "explanation": "在 5 阶 B 树中， 除根结点外的非叶结点的关键字数 K 需要满足 2�k 生 4 。 当被删 关键字x不 在终端结点（最低层非叶结点）时，可以用x的前驱（或后继）关键字 y 来替代X, 然后 在相应结点中删除y。 情况＠：删除 260, 将其前驱 110 放入 260 处，删除 110 后的结点 <100>不满足 5 阶 B 树定义，从左兄弟中借 85, 将 85 放入根中，将根中的 90 移入结点<100> 变为<90,100>。 情况＠：删除 260, 将其后继 280 放入 260 处，结点<300>不满足 5 阶 B 树定 义且左右兄弟都不够借， 结点<300>可以和左兄弟<100,110>以及关键字 280 合并成一个新的 结点<100, 110, 280, 300>。 情况＠： 在情况＠中， 结点<300>也可以和右兄弟<400,500>以及 关键字 350 合并成一个新的结点<300,350,400,500>。 综上， Tl根结点中的关键字序列可能 是<60,85,110,350>或<60,90,350>或<60,90,280>， 仅 D 不可能。",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 191,
+    "source": "2023-7",
+    "year": 2023,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "choice",
+    "stem": "下列关于非空 B 树的叙述中，正确的是\t（ ）\nI. 插入操作可能增加树的高度\nII. 删除操作一定会导致叶结点的变化\nIII. 查找某关键字一定是要查找到叶结点\nIV. 插入的新关键字最终位于叶结点中",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、II、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 192,
+    "source": "2025-8",
+    "year": 2025,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "comprehensive",
+    "stem": "给 7 个不同的关键字，能够构成不同 4 阶 B 树的个数为\t（ ）。\n(A) 7 (B) 8 (C) 9 (D) 10",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 193,
+    "source": "2023-42",
+    "year": 2023,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.8.7",
+    "sectionTitle": "B 树与 B+ 树",
+    "type": "comprehensive",
+    "stem": "对含有 n（n > 0）个记录的文件进行外部排序，采用置换 - 选择排序生成初\n始归并段时需要使用一个工作，工作区中能保存 m 个记录，请回答下列问题，\n(1) 如果文件中由 19 个记录，其关键字是 51, 94, 37, 92, 14, 63, 15, 99, 48, 56, 23, 60, 31, 17,\n43, 8, 90, 166, 100；当 m=4 时，可以生成几个初始归并段，各是什么？\n(2) 对任意的 m 个（n > m > 0），生成的第一个初始归并段的长度最大值和最小值分别是多\n少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/06-search"
+  },
+  {
+    "id": 194,
+    "source": "2012-11",
+    "year": 2012,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.1",
+    "sectionTitle": "直接插入排序",
+    "type": "choice",
+    "stem": "对同一待排序序列分别进行折半插入排序和直接插入排序，两者之间可能的\n不同之处是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "排序的总趟数"
+      },
+      {
+        "label": "B",
+        "text": "元素的移动次数"
+      },
+      {
+        "label": "C",
+        "text": "使用辅助空间的数量"
+      },
+      {
+        "label": "D",
+        "text": "元素之间的比较次数"
+      }
+    ],
+    "answer": "D",
+    "explanation": "考查折半插入和直接插入的区别。折半插入排序与直接插入排序都是将待插入元素 插入前面的有序子表，区别是：确定当前记录在前面有序子表中的位置时，直接插入排序是 采用顺序查找法，而折半插入排序是采用折半查找法。排序的总趟数取决于元素个数 n，两者 都是 n-1 趟。元素的移动次数都取决于初试序列，两者相同。使用辅助空间的数量也都是 O(1)。 折半插入排序的比较次数与序列初态无关，为 O(nlog2n)；而直接插入排序的比较次数与序列 初态有关，为 O(n)~O(n2 )。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 195,
+    "source": "2020-11",
+    "year": 2020,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.1",
+    "sectionTitle": "直接插入排序",
+    "type": "choice",
+    "stem": "对大部分元素已有序的数组进行排序时，直接插入排序比简单选择排序效率\n更高，其原因是\t（ ）。\nI. 直接插入排序过程中元素之间的比较次数更少\nII. 直接插入排序过程中所需要的辅助空间更少\nIII. 直接插入排序过程中元素的移动次数更少",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I，II"
+      },
+      {
+        "label": "D",
+        "text": "仅 I，II 和 III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 196,
+    "source": "2022-11",
+    "year": 2022,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.1",
+    "sectionTitle": "直接插入排序",
+    "type": "choice",
+    "stem": "对数据进行排序时，若采用直接插入排序而不采用快速排序，则可能的原因\n是\t（ ）。\nI. 大部分元素已有序\nII. 待排序元素数量很少\nIII. 要求空间复杂度为 O(1)\nIV. 要求排序算法是稳定的",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "直接插入排序和快速排序的特点如下表所示。 直接插入排序 快速排序 适合初始序列情况 大部分元素有序 基本无序 适合元素数量 较少 较多 空间复杂度 0(1) O(login) 稳定性 稳定 不稳定",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 197,
+    "source": "2026-9",
+    "year": 2026,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.2",
+    "sectionTitle": "希尔排序",
+    "type": "choice",
+    "stem": "使用直接插入排序对序列进行升序排序，以下比较次数最少的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "30,27,56,41,80,95,69"
+      },
+      {
+        "label": "B",
+        "text": "31,43,26,55,63,99,77"
+      },
+      {
+        "label": "C",
+        "text": "61,84,51,23,34,91,40"
+      },
+      {
+        "label": "D",
+        "text": "93,32,48,81,50,21,72"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 198,
+    "source": "2014-10",
+    "year": 2014,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.2",
+    "sectionTitle": "希尔排序",
+    "type": "choice",
+    "stem": "用希尔排序方法对一个数据序列进行排序时，若第 1 趟排序结果为 9,1,4,13,\n7,8,20,23,15，则该趟排序采用的增量（间隔）可能是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 199,
+    "source": "2015-11",
+    "year": 2015,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.2",
+    "sectionTitle": "希尔排序",
+    "type": "choice",
+    "stem": "希尔排序的组内排序采用的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "直接插入排序"
+      },
+      {
+        "label": "B",
+        "text": "折半插入排序"
+      },
+      {
+        "label": "C",
+        "text": "快速排序"
+      },
+      {
+        "label": "D",
+        "text": "归并排序"
+      }
+    ],
+    "answer": "A",
+    "explanation": "本题考查希尔排序知识。希尔排序的组内排序采用直接插入排序。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 200,
+    "source": "2018-10",
+    "year": 2018,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.2",
+    "sectionTitle": "希尔排序",
+    "type": "choice",
+    "stem": "对初始数据序列 (8, 3, 9, 11, 2, 1, 4, 7, 5, 10, 6) 进行希尔排序。若第一趟排序\n结果为 (1, 3, 7, 5, 2, 6, 4, 9, 11, 10, 8)，第二趟排序结果为 (1, 2, 6, 4, 3, 7, 5, 8, 11, 10, 9)，则\n两趟排序采用的增量（间隔）依次是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3,1"
+      },
+      {
+        "label": "B",
+        "text": "3,2"
+      },
+      {
+        "label": "C",
+        "text": "5,2"
+      },
+      {
+        "label": "D",
+        "text": "5,3"
+      }
+    ],
+    "answer": "D",
+    "explanation": "第一趟分组：8，1，6；3，4；9，7；11，5；2，10；间隔为 5，排序后组内递增。 第二趟分组：1，5，4，10；3，2，9，8；7，6，11；间隔为 3，排序后组内递增。故答案选 D。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 201,
+    "source": "2025-11",
+    "year": 2025,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.3",
+    "sectionTitle": "冒泡排序",
+    "type": "choice",
+    "stem": "对含 9 个关键字的初始序列进行排序，若序列的变化情况如下表所示，则下\n列排序算法中，采用的是\t（ ）。\n初始序列 5, 25, 40, 30, 10, 20, 45, 15, 35\n第 1 趟排序后的序列 5, 10, 20, 30, 15, 35, 45, 25, 40\n第 2 趟排序后的序列 5, 10, 15, 25, 20, 30, 40, 35, 45",
+    "options": [
+      {
+        "label": "A",
+        "text": "希尔排序"
+      },
+      {
+        "label": "B",
+        "text": "基数排序"
+      },
+      {
+        "label": "C",
+        "text": "归并排序"
+      },
+      {
+        "label": "D",
+        "text": "折半插入排序"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 202,
+    "source": "2009-10",
+    "year": 2009,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.3",
+    "sectionTitle": "冒泡排序",
+    "type": "choice",
+    "stem": "若数据元素序列 11，12，13，7，8，9，23，4，5 是采用下列排序方法之一\n得到的第二趟排序后的结果，则该排序算法只能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "起泡排序"
+      },
+      {
+        "label": "B",
+        "text": "插入排序"
+      },
+      {
+        "label": "C",
+        "text": "选择排序"
+      },
+      {
+        "label": "D",
+        "text": "二路归并排序"
+      }
+    ],
+    "answer": "D",
+    "explanation": "11 CPU",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 203,
+    "source": "2010-11",
+    "year": 2010,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "对一组数据 (2，12，16，88，5，10) 进行排序，若前三趟排序结果如下：\n第一趟排序结果：2，12，16，5，10，88\n第二趟排序结果：2，12，5，10，16，88\n第三趟排序结果：2，5，10，12，16，88\n则采用的排序方法可能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "冒泡排序"
+      },
+      {
+        "label": "B",
+        "text": "希尔排序"
+      },
+      {
+        "label": "C",
+        "text": "归并排序"
+      },
+      {
+        "label": "D",
+        "text": "基数排序"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 204,
+    "source": "2010-10",
+    "year": 2010,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "采用递归方式对顺序表进行快速排序。下列关于递归次数的叙述中，正确的\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "递归次数与初始数据的排列次序无关。"
+      },
+      {
+        "label": "B",
+        "text": "每次划分后，先处理较长的分区可以减少递归次数。"
+      },
+      {
+        "label": "C",
+        "text": "每次划分后，先处理较短的分区可以减少递归次数。"
+      },
+      {
+        "label": "D",
+        "text": "递归次数与每次划分后得到的分区的处理顺序无关。"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 205,
+    "source": "2011-10",
+    "year": 2011,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "为实现快速排序算法，待排序序列宜采用的存储方式是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "顺序存储"
+      },
+      {
+        "label": "B",
+        "text": "散列存储"
+      },
+      {
+        "label": "C",
+        "text": "链式存储"
+      },
+      {
+        "label": "D",
+        "text": "索引存储"
+      }
+    ],
+    "answer": "A",
+    "explanation": "内部排序采用顺序存储结构。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 206,
+    "source": "2012-10",
+    "year": 2012,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "在内部排序过程中，对尚未确定最终位置的所有元素进行一遍处理称为一\n趟排序。下列排序方法中，每一趟排序结束都至少能够确定一个元素最终位置的方法\n是\t（ ）。\nI．简单选择排序\nII．希尔排序\nIII．快速排序\nIV．堆排序\nV．二路归并排序",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III、IV"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III、V"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 III、IV、V"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查各种内部排序算法的性质。对于Ⅰ，简单选择排序每次选择未排序列中的最小 元素放入其最终位置。对于Ⅱ，希尔排序每次是对划分的子表进行排序，得到局部有序的结 果，所以不能保证每一趟排序结束都能确定一个元素的最终位置。对于Ⅲ，快速排序每一趟 排序结束后都将枢轴元素放到最终位置。对于Ⅳ，堆排序属于选择排序，每次都将大根堆的 根结点与表尾结点交换，确定其最终位置。对于Ⅴ，二路归并排序每趟对子表进行两两归并 从而得到若干个局部有序的结果，但无法确定最终位置。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 207,
+    "source": "2014-11",
+    "year": 2014,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "下列选项中，不可能是快速排序第 2 趟排序结果的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "2,3,5,4,6,7,9"
+      },
+      {
+        "label": "B",
+        "text": "2,7,5,6,4,3,9"
+      },
+      {
+        "label": "C",
+        "text": "3,2,5,4,7,6,9"
+      },
+      {
+        "label": "D",
+        "text": "4,2,3,5,7,6,9"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 208,
+    "source": "2017-11",
+    "year": 2017,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "下列排序方法中，若将顺序存储更换为链式存储，则算法的时间效率会降低\n的是\t（ ）\n(1) 插入排序 2. 选择排序 3. 起泡排序 4. 希尔排序 5. 堆排序",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 1、2"
+      },
+      {
+        "label": "B",
+        "text": "仅 2、3"
+      },
+      {
+        "label": "C",
+        "text": "仅 3、4"
+      },
+      {
+        "label": "D",
+        "text": "仅 4、5"
+      }
+    ],
+    "answer": "D",
+    "explanation": "插入排序、选择排序、起泡排序原本时间复杂度是 O(n2 )，更换为链式存储后的时间 复杂度还是 O(n2 )希尔排序和堆排序都利用了顺序存储的随机访问特性，而链式存储不支持这 种性质，所以时间复杂度会增加，因此选 D。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 209,
+    "source": "2019-7",
+    "year": 2019,
+    "qIndex": 7,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "选择一个排序算法时，除算法的时空效率外，下列因素中，还需要考虑的\n是\t（ ）。\nI. 数据的规模 II. 数据的存储方式 III. 算法的稳定性 IV. 数据的初始状态",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "当数据规模较小时可选择是复杂度为 O(n2 )的简单排序算法，当数据规模较大时应选 择复杂度为 O(nlog2n)的排序方法，当数据规模大到内存无法放下时需选择外部排序方法，Ⅰ 正确。数据的存储方式主要分为顺序存储和链式存储，有些排序方法（如堆排序）只能用于 顺序存储方式，Ⅱ正确。若对数据稳定性有要求，则不能选择不稳定的排序方法，Ⅲ显然正 确。当数据初始基本有序时，直接插入排序的效率最高，冒泡排序和直接插入排序的时间复 杂度都是 O(n)，而归并排序的时间复杂度依旧是 O(nlog2n)，Ⅳ正确。所以选 D。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 210,
+    "source": "2019-10",
+    "year": 2019,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "排序过程中，对尚未确定最终位置的所有元素进行一遍处理称为一“趟”。下\n列序列中，不可能是快速排序第二趟结果的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5，2，16，12，28，60，32，72"
+      },
+      {
+        "label": "B",
+        "text": "2，16，5，28，12，60，32，72"
+      },
+      {
+        "label": "C",
+        "text": "2，12，16，5，28，32，72，60"
+      },
+      {
+        "label": "D",
+        "text": "5，2，12，28，16，32，72，60"
+      }
+    ],
+    "answer": "D",
+    "explanation": "要理解清楚排序过程中一“趟”的含义，题干也进行了解释。一个初始无序序列，所 有元素都没有确定最终位置，对所有元素做一次(称为趟)快速排序后一个元素确定最终位置， 且将原序列划分成了前后两块，此时前后两块子表是无序的。按“趟”的解释一一对尚未确 定最 终位置的所有元素都处理一遍才是一 趟， 所以此时要对前后两块子表各做次快速排序 才是一趟快速排序，如果只对一块子表进行了排序，而未处理另一块字表，就不能算是完整 的一趟，选项 D 无论先匹配 12 还是 32，都会将序列分成两块，那么第二趟必须有两个元素 匹配，所以 D 不可能，故选 D。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 211,
+    "source": "2023-10",
+    "year": 2023,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "下列排序算法中，不稳定的是\t（ ）\nI. 希尔排序\nII. 归并排序\nIII. 快速排序\nIV. 堆排序\nV. 基数排序",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I 和 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II 和 V"
+      },
+      {
+        "label": "C",
+        "text": "仅 I，III，IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 III，IV，V"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 212,
+    "source": "2023-11",
+    "year": 2023,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.4",
+    "sectionTitle": "快速排序",
+    "type": "choice",
+    "stem": "使用快速排序算法对数据进行升序排序，若经过一次划分后得到的数据序列\n是 68, 11, 70, 23, 80, 77, 48, 81, 93, 88，则该次划分的轴枢\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "11"
+      },
+      {
+        "label": "B",
+        "text": "70"
+      },
+      {
+        "label": "C",
+        "text": "80"
+      },
+      {
+        "label": "D",
+        "text": "81"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 213,
+    "source": "2024-8",
+    "year": 2024,
+    "qIndex": 8,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.5",
+    "sectionTitle": "简单选择排序",
+    "type": "choice",
+    "stem": "使用快速排序算法对含 N（N ≥ 3）个元素的数组 M 进行排序，若第一趟排\n序将除枢轴外的 N-1 个元素划分为 P 和 Q 两个部分，则下列叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "P 和 Q 块间有序"
+      },
+      {
+        "label": "B",
+        "text": "P 和 Q 均块内有序"
+      },
+      {
+        "label": "C",
+        "text": "P 和 Q 的元素个数大致相等"
+      },
+      {
+        "label": "D",
+        "text": "P 和 Q 中均不存在相等的元素"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 214,
+    "source": "2025-10",
+    "year": 2025,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.5",
+    "sectionTitle": "简单选择排序",
+    "type": "choice",
+    "stem": "下列排序算法中，最坏情况下元素移动最少的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "冒泡排序"
+      },
+      {
+        "label": "B",
+        "text": "直接插入排序"
+      },
+      {
+        "label": "C",
+        "text": "快速排序"
+      },
+      {
+        "label": "D",
+        "text": "简单选择排序"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 215,
+    "source": "2009-9",
+    "year": 2009,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.5",
+    "sectionTitle": "简单选择排序",
+    "type": "choice",
+    "stem": "已知关键字序列 5，8，12，19，28，20，15，22 是小根堆（最小堆），插入关\n键字 3，调整后得到的小根堆是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3，5，12，8，28，20，15，22，19"
+      },
+      {
+        "label": "B",
+        "text": "3，5，12，19，20，15，22，8，28"
+      },
+      {
+        "label": "C",
+        "text": "3，8，12，5，20，15，22，28，19"
+      },
+      {
+        "label": "D",
+        "text": "3，12，5，8，28，20，15，22，19"
+      }
+    ],
+    "answer": "A",
+    "explanation": "10. B \t11. C \t12. D \t13. D \t14. C \t15. D \t16. C",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 216,
+    "source": "2011-11",
+    "year": 2011,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "choice",
+    "stem": "已知序列 25,13,10,12,9 是大根堆，在序列尾部插入新元素 18，将其再调整为\n大根堆，调整过程中元素之间进行的比较次数是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "B",
+    "explanation": "首先与10比较，交换位置，再与25比较，不交换位置。比较了二次。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 217,
+    "source": "2015-10",
+    "year": 2015,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "choice",
+    "stem": "已知小根堆为 8,15,10,21,34,16,12，删除关键字 8 之后需重建堆，在此过程\n中，关键字之间的比较次数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "将堆画成完全二叉树的形式，堆删除堆顶元素后，是将二叉树最后的叶子节点 12 放 到堆顶，然后将 12 与其子节点 15 和 10 相比较，当 15>12 时，堆顶 12 不动，将 12 与 10 判断，12>10，不符合小根堆，所以将 10 和 12 对调，然后还要将 12 与其子节点 16 比较。 所以总共比较 3 次。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 218,
+    "source": "2018-11",
+    "year": 2018,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "choice",
+    "stem": "在将数据序列 (6, 1, 5, 9, 8, 4, 7) 建成大根堆时，正确的序列变化过程是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "6,1,7,9,8,4,5 → 6,9,7,1,8,4,5 → 9,6,7,1,8,4,5 → 9,8,7,1,6,4,5"
+      },
+      {
+        "label": "B",
+        "text": "6,9,5,1,8,4,7 → 6,9,7,1,8,4,5 → 9,6,7,1,8,4,5 → 9,8,7,1,6,4,5"
+      },
+      {
+        "label": "C",
+        "text": "6,9,5,1,8,4,7 → 9,6,5,1,8,4,7 → 9,6,7,1,8,4,5 → 9,8,7,1,6,4,5"
+      },
+      {
+        "label": "D",
+        "text": "6,1,7,9,8,4,5 → 7,1,6,9,8,4,5 → 7,9,6,1,8,4,5 → 9,7,6,1,8,4,5 → 9,8,6,1,7,4,5"
+      }
+    ],
+    "answer": "A",
+    "explanation": "本题考查建堆的基本知识。堆的调整方法，从序列末尾开始向前遍历，变换过程如 A 选项所示。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 219,
+    "source": "2020-9",
+    "year": 2020,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "choice",
+    "stem": "下列关于大根堆（至少含 2 个元素）的叙述中正确的是\t（ ）。\nI. 可以将堆看成一颗完全二叉树；II. 可采用顺序存储方式保存堆；\nIII. 可以将堆看成一棵二叉排序树；IV. 堆中的次大值一定在根的下一层。",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I，II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II，III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I，II，IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 I，III，IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Ⅲ错误，因为堆只要求根大于左右子树，并不要求左右子树有序。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 220,
+    "source": "2021-11",
+    "year": 2021,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "choice",
+    "stem": "将关键字 6, 9, 1, 5, 8, 4, 7 依次插入到初始为空的大根堆 H 中，得到的 H\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "9, 8, 7, 6, 5, 4, 1"
+      },
+      {
+        "label": "B",
+        "text": "9, 8, 7, 5, 6, 1, 4"
+      },
+      {
+        "label": "C",
+        "text": "9, 8, 7, 5, 6, 4, 1"
+      },
+      {
+        "label": "D",
+        "text": "9, 6, 7, 5, 8, 4, 1"
+      }
+    ],
+    "answer": "B",
+    "explanation": "要熟练掌握调整堆的方法， 建堆的过程如下图所示， 故答案选 B。 `－ /气/－/",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 221,
+    "source": "2024-9",
+    "year": 2024,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.6",
+    "sectionTitle": "堆排序",
+    "type": "comprehensive",
+    "stem": "已知关键字序列 28, 22, 20, 19, 8, 12, 15, 5 是大根堆（最大堆），对该堆进行两\n次删除操作后，得到的新堆是\t（ ）。\n(A) 20, 19, 15, 12, 8, 5 (B) 20, 19, 15, 5, 8, 12\n(C) 20, 19, 12, 15, 8, 5 (D) 20, 19, 8, 12, 15, 5",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 222,
+    "source": "2022-42",
+    "year": 2022,
+    "qIndex": 42,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "现有 n（n > 100000）个数保存在一维数组 M 中，需要查找 M 中最小的 10\n个数，请回答下列问题。\n(1) 设计一个完成上述查找任务的算法，要求平均情况下的比较次数尽可能少，简单描述\n其算法思想，不需要程序实现。\n(2) 说明你所设计的算法平均情况下的时间复杂度和空间复杂度。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 223,
+    "source": "2016-11",
+    "year": 2016,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "对 10TB 的数据文件进行排序，应使用的方法是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "希尔排序"
+      },
+      {
+        "label": "B",
+        "text": "堆排序"
+      },
+      {
+        "label": "C",
+        "text": "快速排序"
+      },
+      {
+        "label": "D",
+        "text": "归并排序"
+      }
+    ],
+    "answer": "D",
+    "explanation": "外部排序指待排序文件较大，内存一次性放不下，需存放在外部介质中。外部排序 通常采用归并排序法。选项 A、B、C 都是内部排序的方法。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 224,
+    "source": "2017-10",
+    "year": 2017,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "在内部排序时，若选择了归并排序而没有选择插入排序，则可能的理由\n是\t（ ）\n(1) 归并排序的程序代码更短\n(2) 归并排序的占用空间更少\n(3) 归并排序的运行效率更高",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 2"
+      },
+      {
+        "label": "B",
+        "text": "仅 3"
+      },
+      {
+        "label": "C",
+        "text": "仅 1、2"
+      },
+      {
+        "label": "D",
+        "text": "仅 1、3"
+      }
+    ],
+    "answer": "B",
+    "explanation": "归并排序代码比选择插入排序更复杂，前者空间复杂度是 O(n)，后者是 O(1)。但是 前者时间复杂度是 O(nlogn)，后者是 O(n2 )。所以选项 B 正确。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 225,
+    "source": "2019-11",
+    "year": 2019,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "设外存上有 120 个初始归并段，进行 12 路归并时，为实现最佳归并，需要\n补充的虚段个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在 12 路归并树中只存在度为 0 和度为 12 的结点，设度为 0 的结点数、度为 12 的 结点数和要补充的结点数分别为 n0，n12，n 补，则有 n0=120+n 补，n0=(12-1)n12+1，可得 n12=(120- 1+n 补)/(12-1)。由于结点数 n12 为整数，所以 n 补是使上式整除的最小整数，求得 n 补 = 2，所 以答案选 B。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 226,
+    "source": "2022-10",
+    "year": 2022,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "使用二路归并排序对含 n 个元素的数组 M 进行排序时，二路归并操作的功\n能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "将两个有序表合并为一个新的有序表"
+      },
+      {
+        "label": "B",
+        "text": "将 M 划分为两部分，两部分的元素个数大致相等"
+      },
+      {
+        "label": "C",
+        "text": "将 M 划分为 n 个部分，每个部分中仅含有一个元素"
+      },
+      {
+        "label": "D",
+        "text": "将 M 划分为两部分，一部分元素的值均小于另一部分元素的值"
+      }
+    ],
+    "answer": "A",
+    "explanation": "送分概念题。 王道书对归并的定义原话是 “ 归并的含义是将两个或两个以上的有 序表合并成一个新的有序表 ”， 而二路归并是将两个有序表合并为一个新的有序表。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 227,
+    "source": "2024-10",
+    "year": 2024,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "初始有三个升序序列 (3, 5)、(7, 9)、(6)，若按从左至右的次序选择有序序列\n进行二路归并排序，则关键字之间的总比较次数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 228,
+    "source": "2024-11",
+    "year": 2024,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.7",
+    "sectionTitle": "归并排序",
+    "type": "choice",
+    "stem": "在外排序中，利用败者树对初始为升序的归并段进行多路归并，败者树中记\n录” 冠军” 的结点保存的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "最大关键字"
+      },
+      {
+        "label": "B",
+        "text": "最小关键字"
+      },
+      {
+        "label": "C",
+        "text": "最大关键字所在的归并段号"
+      },
+      {
+        "label": "D",
+        "text": "最小关键字所在的归并段号"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 229,
+    "source": "2026-11",
+    "year": 2026,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.8",
+    "sectionTitle": "基数排序",
+    "type": "choice",
+    "stem": "在外部排序的 k 路归并过程中，归并趟数为 d 。下列关于 k 、d 、初始归并\n段及内存大小的说法中，正确的是\t（ ）\nI. k 越大，d 越小\nII. 初始归并段数不影响 d\nIII. 内存大小限制初始归并段的最大长度",
+    "options": [
+      {
+        "label": "A",
+        "text": "I"
+      },
+      {
+        "label": "B",
+        "text": "I、II"
+      },
+      {
+        "label": "C",
+        "text": "I、III"
+      },
+      {
+        "label": "D",
+        "text": "II、III"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 230,
+    "source": "2013-11",
+    "year": 2013,
+    "qIndex": 11,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.8",
+    "sectionTitle": "基数排序",
+    "type": "choice",
+    "stem": "对给定的关键字序列 110，119，007，911，114，120，122 进行基数排序，则\n第 2 趟分配收集后得到的关键字序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "007，110，119，114，911，120，122"
+      },
+      {
+        "label": "B",
+        "text": "007，110，119，114，911，122，120"
+      },
+      {
+        "label": "C",
+        "text": "007，110，911，114，119，120，122"
+      },
+      {
+        "label": "D",
+        "text": "110，120，911，122，114，007，119"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 231,
+    "source": "2015-9",
+    "year": 2015,
+    "qIndex": 9,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.8",
+    "sectionTitle": "基数排序",
+    "type": "choice",
+    "stem": "下列排序算法中，元素的移动次数与关键字的初始排列次序无关的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "直接插入排序"
+      },
+      {
+        "label": "B",
+        "text": "起泡排序"
+      },
+      {
+        "label": "C",
+        "text": "基数排序"
+      },
+      {
+        "label": "D",
+        "text": "快速排序"
+      }
+    ],
+    "answer": "C",
+    "explanation": "基数排序的元素移动次数与关键字的初始排列次序无关，而其他三种排序都是与关 键字的初始排列明显相关的。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 232,
+    "source": "2021-10",
+    "year": 2021,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.8",
+    "sectionTitle": "基数排序",
+    "type": "choice",
+    "stem": "设数组 S[] = {93, 946, 372, 9, 146,151, 301, 485, 236, 327, 43, 892}, 采用最低\n位优先（LSD）基数排序将 S 排列成升序序列。第 1 趟分配、收集后，元素 372 之前、之\n后紧邻的元素分别是（ ）\n(A) 43,892 (B) 236,301 (C) 301,892 (D) 485,301",
+    "options": [
+      {
+        "label": "D",
+        "text": "基数排序将 S 排列成升序序列。第 1 趟分配、收集后，元素 372 之前、之 后紧邻的元素分别是（ ） (A) 43,892"
+      },
+      {
+        "label": "B",
+        "text": "236,301"
+      },
+      {
+        "label": "C",
+        "text": "301,892"
+      },
+      {
+        "label": "D",
+        "text": "485,301"
+      }
+    ],
+    "answer": "C",
+    "explanation": "基数排序是一种稳定的排序方法。 由千采用最低位优先 (LSD) 的基数排序， 即 第 1 趟对个位进行分配和收集的操作， 因此第一趟分配和收集后的结果是 {151,301,372,892, 93,43,485,946,146,236,327,9}，元素 372 之前、之后紧邻的元素分别是 301 和 892, 故选 C。",
+    "relatedPath": "/data-structure/07-sort"
+  },
+  {
+    "id": 233,
+    "source": "2026-10",
+    "year": 2026,
+    "qIndex": 10,
+    "subjectKey": "data-structure",
+    "subjectName": "数据结构",
+    "sectionCode": "1.9.8",
+    "sectionTitle": "基数排序",
+    "type": "choice",
+    "stem": "现有 n 名学生的成绩记录，每位学生的记录包含两门课程的成绩：课程 1\n（记为 C1 ）和课程 2（记为 C2 ）。\n排序规则如下：\n(1) 首先，依据 C1 成绩升序排列；\n(2) 若两名学生的 C1 成绩相同，则依据其总分（即 C1 +C2 ）升序排列。\n请从下列排序算法中，选择最适合实现上述需求的算法\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "基数排序"
+      },
+      {
+        "label": "B",
+        "text": "快速排序"
+      },
+      {
+        "label": "C",
+        "text": "希尔排序"
+      },
+      {
+        "label": "D",
+        "text": "选择排序 计算机组成原理"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/data-structure/07-sort"
+  }
+]

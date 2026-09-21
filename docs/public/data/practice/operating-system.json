@@ -1,0 +1,6393 @@
+[
+  {
+    "id": 469,
+    "source": "2016-23",
+    "year": 2016,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.1",
+    "sectionTitle": "操作系统的概念与功能",
+    "type": "choice",
+    "stem": "下列关于批处理系统的叙述中，正确的是\t（ ）\nI. 批处理系统允许多个用户与计算机直接交互\nII. 批处理系统分为单道批处理系统和多道批处理系统\nIII. 中断技术使得多道批处理系统和 I/O 设备可与 CPU 并行工作",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "批处理系统中，作业执行时用户无法干预其运行，只能通过事先编制作业控制说明 书来间接干预，缺少交互能力，也因此才发展出分时系统，Ⅰ错误。批处理系统按发展历程 又分为单道批处理系统、多道批处理系统，Ⅱ正确。多道程序设计技术允许同时把多个程序 放入内存，井允许它们交替在 CPU 中运行，它们共享系统中的各种硬、软件资源，当一道程 序因 I/O 请求而暂停运行时，CPU 便立即转去运行另一道程序，即多道批处理系统的 I/O 设 备可与 CPU 并行工作，这都是借助于中断技术实现的，Ⅲ正确。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 470,
+    "source": "2017-28",
+    "year": 2017,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.1",
+    "sectionTitle": "操作系统的概念与功能",
+    "type": "choice",
+    "stem": "与单道程序系统相比，多道程序系统的优点是\t（ ）\nI.CPU 利用率高\nII. 系统开销小\nIII. 系统吞吐量大\nIV.I/O 设备利用率高",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 II 、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "多道程序系统通过组织作业(编码或数据)使 CPU 总有一个作业可执行，从而提高了 CPU 的利用率、系统吞吐量和 I/O 设备利用率，Ⅰ、Ⅲ、Ⅳ是优点。但系统要付出额外的开 销来组织作业和切换作业，Ⅱ错误。所以答案选 D。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 471,
+    "source": "2018-23",
+    "year": 2018,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.1",
+    "sectionTitle": "操作系统的概念与功能",
+    "type": "choice",
+    "stem": "下列关于多任务操作系统的叙述中，正确的是\t（ ）。\nI. 具有并发和并行的特点\nII. 需要实现对共享资源的保护\nIII. 需要运行在多 CPU 的硬件平台上",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "多任务操作系统可以在同一时间内运行多个应用程序，故Ⅰ正确。多个任务必须互 斥地访问共享资源，为达到这一目标必须对共享资源进行必要的保护，故Ⅱ正确。现代操作 系统都是多任务的（主要特点是并发和并行），多 CPU 并非是多任务操作系统的必备硬件， 但 CPU 可运行多任务，Ⅲ错误。综上所述，Ⅰ、Ⅱ正确，Ⅲ错误，故选 C。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 472,
+    "source": "2022-23",
+    "year": 2022,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.1",
+    "sectionTitle": "操作系统的概念与功能",
+    "type": "choice",
+    "stem": "下列关于多道程序系统的叙述中，不正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "支持进程的并发执行"
+      },
+      {
+        "label": "B",
+        "text": "不必支持虚拟存储管理"
+      },
+      {
+        "label": "C",
+        "text": "需要实现对共享资源的管理"
+      },
+      {
+        "label": "D",
+        "text": "进程数越多 CPU 利用率越高"
+      }
+    ],
+    "answer": "D",
+    "explanation": "操作系统的基本 特点：进发、巷烹、 虚拟、 异步， 其中最基本、 一定要实现的是 并发 和共享，A、C正确。早期的多道批处理操作系统会 将所有进程的数据全部调入主存， 再 让多道程序并发执行， 即使不支持虚拟 存储管理，也能 实现 “ 多道程序并发 ” , B 正确。 进 程多并不意味着CPU利用率高， 进程数量越多， 进程之间的资源竞争越激烈， 甚至可能因为 资源竞争而出现死锁现象，导致CPU利用率低， D错误。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 473,
+    "source": "2023-23",
+    "year": 2023,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "与宏内核操作系统相比，下列特征中微内核操作系统具有的是\t（ ）。\nI. 较好的性能\nII. 较高的可靠性\nIII. 较高的安全性\nIV. 较强的可扩展性",
+    "options": [
+      {
+        "label": "A",
+        "text": "II、IV"
+      },
+      {
+        "label": "B",
+        "text": "I、II、III"
+      },
+      {
+        "label": "C",
+        "text": "I、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "II、III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 474,
+    "source": "2010-23",
+    "year": 2010,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列选项中，操作系统提供给应用程序的接口是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "系统调用"
+      },
+      {
+        "label": "B",
+        "text": "中断"
+      },
+      {
+        "label": "C",
+        "text": "库函数"
+      },
+      {
+        "label": "D",
+        "text": "原语"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 475,
+    "source": "2011-24",
+    "year": 2011,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列选项中，在用户态执行的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "命令解释程序"
+      },
+      {
+        "label": "B",
+        "text": "缺页处理程序"
+      },
+      {
+        "label": "C",
+        "text": "进程调度程序"
+      },
+      {
+        "label": "D",
+        "text": "时钟中断处理程序"
+      }
+    ],
+    "answer": "A",
+    "explanation": "缺页处理程序和时钟中断都属于中断，在核心态执行。进程调度属于系统调 用在核心态执行，命令解释程序属于命令接口，它在用户态执行。 -- 3 of 13 --",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 476,
+    "source": "2012-23",
+    "year": 2012,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列选项中，不可能在用户态发生的事件是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "系统调用"
+      },
+      {
+        "label": "B",
+        "text": "外部中断"
+      },
+      {
+        "label": "C",
+        "text": "进程切换"
+      },
+      {
+        "label": "D",
+        "text": "缺页"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查用户态和核心态。本题关键在于对“在用户态发生”（不是“完成”）的理解。对于 A，系统调用是操作系统提供给用户程序的接口，调用程序发生在用户态，被调用程序在核心 态下执行。对于 B，外部中断是用户态到核心态的“门”，也是发生在用户态，在核心态完成中 断过程。对于 C，进程切换属于系统调用执行过程中的事件，只能发生在核心态；对于 D，缺 页产生后，在用户态发生缺页中断，然后进入核心态执行缺页中断服务程序。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 477,
+    "source": "2012-24",
+    "year": 2012,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "中断处理和子程序调用都需要压栈以保护现场，中断处理一定会保存而子程\n序调用不需要保存其内容的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "程序计数器"
+      },
+      {
+        "label": "B",
+        "text": "程序状态字寄存器"
+      },
+      {
+        "label": "C",
+        "text": "通用数据寄存器"
+      },
+      {
+        "label": "D",
+        "text": "通用地址寄存器"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查中断处理和子程序调用的区别。子程序调用只需保护程序断点，即该指令的下 一条指令的地址；中断调用子程序不仅要保护断点（PC 的内容），还要保护程序状态字寄存 器的内容 PSW（有些机器也称标志寄存器 FLAGS）。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 478,
+    "source": "2013-28",
+    "year": 2013,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列选项中，会导致用户进程从用户态切换到内核态的操作是\t（ ）。\nI. 整数除以零\nII. sin\t（ ）函数调用\nIII. read 系统调用",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "read \tB",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 479,
+    "source": "2014-25",
+    "year": 2014,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列指令中，不能在用户态执行的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "trap 指令"
+      },
+      {
+        "label": "B",
+        "text": "跳转指令"
+      },
+      {
+        "label": "C",
+        "text": "压栈指令"
+      },
+      {
+        "label": "D",
+        "text": "关中断指令"
+      }
+    ],
+    "answer": "D",
+    "explanation": "26． A 27． A 28． C 29． B 30． A 31． C 32． D",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 480,
+    "source": "2015-23",
+    "year": 2015,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "处理外部中断时，应该由操作系统保存的是\t（ ）。\n(A) 程序计数器（PC）的内容 (B) 通用寄存器的内容\n(C) 快表（TLB）中的内容 (D) Cache 中的内容",
+    "options": [
+      {
+        "label": "A",
+        "text": "程序计数器（P"
+      },
+      {
+        "label": "C",
+        "text": "的内容"
+      },
+      {
+        "label": "B",
+        "text": "通用寄存器的内容"
+      },
+      {
+        "label": "C",
+        "text": "快表（TL"
+      },
+      {
+        "label": "B",
+        "text": "中的内容"
+      },
+      {
+        "label": "D",
+        "text": "Cache 中的内容"
+      }
+    ],
+    "answer": "B",
+    "explanation": "外部中断处理过程，PC 值由中断隐指令自动保存，而通用寄存器内容由操作系统保 存。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 481,
+    "source": "2015-24",
+    "year": 2015,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "假定下列指令已装入指令寄存器，则执行时不可能导致 CPU 从用户态变为\n内核态（系统态）的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "DIV R0, R1; (R0)/(R1)→R0"
+      },
+      {
+        "label": "B",
+        "text": "INT n; 产生软中断"
+      },
+      {
+        "label": "C",
+        "text": "NOT R0; 寄存器 R0 的内容取非"
+      },
+      {
+        "label": "D",
+        "text": "MOV R0, addr; 把地址 addr 的内存数据放入寄存器 R0 中"
+      }
+    ],
+    "answer": "C",
+    "explanation": "部分指令可能出现异常（导致中断），从而转到核心态。指令 A 有除零异常的可能， 指令 B 为中断指令，指令 D 有缺页异常的可能，指令 C 不会发生异常。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 482,
+    "source": "2017-24",
+    "year": 2017,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "执行系统调用的过程包括如下主要操作：\n¨返回用户态 ≠执行陷入（trap）指令\nÆ传递系统调用参数 Ø执行相应的服务程序\n正确的执行顺序是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "≠→Æ→¨→Ø"
+      },
+      {
+        "label": "B",
+        "text": "≠→Ø→Æ→¨"
+      },
+      {
+        "label": "C",
+        "text": "Æ→≠→Ø→¨"
+      },
+      {
+        "label": "D",
+        "text": "Æ→Ø→≠→¨"
+      }
+    ],
+    "answer": "C",
+    "explanation": "执行系统调用的过程是这样的，正在运行的进程先传速系统调用参数，然后由陷入 (trap)指令负责将用户态转化为内核态，并将返回地址压入堆栈以备后用，接下来 CPU 执行 相应的内核态服务程序，最后返回用户态。所以选项 C 正确。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 483,
+    "source": "2018-29",
+    "year": 2018,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "定时器产生时钟中断后，由时钟中断服务程序更新的部分内容是\t（ ）。\nI. 内核中时钟变量的值\nII. 当前进程占用 CPU 的时间\nIII. 当前进程在时间片内的剩余执行时间",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "D",
+    "explanation": "时钟中断的主要工作是处理和时间有关的信息以及决定是否执行调度程序，和时间 有关的所有信息，包括系统时间、进程的时间片、延时、使用 CPU 的时间、各种定时器，故 Ⅰ、Ⅱ、Ⅲ均正确，选 D。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 484,
+    "source": "2019-25",
+    "year": 2019,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列关于系统调用的叙述中，正确的是\t（ ）。\nI. 在执行系统调用服务程序的过程中，CPU 处于内核态\nII. 操作系统通过提供系统调用避免用户程序直接访问外设\nIII. 不同的操作系统为应用程序提供了统一的系统调用接口\nIV. 系统调用是操作系统内核为应用程序提供服务的接口",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、III、IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "用户可以在用户态调用操作系统的服务，但执行具体的系统调用服务程序是处于内 核态的，Ⅰ正确：设备管理属于操作系统的职能之一，包括对输入/输出设备的分配、初始化、 维护等，用户程序需要通过系统调用使用操作系统的设备管理服务，Ⅱ正确:操作系统不同， 底层逻辑、实现方式均不相同，为应用程序提供的系统调用接口也不同，Ⅲ错误:系统调用是 用户在程序中调用操作系统提供的子功能，Ⅳ正确。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 485,
+    "source": "2020-25",
+    "year": 2020,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列与中断相关的操作中，由操作系统完成的是\t（ ）。\nI、保存被中断程序的中断点\nII、提供中断服务\nIII、初始化中断向量表\nIV、保存中断屏蔽字",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "中断的保存硬件和软件分别都要保存部分寄存器内容，硬件保存程序计数器 PC，操 作系统保存程序状态字 PSW，不仅仅由操作系统单独完成，Ⅰ错误。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 486,
+    "source": "2021-23",
+    "year": 2021,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列指令中，只能在内核态执行的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "trap 指令"
+      },
+      {
+        "label": "B",
+        "text": "I/O 指令"
+      },
+      {
+        "label": "C",
+        "text": "数据传送指令"
+      },
+      {
+        "label": "D",
+        "text": "设置断点指令"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在内核态下，CPU 可执行任何指令，在用户态下 CPU 只能执行非特权指令， 而 特权指令只能在内核态下执行。 常见的特权指令有： ＠有关对 I/0 设备操作的指令； ＠有关 访问程序状态的指令；＠存取特殊寄存器指令； ＠其他指令。 A、C 和 D都是提供给用户使 用的指令，可以在用户态执行，只是可能会使 CPU 从用户态切换到内核态。 故选 B。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 487,
+    "source": "2021-32",
+    "year": 2021,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列选项中，通过系统调用完成的操作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "页置换"
+      },
+      {
+        "label": "B",
+        "text": "进程调度"
+      },
+      {
+        "label": "C",
+        "text": "创建新进程"
+      },
+      {
+        "label": "D",
+        "text": "生成随机整数"
+      }
+    ],
+    "answer": "C",
+    "explanation": "系统调用是由用户进程发起的，请求操作系统的服务。 对千 A, 当内存中的空闲 页框不够时， 操作系统会 将 某些页面调出， 并将要 访问的页面调入，这个 过程完全由操作系 统完成， 不涉及系统调用 。 对千B,进程调度完全由操作系统完成， 无法通过系统调用完成 。 对于C,创建新进程可以通过系统调用来完成，如Linux 中通过fork系统调用来创建子进程 。 对千D生成随机数只需要普通的函数调用不涉及请求操作系统的服务如C语言中randomO 函数 。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 488,
+    "source": "2022-27",
+    "year": 2022,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列关于 CPU 模式的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "CPU 处于用户态时只能执行特权指令"
+      },
+      {
+        "label": "B",
+        "text": "CPU 处于内核态时只能执行特权指令"
+      },
+      {
+        "label": "C",
+        "text": "CPU 处于用户态时只能执行非特权指令"
+      },
+      {
+        "label": "D",
+        "text": "CPU 处于内核态时只能执行非特权指令"
+      }
+    ],
+    "answer": "C",
+    "explanation": "CPU在用户态时只能执行非特权指令， 在 内核态时可以执行特权指令和非特权 指令。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 489,
+    "source": "2022-31",
+    "year": 2022,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "执行系统调用的过程涉及下列操作，其中由操作系统完成的是\t（ ）。\nI. 保存断点和程序状态字\nII. 保存通用寄存器的内容\nIII. 执行系统调用服务程序\nIV. 将 CPU 模式改为内核态",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "发生系统调用时， CPU 执行陷入 (Trap) 指令，检测到 “ 内中断” 后，由 CPU 负 责保存断点 (PC) 和程序状态字，并将 CPU 模式改为内核态，然后执行操作系统内核的系统 调用入口程序， 该内核程序负责保存通用寄存器的内容， 再调用某个特定的系统调用服务例 程。 综上，I、 IV 是由硬件完成的，II、 III 是由操作系统完成的。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 490,
+    "source": "2023-24",
+    "year": 2023,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "在操作系统内核中，中断向量表适合采用的数据结构是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "数组"
+      },
+      {
+        "label": "B",
+        "text": "队列"
+      },
+      {
+        "label": "C",
+        "text": "单向链表"
+      },
+      {
+        "label": "D",
+        "text": "双向链表"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 491,
+    "source": "2023-26",
+    "year": 2023,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下列操作完成时，导致 CPU 从内核态转为用户态的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "阻塞过程"
+      },
+      {
+        "label": "B",
+        "text": "执行 CPU 调度"
+      },
+      {
+        "label": "C",
+        "text": "唤醒进程"
+      },
+      {
+        "label": "D",
+        "text": "执行系统调用"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 492,
+    "source": "2024-23",
+    "year": 2024,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "choice",
+    "stem": "下面关于中断和异常的说法中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "中断或异常发生时，CPU 处于内核态"
+      },
+      {
+        "label": "B",
+        "text": "每个系统调用都有对应的内核服务例程"
+      },
+      {
+        "label": "C",
+        "text": "中断处理程序开始执行时，CPU 处于内核态"
+      },
+      {
+        "label": "D",
+        "text": "系统添加新类型设备时，需注册相应的中断服务例程"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 493,
+    "source": "2026-23",
+    "year": 2026,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.2",
+    "sectionTitle": "操作系统的运行环境",
+    "type": "comprehensive",
+    "stem": "下列操作中，在内核模式执行的是\t（ ）\n(A) 编译程序 (B) 链接程序\n(C) 装入程序 (D) 命令解释程序",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 494,
+    "source": "2023-45",
+    "year": 2023,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.3",
+    "sectionTitle": "操作系统的结构与引导",
+    "type": "choice",
+    "stem": "现要求学生使用 swap 指令和布尔型变量 lock 实现临界区互斥。lock 为线程\n间共享的变量。lock 的值为 TRUE 时线程不能进入临界区，为 FALSE 时线程能够进入临\n界区。某同学编写的实现临界区互斥的伪代码如题 45(a) 图所示。\n(1) 题 45(a) 图中伪代码中哪些语句存在错误？将其改为正确的语句（不增加语句条数）。\n(2) 题 45(b) 图中给出了两个变量值的函数 newSwap\t（ ）的代码是否可以用函数调用语句\n“newSwap(&key, &lock)”代替指令“swap key, lock”以实现临界区的互斥？为什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 495,
+    "source": "2013-29",
+    "year": 2013,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.3",
+    "sectionTitle": "操作系统的结构与引导",
+    "type": "choice",
+    "stem": "计算机开机后，操作系统最终被加载到\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "BIOS"
+      },
+      {
+        "label": "B",
+        "text": "ROM"
+      },
+      {
+        "label": "C",
+        "text": "EPROM"
+      },
+      {
+        "label": "D",
+        "text": "RAM"
+      }
+    ],
+    "answer": "D",
+    "explanation": "-- 3 of 10 -- RAM D",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 496,
+    "source": "2022-24",
+    "year": 2022,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.3",
+    "sectionTitle": "操作系统的结构与引导",
+    "type": "choice",
+    "stem": "下列选项中，需要在操作系统进行初始化过程中创建的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "中断向量表"
+      },
+      {
+        "label": "B",
+        "text": "文件系统的根目录"
+      },
+      {
+        "label": "C",
+        "text": "硬盘分区表"
+      },
+      {
+        "label": "D",
+        "text": "文件系统的索引节点表"
+      }
+    ],
+    "answer": "A",
+    "explanation": "在 操作系统初始化的过程中需要创建中断向量表 ，用千实现 “ 中断处理” ,CPU 检测到中断信号后， 根据中断号查询中断向量表 ， 跳转到对应的中断处理程序，A 正确。 当 硬盘被逻辑格式化时， 需要对硬盘进行分区， 即创建硬盘分区表。 分区完成后， 需要在 每个 分区初始化一 个特定的文件系统， 并创建文件系统的根目录。如果某个分区采用 Unix文件系 统( UFS)， 则还要在 该分区中建立文件系统的索引结点表。 综上，C 是在 硬盘逻辑格式化的 过程中完成的， B、 D 是在 初始化文件系统的过程中完成的。",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 497,
+    "source": "2025-24",
+    "year": 2025,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.3",
+    "sectionTitle": "操作系统的结构与引导",
+    "type": "comprehensive",
+    "stem": "关于虚拟化技术，下列说法错误的是\t（ ）。\n(A) 操作系统可以在虚拟机上运行\n(B) 一台主机可以支持多个虚拟机\n(C) VMM 与操作系统特权级相同\n(D) 通过虚拟机技术，可以用一台主机上模拟多种 ISA",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 498,
+    "source": "2021-46",
+    "year": 2021,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.1.3",
+    "sectionTitle": "操作系统的结构与引导",
+    "type": "comprehensive",
+    "stem": "某计算机用硬盘作为启动盘，硬盘第一个扇区存放主引导记录，其中包含磁\n盘引导程序和分区表。磁盘引导程序用于选择要引导哪个分区的操作系统，分区表记录硬\n盘上各分区的位置等描述信息。硬盘被划分成若干个分区，每个分区的第一个扇区存放分\n区引导程序，用于引导该分区中的操作系统。系统采用多阶段引导方式，除了执行磁盘引\n导程序和分区引导程序外，还需要执行 ROM 中的引导程序。请回答下列问题。\n(1) 系统启动过程中操作系统的初始化程序、分区引导程序、ROM 中的引导程序、磁盘引\n导程序的执行顺序是什么？\n(2) 把硬盘制作为启动盘时，需要完成操作系统的安装、磁盘的物理格式化、逻辑格式化、\n对磁盘进行分区，执行这 4 个操作的正确顺序是什么？\n(3) 磁盘扇区的划分和文件系统根目录的建立分别是在第 (2) 问的哪个操作中完成的？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/01-overview"
+  },
+  {
+    "id": 499,
+    "source": "2009-23",
+    "year": 2009,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "单处理机系统中，可并行的是\t（ ）。\nI. 进程与进程 II. 处理机与设备 III. 处理机与通道 IV. 设备与设备",
+    "options": [
+      {
+        "label": "A",
+        "text": "I、II、III"
+      },
+      {
+        "label": "B",
+        "text": "I、II、IV"
+      },
+      {
+        "label": "C",
+        "text": "I、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 500,
+    "source": "2010-24",
+    "year": 2010,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列选项中，导致创建新进程的操作是\t（ ）。\nI. 用户登录成功 II. 设备分配 III. 启动程序执行",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I 和 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II 和 III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I 和 III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 501,
+    "source": "2011-25",
+    "year": 2011,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "在支持多线程的系统中，进程 P 创建的若干线程不能共享的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "进程 P 的代码段"
+      },
+      {
+        "label": "B",
+        "text": "进程 P 中打开的文件"
+      },
+      {
+        "label": "C",
+        "text": "进程 P 的全局变量"
+      },
+      {
+        "label": "D",
+        "text": "进程 P 中某线程的栈指针"
+      }
+    ],
+    "answer": "D",
+    "explanation": "进程中某线程的栈指针，对其它线程透明，不能与其它线程共享。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 502,
+    "source": "2012-31",
+    "year": 2012,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列关于进程和线程的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "不管系统是否支持线程，进程都是资源分配的基本单位"
+      },
+      {
+        "label": "B",
+        "text": "线程是资源分配的基本单位，进程是调度的基本单位"
+      },
+      {
+        "label": "C",
+        "text": "系统级线程和用户级线程的切换都需要内核的支持"
+      },
+      {
+        "label": "D",
+        "text": "同一进程中的各个线程拥有各自不同的地址空间"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查进程与线程的区别与联系。在用户级线程中，有关线程管理的所有工作都由应 用程序完成，无需内核的干预，内核意识不到线程的存在。关于进程和线程的其他区别见下 表所示：",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 503,
+    "source": "2014-26",
+    "year": 2014,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "一个进程的读磁盘操作完成后，操作系统针对该进程必做的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "修改进程状态为就绪态"
+      },
+      {
+        "label": "B",
+        "text": "降低进程优先级"
+      },
+      {
+        "label": "C",
+        "text": "给进程分配用户内存空间"
+      },
+      {
+        "label": "D",
+        "text": "增加进程时间片大小"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 504,
+    "source": "2014-31",
+    "year": 2014,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列关于管道（Pipe）通信的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "一个管道可实现双向数据传输"
+      },
+      {
+        "label": "B",
+        "text": "管道的容量仅受磁盘容量大小限制"
+      },
+      {
+        "label": "C",
+        "text": "进程对管道进行读操作和写操作都可能被阻塞"
+      },
+      {
+        "label": "D",
+        "text": "一个管道只能有一个读进程或一个写进程对其操作"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 505,
+    "source": "2018-25",
+    "year": 2018,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "属于同一进程的两个线程 thread1 和 thread2 并发执行，共享初值为 0 的全局\n变量 x。thread1 和 thread2 实现对全局变量 x 加 1 的机器级代码描述如下：\nthread1\nmov R1 , x // (x) → R1\ninc R1 // (R1) + 1 → R1\nmov x, R1 // (R1) → x\nthread2\nmov R2 , x // (x) → R2\ninc R2 // (R2) + 1 → R2\nmov x, R2 // (R2) → x\n在所有可能的指令执行序列中，使 x 的值为 2 的序列个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "-- 3 of 8 -- 【解析】仔细阅读两个线程代码可知，thread1 和 thread2 均是对 x 进行加 1 操作，x 初始值 为 0，若要使得最终 x=2，只有先执行 thread1 再执行 thread2，或先执行 thread2 再执行 thread1，故只有 2 种可能，选 B。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 506,
+    "source": "2018-27",
+    "year": 2018,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列选项中，可能导致当前进程 P 阻塞的事件是\t（ ）。\nI. 进程 P 申请临界资源\nII. 进程 P 从磁盘读数据\nIII. 系统将 CPU 分配给高优先级的进程",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Ⅰ、Ⅱ都是申请资源的，容易发生阻塞，Ⅲ只会让进程进入就绪队列，等高优先级的 进程退出 CPU 时 P 仍可获得 CPU。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 507,
+    "source": "2019-23",
+    "year": 2019,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列关于线程的描述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "内核级线程的调度由操作系统完成"
+      },
+      {
+        "label": "B",
+        "text": "操作系统为每个用户级线程建立一个线程控制块"
+      },
+      {
+        "label": "C",
+        "text": "用户级线程间的切换比内核级线程间的切换效率高"
+      },
+      {
+        "label": "D",
+        "text": "用户级线程可以在不支持内核级线程的操作系统上实现"
+      }
+    ],
+    "answer": "B",
+    "explanation": "应用程序没有进行线程管理的代码，只有一个到内核级线程的编程接口，内核为进 程及其内部的每个线程维护上下文信息，调度也是在内核中由操作系统完成的，选项 A 正确。 在多线程模型中，用户级线程和内核级线程的连接方式分为多对一、一对一、多对多，“操作 系统为每个用户线程建立一个线程控制块”属于一对一模型，选项 B 错误。用户级线程的切 换可以在用户空间完成，内核级线程的切换需要操作系统帮助进行调度，故用户级线程的切 换效率更高，选项 C 正确。用户级线程的管理工作可以只在用户空间中进行，故可以在不支 持内核级线程的操作系统上实现，选项 D 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 508,
+    "source": "2020-29",
+    "year": 2020,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列关于父进程与子进程的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "父进程与子进程可以并发执行"
+      },
+      {
+        "label": "B",
+        "text": "父进程与子进程共享虚拟地址空间"
+      },
+      {
+        "label": "C",
+        "text": "父进程与子进程有不同的进程控制块"
+      },
+      {
+        "label": "D",
+        "text": "父进程与子进程不能同时使用同一临界资源"
+      }
+    ],
+    "answer": "B",
+    "explanation": "父进程可以和子进程共享一部分共享资源，但是不和子进程共享虚拟地址空间，在 创建子进程时，会为子进程分配空闲的进程描述符、唯一标识的 pid 等，B 错误。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 509,
+    "source": "2021-24",
+    "year": 2021,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列操作中，操作系统在创建新进程时，必须完成的是\t（ ）。\nI. 申请空白的进程控制块\nII. 初始化进程控制块\nIII. 设置进程状态为执行态",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "操作系统感知进程的唯一方式是通过进程控制块 PCB, 所以创建一个新进程时就 是为其申请一个空白的进程控制块，并初始化一 些必要的进程信息，如初始化进程标志信息、 初始化处理机状态信息、 设置进程优先级等。I、 II 正确。 创建一个进程时， 一般会为其分配 除 CPU 外的大多数资源， 所以一 般 是将其设置为就绪态，让其等待调度程序的调度。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 510,
+    "source": "2022-28",
+    "year": 2022,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列事件或操作中，可能导致进程 P 由执行态变为阻塞态的是\t（ ）。\nI. 进程 P 读文件\nII. 进程 P 的时间片用完\nIII. 进程 P 申请外设\nIV. 进程 P 执行信号量的 wait\t（ ）操作",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "进程P读文件时， 进程从执行态进入阻塞态， 等待磁盘I/0完成，I正确。 进程P",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 511,
+    "source": "2023-27",
+    "year": 2023,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列出当前线程引起的事件或执行的操作中，可能导致该线程由执行态变为\n就绪态的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "键盘输入"
+      },
+      {
+        "label": "B",
+        "text": "缺页异常"
+      },
+      {
+        "label": "C",
+        "text": "主动出让 CPU"
+      },
+      {
+        "label": "D",
+        "text": "执行信号量的 wait\t（ ）操作"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 512,
+    "source": "2024-24",
+    "year": 2024,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "下列选项中，操作系统在终止进程时不一定执行的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "终止子进程"
+      },
+      {
+        "label": "B",
+        "text": "回收分配的内存资源"
+      },
+      {
+        "label": "C",
+        "text": "撤销进程 PCB"
+      },
+      {
+        "label": "D",
+        "text": "回收进程占用的设备"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 513,
+    "source": "2024-28",
+    "year": 2024,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "choice",
+    "stem": "若进程 P 中有一个线程 T，打开文件后获得 fd，再创建线程 Ta、Tb，则线程\nTa、Tb 可共享的资源是\t（ ）。\nI. 进程 P 的地址空间\nII. 线程 T 的栈\nIII. fd",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 514,
+    "source": "2026-25",
+    "year": 2026,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "comprehensive",
+    "stem": "下列关于线程的描述中，正确的是\t（ ）\n(A) 内核级线程和用户级线程都由操作系统创建\n(B) 多个内核级线程可以映射到一个用户级线程\n(C) 同一个进程下的多个内核级线程共享进程栈\n(D) 同一个进程下的多个线程共享进程堆",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 515,
+    "source": "2023-46",
+    "year": 2023,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "comprehensive",
+    "stem": "进程 P 通过执行系统调用从键盘接收一个字符的输入，已知此过程中与进程\nP 相关的操作包括：¨将进程 P 插入就绪队列；≠将进程 P 插入阻塞队列；Æ将字符从键盘\n控制器读入系统缓冲区；Ø启动键盘中断处理程序；∞进程 P 从系统调用返回；±用户在键\n盘上输入字符。以上编号¨~±仅用于标记操作，与操作的先后顺序无关。请回答下列问题。\n(1) 按照正确的操作顺序，操作¨的前一个和后一个操作分别是上述操作中的哪一个？操\n作±的后一个操作上述操作中的哪一个？\n(2) 在上述哪个操作之后 CPU 一定从进程 P 切换到其他进程？在上述哪个操作之后 CPU\n调度程序才能选择进程 P 执行？\n(3) 完成上述哪个操作的代码属于键盘驱动程序？\n(4) 键盘中断处理程序执行时，进程 P 处于什么状态？CPU 处于内核态还是用户态？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 516,
+    "source": "2025-46",
+    "year": 2025,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.1",
+    "sectionTitle": "进程与线程",
+    "type": "comprehensive",
+    "stem": "某进程的虚拟地址空间如图，阴影部分为未占用区域，有 C 程序：\nchar * ptr ;\nvoid main () {\nint length ;\nptr =( char *) malloc (100) ;\nscanf (\"%s\", ptr );\nlength = strlen ( ptr );\nprintf (\" length =%d\\n\", length );\nfree ( ptr ) ;\n}\n(1) 上述程序执行时，PCB 位于哪个区域，执行 scanf（ ）等待键盘输入时，该进程处于\n什么状态？\n(2) main\t（ ）函数的代码位于哪个区域？其直接调用的哪些函数的功能需要通过执行驱动\n程序实现？\n(3) 变量 ptr 被分配在哪个区域？若变量 length 没有被分配在寄存器中，则会被分配在哪个\n区域？ptr 指向的字符串位于哪个区域？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 517,
+    "source": "2009-24",
+    "year": 2009,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列进程调度算法中，综合考虑进程等待时间和执行时间的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "时间片轮转调度算法"
+      },
+      {
+        "label": "B",
+        "text": "短进程优先调度算法"
+      },
+      {
+        "label": "C",
+        "text": "先来先服务调度算法"
+      },
+      {
+        "label": "D",
+        "text": "高响应比优先调度算法"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 518,
+    "source": "2010-26",
+    "year": 2010,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列选项中，降低进程优先级的合理时机是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "进程时间片用完"
+      },
+      {
+        "label": "B",
+        "text": "进程刚完成 I/O 操作，进入就绪队列"
+      },
+      {
+        "label": "C",
+        "text": "进程长期处于就绪队列"
+      },
+      {
+        "label": "D",
+        "text": "进程从就绪状态转为运行状态"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 519,
+    "source": "2011-23",
+    "year": 2011,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列选项中，满足短任务优先且不会发生饥饿现象的调度算法是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "先来先服务"
+      },
+      {
+        "label": "B",
+        "text": "高响应比优先"
+      },
+      {
+        "label": "C",
+        "text": "时间片轮转"
+      },
+      {
+        "label": "D",
+        "text": "非抢占式短任务优先"
+      }
+    ],
+    "answer": "B",
+    "explanation": "响应比=作业响应时间/作业执行时间 =(作业执行时间+作业等待时间)/作业执 行时间。高响应比算法，在等待时间相同情况下，作业执行时间越少，响应比越高，优先执 行，满足短任务优先。随着等待时间增加，响应比也会变大，执行机会就增大，所以不会产 生饥饿现象。先来先服务和时间片轮转不符合短任务优先，非抢占式短任务优先会产生饥饿 现象。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 520,
+    "source": "2012-29",
+    "year": 2012,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "一个多道批处理系统中仅有 P1 和 P2 两个作业，P2 比 P1 晚 5ms 到达，它们\n的计算和 I/O 操作顺序如下：\nP1 ：计算 60ms，I/O 80ms，计算 20ms\nP2 ：计算 120ms，I/O 40ms，计算 40ms\n若不考虑调度和切换时间，则完成两个作业需要的时间最少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "240ms"
+      },
+      {
+        "label": "B",
+        "text": "260ms"
+      },
+      {
+        "label": "C",
+        "text": "340ms"
+      },
+      {
+        "label": "D",
+        "text": "360ms"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查批处理系统的性能计算。由于 P2 比 P1 晚 5ms 到达，P1 先占用 CPU，作业运行的甘特 图如下：",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 521,
+    "source": "2012-30",
+    "year": 2012,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "若某单处理器多进程系统中有多个就绪态进程，则下列关于处理机调度的叙\n述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "在进程结束时能进行处理机调度"
+      },
+      {
+        "label": "B",
+        "text": "创建新进程后能进行处理机调度"
+      },
+      {
+        "label": "C",
+        "text": "在进程处于临界区时不能进行处理机调度"
+      },
+      {
+        "label": "D",
+        "text": "在系统调用完成并返回用户态时能进行处理机调度"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查处理机调度的时机。选项 A、B、D 显然是可以进行处理机调度的情况。对于 C， 当进程处于临界区时，说明进程正在占用处理机，只要不破坏临界资源的使用规则，是不会 影响处理机调度的，比如，通常访问临界资源可能是慢速的外设（如打印机），如果在进程访 问打印机时，不能处理机调度，那么系统的性能将是非常低的。几种不适合进行处理机调度 的情况：①在处理中断的过程中；②进程在操作系统内核程序临界区中；③其他需要完全屏 蔽中断的原子操作过程中。 -- 7 of 12 -- 进程 \t线程 资源分配 \t进程是资源分配和拥有的基本单位 \t线程自己基本不拥有系统资源，但它可访问所属 进程所拥有的全部资源。 调度 \t在没有引入线程的操作系统中，进程是独 立调度和分派的基本单位。 引入线程后的操作系统中，线程是独立调度和分 派的基本单位。 地址空间 \t进程的地址空间之间互相独立。 \t同一进程的各线程间共享进程的地址空间。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 522,
+    "source": "2013-31",
+    "year": 2013,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "某系统正在执行三个进程 P1 、P2 和 P3 ，各进程的计算 (CPU) 时间和 I/O 时\n间比例如下表所示。\n进程 计算时间 I/O 时间\nP1 90% 10%\nP2 50% 50%\nP3 15% 85%\n为提高系统资源利用率，合理的进程优先级设置应为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "P1 > P2 > P3"
+      },
+      {
+        "label": "B",
+        "text": "P3 > P2 > P1"
+      },
+      {
+        "label": "C",
+        "text": "P2 > P1 = P3"
+      },
+      {
+        "label": "D",
+        "text": "P1 > P2 = P3"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 523,
+    "source": "2014-23",
+    "year": 2014,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列调度算法中，不可能导致饥饿现象的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "时间片轮转"
+      },
+      {
+        "label": "B",
+        "text": "静态优先数调度"
+      },
+      {
+        "label": "C",
+        "text": "非抢占式短作业优先"
+      },
+      {
+        "label": "D",
+        "text": "抢占式短作业优先"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 524,
+    "source": "2015-25",
+    "year": 2015,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列选项中，会导致进程从执行态变为就绪态的事件是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "执行 P(wait) 操作"
+      },
+      {
+        "label": "B",
+        "text": "申请内存失败"
+      },
+      {
+        "label": "C",
+        "text": "启动 I/O 设备"
+      },
+      {
+        "label": "D",
+        "text": "被高优先级进程抢占"
+      }
+    ],
+    "answer": "D",
+    "explanation": "P(wait)操作表示进程请求某一资源，A、B 和 C 都因为请求某一资源会进入阻塞态， 而 D 只是被剥夺了处理机资源，进入就绪态，一旦得到处理机即可运行。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 525,
+    "source": "2016-24",
+    "year": 2016,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "某单 CPU 系统中有输入和输出设备各 1 台，现有 3 个并发执行的作业，每\n个作业的输入、计算和输出时间均分别为 2ms，3ms 和 4ms，且都按输入、计算和输出的\n顺序执行，则执行完 3 个作业需要的时间最少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "15ms"
+      },
+      {
+        "label": "B",
+        "text": "17ms"
+      },
+      {
+        "label": "C",
+        "text": "22ms"
+      },
+      {
+        "label": "D",
+        "text": "27ms"
+      }
+    ],
+    "answer": "B",
+    "explanation": "这类调度题目最好画图。因 CPU、输入设备、输出设备都只有一个，因此各操作步 骤不能重叠，画出运行时的甘特图后就能清楚地看到不用作业的时序关系，如下表所示： 作业/时间 \t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10 \t11 \t12 \t13 \t14 \t15 \t16 \t17",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 526,
+    "source": "2017-23",
+    "year": 2017,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "假设 4 个作业到达系统的时刻和运行时间如下表所示。\n作业 达到时刻 t 运行时间\nJ1 0 3\nJ2 1 3\nJ3 1 2\nJ4 3 1\n系统在 t=2 时开始作业调度。若分别采用先来先服务和短作业优先调度算法，则选中的作\n业分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "J2 、J3"
+      },
+      {
+        "label": "B",
+        "text": "J1 、J4"
+      },
+      {
+        "label": "C",
+        "text": "J2 、J4"
+      },
+      {
+        "label": "D",
+        "text": "J1 、J3"
+      }
+    ],
+    "answer": "D",
+    "explanation": "先来先服务调度算法是作业来得越早，优先级越高，因此会选择 J1。短作业优先调 度算法是作业运行时间越短，优先级越高，因此会选择 J3。所以选项 D 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 527,
+    "source": "2017-27",
+    "year": 2017,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列有关基于时间片的进程调度的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "时间片越短，进程切换的次数越多，系统开销也越大"
+      },
+      {
+        "label": "B",
+        "text": "当前进程的时间片用完后，该进程状态由执行态变为阻塞态"
+      },
+      {
+        "label": "C",
+        "text": "时钟中断发生后，系统会修改当前进程在时间片内的剩余时间"
+      },
+      {
+        "label": "D",
+        "text": "影响时间片大小的主要因素包括响应时间、系统开销和进程数量等"
+      }
+    ],
+    "answer": "B",
+    "explanation": "进程切换带来系统开销，切换次数越多，开销越大，选项 A 正确。当前进程的时间 片用完后它的状态由执行态变为就绪态，选项 B 错误。时钟中断是系统中特定的周期性时钟 节拍。操作系统通过它来确定时间间隔，实现时间的延时和任务的超时，选项 C 正确。现代 操作系统为了保证性能最优，通常根据响应时间、系统开销、进程数量、进程运行时间、进程 切换开销等因素确定时间片大小，选项 D 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 528,
+    "source": "2018-24",
+    "year": 2018,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "某系统采用基于优先权的非抢占式进程调度策略，完成一次进程调度和进程\n切换的系统时间开销为 1us。在 T 时刻就绪队列中有 3 个进程 P1、P2 和 P3，其在就绪队\n列中的等待时间、需要的 CPU 时间和优先权如下表所示。若优先权值大的进程优先获得\nCPU，从 T 时刻起系统开始进程调度，则系统的平均周转时间为\t（ ）。\n进程 等待时间 需要的 CPU 时间 优先级\nP1 30us 12us 10\nP2 15us 24us 30\nP3 18us 36us 20",
+    "options": [
+      {
+        "label": "A",
+        "text": "54us"
+      },
+      {
+        "label": "B",
+        "text": "73us"
+      },
+      {
+        "label": "C",
+        "text": "74us"
+      },
+      {
+        "label": "D",
+        "text": "75us"
+      }
+    ],
+    "answer": "D",
+    "explanation": "进程运行的顺序为 P2、P3、P1，P2 的周转时间为 15μs+1μs+24μs =40μs，P3 的周 转时间为（18+1+24+1+36）μs=80μs，P1 的周转时间为（30+1+24+1+36+1+12）μs=105μs， 系统的平均周转时间为 75μs。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 529,
+    "source": "2019-24",
+    "year": 2019,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列选项中，可能将进程唤醒的事件是\t（ ）。\nI.I/O 结束\nII. 某进程退出临界区\nIII. 当前进程的时间片用完",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "当被阻塞进程等待的某资源为可用时，进程将会被唤醒。I/O 结束后，等待该 I/O 结 束而被阻塞的有关进程就会被唤醒，Ⅰ正确；某进程退出临界区后，之前因需要进入该临界 区而被阻塞的有关进程就会被唤醒，Ⅱ正确，当前进程的时间片用完后进入就绪队列等待重 新调度，优先级最高的进程将获得处理机资源从就绪态变成执行态，Ⅲ错误。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 530,
+    "source": "2019-27",
+    "year": 2019,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "系统采用二级反馈队列调度算法进行进程调度。就绪队列 Q1 采用时间片轮\n转调度算法，时间片为 10ms；就绪队列 Q2 采用短进程优先调度算法；系统优先调度 Q1\n队列中的进程，当 Q1 为空时系统才会调度 Q2 中的进程；新创建的进程首先进入 Q1;Q1\n中的进程执行一个时间片后，若未结束，则转入 Q2。若当前 Q1，Q2 为空，系统依次创建\n进程 P1，P2 后即开始进程调度，P1,P2 需要的 CPU 时间分别为 30ms 和 20ms，则进程 P1，\nP2 在系统中的平均等待时间为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "25ms"
+      },
+      {
+        "label": "B",
+        "text": "20ms"
+      },
+      {
+        "label": "C",
+        "text": "15ms"
+      },
+      {
+        "label": "D",
+        "text": "10ms"
+      }
+    ],
+    "answer": "C",
+    "explanation": "进程 P1、P2 依次创建后进入队列 Q1，根据时间片调度算法的规则，进程 P1、P2 将依次被分配 10m 的 CPU 时间，两个进程分别执行完一个时间片后都会被转入队列 Q2，就 绪队列 Q2 采用短进程优先调度算法，此时 P1 还需要 20ms 的 CPU 时间，P2 还需要 10ms 的 CPU 时间，所以 P2 会被优先调度执行，10ms 后进程 P2 执行完成，之后 P1 再调度执 行，再过 20ms 后 P1 也执行完成。平均等待时间= (P1 等待时间+P2 等待时间)/2 = (20+10)/2 =15。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 531,
+    "source": "2020-26",
+    "year": 2020,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列与进程调度有关的因素中，在设计多级反馈队列调度算法时需要考虑的\n是\t（ ）。\nI. 就绪队列的数量\nII. 就绪队列的优先级\nIII. 各就绪队列的调度算法\nIV. 进程在就绪队列间的迁移条件",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III 和 IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "多级反馈队列调度需要综合考虑优先级数量、优先级之间的转换规则等，Ⅰ,Ⅱ,Ⅲ,Ⅳ -- 3 of 8 -- 均正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 532,
+    "source": "2021-25",
+    "year": 2021,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列内核的数据结构或程序中，分时系统实现时间片轮转调度需要使用的\n是\t（ ）。\nI. 进程控制块\nII. 时钟中断处理程序\nIII. 进程就绪队列\nIV. 进程阻塞队列",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、II、IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "在分时系统的时间片轮转调度中，当系统检测到时钟中断时，会引出时钟中断处 理程序， 调度程序从就绪队列中选择一个进程为其分配时间片， 并修改该进程的进程控制块 中的进程状态等信息 ， 同时将时间片用完的进程放入就绪队列或让其结束运行。 I 、 II、 III 正 确。 阻塞队列中的进程只有被唤醒进入就绪队列后， 才能参与 调度， 所以该调度过程不 使用 阻塞队列。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 533,
+    "source": "2021-27",
+    "year": 2021,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "下列事件中，可能引起进程调度程序执行的是\t（ ）。\nI. 中断处理结束\nII. 进程阻塞\nIII. 进程执行结束\nIV. 进程的时间片用完",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "在时间片调度算法中， 中断处理结束后， 系统检测当前进程的时间片是否用完， 如果用完，则将其设为就绪态或让其结束运行， 若就绪队列不空， 则调度就绪队列的队首进 程执行，I 可能。当前进程阻塞时，将其放入阻塞队列，若就绪队列不空，则调度新进程执行， II 可能。 进程执行结束会导致当前进程释放 CPU, 并从就绪队列中选择一个进程获得 CPU, III 可能。 进程时间片用完，会导致当前进程让出 CPU, 同时选择就绪队列的队首进程获得 CPU, IV 可能。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 534,
+    "source": "2022-25",
+    "year": 2022,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "进程 P0、P1、P2 和 P3 进入就绪队列的时刻、优先级（值越小优先权越高）\n及 CPU 执行时间如下表所示。\n进程 进入就绪队列的时刻 优先级 CPU 执行时间\nP0 0 ms 15 100 ms\nP1 10 ms 20 60 ms\nP2 10 ms 10 20 ms\nP3 15 ms 6 10 ms\n若系统采用基于优先权的抢占式进程调度算法，则从 0ms 时刻开始调度，到 4 个进程都运\n行结束为止，发生进程调度的总次数为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "5"
+      },
+      {
+        "label": "C",
+        "text": "6"
+      },
+      {
+        "label": "D",
+        "text": "7"
+      }
+    ],
+    "answer": "C",
+    "explanation": "0 时刻调度进程PO获得CPU; !Oms时P2 进入就绪队列， 调度P2抢占获得CPU; 15ms时P3 进入就绪队列，调度P3抢占获得CPU;25ms时P3执行完毕，调度P2获得CPU: 40ms时P2执行完毕， 调度PO获得CPU; 130ms时P2执行完毕， 调度Pl获得CPU; 190ms 时P2执行完毕， 结束；总共调度6次。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 535,
+    "source": "2023-29",
+    "year": 2023,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "进程 P1、P2 和 P3 进入就绪队列的时刻，优先值（越大优先权越高）以及\nCPU 的执行时间如下表所示。\n进程名 进入就绪队列的时刻 优先级 CPU 执行时间\nP1 0 ms 1 60 ms\nP2 20 ms 10 42 ms\nP3 30 ms 100 13 ms\n系统采用基于优先权的抢占式 CPU 调度算法，从 0ms 时刻开始进行调度，则 P1、P2 和\nP3 的平均周转时间为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "60 ms"
+      },
+      {
+        "label": "B",
+        "text": "61 ms"
+      },
+      {
+        "label": "C",
+        "text": "70 ms"
+      },
+      {
+        "label": "D",
+        "text": "71 ms"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 536,
+    "source": "2024-30",
+    "year": 2024,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "choice",
+    "stem": "假设某系统使用时间片轮转调度算法进行 CPU 调度，时间片大小为 5 ms，\n系统共有 10 个进程，初始时均处于就绪队列，执行结束前仅处于执行态或就绪态。若队\n尾的进程 P 所需 CPU 时间最短，时间为 25 ms。在不考虑系统开销的情况下，则进程 P 的\n周转时间为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "200ms"
+      },
+      {
+        "label": "B",
+        "text": "205ms"
+      },
+      {
+        "label": "C",
+        "text": "250ms"
+      },
+      {
+        "label": "D",
+        "text": "295ms"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 537,
+    "source": "2025-25",
+    "year": 2025,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "comprehensive",
+    "stem": "在优先权调度中，采用单链表保存进程就绪队列，高优先级进程在队头。若\n就绪队列长度为 n，则插入进程、选出进程的时间复杂度为\t（ ）。\n(A) O(1),O(1) (B) O(1),O(n) (C) O(n),O(1) (D) O(n),O(n)",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 538,
+    "source": "2016-46",
+    "year": 2016,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.2",
+    "sectionTitle": "处理机调度",
+    "type": "comprehensive",
+    "stem": "某进程调度程序采用基于优先数 (priority) 的调度策略，即选择优先数最小\n的进程运行，进程创建时由用户指定一个 nice 作为静态优先数。为了动态调整优先数，引\n入运行时间 cpuTime 和等待时间 waitTime，初值均为 0。进程处于执行态时，cpuTime 定\n时加 1，且 waitTime 置 0；进程处于就绪态时，cpuTime 置 0，waitTime 定时加 1。请回答\n下列问题。\n(1) 若调度程序只将 nice 的值作为进程的优先数，即 priority=nice，则可能会出现饥饿现象，\n为什么？\n(2) 使用 nice、cpuTime 和 waitTime 设计一种动态优先数计算方法，以避免产生饥饿现象，\n并说明 waitTime 的作用。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 539,
+    "source": "2026-45",
+    "year": 2026,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "（本题满分 7 分）系统采用优先级（优先级越大表示优先级越高）与时间片\n轮转调度算法，仅当发生时钟中断时才触发抢占 CPU 操作，时钟中断间隔为 10 ms。进程\n首次进入就绪队列时，其时间片为 50 ms。若进程因时间片用完而返回就绪队列，其优先\n级值减 1；若进程被更高优先级进程抢占而返回就绪队列，其优先级值保持不变。当多个\n进程优先级相同时，先进入就绪队列的进程优先被调度。四个进程的到达时刻、初始优先\n级与 CPU 运行时间如下表所示：\n进程 到达就绪队列时间（ms） 优先级 CPU 运行时间（ms）\nP1 10 3 95\nP2 10 4 20\nP3 12 2 40\nP4 14 5 60\n（1）从 10 ms 开始进程调度，直至所有进程调度结束，此时中断次数与 CPU 调度次数分别\n为多少？P1、P2、P3、P4 各自的首次调度发生在哪个时刻？（5 分）\n（2）若时间片由 50 ms 改为 100 ms，CPU 调度次数将增大、不变还是减少？若时钟中断间\n隔由 10 ms 改为 1 ms，系统开销将增大、不变还是减少？（2 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 540,
+    "source": "2010-25",
+    "year": 2010,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "设与某资源关联的信号量初值为 3，当前值为 1。若 M 表示该资源的可用个\n数，N 表示等待该资源的进程数，则 M、N 分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0、1"
+      },
+      {
+        "label": "B",
+        "text": "1、0"
+      },
+      {
+        "label": "C",
+        "text": "1、2"
+      },
+      {
+        "label": "D",
+        "text": "2、0"
+      }
+    ],
+    "answer": "B",
+    "explanation": "26. A 27. D 28. B 29. B 30. C 31. C 32. B",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 541,
+    "source": "2010-27",
+    "year": 2010,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "进程 P0 和 P1 的共享变量定义及其初值为\nboolean flag [2];\nint turn = 0;\nflag [0] = FALSE ;\nflag [1] = FALSE ;\n若进程 P0 和 P1 访问临界资源的类 C 伪代码实现如下：\n进程 P0\nvoid P0 () {\nwhile ( TRUE ) {\nflag [0] = TRUE ;\nturn = 1;\nwhile ( flag [1] && ( turn == 1));\n临 界 区 ；\nflag [0] = FALSE ;\n}\n}\n进程 P1\nvoid P1 () {\nwhile ( TRUE ) {\nflag [1] = TRUE ;\nturn = 0;\nwhile ( flag [0] && ( turn == 0));\n临 界 区 ；\nflag [1] = FALSE ;\n}\n}\n则并发执行进程 P0 和 P1 时产生的情形是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "不能保证进程互斥进入临界区，会出现“饥饿”现象"
+      },
+      {
+        "label": "B",
+        "text": "不能保证进程互斥进入临界区，不会出现“饥饿”现象"
+      },
+      {
+        "label": "C",
+        "text": "能保证进程互斥进入临界区，会出现“饥饿”现象"
+      },
+      {
+        "label": "D",
+        "text": "能保证进程互斥进入临界区，不会出现“饥饿”现象"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 542,
+    "source": "2011-32",
+    "year": 2011,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "有两个并发执行的进程 P1 和 P2，共享初值为 1 的变量 x。P1 对 x 加 1，P2\n对 x 减 1。加 1 和减 1 操作的指令序列分别如下所示。\nP1 // 加 1 操 作\nload R1 , x // 取 x 到 寄 存 器 R1 中\ninc R1\nstore x, R1 // 将 R1 的 内 容 存 入 x\nP2 // 减 1 操 作\nload R2 , x // 取 x 到 寄 存 器 R2 中\ndec R2\nstore x, R2 // 将 R2 的 内 容 存 入 x\n两个操作完成后，x 的值\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "可能为 -1 或 3"
+      },
+      {
+        "label": "B",
+        "text": "只能为 1"
+      },
+      {
+        "label": "C",
+        "text": "可能为 0、1 或 2"
+      },
+      {
+        "label": "D",
+        "text": "可能为 -1、0、1 或 2"
+      }
+    ],
+    "answer": "C",
+    "explanation": "将P1中3条语句变为1,2,3，P2中3条语句编为4，5，6。则依次执行1,2,3,4,5 得结果1，依次执行1,2,4,5,6,3得结果2，执行4，5，1，2，3，6得结果0。结果-1不可能得 出，选C。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 543,
+    "source": "2016-27",
+    "year": 2016,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "使用 TSL (Test and Set Lock) 指令实现进程互斥的伪代码如下所示。\ndo {\n...\nwhile ( TSL (& lock ));\ncritical section ;\nlock = FALSE ;\n...\n} while ( TRUE );\n下列与该实现机制相关的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "退出临界区的进程负责唤醒阻塞态进程"
+      },
+      {
+        "label": "B",
+        "text": "等待进入临界区的进程不会主动放弃 CPU"
+      },
+      {
+        "label": "C",
+        "text": "上述伪代码满足“让权等待”的同步准则"
+      },
+      {
+        "label": "D",
+        "text": "while (TSL(&lock)) 应在关中断状态下执行"
+      }
+    ],
+    "answer": "B",
+    "explanation": "当进程退出临界区时置 lock 为 FALSE，会负责唤醒处于就绪状态的进程，A 错误。 若等待进入临界区的进程会直停留在执行 while(TSL(&lock))的循环中，不会主动放弃 CPU， B 正确。让权等待，即当进程不能进入临界区时，应立即释放处理器，防止进程忙等待。通过 B 选 项 的 公 析 中 发 现 上 述 伪 代 码 并 不 满 足 “ 让 权 等 待 ” 的 同 步 准 则 ， C 错 误 。 若 while(TSL(&lock))在关中断状状态下执行，当 TSL(&lock)一直为 true 时，不再开中断，则系 统可能会因此终止，D 错误。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 544,
+    "source": "2016-30",
+    "year": 2016,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "进程 P1 和 P2 均包含并发执行的线程，部分伪代码描述如下所示。\n进程 P1\nint x = 0;\nThread1 ()\n{\nint a;\na = 1; x += 1;\n}\nThread2 ()\n{\nint a;\na = 2; x += 2;\n}\n进程 P2\nint x = 0;\nThread3 ()\n{\nint a;\na = x; x += 3;\n}\nThread4 ()\n{\nint b;\nb = x; x += 4;\n}\n下列选项中，需要互斥执行的操作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "a=1 与 a=2"
+      },
+      {
+        "label": "B",
+        "text": "a=x 与 b=x"
+      },
+      {
+        "label": "C",
+        "text": "x+=1 与 x+=2"
+      },
+      {
+        "label": "D",
+        "text": "x+=1 与 x+=3"
+      }
+    ],
+    "answer": "C",
+    "explanation": "P1 中对 a 进行赋值，并不影响最终的结果，故 a=1 与 a=2 不需要互斥执行；a=x 与 b=x 执行先后不影响 a 与 b 的结果，无须互斥执行；x+=1 与 x+=2 执行先后会影响 x 的结果， 需要互斥执行；P1 中的 x 和 P2 中的 x 是不同范围中的 x，互不影响，不需要互斥执行。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 545,
+    "source": "2016-32",
+    "year": 2016,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "下列关于管程的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "管程只能用于实现进程的互斥"
+      },
+      {
+        "label": "B",
+        "text": "管程是由编程语言支持的进程同步机制"
+      },
+      {
+        "label": "C",
+        "text": "任何时候只能有一个进程在管程中执行"
+      },
+      {
+        "label": "D",
+        "text": "管程中定义的变量只能被管程内的过程访问"
+      }
+    ],
+    "answer": "A",
+    "explanation": "管程是由一组数据以及定义在这组数据之上的对这组数据的操作组成的软件模块， 这组操不可作能初始化并改变管程中的数据和同步进程。管程不仅能实现进程间的互斥，而 且能实现进程达，间的同步，故 A 错误、B 正确。管程具有特性:①局部于管程的数据只能被 局部于管程内的过程所访问；②一个进程只有通过调用管程内的过程才能进入管程访问共享 数据；③每次仅允许一个进程在管程内执行某个内部过程，故 C 和 D 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 546,
+    "source": "2018-28",
+    "year": 2018,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "若 x 是管程内的条件变量，则当进程执行 x.wait\t（ ）时所做的工作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "实现对变量 x 的互斥访问"
+      },
+      {
+        "label": "B",
+        "text": "唤醒一个在 x 上阻塞的进程"
+      },
+      {
+        "label": "C",
+        "text": "根据 x 的值判断该进程是否进入阻塞态"
+      },
+      {
+        "label": "D",
+        "text": "阻塞该进程，并将之插入 x 的阻塞队列中"
+      }
+    ],
+    "answer": "D",
+    "explanation": "“条件变量”是管程内部说明和使用的一种特殊变量，其作用类似于信号量机制中的 “信号量”，都是用于实现进程同步的。需要注意的是，在同一时刻，管程中只能有一个进程 在执行。如果进程 A 执行了 x.wait( )操作，那么该进程会阻塞，并挂到条件变量 x 对应的阻 塞队列上。这样，管程的使用权被释放，就可以有另一个进程进入管程。如果进程 B 执行 x.signal( )操作，那么会唤醒对应的阻塞队列队头进程。在 Pascal 语言的管程中，规定只有一 个进程要离开管程时才能调用 signal( )操作。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 547,
+    "source": "2018-32",
+    "year": 2018,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "在下列同步机制中，可以实现让权等待的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "Peterson 方法"
+      },
+      {
+        "label": "B",
+        "text": "swap 指令"
+      },
+      {
+        "label": "C",
+        "text": "信号量方法"
+      },
+      {
+        "label": "D",
+        "text": "TestAndSet 指令"
+      }
+    ],
+    "answer": "C",
+    "explanation": "硬件方法实现进程同步时不能实现让权等待，故 B、D 错误，Peterson 算法满足有 限等待但不满足让权等待，故 A 错误；记录型信号量由于引入阻塞机制，消除了不让权等待 的情况，故 C 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 548,
+    "source": "2020-32",
+    "year": 2020,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "下列准则中，实现临界区互斥机制必须遵循的是\t（ ）。\nI、两个进程不能同时进入临界区\nII、允许进程访问空闲的临界资源\nIII、进程等待进入临界区的时间是有限的\nIV、不能进入临界区的执行态进程立即放弃 CPU",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III、IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Ⅰ,Ⅱ,Ⅲ分别符合互斥、空闲让进、有限等待的原则。不能立即进入临界区的进程 可以选择等待部分时间，Ⅳ错误。故 C 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 549,
+    "source": "2026-26",
+    "year": 2026,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "choice",
+    "stem": "系统中有 8 个进程，执行下图的操作，资源 S 的初始值为 5。若此时 S 的值\n为 -2，其中 m 表示执行到访问资源的进程个数，n 表示阻塞的进程个数，则 m 和 n 的值分\n别是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "5, 2"
+      },
+      {
+        "label": "B",
+        "text": "5, 1"
+      },
+      {
+        "label": "C",
+        "text": "6, 2"
+      },
+      {
+        "label": "D",
+        "text": "7, 1"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 550,
+    "source": "2026-27",
+    "year": 2026,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "假设进程 P 的读、写进程集合分别是 R(P ) 和 W (P ) ，进程 Q 的读、写进程\n集合分别为 R(Q) 和 W (Q) ，则进程 P 和 Q 并发执行中，不会发生错误的并发执行充要条\n件是\t（ ）\nI. R(Q) ∩ W (P ) =\nII. R(P ) ∩ R(Q) =\nIII. W (P ) ∩ W (Q) =\nIV. R(P ) ∩ W (Q) =\n(A) I、II (B) I、II、III (C) I、III、IV (D) II、III",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 551,
+    "source": "2009-45",
+    "year": 2009,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "三个进程 P1 、P2 、P3 互斥使用一个包含 N (N > 0) 个单元的缓冲区。P1 每次\n用 produce() 生成一个正整数并用 put() 送入缓冲区某一空单元中；P2 每次用 getodd()\n从该缓冲区中取出一个奇数并用 countodd() 统计奇数个数；P3 每次用 geteven() 从该缓\n冲区中取出一个偶数并用 counteven() 统计偶数个数。请用信号量机制实现这三个进程\n的同步与互斥活动，并说明所定义信号量的含义。要求用伪代码描述。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 552,
+    "source": "2011-45",
+    "year": 2011,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "某银行提供 1 个服务窗口和 10 个顾客等待座位。顾客到达银行时，若有空\n座位，则到取号机领取一个号，等待叫号。取号机每次仅允许一位顾客使用。当营业员空\n闲时，通过叫号选取一位顾客，并为其服务。顾客和营业员的活动过程描述如下：\n.process-block { margin: 14px 0 18px; padding: 14px 16px; border: 1px solid #d9d9d9; back-\nground: #f7f7f7; color: inherit; } .process-block pre { margin: 0; padding: 0; border: none;\nbackground: transparent; color: inherit; white-space: pre-wrap; }\nprocess 顾 客 i\n{\n从 取 号 机 获 得 一 个 号 码 ;\n等 待 叫 号 ;\n获 得 服 务 ;\n}\nprocess 营 业 员\n{\nwhile ( TRUE ) {\n叫 号 ;\n为 顾 客 服 务 ;\n}\n}\n请添加必要的信号量和 P、V（或 wait()、signal()）操作实现上述过程的互斥和同步。\n要求写出完整的过程，说明信号量的含义并赋初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 553,
+    "source": "2013-45",
+    "year": 2013,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "某博物馆最多可以容纳 500 人同时参观，有一个出入口，该出入口一次仅允\n许一个人通过。参观者的活动描述如下：\ncobegin\n参 观 者 进 程 i:\n{\n…\n进 门 ；\n…\n参 观 ；\n…\n出 门 ；\n…\n}\ncoend\n请添加必要的信号量和 P、V（或 wait()、signal()）操作，以实现上述过程中的互斥与\n同步。要求写出完整的过程，说明信号量的含义并赋初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 554,
+    "source": "2014-47",
+    "year": 2014,
+    "qIndex": 47,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "系统中有多个生产者进程和多个消费者进程，共享一个能存放 1000 件产品\n的环形缓冲区（初始为空）。当缓冲区未满时，生产者进程可以放入其生产的一件产品，否\n则等待；当缓冲区未空时，消费者进程可以从缓冲区取走一件产品，否则等待。要求一个\n消费者进程从缓冲区连续取出 10 件产品后，其他消费者进程才可以取产品。请使用信号\n量 P、V（wait\t（ ），signal\t（ ））操作实现进程间的互斥与同步，要求写出完整的过程，\n并说明所用信号量的含义和初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 555,
+    "source": "2015-45",
+    "year": 2015,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "有 A、B 两人通过信箱进行辩论，每个人都从自己的信箱中取得对方的问题，\n将答案和向对方提出的新问题组成一个邮件放入对方的信箱中。假设 A 的信箱最多放 M\n个邮件，B 的信箱最多放 N 个邮件。初始时 A 的信箱中有 x 个邮件 ( 0 < x < M )，B 的信\n箱中有 y 个邮件 ( 0 < y < N )。辩论者每取出一个邮件，邮件数减 1。A 和 B 两人的操作过\n程描述如下：\nA {\nwhile ( true ) {\n从 A 的 信 箱 中 取 出 一 个 邮 件 ;\n回 答 问 题 并 提 出 一 个 新 问 题 ;\n将 新 邮 件 放 入 B 的 信 箱 ;\n}\n}\nB {\nwhile ( true ) {\n从 B 的 信 箱 中 取 出 一 个 邮 件 ;\n回 答 问 题 并 提 出 一 个 新 问 题 ;\n将 新 邮 件 放 入 A 的 信 箱 ;\n}\n}\n当信箱不为空时，辩论者才能从信箱中取邮件，否则等待。当信箱不满时，辩论者才能将\n新邮件放入信箱，否则等待。请添加必要的信号量和 P、V（或 wait、signal）操作，以实\n现上述过程的同步。要求写出完整的过程，并说明信号量的含义和初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 556,
+    "source": "2017-46",
+    "year": 2017,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "某进程中有 3 个并发执行的线程 thread1、thread2、thread3，其伪代码如下所\n示。\n// 复 数 的 结 构 类 型 定 义\ntypedef struct\n{\nfloat a;\nfloat b;\n} cnum ;\n// 全 局 变 量\ncnum x, y, z;\n// 计 算 两 个 复 数 之 和\ncnum add ( cnum p, cnum q)\n{\ncnum s;\ns.a = p.a + q.a;\ns.b = p.b + q.b;\nreturn s;\n}\nthread1\n{\ncnum w;\nw = add (x, y);\n...\n}\nthread2\n{\ncnum w;\nw = add (y, z);\n...\n}\nthread3\n{\ncnum w;\n\nw.b = 2;\nz = add (z, w);\ny = add (y, w);\n...\n}\n请添加必要的信号量和 P、V（或 wait\t（ ）、signal\t（ ））操作，要求确保线程互斥访问\n临界资源，并且最大程度地并发执行。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 557,
+    "source": "2020-45",
+    "year": 2020,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "现有 5 个操作 A、B、C、D 和 E，操作 C 必须在 A 和 B 完成后执行，操作\nE 必须在 C 和 D 完成后执行，请使用信号量的 wait\t（ ）、signal\t（ ）操作（P、V 操作）\n描述上述操作之间的同步关系，并说明所用信号量及其初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 558,
+    "source": "2021-45",
+    "year": 2021,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": ".semaphore-grid { display: grid; grid-template-columns: repeat(3, minmax(240px,\n1fr)); gap: 24px; margin: 18px 0 22px; } .semaphore-card { border: 1px solid currentColor;\nbackground: transparent; } .semaphore-card-title { padding: 10px 16px; font-weight: 700;\nborder-bottom: 1px solid currentColor; background: rgba(127, 127, 127, 0.08); color: in-\nherit; } .semaphore-card-body { padding: 18px 18px 20px; background: transparent; color:\ninherit; } .semaphore-card-code { margin: 0; white-space: pre-wrap; font-family: Consolas,\n”Courier New”, monospace; font-size: 16px; line-height: 1.55; color: inherit; } .semaphore-card-\ncode + .semaphore-card-code { margin-top: 18px; } .semaphore-card-spacer { height: 96px; }\n.semaphore-card-body pre { margin: 0; padding: 0; border: none; background: transparent; color:\ninherit; white-space: inherit; font: inherit; } @media (max-width: 900px) { .semaphore-grid {\ngrid-template-columns: 1fr; } .semaphore-card-body { padding: 14px 14px 16px; } .semaphore-\ncard-code { font-size: 15px; line-height: 1.45; } .semaphore-card-code + .semaphore-card-code {\nmargin-top: 14px; } .semaphore-card-spacer { height: 24px; } }\n下表给出了整型信号量 S 的 wait\t（ ）和 signal\t（ ）操作的功能描述，以及采用开/关中\n断指令实现信号量操作互斥的两种方法。\n功能描述\nSemaphore S;\nwait (S) {\nwhile (S <= 0);\nS = S -1;\n}\nsignal (S) {\nS = S +1;\n}\n方法 1\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0);\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\n\nS = S +1;\n开 中 断 ；\n}\n方法 2\nSemaphore S;\nwait (S) {\n关 中 断 ；\nwhile (S <= 0) {\n开 中 断 ；\n关 中 断 ；\n}\nS = S -1;\n开 中 断 ；\n}\nsignal (S) {\n关 中 断 ；\nS = S +1;\n开 中 断 ；\n}\n请回答下列问题。\n(1) 为什么在 wait\t（ ）和 signal\t（ ）操作中对信号量 S 的访问必须互斥执行？\n(2) 分别说明方法 1 和方法 2 是否正确。若不正确，请说明理由。\n(3) 用户程序能否使用开/关中断指令实现临界区互斥？为什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 559,
+    "source": "2022-46",
+    "year": 2022,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "某进程的两个线程 T1 和 T2 并发执行 A. B. C. D. E 和 F 共 6 个操作，其中\nT1 执行 A. E 和 F，T2 执行 B. C 和 D。题 46 图表示上述 6 个操作的执行顺序所必须满足\n的约束：C 在 A 和 B 完成后执行，D 和 E 在 C 完成后执行，F 在 E 完成后执行。请使用信\n号量的 wait\t（ ）、signal\t（ ）操作描述 T1 和 T2 之间的同步关系，并说明所用信号量的\n作用及其初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 560,
+    "source": "2024-46",
+    "year": 2024,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.3",
+    "sectionTitle": "同步与互斥",
+    "type": "comprehensive",
+    "stem": "计算机系统中的进程之间往往需要相互协作以完成一个任务，在某网络系统\n中缓冲区 B 用于存放一个数据分组，对 B 的操作有 C1、C2 和 C3。C1 将一个数据分组写\n入 B 中，C2 从 B 中读出一个数据分组，C3 对 B 中的数据分组进行修改。要求 B 为空时\n才能执行 C1，B 非空时才能执行 C2 和 C3。请回答下列问题。\n（1）假设进程 P1 和 P2 均需执行 C1，实现 C1 的代码是否为临界区？为什么？(2 分）\n（2）假设 B 初始为空，进程 P1 执行 C1 一次，进程 P2 执行 C2 一次。请定义尽可能少的信\n号量。并用 wait\t（ ），signal\t（ ）操作描述进程 P1、P2 之间的同步或互斥关系，说明所\n用信号量的作用及初值。（3 分）\n（3）假设 B 初始不为空，进程 P1 和 P2 各执行 C3 一次，请定义尽可能少的信号量。并用\nwait\t（ ）、signal\t（ ）操作描述进程 P1 和 P2 之间的同步或互斥关系，说明所用信号量\n的作用及初值。（3 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 561,
+    "source": "2025-45",
+    "year": 2025,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "三个人一起植树，甲挖坑，乙放树苗入坑并填土，丙负责为新种树苗浇水。\n步骤依次为：挖树坑，放树苗，填土和浇水。现在有铁锹和水桶各一个，铁锹用于挖树坑，\n填土。水桶用于浇水。当树坑数量小于 3 时，甲才可以挖树坑。设初始坑 = 0，铁锹水桶均\n可用，定义尽可能少的信号量，用 wait\t（ ）和 signal\t（ ）操作描述植树过程中三人的同\n步互斥关系，并说明所用信号量的作用及其初值。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 562,
+    "source": "2009-25",
+    "year": 2009,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "某计算机系统中有 8 台打印机，由 K 个进程竞争使用，每个进程最多需要 3\n台打印机。该系统可能会发生死锁的 K 的最小值是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "C",
+    "explanation": "26. A \t27. C \t28. B \t29. A \t30. A \t31. B \t32. A",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 563,
+    "source": "2011-27",
+    "year": 2011,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "某时刻进程的资源使用情况如下表所示。\n此时的安全序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "P1, P2, P3, P4"
+      },
+      {
+        "label": "B",
+        "text": "P1, P4, P3, P2"
+      },
+      {
+        "label": "C",
+        "text": "P1, P3, P2, P4"
+      },
+      {
+        "label": "D",
+        "text": "不存在"
+      }
+    ],
+    "answer": "D",
+    "explanation": "使用银行家算法得，不存在安全序列。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 564,
+    "source": "2012-27",
+    "year": 2012,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "假设 5 个进程 P0 、P1 、P2 、P3 、P4 共享三类资源 R1 、R2 、R3 ，这些资源\n总数分别为 18、6、22。T0 时刻的资源分配情况如下表所示，此时存在的一个安全序列\n是\t（ ）。\n进程 已分配资源 资源最大需求\nR1 R2 R3 R1 R2 R3\nP0 3 2 3 5 5 10\nP1 4 0 3 5 3 6\nP2 4 0 5 4 0 11\nP3 2 0 4 4 2 5\nP4 3 1 4 4 2 4",
+    "options": [
+      {
+        "label": "A",
+        "text": "P0, P2, P4, P1, P3"
+      },
+      {
+        "label": "B",
+        "text": "P1, P0, P3, P4, P2"
+      },
+      {
+        "label": "C",
+        "text": "P2, P1, P0, P3, P4"
+      },
+      {
+        "label": "D",
+        "text": "P3, P4, P2, P1, P0"
+      }
+    ],
+    "answer": "D",
+    "explanation": "考查安全序列的计算。首先求得各进程的需求矩阵 Need 与可利用资源矢量 Available： -- 6 of 12 -- 进程 Need R1 \tR2 \tR3 P0 \t2 \t3 \t7 P1 \t1 \t3 \t3 P2 \t0 \t0 \t6 P3 \t2 \t2 \t1 Available R1 \tR2 \tR3 P4 \t1 \t1 \t0 \t2 \t3 \t3 初始时进程 P1 与 P3 可满足需求，排除 A、C。尝试给 P1 分配资源，则 P1 完成后 Available 将变为（6,3,6），无法满足 P0 的需求，排除 B。尝试给 P3 分配资源，则 P3 完成后 Available 将变为（4,3,7），该向量能满足其他所有进程的需求。所以，以 P3 开头的所有序列都是安全 序列。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 565,
+    "source": "2013-32",
+    "year": 2013,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "下列关于银行家算法的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "银行家算法可以预防死锁"
+      },
+      {
+        "label": "B",
+        "text": "当系统处于安全状态时，系统中一定无死锁进程"
+      },
+      {
+        "label": "C",
+        "text": "当系统处于不安全状态时，系统中一定会出现死锁进程"
+      },
+      {
+        "label": "D",
+        "text": "银行家算法破坏了死锁必要条件中的“请求和保持”条件"
+      }
+    ],
+    "answer": "B",
+    "explanation": "B",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 566,
+    "source": "2014-24",
+    "year": 2014,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "某系统有 n 台互斥使用的同类设备，三个并发进程分别需要 3、4、5 台设备，\n可确保系统不发生死锁的设备数 n 最小为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "9"
+      },
+      {
+        "label": "B",
+        "text": "10"
+      },
+      {
+        "label": "C",
+        "text": "11"
+      },
+      {
+        "label": "D",
+        "text": "12"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 567,
+    "source": "2015-26",
+    "year": 2015,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "若系统 S1 采用死锁避免方法，S2 采用死锁检测方法。下列叙述中，正确的\n是\t（ ）。\nI、S1 会限制用户申请资源的顺序，而 S2 不会\nII、S1 需要进程运行所需的资源总量信息，而 S2 不需要\nIII、S1 不会给可能导致死锁的进程分配资源，而 S2 会",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "死锁的处理采用三种策略：死锁预防、死锁避免、死锁检测和解除。死锁预防，采用 破坏产生死锁的四个必要条件中的一个或几个，以防止发生死锁。其中之一的“破坏循环等 待条件”，一般采用顺序资源分配法，首先给系统的资源编号，规定每个进程必须按编号递增 的顺序请求资源，也就是限制了用户申请资源的顺序，故Ⅰ的前半句属于死锁预防的范畴。 银行家算法是最著名的死锁避免算法，其中的最大需求矩阵 MAX 定义了每一个进程对 m 类 资源的最大需求量，系统在执行安全性算法中都会检查此次资源试分配后，系统是否处于安 全状态，若不安全则将本次的试探分配作废。在死锁的检测和解除中，在系统为进程分配资 源时不采取任何措施，但提供死锁的检测和解除的手段，故Ⅱ、Ⅲ正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 568,
+    "source": "2016-25",
+    "year": 2016,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "系统中有 3 个不同的临界资源 R1 、R2 和 R3 ，被 4 个进程 p1 、p2 、p3 及 p4\n共享。各进程对资源的需求为：p1 申请 R1 和 R2 ，p2 申请 R2 和 R3 ，p3 申请 R1 和 R3 ，p4\n申请 R2 。若系统出现死锁，则处于死锁状态的进程数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "对于本题，先满足个进程的资源需求，再看其他进程是否能出现死锁状态。因为 P4 只甲请一个资源，当将 R2 分配给 P4 后，P4 执行完后将 R2 释放，这时使得系统满足死锁的条 件是 R1 分配给 P1，R2 分配给 P2，R3 分配给 P3（或者 R2 分配给 P1，R3 分配给 P2，R 分配 给 P3）。穷举其他情况如 P1 申请的资源 R1 和 R2，先都分配给 P1，运行完并释放占有的资源 后，可以分别将 R1、R2 和 R3 分配给 P3、P4 和 P2，也满足系统死锁的条件。各种情况需要 -- 5 of 12 -- 使得处于死锁状态的进程数至少为 3。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 569,
+    "source": "2018-26",
+    "year": 2018,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "假设系统中有 4 个同类资源，进程 P1、P2 和 P3 需要的资源数分别为 4、3\n和 1，P1、P2 和 P3 已申请到的资源数分别为 2、1 和 0，则执行安全性检测算法的结果\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "不存在安全序列，系统处于不安全状态"
+      },
+      {
+        "label": "B",
+        "text": "存在多个安全序列，系统处于安全状态"
+      },
+      {
+        "label": "C",
+        "text": "存在唯一安全序列 P3、P1、P2，系统处于安全状态"
+      },
+      {
+        "label": "D",
+        "text": "存在唯一安全序列 P3、P2、P1，系统处于安全状态"
+      }
+    ],
+    "answer": "A",
+    "explanation": "此时可用资源数为 1，即使 P3 可以获得并运行，但 P1 和 P2 无法获得足够资源而永 远等待。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 570,
+    "source": "2019-30",
+    "year": 2019,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "下列关于死锁的叙述中，正确的是\t（ ）。\nI、可以通过剥夺进程资源解除死锁\nII、死锁的预防方法能确保系统不发生死锁\nIII、银行家算法可以判断系统是否处于死锁状态\nIV、当系统出现死锁时，必然有两个或两个以上的进程处于阻塞态",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、III、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "剥夺进程资源，将其分配给其他死锁进程，可以解除死锁，Ⅰ正确。死锁预防是死锁 处理策略(死锁预防、死锁避免、死锁检测)中最为严苛的一种策略，破坏死锁产生的 4 个必要 条件之一。可以确保系统不发生死锁，Ⅱ正确。银行家算法是一种死锁避免算法，用于计算 动态资源分配的完全性以避免系统进入死锁状态，不能用于判断系统是否处于死锁，Ⅲ错误。 通过简化资源分配图可以检测系统是否为死锁状态，当系统出现死锁时，资源分配图不可完 -- 5 of 11 -- 全简化。只有两个成两个以上的进程才会出现“环”而不能被简化，Ⅳ正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 571,
+    "source": "2020-27",
+    "year": 2020,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "某系统中有",
+    "options": [
+      {
+        "label": "A",
+        "text": "B 两类资源各 6 个，t 时刻资源分配及需求情况如下表所示。 进程 A 已分配数量 B 已分配数量 A 需求总量 B 需求总量 P1 2 3 4 4 P2 2 1 3 1 P3 1 2 3 4 t 时刻安全性检测结果是\t（ ）。 (A) 存在安全序列 P1、P2、P3"
+      },
+      {
+        "label": "B",
+        "text": "存在安全序列 P2、P1、P3"
+      },
+      {
+        "label": "C",
+        "text": "存在安全序列 P2、P3、P1"
+      },
+      {
+        "label": "D",
+        "text": "不存在安全序列"
+      }
+    ],
+    "answer": "B",
+    "explanation": "此道题作出需求矩阵 NEED=MAX-ALLOCATED 即可。 同时，由 ALLOCATED 矩阵得知当前 AVAILABLE 为（1，0）。由需求矩阵可知，初始只能满 足 P2 需求。P2 释放资源后 AVAILABLE 变为（4，1）。此时仅能满足 P1 需求，P1 释放后可 以满足 P3。 故得到顺序 P2->P1->P3。B 正确。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 572,
+    "source": "2021-31",
+    "year": 2021,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "若系统中有 n (n≥2) 个进程，每个进程均需要使用某类临界资源 2 个，则系\n统不会发生死锁所需的该类资源总数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "n"
+      },
+      {
+        "label": "C",
+        "text": "n+1"
+      },
+      {
+        "label": "D",
+        "text": "2n"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考虑极端情况， 当临界资源数为n 时，每个进程都拥有1个 临界资源并等待另 一 个资源， 会 发生死锁。 当临界资源数为n+l时， 则 n个进程中至少有一 个进程可以获得2个 临界资源顺利运行完后释放自己的临界资源， 使得其他进程也能顺利运行， 不会产生死锁。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 573,
+    "source": "2022-26",
+    "year": 2022,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.2.4",
+    "sectionTitle": "死锁",
+    "type": "choice",
+    "stem": "系统中有三个进程 P0、P1、P2 及三类资源 A. B. C。若某时刻系统分配资源\n的情况如下表所示，则此时系统中存在的安全序列的个数为\t（ ）。\n(A) 1 (B) 2 (C) 3 (D) 4",
+    "options": [
+      {
+        "label": "A",
+        "text": ""
+      },
+      {
+        "label": "B",
+        "text": "C。若某时刻系统分配资源 的情况如下表所示，则此时系统中存在的安全序列的个数为\t（ ）。 (A) 1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "初始时系统中的可用资源数为<1, 3, 2>， 只能满足PO 的需求<0, 2, 1>， 所以安全 序列第一 个只能 是PO, 将资源分配给PO 后，PO执行完释放所占 资源， 可用资源数变为<l, 3, 2> + <2, 0, 1> = <3, 3, 3>， 此时可用资源数既能满足Pl,也能满足P2, 可以先分配给Pl,Pl 执行完释放资源再分配给P2 ;也 可以先分配给P2,P2执行完释放资源再分配给Pl。 所以安 全序列可以是＠PO、Pl、P2或＠PO、P2、Pl。",
+    "relatedPath": "/operating-system/02-process-management"
+  },
+  {
+    "id": 574,
+    "source": "2009-26",
+    "year": 2009,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "分区分配内存管理方式的主要保护措施是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "界地址保护"
+      },
+      {
+        "label": "B",
+        "text": "程序代码保护"
+      },
+      {
+        "label": "C",
+        "text": "数据保护"
+      },
+      {
+        "label": "D",
+        "text": "栈保护"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 575,
+    "source": "2009-27",
+    "year": 2009,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "一个分段存储管理系统中，地址长度为 32 位，其中段号占 8 位，则最大段\n长是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "28 字节"
+      },
+      {
+        "label": "B",
+        "text": "216 字节"
+      },
+      {
+        "label": "C",
+        "text": "224 字节"
+      },
+      {
+        "label": "D",
+        "text": "232 字节"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 576,
+    "source": "2010-28",
+    "year": 2010,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "某基于动态分区存储管理的计算机，其主存容量为 55MB（初始为空闲），采\n用最佳适配 (Best Fit) 算法，分配和释放的顺序为：分配 15MB、分配 30MB、释放 15MB、\n分配 8MB、分配 6MB，此时主存中最大空闲分区的大小是\t（ ）。\n(A) 7MB (B) 9MB (C) 10MB (D) 15MB",
+    "options": [
+      {
+        "label": "B",
+        "text": "分配 30M"
+      },
+      {
+        "label": "B",
+        "text": "释放 15M"
+      },
+      {
+        "label": "B",
+        "text": "分配 8M"
+      },
+      {
+        "label": "B",
+        "text": "分配 6MB，此时主存中最大空闲分区的大小是\t（ ）。 (A) 7MB"
+      },
+      {
+        "label": "B",
+        "text": "9MB"
+      },
+      {
+        "label": "C",
+        "text": "10MB"
+      },
+      {
+        "label": "D",
+        "text": "15MB"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 577,
+    "source": "2016-28",
+    "year": 2016,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "某进程的段表内容如下所示。\n当访问段号为 2、段内地址为 400 的逻辑地址时，进行地址转换的结果是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "段缺失异常"
+      },
+      {
+        "label": "B",
+        "text": "得到内存地址 4400"
+      },
+      {
+        "label": "C",
+        "text": "越权异常"
+      },
+      {
+        "label": "D",
+        "text": "越界异常"
+      }
+    ],
+    "answer": "D",
+    "explanation": "分段系统的逻辑地址 A 到物理地址 E 之间的地址变换过程如下。 ①从逻辑地址 A 中取出前几位为段号 S，后几位为段内偏移量 W，注意段式存储管理的题目 中，逻辑地址一般以二进制给出，而在页式存储管理中，逻辑地址般以十进制给出，各位读 者要具体问题具体分析。 ②比较段号 S 和段表长度 M，若 S≥M,则产生越界异常，否则继续执行。 ③段表中段号 S 对应的段表项地址=段表起始地址 F+段号 S×段表项长度，取出该段表项的 前几位得到段长 C。若段内偏移量≥C,则产生越界异常，否则继续执行。从这句话我们可以 看出，段表项实际上只有两部分，前几位是段长，后几位是起始地址。 ④取出段表项中该段的起始地址 b，计算 E=b+W，用得到的物理地址 E 去访问内存。题目中 段号为 2 的段长为 300，小于段内地址为 400,故发生越界异常，D 正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 578,
+    "source": "2017-25",
+    "year": 2017,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "某计算机按字节编址，其动态分区内存管理采用最佳适应算法，每次分配和\n回收内存后都对空闲分区链重新排序。当前空闲分区信息如下表所示。\n分区起始地址 20K 500K 1000K 200K\n分区大小 40KB 80KB 100KB 200KB\n回收起始地址为 60K、大小为 140KB 的分区后，系统中空闲分区的数量、空闲分区链第\n一个分区的起始地址和大小分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3、20K、380KB"
+      },
+      {
+        "label": "B",
+        "text": "3、500K、80KB"
+      },
+      {
+        "label": "C",
+        "text": "4、20K、180KB"
+      },
+      {
+        "label": "D",
+        "text": "4、500K、80KB"
+      }
+    ],
+    "answer": "B",
+    "explanation": "回收起始地址为 60K、大小为 140KB 的分区时，它与表中第一个分区和第四个分区 合井，成为起始地址为 20K、大小为 380KB 的分区，剩余 3 个空闲分区。在回收内存后，算 法会对空闲分区链按分区大小由小到大进行排序，表中的第二个分区排第一。所以答案选 B。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 579,
+    "source": "2019-28",
+    "year": 2019,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "在分段存储管理系统中，用共享段表描述所有共享的段。若进程 P1 和 P2 共\n享段 S，下列叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "在物理内存中仅保存一份段 S 的内容"
+      },
+      {
+        "label": "B",
+        "text": "段 S 在 P1 和 P2 中应该具有相同的段号"
+      },
+      {
+        "label": "C",
+        "text": "P1 和 P2 共享段 S 在共享段表中的段表项"
+      },
+      {
+        "label": "D",
+        "text": "P1 和 P2 都不再使用段 S 时才回收段 S 所占的内存空间"
+      }
+    ],
+    "answer": "B",
+    "explanation": "段的共享是通过两个作业的段表中相应表项指向被共享的段的同一个物理副本来实 现的，因此在内存中仅保存一份段 s 的内容。选项 A 正确。段 s 对于进程 P1，P2 来说，使用 位置可能不同，所以在不同进程中的逻辑段号可能不同，选项 B 错误。段表项存放的是段的 物理地址，对于共享段 s 来说物理地址唯一，选项 C 正确。为了保证进程可以顺利使用段 s， 段 s 必须确保在没有任何进程使用它后才能被删除，选项 D 正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 580,
+    "source": "2019-32",
+    "year": 2019,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "在下列动态分区分配算法中，最容易产生内存碎片的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "首次适应算法"
+      },
+      {
+        "label": "B",
+        "text": "最坏适应算法"
+      },
+      {
+        "label": "C",
+        "text": "最佳适应算法"
+      },
+      {
+        "label": "D",
+        "text": "循环首次适应算法"
+      }
+    ],
+    "answer": "C",
+    "explanation": "最佳适应算法总是匹配与当前大小要求最接近的空闲分区，但是大多数情况下空闲 分区的大小不可能完全和当前要求的大小相等，几乎每次分配内存都会产生很小的难以利用 的内存块，所以最佳适应算法最容易产生最多的内存碎片，选项 C 正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 581,
+    "source": "2023-25",
+    "year": 2023,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "某系统采用页式存储管理，用位图管理空闲页框。若页大小为 4 KB，物理\n内存大小为 16 GB，则位图所占空间的大小是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "128 B"
+      },
+      {
+        "label": "B",
+        "text": "128 KB"
+      },
+      {
+        "label": "C",
+        "text": "512 KB"
+      },
+      {
+        "label": "D",
+        "text": "4 MB"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 582,
+    "source": "2024-27",
+    "year": 2024,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "choice",
+    "stem": "回收分区时，仅合并大小相等的空闲分区的算法是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "伙伴算法"
+      },
+      {
+        "label": "B",
+        "text": "最佳适应算法"
+      },
+      {
+        "label": "C",
+        "text": "最坏适应算法"
+      },
+      {
+        "label": "D",
+        "text": "首次适应算法"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 583,
+    "source": "2026-28",
+    "year": 2026,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "comprehensive",
+    "stem": "若 64 位的系统采用三级虚拟分页存储管理方式，其结构如下图所示，第三\n级页表所占用的页框数是\t（ ）\n| 补 充 位 （ 25 ） | 一 级 页 表 （ 9 ） | 二 级 页 表 （ 9 ） | 三 级 页 表 （ 9 ） |\n页 内 偏 移 （ 12 ） |\n(A) 1 (B) 256 (C) 256K (D) 256M",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 584,
+    "source": "2013-46",
+    "year": 2013,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.1",
+    "sectionTitle": "连续与非连续分配",
+    "type": "comprehensive",
+    "stem": "某计算机主存按字节编址，逻辑地址和物理地址都是 32 位，页表项大小为\n4 字节。请回答下列问题。\n(1) 若使用一级页表的分页存储管理方式，逻辑地址结构为：\n则页的大小是多少字节？页表最大占用多少字节？\n(2) 若使用二级页表的分页存储管理方式，逻辑地址结构为：\n设逻辑地址为 LA，请分别给出其对应的页目录号和页表索引的表达式。\n(3) 采用 (1) 中的分页存储管理方式，一个代码段起始逻辑地址为 0000 8000H，其长度为\n8KB，被装载到从物理地址 0090 0000H 开始的连续主存空间中。页表从主存 0020 0000H\n开始的物理地址处连续存放，如下图所示（地址大小自下向上递增）。请计算出该代码段对\n应的两个页表项的物理地址、这两个页表项中的页框号以及代码页面 2 的起始物理地址。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 585,
+    "source": "2015-46",
+    "year": 2015,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某计算机系统按字节编址，采用二级页表的分页存储管理方式，虚拟地址格\n式如下所示：\n页目录号（10 位） 页表索引（10 位） 页内偏移量（12 位）\n请回答下列问题。\n(1) 页和页框的大小各为多少字节？进程的虚拟地址空间大小为多少页？\n(2) 假定页目录项和页表项均占 4 个字节，则进程的页目录和页表共占多少页？要求写出\n计算过程。\n(3) 若某指令周期内访问的虚拟地址为 0100 0000H 和 0111 2048H，则进行地址转换时共访\n问多少个二级页表？要求说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 586,
+    "source": "2010-29",
+    "year": 2010,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某计算机采用二级页表的分页存储管理方式，按字节编址，页大小为 210 B，\n页表项大小为 2B，逻辑地址结构为 | 页目录号 | 页号 | 页内偏移量 |。逻辑地址空间\n大小为 216 页，则表示整个逻辑地址空间的页目录表中包含表项的个数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "64"
+      },
+      {
+        "label": "B",
+        "text": "128"
+      },
+      {
+        "label": "C",
+        "text": "256"
+      },
+      {
+        "label": "D",
+        "text": "512"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 587,
+    "source": "2011-28",
+    "year": 2011,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在缺页处理过程中，操作系统执行的操作可能是\t（ ）。\nI、修改页表\nII、磁盘 I/O\nIII、分配页框",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "D",
+    "explanation": "缺页中断调入新页面，肯定要修改页表项和分配页框，所以I、ＩＩＩ可能发 生，同时内存没有页面，需要从外存读入，会发生磁盘I/O。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 588,
+    "source": "2011-29",
+    "year": 2011,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "当系统发生抖动 (thrashing) 时，可以采取的有效措施是\t（ ）。\nI. 撤销部分进程\nII. 增加磁盘交换区的容量\nIII. 提高用户进程的优先级",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 III"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、II"
+      }
+    ],
+    "answer": "A",
+    "explanation": "在具有对换功能的操作系统中，通常把外存分为文件区和对换区。前者用于 存放文件，后者用于存放从内存换出的进程。抖动现象是指刚刚被换出的页很快又要被访问 为此，又要换出其他页，而该页又快被访问，如此频繁的置换页面，以致大部分时间都花在 页面置换上。撤销部分进程可以减少所要用到的页面数，防止抖动。对换区大小和进程优先 级都与抖动无关。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 589,
+    "source": "2011-30",
+    "year": 2011,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在虚拟内存管理中，地址变换机构将逻辑地址变换为物理地址，形成该逻辑\n地址的阶段是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "编辑"
+      },
+      {
+        "label": "B",
+        "text": "编译"
+      },
+      {
+        "label": "C",
+        "text": "链接"
+      },
+      {
+        "label": "D",
+        "text": "装载"
+      }
+    ],
+    "answer": "B",
+    "explanation": "编译过程指编译程序将用户源代码编译成目标模块。源地址编译成目标程序 时，会形成逻辑地址。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 590,
+    "source": "2012-25",
+    "year": 2012,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "下列关于虚拟存储器的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "虚拟存储只能基于连续分配技术"
+      },
+      {
+        "label": "B",
+        "text": "虚拟存储只能基于非连续分配技术"
+      },
+      {
+        "label": "C",
+        "text": "虚拟存储容量只受外存容量的限制"
+      },
+      {
+        "label": "D",
+        "text": "虚拟存储容量只受内存容量的限制"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查虚拟存储器的特点。虚拟内存的实现需要建立在离散分配的内存管理方式的基 础上，有以下三种实现方式：①请求分页存储管理；②请求分段存储管理；③请求段页式存 储管理。虚拟存储器容量既不受外存容量限制，也不受内存容量限制，而是由 CPU 的寻址范 围决定的。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 591,
+    "source": "2013-30",
+    "year": 2013,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "若用户进程访问内存时产生缺页，则下列选项中，操作系统可能执行的操作\n是\t（ ）。\nI. 处理越界错\nII. 置换页\nIII. 分配内存",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "31. B CPU \tI/O B",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 592,
+    "source": "2014-28",
+    "year": 2014,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "下列措施中，能加快虚实地址转换的是\t（ ）。\nI. 增大快表 (TLB) 容量\nII. 让页表常驻内存\nIII. 增大交换区 (swap)\n(A) 仅 I (B) 仅 II (C) 仅 I、II (D) 仅 II、III",
+    "options": [
+      {
+        "label": "B",
+        "text": "容量 II. 让页表常驻内存 III. 增大交换区 (swap) (A) 仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 593,
+    "source": "2014-30",
+    "year": 2014,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在页式虚拟存储管理系统中，采用某些页面置换算法，会出现 Belady 异常\n现象，即进程的缺页次数会随着分配给该进程的页框个数的增加而增加。下列算法中，可\n能出现 Belady 异常现象的是\t（ ）。\nI. LRU 算法\nII. FIFO 算法\nIII. OPT 算法",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 594,
+    "source": "2014-32",
+    "year": 2014,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "下列选项中，属于多级页表优点的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "加快地址变换速度"
+      },
+      {
+        "label": "B",
+        "text": "减少缺页中断次数"
+      },
+      {
+        "label": "C",
+        "text": "减少页表项所占字节数"
+      },
+      {
+        "label": "D",
+        "text": "减少页表所占的连续内存空间"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 595,
+    "source": "2015-27",
+    "year": 2015,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "系统为某进程分配了 4 个页框，该进程已访问的页号序列为 2, 0, 2, 9, 3, 4,\n2, 8, 2, 4, 8, 4, 5。若进程要访问的下一页的页号为 7，依据 LRU 算法，应淘汰页的页号\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "A",
+    "explanation": "可以采用书中常规的解法思路，也可以采用便捷法。对页号序列从后往前计数，直 到数到 4（页框数）个不同的数字为止，这个停止的数字就是要淘汰的页号（最近最久未使用 的页），题中为页号 2。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 596,
+    "source": "2015-30",
+    "year": 2015,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在请求分页系统中，页面分配策略与页面置换策略不能组合使用的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "可变分配，全局置换"
+      },
+      {
+        "label": "B",
+        "text": "可变分配，局部置换"
+      },
+      {
+        "label": "C",
+        "text": "固定分配，全局置换"
+      },
+      {
+        "label": "D",
+        "text": "固定分配，局部置换"
+      }
+    ],
+    "answer": "C",
+    "explanation": "对各进程进行固定分配时页面数不变，不可能出现全局置换。而 A、B、D 是现代操 作系统中常见的 3 种策略",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 597,
+    "source": "2016-26",
+    "year": 2016,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某系统采用改进型 CLOCK 置换算法，页表项中字段 A 为访问位，M 为修改\n位。A=0 表示页最近没有被访问，A=1 表示页最近被访问过。M=0 表示页没有被修改过，\nM=1 表示页被修改过。按 (A, M) 所有可能的取值，将页分为四类：(0, 0)、(1, 0)、(0, 1) 和\n(1, 1)，则该算法淘汰页的次序为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "(0, 0), (0, 1), (1,0), (1, 1)"
+      },
+      {
+        "label": "B",
+        "text": "(0, 0), (1, 0), (0, 1), (1, 1)"
+      },
+      {
+        "label": "C",
+        "text": "(0, 0), (0, 1), (1, 1), (1, 0)"
+      },
+      {
+        "label": "D",
+        "text": "(0, 0), (1, 1), (0, 1), (1, 0)"
+      }
+    ],
+    "answer": "A",
+    "explanation": "改进型的 CLOCK 置换算法执行的步骤如下：（1）从指针的当前位置开始，扫描帧 缓冲区。在这次扫描过程中，对使用位不做任何修改。选择遇到的第一个帧(A = 0，M = 0)用 于替换。（2）如果第（1）步失败，则重新扫描，查找(A = 0, M = 1)的帧。选择遇到的第一个 这样的帧用于替换。在这个扫描过程中，对每个跳过的帧，把它的使用位设置成 0。（3）如果 第（2）步失败，指针将回到它的最初位置，井且集合中所有帧的使用位均为 0。重复第 1 步， 并且如果有必要，重复第 2)步。这样将可以找到供替换的帧。从而，该算法淘汰页的次序为 (0,0)，(0,1)，(1,0)，(1,1)，即 A 正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 598,
+    "source": "2016-29",
+    "year": 2016,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某进程访问页面的序列如下所示。\n若工作集的窗口大小为 6，则在 t 时刻的工作集为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "{6, 0, 3, 2}"
+      },
+      {
+        "label": "B",
+        "text": "{2, 3, 0, 4}"
+      },
+      {
+        "label": "C",
+        "text": "{0, 4, 3, 2, 9}"
+      },
+      {
+        "label": "D",
+        "text": "{4, 5, 6, 0, 3, 2}"
+      }
+    ],
+    "answer": "A",
+    "explanation": "在任一时刻 t，都存在一个集合，它包含所有最近 k 次(该题窗口大小为 6)内存访问 -- 6 of 12 -- 所访问过的页面。这个集合 w(k, t)就是工作集。该题中最近 6 次访间的页面分别为 6,0,3,2,3.2, 再去除重复的页面，形成的工作集为(6,0,3,2)。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 599,
+    "source": "2019-29",
+    "year": 2019,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某系统采用 LRU 页置换算法和局部置换策略，若系统为进程 P 预分配了 4\n个页框，进程 P 访问页号的序列为 0, 1, 2, 7, 0, 5, 3, 5, 0, 2, 7, 6，则进程访问上述页的过程\n中，产生页置换的总次数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "C",
+    "explanation": "最近最久未使用算法每次执行页面置换时会换出最近最久没有使用过的页面。第一 次访问 5 页面时，会把最久未被使用的 1 页面换出，第一次访问 3 页面时，会把最久未访问 的 2 页面换出。具体的页面置换情况如下图所示： 访问页面 \t0 \t1 \t2 \t7 \t0 \t5 \t3 \t5 \t0 \t2 \t7 \t6 物理块 1 \t0 \t0 \t0 \t0 \t0 \t0 \t0 \t0 \t0 \t0 \t0 \t0 物理块 2 \t1 \t1 \t1 \t1 \t5 \t5 \t5 \t5 \t5 \t5 \t6 物理块 3 \t2 \t2 \t2 \t2 \t3 \t3 \t3 \t3 \t7 \t7 物理块 4 \t7 \t7 \t7 \t7 \t7 \t7 \t2 \t2 \t2 缺页否 \t√ \t√ \t√ \t√ \t√ \t√ \t√ \t√ \t√ 需要注意的是：题中问的是页置换算法，而不是缺页次数，所以前 4 次缺页未还也的操作不 考虑在内，答案为 5 次，故选 C。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 600,
+    "source": "2019-31",
+    "year": 2019,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某计算机主存按字节编址，采用二级分页存储管理，地址结构如下所示：\n虚拟地址 20501225H 对应的页目录号、页号分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "081H、101H"
+      },
+      {
+        "label": "B",
+        "text": "081H、401H"
+      },
+      {
+        "label": "C",
+        "text": "201H、101H"
+      },
+      {
+        "label": "D",
+        "text": "201H、401H"
+      }
+    ],
+    "answer": "A",
+    "explanation": "题中给出的是十六进制地址，首先将它转化为二进制地址，然后用二进制地址去匹 配题中对应的地址结构。转换为进制地址和地址结构的对应关系如下所示。 2050 1225H = 0010 0000 01010000 00010010 00100101 前 10 位、11~20 位、21~32 位分别对应页目录号、页号和页内偏移。把页目录号、页号单独 拿出，转换为十六进制时缺少的位数在高位补零，0000 1000 0001、0001 0000 0001 分别对 应 081H、101H, 选项 A 正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 601,
+    "source": "2020-28",
+    "year": 2020,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "下列因素中，影响请求分页系统有效（平均）访存时间的是\t（ ）。\nI. 缺页率\nII. 磁盘读写时间\nIII. 内存访问时间\nIV. 执行缺页处理程序的 CPU 时间",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III 和 IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Ⅰ影响缺页中断发生的频率；Ⅱ影响访问慢表和访问目标物理地址的时间；Ⅲ,Ⅳ影 响缺页中断的处理时间。故Ⅰ,Ⅱ,Ⅲ,Ⅳ均正确。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 602,
+    "source": "2021-28",
+    "year": 2021,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某请求分页存储系统的页大小为 4KB，按字节编址。系统给进程 P 分配 2 个\n固定的页框并采用改进型 Clock 置换算法，进程 P 页表的部分内容如下表所示：\n若 P 访问虚拟地址为 02A01H 的存储单元，则经地址变换后得到的物理地址是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "00A01H"
+      },
+      {
+        "label": "B",
+        "text": "20A01H"
+      },
+      {
+        "label": "C",
+        "text": "60A01H"
+      },
+      {
+        "label": "D",
+        "text": "80A01H"
+      }
+    ],
+    "answer": "C",
+    "explanation": "页面大小为 4KB，低 12 位是页内偏移。 虚拟地址为 02A01H, 页号为 02H, 02H 页对应的页表项中存在位为 o, 进程P分配的页框固定为2, 且 内存中已有两个页面存在。 根据 CLOCK 算法，选择将 3 号页换出， 将 2 号页放入 60H 页框， 经过地址变换后得到的 物理地址是 60A01H。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 603,
+    "source": "2021-29",
+    "year": 2021,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在采用二级页表的分页系统中，CPU 页表基址寄存器中的内容是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "当前进程的一级页表的起始虚拟地址"
+      },
+      {
+        "label": "B",
+        "text": "当前进程的一级页表的起始物理地址"
+      },
+      {
+        "label": "C",
+        "text": "当前进程的二级页表的起始虚拟地址"
+      },
+      {
+        "label": "D",
+        "text": "当前进程的二级页表的起始物理地址"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在多级页表中，页表基址寄存器存放的是顶级页表的起始物理地址， 故存放的是 一级页表的起始物理地址。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 604,
+    "source": "2022-29",
+    "year": 2022,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "某进程访问的页 b 不在内存中，导致产生缺页异常，该缺页异常处理过程中\n不一定包含的操作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "淘汰内存中的页"
+      },
+      {
+        "label": "B",
+        "text": "建立页号与页框号的对应关系"
+      },
+      {
+        "label": "C",
+        "text": "将页 b 从外存读入内存"
+      },
+      {
+        "label": "D",
+        "text": "修改页表中页 b 对应的存在位"
+      }
+    ],
+    "answer": "A",
+    "explanation": "缺页异常需要从磁盘调页到内存中， 将新调入的页与页框建立对应关系， 并修改 该页的存在位，B、 C、 D正确；如果内存中有空闲页框， 就不需要淘汰其他页，A 错误。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 605,
+    "source": "2022-30",
+    "year": 2022,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "下列选项中，不会影响系统缺页率的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "页面置换算法"
+      },
+      {
+        "label": "B",
+        "text": "工作集的大小"
+      },
+      {
+        "label": "C",
+        "text": "进程的数量"
+      },
+      {
+        "label": "D",
+        "text": "页缓冲队列的长度"
+      }
+    ],
+    "answer": "D",
+    "explanation": "页置换算法会影响缺页率， 例如，LRU 算法的缺页率通常要比 FIFO 算法的缺页 率低，排除A。 工作集的大小决定了分配给进程的物理块数，分配给进程的物理块数越多， 缺页率就越低，排除B。 进程的数量越多，对内存资源的竞争越激烈， 每个进程被分配的物 理块数越少， 缺页率也就越高，排除C。 页缓冲队列是将被淘汰的页面缓存下来， 暂时不写 回磁盘，队列长度会影响页面置换的速度，但不会影响缺页率，答案选 D。",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 606,
+    "source": "2023-28",
+    "year": 2023,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "对于采用虚拟内存管理方式的系统，下列关于进程虚拟地址空间的叙述中，\n错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "每个进程都有自己独立的虚拟地址空间"
+      },
+      {
+        "label": "B",
+        "text": "C 语言中 malloc\t（ ）函数返回的是虚拟地址"
+      },
+      {
+        "label": "C",
+        "text": "进程对数据段和代码段可以有不同的访问权限"
+      },
+      {
+        "label": "D",
+        "text": "虚拟地址的大小由主存和硬盘的大小决定"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 607,
+    "source": "2023-30",
+    "year": 2023,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "进程 R 和 S 共享数据 data，若 data 在 R 和 S 中所在页的页号分别为 p1 和\np2，两个页所对应的页框号分别为 f1 和 f2，则下列叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "p1 和 p2 一定相等，f1 和 f2 一定相等"
+      },
+      {
+        "label": "B",
+        "text": "p1 和 p2 一定相等，f1 和 f2 不一定相等"
+      },
+      {
+        "label": "C",
+        "text": "p1 和 p2 不一定相等，f1 和 f2 一定相等"
+      },
+      {
+        "label": "D",
+        "text": "p1 和 p2 不一定相等，f1 和 f2 不一定相等"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 608,
+    "source": "2024-25",
+    "year": 2024,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在支持页式存储管理的系统中，进程切换时 OS 要执行\t（ ）。\nI. 更新 PC（程序计数器）值\nII. 更新栈基址寄存器值（ebp）\nIII. 更新页表基址寄存器值",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 609,
+    "source": "2025-23",
+    "year": 2025,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在采用页式虚拟存储管理方式的系统中，当发生上下文切换时，下列寄存器\n中操作系统不需要更新的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "通用寄存器"
+      },
+      {
+        "label": "B",
+        "text": "页表基址寄存器"
+      },
+      {
+        "label": "C",
+        "text": "程序计数器"
+      },
+      {
+        "label": "D",
+        "text": "内核中断向量表基址寄存器"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 610,
+    "source": "2025-26",
+    "year": 2025,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "现有一 LRU 算法，采用固定分配局部置换的页面置换策略，已为进程分配\n3 个页框，页面访问序列为 {0,1,2,0,5,1,4,3,0,2,3,2,0 }，其中 0,1,2 已调入内存。则缺页次数\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "6"
+      },
+      {
+        "label": "C",
+        "text": "7"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 611,
+    "source": "2025-27",
+    "year": 2025,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "确定进程运行所需的最少页框数时，要考虑的指标是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "代码段长"
+      },
+      {
+        "label": "B",
+        "text": "虚拟地址空间大小"
+      },
+      {
+        "label": "C",
+        "text": "物理地址空间大小"
+      },
+      {
+        "label": "D",
+        "text": "指令系统支持的寻址方式"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 612,
+    "source": "2026-24",
+    "year": 2026,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "choice",
+    "stem": "在支持虚拟存储器系统下的指令执行过程中，正确的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "地址转换由操作系统完成"
+      },
+      {
+        "label": "B",
+        "text": "页表项的内容由编译器确定"
+      },
+      {
+        "label": "C",
+        "text": "缺页中断由硬件直接处理"
+      },
+      {
+        "label": "D",
+        "text": "异常由操作系统处理"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 613,
+    "source": "2026-29",
+    "year": 2026,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "下列方法中能够有效降低系统平均访存时间的是\t（ ）\nI. TLB\nII. 多级页表\nIII. 工作集概念\nIV. 页表缓冲队列\n(A) I、III (B) II、III (C) I、III、IV (D) I、II、IV",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 614,
+    "source": "2009-46",
+    "year": 2009,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "请求分页管理系统中，假设某进程的页表内容如下表所示：\n页号 页框（Page Frame）号 有效位（存在位）\n0 101H 1\n1 0\n2 254H 1\n页面大小为 4KB，一次内存的访问时间是 100ns，一次快表（TLB）的访问时间是 10ns，\n处理一次缺页的平均时间 108 ns（已含更新 TLB 和页表的时间），进程的驻留集大小固定\n为 2，采用最近最少使用置换算法 (LRU) 和局部淘汰策略。假设\n¨ TLB 初始为空；\n≠ 地址转换时先访问 TLB，若 TLB 未命中，再访问页表（忽略访问页表之后的 TLB 更新\n时间）；\nÆ 有效位为 0 表示页面不在内存，产生缺页中断，缺页中断处理后，返回到产生缺页中断\n的指令处重新执行。\n设有虚地址访问序列 2362H、1565H、25A5H，请问：\n(1) 依次访问上述三个虚地址，各需多少时间？给出计算过程。\n(2) 基于上述访问序列，虚地址 1565H 的物理地址是多少？请说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 615,
+    "source": "2010-46",
+    "year": 2010,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "设某计算机的逻辑地址空间和物理地址空间均为 64KB，按字节编址。若某\n进程最多需要 6 页（Page）数据存储空间，页的大小为 1KB，操作系统采用固定分配局部\n置换策略为此进程分配 4 个页框（Page Frame）。在时刻 260 前该进程访问情况见下表（访\n问位即使用位）。\n页号 页框号 装入时刻 访问位\n0 7 130 1\n1 4 230 1\n2 2 200 1\n3 9 260 1\n当该进程执行到时刻 260 时，要访问逻辑地址为 17CAH 的数据。请回答下列问题：\n(1) 该逻辑地址对应的页号是多少？\n(2) 若采用先进先出 (FIFO) 置换算法，该逻辑地址对应的物理地址？要求给出计算过程。\n(3) 采用时钟 (CLOCK) 置换算法，该逻辑地址对应的物理地址是多少？要求给出计算过程\n（设搜索下一页的指针按顺时针方向移动，且指向当前 2 号页框，示意图如下图）。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 616,
+    "source": "2012-45",
+    "year": 2012,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "某请求分页系统的局部页面置换策略如下：系统从 0 时刻开始扫描，每隔 5\n个时间单位扫描一轮驻留集（扫描时间忽略不计），本轮没有被访问过的页框将被系统回\n收，并放入到空闲页框链尾，其中内容在下一次被分配之前不被清空。当发生缺页时，如\n果该页曾被使用过且还在空闲页框链表中，则重新放回进程的驻留集中；否则，从空闲页\n框链表头部取出一个页框。\n假设不考虑其他进程的影响和系统开销，初始时进程驻留集为空。目前系统空闲页框链表\n中页框号依次为 32、15、21、41。进程 P 依次访问的 < 虚拟页号，访问时刻 > 是：\n<1, 1>、<3, 2>、<0, 4>、<0, 6>、<1, 11>、<0, 13>、<2, 14>。请回答下列问题。\n(1) 访问 <0, 4> 时，对应的页框号是什么？\n(2) 访问 <1, 11> 时，对应的页框号是什么？说明理由。\n(3) 访问 <2, 14> 时，对应的页框号是什么？说明理由。\n(4) 该策略是否适合于时间局部性好的程序？说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 617,
+    "source": "2017-45",
+    "year": 2017,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": ".addr-format-wrap { margin: 14px 0 18px; overflow-x: auto; } .addr-format {\nwidth: 100%; min-width: 560px; border-collapse: collapse; table-layout: fixed; color: inherit;\nbackground: transparent; } .addr-format td { border: 1px solid currentColor; padding: 12px 10px;\ntext-align: center; vertical-align: middle; color: inherit; background: transparent; font-size: 15px;\nwhite-space: nowrap; }\n假定题 44 给出的计算机 M 采用二级分页虚拟存储管理方式，虚拟地址格式如下：\n页目录号（10 位） 页表索引（10 位） 页内偏移量（12 位）\n请针对题 43 的函数 f1 和题 44 中的机器指令代码，回答下列问题。\n(1) 函数 f1 的机器指令代码占多少页？\n(2) 取第 1 条指令（push ebp）时，若在进行地址变换的过程中需要访问内存中的页目录和\n页表，则会分别访问它们各自的第几个表项（编号从 0 开始）？\n(3) M 的 I/O 采用中断控制方式。若进程 P 在调用 f1 之前通过 scanf\t（ ）获取 n 的值，则\n在执行 scanf\t（ ）的过程中，进程 P 的状态会如何变化？CPU 是否会进入内核态？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 618,
+    "source": "2018-45",
+    "year": 2018,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "请根据题 44 图给出的虚拟存储管理方式，回答下列问题。\n(1) 某虚拟地址对应的页目录号为 6，在相应的页表中对应的页号为 6，页内偏移量为 8，\n该虚拟地址的十六进制表示是什么？\n(2) 寄存器 PDBR 用于保存当前进程的页目录起始地址，该地址是物理地址还是虚拟地址？\n进程切换时，PDBR 的内容是否会变化？说明理由。同一进程的线程切换时，PDBR 的内\n容是否会变化？说明理由。\n(3) 为了支持改进型 CLOCK 置换算法，需要在页表项中设置哪些字段？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 619,
+    "source": "2019-45",
+    "year": 2019,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "已知 f (n) = n! = n × (n − 1) × (n − 2) × · · · × 2 × 1，计算 f (n) 的 C 语言函数 f1 的\n源程序（阴影部分）及其在 32 位计算机 M 上的部分机器级代码如下：\nint f1(int n) {\n1 00401000 55 push ebp\n\nif(n >1)\n11 00401018 83 7D 08 01 cmp dword ptr [ ebp +8] ,1\n12 0040101 C 7E 17 jle f1 +35 h (00401035)\nreturn n*f1(n -1) ;\n13 0040101 E 8B 45 08 mov eax , dword ptr [ ebp +8]\n14 00401021 83 E8 01 sub eax , 1\n15 00401024 50 push eax\n16 00401025 E8 D6 FF FF FF call f1 (00401000)\n\n19 00401030 0F AF C1 imul eax , ecx\n20 00401033 EB 05 jmp f1 +3 Ah (0040103 a)\nelse return 1;\n}\n21 00401035 B8 01 00 00 00 mov eax ,1\n\n26 00401040 3B EC cmp ebp , esp\n\n30 0040104 A C3 ret\n其中，机器级代码行包括行号、虚拟地址、机器指令和汇编指令，计算机 M 按字节编址，\nint 型数据占 32 位。请回答下列问题：\n(1) 计算 f(10) 需要调用函数 f1 多少次？执行哪条指令会递归调用 f1？\n(2) 上述代码中，哪条指令是条件转移指令？哪几条指令一定会使程序跳转执行？\n(3) 根据第 16 行的 call 指令，第 17 行指令的虚拟地址应是多少？已知第 16 行的 call 指令\n采用相对寻址方式，该指令中的偏移量应是多少（给出计算过程）？已知第 16 行的 call 指\n令的后 4 字节为偏移量，M 是采用大端方式还是采用小端方式？\n(4) f(13)=6227020800，但 f1(13) 的返回值为 1932053504，为什么两者不相等？要使 f1(13)\n能返回正确的结果，应如何修改 f1 的源程序？\n(5) 第 19 行的 imul 指令（带符号整数乘）的功能是 R[eax]←R[eax]×R[ecx]，当乘法器输出\n的高、低 32 位乘积之间满足什么条件时，溢出标志 OF=1？要使 CPU 在发生溢出时转异\n常处理，编译器应在 imul 指令后加一条什么指令？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 620,
+    "source": "2019-46",
+    "year": 2019,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "对于上题，若计算机 M 的主存地址为 32 位，釆用分页存储管理方式，页大\n小为 4KB，则第 1 行的 push 指令和第 30 行的 ret 指令是否在同一页中（说明理由）？若指\n令 Cache 有 64 行，采用 4 路组相联映射方式，主存块大小为 64B，则 32 位主存地址中，\n哪几位表示块内地址？哪几位表示 Cache 组号？哪几位表示标记（tag）信息？读取第 16\n行的 call 指令时，只可能在指令 Cache 的哪一组中命中（说明理由）？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 621,
+    "source": "2020-46",
+    "year": 2020,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": ".addr-format-wrap { margin: 14px 0 18px; overflow-x: auto; } .addr-format {\nwidth: 100%; min-width: 560px; border-collapse: collapse; table-layout: fixed; color: inherit;\nbackground: transparent; } .addr-format td { border: 1px solid currentColor; padding: 12px 10px;\ntext-align: center; vertical-align: middle; color: inherit; background: transparent; font-size: 15px;\nwhite-space: nowrap; }\n某 32 位系统采用基于二级页表的请求分页存储管理方式，按字节编址，页目录项和页表\n项长度均为 4 字节，虚拟地址结构如下所示。\n页目录号（10 位） 页号（10 位） 页内偏移量（12 位）\n某 C 程序中数组 a[1024][1024] 的起始虚拟地址为 1080 0000H，数组元素占 4 字节，该程\n序运行时，其进程的页目录起始物理地址为 0020 1000H，请回答下列问题。\n(1) 数组元素 a[1][2] 的虚拟地址是什么？对应的页目录号和页号分别是什么？对应的页目\n录项的物理地址是什么？若该目录项中存放的页框号为 00301H，则 a[1][2] 所在页对应的\n页表项的物理地址是什么？\n(2) 数组 a 在虚拟地址空间中所占区域是否必须连续？在物理地址空间中所占区域是否必\n须连续？\n(3) 已知数组 a 按行优先方式存放，若对数组 a 分别按行遍历和按列遍历，则哪一种遍历\n方式的局部性更好？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 622,
+    "source": "2024-45",
+    "year": 2024,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.3.2",
+    "sectionTitle": "虚拟内存管理",
+    "type": "comprehensive",
+    "stem": "某计算机按字节编址，采用页式虚拟存储管理方式，虚拟地址和物理地址的\n长度均为 32 位，页表项的大小为 4 字节，页大小为 4MB，虚拟地址结构如下：\n进程 P 的页表起始虚拟地址为 B8C0 0000H，被装载到从物理地址 6540 0000H 开始的连续\n主存空间中。请回答下列问题：\n（1）若 CPU 在执行进程 P 的过程中，访问虚拟地址 1234 5678H 时发生了缺页异常，经过\n缺页异常处理和 MMU 地址转换后得到的物理地址是 BAB4 5678H。在此次缺页异常的处\n理中，需要为新缺页分配页框并更新相应的页表项，则该页表项的虚拟地址和物理地址分\n别是什么？该页表项中的页框号更新后的值是什么？（3 分）\n（2）进程 P 的页表所在页的页号是什么？该页对应的页表项的虚拟地址是什么？该页表项\n中的页框号是多少？（4 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/03-memory-management"
+  },
+  {
+    "id": 623,
+    "source": "2009-28",
+    "year": 2009,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "choice",
+    "stem": "下列文件物理结构中，适合随机访问且易于文件扩展的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "连续结构"
+      },
+      {
+        "label": "B",
+        "text": "索引结构"
+      },
+      {
+        "label": "C",
+        "text": "链式结构且磁盘块定长"
+      },
+      {
+        "label": "D",
+        "text": "链式结构且磁盘块变长"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 624,
+    "source": "2010-30",
+    "year": 2010,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "choice",
+    "stem": "设文件索引结点中有 7 个地址项，其中 4 个地址项是直接地址索引，2 个地\n址项是一级间接地址索引，1 个地址项是二级间接地址索引，每个地址项大小为 4B，若磁\n盘索引块和磁盘数据块大小均为 256B，则可表示的单个文件最大长度是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "33KB"
+      },
+      {
+        "label": "B",
+        "text": "519KB"
+      },
+      {
+        "label": "C",
+        "text": "1057KB"
+      },
+      {
+        "label": "D",
+        "text": "1651KB"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 625,
+    "source": "2013-24",
+    "year": 2013,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "choice",
+    "stem": "为支持 CD-ROM 中视频文件的快速随机播放，播放性能最好的文件数据块\n组织方式是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "连续结构"
+      },
+      {
+        "label": "B",
+        "text": "链式结构"
+      },
+      {
+        "label": "C",
+        "text": "直接索引结构"
+      },
+      {
+        "label": "D",
+        "text": "多级索引结构"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 626,
+    "source": "2020-24",
+    "year": 2020,
+    "qIndex": 24,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "comprehensive",
+    "stem": "下 列 选 项 中， 支 持 文 件 长 度 可 变、 随 机 访 问 的 磁 盘 存 储 空 间 分 配 方 式\n是\t（ ）。\n(A) 索引分配 (B) 链接分配\n(C) 连续分配 (D) 动态分区分配",
+    "options": [],
+    "answer": "A",
+    "explanation": "链接分配不能支持随机访问，B 错误。连续分配不支持可变文件长度，C 错误。动态 分区分配是内存管理方式非磁盘空间管理方式，D 错误。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 627,
+    "source": "2011-46",
+    "year": 2011,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "comprehensive",
+    "stem": "某文件系统为一级目录结构，文件的数据一次性写入磁盘，已写入的文件不\n可修改，但可多次创建新文件。请回答如下问题：\n(1) 在连续、链式、索引三种文件的数据块组织方式中。哪种更合适？要求说明理由。为定\n位文件数据块，需要在 FCB 中设计哪些相关描述字段？\n(2) 为快速找到文件，对于 FCB，是集中存储好，还是与对应的文件数据块连续存储好？要\n求说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 628,
+    "source": "2012-46",
+    "year": 2012,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "comprehensive",
+    "stem": "某文件系统空间的最大容量为 4TB（1TB= 240 B），以磁盘块为基本分配单\n位。磁盘块大小为 1KB。文件控制块 (FCB) 包含一个 512B 的索引表区。请回答下列问题。\n(1) 假设索引表区仅采用直接索引结构，索引表区存放文件占用的磁盘块号，索引表项中\n块号最少占多少字节？可支持的单个文件最大长度是多少字节？\n(2) 假设索引表区采用如下结构：第 0～7 字节采用 < 起始块号，块数 > 格式表示文件创建\n时预分配的连续存储空间，其中起始块号占 6B，块数占 2B；剩余 504 字节采用直接索引\n结构，一个索引项占 6B，那么可支持的单个文件最大长度是多少字节？为了使单个文件\n的长度达到最大，请指出起始块号和块数分别所占字节数的合理值并说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 629,
+    "source": "2014-46",
+    "year": 2014,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.1",
+    "sectionTitle": "文件的逻辑结构与物理结构",
+    "type": "comprehensive",
+    "stem": "文件 F 由 200 条记录组成，记录从 1 开始编号。用户打开文件后，欲将内存\n中的一条记录插入文件 F 中，作为其第 30 条记录。请回答下列问题，并说明理由。\n(1) 若文件系统采用连续分配方式，每个磁盘块存放一条记录，文件 F 存储区域前后均有\n足够的空闲磁盘空间，则完成上述插入操作最少需要访问多少次磁盘块？F 的文件\n控制块内容会发生哪些改变？\n(2) 若文件系统采用链接分配方式，每个磁盘块存放一条记录和一个链接指针，则完成上\n述插入操作需要访问多少次磁盘块？若每个存储块大小为 1KB，其中 4B 存放链接指针，\n则该文件系统支持的文件最大长度是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 630,
+    "source": "2016-47",
+    "year": 2016,
+    "qIndex": 47,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "某磁盘文件系统使用链接分配方式组织文件，簇大小为 4KB。目录文件的每\n个目录项包括文件名和文件的第一个簇号，其他簇号存放在文件分配表 FAT 中。\n(1) 假定目录树如下图所示，各文件占用的簇号及顺序如下表所示，其中 dir、dir1 是目录，\nfile1、file2 是用户文件。请给出所有目录文件的内容。\n(2) 若 FAT 的每个表项仅存放簇号，占 2 个字节，则 FAT 的最大长度为多少字节？该文件\n系统支持的文件长度最大是多少？\n(3) 系统通过目录文件和 FAT 实现对文件的按名存取，说明 file1 的 106、108 两个簇号分\n别存放在 FAT 的哪个表项中。\n(4) 假设仅 FAT 和 dir 目录文件已读入内存，若需将文件 dir/dir1/file1 的第 5000 个字节读\n入内存，则要访问哪几个簇？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 631,
+    "source": "2009-30",
+    "year": 2009,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "文件系统中，文件访问控制信息存储的合理位置是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "文件控制块"
+      },
+      {
+        "label": "B",
+        "text": "文件分配表"
+      },
+      {
+        "label": "C",
+        "text": "用户口令表"
+      },
+      {
+        "label": "D",
+        "text": "系统注册表"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 632,
+    "source": "2010-31",
+    "year": 2010,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "设置当前工作目录的主要目的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "节省外存空间"
+      },
+      {
+        "label": "B",
+        "text": "节省内存空间"
+      },
+      {
+        "label": "C",
+        "text": "加快文件的检索速度"
+      },
+      {
+        "label": "D",
+        "text": "加快文件的读/写速度"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 633,
+    "source": "2013-23",
+    "year": 2013,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "用户在删除某文件的过程中，操作系统不可能执行的操作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "删除此文件所在的目录"
+      },
+      {
+        "label": "B",
+        "text": "删除与此文件关联的目录项"
+      },
+      {
+        "label": "C",
+        "text": "删除与此文件对应的文件控制块"
+      },
+      {
+        "label": "D",
+        "text": "释放与此文件关联的内存缓冲区"
+      }
+    ],
+    "answer": "A",
+    "explanation": "24. A",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 634,
+    "source": "2013-26",
+    "year": 2013,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "若某文件系统索引结点 (inode) 中有直接地址项和间接地址项，则下列选项\n中，与单个文件长度无关的因素是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "索引结点的总数"
+      },
+      {
+        "label": "B",
+        "text": "间接地址索引的级数"
+      },
+      {
+        "label": "C",
+        "text": "地址项的个数"
+      },
+      {
+        "label": "D",
+        "text": "文件块大小"
+      }
+    ],
+    "answer": "A",
+    "explanation": "A",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 635,
+    "source": "2014-27",
+    "year": 2014,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "现有一个容量为 10GB 的磁盘分区，磁盘空间以簇 (Cluster) 为单位进行分配，\n簇的大小为 4KB，若采用位图法管理该分区的空闲空间，即用一位 (bit) 标识一个簇是否\n被分配，则存放该位图所需簇的个数为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "80"
+      },
+      {
+        "label": "B",
+        "text": "320"
+      },
+      {
+        "label": "C",
+        "text": "80K"
+      },
+      {
+        "label": "D",
+        "text": "320K"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 636,
+    "source": "2014-29",
+    "year": 2014,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "在一个文件被用户进程首次打开的过程中，操作系统需要做的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "将文件内容读到内存中"
+      },
+      {
+        "label": "B",
+        "text": "将文件控制块读到内存中"
+      },
+      {
+        "label": "C",
+        "text": "修改文件控制块中的读写权限"
+      },
+      {
+        "label": "D",
+        "text": "将文件的数据缓冲区首指针返回给用户进程"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 637,
+    "source": "2015-29",
+    "year": 2015,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "在文件的索引节点中存放直接索引指针 10 个，一级和二级索引指针各 1 个。\n磁盘块大小为 1KB，每个索引指针占 4 个字节。若某文件的索引节点已在内存中，则把该\n文件偏移量（按字节编址）为 1234 和 307400 处所在的磁盘块读入内存，需访问的磁盘块\n个数分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1、2"
+      },
+      {
+        "label": "B",
+        "text": "1、3"
+      },
+      {
+        "label": "C",
+        "text": "2、3"
+      },
+      {
+        "label": "D",
+        "text": "2、4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "-- 4 of 11 -- 【解析】10 个直接索引指针指向的数据块大小为 10×1KB=10KB。每个索引指针占 4B，则 每个磁盘块可存放 1KB/4B=256 个索引指针，一级索引指针指向的数据块大小为： 256×1KB=256KB 二级索引指针指向的数据块大小为：256×256×1KB=216 KB=64MB。按字 节编址，偏移量为 1234 时，因 1234B＜10KB，则由直接索引指针可得到其所在的磁盘块 地址。文件的索引结点已在内存中，则地址可直接得到，故仅需 1 次访盘即可。偏移量为 307400 时，因 10KB+256KB＜307400B＜64MB，可知该偏移量的内容在二级索引指针所 指向的某个磁盘块中，索引结点已在内存中，故先访盘 2 次得到文件所在的磁盘块地址，再 访盘 1 次即可读出内容，故共需 3 次访盘。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 638,
+    "source": "2015-31",
+    "year": 2015,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "文件系统用 位图法 表示磁盘空间的分配情况，位图存于磁盘的 32～127 号\n块中，每个盘块占 1024 个字节，盘块和块内字节均从 0 开始编号。假设要释放的盘块号\n为 409612，则位图中要修改的位所在的盘块号和块内字节序号分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "81、1"
+      },
+      {
+        "label": "B",
+        "text": "81、2"
+      },
+      {
+        "label": "C",
+        "text": "82、1"
+      },
+      {
+        "label": "D",
+        "text": "82、2"
+      }
+    ],
+    "answer": "C",
+    "explanation": "位图表示法：⌊409612/（8×1024）⌋=50，还余 12，所以共需要 51 个块。从 32 开 始的话到了 32+51-1=82 号块，因为余下的 12 位，需要占两个字节，从 0 序号开始的话所以 到了 1 序号字节。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 639,
+    "source": "2017-26",
+    "year": 2017,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "某文件系统的簇和磁盘扇区大小分别为 1KB 和 512B。若一个文件的大小为\n1026B，则系统分配给该文件的磁盘空间大小是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1026B"
+      },
+      {
+        "label": "B",
+        "text": "1536B"
+      },
+      {
+        "label": "C",
+        "text": "1538B"
+      },
+      {
+        "label": "D",
+        "text": "2048B"
+      }
+    ],
+    "answer": "D",
+    "explanation": "绝大多数操作系统为改善磁盘访问时间，以簇为单位进行空间分配，因此答案选 D。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 640,
+    "source": "2017-31",
+    "year": 2017,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "若文件 f1 的硬链接为 f2，两个进程分别打开 f1 和 f2，获得对应的文件描述\n符为 fd1 和 fd2，则下列叙述中，正确的是\t（ ）。\nI. f1 和 f2 的读写指针位置保持相同\nII. f1 和 f2 共享同一个内存索引结点\nIII. fd1 和 fd2 分别指向各自的用户打开文件表中的一项",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 III"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "硬链接指通过索引节点进行连接，一个文件在物理存储器上有一个索引结点号。存 在多个文件名指向同一个索引节点，Ⅱ正确。两个进程各自维护自己的文件描述符，Ⅲ正确， Ⅰ错误。所以答案选 B。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 641,
+    "source": "2018-31",
+    "year": 2018,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "下列优化方法中，可以提高文件访问速度的是\t（ ）。\nI. 提前读\nII. 为文件分配连续的簇\nIII. 延迟写\nIV. 采用磁盘高速缓存",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Ⅱ和Ⅳ显然均能提高文件访问速度。对于Ⅰ，提前读是指在读当前盘块时，将下一 个可能要访问的盘块数据读入缓冲区，以便需要时直接从缓冲区中读取，提高了文件的访问 速度。对于Ⅲ，延迟写是先将写数据写入缓冲区，并置上“延迟写”标志，以备不久之后访 问，当缓冲区需要再次被分配出去时才将缓冲区数据写入磁盘，减少了访问磁盘的次数，提 高了文件的访问速度，Ⅲ也正确，答案选 D。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 642,
+    "source": "2019-26",
+    "year": 2019,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "下列选项中，可用于文件系统管理空闲磁盘块的数据结构是\t（ ）。\nI. 位图\nII. 索引结点\nIII. 空闲磁盘块链\nIV. 文件分配表 (FAT)",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "-- 4 of 11 -- 【解析】传统的文件系统管理空间磁盘的方法包括空闲表法、空闲链表法、位示图和成组链 接法，Ⅰ、Ⅲ正确。文件分配表(FAT)的表项与物理磁盘块一一对应，并且可以用一个特殊的 数字-1 表示文件的最后一块，用-2 表示这个磁盘块是空闲的(当然，规定用-3、-4 来表示也是 可行的)。因此文件分配表(FAT)不仅记录了文件中各个块的先后链接关系，同时还标记了空闲 的磁盘块，操作系统可以通过 FAT 对文件存储空间进行管理，Ⅳ正确。索引结点是操作系统 为了实现文件名与文件信息分开而设计的数据结构，存储了文件描述信息，索引结点属于文 件目录管理部分的内容，Ⅱ错误。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 643,
+    "source": "2020-31",
+    "year": 2020,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "某文件系统的目录项由文件名和索引结点号构成。若每个目录项长度为 64\n字节，其中 4 字节存放索引结点号，60 字节存放文件名。文件名由小写英文字母构成，则\n该文件系统能创建的文件数量的上限为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "226"
+      },
+      {
+        "label": "B",
+        "text": "232"
+      },
+      {
+        "label": "C",
+        "text": "260"
+      },
+      {
+        "label": "D",
+        "text": "264"
+      }
+    ],
+    "answer": "B",
+    "explanation": "最多创建文件个数=最多索引节点个数。由题，索引节点占 4 个字节，对应 32 位， 最多可以表示 232 个文件，B 正确。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 644,
+    "source": "2021-30",
+    "year": 2021,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "若目录 dir 下有文件 file1，则为删除该文件内核不必完成的工作是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "删除 file1 的快捷方式"
+      },
+      {
+        "label": "B",
+        "text": "释放 file1 的文件控制块"
+      },
+      {
+        "label": "C",
+        "text": "释放 file1 占用的磁盘空间"
+      },
+      {
+        "label": "D",
+        "text": "删除目录 dir 中与 file1 对应的目录项"
+      }
+    ],
+    "answer": "A",
+    "explanation": "删除一 个 文件时， 会根据文件控制块回收相应的磁盘空间， 将 文件控制块回收， 并删除目录中对应的目录项 。B、C、D正确。 快捷方式属千文件共享中的软连接， 本质上是创 建了 一 个链接文件， 其中存放的是访问该文件的路径， 删除文件并不会导致文件的快捷方式被 删除， 正如在Windows上 删除一 个程序后， 其快捷方式可能仍存在于桌面， 但已无法打开。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 645,
+    "source": "2023-31",
+    "year": 2023,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "若文件 F 仅被进程 P 打开并访问，则当进程 P 关闭 F 时，下列操作中，文件\n系统需要完成的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "删除目录中文件 F 的目录项"
+      },
+      {
+        "label": "B",
+        "text": "释放 F 的索引节点所占的内存空间"
+      },
+      {
+        "label": "C",
+        "text": "释放 F 的索引节点所占的外存空间"
+      },
+      {
+        "label": "D",
+        "text": "将文件磁盘索引节点中的链接计数减 1"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 646,
+    "source": "2024-26",
+    "year": 2024,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "文件系统需要额外的外存空间记录空闲块的位置，占用外存空间大小与当前\n空闲块数量无关的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "位示图"
+      },
+      {
+        "label": "B",
+        "text": "空闲表"
+      },
+      {
+        "label": "C",
+        "text": "成组链接"
+      },
+      {
+        "label": "D",
+        "text": "空闲链表"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 647,
+    "source": "2024-29",
+    "year": 2024,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "以下系统调用中，包含文件按名查找功能的系统调用是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "open()"
+      },
+      {
+        "label": "B",
+        "text": "read()"
+      },
+      {
+        "label": "C",
+        "text": "write()"
+      },
+      {
+        "label": "D",
+        "text": "close()"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 648,
+    "source": "2025-28",
+    "year": 2025,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "关于虚拟文件系统，下列说法正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "虚拟文件系统是运行在虚拟内存的文件系统"
+      },
+      {
+        "label": "B",
+        "text": "VFS 可以加快文件系统的访问速度"
+      },
+      {
+        "label": "C",
+        "text": "VFS 定义了可访问不同文件系统的统一接口"
+      },
+      {
+        "label": "D",
+        "text": "VFS 只能访问本地文件系统，不能访问网络文件系统"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 649,
+    "source": "2025-29",
+    "year": 2025,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "某文件系统采用索引节点方式。用户在目录中新建文件 F 时，文件系统不会\n做的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "初始化文件 F 的索引节点"
+      },
+      {
+        "label": "B",
+        "text": "在目录文件中写入 F 的索引节点号"
+      },
+      {
+        "label": "C",
+        "text": "在目录文件中写入 F 的访问权限信息"
+      },
+      {
+        "label": "D",
+        "text": "在目录文件中增加一条文件 F 对应的目录项"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 650,
+    "source": "2025-30",
+    "year": 2025,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "关于内存映射文件，下列说法正确的是\t（ ）。\nI. 可实现进程间通信\nII. 实现了页面到磁盘块的映射\nIII. 将文件映射到进程的虚拟地址空间\nIV. 将文件映射到系统的物理地址空间",
+    "options": [
+      {
+        "label": "A",
+        "text": "I、III"
+      },
+      {
+        "label": "B",
+        "text": "I、IV"
+      },
+      {
+        "label": "C",
+        "text": "II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 651,
+    "source": "2025-31",
+    "year": 2025,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "下列选项中，可被文件系统用于记录外存空闲空间使用情况的是\t（ ）。\n(A) 目录 (B) 系统打开文件表\n(C) 文件分配表（FAT） (D) 文件控制块（FCB）",
+    "options": [
+      {
+        "label": "A",
+        "text": "目录"
+      },
+      {
+        "label": "B",
+        "text": "系统打开文件表"
+      },
+      {
+        "label": "C",
+        "text": "文件分配表（FAT）"
+      },
+      {
+        "label": "D",
+        "text": "文件控制块（FC"
+      },
+      {
+        "label": "B",
+        "text": ""
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 652,
+    "source": "2025-32",
+    "year": 2025,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "choice",
+    "stem": "下列选项中，文件系统能为温彻斯特硬盘和固态硬盘提供的功能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "划分扇区"
+      },
+      {
+        "label": "B",
+        "text": "确定盘块大小"
+      },
+      {
+        "label": "C",
+        "text": "降低寻道时间"
+      },
+      {
+        "label": "D",
+        "text": "实现均衡磨损"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 653,
+    "source": "2026-30",
+    "year": 2026,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "comprehensive",
+    "stem": "进程 P1 和 P2 共享一个文件 R，该文件的页表项分别是 R1 和 R2，其在 2 个\n进程中的虚拟地址分别是 W1 和 W2，则下列说法中正确的是\t（ ）\n(A) 页表项 R1 和 R2 的内容完全不同\n(B) W1 和 W2 映射的物理地址相同\n(C) 进程 P1 对 W1 的修改不会影响 P2 对 W2 的访问\n(D) W1 和 W2 虚拟地址相同",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 654,
+    "source": "2010-45",
+    "year": 2010,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "comprehensive",
+    "stem": "假设计算机系统采用 CSCAN（循环扫描）磁盘调度策略，使用 2KB 的内存\n空间记录 16384 个磁盘块的空闲状态。\n(1) 请说明在上述条件如何进行磁盘块空闲状态的管理。\n(2) 设某单面磁盘的旋转速度为 6000rpm，每个磁道有 100 个扇区，相邻磁道间的平均移动\n的时间为 1ms。若在某时刻，磁头位于 100 号磁道处，并沿着磁道号增大的方向移动（见\n下图），磁道号的请求队列为 50, 90, 30, 120，对请求队列中的每个磁道需读取 1 个随机分\n布的扇区，则读完这个扇区点共需要多少时间？需要给出计算过程。\n(3) 如果将磁盘替换为随机访问的 Flash 半导体存储器（如 U 盘、SSD 等），是否有比\nCSCAN 更高效的磁盘调度策略？若有，给出磁盘调度策略的名称并说明理由；若无，说\n明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 655,
+    "source": "2018-46",
+    "year": 2018,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "comprehensive",
+    "stem": "某文件系统采用索引节点存放文件的属性和地址信息，簇大小为 4KB。每个\n文件索引节点占 64B，有 11 个地址项，其中直接地址项 8 个，一级、二级和三级间接地址\n项各 1 个，每个地址项长度为 4B。请回答下列问题。\n(1) 该文件系统能支持的最大文件长度是多少？（给出计算表达式即可）\n(2) 文件系统用 1M（1M= 220 ）个簇存放文件索引节点，用 512M 个簇存放文件数据。若\n一个图像文件的大小为 5600B，则该文件系统最多能存放多少个这样的图像文件？\n(3) 若文件 F1 的大小为 6KB，文件 F2 的大小为 40KB，则该文件系统获取 F1 和 F2 最后\n一个簇的簇号需要的时间是否相同？为什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 656,
+    "source": "2022-45",
+    "year": 2022,
+    "qIndex": 45,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.2",
+    "sectionTitle": "文件系统",
+    "type": "comprehensive",
+    "stem": "某文件系统的磁盘块大小为 4KB，目录项由文件名和索引节点号构成，每个\n索引节点占 256 字节，其中包含直接地址项 10 个，一级、二级和三级间接地址项各 1 个，\n每个地址项占 4 字节。该文件系统中子目录 stu 的结构如题 45(a) 图所示，stu 包含子目录\ncourse 和文件 doc，course 子目录包含文件 course1 和 course2。各文件的文件名、索引节\n点号、占用磁盘块的块号如题 45(b) 图所示。\n请回答下列问题。\n(1) 目录文件 stu 中每个目录项的内容是什么？\n(2) 文件 doc 占用的磁盘块的块号 x 的值是多少？\n(3) 若目录文件 course 的内容已在内存，则打开文件 course1 并将其读入内存，需要读几个\n磁盘块？说明理由。\n(4) 若文件 course2 的大小增长到 6MB，为了存取 course2 需要使用该文件索引节点的哪几\n级间接地址项？说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 657,
+    "source": "2026-46",
+    "year": 2026,
+    "qIndex": 46,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.3",
+    "sectionTitle": "文件的共享与保护",
+    "type": "choice",
+    "stem": "（本题满分 8 分）\n文件系统的目录项包括文件名和索引节点号。磁盘包含索引节点表、位图、目录、文件数\n据等元数据。若盘块大小为 4 KB，盘块号占 4 B，索引节点表存放了系统的所有文\n件，从 0 开始编号，存放在盘块号 100 开始连续的 4096 个盘块中。索引节点占用\n128 B，包含直接地址项 5 个，一级间接地址项、二级间接地址项、三级间接地址项\n各 1 个。磁盘位示图和索引节点位示图分别记录磁盘和索引节点的使用情况，0 表\n示未使用，1 表示已使用。其中目录结构图与文件的索引节点表如下所示（此处假\n定图中信息已给出），file 文件占 30 KB。\n（1）file 的索引节点所在的盘块号是多少？若 file 的索引节点已经读取到内存，要访问 file\n文件中偏移地址 21460 的一个字节数据，则最多需要读多少个盘块？如果文件系统中有足\n够的磁盘空间，则最多可以存放多少个文件？（3 分）\n（2）如果要删除目录 dir1，则需要对元数据进行哪些操作？（5 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 658,
+    "source": "2009-31",
+    "year": 2009,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.3",
+    "sectionTitle": "文件的共享与保护",
+    "type": "choice",
+    "stem": "设文件 F1 的当前引用计数值为 1，先建立 F1 的符号链接（软链接）文件 F2，\n再建立 F1 的硬链接文件 F3，然后删除 F1。此时，F2 和 F3 的引用计数值分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0、1"
+      },
+      {
+        "label": "B",
+        "text": "1、1"
+      },
+      {
+        "label": "C",
+        "text": "1、2"
+      },
+      {
+        "label": "D",
+        "text": "2、1"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 659,
+    "source": "2017-30",
+    "year": 2017,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.3",
+    "sectionTitle": "文件的共享与保护",
+    "type": "choice",
+    "stem": "某文件系统中，针对每个文件，用户类别分为 4 类：安全管理员、文件主、\n文件主的伙伴、其他用户；访问权限分为 5 种：完全控制、执行、修改、读取、写入。若\n文件控制块中用二进制位串表示文件权限，为表示不同类别用户对一个文件的访问权限，\n则描述文件权限的位数至少应为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "9"
+      },
+      {
+        "label": "C",
+        "text": "12"
+      },
+      {
+        "label": "D",
+        "text": "20"
+      }
+    ],
+    "answer": "D",
+    "explanation": "可以把用户访问权限抽象为一个矩阵，行代表用户，列代表访问权限。这个矩阵有 4 -- 4 of 9 -- 行 5 列，1 代表 true，0 代表 false，所以需要 20 位，答案选 D。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 660,
+    "source": "2020-23",
+    "year": 2020,
+    "qIndex": 23,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.4.3",
+    "sectionTitle": "文件的共享与保护",
+    "type": "choice",
+    "stem": "若多个进程共享同一个文件 F，则下列叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "各进程只能用“读”方式打开文件 F"
+      },
+      {
+        "label": "B",
+        "text": "在系统打开文件表中仅有一个表项包含 F 的属性"
+      },
+      {
+        "label": "C",
+        "text": "各进程的用户打开文件表中关于 F 的表项内容相同"
+      },
+      {
+        "label": "D",
+        "text": "进程关闭 F 时，系统删除 F 在系统打开文件表中的表项"
+      }
+    ],
+    "answer": "B",
+    "explanation": "既可以是读的方式，也可以是写的方式，A 错误。系统打开文件表整个系统只有一 张，同一个文件打开多次只需要改变引用计数，不需要对应多项，B 正确。用户进程的打开文 件表关于同一个文件不一定相同，C 错误。进程关闭文件时，文件的引用计数减少 1，引用计 数变为 0 时才删除，D 错误。",
+    "relatedPath": "/operating-system/04-file-system"
+  },
+  {
+    "id": 661,
+    "source": "2009-32",
+    "year": 2009,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "程序员利用系统调用打开 I/O 设备时，通常使用的设备标识是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "逻辑设备名"
+      },
+      {
+        "label": "B",
+        "text": "物理设备名"
+      },
+      {
+        "label": "C",
+        "text": "主设备号"
+      },
+      {
+        "label": "D",
+        "text": "从设备号"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 662,
+    "source": "2010-32",
+    "year": 2010,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "本地用户通过键盘登录系统时，首先获得键盘输入信息的程序是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "命令解释程序"
+      },
+      {
+        "label": "B",
+        "text": "中断处理程序"
+      },
+      {
+        "label": "C",
+        "text": "系统调用服务程序"
+      },
+      {
+        "label": "D",
+        "text": "用户登录程序"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 663,
+    "source": "2012-28",
+    "year": 2012,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "若一个用户进程通过 read 系统调用读取一个磁盘文件中的数据，则下列关\n于此过程的叙述中，正确的是\t（ ）。\nI. 若该文件的数据不在内存中，则该进程进入睡眠等待状态\nII. 请求 read 系统调用会导致 CPU 从用户态切换到核心态\nIII. read 系统调用的参数应包含文件的名称",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II 和 III"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查 read 系统调用的过程与特点。对于Ⅰ，当所读文件的数据不在内存时，产生中 断（缺页中断、缺段中断），原进程进入阻塞状态（睡眠等待状态），直到所需数据从外存调入 进入内存后，将该进程唤醒，使其变为就绪状态。对于Ⅱ，read 系统调用通过陷入将 CPU 从 用户态切换到核心态，从而获取操作系统提供的服务。对于Ⅲ，在操作系统中，要读一个文 件首先要用 open 系统调用将该文件打开。open 系统调用的参数需要包含文件的路径名与文 件名，而 read 系统调用只需要使用 open 返回的文件描述符，并不使用文件名作为参数。read 系统调用要求用户提供三个输入参数：①文件描述符 fd；②buf 缓冲区首址；③传送的字节数 n。read 系统调用的功能是试图从 fd 所指示的文件中读入 n 个字节的数据，并将它们送至由 指针 buf 所指示的缓冲区中。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 664,
+    "source": "2017-32",
+    "year": 2017,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "系统将数据从磁盘读到内存的过程包括以下操作：\n¨ DMA 控制器发出中断请求\n≠ 初始化 DMA 控制器并启动磁盘\nÆ 从磁盘传输一块数据到内存缓冲区\nØ 执行“DMA 结束”中断服务程序\n正确的执行顺序是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "Æ→¨→≠→Ø"
+      },
+      {
+        "label": "B",
+        "text": "≠→Æ→¨→Ø"
+      },
+      {
+        "label": "C",
+        "text": "≠→¨→Æ→Ø"
+      },
+      {
+        "label": "D",
+        "text": "¨→≠→Ø→Æ"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在开始 DMA 传输时，主机向内存写入 DMA 命令块，向 DMA 控制器写入该命令块 的地址，启动 I/O 设备。然后，CPU 继续其他工作，DMA 控制器则继续下去直接操作内存总 线，将地址放到总线上开始传输。当整个传输完成后，DMA 控制器中断 CPU。因此执行顺序 2，3，1，4，答案选 B。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 665,
+    "source": "2022-32",
+    "year": 2022,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "下列关于驱动程序的叙述中，不正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "驱动程序与 I/O 控制方式无关"
+      },
+      {
+        "label": "B",
+        "text": "初始化设备是由驱动程序控制完成的"
+      },
+      {
+        "label": "C",
+        "text": "进程在执行驱动程序时可能进入阻塞态"
+      },
+      {
+        "label": "D",
+        "text": "读/写设备的操作是由驱动程序控制完成的"
+      }
+    ],
+    "answer": "A",
+    "explanation": "厂家在设计一个设备时， 通常会为该设备编写驱动程序， 主机需要先安装驱动程 序， 才能使用设备。 当一个设备被连接到主机时， 驱动程序负责初始化设备（如将设备控制 器中的寄存器初始化），B正确。 当进程在执行驱动程序时，可能会因为设备忙碌而进入阻塞 态，C正确。 设备的读／写操作本质就是在设备控制器和主机之间传送数据， 而只有厂家知道 设备控制器的内部实现， 因此也只有厂家提供的驱动程序能控制设备的读／写操作，D正确。 厂家会根据设备特性， 在驱动程序中实现一种合适的1/0控制方式，A错误。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 666,
+    "source": "2024-31",
+    "year": 2024,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "键盘中断服务例程执行结束时，所输入的数据存放位置是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "用户缓冲区"
+      },
+      {
+        "label": "B",
+        "text": "CPU 的通用寄存器"
+      },
+      {
+        "label": "C",
+        "text": "内核缓冲区"
+      },
+      {
+        "label": "D",
+        "text": "键盘控制器的数据缓冲区"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 667,
+    "source": "2026-31",
+    "year": 2026,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.1",
+    "sectionTitle": "I/O 设备与控制方式",
+    "type": "choice",
+    "stem": "下列关于驱动程序的描述中，错误的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "驱动程序是硬件与操作系统之间的接口程序"
+      },
+      {
+        "label": "B",
+        "text": "驱动程序需根据硬件特性定制开发"
+      },
+      {
+        "label": "C",
+        "text": "驱动程序需要设置统一的接口"
+      },
+      {
+        "label": "D",
+        "text": "字符设备、块设备都是同一种 IO 方式"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 668,
+    "source": "2026-32",
+    "year": 2026,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "下列操作中，鼠标中断处理程序完成的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "解析鼠标的输入指令含义"
+      },
+      {
+        "label": "B",
+        "text": "将鼠标数据同步到用户应用程序缓冲区"
+      },
+      {
+        "label": "C",
+        "text": "将数据从输入设备传输到数据寄存器"
+      },
+      {
+        "label": "D",
+        "text": "将数据从数据寄存器传输到内核缓冲区"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 669,
+    "source": "2011-26",
+    "year": 2011,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "用户程序发出磁盘 I/O 请求后，系统的正确处理流程是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "用户程序 →系统调用处理程序 →中断处理程序 →设备驱动程序"
+      },
+      {
+        "label": "B",
+        "text": "用户程序 →系统调用处理程序 →设备驱动程序 →中断处理程序"
+      },
+      {
+        "label": "C",
+        "text": "用户程序 →设备驱动程序 →系统调用处理程序 →中断处理程序"
+      },
+      {
+        "label": "D",
+        "text": "用户程序 →设备驱动程序 →中断处理程序 →系统调用处理程序"
+      }
+    ],
+    "answer": "B",
+    "explanation": "输入／输出软件一般从上到下分为四个层次：用户层、与设备无关软件层、 设备驱动程序以及中断处理程序。与设备无关软件层也就是系统调用的处理程序。所以争取 处理流程为B选项。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 670,
+    "source": "2011-31",
+    "year": 2011,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "某文件占 10 个磁盘块，现要把该文件磁盘块逐个读入主存缓冲区，并送用\n户区进行分析，假设一个缓冲区与一个磁盘块大小相同，把一个磁盘块读入缓冲区的时间\n为 100μs，将缓冲区的数据传送到用户区的时间是 50μs，CPU 对一块数据进行分析的时间\n为 50μs。在单缓冲区和双缓冲区结构下，读入并分析完该文件的时间分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1500μs、1000μs"
+      },
+      {
+        "label": "B",
+        "text": "1550μs、1100μs"
+      },
+      {
+        "label": "C",
+        "text": "1550μs、1550μs"
+      },
+      {
+        "label": "D",
+        "text": "2000μs、2000μs"
+      }
+    ],
+    "answer": "B",
+    "explanation": "单缓冲区下当上一个磁盘块从缓冲区读入用户区完成时下一磁盘块才能开始 读入，也就是当最后一块磁盘块读入用户区完毕时所用时间为１５０×１０＝１５００。加 上处理最后一个磁盘块的时间５０为１５５０。双缓冲区下，不存在等待磁盘块从缓冲区读 入用户区的问题，也就是１００×１０＋１００＝１１００。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 671,
+    "source": "2012-26",
+    "year": 2012,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "操作系统的 I/O 子系统通常由四个层次组成，每一层明确定义了与邻近层次\n的接口。其合理的层次组织排列顺序是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "用户级 I/O 软件、设备无关软件、设备驱动程序、中断处理程序"
+      },
+      {
+        "label": "B",
+        "text": "用户级 I/O 软件、设备无关软件、中断处理程序、设备驱动程序"
+      },
+      {
+        "label": "C",
+        "text": "用户级 I/O 软件、设备驱动程序、设备无关软件、中断处理程序"
+      },
+      {
+        "label": "D",
+        "text": "用户级 I/O 软件、中断处理程序、设备无关软件、设备驱动程序"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查 I/O 子系统的层次结构。输入/输出软件一般从上到下分为四个层次：用户层、 与设备无关的软件层、设备驱动程序以及中断处理程序。与设备无关的软件层也就是系统调 用的处理程序。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 672,
+    "source": "2013-25",
+    "year": 2013,
+    "qIndex": 25,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "用户程序发出磁盘 I/O 请求后，系统的处理流程是：用户程序 →系统调用处\n理程序 →设备驱动程序 →中断处理程序。其中，计算数据所在磁盘的柱面号、磁头号、扇\n区号的程序是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "用户程序"
+      },
+      {
+        "label": "B",
+        "text": "系统调用处理程序"
+      },
+      {
+        "label": "C",
+        "text": "设备驱动程序"
+      },
+      {
+        "label": "D",
+        "text": "中断处理程序"
+      }
+    ],
+    "answer": "C",
+    "explanation": "C",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 673,
+    "source": "2013-27",
+    "year": 2013,
+    "qIndex": 27,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "设系统缓冲区和用户工作区均采用单缓冲，从外设读入 1 个数据块到系统缓\n冲区的时间为 100，从系统缓冲区读入 1 个数据块到用户工作区的时间为 5，对用户工作\n区中的 1 个数据块进行分析的时间为 90（如下图所示）。\n进程从外设读入并分析 2 个数据块的最短时间是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "200"
+      },
+      {
+        "label": "B",
+        "text": "295"
+      },
+      {
+        "label": "C",
+        "text": "300"
+      },
+      {
+        "label": "D",
+        "text": "390"
+      }
+    ],
+    "answer": "C",
+    "explanation": "1 \t105 \t2",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 674,
+    "source": "2015-28",
+    "year": 2015,
+    "qIndex": 28,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "在系统内存中设置磁盘缓冲区的主要目的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "减少磁盘 I/O 次数"
+      },
+      {
+        "label": "B",
+        "text": "减少平均寻道时间"
+      },
+      {
+        "label": "C",
+        "text": "提高磁盘数据可靠性"
+      },
+      {
+        "label": "D",
+        "text": "实现设备无关性"
+      }
+    ],
+    "answer": "A",
+    "explanation": "磁盘和内存的速度差异，决定了可以将内存经常访问的文件调入磁盘缓冲区，从高 速缓存中复制的访问比磁盘 I/O 的机械操作要快很多。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 675,
+    "source": "2016-31",
+    "year": 2016,
+    "qIndex": 31,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.2",
+    "sectionTitle": "设备独立性软件",
+    "type": "choice",
+    "stem": "下列关于 SPOOLing 技术的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "需要外存的支持"
+      },
+      {
+        "label": "B",
+        "text": "需要多道程序设计技术的支持"
+      },
+      {
+        "label": "C",
+        "text": "可以让多个作业共享一台独占设备"
+      },
+      {
+        "label": "D",
+        "text": "由用户作业控制设备与输入/输出井之间的数据传送"
+      }
+    ],
+    "answer": "D",
+    "explanation": "SPOOLing 是利用专门的外围控制机，将低速 I/O 设备上的数据传送到高速磁盘上， 或者相反。SPOOLing 的意思是外部设备同时联机操作，又称为假脱机输入/输出操作，是操 作系统中采用的一项将独占设备改造成共享设备的技术。高速磁盘即外存，A 正确。 SPOOLling 技术需要进行输入/输出操作，单道批处理系统无法满足，B 正确。SPOOLing 技 术实现了将独占设备改造成共享设备的技术，C 正确。设备与输入/输出井之间数据的传送是 由系统实现的，D 错误。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 676,
+    "source": "2020-30",
+    "year": 2020,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.3",
+    "sectionTitle": "设备分配与回收",
+    "type": "choice",
+    "stem": "对于具备设备独立性的系统，下列叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "可以使用文件名访问物理设备"
+      },
+      {
+        "label": "B",
+        "text": "用户程序使用逻辑设备名访问物理设备"
+      },
+      {
+        "label": "C",
+        "text": "需要建立逻辑设备与物理设备之间的映射关系"
+      },
+      {
+        "label": "D",
+        "text": "更换物理设备后必须修改访问该设备的应用程序"
+      }
+    ],
+    "answer": "D",
+    "explanation": "设备可以看作特殊文件，A 正确。B 为知识点，正确。访问设备的驱动程序与具体设 备无关，D 错误。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 677,
+    "source": "2023-32",
+    "year": 2023,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.3",
+    "sectionTitle": "设备分配与回收",
+    "type": "choice",
+    "stem": "下列因素中，设备分配需要考虑的是\t（ ）。\nI. 设备的类型\nII. 设备的访问权限\nIII. 设备的占用状态\nIV. 逻辑设备与物理设备的映射关系",
+    "options": [
+      {
+        "label": "A",
+        "text": "I、II"
+      },
+      {
+        "label": "B",
+        "text": "II、III"
+      },
+      {
+        "label": "C",
+        "text": "III、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 678,
+    "source": "2009-29",
+    "year": 2009,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.3",
+    "sectionTitle": "设备分配与回收",
+    "type": "choice",
+    "stem": "假设磁头当前位于第 105 道，正在向磁道序号增加的方向移动。现有一个磁\n道访问请求序列为 35，45，12，68，110，180，170，195，采用 SCAN 调度（电梯调度）\n算法得到的磁道访问序列是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "110,170,180,195,68,45,35,12"
+      },
+      {
+        "label": "B",
+        "text": "110,68,45,35,12,170,180,195"
+      },
+      {
+        "label": "C",
+        "text": "110,170,180,195,12,35,45,68"
+      },
+      {
+        "label": "D",
+        "text": "12,35,45,68,110,170,180,195"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 679,
+    "source": "2012-32",
+    "year": 2012,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "下列选项中，不能改善磁盘设备 I/O 性能的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "重排 I/O 请求次序"
+      },
+      {
+        "label": "B",
+        "text": "在一个磁盘上设置多个分区"
+      },
+      {
+        "label": "C",
+        "text": "预读和滞后写"
+      },
+      {
+        "label": "D",
+        "text": "优化文件物理块的分布"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查影响磁盘设备 I/O 性能的因素。对于 A，重排 I/O 请求次序也就是进行 I/O 调 度，从而使进程之间公平地共享磁盘访问，减少 I/O 完成所需要的平均等待时间。对于 C， 缓冲区结合预读和滞后写技术对于具有重复性及阵发性的 I/O 进程改善磁盘 I/O 性能很有帮 助。对于 D，优化文件物理块的分布可以减少寻找时间与延迟时间，从而提高磁盘性能。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 680,
+    "source": "2015-32",
+    "year": 2015,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "某硬盘有 200 个磁道（最外侧磁道号为 0），磁道访问请求序列为：130，42，\n180，15，199，当前磁头位于第 58 号磁道并从外侧向内侧移动。按照 SCAN 调度方法处\n理完上述请求后，磁头移过的磁道数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "208"
+      },
+      {
+        "label": "B",
+        "text": "287"
+      },
+      {
+        "label": "C",
+        "text": "325"
+      },
+      {
+        "label": "D",
+        "text": "382"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查 SCAN 算法就是电梯调度算法。顾名思义，如果开始时磁头向外移动就一直要 到最外侧，然后再返回向内侧移动，就像电梯若往下则一直要下到最底层需求才会再上升一 样。当期磁头位于 58 号并从外侧向内侧移动，先依次访问 130 和 199，然后再返回向外侧移 动，依次访问 42 和 15，故磁头移过的磁道数是：(199-58)+(199-15)=325。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 681,
+    "source": "2017-29",
+    "year": 2017,
+    "qIndex": 29,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "下列选项中，磁盘逻辑格式化程序所做的工作是\t（ ）。\nI. 对磁盘进行分区\nII. 建立文件系统的根目录\nIII. 确定磁盘扇区校验码所占位数\nIV. 对保存空闲磁盘块信息的数据结构进行初始化",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 II、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 I、II、IV"
+      }
+    ],
+    "answer": "B",
+    "explanation": "一个新的磁盘是一个空白版，必须分成扇区以便磁盘控制器能读和写，这个过程称 为低级格式化(或物理格式化)。低级格式化为磁盘的每个扇区采用特别的数据结构，包括校验 码，Ⅲ错误。为了使用磁盘存储文件，操作系统还需要将其数据结构记录在磁盘上这分为两 步，第一步是将磁盘分为由一个或多个柱面组成的分区，每个分区可以作为一个独立的磁盘， Ⅰ错误。在分区之后，第二步是逻辑格式化(创建文件系统)。在这一步，操作系统将初始的文 件系统数据结构存储到磁盘上，这些数据结构包括空内和已分配的空间及一个初始为空的目 录，Ⅱ、Ⅳ正确。所以答案选 B。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 682,
+    "source": "2018-30",
+    "year": 2018,
+    "qIndex": 30,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "系统总是访问磁盘的某个磁道而不响应对其他磁道的访问请求，这种现象称\n为磁臂黏着。下列磁盘调度算法中，不会导致磁臂粘着的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "先来先服务 (FCFS)"
+      },
+      {
+        "label": "B",
+        "text": "最短寻道时间优先 (SSTF)"
+      },
+      {
+        "label": "C",
+        "text": "扫描算法 (SCAN)"
+      },
+      {
+        "label": "D",
+        "text": "循环扫描算法 (CSCAN)"
+      }
+    ],
+    "answer": "A",
+    "explanation": "当系统总是持续出现某个磁道的访问请求时，均持续满足最短寻道时间优先、扫描 算法和循环扫描算法的访问条件，会一直服务该访问请求。因此，先来先服务按照请求次序 进行调度比较公平，故选 A。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 683,
+    "source": "2021-26",
+    "year": 2021,
+    "qIndex": 26,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "某系统中磁盘的磁道数为 200 (0~199), 磁头当前在 184 号磁道上。用户进程\n提出的磁盘访问请求对应的磁道号依次为 184, 187, 176, 182, 199。若采用最短寻道时间优\n先调度算法 (SSTF) 完成磁盘访问，则磁头移动的距离（磁道数）是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "37"
+      },
+      {
+        "label": "B",
+        "text": "38"
+      },
+      {
+        "label": "C",
+        "text": "41"
+      },
+      {
+        "label": "D",
+        "text": "42"
+      }
+    ],
+    "answer": "C",
+    "explanation": "最短寻道时间优先算法总是选择调度与当前磁头 所在磁道距离最近的磁道。 可以 得 出访问序列 184, 182, 187, 176, 199, 从而求出移动距离之和是 0 + 2 + 5 + 11 + 23 = 41。",
+    "relatedPath": "/operating-system/05-io-management"
+  },
+  {
+    "id": 684,
+    "source": "2024-32",
+    "year": 2024,
+    "qIndex": 32,
+    "subjectKey": "operating-system",
+    "subjectName": "操作系统",
+    "sectionCode": "3.5.4",
+    "sectionTitle": "磁盘与调度算法",
+    "type": "choice",
+    "stem": "某磁盘的磁道数为 400（磁道号为 0~399），采用循环扫描算法 (CSCAN) 进\n行磁盘调度，完成对 200 号磁道的请求后，磁头向磁道号减小的方向移动，若还有 7 个请\n求，对应的磁道号分别为 300, 120, 110, 0, 160, 210, 399，则完成上述磁盘请求后磁头移动\n的距离是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "599"
+      },
+      {
+        "label": "B",
+        "text": "619"
+      },
+      {
+        "label": "C",
+        "text": "788"
+      },
+      {
+        "label": "D",
+        "text": "799 计算机网络"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/operating-system/05-io-management"
+  }
+]

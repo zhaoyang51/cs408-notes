@@ -7,6 +7,9 @@ hero:
   tagline: "⚡ 历年真题统计 · 最小集应试体系 · 高频考点 / 核心公式 / 概念对比表"
   actions:
     - theme: brand
+      text: ✍️ 真题分类刷题 (846题)
+      link: /practice/
+    - theme: alt
       text: 🟢 数据结构 (45分)
       link: /data-structure/
     - theme: alt
@@ -20,15 +23,15 @@ hero:
       link: /computer-network/
 
 features:
+  - icon: ✍️
+    title: 846 道统考真题分类做题本 (2009–2026)
+    details: 依据分类做题本深度整理，支持 97 个考点分类精准刷题、单选即时判分、大题手写草稿与错题本。
   - icon: 🎯
     title: 历年真题考频驱动 (Data-Driven)
     details: 基于 408 历年统考真题考频与题型统计，直击 150 分得分命脉。
   - icon: ⚡
     title: 毫秒级即时速查 (Ctrl + K)
     details: 支持全中文核心术语、算法时空复杂度、网络协议帧格式与硬件公式秒级检索。
-  - icon: 📜
-    title: 三态护眼阅读系统
-    details: 独创「浅白 / 羊皮纸护眼 / 极客暗黑」无缝切换，手机平板自适应沉浸式阅读。
 ---
 
 ## 🧭 四门科目核心模块速查

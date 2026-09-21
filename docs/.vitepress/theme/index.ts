@@ -1,5 +1,8 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
+import './practice.css'
+import PracticeCenter from './PracticeCenter.vue'
+import PracticeQuestionCard from './PracticeQuestionCard.vue'
 import ThemeToggle from './ThemeToggle.vue'
 import UserFilter from './UserFilter.vue'
 import ModeToggle from './ModeToggle.vue'
@@ -58,6 +61,8 @@ export default {
     })
   },
   enhanceApp({ app }) {
+    app.component('PracticeCenter', PracticeCenter)
+    app.component('PracticeQuestionCard', PracticeQuestionCard)
     app.component('ModeToggle', ModeToggle)
     app.component('CollapseToggle', CollapseToggle)
     app.component('UserFilter', UserFilter)

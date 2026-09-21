@@ -1,0 +1,4918 @@
+[
+  {
+    "id": 685,
+    "source": "2023-33",
+    "year": 2023,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.1",
+    "sectionTitle": "计算机网络概述与性能指标",
+    "type": "comprehensive",
+    "stem": "如图，2 段链路的数据传输速率为 100Mbps，时延带宽积（即单向传播时延 *\n带宽）均为 1000bit。若 H1 向 H2 发送 1 个大小为 1MB 的文件，分组长度为 1000B，则从\nH1 开始发送时刻起到 H2 收到文件全部数据时刻止，所需的时间至少是（注：M = 106 ）?\n(A) 80.02ms (B) 80.08ms (C) 80.09ms (D) 80.10ms",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 686,
+    "source": "2011-47",
+    "year": 2011,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.1",
+    "sectionTitle": "计算机网络概述与性能指标",
+    "type": "comprehensive",
+    "stem": "某主机的 MAC 地址为 00-15-C5-C1-5E-28，IP 地址为 10.2.128.100（私有地\n址）。题 47-a 图是网络拓扑，题 47-b 图是该主机进行 Web 请求的 1 个以太网数据帧前 80\n个字节的十六进制及 ASCII 码内容。\n请参考图中的数据回答以下问题。\n(1) Web 服务器的 IP 地址是什么？该主机的默认网关的 MAC 地址是什么？\n(2) 该主机在构造题 47-b 图的数据帧时，使用什么协议确定目的 MAC 地址？封装该协议\n请求报文的以太网帧的目的 MAC 地址是什么？\n(3) 假设 HTTP/1.1 协议以持续的非流水线方式工作，一次请求 - 响应时间为 RTT，rfc.html\n页面引用了 5 个 JPEG 小图像，则从发出题 47-b 图中的 Web 请求开始到浏览器收到全部\n内容为止，需要多少个 RTT？\n(4) 该帧所封装的 IP 分组经过路由器 R 转发时，需修改 IP 分组头中的哪些字段？\n注意：以太网数据帧结构和 IP 分组头结构分别如题 47-c 图、题 47-d 图所示。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 687,
+    "source": "2025-47",
+    "year": 2025,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.1",
+    "sectionTitle": "计算机网络概述与性能指标",
+    "type": "comprehensive",
+    "stem": "(1) 忽略卫星信号中继，TR1，TR2 调制解调开销，则 R1 到 R2 之间的卫星链路单向传播\n时延是多少？主机 H 向总部服务器传输数据时可达到的最大吞吐量是多少？若忽略各层\n协议首部开销，以及以太网的传播时延，则 H → server 上传一个 4000B 的文件，至少需要\n多长时间？\n(2) 基于 GBN 为卫星链路设计单向可靠的链路层协议 SLP，支持 R1 → R2 发送数据。SLP\n数据帧长 1500B，忽略 ACK 帧长度，要求 SLP 单向信道利用率不低于 80%，则发送窗口\n至少为？SLP 帧序号至少为多少？\n(3) 总部给工程部分配 IP 地址空间 10.10.10.0/24，再划分为 3 个子网：管理区子网、生活\n区子网、作业区子网。已知管理区子网地址为 10.10.10.33/26，若生活区子网不少于 120\n个，作业子网、管理区子网 IP 均不少于 60 个，H 已正确配置 IP。请问作业区子网和生活\n区子网地址各是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 688,
+    "source": "2010-34",
+    "year": 2010,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.2",
+    "sectionTitle": "三种交换方式",
+    "type": "choice",
+    "stem": "在下图所示的采用“存储-转发”方式的分组交换网络中，所有链路的数据传\n输速率为 100 Mbps，分组大小为 1000 B，其中分组头大小为 20 B。若主机 H1 向主机 H2\n发送一个大小为 980 000 B 的文件，则在不考虑分组拆装时间和传播延迟的情况下，从 H1\n发送开始到 H2 接收完为止，需要的时间至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "80 ms"
+      },
+      {
+        "label": "B",
+        "text": "80.08 ms"
+      },
+      {
+        "label": "C",
+        "text": "80.16 ms"
+      },
+      {
+        "label": "D",
+        "text": "80.24 ms"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 689,
+    "source": "2013-35",
+    "year": 2013,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "主机甲通过 1 个路由器（存储转发方式）与主机乙互联，两段链路的数据传\n输速率均为 10Mbps，主机甲分别采用报文交换和分组大小为 10kb 的分组交换向主机乙发\n送 1 个大小为 8 Mb（1M = 106 ）的报文。若忽略链路传播延迟、分组头开销和分组拆装\n时间，则两种交换方式完成该报文传输所需的总时间分别为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "800 ms、1600 ms"
+      },
+      {
+        "label": "B",
+        "text": "801 ms、1600 ms"
+      },
+      {
+        "label": "C",
+        "text": "1600 ms、800 ms"
+      },
+      {
+        "label": "D",
+        "text": "1600 ms、801 ms"
+      }
+    ],
+    "answer": "D",
+    "explanation": "8 Mb/10 Mb/s=800 ms 800 ms \t1 600 ms \t10 kb/10Mb/s=1 ms \t1 ms 800 \t801 ms",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 690,
+    "source": "2009-33",
+    "year": 2009,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "在 OSI 参考模型中，自下而上第一个提供端到端服务的层次是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "数据链路层"
+      },
+      {
+        "label": "B",
+        "text": "传输层"
+      },
+      {
+        "label": "C",
+        "text": "会话层"
+      },
+      {
+        "label": "D",
+        "text": "应用层"
+      }
+    ],
+    "answer": "B",
+    "explanation": "34. B \t35. C \t36. A \t37. D \t38. D \t39. C \t40. A",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 691,
+    "source": "2010-33",
+    "year": 2010,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "下列选项中，不属于网络体系结构所描述的内容是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "网络的层次"
+      },
+      {
+        "label": "B",
+        "text": "每一层使用的协议"
+      },
+      {
+        "label": "C",
+        "text": "协议的内部实现细节"
+      },
+      {
+        "label": "D",
+        "text": "每一层必须完成的功能"
+      }
+    ],
+    "answer": "C",
+    "explanation": "34. C 35. D 36. C 37. B 38. D 39. A 40. A 二、综合应用题",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 692,
+    "source": "2011-33",
+    "year": 2011,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "TCP/IP 参考模型的网络层提供的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "无连接不可靠的数据报服务"
+      },
+      {
+        "label": "B",
+        "text": "无连接可靠的数据报服务"
+      },
+      {
+        "label": "C",
+        "text": "有连接不可靠的虚电路服务"
+      },
+      {
+        "label": "D",
+        "text": "有连接可靠的虚电路服务"
+      }
+    ],
+    "answer": "A",
+    "explanation": "TCP/IP的网络层向上只提供简单灵活的、无连接的、尽最大努力交付的数据 报服务。此外考察IP首部，如果是面向连接的，则应有用于建立连接的字段，但是没有；如 果提供可靠的服务，则至少应有序号和校验和两个字段，但是IP分组头中也没有（IP首部中 只是首部校验和）。因此网络层提供的无连接不可靠的数据服务。有连接可靠的服务由传输 层的TCP提供。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 693,
+    "source": "2013-33",
+    "year": 2013,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "在 OSI 参考模型中，下列功能需由应用层的相邻层实现的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "对话管理"
+      },
+      {
+        "label": "B",
+        "text": "数据格式转换"
+      },
+      {
+        "label": "C",
+        "text": "路由选择"
+      },
+      {
+        "label": "D",
+        "text": "可靠数据传输"
+      }
+    ],
+    "answer": "B",
+    "explanation": "OSI \tOSI B",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 694,
+    "source": "2014-33",
+    "year": 2014,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "在 OSI 参考模型中，直接为会话层提供服务的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "应用层"
+      },
+      {
+        "label": "B",
+        "text": "表示层"
+      },
+      {
+        "label": "C",
+        "text": "传输层"
+      },
+      {
+        "label": "D",
+        "text": "网络层"
+      }
+    ],
+    "answer": "C",
+    "explanation": "34． B 35． D 36． C 37． B 38． A 39． B 40． D （二）单选题答案解析",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 695,
+    "source": "2017-33",
+    "year": 2017,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "假设 OSI 参考模型的应用层欲发送 400B 的数据（无拆分），除物理层和应\n用层之外，其他各层在封装 PDU 时均引入 20B 的额外开销，则应用层数据传输效率约\n为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "80%"
+      },
+      {
+        "label": "B",
+        "text": "83%"
+      },
+      {
+        "label": "C",
+        "text": "87%"
+      },
+      {
+        "label": "D",
+        "text": "91%"
+      }
+    ],
+    "answer": "A",
+    "explanation": "OSI 参考模型共 7 层，除去物理层和应用层，剩五层。它们会向 PDU 引入 20B×5 = 100B 的额外开销。应用层是顶层，所以它的数据传输效率为 400B/500B = 80%，答案选 A。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 696,
+    "source": "2019-33",
+    "year": 2019,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "OSI 参考模型的第 5 层（自下而上）完成的主要功能是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "差错控制"
+      },
+      {
+        "label": "B",
+        "text": "路由选择"
+      },
+      {
+        "label": "C",
+        "text": "会话管理"
+      },
+      {
+        "label": "D",
+        "text": "数据表示转换"
+      }
+    ],
+    "answer": "C",
+    "explanation": "OSI 参考模型自下而上分别为物理层、数据链路层、网络层、传输层、会话层、表示 层和应用层。第 5 层为会话层，它的主要功能是管理和协调不同主机上各种进程之间的通信 (对话)，即负责建立、管理和终止应用程序之间的会话，这也是会话层得名的原因。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 697,
+    "source": "2020-33",
+    "year": 2020,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "下图描述的协议要素是（ ）。\nI、语法；II、语义；III、时序",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I；"
+      },
+      {
+        "label": "B",
+        "text": "仅 II；"
+      },
+      {
+        "label": "C",
+        "text": "仅 III；"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "C",
+    "explanation": "网络协议主要由语义、语法和时序（一般教材定义为同步）三部分组成，即协议三要 素。语义：规定通信双方彼此“讲什么”，规定所要完成的功能，如规定通信双方要发出什么控 制信息，执行的动作和返回的应答。语法：规定通信双方彼此“如何讲”，即规定传输数据的格 式，如数据和控制信息的格式。时序：或称同步，规定了信息交流的次序。由图可知发送方与 接收方依次交换信息，体现了协议三要素中的时序要素。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 698,
+    "source": "2021-33",
+    "year": 2021,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "在 TCP/IP 参考模型中，由传输层相邻的下一层实现的主要功能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "对话管理"
+      },
+      {
+        "label": "B",
+        "text": "路由选择"
+      },
+      {
+        "label": "C",
+        "text": "端到端报文段传输"
+      },
+      {
+        "label": "D",
+        "text": "结点到结点流量控制"
+      }
+    ],
+    "answer": "B",
+    "explanation": "TCP/IP参考模型中传输层相邻的下一 层是网际层 。TCP/IP 的网际层使用一种尽力 而为的服务， 它将分组发往任何网络， 并为之独立选择合适的路由， 但不保证各个分组有序 到达，B正确。TCP/IP认为可靠性是端到端的问题（传输层的功能）， 因此它在网际层仅有无 连接、 不可靠的通信模式， 无法完成结点到结点的流量控制 (OSI参考模型的网络层具有该 功能）。 对话管理和端到端的报文段传输均为传输层的功能。A、C 和D错误。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 699,
+    "source": "2022-33",
+    "year": 2022,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "在 ISO/OSI 参考模型中，实现两个相邻结点间流量控制功能的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "物理层"
+      },
+      {
+        "label": "B",
+        "text": "数据链路层"
+      },
+      {
+        "label": "C",
+        "text": "网络层"
+      },
+      {
+        "label": "D",
+        "text": "传输层"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在 OSI 参考模型中，数据链路层、 网络层、 传输层都具有流量控制功能，数据链 路层是相邻结点之间的流量控制，网络层是整个网络中的流量控制，传输层是端到端的流量 控制。",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 700,
+    "source": "2026-33",
+    "year": 2026,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.1.3",
+    "sectionTitle": "OSI 与 TCP/IP 参考模型",
+    "type": "choice",
+    "stem": "下列关于分层网络体系结构的叙述中，错误的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "每层都有明确的功能边界"
+      },
+      {
+        "label": "B",
+        "text": "层次越多效率越高"
+      },
+      {
+        "label": "C",
+        "text": "有利于各层技术独立演化"
+      },
+      {
+        "label": "D",
+        "text": "上层无需关心下层的具体实现细节"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/01-overview"
+  },
+  {
+    "id": 701,
+    "source": "2009-34",
+    "year": 2009,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "在无噪声情况下，若某低通通信链路的带宽为 3kHz，采用 4 个相位，每个\n相位具有 4 种振幅的 QAM 调制技术，则该通信链路的最大数据传输速率是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "12kbps"
+      },
+      {
+        "label": "B",
+        "text": "24kbps"
+      },
+      {
+        "label": "C",
+        "text": "48kbps"
+      },
+      {
+        "label": "D",
+        "text": "96kbps"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 702,
+    "source": "2011-34",
+    "year": 2011,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "若某通信链路的数据传输速率为 2400 bps，采用 4 相位调制，则该链路的波\n特率是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "600 波特"
+      },
+      {
+        "label": "B",
+        "text": "1200 波特"
+      },
+      {
+        "label": "C",
+        "text": "4800 波特"
+      },
+      {
+        "label": "D",
+        "text": "9600 波特"
+      }
+    ],
+    "answer": "B",
+    "explanation": "有 4 种相位，则一个码元需要由 log24=2 个 bit 表示，则波特率=比特率/2=1200 波特。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 703,
+    "source": "2014-35",
+    "year": 2014,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "下列因素中，不会影响信道数据传输速率的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "信噪比"
+      },
+      {
+        "label": "B",
+        "text": "频率宽带"
+      },
+      {
+        "label": "C",
+        "text": "调制速度"
+      },
+      {
+        "label": "D",
+        "text": "信号传播速度"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 704,
+    "source": "2016-34",
+    "year": 2016,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "若连接 R2 和 R3 链路的频率带宽为 8 kHz，信噪比为 30 dB，该链路实际数据传输速率约\n为理论最大数据传输速率的 50％，则该链路的实际数据传输速率约是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "8 kbps"
+      },
+      {
+        "label": "B",
+        "text": "20 kbps"
+      },
+      {
+        "label": "C",
+        "text": "40 kbps"
+      },
+      {
+        "label": "D",
+        "text": "80 kbps"
+      }
+    ],
+    "answer": "C",
+    "explanation": "香农定理给出了带宽受限且有高斯白噪声干扰的信道的极限数据传输速率，香农定 理定义为：信道的极限数据传输速率 = Wlog 2(1+S/N)，单位 bps。 其中，S/N 为信噪比，即信号的平均功率和噪声的平均功率之比，信噪比 = 10log10(S/N)， 单位 dB，当 S/N=1000 时，信噪比为 30dB，则该链路的实际数据传输速率约为： 50%*Wlog2(1+S/N) = 50%*8k*log2(1+1000)= 40kbps。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 705,
+    "source": "2017-34",
+    "year": 2017,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "若信道在无噪声情况下的极限数据传输速率不小于信噪比为 30dB 条件下的\n极限数据传输速率，则信号状态数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "8"
+      },
+      {
+        "label": "C",
+        "text": "16"
+      },
+      {
+        "label": "D",
+        "text": "32"
+      }
+    ],
+    "answer": "D",
+    "explanation": "可用奈奎斯特采样定理计算无噪声情况下的极限数据传输速率，用香农第二定理计 算有噪信道极限数据传输速率。2Wlog2(N) ≥ Wlog2(1+S/N)，W 是信道带宽，N 是信号状态 数，S/N 是信噪比，将数据代入计算可得 N≥32，答案选 D。分贝数 = 10log10(S/N)。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 706,
+    "source": "2022-34",
+    "year": 2022,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "在一条带宽为 200kHz 的无噪声信道上，若采用 4 个幅值的 ASK 调制，则该\n信道的最大数据传输速率是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "200 kbps"
+      },
+      {
+        "label": "B",
+        "text": "400 kbps"
+      },
+      {
+        "label": "C",
+        "text": "800 kbps"
+      },
+      {
+        "label": "D",
+        "text": "1600 kbps"
+      }
+    ],
+    "answer": "C",
+    "explanation": "根据奈奎斯特定理，最大数据传输速率＝ 2Wlog2 V, 4 个幅值的 ASK 调制说明 有 4 个相位， 将 V=4 代入，得 800kbps。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 707,
+    "source": "2023-34",
+    "year": 2023,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "某无噪声理想信道带宽为 4MHz，采用 QAM 调制，若该信道的最大数据传\n输率是 48Mbps，则该信道采用的 QAM 调制方案是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "QAM-16"
+      },
+      {
+        "label": "B",
+        "text": "QAM-32"
+      },
+      {
+        "label": "C",
+        "text": "QAM-64"
+      },
+      {
+        "label": "D",
+        "text": "QAM-128"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 708,
+    "source": "2024-34",
+    "year": 2024,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.1",
+    "sectionTitle": "通信基础",
+    "type": "choice",
+    "stem": "在下列二进制数字调制方法中，需要 2 个不同频率载波的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "ASP"
+      },
+      {
+        "label": "B",
+        "text": "PSK"
+      },
+      {
+        "label": "C",
+        "text": "FSK"
+      },
+      {
+        "label": "D",
+        "text": "DPSK"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 709,
+    "source": "2026-34",
+    "year": 2026,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "若在带宽 200k H z ，信噪比 S/N = 1023 的信道上，发送一个长度为 1500B 的\n分组，则发送该分组的传输时延至少是（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1ms"
+      },
+      {
+        "label": "B",
+        "text": "2ms"
+      },
+      {
+        "label": "C",
+        "text": "3ms"
+      },
+      {
+        "label": "D",
+        "text": "6ms"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 710,
+    "source": "2012-34",
+    "year": 2012,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "在物理层接口特性中，用于描述完成每种功能的事件发生顺序的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "机械特性"
+      },
+      {
+        "label": "B",
+        "text": "功能特性"
+      },
+      {
+        "label": "C",
+        "text": "过程特性"
+      },
+      {
+        "label": "D",
+        "text": "电气特性"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查物理层的接口特性。过程特性定义了各条物理线路的工作过程和时序关系。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 711,
+    "source": "2013-34",
+    "year": 2013,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "若下图为 10 BaseT 网卡接收到的信号波形，则该网卡收到的比特串是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0011 0110"
+      },
+      {
+        "label": "B",
+        "text": "1010 1101"
+      },
+      {
+        "label": "C",
+        "text": "0101 0010"
+      },
+      {
+        "label": "D",
+        "text": "1100 0101"
+      }
+    ],
+    "answer": "A",
+    "explanation": "0011 0110 \tA",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 712,
+    "source": "2014-37",
+    "year": 2014,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "站点 A、B、C 通过 CDMA 共享链路，A、B、C 的码片序列 (chipping sequence)\n分别是 (1,1,1,1)、(1,-1,1,-1) 和 (1,1,-1,-1) 。若 C 从链路上收到的序列是 (2,0,2,0,0,-2,0,-2,0,\n2,0,2)，则 C 收到 A 发送的数据是\t（ ）。\n(A) 000 (B) 101 (C) 110 (D) 111",
+    "options": [
+      {
+        "label": "A",
+        "text": ""
+      },
+      {
+        "label": "B",
+        "text": "C 通过 CDMA 共享链路，A、"
+      },
+      {
+        "label": "B",
+        "text": "C 的码片序列 (chipping sequence) 分别是 (1,1,1,1)、(1,-1,1,-1) 和 (1,1,-1,-1) 。若 C 从链路上收到的序列是 (2,0,2,0,0,-2,0,-2,0, 2,0,2)，则 C 收到 A 发送的数据是\t（ ）。 (A) 000"
+      },
+      {
+        "label": "B",
+        "text": "101"
+      },
+      {
+        "label": "C",
+        "text": "110"
+      },
+      {
+        "label": "D",
+        "text": "111"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 713,
+    "source": "2015-34",
+    "year": 2015,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "使用两种编码方案对比特流 01100111 进行编码的结果如下图所示，编码 1\n和编码 2 分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "NRZ 和曼彻斯特编码"
+      },
+      {
+        "label": "B",
+        "text": "NRZ 和差分曼彻斯特编码"
+      },
+      {
+        "label": "C",
+        "text": "NRZI 和曼彻斯特编码"
+      },
+      {
+        "label": "D",
+        "text": "NRZI 和差分曼彻斯特编码"
+      }
+    ],
+    "answer": "A",
+    "explanation": "NRZ(Non Return Zero)编码称为不归零编码，在码元时间内不会出现零电平。NRZ 又分为单极性 NRZ 和双极性 NRZ。对于单极性 NRZ，无电压（也就是无电流）用来表示 0， 而恒定的正电压用来表示 1；对于双极性 NRZ，正电压表示 1，负电压表示 0。NRZI(Non Return Zero Inverted)编码称为反向不归零编码，在码元时间内不会出现零电平。若后一个码 元时间内所持续的电平与前一个码元时间内所持续的电平不同（也称为电平翻转）则表示 0， 若电平保持不变则表示 1。曼彻斯特编码的特点是将码元时间分成两个相等的间隔，前半个 码元与后半个码元在码元中点时刻必须跳变，例如上跳变可以表示 0，下跳变可以表示 1，但 也可反过来定义。差分曼彻斯特编码是对曼彻斯特编码的改进（编码变化要少），与其原理基 本相同，也是将码元时间分成两个相等的间隔，前半个码元与后半个码元在码元中点时刻必 须跳变。但是，与曼彻斯特编码不同的是：表示 0 或 1 并不是依据码元中点时刻出现的是上 跳变还是下跳变，而是码元边界出现了跳变则表示 0，码元边界没有跳变则表示 1。综上所述， 本题中的编码 1 符合 NRZ 编码的特点，编码 2 符合曼彻斯特编码的特点。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 714,
+    "source": "2018-34",
+    "year": 2018,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "下列选项中，不属于物理层接口规范定义范畴的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "接口形状"
+      },
+      {
+        "label": "B",
+        "text": "引脚功能"
+      },
+      {
+        "label": "C",
+        "text": "物理地址"
+      },
+      {
+        "label": "D",
+        "text": "信号电平"
+      }
+    ],
+    "answer": "C",
+    "explanation": "物理层包含以下四种接口特性： -- 4 of 8 -- （1）机械特性：指明接口所用接线器的形状和尺寸、引脚数目和排列、固定和锁定装置等。 平时常见的各种规格的接插件都有严格的标准化的规定。 （2）电气特性：指明在接口电缆的各条线上出现的电压的范围。 （3）功能特性：指明某条线上出现的某一电平的电压的意义。 （4）过程特性（规程特性）：指明对于不同功能的各种可能事件的出现顺序。 物理地址又称硬件地址或 MAC 地址，属于数据链路层，不要被其名称中的“物理”二字误导 认为物理地址属于物理层。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 715,
+    "source": "2019-34",
+    "year": 2019,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "100BaseT 快速以太网使用的导向传输介质是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "双绞线"
+      },
+      {
+        "label": "B",
+        "text": "单模光纤"
+      },
+      {
+        "label": "C",
+        "text": "多模光纤"
+      },
+      {
+        "label": "D",
+        "text": "同轴电缆"
+      }
+    ],
+    "answer": "A",
+    "explanation": "100base-T 是一种以速度 100Mb/s 工作的局域网标准，它通常被称为快速以太网标 准，并使用两对 UTP 铜质电缆。100base-T：100 标识传输速度为 100Mb/s，base 标识采用 基带传输，T 表示传输介质为双绞线，当为 F 时表示光纤。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 716,
+    "source": "2021-34",
+    "year": 2021,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.2.2",
+    "sectionTitle": "传输介质与编码调制",
+    "type": "choice",
+    "stem": "若下图为一段差分曼彻斯特编码信号波形，则其编码的二进制位串是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "1011 1001"
+      },
+      {
+        "label": "B",
+        "text": "1101 0001"
+      },
+      {
+        "label": "C",
+        "text": "0010 1110"
+      },
+      {
+        "label": "D",
+        "text": "1011 0110"
+      }
+    ],
+    "answer": "A",
+    "explanation": "差分曼彻斯特编码常用于局域网传输， 其规则是 ：若码元为 1 ， 则 前半个码元的 电平与上 一 码元的后半个码元的电平相同；若码元为 o, 则情形相反。差分曼彻斯特编码的特 点在千， 在每个时钟周期的起始处， 跳变则说明该比特是 o, 不跳变则说明该比特是1 。 根据题34图， 第1个码元的信号波形因缺乏上 一 码元的信号波形， 无法判断是0还是1 ， 但 根据后面的信号波形， 可以求出第2~8个码元为011 1001, 因此选A。",
+    "relatedPath": "/computer-network/02-physical-layer"
+  },
+  {
+    "id": 717,
+    "source": "2013-37",
+    "year": 2013,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.1",
+    "sectionTitle": "组帧与差错控制",
+    "type": "choice",
+    "stem": "HDLC 协议对 01111100 01111110 组帧后对应的比特串为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "01111100 00111110 10"
+      },
+      {
+        "label": "B",
+        "text": "01111100 01111101 01111110"
+      },
+      {
+        "label": "C",
+        "text": "01111100 01111101 0"
+      },
+      {
+        "label": "D",
+        "text": "01111100 01111110 01111101"
+      }
+    ],
+    "answer": "A",
+    "explanation": "HDLC \tHDLC \t0111 1110",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 718,
+    "source": "2023-37",
+    "year": 2023,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.1",
+    "sectionTitle": "组帧与差错控制",
+    "type": "choice",
+    "stem": "若甲向乙发送数据时采用 CRC 校验，生成多项式为 G(x) = x4 + x + 1 （即 G=\n10011），则乙接收到下列比特串时，可以断定其在传输过程中未发生错误的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "101110000"
+      },
+      {
+        "label": "B",
+        "text": "101110100"
+      },
+      {
+        "label": "C",
+        "text": "101111000"
+      },
+      {
+        "label": "D",
+        "text": "101111100"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 719,
+    "source": "2025-34",
+    "year": 2025,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "某差错编码的编码集为 { 10011010，01011100，11110000，00001111 }，其检\n错和纠错能力是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "可以检测不超过 2 位错，检错率 100%；可纠正不超过 1 位错"
+      },
+      {
+        "label": "B",
+        "text": "可以检测不超过 2 位错，检错率 100%；可纠正不超过 2 位错"
+      },
+      {
+        "label": "C",
+        "text": "可以检测不超过 3 位错，检错率 100%；可纠正不超过 1 位错"
+      },
+      {
+        "label": "D",
+        "text": "可以检测不超过 3 位错，检错率 100%；可纠正不超过 2 位错"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 720,
+    "source": "2009-35",
+    "year": 2009,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "数据链路层采用后退 N 帧（GBN）协议，发送方已经发送了编号为 0~7 的\n帧。当计时器超时时，若发送方只收到 0、2、3 号帧的确认，则发送方需要重发的帧数\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 721,
+    "source": "2011-35",
+    "year": 2011,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "数据链路层采用选择重传协议 (SR) 传输数据，发送方已发送了 0～3 号数据\n帧，现已收到 1 号帧的确认，而 0、2 号帧依次超时，则此时需要重传的帧数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1"
+      },
+      {
+        "label": "B",
+        "text": "2"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "B",
+    "explanation": "选择重传协议中，接收方逐个地确认正确接收的分组，不管接收到的分组是 否有序，只要正确接收就发送选择ACK分组进行确认。因此选择重传协议中的ACK分组不再具 有累积确认的作用。这点要特别注意与GBN协议的区别。此题中只收到1号帧的确认，0、2 号帧超时，由于对于1号帧的确认不具累积确认的作用，因此发送方认为接收方没有收到0、 2号帧，于是重传这两帧。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 722,
+    "source": "2012-36",
+    "year": 2012,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "两台主机之间的数据链路层采用后退 N 帧协议 (GBN) 传输数据，数据传输\n速率为 16 kbps，单向传播时延为 270 ms，数据帧长度范围是 128~512 字节，接收方总是\n以与数据帧等长的帧进行确认。为使信道利用率达到最高，帧序号的比特数至少为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "5"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "3"
+      },
+      {
+        "label": "D",
+        "text": "2"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查 GBN 协议。本题主要求解的是从发送一个帧到接收到这个帧的确认为止的时间 内最多可以发送多少数据帧。要尽可能多发帧，应以短的数据帧计算，因此首先计算出发送 一 帧 的 时 间 ： 128*8/(16*103 )=64ms ； 发 送 一 帧 到 收 到 确 认 为 止 的 总 时 间 ： 64+270*2+64=668ms；这段时间总共可以发送 668/64=10.4（帧），发送这么多帧至少需要用",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 723,
+    "source": "2014-36",
+    "year": 2014,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "主机甲与主机乙之间使用后退 N 帧协议 (GBN) 传输数据，甲的发送窗口尺\n寸为 1000，数据帧长为 1000 字节，信道带宽为 100 Mbps，乙每收到一个数据帧立即利用\n一个短帧（忽略其传输延迟）进行确认，若甲乙之间的单向传播延迟是 50ms，则甲可以\n达到的最大平均数据传输速率约为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "10 Mbps"
+      },
+      {
+        "label": "B",
+        "text": "20 Mbps"
+      },
+      {
+        "label": "C",
+        "text": "80 Mbps"
+      },
+      {
+        "label": "D",
+        "text": "100 Mbps"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 724,
+    "source": "2015-35",
+    "year": 2015,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "主机甲通过 128 kbps 卫星链路，采用滑动窗口协议向主机乙发送数据，链路\n单向传播延迟为 250 ms，帧长为 1000 字节。不考虑确认帧的开销，为使链路利用率不小\n于 80％，帧序号的比特数至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "7"
+      },
+      {
+        "label": "D",
+        "text": "8"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根据滑动窗口协议的特点，发送方在未收到接收方发回的确认帧之前就可以将发送 窗口内的数据帧连续发送出去，与停止-等待协议（发送方收到对前一个数据帧的确认帧后才 能发送下一个数据帧）相比，链路利用率可以显著提高。 -- 5 of 11 -- 在本题中，要求链路利用率不小于 80%，可认为是主机甲从发送第 1 个数据帧开始，到收到 主机乙发回的对第 1 个数据帧的确认帧为止所耗费的总时长中的 80%时间都在以 128kbps 的 发送速率连续发送数据帧。总时 = a + b + c = (8b×1000)÷128kb/s + 250ms + 250ms =562.5ms。总时长的 80%都在以 128kbps 的发送速率连续发送数据帧，则发送的比特数量 为 562.5ms×80%×128kb/s = 57600b。这相当于发送数据帧的数量为 (57600b÷8)÷ 1000B =7.2，这表明已经发送 7 个完整的数据帧，第 8 个数据帧也已经发送了 20%，因此发 送窗口 WT 为 8。数据帧的序号个数≥WT + 1，若采用 x 个比特对数据帧编号，则应满足 2x ≥ (8 + 1)，解得 x≥4，因此选项 B 正确。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 725,
+    "source": "2018-36",
+    "year": 2018,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "主机甲采用停 - 等协议向主机乙发送数据，数据传输速率是 3 kbps，单向\n传播延时是 200 ms，忽略确认帧的传输延时。当信道利用率等于 40% 时，数据帧的长度\n为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "240 比特"
+      },
+      {
+        "label": "B",
+        "text": "400 比特"
+      },
+      {
+        "label": "C",
+        "text": "480 比特"
+      },
+      {
+        "label": "D",
+        "text": "800 比特"
+      }
+    ],
+    "answer": "D",
+    "explanation": "设数据帧长度为 x 比特，则信道利用率 = (xb÷3kb/s) ÷ ((xb÷3kb/s) + 200ms + 200ms) = 40%，解得 x = 800 比特，因此选项 D 正确。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 726,
+    "source": "2019-35",
+    "year": 2019,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "对于滑动窗口协议，如果分组序号采用 3 比特编号，发送窗口大小为 5，则\n接收窗口最大是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "B",
+    "explanation": "对于一般的如果要满足在窗口中发送缓存的帧序号不存在二义性，那么需要发送窗 口大小 + 接收窗口大小≤2n。例如当 n=3 时，若发送窗口大小+接收窗口大小大于帧序号数， 那么说明其容纳下的帧数已经超过了帧的序号，则对于接收方，一定会出现重复的帧号，此 时若出现故障，就不能辨别是同帧号中哪一个帧出现了丢失",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 727,
+    "source": "2020-36",
+    "year": 2020,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "假设主机采用停等协议向主机乙发送数据帧，数据帧长与确认帧长均为\n1000B。数据传输速率是 10kbps，单向传播延时是 200ms。则甲的最大信道利用率\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "80%；"
+      },
+      {
+        "label": "B",
+        "text": "66.7%；"
+      },
+      {
+        "label": "C",
+        "text": "44.4%；"
+      },
+      {
+        "label": "D",
+        "text": "40%"
+      }
+    ],
+    "answer": "D",
+    "explanation": "发送数据帧和确认帧的时间分别为 800ms，800ms。发送周期为 T = 800+200+800+200 = 2000ms。采用停止-等待协议，信道利用率为 800/2000 = 40%。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 728,
+    "source": "2023-35",
+    "year": 2023,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "choice",
+    "stem": "假设通过同一信道，数据链路层分别采用停等协议、GBN 协议和 SR 协议\n（发送窗口和接收窗口相等）传输数据，三个协议数据帧长相同，忽略确认帧长度，帧序\n号位数为 3 比特。若对应三个协议的发送方最大信道利用率分别是 U1、U2 和 U3，则 U1、\nU2 和 U3 满足的关系是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "U1 ≤ U2 ≤ U3"
+      },
+      {
+        "label": "B",
+        "text": "U1 ≤ U3 ≤ U2"
+      },
+      {
+        "label": "C",
+        "text": "U2 ≤ U3 ≤ U1"
+      },
+      {
+        "label": "D",
+        "text": "U3 ≤ U2 ≤ U1"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 729,
+    "source": "2024-37",
+    "year": 2024,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "comprehensive",
+    "stem": "主机甲通过选择重传（SR）滑动窗口协议向主机乙发送帧的部分过程如下\n图所示。F 为数据帧，ACKx 为确认帧，x 是位数为比特的序号。乙只对正确接收的数据帧\n进行独立确认。发送窗口与接收窗口大小相同且均为最大值。甲在 t1 时刻和 t2 时刻发送\n的数据帧分别是（ ）\n(A) F1、F3 (B) F1、F4 (C) F3、F1 (D) F4、F1",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 730,
+    "source": "2017-47",
+    "year": 2017,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.2",
+    "sectionTitle": "流量控制与滑动窗口机制",
+    "type": "comprehensive",
+    "stem": "甲乙双方均采用后退 N 帧协议 (GBN) 进行持续的双向数据传输，且双方始\n终采用捎带确认，帧长均为 1000 B。Sx,y 和 Rx,y 分别表示甲方和乙方发送的数据帧，其中：\nx 是发送序号；y 是确认序号（表示希望接收对方的下一帧序号）；数据帧的发送序号和确\n认序号字段均为 3 比特。信道传输速率为 100 Mbps，RTT = 0.96 ms。下图给出了甲方发送\n数据帧和接收数据帧的两种场景，其中 t0 为初始时刻，此时甲方的发送和确认序号均为 0，\nt1 时刻甲方有足够多的数据待发送。\n请回答下列问题。\n(1) 对于图 (a)，t0 时刻到 t1 时刻期间，甲方可以断定乙方已正确接收的数据帧数是多少？\n正确接收的是哪几个帧（请用 Sx,y 形式给出）？\n(2) 对于图 (a)，从 t1 时刻起，甲方在不出现超时且未收到乙方新的数据帧之前，最多还可\n以发送多少个数据帧？其中第一个帧和最后一个帧分别是哪个（请用 Sx,y 形式给出）？\n(3) 对于图 (b)，从 t1 时刻起，甲方在不出现新的超时且未收到乙方新的数据帧之前，需要\n重发多少个数据帧？重发的第一个帧是哪个（请用 Sx,y 形式给出）？\n(4) 甲方可以达到的最大信道利用率是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 731,
+    "source": "2009-37",
+    "year": 2009,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "在一个采用 CSMA/CD 协议的网络中，传输介质是一根完整的电缆，传输速\n率为 1Gbps，电缆中的信号传播速度是 200 000km/s。若最小数据帧长度减少 800 比特，则\n最远的两个站点之间的距离至少需要\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "增加 160m"
+      },
+      {
+        "label": "B",
+        "text": "增加 80m"
+      },
+      {
+        "label": "C",
+        "text": "减少 160m"
+      },
+      {
+        "label": "D",
+        "text": "减少 80m"
+      }
+    ],
+    "answer": "C",
+    "explanation": "SMA/CD",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 732,
+    "source": "2013-36",
+    "year": 2013,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "下列介质访问控制方法中，可能发生冲突的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "CDMA"
+      },
+      {
+        "label": "B",
+        "text": "CSMA"
+      },
+      {
+        "label": "C",
+        "text": "TDMA"
+      },
+      {
+        "label": "D",
+        "text": "FDMA"
+      }
+    ],
+    "answer": "B",
+    "explanation": "CSMA \tB",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 733,
+    "source": "2015-36",
+    "year": 2015,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "下列关于 CSMA/CD 协议的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "边发送数据帧，边检测是否发生冲突"
+      },
+      {
+        "label": "B",
+        "text": "适用于无线网络，以实现无线链路共享"
+      },
+      {
+        "label": "C",
+        "text": "需要根据网络跨距和数据传输速率限定最小帧长"
+      },
+      {
+        "label": "D",
+        "text": "当信号传播延迟趋近 0 时，信道利用率趋近 100％"
+      }
+    ],
+    "answer": "B",
+    "explanation": "CSMA/CD 适用于有线网络，而 CSMA/CA 则广泛应用于无线网络。而其他选项的 表述都正确。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 734,
+    "source": "2016-35",
+    "year": 2016,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "若主机 H2 向主机 H4 发送 1 个数据帧，主机 H4 向主机 H2 立即发送一个确认帧，则除 H4\n外，从物理层上能够收到该确认帧的主机还有\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 H2"
+      },
+      {
+        "label": "B",
+        "text": "仅 H3"
+      },
+      {
+        "label": "C",
+        "text": "仅 H1、H2"
+      },
+      {
+        "label": "D",
+        "text": "仅 H2、H3"
+      }
+    ],
+    "answer": "D",
+    "explanation": "关于物理层、数据链路层、网络层设备对于隔离冲突域的总结如下表所示。 -- 7 of 12 -- 设备名称 \t能否隔离冲突域 \t能否隔离广播域 集线器 \t不能 \t不能 中继器 \t不能 \t不能 交换机 \t能 \t不能 网桥 \t能 \t不能 路由器 \t能 \t能 交换机（Switch）可以隔离冲突域，但集线器（Hub）无法隔离冲突域，因此从物理层上能够 收到该确认帧的主机仅 H2、H3，选项 D 正确。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 735,
+    "source": "2016-36",
+    "year": 2016,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "若 Hub 再生比特流过程中，会产生 1.535μs 延时，信号传播速度为 200m/μs，不考虑以太\n网帧的前导码，则 H3 与 H4 之间理论上可以相距的最远距离是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "200 m"
+      },
+      {
+        "label": "B",
+        "text": "205 m"
+      },
+      {
+        "label": "C",
+        "text": "359 m"
+      },
+      {
+        "label": "D",
+        "text": "512 m"
+      }
+    ],
+    "answer": "B",
+    "explanation": "因为要解决“理论上可以相距的最远距离”，所以最远肯定能保证能检测到碰撞，而 以太网规定最短帧长为 64B。其中 Hub 为 100Base-T 集线器，可知线路的传输速率为 100Mbps 则单程传输时延为 64B/100Mbps/2 = 2.56μs，又 Hub 再产生比特流的过程中会导 致延时 1.535μs，则单程的传播时延为 2.56μs -1.535μs = 1.025μs，从而 H3 与 H4 之间理论 上可以相距最远距离为 200m/μs × 1.025μs =205m。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 736,
+    "source": "2019-36",
+    "year": 2019,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "假设一个采用 CSMA/CD 协议的 100Mbps 局域网，最小帧长是 128 B，则在\n一个冲突域内两个站点之间的单向传播延时最多是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2.56 us"
+      },
+      {
+        "label": "B",
+        "text": "5.12 us"
+      },
+      {
+        "label": "C",
+        "text": "10.24 us"
+      },
+      {
+        "label": "D",
+        "text": "20.48 us"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考察 CSMA/CD 协议中最小数据帧长与单项传播时延的关系。每次发送一个数据帧， 最少需要 2τ时间才能收到其回复。因此发送一个最小数据帧的时间必须大于 2τ，再本题中 128×8/100M>=2τ，所以τ最大为 5.12us，答案为 B。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 737,
+    "source": "2020-37",
+    "year": 2020,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "某 IEEE 802.11 无线局域网中主机 H 与 AP 之间发送或接收 CSMA/CA 帧的\n过程如下图所示，在 H 或 AP 发送帧前所等待的帧间间隔时间（IFS）中最长的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "IFS1;"
+      },
+      {
+        "label": "B",
+        "text": "IFS2;"
+      },
+      {
+        "label": "C",
+        "text": "IFS3;"
+      },
+      {
+        "label": "D",
+        "text": "IFS4；"
+      }
+    ],
+    "answer": "A",
+    "explanation": "为了尽量避免碰撞，802.11 规定，所有的站在完成发送后，必须再等待一段很短的 时间(继续监听)才能发送下一帧。这段时间通称为帧间间隔 IFS(Inter Frame Space)。帧间间 隔的长短取决于该站要发送的帧的类型。IEEE802.11 推荐使用 3 种帧间隔（IFS），以便提供 基于优先级的访问控制。DIFS(分布式协调 IFS)：最长的 IFS，优先级最低，用于异步帧竞争 访问的时延。PIFS（点协调 IFS）：中等长度的 IFS，优先级居中，在 PCF 操作中使用。SIFS （短 IFS）：最短的 IFS，优先级最高，用于需要立即响应的操作。网络中的控制帧以及对所 接收数据的确认帧都采用 SIFS 作为发送之前的等待时延。当结点要发送数据帧时，载波监听 到信道空闲时，需等待 DIFS 后发送 RTS 预约信道，，IFS1 对应的帧间隔 DIFS，时间最长， 图中 IFS2，IFS3，IFS4 对应 SIFS。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 738,
+    "source": "2023-36",
+    "year": 2023,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "已知 10BaseT 以太网的争用时间片为 51.2us。若网卡在发送某帧时发生了\n连续 4 次冲突，则基于二进制指数退避算法确定的再次尝试重发该帧前等待的最长时间\n是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "51.2us"
+      },
+      {
+        "label": "B",
+        "text": "204.8us"
+      },
+      {
+        "label": "C",
+        "text": "768us"
+      },
+      {
+        "label": "D",
+        "text": "819.2us"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 739,
+    "source": "2024-36",
+    "year": 2024,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "choice",
+    "stem": "在采用 CSMA/CA 的 802.11 无线局域网中，DIFS = 120 μs，SIFS = 28μs，RTS、\nCTS 和 ACK 帧的传输时延分别是 3 μs、2 μs 和 2 μs，忽略信号传播时延。若主机 A 欲向\nAP 发送一个总长度为 1998 B 的数据帧，无线链路带宽为 54 Mb/s，则隐藏站 B 收到 AP\n发送的 CTS 帧时，设置的网络分配向量 NAV 的值是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "326us"
+      },
+      {
+        "label": "B",
+        "text": "354us"
+      },
+      {
+        "label": "C",
+        "text": "385us"
+      },
+      {
+        "label": "D",
+        "text": "513us"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 740,
+    "source": "2025-35",
+    "year": 2025,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.3",
+    "sectionTitle": "介质访问控制",
+    "type": "comprehensive",
+    "stem": "现有一 10BaseT 以太网，甲乙处于同一个冲突域，连续发生 11 次冲突，甲\n再次发送的最大时间间隔为\t（ ）。\n(A) 0.512ms (B) 0.5632ms (C) 52.3776ms (D) 104.8064ms",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 741,
+    "source": "2010-47",
+    "year": 2010,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "某局域网采用 CSMA/CD 协议实现介质访问控制，数据传输速率为 10 Mbps，\n主机甲和主机乙之间的距离为 2 km，信号传播速度是 200 000 km/s。请回答下列问题，要\n求说明理由或写出计算过程。\n(1) 若主机甲和主机乙发送数据时发生冲突，则从开始发送数据时刻起，到两台主机均检\n测到冲突时刻止，最短需经过多长时间？最长需经过多长时间（假设主机甲和主机\n乙发送数据过程中，其他主机不发送数据）？\n(2) 若网络不存在任何冲突与差错，主机甲总是以标准的最长以太网数据帧（1518 字节）\n向主机乙发送数据，主机乙每成功收到一个数据帧后立即向主机甲发送一个 64 字节的确\n认帧，主机甲收到确认帧后方可发送下一个数据帧。此时主机甲的有效数据传输速率是多\n少（不考虑以太网的前导码）？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 742,
+    "source": "2009-36",
+    "year": 2009,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "以太网交换机进行转发决策时使用的 PDU 地址是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "目的物理地址"
+      },
+      {
+        "label": "B",
+        "text": "目的 IP 地址"
+      },
+      {
+        "label": "C",
+        "text": "源物理地址"
+      },
+      {
+        "label": "D",
+        "text": "源 IP 地址"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 743,
+    "source": "2011-36",
+    "year": 2011,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "下列选项中，对正确接收到的数据帧进行确认的 MAC 协议是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "CSMA"
+      },
+      {
+        "label": "B",
+        "text": "CDMA"
+      },
+      {
+        "label": "C",
+        "text": "CSMA/CD"
+      },
+      {
+        "label": "D",
+        "text": "CSMA/CA"
+      }
+    ],
+    "answer": "D",
+    "explanation": "可以用排除法。首先CDMA即码分多址，是物理层的东西；CSMA/CD即带冲突检 测的载波监听多路访问，这个应该比较熟悉，接收方并不需要确认；CSMA，既然CSMA/CD是 其超集，CSMA/CD没有的东西，CSMA自然也没有。于是排除法选D。CSMA/CA是无线局域网标 准802.11中的协议。CSMA/CA利用ACK信号来避免冲突的发生，也就是说，只有当客户端收到 -- 5 of 13 -- 网络上返回的ACK信号后才确认送出的数据已经正确到达目的地址。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 744,
+    "source": "2012-35",
+    "year": 2012,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "以太网的 MAC 协议提供的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "无连接不可靠服务"
+      },
+      {
+        "label": "B",
+        "text": "无连接可靠服务"
+      },
+      {
+        "label": "C",
+        "text": "有连接不可靠服务"
+      },
+      {
+        "label": "D",
+        "text": "有连接可靠服务"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查以太网 MAC 协议。考虑到局域网信道质量好，以太网采取了两项重要的措施以 使通信更简便：①采用无连接的工作方式；②不对发送的数据帧进行编号，也不要求对方发 回确认。因此，以太网提供的服务是不可靠的服务，即尽最大努力交付。差错的纠正由高层 完成。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 745,
+    "source": "2013-38",
+    "year": 2013,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "对于 100 Mbps 的以太网交换机，当输出端口无排队，以直通交换 (cut-through\nswitching) 方式转发一个以太网帧（不包括前导码）时，引入的转发延迟至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0 μs"
+      },
+      {
+        "label": "B",
+        "text": "0.48 μs"
+      },
+      {
+        "label": "C",
+        "text": "5.12 μs"
+      },
+      {
+        "label": "D",
+        "text": "121.44 μs"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 746,
+    "source": "2014-34",
+    "year": 2014,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "某以太网拓扑及交换机当前转发表如下图所示，主机 00-e1-d5-00-23-a1\n向主机 00-e1-d5-00-23-c1 发送 1 个数据帧，主机 00-e1-d5-00-23-c1 收到该帧后，向主机\n00-e1-d5-00-23-a1 发送 1 个确认帧，交换机对这两个帧的转发端口分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "{3} 和 {1}"
+      },
+      {
+        "label": "B",
+        "text": "{2,3} 和 {1}"
+      },
+      {
+        "label": "C",
+        "text": "{2,3} 和 {1,2}"
+      },
+      {
+        "label": "D",
+        "text": "{1,2,3} 和 {1}"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 747,
+    "source": "2015-37",
+    "year": 2015,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "下列关于交换机的叙述中，正确的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "以太网交换机本质上是一种多端口网桥"
+      },
+      {
+        "label": "B",
+        "text": "通过交换机互连的一组工作站构成一个冲突域"
+      },
+      {
+        "label": "C",
+        "text": "交换机每个端口所连网络构成一个独立的广播域"
+      },
+      {
+        "label": "D",
+        "text": "以太网交换机可实现采用不同网络层协议的网络互联"
+      }
+    ],
+    "answer": "A",
+    "explanation": "以太网交换机本质上是一种多端口网桥，“交换机”并无准确的定义和明确的概念。 著名网络专家 Perlman 认为：\t“交换机”应当是一个市场名词，而交换机的出现的确使数据的 转发更加快速了。因此选项 A 正确。 交换机可以将多个独立的冲突域互连起来以扩大通信范围，但这并不会形成一个更大的冲突 域，仍然是多个独立的冲突域。换句话说，交换机可以隔离冲突域。因此选项 B 错误。 交换机可以隔离冲突域，但不能隔离广播域（使用交换机互连多个广播域将形成一个更大的 广播域），只有网络层的互连设备（路由器）才能分割广播域。因此选项 C 错误。 对于常见的二层（物理层和数据链路层）交换机，它们并没有网络层功能，不能实现不同网 络层协议的网络互联。因此选项 D 错误。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 748,
+    "source": "2016-33",
+    "year": 2016,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "在 OSI 参考模型中，R1、Switch、Hub 实现的最高功能层分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2、2、1"
+      },
+      {
+        "label": "B",
+        "text": "2、2、2"
+      },
+      {
+        "label": "C",
+        "text": "3、2、1"
+      },
+      {
+        "label": "D",
+        "text": "3、2、2"
+      }
+    ],
+    "answer": "C",
+    "explanation": "OSI 参考模型中各层如下图所示。 集线器是一个多端口的中继器，工作在物理层。以太网交换机是一个多端口的网桥，工作在 数据链路层。路由器是网络层设备，它实现了网络模型的下三层，即物理层、数据链路层和 网络层。题中 R1、Switch 和 Hub 分别是路由器、交换机和集线器，实现的最高层功能分别 是网络层（即 3）、数据链路层(即 2)和物理层（即 1）。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 749,
+    "source": "2017-35",
+    "year": 2017,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "在下图所示的网络中，若主机 H 发送一个封装访问 Internet 的 IP 分组的\nIEEE 802.11 数据帧 F，则帧 F 的地址 1、地址 2 和地址 3 分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "00-12-34-56-78-9a, 00-12-34-56-78-9b, 00-12-34-56-78-9c"
+      },
+      {
+        "label": "B",
+        "text": "00-12-34-56-78-9b, 00-12-34-56-78-9a, 00-12-34-56-78-9c"
+      },
+      {
+        "label": "C",
+        "text": "00-12-34-56-78-9b, 00-12-34-56-78-9c, 00-12-34-56-78-9a"
+      },
+      {
+        "label": "D",
+        "text": "00-12-34-56-78-9a, 00-12-34-56-78-9c, 00-12-34-56-78-9b"
+      }
+    ],
+    "answer": "B",
+    "explanation": "IEE 802.11 数据帧有四种子类型，分别是 IBSS、From AP、To AP、WDS。这里的 数据帧 F 是从笔记本电脑发送往访问接入点(AP)，所以属于 To AP 子类型。这种帧地址 1 是 RA(BSSID)，地址 2 是 SA，地址 3 是 DA。RA 是 Receiver Address 的缩写，BSSID 是 basic service set idenrifier 的缩写，SA 是 source address 的缩写，DA 是 destination address 的 缩写。因此地址 1 是 AP 的 MAC，地址 2 是 H 的 MAC，地址 3 是 R 的 MAC，答案选 B。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 750,
+    "source": "2018-35",
+    "year": 2018,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "IEEE 802.11 无 线 局 域 网 的 MAC 协 议 CSMA/CA 进 行 信 道 预 约 的 方 法\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "发送确认帧"
+      },
+      {
+        "label": "B",
+        "text": "采用二进制指数退避"
+      },
+      {
+        "label": "C",
+        "text": "使用多个 MAC 地址"
+      },
+      {
+        "label": "D",
+        "text": "交换 RTS 与 CTS 帧"
+      }
+    ],
+    "answer": "D",
+    "explanation": "为了更好地解决隐蔽站带来的碰撞问题，802.11 允许要发送数据的站对信道进行预 约。具体的做法是这样的。A 在向 B 发送数据帧之前，先发送一个短的控制帧，叫做请求发 送 RTS(Request To Send)，它包括源地址、目的地址和这次通信（包括相应的确认帧）所需 的持续时间。当然，A 在发送 RTS 帧之前，必须先监听信道。若信道空闲，则等待一段时间 DIFS 后，才能够发送 RTS 帧。若 B 正确收到 A 发来的 RTS 帧，且媒体空闲，则等待一段 时间 SIFS 后，就向 A 发送一个叫做允许发送 CTS(Clear To Send)的控制帧，它也包括这次 通信所需的持续时间。A 收到 CTS 帧后，再等待一段时间 SIFS 后，就可发送数据帧。若 B 正确收到了 A 发来的数据帧，在等待时间 SIFS 后，就向 A 发送确认帧 ACK。因此，选项 D 正确。",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 751,
+    "source": "2024-35",
+    "year": 2024,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "如题 35 图所示的支持 VLAN 划分的交换机，已按端口划分了 3 个 VLAN，\n部分端口连接主机的 IP 地址和 MAC 地址如图中所示，ARP 表结构为 <IP 地址，MAC 地\n址，TTL> ，下列选项中，不会出现在 H4 的 ARP 表中的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.3.81, 00-18-A2-3B-36-21, 14:32:00"
+      },
+      {
+        "label": "B",
+        "text": "192.168.3.91, 00-3E-C2-39-12-B5, 14:37:00"
+      },
+      {
+        "label": "C",
+        "text": "192.168.3.125, 00-E5-78-4A-09-B2, 14:35:00"
+      },
+      {
+        "label": "D",
+        "text": "192.168.3.129, 00-08-6E-05-A7-82, 14:52:00"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 752,
+    "source": "2026-35",
+    "year": 2026,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "choice",
+    "stem": "假设采用 CSMA/CA 的 IEEE 802.11 无线局域网，其数据传输速率为 300\nMbps，DIFS = 128 μs，SIFS = 28 μs。忽略除数据帧以外的其他帧的传输时延及信号传播\n时延，主机 H 发送一个总长度为 1500 B 的数据帧，则从开始发送数据帧至确认接收方收\n到所需的时间至少为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "40 us"
+      },
+      {
+        "label": "B",
+        "text": "68 us"
+      },
+      {
+        "label": "C",
+        "text": "168 us"
+      },
+      {
+        "label": "D",
+        "text": "196 us"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 753,
+    "source": "2026-36",
+    "year": 2026,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "comprehensive",
+    "stem": "支持 VLAN 划分的以太网交换机，已按端口划分了两个 VLAN。VLAN 划\n分结果及各端口连接主机的 MAC 地址如图所示。下列具有不同目的 MAC 地址（DA）和\n源 MAC 地址（SA）的以太帧 F1–F4 中，H3 会接收到的是\t（ ）\nF1: （DA）00-1A-2B-3C-4D-03；（SA）00-1A-2B-3C-4D-01\nF2: （DA）00-1A-2B-3C-4D-04；（SA）00-1A-2B-3C-4D-05\nF3: （DA）FF-FF-FF-FF-FF-FF；（SA）00-1A-2B-3C-4D-02\nF4: （DA）00-1A-2B-3C-4D-06；（SA）00-1A-2B-3C-4D-03\n(A) 仅 F2、F4 (B) 仅 F1、F3 (C) 仅 F1、F2 (D) 仅 F3、F4",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 754,
+    "source": "2021-47",
+    "year": 2021,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "comprehensive",
+    "stem": "某网络拓扑如题 47 图所示，以太网交换机 S 通过路由器 R 与 Internet 互联。\n路由器部分接口、本地域名服务器、H1、H2 的 IP 地址和 MAC 地址如图中所示。在 t0 时\n刻 H1 的 ARP 表和 S 的交换表均为空，H1 在此刻利用浏览器通过域名 www.abc.com 请求\n访问 Web 服务器，在 t1 时刻（t1→t0）S 第一次收到了封装 HTTP 请求报文的以太网帧，\n假设从 t0 到 t1 期间网络未发生任何与此次 Web 访问无关的网络通信。\n请回答下列问题。\n(1) 从 t0 到 t1 期间，H1 除了 HTTP 之外还运行了哪个应用层协议？从应用层到数据链路\n层，该应用层协议报文是通过哪些协议进行逐层封装的？\n(2) 若 S 的交换表结构为 <MAC 地址，端口 >，则 t1 时刻 S 交换表的内容是什么？\n(3) 从 t0 到 t1 期间，H2 至少会接收到几个与此次 Web 访问相关的帧？接收到的是什么帧？\n帧的目的 MAC 地址是什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 755,
+    "source": "2022-47",
+    "year": 2022,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.3.4",
+    "sectionTitle": "局域网与交换机",
+    "type": "comprehensive",
+    "stem": "某网络拓扑如题 47 图所示，R 为路由器，S 为以太网交换机，AP 是 802.11\n接入点，路由器的 E0 接口和 DHCP 服务器的 IP 地址配置如图中所示；H1 与 H2 属于同一\n个广播域，但不属于同一个冲突域；H2 和 H3 属于同一个冲突域；H4 和 H5 已经接入网\n络，并通过 DHCP 动态获取了 IP 地址。现有路由器、100BaseT 以太网交换机和 100BaseT\n集线器 (Hub) 三类设备各若干台。\n请回答下列问题。\n（1）设备 1 和设备 2 应该分别选择哪类设备？\n（2）若信号传播速度为 2×108 m/s，以太网最小帧长为 64B，信号通过设备 2 时会产生额外\n的 1.51μs 的时间延迟，则 H2 与 H3 之间可以相距的最远距离是多少？\n（3）在 H4 通过 DHCP 动态获取 IP 地址过程中，H4 首先发送了 DHCP 报文 M，M 是哪种\nDHCP 报文？路由器 E0 接口能否收到封装 M 的以太网帧？S 向 DHCP 服务器转发的封装\nM 的以太网帧的目的 MAC 地址是什么？\n（4）若 H4 向 H5 发送一个 IP 分组 P，则 H5 收到的封装 P 的 802.11 帧的地址 1、地址 2 和\n地址 3 分别是什么？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/03-data-link-layer"
+  },
+  {
+    "id": 756,
+    "source": "2020-34",
+    "year": 2020,
+    "qIndex": 34,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.1",
+    "sectionTitle": "网络层的功能",
+    "type": "choice",
+    "stem": "下列关于虚电路网络的叙述中错误的是\t（ ）。\n(A) 可以确保数据分组传输顺序；\n(B) 需要为每条虚电路预分配带宽；\n(C) 建立虚电路时需要进行路由选择；\n(D) 依据虚电路号（VCID）进行数据分组转发。",
+    "options": [
+      {
+        "label": "A",
+        "text": "可以确保数据分组传输顺序；"
+      },
+      {
+        "label": "B",
+        "text": "需要为每条虚电路预分配带宽；"
+      },
+      {
+        "label": "C",
+        "text": "建立虚电路时需要进行路由选择；"
+      },
+      {
+        "label": "D",
+        "text": "依据虚电路号（VCI"
+      },
+      {
+        "label": "D",
+        "text": "进行数据分组转发。"
+      }
+    ],
+    "answer": "B",
+    "explanation": "虚电路服务需要有建立连接过程，每个分组使用短的虚电路号，属于同一条虚电路 的分组按照同一路由进行转发，分组到达终点的顺序与发顺顺序相同，可以保证有序传输， 不需要为每条虚电路预分配带宽。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 757,
+    "source": "2022-37",
+    "year": 2022,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.1",
+    "sectionTitle": "网络层的功能",
+    "type": "choice",
+    "stem": "在 SDN 网络体系结构中，SDN 控制器向数据平面的 SDN 交换机下发流表\n时所使用的接口是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "东向接口"
+      },
+      {
+        "label": "B",
+        "text": "南向接口"
+      },
+      {
+        "label": "C",
+        "text": "西向接口"
+      },
+      {
+        "label": "D",
+        "text": "北向接口"
+      }
+    ],
+    "answer": "B",
+    "explanation": "SDN 对上层开发者提供的编程接口称为北向接口， 而南向接口则负责控制平面和 数据平面间的通信，所以 SDN 控制器向数据平面的 SDN 交换机下发流表时使用南向接口。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 758,
+    "source": "2024-33",
+    "year": 2024,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.1",
+    "sectionTitle": "网络层的功能",
+    "type": "choice",
+    "stem": "若分组交换网络及每段链路的带宽如下图，则 H1 到 H2 的最大吞吐量约\n为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1Mbps"
+      },
+      {
+        "label": "B",
+        "text": "10Mbps"
+      },
+      {
+        "label": "C",
+        "text": "100Mbps"
+      },
+      {
+        "label": "D",
+        "text": "1000Mbps"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 759,
+    "source": "2025-33",
+    "year": 2025,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "如下图所示，主机 H1 向 H2 发送一个 2MB（1MB = 106 B）文件有三种方式：\n¨ 电路交换，建立时间为 32us，速度为 10Mbps；≠ 分组交换，分组长度为 400B，忽略首\n部；Æ 报文交换。电路交换的时间为 Tcs ，报文交换的时间为 Tms ，分组交换的时间为 Tps\n，则三者的大小关系是\t（ ）。\n(A) Tcs > Tms > Tps (B) Tms > Tps > Tcs\n(C) Tms > Tcs > Tps (D) Tps > Tms > Tcs",
+    "options": [
+      {
+        "label": "B",
+        "text": "文件有三种方式： ¨ 电路交换，建立时间为 32us，速度为 10Mbps；≠ 分组交换，分组长度为 400B，忽略首 部；Æ 报文交换。电路交换的时间为 Tcs ，报文交换的时间为 Tms ，分组交换的时间为 Tps ，则三者的大小关系是\t（ ）。 (A) Tcs > Tms > Tps"
+      },
+      {
+        "label": "B",
+        "text": "Tms > Tps > Tcs"
+      },
+      {
+        "label": "C",
+        "text": "Tms > Tcs > Tps"
+      },
+      {
+        "label": "D",
+        "text": "Tps > Tms > Tcs"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 760,
+    "source": "2010-36",
+    "year": 2010,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "若路由器 R 因为拥塞丢弃 IP 分组，则此时 R 可向发出该 IP 分组的源主机发\n送的 ICMP 报文类型是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "路由重定向"
+      },
+      {
+        "label": "B",
+        "text": "目的不可达"
+      },
+      {
+        "label": "C",
+        "text": "源点抑制"
+      },
+      {
+        "label": "D",
+        "text": "超时"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 761,
+    "source": "2010-37",
+    "year": 2010,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "某网络的 IP 地址空间为 192.168.5.0/24，采用定长子网划分，子网掩码为\n255.255.255.248，则该网络中的最大子网个数、每个子网内的最大可分配地址个数分别\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "32, 8"
+      },
+      {
+        "label": "B",
+        "text": "32, 6"
+      },
+      {
+        "label": "C",
+        "text": "8, 32"
+      },
+      {
+        "label": "D",
+        "text": "8, 30"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 762,
+    "source": "2011-37",
+    "year": 2011,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "某网络拓扑如下图所示，路由器 R1 只有到达子网 192.168.1.0/24 的路由。\n为使 R1 可以将 IP 分组正确地路由到图中所有子网，则在 R1 中需要增加的一条路由（目\n的网络，子网掩码，下一跳）是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.2.0，255.255.255.128，192.168.1.1"
+      },
+      {
+        "label": "B",
+        "text": "192.168.2.0，255.255.255.0，192.168.1.1"
+      },
+      {
+        "label": "C",
+        "text": "192.168.2.0，255.255.255.128，192.168.1.2"
+      },
+      {
+        "label": "D",
+        "text": "192.168.2.0，255.255.255.0，192.168.1.2"
+      }
+    ],
+    "answer": "D",
+    "explanation": "此题主要考察路由聚合。要使R1能够正确将分组路由到所有子网，则R1中需 要有到192.168.2.0/25和192.168.2.128/25的路由。观察发现网络192.168.2.0/25和",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 763,
+    "source": "2011-38",
+    "year": 2011,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "在子网 192.168.4.0/30 中，能接收目的地址为 192.168.4.3 的 IP 分组的最大主\n机数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0"
+      },
+      {
+        "label": "B",
+        "text": "1"
+      },
+      {
+        "label": "C",
+        "text": "2"
+      },
+      {
+        "label": "D",
+        "text": "4"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 764,
+    "source": "2012-33",
+    "year": 2012,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "在 TCP/IP 体系结构中，直接为 ICMP 提供服务的协议是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPP"
+      },
+      {
+        "label": "B",
+        "text": "IP"
+      },
+      {
+        "label": "C",
+        "text": "UDP"
+      },
+      {
+        "label": "D",
+        "text": "TCP"
+      }
+    ],
+    "answer": "B",
+    "explanation": "考查 ICMP 协议的特点。ICMP 是网络层协议，ICMP 报文作为数据字段封装在 IP 分 组中，因此 IP 协议直接为 ICMP 提供服务。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 765,
+    "source": "2012-38",
+    "year": 2012,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "ARP 协议的功能是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "根据 IP 地址查询 MAC 地址"
+      },
+      {
+        "label": "B",
+        "text": "根据 MAC 地址查询 IP 地址"
+      },
+      {
+        "label": "C",
+        "text": "根据域名查询 IP 地址"
+      },
+      {
+        "label": "D",
+        "text": "根据 IP 地址查询域名"
+      }
+    ],
+    "answer": "A",
+    "explanation": "考查 ARP 协议的功能。在实际网络的数据链路层上传送数据时，最终必须使用硬件 地址，ARP 协议是将网络层的 IP 地址解析为数据链路层的 MAC 地址。 -- 8 of 12 --",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 766,
+    "source": "2012-39",
+    "year": 2012,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "某主机的 IP 地址为 180.80.77.55，子网掩码为 255.255.252.0。若该主机向其\n所在子网发送广播分组，则目的地址可以是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "180.80.76.0"
+      },
+      {
+        "label": "B",
+        "text": "180.80.76.255"
+      },
+      {
+        "label": "C",
+        "text": "180.80.77.255"
+      },
+      {
+        "label": "D",
+        "text": "180.80.79.255"
+      }
+    ],
+    "answer": "D",
+    "explanation": "考查 IP 地址的特点。由子网掩码可知前 22 位为子网号、后 10 位为主机号。IP 地址 的第 3 个字节为 01001101（下划线为子网号的一部分），将主机号全置为 1，可得广播地址 为 180.80.79.255。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 767,
+    "source": "2016-38",
+    "year": 2016,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "假设连接 R1、R2 和 R3 之间的点对点链路使用 201.1.3.x/30 地址，当 H3 访问 Web 服务\n器 S 时，R2 转发出去的封装 HTTP 请求报文的 IP 分组的源 IP 地址和目的 IP 地址分别\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.3.251，130.18.10.1"
+      },
+      {
+        "label": "B",
+        "text": "192.168.3.251，201.1.3.9"
+      },
+      {
+        "label": "C",
+        "text": "201.1.3.8，130.18.10.1"
+      },
+      {
+        "label": "D",
+        "text": "201.1.3.10，130.18.10.1"
+      }
+    ],
+    "answer": "D",
+    "explanation": "由题意知连接 R1、R2 和 R3 之间的点对点链路使用 201.1.3.x/30 地址，其子网掩 码为 255.255.255.252，R1 的一个接口的 IP 地址为 201.1.3.9, 转换为对应的二进制的后 8 位为 0000 1001 (由 201.1.3.x/30 知，IP 地址对应的二进制的后两位为主机号，而主机号全 为 0 表示本网络本身，主机号全为 1 表示本网络的广播地址，不用于源 IP 地址或者目的 IP 地址)，那么除 201.1.3.9 外，只有 IP 地址为 201.1.3.10 才可以作为源 IP 地址使用(本题为 201.1.3.10)。Web 服务器的 IP 地址为 130.18.10.1，作为 IP 分组的目的 IP 地址。综上可知， 选项 D 正确。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 768,
+    "source": "2016-39",
+    "year": 2016,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "假设 H1 与 H2 的默认网关和子网掩码均分别配置为 192.168.3.1 和 255.255.255.128，H3 与\nH4 的默认网关和子网掩码均分别配置为 192.168.3.254 和 255.255.255.128，则下列现象中\n可能发生的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "H1 不能与 H2 进行正常 IP 通信"
+      },
+      {
+        "label": "B",
+        "text": "H2 与 H4 均不能访问 Internet"
+      },
+      {
+        "label": "C",
+        "text": "H1 不能与 H3 进行正常 IP 通信"
+      },
+      {
+        "label": "D",
+        "text": "H3 不能与 H4 进行正常 IP 通信"
+      }
+    ],
+    "answer": "C",
+    "explanation": "从子网掩码可知 H1 和 H2 处于同一网段，H3 和 H4 处于同一网段，分别可以进行 正常的 IP 通信，A 和 D 错误。因为 R2 的 E1 接口的 IP 地址为 192.168.3.254，而 H2 的默 认网关为 192.168.3.1，所以 H2 不能访问 Internet，而 H4 的默认网关为 192.168.3.254，所 以 H4 可以正常访问 Internet，B 错误。由 H1、H2、H3 和 H4 的子网掩码可知 H1、H2 和 H3、H4 处于不同的网段，需通过路由器才能进行正常的 IP 通信，而这时 HI 和 H2 的默认网 关为 192.168.3.1。但 R2 的 E1 接口的 IP 地址为 192.168.3.254，无法进行通信，从而 H1 不能与 H3 进行正常的 IP 通信。C 正确。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 769,
+    "source": "2017-36",
+    "year": 2017,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "下列 IP 地址中，只能作为 IP 分组的源 IP 地址但不能作为目的 IP 地址的\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0.0.0.0"
+      },
+      {
+        "label": "B",
+        "text": "127.0.0.1"
+      },
+      {
+        "label": "C",
+        "text": "200.10.10.3"
+      },
+      {
+        "label": "D",
+        "text": "255.255.255.255"
+      }
+    ],
+    "answer": "A",
+    "explanation": "根据 RFC 文档描述，0.0.0.0/32 可以作为本主机在本网络上的源地址。127.0.0.1 是 回送地址，以它为目的 IP 地址的数据将被立即返回到本机。200.10.10.3 是 C 类 IP 地址 255.255.255.255 是广播地址。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 770,
+    "source": "2017-38",
+    "year": 2017,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "若将网络 21.3.0.0/16 划分为 128 个规模相同的子网，则每个子网可分配的最\n大 IP 地址个数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "254"
+      },
+      {
+        "label": "B",
+        "text": "256"
+      },
+      {
+        "label": "C",
+        "text": "510"
+      },
+      {
+        "label": "D",
+        "text": "512"
+      }
+    ],
+    "answer": "C",
+    "explanation": "这个网络有 16 位的主机号，平均分成 128 个规模相同的子网，每位个子网有 7 位 的子网号，9 位主机号。除去一个网络地址和广播地址，可分配的最大 IP 地址个数是 29 -2 = 512-2 = 510，故答案选 C。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 771,
+    "source": "2018-38",
+    "year": 2018,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "某 路 由 表 中 有 转 发 接 口 相 同 的 4 条 路 由 表 项， 其 目 的 网 络 地 址 分 别 是\n35.230.32.0/21、35.230.40.0/21、35.230.48.0/21 和 35.230.56.0/21，将该 4 条路由聚合后的\n目的网络地址为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "35.230.0.0/19"
+      },
+      {
+        "label": "B",
+        "text": "35.230.0.0/20"
+      },
+      {
+        "label": "C",
+        "text": "35.230.32.0/19"
+      },
+      {
+        "label": "D",
+        "text": "35.230.32.0/20"
+      }
+    ],
+    "answer": "C",
+    "explanation": "本题考查路由聚合技术。将多个目的网络地址聚合为一个目的网络地址的方法是“找 共同前缀”。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 772,
+    "source": "2019-37",
+    "year": 2019,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "若将 101.200.16.0/20 划分为 5 个子网，则可能的最小子网的可分配 IP 地址\n数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "126"
+      },
+      {
+        "label": "B",
+        "text": "254"
+      },
+      {
+        "label": "C",
+        "text": "510"
+      },
+      {
+        "label": "D",
+        "text": "1022"
+      }
+    ],
+    "answer": "B",
+    "explanation": "网络前缀为 20 位，将 101.200.16.0/20 划分为 5 个子网，为了保证有子网的可分配 IP 地址数尽可能小，即要让其他子网的可分配 IP 地址数尽可能大，不能采用平均划分的方 法，而要采用变长的子网划分方法，也就是最大子网用 1 位子网号，第二大子网用 2 位子网 号，以此类推。 当地址范围为 101.200.31.1/24~101.200.31.254/24 时，可分配的 IP 地址数为 254 个，即可 能的最小子网的可分配 IP 地址数是 254 个。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 773,
+    "source": "2021-35",
+    "year": 2021,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "现将一个 IP 网络划分为 3 个子网，若其中一个子网是 192.168.9.128/26, 则下\n列网络中，不可能是另外两个子网之一的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.9.0/25"
+      },
+      {
+        "label": "B",
+        "text": "192.168.9.0/26"
+      },
+      {
+        "label": "C",
+        "text": "192.168.9.192/26"
+      },
+      {
+        "label": "D",
+        "text": "192.168.9.192/27"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根据题意， 将1P网络划分为3个 子网。 其中一 个是192.168.9.128/26 。 可以简写 成x.x.x.10/26 （其中10是128 的二进制1000 0000 的前两位， 因为26-24 =2)。 A选项可以简写成x.x.x.0/25; B选项可以简写成x.x.x.00/26; C 选项可以简写成x.x.x.11/26; D选项可以简写成x.x.x.110/27 。 对于A和c, 可以组成x.x.x.0/25、x.x.x.10/26、x.x.x.11/26这样3个互不重叠的子网。 对千 D, 可以组成x.x.x.10/26、x.x.x.110/27、x.x.x.111/27这样3个互不重叠的子网。 但对千B,要想将 一 个1P 网络划分为几个互不重叠的子网，3个是不够的， 至少需要 划分为 4个 子网：x.x.x.00/26、x.x.x.01/26、x.x.x.10/26、x.x.x.11/26 。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 774,
+    "source": "2021-36",
+    "year": 2021,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "若路由器向 MTU = 800B 的链路转发一个总长度为 1580B 的 IP 数据报（首\n部长度为 20B）时，进行了分片，且每个分片尽可能大，则第 2 个分片的总长度字段和 MF\n标志位的值分别是\t（ ）\n(A) 796,0 (B) 796, 1 (C) 800,0 (D) 800, 1",
+    "options": [
+      {
+        "label": "B",
+        "text": "时，进行了分片，且每个分片尽可能大，则第 2 个分片的总长度字段和 MF 标志位的值分别是\t（ ） (A) 796,0"
+      },
+      {
+        "label": "B",
+        "text": "796, 1"
+      },
+      {
+        "label": "C",
+        "text": "800,0"
+      },
+      {
+        "label": "D",
+        "text": "800, 1"
+      }
+    ],
+    "answer": "B",
+    "explanation": "链路层MTV= 800B。IP分组首部 长20B。 片偏移以8个 字节为偏移单位， 因此 除最后一 个分片， 其他每个分片的数据部分长度都是8B的整数倍。 所以， 最大1P分片的数 据部分长度为776B。总长度1580B的IP 数据报中，数据部分占1560B,1560B/776B= 2.01…, 需要分成3 片 。 故第2个分片的总长度字段为796, MF为l （表示还 有后续的分片 ）。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 775,
+    "source": "2022-35",
+    "year": 2022,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "若某主机的 IP 地址是 183.80.72.48, 子网掩码是 255.255.192.0, 则该主机所在\n网络的网络地址是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "183.80.0.0"
+      },
+      {
+        "label": "B",
+        "text": "183.80.64.0"
+      },
+      {
+        "label": "C",
+        "text": "183.80.72.0"
+      },
+      {
+        "label": "D",
+        "text": "183.80.192.0"
+      }
+    ],
+    "answer": "B",
+    "explanation": "主机所在网络的网络地址可以通过主机的 IP 地址和子网掩码逐位相与得到。 子网 掩码 255.255.192.0 的二进制前 18 位为 1、 后 14 位为 o, 把主机1P地址的后 14 位变为 o, 得 到的结果为 183.80.64.0, 即为主机所在网络的网络地址。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 776,
+    "source": "2022-36",
+    "year": 2022,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "下图所示网络中的主机 H 的子网掩码与默认网关分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "255.255.255.192, 192.168.1.1"
+      },
+      {
+        "label": "B",
+        "text": "255.255.255.192, 192.168.1.62"
+      },
+      {
+        "label": "C",
+        "text": "255.255.255.224, 192.168.1.1"
+      },
+      {
+        "label": "D",
+        "text": "255.255.255.224, 192.168.1.62"
+      }
+    ],
+    "answer": "D",
+    "explanation": "默认网关可以理解为离当前主机最近的路由器的端口地址， 所以是 192:168.1.62, 而该主机的子网掩码和网关的子网掩码也相同，／27 即为 255.255.255.224。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 777,
+    "source": "2023-38",
+    "year": 2023,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "某网络拓扑如下图所示，其中路由器 R2 实现 NAT 功能。若主机 H 向 Inernet\n发送一个 IP 分组，则经过 R2 转发后，该 IP 分组的源 IP 地址是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.0.33"
+      },
+      {
+        "label": "B",
+        "text": "192.168.0.35"
+      },
+      {
+        "label": "C",
+        "text": "192.168.0.1"
+      },
+      {
+        "label": "D",
+        "text": "192.168.0.3"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 778,
+    "source": "2023-39",
+    "year": 2023,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "主机 168.16.84.24/20 所在子网的最小可分配地址和最大可分配地址分别\n是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "168.16.80.1，168.16.84.254"
+      },
+      {
+        "label": "B",
+        "text": "168.16.80.1，168.16.95.254"
+      },
+      {
+        "label": "C",
+        "text": "168.16.84.1，168.16.84.254"
+      },
+      {
+        "label": "D",
+        "text": "168.16.84.1，168.16.95.254"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 779,
+    "source": "2025-36",
+    "year": 2025,
+    "qIndex": 36,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "一台新接入网络的主机 H 通过 DHCP 服务器动态请求 IP 地址过程中，与\nDHCP 服务器交换 DHCP 报文过程如下图所示。封装 DHCP 的 REQUEST 报文的 P 数据\n报的目的 IP 地址和源 IP 地址分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "192.168.5.1, 0.0.0.0"
+      },
+      {
+        "label": "B",
+        "text": "192.168.5.1, 192.168.5.9"
+      },
+      {
+        "label": "C",
+        "text": "255.255.255.255, 0.0.0.0"
+      },
+      {
+        "label": "D",
+        "text": "255.255.255.255, 192.168.5.9"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 780,
+    "source": "2025-37",
+    "year": 2025,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "choice",
+    "stem": "假设路由器实现 NAT 功能，内网中主机 H 的 IP 地址为 192.168.1.5/24。若 H\n运行某应用向 internet 发送一个 UDP 报文段，则路由器在转发封装该 UDP 报文段的 IP 数\n据报的过程中，UDP 报文的首部字段会被修改的是\t（ ）。\nI 源端口号\nII 目的端口号\nIII 总长度\nIV 校验和",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 lI、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 781,
+    "source": "2026-39",
+    "year": 2026,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "若将 IP 网络 123.4.4.0/22 划分为规模均衡的 32 个子网，则 IP 地址 123.4.5.11\n所在的子网是\t（ ）\n(A) 123.4.4.0/27 (B) 123.4.4.32/27\n(C) 123.4.5.0/27 (D) 123.4.5.32/27",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 782,
+    "source": "2009-47",
+    "year": 2009,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "某网络拓扑如下图所示，路由器 R1 通过接口 E1、E2 分别连接局域网 1、局\n域网 2，通过接口 L0 连接路由器 R2，并通过路由器 R2 连接域名服务器与互联网。R1 的\nL0 接口的 IP 地址是 202.118.2.1；R2 的 L0 接口的 IP 地址是 202.118.2.2，L1 接口的 IP 地\n址是 130.11.120.1，E0 接口的 IP 地址是 202.118.3.1；域名服务器的 IP 地址是 202.118.3.2。\nR1 和 R2 的路由表结构为：\n(1) 将 IP 地址空间 202.118.1.0/24 划分为 2 个子网，分别分配给局域网 1、局域网 2，每个\n局域网需分配的 IP 地址数不少于 120 个。请给出子网划分结果，说明理由或给出必要的\n计算过程。\n(2) 请给出 R1 的路由表，使其明确包括到局域网 1 的路由、局域网 2 的路由、域名服务器\n的主机路由和互联网的路由。\n(3) 请采用路由聚合技术，给出 R2 到局域网 1 和局域网 2 的路由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 783,
+    "source": "2012-47",
+    "year": 2012,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "主机 H 通过快速以太网连接 Internet，IP 地址为 192.168.0.8，服务器 S 的 IP\n地址为 211.68.71.80。H 与 S 使用 TCP 通信时，在 H 上捕获的其中 5 个 IP 分组如题 47-a\n表所示。\n请回答下列问题。\n(1) 题 47-a 表中的 IP 分组中，哪几个是由 H 发送的？哪几个完成了 TCP 连接建立过程？\n哪几个在通过快速以太网传输时进行了填充？\n(2) 根据题 47-a 表中的 IP 分组，分析 S 已经收到的应用层数据字节数是多少？\n(3) 若题 47-a 表中的某个 IP 分组在 S 发出时的前 40 字节如题 47-b 表所示，则该 IP 分组\n到达 H 时经过了多少个路由器？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 784,
+    "source": "2013-47",
+    "year": 2013,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "假设 Internet 的两个自治系统构成的网络如题 47 图所示，自治系统 AS1 由\n路由器 R1 连接两个子网构成；自治系统 AS2 由路由器 R2、R3 互联并连接 3 个子网构成。\n各子网地址、R2 的接口名、R1 与 R3 的部分接口 IP 地址如题 47 图所示。\n请回答下列问题。\n(1) 假设路由表结构如下表所示。\n请利用路由聚合技术，给出 R2 的路由表，要求包括到达题 47 图中所有子网的路由，且路\n由表中的路由项尽可能少。\n(2) 若 R2 收到一个目的 IP 地址为 194.17.20.200 的 IP 分组，R2 会通过哪个接口转发该 IP\n分组？\n(3) R1 与 R2 之间利用哪个路由协议交换路由信息？该路由协议的报文被封装到哪个协议\n的分组中进行传输？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 785,
+    "source": "2014-43",
+    "year": 2014,
+    "qIndex": 43,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "请根据题 42 描述的网络，继续回答下列问题。\n(1) 假设路由表结构如下表所示，请给出题 42 图中 R1 的路由表，要求包括到达题 42 图中\n子网 192.1.x.x 的路由，且路由表中的路由项尽可能少。\n(2) 当主机 192.1.1.130 向主机 192.1.7.211 发送一个 TTL=64 的 IP 分组时，R1 通过哪个接\n口转发该 IP 分组？主机 192.1.7.211 收到的 IP 分组 TTL 是多少？\n(3) 若 R1 增加一条 Metric 为 10 的链路连接 Internet，则题 42 表中 R1 的 LSI 需要增加哪些\n信息？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 786,
+    "source": "2015-47",
+    "year": 2015,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.2",
+    "sectionTitle": "IPv4 协议与地址",
+    "type": "comprehensive",
+    "stem": "某网络拓扑如题 47 图所示，其中路由器内网接口、DHCP 服务器、WWW\n服务器与主机 1 均采用静态 IP 地址配置，相关地址信息见图中标注；主机 2～主机 N 通\n过 DHCP 服务器动态获取 IP 地址等配置信息。\n(1) DHCP 服务器可为主机 2～主机 N 动态分配 IP 地址的最大范围是什么？主机 2 使用\nDHCP 协议获取 IP 地址的过程中，发送的封装 DHCP Discover 报文的 IP 分组的源 IP 地址\n和目的 IP 地址分别是什么？\n(2) 若主机 2 的 ARP 表为空，则该主机访问 Internet 时，发出的第一个以太网帧的目的\nMAC 地址是什么？封装主机 2 发往 Internet 的 IP 分组的以太网帧的目的 MAC 地址是什\n么？\n(3) 若主机 1 的子网掩码和默认网关分别配置为 255.255.255.0 和 111.123.15.2，则该主机是\n否能访问 WWW 服务器？是否能访问 Internet？请说明理由。",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 787,
+    "source": "2018-47",
+    "year": 2018,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.3",
+    "sectionTitle": "IPv6",
+    "type": "choice",
+    "stem": "某公司网络如题 47 图所示。IP 地址空间 192.168.1.0/24 被均分给销售部和\n技术部两个子网，并已分别为部分主机和路由器接口分配了 IP 地址，销售部子网的\nMTU=1500 B，技术部子网的 MTU=800 B。\n请回答下列问题。\n(1) 销售部子网的广播地址是什么？技术部子网的子网地址是什么？若每个主机仅分配一\n个 IP 地址，则技术部子网还可以连接多少台主机？\n(2) 假设主机 192.168.1.1 向主机 192.168.1.208 发送一个总长度为 1500 B 的 IP 分组，IP 分\n组的头部长度为 20 B，路由器在通过接口 F1 转发该 IP 分组时进行了分配。若分片时尽\n可能分为最大片，则一个最大 IP 分片封装数据的字节数是多少？至少需要分为几个分片？\n每个分片的片偏移量是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 788,
+    "source": "2023-40",
+    "year": 2023,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.3",
+    "sectionTitle": "IPv6",
+    "type": "choice",
+    "stem": "下列关于 ipv6 和 ipv4 的叙述中，正确的是\t（ ）\nI. ipv6 地址空间是 ipv4 地址空间的 96 倍\nII. ipv4 和 ipv6 的基本首部的长度均可变\nIII.ipv4 向 ipv6 过渡可以采用双协议栈和隧道技术\nIV. ipv6 首部的 Hop-Limit 等价于 ipv4 首部的 TTL 字段",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "仅 III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 789,
+    "source": "2010-35",
+    "year": 2010,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "choice",
+    "stem": "某自治系统采用 RIP 协议，若该自治系统内的路由器 R1 收到其邻居路由器\nR2 的距离矢量中包含信息 <net1,16>，则可能得出的结论是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "R2 可以经过 R1 到达 net1，跳数为 17"
+      },
+      {
+        "label": "B",
+        "text": "R2 可以到达 net1，跳数为 16"
+      },
+      {
+        "label": "C",
+        "text": "R1 可以经过 R2 到达 net1，跳数为 17"
+      },
+      {
+        "label": "D",
+        "text": "R1 不能经过 R2 到达 net1"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 790,
+    "source": "2015-38",
+    "year": 2015,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "其他",
+    "sectionCode": "169.96.40",
+    "sectionTitle": "169.96.40",
+    "type": "choice",
+    "stem": "某路由器的路由表如下表所示：\n目的网络 下一跳 接口\n169.96.40.0/23 176.1.1.1 S1\n169.96.40.0/25 176.2.2.2 S2\n169.96.40.0/27 176.3.3.3 S3\n0.0.0.0/0 176.4.4.4 S4\n若路由器收到一个目的地址为 169.96.40.5 的 IP 分组，则转发该 IP 分组的接口是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "S1"
+      },
+      {
+        "label": "B",
+        "text": "S2"
+      },
+      {
+        "label": "C",
+        "text": "S3"
+      },
+      {
+        "label": "D",
+        "text": "S4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "本题考查路由器收到 IP 分组后进行查表转发的过程。路由器从 IP 分组中取出目的 地址，然后在路由表中逐条检查路由记录，看是否有匹配该目的地址的路由记录，具体有以 下几种情况： （1）若路由表配置有该目的地址的“特定主机”路由记录，则按特定主机路由记录中“下一 跳”所指示的 IP 地址进行转发； （2）若有一条匹配该目的地址的路由记录，则按该路由记录中“下一跳”所指示的 IP 地址 进行转发； （3）若有多条匹配该目的地址的路由记录，则按“最长前缀匹配”原则，选用网络前缀最长 的路由记录，按该路由记录中“下一跳”所指示的 IP 地址进行转发； （4）若没有匹配该目的地址的路由记录，但路由器配置有“默认路由”记录（0.0.0.0/0），则 按默认路由记录中“下一跳”所指示的 IP 地址进行转发； （5）若没有匹配该目的地址的路由记录，路由器也没有配置默认路由记录，则路由器丢弃该 IP 分组，并给发送该 IP 分组的源主机发送“终点不可达”这种类型的 ICMP 差错报告报文。 检查 IP 分组的目的地址是否匹配路由记录的方法是：将路由记录中“目的网络”的网络前缀 数取出记为 n，将目的地址前 n 个比特保持不变，剩余的（32-n）比特全部清零，然后将结果 写成点分十进制形式记为 d，如果 d 与路由记录中“目的网络”的网络号部分相同，则表明目 的地址匹配该路由记录，IP 分组的目的 IP 地址 169.96.40.5 与路由表中的前三条路由记录都 匹配，根据“最长前缀匹配”原则，采用第三条路由记录转发该 IP 分组，也就是从接口 S3 -- 6 of 11 -- 转发该 IP 分组给下一跳 176.3.3.3。综上所述，选项 C 正确。",
+    "relatedPath": "/"
+  },
+  {
+    "id": 791,
+    "source": "2016-37",
+    "year": 2016,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "choice",
+    "stem": "假设 R1、R2、R3 采用 RIP 协议交换路由信息，且均已收敛。若 R3 检测到网络 201.1.2.0/25\n不可达，并向 R2 通告一次新的距离向量，则 R2 更新后，其到达该网络的距离是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "16"
+      },
+      {
+        "label": "D",
+        "text": "17"
+      }
+    ],
+    "answer": "B",
+    "explanation": "因为 R3 检测到网络 201.1.2.0/25 不可达，故将到该网络的距离设置为 16 (距离为",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 792,
+    "source": "2017-37",
+    "year": 2017,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "choice",
+    "stem": "直接封装 RIP、OSPF、BGP 报文的协议分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "TCP、UDP、IP"
+      },
+      {
+        "label": "B",
+        "text": "TCP、IP、UDP"
+      },
+      {
+        "label": "C",
+        "text": "UDP、TCP、IP"
+      },
+      {
+        "label": "D",
+        "text": "UDP、IP、TCP"
+      }
+    ],
+    "answer": "D",
+    "explanation": "RIP 是一种分布式的基于距离向量的路由选择协议，通过广播 UDP 报文来交换路由 信息。OSPF 是一个内部网关协议，不使用传输协议，如 UDP 或 TCP，而是直接用 IP 包封 装它的数据。BGP 是一个外部网关协议，用 TCP 封装它的数据。因此答案选 D。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 793,
+    "source": "2021-37",
+    "year": 2021,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "choice",
+    "stem": "某网络中的所有路由器均采用距离向量路由算法计算路由。若路由器 E 与\n邻居路由器 A,B,C 和 D 之间的直接链路距离分别是 8, 10, 12 和 6 , 且 E 收到邻居路由器的\n距离向量如下表所示，则路由器 E 更新后的到达目的网络 Netl~Net4 的距离分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "9, 10, 12, 6"
+      },
+      {
+        "label": "B",
+        "text": "9, 10, 28, 20"
+      },
+      {
+        "label": "C",
+        "text": "9, 20, 12, 20"
+      },
+      {
+        "label": "D",
+        "text": "9, 20, 28, 20"
+      }
+    ],
+    "answer": "D",
+    "explanation": "根据距离向量路由算法，E收到相邻路由器的距离向量后， 更新 它的路由表： ＠当原路由表中没有目的网络时， 把该项目添加到路由表中 。 ＠发来的路由信息中有一条到达某个 目的网络的路由， 该路由与当前使用的路由相比， 有较 短的距离， 就用经过 发送路由信息的结点的新 路由替换。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 794,
+    "source": "2026-37",
+    "year": 2026,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "choice",
+    "stem": "某网络在 t0 时刻的网络拓扑与 R1 的路由表如下图所示。R1 ∼ R4 为路由器，\n基于链路状态路由算法进行路由计算。S0 ∼ S4 为路由器 R1 的接口，链路上的数值为链路\n开销。若在 t1 （t1 > t0 ）时刻，R1 检测到 R1 与 R2 之间的链路断开，则 R1 重新计算路由\n并进行充分路由聚合后，表中路由条目的数量为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "3"
+      },
+      {
+        "label": "B",
+        "text": "4"
+      },
+      {
+        "label": "C",
+        "text": "5"
+      },
+      {
+        "label": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 795,
+    "source": "2026-38",
+    "year": 2026,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "comprehensive",
+    "stem": "下列 路 由协 议 中， 能将 一 个 自治 系 统划 分 为 多个 区 域 的内 部 网关 协 议\n是\t（ ）\nI. OSPF\nII. RIP\nIII. BGP\n(A) 仅 I (B) 仅 II (C) 仅 I、III (D) 仅 II、III",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 796,
+    "source": "2024-47",
+    "year": 2024,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.4",
+    "sectionTitle": "路由算法与协议",
+    "type": "comprehensive",
+    "stem": "网络空间是继陆海空地之后的” 第五疆域”，网络技术是网络疆域建设与治\n理的基础。路由算法与协议是网络核心技术之一。对其准确认知，合理选择与应用，对网\n络建设十分重要。假设现有互联网中的 4 个自治系统互连拓扑示意图如题 47 图所示。其\n中，AS1 运行内部网关协议 RIP；AS3 规模较小，自治系统内任意两个主机间通信，经过\n路由器数不超过 15 个；AS4 规模较大，自治系统内任意两个主机间通信，经过路由器数\n量可能超过 20 个。\n请回答下列问题：\n（1）若仅有 RIP 和 OSPF 内部网关协议供选择，则 AS4 应选择哪个协议？（1 分）\n（2）若 AS3 中的某主机向本自治系统另一主机发送 1 个 IP 分组，为确保该 IP 分组能正常\n接收，则该 IP 分组的初始 TTL 值应至少设置为多少？（1 分）\n（3）设 AS1 中的路由器同一时刻启动，启动后立即构建并交换初始距离向量，之后，每隔\n30s 交换一次最新的距离向量。则从交换初始距离向量时刻算起，R11~R16 路由器均获到\n达网络 210.2.4.0/24 的正确路由，至少需多长时间？（2 分）\n（4）R44 向 R13 通告到达网络 136.5.16.0/20 路由时，由 BGP 协议哪类会话完成？通过哪个\nBGP 报文通告？R13 通过 BGP 协议的哪类会话将该网络可达性信息通告给 R14 和 R15?\n（3 分）\n（5）若 R14 和 R15 均收到分别由 R11、R12、R13 通告的到达网络 136.5.16.0/20 的可达性\n信息为：\n目的网络：136.5.16.0/20，AS 路径：AS2 AS8 AS19，下一跳：R11\n目的网络：136.5.16.0/20，AS 路轻：AS3 AS7 AS11 AS19，下一跳：R12\n目的网络：136,5.16.0/20，AS 路径：AS4 AS10 AS19，下一跳：R13\n\n则在无策略约束情况下，R14 和 R15 更新路由表后，各自路由表中到达网络 136.5.16.0/20\n路由的下一跳分别是什么（用路由器名称表示）?（2 分）",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 797,
+    "source": "2010-38",
+    "year": 2010,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "choice",
+    "stem": "下列网络设备中，能够抑制广播风暴的是\t（ ）。\nI. 中继器 II. 集线器 III. 网桥 IV. 路由器",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I 和 II"
+      },
+      {
+        "label": "B",
+        "text": "仅 III"
+      },
+      {
+        "label": "C",
+        "text": "仅 III 和 IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 IV"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 798,
+    "source": "2012-37",
+    "year": 2012,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "choice",
+    "stem": "下列关于 IP 路由器功能的描述中，正确的是\t（ ）。\nI. 运行路由协议，设置路由表\nII. 监测到拥塞时，合理丢弃 IP 分组\nIII. 对收到的 IP 分组头进行差错校验，确保传输的 IP 分组不丢失\nIV. 根据收到的 IP 分组的目的 IP 地址，将其转发到合适的输出线路上",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 III、IV"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II、III"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、II、IV"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III、IV"
+      }
+    ],
+    "answer": "C",
+    "explanation": "考查 IP 路由器的功能。Ⅰ、Ⅳ显然是 IP 路由器的功能。对于Ⅱ，当路由器监测到 拥塞时，可合理丢弃 IP 分组，并向发出该 IP 分组的源主机发送一个源点抑制的 ICMP 报文。 对于Ⅲ，路由器对收到的 IP 分组首部进行差错检验，丢弃有差错首部的报文，但不保证 IP 分 组不丢失。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 799,
+    "source": "2018-37",
+    "year": 2018,
+    "qIndex": 37,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "choice",
+    "stem": "路由器 R 通过以太网交换机 S1 和 S2 连接两个网络，R 的接口、主机 H1 和\nH2 的 IP 地址与 MAC 地址如下图所示。若 H1 向 H2 发送一个 IP 分组 P，则 H1 发出的\n封装 P 的以太网帧的目的 MAC 地址、H2 收到的封装 P 的以太网帧的源 MAC 地址分别\n是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "00-a1-b2-c3-d4-62、00-1a-2b-3c-4d-52"
+      },
+      {
+        "label": "B",
+        "text": "00-a1-b2-c3-d4-62、00-1a-2b-3c-4d-61"
+      },
+      {
+        "label": "C",
+        "text": "00-1a-2b-3c-4d-51、00-1a-2b-3c-4d-52"
+      },
+      {
+        "label": "D",
+        "text": "00-1a-2b-3c-4d-51、00-a1-b2-c3-d4-61"
+      }
+    ],
+    "answer": "D",
+    "explanation": "本题考查以太网帧在传输过程中有关其内部 MAC 地址和 IP 地址的变化情况：源 IP 地址和目的 IP 地址不会产生变化；源 MAC 地址和目的 MAC 地址逐网络（或逐链路）都发 生变化。H1 把封装有 IP 分组 P（IP 分组 P 首部中的源 IP 地址为 192.168.3.2，目的 IP 地址 为 192.168.3.1）的以太网帧发送给路由器 R，帧首部中的目的 MAC 地址为 00-1a-2b-3c-4d- 51，源 MAC 地址为 00-1a-2b-3c-4d-52；路由器 R 收到该帧后进行查表转发，其中 IP 首部 中的 IP 地址不变，但帧首部中的 MAC 地址都要变化，目的 MAC 地址变化为 00-a1-b2-c3- d4-62，源 MAC 地址变化为 00-1a-2b-3c-4d-61。综上所述，选项 D 正确。",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 800,
+    "source": "2020-35",
+    "year": 2020,
+    "qIndex": 35,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "comprehensive",
+    "stem": "下图所示的网络冲突域和广播域的个数分别是\t（ ）。\n(A) 2，2； (B) 2，4； (C) 4，2； (D) 4，4；",
+    "options": [],
+    "answer": "C",
+    "explanation": "网络层设备路由器可以隔离广播域和冲突域，链路层设备普通交换机只能隔离冲突 -- 4 of 8 -- 域，物理层设备集线器、中继器既不能隔离冲突域也不能隔离广播域。题中共有 2 个广播域，",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 801,
+    "source": "2019-47",
+    "year": 2019,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "comprehensive",
+    "stem": "某网络拓扑如题 47 图所示，其中 R 为路由器，主机 HI~H4 的 IP 地址配置\n以及 R 的各接口 IP 地址配置如图中所示。现有若干台以太网交换机（无 VLAN 功能）和\n路由器两类网络互连设备可供选择。\n请回答下列问题：\n(1) 设备 1、设备 2 和设备 3 分别应选择什么类型网络设备？\n(2) 设备 1、设备 2 和设备 3 中，哪几个设备的接口需要配置 IP 地址？并为对应的接口配\n置正确的 IP 地\n址。\n(3) 为确保主机 H1~H4 能够访问 Internet，R 需要提供什么服务？\n(4) 若主机 H3 发送一个目的地址为 192.168.1.127 的 IP 数据报，网络中哪几个主机会接收\n该数据报？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 802,
+    "source": "2020-47",
+    "year": 2020,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.4.5",
+    "sectionTitle": "网络层设备",
+    "type": "comprehensive",
+    "stem": "某校园网有两个局域网，通过路由器 R1、R2 和 R3 互联后接入 Internet，S1\n和 S2 为以太网交换机，局域网采用静态 IP 地址配置，路由器部分接口以及各主机的 IP 地\n址如图所示：\n假设 NAT 转换表结构为：\n请回答下列问题：\n1）为使 H2 和 H3 能够访问 Web 服务器（使用默认端口号），需要进行什么配置？\n2）若 H2 主动访问 Web 服务器时，将 HTTP 请求报文封装到 IP 数据报 P 中发送，则 H2\n发送 P 的源 IP 地址和目的 IP 地址分别是？经过 R3 转发后，P 的源 IP 地址和目的 IP 地址\n分别是？经过 R2 转发后，P 的源 IP 地址和目的 IP 地址分别是？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/04-network-layer"
+  },
+  {
+    "id": 803,
+    "source": "2014-39",
+    "year": 2014,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.1",
+    "sectionTitle": "UDP 协议特点与应用",
+    "type": "choice",
+    "stem": "下列关于 UDP 协议的叙述中，正确的是\t（ ）。\nI. 提供无连接服务\nII. 提供复用/分用服务\nIII. 通过差错校验，保障可靠数据传输",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II"
+      },
+      {
+        "label": "C",
+        "text": "仅 II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、II、III"
+      }
+    ],
+    "answer": "B",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 804,
+    "source": "2018-33",
+    "year": 2018,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.1",
+    "sectionTitle": "UDP 协议特点与应用",
+    "type": "choice",
+    "stem": "下列 TCP/IP 应用层协议中，可以使用传输层无连接服务的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "FTP"
+      },
+      {
+        "label": "B",
+        "text": "DNS"
+      },
+      {
+        "label": "C",
+        "text": "SMTP"
+      },
+      {
+        "label": "D",
+        "text": "HTTP"
+      }
+    ],
+    "answer": "B",
+    "explanation": "FTP 用来传输文件，SMTP 用来发送电子邮件，HTTP 用来传输网页文件，都对可 靠性的要求较高，因此都用传输层有连接的 TCP 服务。无连接 UDP 服务效率更高、开销小， DNS 在传输层采用无连接的 UDP 服务。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 805,
+    "source": "2018-39",
+    "year": 2018,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.1",
+    "sectionTitle": "UDP 协议特点与应用",
+    "type": "choice",
+    "stem": "UDP 协议实现分用 (demultiplexing) 时所依据的头部字段是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "源端口号"
+      },
+      {
+        "label": "B",
+        "text": "目的端口号"
+      },
+      {
+        "label": "C",
+        "text": "长度"
+      },
+      {
+        "label": "D",
+        "text": "校验和"
+      }
+    ],
+    "answer": "B",
+    "explanation": "传输层分用的定义是：接收方的传输层剥去报文首部后，能把这些数据正确交付到 目的进程。选项 C 和 D 显然不符。端口号是传输层服务访问点 TSAP，用来标识朱继忠的应 用进程。对于选项 A 和 B，源端口号是在需要对方回信时选用，不需要时可用全 0。目的端 口号是在终点交付报文时使用到，符合题意，选 B，",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 806,
+    "source": "2021-39",
+    "year": 2021,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.1",
+    "sectionTitle": "UDP 协议特点与应用",
+    "type": "choice",
+    "stem": "若大小为 12B 的应用层数据分别通过 1 个 UDP 数据报和 1 个 TCP 段传输，\n则该 UDP 数据报和 TCP 段实现的有效载荷（应用层数据）最大传输效率分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "37.5%, 16.7%"
+      },
+      {
+        "label": "B",
+        "text": "37.5%, 37.5%"
+      },
+      {
+        "label": "C",
+        "text": "60.0%, 16.7%"
+      },
+      {
+        "label": "D",
+        "text": "60.0%, 37.5%"
+      }
+    ],
+    "answer": "D",
+    "explanation": "应用层数据交给传输层时，放在报文段的数据部分。UDP 首部有 8B, TCP 首部 最短有 20B。为了达到最大传输效率，通过 UDP 传输时，总长度为 20B, 最大传输效率是 12B/20B = 60%。通过 TCP 传输时，总长度为 32B, 最大传输效率是 12B/32B = 37.5%。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 807,
+    "source": "2024-39",
+    "year": 2024,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若 UDP 协议在计算校验和过程中，计算机得到中间结果为 1011 1001 1011\n0110 时，还需要加上最后一个 16 位数 0110 0101 1100 0101，则最终计算得到的校验和\n是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "0001 1111 0111 1011"
+      },
+      {
+        "label": "B",
+        "text": "0001 1111 0111 1100"
+      },
+      {
+        "label": "C",
+        "text": "1110 0000 1000 0011"
+      },
+      {
+        "label": "D",
+        "text": "1110 0000 1000 0100"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 808,
+    "source": "2009-38",
+    "year": 2009,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲与主机乙之间已建立一个 TCP 连接，主机甲向主机乙发送了两个连\n续的 TCP 段，分别包含 300 字节和 500 字节的有效载荷，第一个段的序列号为 200，主机\n乙正确接收到两个段后，发送给主机甲的确认序列号是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "500"
+      },
+      {
+        "label": "B",
+        "text": "700"
+      },
+      {
+        "label": "C",
+        "text": "800"
+      },
+      {
+        "label": "D",
+        "text": "1000"
+      }
+    ],
+    "answer": "D",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 809,
+    "source": "2009-39",
+    "year": 2009,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "一个 TCP 连接总是以 1KB 的最大段长发送 TCP 段，发送方有足够多的数据\n要发送。当拥塞窗口为 16KB 时发生了超时，如果接下来的 4 个 RTT（往返时间）时间内\n的 TCP 段的传输都是成功的，那么当第 4 个 RTT 时间内发送的所有 TCP 段都得到肯定应\n答时，拥塞窗口大小是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "7 KB"
+      },
+      {
+        "label": "B",
+        "text": "8 KB"
+      },
+      {
+        "label": "C",
+        "text": "9 KB"
+      },
+      {
+        "label": "D",
+        "text": "16 KB"
+      }
+    ],
+    "answer": "C",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 810,
+    "source": "2010-39",
+    "year": 2010,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲和主机乙之间已建立了一个 TCP 连接，TCP 最大段长度为 1000 字节。\n若主机甲的当前拥塞窗口为 4000 字节，在主机甲向主机乙连续发送两个最大段后，成功\n收到主机乙发送的第一个段的确认段，确认段中通告的接收窗口大小为 2000 字节，则此\n时主机甲还可以向主机乙发送的最大字节数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1000"
+      },
+      {
+        "label": "B",
+        "text": "2000"
+      },
+      {
+        "label": "C",
+        "text": "3000"
+      },
+      {
+        "label": "D",
+        "text": "4000"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 811,
+    "source": "2011-39",
+    "year": 2011,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲向主机乙发送一个 (SYN ＝ 1, seq ＝ 11220) 的 TCP 段，期望与主机\n乙建立 TCP 连接，若主机乙接受该连接请求，则主机乙向主机甲发送的正确的 TCP 段可\n能是",
+    "options": [
+      {
+        "label": "A",
+        "text": "(SYN ＝ 0, ACK ＝ 0, seq ＝ 11221, ack ＝ 11221)"
+      },
+      {
+        "label": "B",
+        "text": "(SYN ＝ 1, ACK ＝ 1, seq ＝ 11220, ack ＝ 11220)"
+      },
+      {
+        "label": "C",
+        "text": "(SYN ＝ 1, ACK ＝ 1, seq ＝ 11221, ack ＝ 11221)"
+      },
+      {
+        "label": "D",
+        "text": "(SYN ＝ 0, ACK ＝ 0, seq ＝ 11220, ack ＝ 11220)"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 812,
+    "source": "2011-40",
+    "year": 2011,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲与主机乙之间已建立一个 TCP 连接，主机甲向主机乙发送了 3 个连\n续的 TCP 段，分别包含 300 字节、400 字节和 500 字节的有效载荷，第 3 个段的序号为\n900。若主机乙仅正确接收到第 1 和第 3 个段，则主机乙发送给主机甲的确认序号是",
+    "options": [
+      {
+        "label": "A",
+        "text": "300"
+      },
+      {
+        "label": "B",
+        "text": "500"
+      },
+      {
+        "label": "C",
+        "text": "1200"
+      },
+      {
+        "label": "D",
+        "text": "1400"
+      }
+    ],
+    "answer": "B",
+    "explanation": "TCP段首部中的序号字段是指本报文段所发送的数据的第一个字节的序号。第 三个段的序号为900，则第二个段的序号为900-400=500。而确认号是期待收到对方下一个报 文段的第一个字节的序号。现在主机乙期待收到第二个段，故甲的确认号是500。 二、综合应用题：41～47小题，共70分。请将答案写在答题纸指定位置上。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 813,
+    "source": "2013-39",
+    "year": 2013,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲与主机乙之间已建立一个 TCP 连接，双方持续有数据传输，且数据\n无差错与丢失。若甲收到 1 个来自乙的 TCP 段，该段的序号为 1913、确认序号为 2046、\n有效载荷为 100 字节，则甲立即发送给乙的 TCP 段的序号和确认序号分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2046、2012"
+      },
+      {
+        "label": "B",
+        "text": "2046、2013"
+      },
+      {
+        "label": "C",
+        "text": "2047、2012"
+      },
+      {
+        "label": "D",
+        "text": "2047、2013"
+      }
+    ],
+    "answer": "B",
+    "explanation": "1 \tTCP \tseq=1913 \tack = 2046 100 \tTCP \tseq1=ack=2046 ack1=seq+100=2013 \tB -- 4 of 10 --",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 814,
+    "source": "2014-38",
+    "year": 2014,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲和主机乙已建立了 TCP 连接，甲始终以 MSS=1KB 大小的段发送数\n据，并一直有数据发送；乙每收到一个数据段都会发出一个接收窗口为 10KB 的确认段。\n若甲在 t 时刻发生超时时拥塞窗口为 8KB，则从 t 时刻起，不再发生超时的情况下，经过\n10 个 RTT 后，甲的发送窗口是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "10KB"
+      },
+      {
+        "label": "B",
+        "text": "12KB"
+      },
+      {
+        "label": "C",
+        "text": "14KB"
+      },
+      {
+        "label": "D",
+        "text": "15KB"
+      }
+    ],
+    "answer": "A",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 815,
+    "source": "2015-33",
+    "year": 2015,
+    "qIndex": 33,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "通过 POP3 协议接收邮件时，使用的传输层服务类型是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "无连接不可靠的数据传输服务"
+      },
+      {
+        "label": "B",
+        "text": "无连接可靠的数据传输服务"
+      },
+      {
+        "label": "C",
+        "text": "有连接不可靠的数据传输服务"
+      },
+      {
+        "label": "D",
+        "text": "有连接可靠的数据传输服务"
+      }
+    ],
+    "answer": "D",
+    "explanation": "POP3 协议是 TCP/IP 体系结构应用层的一个协议，在传输层需要使用 TCP 协议。 TCP 协议是面向连接的，提供可靠的数据传输服务。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 816,
+    "source": "2015-39",
+    "year": 2015,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲和主机乙新建一个 TCP 连接，甲的拥塞控制初始阈值为 32 KB，甲\n向乙始终以 MSS = 1KB 大小的段发送数据，并一直有数据发送；乙为该连接分配 16 KB\n接收缓存，并对每个数据段进行确认，忽略段传输延迟。若乙收到的数据全部存入缓存，\n不被取走，则甲从连接建立成功时刻起，未发生超时的情况下，经过 4 个 RTT 后，甲的发\n送窗口是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 KB"
+      },
+      {
+        "label": "B",
+        "text": "8 KB"
+      },
+      {
+        "label": "C",
+        "text": "16 KB"
+      },
+      {
+        "label": "D",
+        "text": "32 KB"
+      }
+    ],
+    "answer": "A",
+    "explanation": "本题考查 TCP 的流量控制和拥塞控制。 流量控制可以理解为接收方以自己的接收能力抑制发送方的发送能力；拥塞控制可以理解为 发送方使用拥塞控制算法根据网络拥塞程度来调控自身的发送能力。尽管它们都是调控发送 方的发送能力，但产生调控的源头（或原因）不同。 TCP 发送方的发送窗口=Min[自身的拥塞窗口，TCP 接收方的接收窗口]。主机甲的初始发送 窗口=Min[1KB，16KB]=1KB，主机甲可将序号落在发送窗口内的数据向主机乙始终以 MSS=1KB 大小的段发送数据，主机乙对收到的每个数据段进行确认，在确认报文段首部中 的窗口字段会填入自己接收缓存的剩余容量作为自己的接收窗口，这就是主机乙对主机甲进 行流量控制。在每个 RTT（往返时延）后，主机甲使用拥塞控制算法计算自己的拥塞窗口， 然后从自己的拥塞窗口和主机乙的接收窗口中选择小的作为自己的发送窗口。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 817,
+    "source": "2017-39",
+    "year": 2017,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若甲向乙发起一个 TCP 连接，最大段长 MSS=1KB，RTT=5ms，乙开辟的接\n收缓存为 64KB，则甲从连接建立成功至发送窗口达到 32KB，需经过的时间至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "25 ms"
+      },
+      {
+        "label": "B",
+        "text": "30 ms"
+      },
+      {
+        "label": "C",
+        "text": "160 ms"
+      },
+      {
+        "label": "D",
+        "text": "165 ms"
+      }
+    ],
+    "answer": "A",
+    "explanation": "按照慢开始算法，发送窗口 = min{拥塞窗口，接收窗口)，初始的拥塞窗口为最大报 文段长度 1KB。每经过一个 RTT，拥塞窗口翻倍，因此需至至少经过 5 个 RTT，发送窗口才 能达到 32KB，所以答案选 A。 -- 5 of 9 --",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 818,
+    "source": "2019-38",
+    "year": 2019,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "某客户通过一个 TCP 连接向服务器发送数据的部分过程如题 38 图所示。客\n户在 t0 时刻第一次收到确认序列号 ack_seq=100 的段，并发送序列号 seq=100 的段，但发\n生丢失。若 TCP 支持快速重传，则客户重新发送 seq=100 段的时刻是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "t1"
+      },
+      {
+        "label": "B",
+        "text": "t2"
+      },
+      {
+        "label": "C",
+        "text": "t3"
+      },
+      {
+        "label": "D",
+        "text": "t4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "TCP 规定当发送方收到对同一个报文段的 3 个重复的确认时，就可以认为跟在这个 被确认报文段之后的报文已经丢失，立即执行快速重传算法。t 3 时刻连续收到了来自服务器的 三个确认序列号 ack_seq = 100 的段。发送方认为 seq = 100 的段已经丢失，执行快速重传 -- 6 of 11 -- 算法，重新发送 seq = 100 段。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 819,
+    "source": "2019-39",
+    "year": 2019,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若主机甲主动发起一个与主机乙的 TCP 连接，甲、乙选择的初始序列号分\n别为 2018 和 2046，则第三次握手 TCP 段的确认序列号是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2018"
+      },
+      {
+        "label": "B",
+        "text": "2019"
+      },
+      {
+        "label": "C",
+        "text": "2046"
+      },
+      {
+        "label": "D",
+        "text": "2047"
+      }
+    ],
+    "answer": "D",
+    "explanation": "根据 TCP 连接建立的“三次握手”原理，第三次握手时甲发出的确认序列号应为第 二次握手时乙发出的序列号+1，即 2047。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 820,
+    "source": "2020-38",
+    "year": 2020,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若主机甲与主机乙已建立一条 TCP 连接，最大段长（MSS）为 1KB，往返\n时间（RTT）为 2ms，则在不出现拥塞的前提下，拥塞窗口从 8KB 增长到 32KB 所需的最\n长时间是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "4ms；"
+      },
+      {
+        "label": "B",
+        "text": "8ms；"
+      },
+      {
+        "label": "C",
+        "text": "24ms;"
+      },
+      {
+        "label": "D",
+        "text": "48ms；"
+      }
+    ],
+    "answer": "D",
+    "explanation": "在不出现拥塞的前提下，拥塞窗口从 8KB 增长到 32KB 所需的最长时间（由于慢开 始门限可以根据需求设置所以这里面为了求最长时间可以假定在慢开始门限小于等于 8KB， 这样由 8KB-32KB 的过程中都是加法增大），考虑拥塞窗口达到 8KB 时，以后的每个轮次拥 塞窗口逐次加 1，需 24×2 = 48ms 后达到 32KB 大小。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 821,
+    "source": "2020-39",
+    "year": 2020,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若主机甲与主机乙建立 TCP 连接时发送的 SYN 段中的序号为 1000，在断开\n连接时，甲发送给乙的 FIN 段中的序号为 5001，则在无任何重传的情况下，甲向乙已经\n发送的应用层数据的字节数为：",
+    "options": [
+      {
+        "label": "A",
+        "text": "4002；"
+      },
+      {
+        "label": "B",
+        "text": "4001；"
+      },
+      {
+        "label": "C",
+        "text": "4000；"
+      },
+      {
+        "label": "D",
+        "text": "3999；"
+      }
+    ],
+    "answer": "C",
+    "explanation": "主机甲与主机乙建立 TCP 连接时发送的 SYN 段中的序号为 1000，则在数据数据传 输阶段所用序号起始为 1001，在断开连接时，甲发送给乙的 FIN 段中的序号为 5001，在无 任何重传的情况下，甲向乙已经发送的应用层数据的字节数为 5001-1001 = 4000。",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 822,
+    "source": "2021-38",
+    "year": 2021,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "若客户首先向服务器发送 FIN 段请求断开 TCP 连接，则当客户收到服务器\n发送的 FIN 段并向服务器发送了 ACK 段后，客户的 TCP 状态转换为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "CLOSE_WAIT"
+      },
+      {
+        "label": "B",
+        "text": "TIME_WAIT"
+      },
+      {
+        "label": "C",
+        "text": "FIN_WAIT_1"
+      },
+      {
+        "label": "D",
+        "text": "FIN_WAIT_2"
+      }
+    ],
+    "answer": "B",
+    "explanation": "TCP 连接释放的过程如下图所示。当客户机收到服务器发送的 FIN 段并向服务 器发送 ACK 段后，客户机的 TCP状态变为 TIME_WAIT, 此时 TCP 连接还未释放，必须经 过时间等待计时器设置的时间 2MSL （最长报文段寿命）后，客户机才进入 CLOSED （连接 关闭）状态。 客户机 服务器 B -：::：::：:：：：二：：：：：：：二：：：：：：：：：：：二二：：：：： 三 FIN- WAIT-1 竺\t之\t. ^-w．这叩 巴呵被动关闭 WAIT-2 ， 等待2MSL  I I ＿ － � TIME- �ck=J.sen-．．． LAST- WAIT I ACK 三 匠",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 823,
+    "source": "2021-40",
+    "year": 2021,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "设主机甲通过 TCP 向主机乙发送数据，部分过程如下图所示。甲在 t0 时刻\n发送一个序号 seq=501、封装 200B 数据的段，在 t1 时刻收到乙发送的序号 seq = 601、确\n认序号 ack_seq = 501、接收窗口 rcvwnd = 500B 的段，则甲在未收到新的确认段之前，可\n以继续向乙发送的数据序号范围是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "501 ~ 1000"
+      },
+      {
+        "label": "B",
+        "text": "601 ~ 1100"
+      },
+      {
+        "label": "C",
+        "text": "701 ~ 1000"
+      },
+      {
+        "label": "D",
+        "text": "801 ~ 1100"
+      }
+    ],
+    "answer": "C",
+    "explanation": "依题意，甲发送完 200B 报文后，继续发送的报文段中序号字段seq= 701。由于 乙告知接收窗口为 500, 且甲未收到乙对seq= 501报文段的确认，那么甲还能发送的报文段 字节数为 500- 200 = 300B, 因此甲在未收到新的确认段之前，还能发送的数据序号范围是 701,.__,1000。 二、综合应用题",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 824,
+    "source": "2022-38",
+    "year": 2022,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "假设主机甲和主机乙已建立一个 TCP 连接，最大段长 MSS = 1 KB，甲一直\n有数据向乙发送，当甲的拥塞窗口为 16KB 时，计时器发生了超时，则甲的拥塞窗口再次\n增长到 16KB 所需要的时间至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "4 RTT"
+      },
+      {
+        "label": "B",
+        "text": "5 RTT"
+      },
+      {
+        "label": "C",
+        "text": "11 RTT"
+      },
+      {
+        "label": "D",
+        "text": "16 RTT"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 825,
+    "source": "2022-39",
+    "year": 2022,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "假设客户 C 和服务器 S 已建立一个 TCP 连接，通信往返时间 RTT = 50 ms,\n最长报文段寿命 MSL= 800ms, 数据传输结束后，C 主动请求断开连接。若从 C 主动向 S 发\n出 FIN 段时刻算起，则 C 和 S 进入 CLOSED 状态所需的时间至少分别是（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "850 ms, 50 ms"
+      },
+      {
+        "label": "B",
+        "text": "1650 ms, 50 ms"
+      },
+      {
+        "label": "C",
+        "text": "850 ms, 75 ms"
+      },
+      {
+        "label": "D",
+        "text": "1650 ms, 75 ms"
+      }
+    ],
+    "answer": "D",
+    "explanation": "TCP 连接的释放过程如下图所示。 题目问的是最少时间，所以当服务器 S 收到客 户 C 发送的 FIN 请求 后不再发送数据，而是立马发送 FIN 请求（即第＠步和第＠步同时发生，",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 826,
+    "source": "2024-38",
+    "year": 2024,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "假 设 主 机 H 通 过 TCP 向 服 务 器 发 送 长 度 为 3000B 的 报 文， 往 返 时 间\nRTT=10ms，最长报文段寿命 MSL=30s，最大报文段长度 MSS=1000B，忽略 TCP 段的传\n输时廷，报文传输结束后 H 首先请求断开连接，则从 H 请求建立 TCP 连接时刻起，到 H\n进入 CLOSED 状态为止，所需时间至少是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "30.03s"
+      },
+      {
+        "label": "B",
+        "text": "30.04s"
+      },
+      {
+        "label": "C",
+        "text": "60.03s"
+      },
+      {
+        "label": "D",
+        "text": "60.04s"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 827,
+    "source": "2025-38",
+    "year": 2025,
+    "qIndex": 38,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "choice",
+    "stem": "主机甲通过 TCP 向主机乙发送数据的部分过程如下图，seq 为序号，ack-seq\n为确认序号，rcwnd 为接收窗口。甲在 t0 时刻的拥塞窗口和发送窗口均为 2000B，拥塞控\n制阈值为 8000B，MSS=1000B。甲始终以 MSS 发送 TCP 段。若甲在 t1 时刻收到如图所示\n的确认段，则甲在未收到新的确认段之前，还可以继续向乙发送的 TCP 段数是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "2"
+      },
+      {
+        "label": "B",
+        "text": "3"
+      },
+      {
+        "label": "C",
+        "text": "4"
+      },
+      {
+        "label": "D",
+        "text": "5"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 828,
+    "source": "2025-39",
+    "year": 2025,
+    "qIndex": 39,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "comprehensive",
+    "stem": "Time 是一个提供时间查询服务的 C/S 架构网络应用，支持客户通过 UDP 和\nTCP 向 Time 服务器请求时间。若某客户与 Time 服务器通信往返时间为 8ms，则该客户分\n别通过 UDP 和 TCP 向该服务器请求服务，所需的最少时间分别是\t（ ）。\n(A) 8ms，8ms (B) 8ms，16ms (C) 16ms，8ms (D) 16ms，16ms",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 829,
+    "source": "2016-41",
+    "year": 2016,
+    "qIndex": 41,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "comprehensive",
+    "stem": "假设题 33～41 图中的 H3 访问 Web 服务器 S 时，S 为新建的 TCP 连接分配了 20 KB (K=1\n024) 的接收缓存，最大段长 MSS=1 KB，平均往返时间 RTT=200 ms。H3 建立连接时的初\n始序号为 100，且持续以 MSS 大小的段向 S 发送数据，拥塞窗口初始阈值为 32 KB；S 对\n收到的每个段进行确认，并通告新的接收窗口。假定 TCP 连接建立完成后，S 端的 TCP\n接收缓存仅有数据存入而无数据取出。请回答下列问题。\n(1) 在 TCP 连接建立过程中，H3 收到的 S 发送过来的第二次握手 TCP 段的 SYN 和 ACK\n标志位的值分别是多少？确认序号是多少？\n(2) H3 收到的第 8 个确认段所通告的接收窗口是多少？此时 H3 的拥塞窗口变为多少？H3\n的发送窗口变为多少？\n(3) 当 H3 的发送窗口等于 0 时，下一个待发送的数据段序号是多少？H3 从发送第 1 个数\n据段到发送窗口等于 0 时刻为止，平均数据传输速率是多少（忽略段的传输延时）？\n(4) 若 H3 与 S 之间通信已经结束，在 t 时刻 H3 请求断开该连接，则从 t 时刻起，S 释放该\n连接的最短时间是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 830,
+    "source": "2023-47",
+    "year": 2023,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "comprehensive",
+    "stem": "如图，主机 H 登录到 FTP 服务器后，向服务器上传一个大小为 18000B 的文\n件 F，假设 H 传输 F 建立数据链接时，选择的初始序号为 100，MSS=1000B，拥塞控制的\n初始阈值是 4MSS，RTT=10ms，忽略 TCP 的传输时延，在 F 的传送过程中，H 以 MSS 段\n向服务器发送数据，且始终没有错误，丢包和乱序。\n(1) FTP 的控制连接是持久的还是非持久的？FTP 的数据连接是持久的还是非持久的？H\n登录服务器时，建立的 FTP 连接是数据连接还是控制连接。\n(2) H 通过数据连接发送 F 时，F 的第一个字节序号是多少？在断开数据连接的过程中，\nFTP 发送的第二次挥手的 ACK 序号是？\n(3) F 发送过程中，当 H 收到确认序号为 2101 的确认时，H 的拥塞调整为多少？收到确认\n序号为 7101 的确认段时，H 的拥窗口调整为多少\n(4) H 从请求建立数据连接开始，到确认 F 已被服务全部接收为止，至少要多长时间？期\n间应用层数平均发送速率是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 831,
+    "source": "2026-47",
+    "year": 2026,
+    "qIndex": 47,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.5.2",
+    "sectionTitle": "TCP 协议",
+    "type": "comprehensive",
+    "stem": "（本题满分 9 分）\n假设客户端 C 建立一条 TCP 连接，向服务器 Si 上传一个总长度为 2000 B 的计算任务描\n述文件。已知 C 的拥塞窗口初始阈值为 8 MSS，MSS = 500 B，Si 对收到的每个 TCP\n段进行确认，且确认段不封装数据。接收窗口始终为 1000 B，RTT = 5 ms，C 建立连\n接时选择的初始序号为 1000，Si 选择的初始序号为 2000，SYN、ACK、FIN 为标志\n位，seq 为序号，ack_seq 为确认序号。在整个文件传输过程中未出现任何重传或报\n文丢失。\n（1）C 与 Si 建立 TCP 连接过程需要几次握手？C 收到的 SYN = 1，ACK = 1 的 TCP 段的确\n认序号是多少？\n（2）当 C 接收 Si 发送的 ACK = 1，seq = 2001，ack_seq = 2001，rwnd = 1000 确认段后，C\n的拥塞窗口增加到多少？C 的发送窗口设置为多少？\n（3）C 与 Si 释放 TCP 连接过程需要几次挥手？C 收到最后一个 TCP 报文段的序号（seq），\n确认序号（ack_seq），FIN 的值分别是多少？\n（4）忽略报文段传输时延，且时间从 C 请求建立 TCP 连接时刻算起，则 C 确定 Si 已成功\n接收到文件的时间是多少？",
+    "options": [],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/05-transport-layer"
+  },
+  {
+    "id": 832,
+    "source": "2019-40",
+    "year": 2019,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.1",
+    "sectionTitle": "网络应用模型",
+    "type": "choice",
+    "stem": "下列关于网络应用模型的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "在 P2P 模型中，结点之间具有对等关系"
+      },
+      {
+        "label": "B",
+        "text": "在客户/服务器 (C/S) 模型中，客户与客户之间可以直接通信"
+      },
+      {
+        "label": "C",
+        "text": "在 C/S 模型中，主动发起通信的是客户，被动通信的是服务器"
+      },
+      {
+        "label": "D",
+        "text": "在向多用户分发一个文件时，P2P 模型通常比 C/S 模型所需时间短"
+      }
+    ],
+    "answer": "B",
+    "explanation": "在 P2P 模型中，每个结点的权利和义务是对等的，在 C/S 模型中，客户是服务发起 请求，使服务器被动接受各地客户的请求，但是客户之间不能直接通信，例如 Web 应用中两 个浏览器不能直接通信，P2P 模型减轻了对某个服务器的计算压力，可以将任务分配到各个 节点，提高了系统效率和资源利用率。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 833,
+    "source": "2010-40",
+    "year": 2010,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.1",
+    "sectionTitle": "网络应用模型",
+    "type": "choice",
+    "stem": "如果本地域名服务器无缓存，当采用递归方法解析另一网络某主机域名时，\n用户主机、本地域名服务器发送的域名请求消息数分别为\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "一条、一条"
+      },
+      {
+        "label": "B",
+        "text": "一条、多条"
+      },
+      {
+        "label": "C",
+        "text": "多条、一条"
+      },
+      {
+        "label": "D",
+        "text": "多条、多条"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 834,
+    "source": "2016-40",
+    "year": 2016,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.1",
+    "sectionTitle": "网络应用模型",
+    "type": "choice",
+    "stem": "假 设 所 有 域 名 服 务 器 均 采 用 迭 代 查 询 方 式 进 行 域 名 解 析。 当 H4 访 问 规 范 域 名 为\nwww.abc.xyz.com 的网站时，域名服务器 201.1.1.1 在完成该域名解析过程中，可能发出\nDNS 查询的最少和最多次数分别是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "0，3"
+      },
+      {
+        "label": "B",
+        "text": "1，3"
+      },
+      {
+        "label": "C",
+        "text": "0，4"
+      },
+      {
+        "label": "D",
+        "text": "1，4"
+      }
+    ],
+    "answer": "C",
+    "explanation": "最少情况：当本机 DNS 高速缓存中有该域名的 DNS 信息时，则不需要查询任何域 名服务器，最少发出 0 次 DNS 查询。最多情况：因为均采用迭代查询方式，在最坏情况下， -- 8 of 12 -- 本地域名服务器需要依次迭代地向根域名服务器、顶级域名服务器（.com）、权限域名服务器 （xyz.com）、权限域名服务器（abc.xyz.com）发出 DNS 查询请求，因此最多发出 4 次 DNS 查询。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 835,
+    "source": "2020-40",
+    "year": 2020,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.3",
+    "sectionTitle": "FTP 协议",
+    "type": "choice",
+    "stem": "假设下图所示网络中的本地域名服务器只提供递归查询服务，其他域名的\n服务器均只提供迭代查询服务；局域网内主机访问 Internet 上各服务器的往返时间（RTT）\n均为 10ms，忽略其他各种时延，若主机 H 通过超链接 http://www.abc.com/index.html，请\n求浏览纯文本 Web 页 index.html，则从点击超链接开始到浏览器接收到 index.html 页面为\n止，所需最短、最长时间分别是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "10ms，40ms；"
+      },
+      {
+        "label": "B",
+        "text": "10ms，50ms；"
+      },
+      {
+        "label": "C",
+        "text": "20ms，40ms；"
+      },
+      {
+        "label": "D",
+        "text": "20ms，50ms;"
+      }
+    ],
+    "answer": "D",
+    "explanation": "忽略各种时延情况下，最短时间，即本地域名服务器存在域名与 IP 地址映射关系， 仅需主机向本地域名服务器递归查询一次 10ms，传送数据 10ms，最短时间共需 20ms；最 长时间即本地域名服务器不存在域名与 IP 地址映射关系，需向本地域名服务器递归查询一次 后，迭代查询各级域名服务器 3 次，需 40ms,传送数据 10ms，最长时间共需 50ms。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 836,
+    "source": "2009-40",
+    "year": 2009,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.3",
+    "sectionTitle": "FTP 协议",
+    "type": "choice",
+    "stem": "FTP 客户和服务器间传递 FTP 命令时，使用的连接是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "建立在 TCP 之上的控制连接"
+      },
+      {
+        "label": "B",
+        "text": "建立在 TCP 之上的数据连接"
+      },
+      {
+        "label": "C",
+        "text": "建立在 UDP 之上的控制连接"
+      },
+      {
+        "label": "D",
+        "text": "建立在 UDP 之上的数据连接"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 837,
+    "source": "2017-40",
+    "year": 2017,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.4",
+    "sectionTitle": "电子邮件",
+    "type": "choice",
+    "stem": "下列关于 FTP 协议的叙述中，错误的是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "数据连接在每次数据传输完毕后就关闭"
+      },
+      {
+        "label": "B",
+        "text": "控制连接在整个会话期间保持打开状态"
+      },
+      {
+        "label": "C",
+        "text": "服务器与客户端的 TCP 20 端口建立数据连接"
+      },
+      {
+        "label": "D",
+        "text": "客户端与服务器的 TCP 21 端口建立控制连接"
+      }
+    ],
+    "answer": "C",
+    "explanation": "FTP 协议使用控制连接和数据连接，控制连接存在于整个 FTP 会话过程中，数据连 接在每次文件传输时才建立，传输结束就关闭，选项 A 和 B 是正确的。默认情况下 FTP 协议 使用 TCP20 端口进行数据连接，TCP21 端口进行控制连接。但是是否使用 TCP20 端口建立 数据连接与传输模式有关，主动方式使用 TCP20 端口，被动方式由服务器和客户端自行协商 决定，选项 C 错，选项 D 对。所以答案选 C。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 838,
+    "source": "2012-40",
+    "year": 2012,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.4",
+    "sectionTitle": "电子邮件",
+    "type": "choice",
+    "stem": "若用户 1 与用户 2 之间发送和接收电子邮件的过程如下图所示，则图中 ¨、\n≠、Æ 阶段分别使用的应用层协议可以是",
+    "options": [
+      {
+        "label": "A",
+        "text": "SMTP、SMTP、SMTP"
+      },
+      {
+        "label": "B",
+        "text": "POP3、SMTP、POP3"
+      },
+      {
+        "label": "C",
+        "text": "POP3、SMTP、SMTP"
+      },
+      {
+        "label": "D",
+        "text": "SMTP、SMTP、POP3"
+      }
+    ],
+    "answer": "D",
+    "explanation": "考查电子邮件中的协议。SMTP 采用“推”的通信方式，用于用户代理向邮件服务器发 送邮件、以及邮件服务器之间发送邮件。POP3 采用“拉”的通信方式，用于用户从目的邮件服 务器上读取邮件。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 839,
+    "source": "2013-40",
+    "year": 2013,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.4",
+    "sectionTitle": "电子邮件",
+    "type": "choice",
+    "stem": "下列关于 SMTP 协议的叙述中，正确的是\t（ ）。\nI. 只支持传输 7 比特 ASCII 码内容\nII. 支持在邮件服务器之间发送邮件\nIII. 支持从用户代理向邮件服务器发送邮件\nIV. 支持从邮件服务器向用户代理发送邮件",
+    "options": [
+      {
+        "label": "A",
+        "text": "仅 I、II 和 III"
+      },
+      {
+        "label": "B",
+        "text": "仅 I、II 和 IV"
+      },
+      {
+        "label": "C",
+        "text": "仅 I、III 和 IV"
+      },
+      {
+        "label": "D",
+        "text": "仅 II、III 和 IV"
+      }
+    ],
+    "answer": "A",
+    "explanation": "SMTP SMTP \t7 \tASC II",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 840,
+    "source": "2018-40",
+    "year": 2018,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.4",
+    "sectionTitle": "电子邮件",
+    "type": "choice",
+    "stem": "无需转换即可由 SMTP 协议直接传输的内容是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "JPEG 图形"
+      },
+      {
+        "label": "B",
+        "text": "MPEG 视频"
+      },
+      {
+        "label": "C",
+        "text": "EXE 文件"
+      },
+      {
+        "label": "D",
+        "text": "ASCII 文本"
+      }
+    ],
+    "answer": "D",
+    "explanation": "SMTP 本来就是为传送 ASCII 码而不是传送二进制数据设计的。因此，选项 D 正确。 二、综合应用题 -- 5 of 8 --",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 841,
+    "source": "2025-40",
+    "year": 2025,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "关于 POP3，正确的是\t（ ）。\nI 支持用户代理从邮件服务器读取邮件\nII 支持用户代理向邮件服务器发送邮件\nIII 支持邮件服务器之间发送与接收邮件\nIV 支持一条 TCP 连接收取多封邮件",
+    "options": [
+      {
+        "label": "A",
+        "text": "I、IV"
+      },
+      {
+        "label": "B",
+        "text": "II、III"
+      },
+      {
+        "label": "C",
+        "text": "I、II、III"
+      },
+      {
+        "label": "D",
+        "text": "I、III、IV"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 842,
+    "source": "2014-40",
+    "year": 2014,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "使用浏览器访问某大学 Web 网站主页时，不可能使用到的协议是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPP"
+      },
+      {
+        "label": "B",
+        "text": "ARP"
+      },
+      {
+        "label": "C",
+        "text": "UDP"
+      },
+      {
+        "label": "D",
+        "text": "SMTP"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 843,
+    "source": "2015-40",
+    "year": 2015,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "某浏览器发出的 HTTP 请求报文如下\t（ ）。\nGET / index . html HTTP /1.1\nHost : www . test . edu .cn\nConnection : close\nCookie : 123456\n下列叙述中，错误的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "该浏览器请求浏览 index.html"
+      },
+      {
+        "label": "B",
+        "text": "index.html 存放在 www.test.edu.cn 上"
+      },
+      {
+        "label": "C",
+        "text": "该浏览器请求使用持续连接"
+      },
+      {
+        "label": "D",
+        "text": "该浏览器曾经浏览过 www.test.edu.cn"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Connection：连接方式，Close 表明为非持续连接方式，keep-alive 表示持续连接方 式。Cookie 值是由服务器产生的，HTTP 请求报文中有 Cookie 报头表示曾经访问过 www.test.edu.cn 服务器。 二、综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 844,
+    "source": "2022-40",
+    "year": 2022,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "假 设 主 机 H 通 过 HTTP/1.1 请 求 浏 览 某 Web 服 务 器 S 上 的 Web 页\nnews408.html, news408.html 引 用 了 同 目 录 下 的 1 幅 图 像，news408.html 文 件 大 小 为 1\nMSS（最大段长），图像文件大小为 3 MSS, H 访问 S 的往返时间 RTT = 10 ms, 忽略 HTTP\n响应报文的首部开销和 TCP 段传输时延。若 H 已完成域名解析，则从 H 请求与 S 建立\nTCP 连接时刻起，到接收到全部内容止，所需的时间至少是\t（ ）。",
+    "options": [
+      {
+        "label": "A",
+        "text": "30ms"
+      },
+      {
+        "label": "B",
+        "text": "40ms"
+      },
+      {
+        "label": "C",
+        "text": "50ms"
+      },
+      {
+        "label": "D",
+        "text": "60ms"
+      }
+    ],
+    "answer": "B",
+    "explanation": "HTTP/1.1默认使用流水线的持久连接，所有请求都是连续发送的。 题目要求最少 时间，最理想的流程是 TCP在第三次握手的报文段中捎带HTTP请求，以及TCP连接后慢开 始阶段不考虑拥塞情况。 假设接收方有足够大的缓存空间， 即发送窗口等同于拥塞窗口， 总 共需要经过：第1个RTT, 进行TCP连接， 此时服务器S的发送窗口 ＝lMSS, 并在第三次 握手时捎带HTTP请求；第2个RTT,服务器S发送大小为lMSS的html文件， 主机C确认 后服务器S的发送窗口变为2MSS;第3个RTT, 服务器S发送大小为2MSS的图像文件， 主机C确认后服务器S的发送窗口变为4MSS;第4个RTT, 服务器S发送剩下的lMSS图 像文件， 完成传输， 总共需要4个RTT, 即40ms。 二、 综合应用题",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 845,
+    "source": "2024-40",
+    "year": 2024,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "若浏览器不支持并行 TCP 连接，使用非持久的 HTTP/1.0 协议请求浏览 1 个\nweb 页，该页中引用同一个网站上 7 个小图像文件，则从浏览器传输 web 页请求建立 TCP\n连接开始，到接收完所有内容为止，所需要的往返时间 RTT 数至少是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "4"
+      },
+      {
+        "label": "B",
+        "text": "9"
+      },
+      {
+        "label": "C",
+        "text": "14"
+      },
+      {
+        "label": "D",
+        "text": "16"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  },
+  {
+    "id": 846,
+    "source": "2026-40",
+    "year": 2026,
+    "qIndex": 40,
+    "subjectKey": "computer-network",
+    "subjectName": "计算机网络",
+    "sectionCode": "4.6.5",
+    "sectionTitle": "HTTP 协议与网页访问",
+    "type": "choice",
+    "stem": "下列叙述中不属于 cookie 的技术典型用途的是\t（ ）",
+    "options": [
+      {
+        "label": "A",
+        "text": "用户跟踪"
+      },
+      {
+        "label": "B",
+        "text": "个性化推荐"
+      },
+      {
+        "label": "C",
+        "text": "构建虚拟购物车"
+      },
+      {
+        "label": "D",
+        "text": "缩短 web 对象的响应时间"
+      }
+    ],
+    "answer": "",
+    "explanation": "",
+    "relatedPath": "/computer-network/06-application-layer"
+  }
+]
