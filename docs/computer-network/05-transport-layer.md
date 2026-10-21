@@ -6,7 +6,7 @@
 
 ## 1. UDP 协议特性与校验和计算全景
 
-<KP author="Zhao" title="⚡ UDP 协议首部、伪首部与反码求和（2024 题 39 真题精析）" tag="核心考点">
+<KP title="⚡ UDP 协议首部、伪首部与反码求和（2024 题 39 真题精析）" tag="核心考点">
 <UdpChecksumCalculator />
 </KP>
 
@@ -25,7 +25,7 @@
 
 ## 2. TCP 报文段首部格式与字段全景
 
-<KP author="Zhao" title="📦 TCP 报文段首部格式与 6 大控制标志位速查" tag="核心考点">
+<KP title="📦 TCP 报文段首部格式与 6 大控制标志位速查" tag="核心考点">
 <TcpHeaderFormat />
 </KP>
 
@@ -48,7 +48,7 @@ $$
 
 ## 3. TCP 拥塞控制 4 大机制全景
 
-<KP author="Zhao" title="📈 TCP 拥塞控制 4 大机制全景演化图（2009 题 39 经典模型剖析）" tag="核心考点">
+<KP title="📈 TCP 拥塞控制 4 大机制全景演化图（2009 题 39 经典模型剖析）" tag="核心考点">
 <TcpCongestionControl />
 </KP>
 
@@ -66,7 +66,7 @@ $$
 
 ## 4. TCP 滑动窗口与流量控制（rwnd vs cwnd 动态计算）
 
-<KP author="Zhao" title="🌊 TCP 滑动窗口与流量控制全景图解（真题经典模型推导）" tag="核心考点">
+<KP title="🌊 TCP 滑动窗口与流量控制全景图解（真题经典模型推导）" tag="核心考点">
 <TcpFlowControl />
 </KP>
 
@@ -93,7 +93,7 @@ $$
 
 ## 5. TCP 可靠传输实现与累计确认（序号与确认号推导）
 
-<KP author="Zhao" title="🛡️ TCP 可靠传输与累计确认模型（2011 题 40 经典真题推导）" tag="核心考点">
+<KP title="🛡️ TCP 可靠传输与累计确认模型（2011 题 40 经典真题推导）" tag="核心考点">
 <TcpReliableTransfer />
 </KP>
 
@@ -114,7 +114,7 @@ $$
 
 ## 6. TCP 运输连接管理（三次握手与四次挥手全景）
 
-<KP author="Zhao" title="🤝 TCP 三次握手建立连接与四次挥手释放连接全景（2011 题 39 经典真题推导）" tag="核心考点">
+<KP title="🤝 TCP 三次握手建立连接与四次挥手释放连接全景（2011 题 39 经典真题推导）" tag="核心考点">
 > 📺 **2024 统考真题精析视频**：[计算机网络408考研2024年真题解析（第38题）_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1VE411A7Ak/?t=3665.3&p=16&vd_source=82d10a6ac42fc540b554068775f4bb8d)（深入拆解 TCP 建连捎带、慢开始窗口翻倍、挥手与 2MSL 等待时延综合推导）
 
 <TcpConnectionManagement />

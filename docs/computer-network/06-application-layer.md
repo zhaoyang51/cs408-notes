@@ -6,7 +6,7 @@
 
 ## 1. 域名系统 DNS (迭代查询 vs 递归查询与 2016 题 40 全景拓扑)
 
-<KP author="Zhao" title="🌐 域名系统 DNS 迭代解析与查询次数推导（2016 题 40 经典真题）" tag="核心考点">
+<KP title="🌐 域名系统 DNS 迭代解析与查询次数推导（2016 题 40 经典真题）" tag="核心考点">
 <DnsQuerySimulator />
 </KP>
 
@@ -22,7 +22,7 @@
 
 ## 2. FTP 文件传输协议 (双 TCP 并行连接与主动 PORT vs 被动 PASV)
 
-<KP author="Zhao" title="📂 FTP 双连接模型与主动/被动传输模式全景对比" tag="核心考点">
+<KP title="📂 FTP 双连接模型与主动/被动传输模式全景对比" tag="核心考点">
 <FtpConnectionModel />
 </KP>
 
@@ -38,7 +38,7 @@
 
 ## 3. 电子邮件系统 (SMTP vs POP3 / IMAP 与 2012 / 2013 经典真题)
 
-<KP author="Zhao" title="✉️ 电子邮件三阶段传输拓扑与协议角色精解（给服务器送信全用 SMTP，从服务器取信才用 POP3/IMAP）" tag="核心考点">
+<KP title="✉️ 电子邮件三阶段传输拓扑与协议角色精解（给服务器送信全用 SMTP，从服务器取信才用 POP3/IMAP）" tag="核心考点">
 <EmailProtocolSimulator />
 </KP>
 
@@ -56,7 +56,7 @@
 
 ## 4. HTTP 超文本传输协议 (报文格式、Cookie 与 RTT 耗时计算)
 
-<KP author="Zhao" title="🌐 HTTP 协议全景图解与 RTT 耗时推导（2011 题 47 / 2015 题 40 经典真题）" tag="核心考点">
+<KP title="🌐 HTTP 协议全景图解与 RTT 耗时推导（2011 题 47 / 2015 题 40 经典真题）" tag="核心考点">
 <HttpProtocolSimulator />
 </KP>
 

@@ -4,7 +4,6 @@ import './practice.css'
 import PracticeCenter from './PracticeCenter.vue'
 import PracticeQuestionCard from './PracticeQuestionCard.vue'
 import ThemeToggle from './ThemeToggle.vue'
-import UserFilter from './UserFilter.vue'
 import ModeToggle from './ModeToggle.vue'
 import CollapseToggle from './CollapseToggle.vue'
 import SidebarBorderToggle from './SidebarBorderToggle.vue'
@@ -48,13 +47,11 @@ export default {
       'nav-bar-content-after': () => h('div', { class: 'nav-controls-wrapper' }, [
         h(ModeToggle),
         h(CollapseToggle),
-        h(UserFilter),
         h(ThemeToggle)
       ]),
       'nav-screen-content-after': () => h('div', { class: 'nav-screen-controls-wrapper' }, [
         h(ModeToggle),
         h(CollapseToggle),
-        h(UserFilter),
         h(ThemeToggle)
       ]),
       'layout-top': () => h('div', null, [
@@ -74,7 +71,6 @@ export default {
     app.component('PracticeQuestionCard', PracticeQuestionCard)
     app.component('ModeToggle', ModeToggle)
     app.component('CollapseToggle', CollapseToggle)
-    app.component('UserFilter', UserFilter)
     app.component('AuthorTag', AuthorTag)
     app.component('KP', KP)
     app.component('KnowledgePoint', KP)
@@ -105,4 +101,3 @@ export default {
     app.component('DhcpProtocolSimulator', DhcpProtocolSimulator)
   }
 }
-

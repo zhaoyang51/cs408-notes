@@ -6,7 +6,7 @@
 
 ## 1. 计算机网络 8 大性能指标全景
 
-<KP author="Zhao" title="📊 计算机网络 8 大性能指标全景图解" tag="核心考点">
+<KP title="📊 计算机网络 8 大性能指标全景图解" tag="核心考点">
 
 <NetworkMetrics />
 
@@ -28,7 +28,7 @@
 
 ## 3. TCP/IP 四层 vs 五层原理体系全协议栈全景拓扑图
 
-<KP author="Zhao" title="🌐 全协议栈体系拓扑与中英文协议全景对照（408 核心考点）" tag="核心重点">
+<KP title="🌐 全协议栈体系拓扑与中英文协议全景对照（408 核心考点）" tag="核心重点">
 
 <ProtocolStackMap />
 

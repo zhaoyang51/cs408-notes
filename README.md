@@ -46,34 +46,12 @@ npm run docs:build
 
 ---
 
-## 👥 知识点贡献者标记与分组筛选
+## 💡 知识点卡片容器组件 (`<KP>`)
 
-站点顶部导航栏内置**用户筛选控制器**，支持在「全部用户」、「Zhao」、「Chen」之间一键切换，并自动记忆筛选偏好。
+知识库各章节内置 `<KP>` 精品卡片容器，用于突出重点知识与算法模型：
 
-### 如何标记知识点归属用户：
-
-1. **使用 `<KP>` 知识点卡片容器（推荐）**：
-   ```html
-   <KP author="Zhao" title="核心口诀：阶数大小比较" tag="💡 必背">
-     知识点内容...
-   </KP>
-
-   <KP author="Chen" title="主定理秒杀公式" tag="⭐️ 技巧">
-     知识点内容...
-   </KP>
-   ```
-
-2. **使用 `<AuthorTag>` 徽章组件**：
-   ```html
-   <AuthorTag user="Zhao" />
-   <AuthorTag user="Chen" />
-   ```
-
-3. **使用 HTML 属性 / CSS 类名**：
-   ```html
-   <div class="kp-block" data-author="Zhao">...</div>
-   <details class="self-test author-chen" data-author="Chen">...</details>
-   <span class="badge badge-zhao">Zhao</span>
-   <span class="badge badge-chen">Chen</span>
-   ```
-
+```html
+<KP title="核心口诀：阶数大小比较" tag="💡 必背">
+  知识点内容...
+</KP>
+```
